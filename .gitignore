@@ -1,0 +1,18 @@
+# python crap
+*.pyc
+*.egg-info/*
+.eggs/
+*__pycache__*
+
+# config files
+*.local.json
+*.system.json
+
+# build artefacts
+assets
+dist
+/src
+
+# nodejs
+node_modules
+npm_debug.log
