@@ -1,24 +1,25 @@
 #API feature list
 
-Public endpoints:
+##Public endpoints:
 - list and search articles (end of May release)
 - list and search collections (end of May release)
 - list and search projects (end of July release)
 - read public entities(articles, collections, projects) (end of May/July release)
 - list and search authors (end of June release)
 
-Manage articles (end of May release)
+##Private endpoints
+###Manage articles (end of May release)
 - reserve DOI
 - manage private links
 - versioning
 - manage file uploads (resume, parallel uploads)
     
-Manage collections (end of May release)
+###Manage collections (end of May release)
 - reserve DOI
 - manage private links
 - versioning
 
-Manage projects (end of June release)
+###Manage projects (end of June release)
 
 HR Feed ingest (available)
 
