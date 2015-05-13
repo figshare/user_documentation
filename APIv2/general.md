@@ -21,7 +21,7 @@
 
 ###Manage projects (`end of June release`)
 
-HR Feed ingest (`available`)
+###HR Feed ingest (`available`)
 
 
 
