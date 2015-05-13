@@ -228,7 +228,7 @@ If an invalid OAuth token is sent, the API will return a `403 Forbidden` error.
 
 
 ##Rate limiting
-Nice to have, but I guess not for June..
+No information available.
 
 
 
