@@ -1,3 +1,29 @@
+#API feature list
+
+Public endpoints:
+- list and search articles (end of May release)
+- list and search collections (end of May release)
+- list and search projects (end of July release)
+- read public entities(articles, collections, projects) (end of May/July release)
+- list and search authors (end of June release)
+
+Manage articles (end of May release)
+- reserve DOI
+- manage private links
+- versioning
+- manage file uploads (resume, parallel uploads)
+    
+Manage collections (end of May release)
+- reserve DOI
+- manage private links
+- versioning
+
+Manage projects (end of June release)
+
+HR Feed ingest (available)
+
+
+
 ##Schema
 
 All API access is over HTTPS, and accessed from the api.figshare.com domain (/v2 path). All data is sent and received as JSON.
