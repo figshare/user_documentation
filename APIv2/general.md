@@ -8,16 +8,16 @@
 - list and search authors (end of June release)
 
 ##Private endpoints
-###Manage articles (end of May release)
-- reserve DOI
-- manage private links
-- versioning
-- manage file uploads (resume, parallel uploads)
+###Manage articles 
+- reserve DOI(end of May release)
+- manage private links(end of May release)
+- versioning(end of May release)
+- manage file uploads (resume, parallel uploads)(end of May release)
     
-###Manage collections (end of May release)
-- reserve DOI
-- manage private links
-- versioning
+###Manage collections
+- reserve DOI (end of May release)
+- manage private links (end of May release)
+- versioning (end of May release)
 
 ###Manage projects (end of June release)
 
