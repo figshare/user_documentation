@@ -1,27 +1,27 @@
 #API feature list
 
 ##Public endpoints:
-- list and search articles (end of May release)
-- list and search collections (end of May release)
-- list and search projects (end of July release)
-- read public entities(articles, collections, projects) (end of May/July release)
-- list and search authors (end of June release)
+- list and search articles (`end of May release`)
+- list and search collections (`end of May release`)
+- list and search projects (`end of July release`)
+- read public entities(articles, collections, projects) (`end of May/July release`)
+- list and search authors (`end of June release`)
 
 ##Private endpoints
 ###Manage articles 
-- reserve DOI(end of May release)
-- manage private links(end of May release)
-- versioning(end of May release)
-- manage file uploads (resume, parallel uploads)(end of May release)
+- reserve DOI(`end of May release`)
+- manage private links(`end of May release`)
+- versioning(`end of May release`)
+- manage file uploads (resume, parallel uploads)(`end of May release`)
     
 ###Manage collections
-- reserve DOI (end of May release)
-- manage private links (end of May release)
-- versioning (end of May release)
+- reserve DOI (`end of May release`)
+- manage private links (`end of May release`)
+- versioning (`end of May release`)
 
-###Manage projects (end of June release)
+###Manage projects (`end of June release`)
 
-HR Feed ingest (available)
+HR Feed ingest (`available`)
 
 
 
