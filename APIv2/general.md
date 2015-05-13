@@ -175,23 +175,26 @@ GET /v2/collections/123/authors/111
 ###400 Bad request
 Sending invalid structured JSON will return a `400 Bad request`. The API response will also contain a body:
 
+```
+Status: 400 Bad request
+```
 ```json
-{"message": "Error loading JSON data"}
+{
+    "message": "Unable to load/parse json body."
+}
 ```
 
 ###422 Unprocessable Entity
 Sending valid structured JSON with invalid values return a `422 Unprocessable Entity`. The API response will also contain a body:
 
+```
+Status: 422 Unprocessable Entity
+```
 ```json
 {
-    "message": "Invalid/unexpected value received",
-    "errors": [
-        {
-            "field": "title",
-            "exception": "MissingMandatoryField",
-            "string": "Missing mandatory field title, received:''"
-        }
-    ]
+    "message": "Max page reached. Please narrow down your search",
+    "code": "PageLimitExceededException",
+    "data": {}
 }
 ```
 
