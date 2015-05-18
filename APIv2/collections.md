@@ -463,8 +463,6 @@ Status: 422 Unprocessable Entity
 |`resource_title`     |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article title|
 |`resource_version`   |`int`                  |Not applicable to regular users. In a publisher case, this is the publisher article version|
 |`custom_metadata`  |`dict`                 |List of key, values pairs to be associated with the collection. Similar to custom article fields|
-|`categories`       |`array of int`         |List of category ids to be associated with the collection(e.g [1, 23, 33, 66])|
-|`authors`          |`array of int|str`     |List of authors to be assosciated with the collection. The list can contain author ids ([12121, 34345, 233323]) or author names([1212, 'John Doe']). No more then 10 authors. For adding more authors use the specific authors endpoint|
 
 In the success response the  `detailed` collection presenter will be used.
 
@@ -677,8 +675,6 @@ Status: 404 Not Found
 |`resource_title`   |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article title|
 |`resource_version` |`int`                  |Not applicable to regular users. In a publisher case, this is the publisher article version|
 |`tags`             |`array of str`         |List of tags to be associated with the collection (e.g ['tag1', 'tag2', 'tagn'])|
-|`categories`       |`array of int`         |List of category ids to be associated with the collection(e.g [1, 23, 33, 66])|
-|`authors`          |`array of int|str`     |List of authors to be assosciated with the collection. The list can contain author ids ([12121, 34345, 233323]) or author names([1212, 'John Doe']). No more then 10 authors. For more authors use the authors specific endpoint|
 |`references`       |`array of str`         |List of URLs to be assosciated with the collection|
 |`custom_metadata`  |`dict`                 |List of key, values pairs to be associated with the collection. Similar to custom article fields|
 
