@@ -563,6 +563,8 @@ Status: 200 OK
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
 |`md5`              |`str`                  |MD5 sum pre computed on the client side|
+|`name`              |`str`                  |File name including the exception|
+|`size`              |`int`                  |File size in bytes|
 
 
 **Success Response**
