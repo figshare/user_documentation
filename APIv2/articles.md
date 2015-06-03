@@ -11,16 +11,14 @@
 |Name             |Type|Description|
 |-----------------|----|-----------|
 |`page`             | `int`|Show specified page only. Default is 1. Max page is 100. To see more then 100 pages, the search endpoint must be used to narrow down the results|
-|`per_page`         | `int`|How many entries per page to show. Default is 10.|
+|`size`         | `int`|How many entries per page to show. Default is 10.|
 
 
 **Success Response (list of articles)**
-```
 Status: 200 OK
-```
-```json
-[{object},{object}...{object}]
-```
+
+[[ArticlePresenter](presenters/article.md#articlepresenter)]
+
 **Error Response (Max page number reached)**
 
 ```
@@ -52,12 +50,9 @@ Status: 400 Bad request
 
 
 **Success Response (list of articles)**
-```
 Status: 200 OK
-```
-```json
-[{object},{object}...{object}]
-```
+
+[[ArticlePresenter](presenters/article.md#articlepresenter)]
 
 **Error Response (invalid input)**
 ```
@@ -81,12 +76,10 @@ Status: 400 Bad request
 
 
 **Success Response (article object)**
-```
 Status: 200 OK
-```
-```json
-{object}
-```
+
+[ArticlePresenter.L2](presenters/article.md#articlepresenterl2)
+
 **Error Response (article not found)**
 ```
 Status: 404 Not Found
@@ -96,6 +89,26 @@ Status: 404 Not Found
 ```
 
 
+##Article versions subsection
+
+###List versions
+
+    GET /v2/account/articles/{id}/versions
+
+**Success Response**
+
+Status: 200 OK
+
+[[ArticleVersionPresenter](presenters/article.md#articleversionpresenter)]
+
+**Error Response (article ID not found)**
+```
+Status: 404 Not found
+```
+```json
+{"message": "article with ID not found"}
+```
+
 ##Read public article version
 
 Read public article that has {id} and {v_number}
@@ -104,12 +117,11 @@ Read public article that has {id} and {v_number}
 
 
 **Success Response (article object for specified version)**
-```
+
 Status: 200 OK
-```
-```json
-{object}
-```
+
+[ArticlePresenter.L2](presenters/article.md#articlepresenterl2)
+
 **Error Response (Version not found)**
 ```
 Status: 404 Not Found
@@ -119,27 +131,69 @@ Status: 404 Not Found
 ```
 
 
+##Read public article version embargo
+
+Read public article embargo that has {id} and {v_number}
+
+    GET /v2/articles/{id}/versions/{v_number}/embargo
+
+
+**Success Response (article object for specified version)**
+
+Status: 200 OK
+
+[ArticleEmbargoPresenter](presenters/article.md#articleembargopresenter)
+
+**Error Response (Version not found)**
+```
+Status: 404 Not Found
+```
+```json
+{"message": "Version does not exist"}
+```
+
+
+##Read public article version confidentiality
+
+Read public article confidentiality that has {id} and {v_number}
+
+    GET /v2/articles/{id}/versions/{v_number}/confidentiality
+
+
+**Success Response (article object for specified version)**
+
+Status: 200 OK
+
+[ArticleConfidentialityPresenter](presenters/article.md#articleconfidentialitypresenter)
+
+**Error Response (Version not found)**
+```
+Status: 404 Not Found
+```
+```json
+{"message": "Version does not exist"}
+```
+
 #Article private endpoints (OAuth required)
 
 ##Get own articles
 
     GET /v2/account/articles
 
+
 **Input**
 
-|Name               |Type   |Description|
-|-------------------|-------|-----------|
-|`page`             |`int`  |Show specified page only. Default is 1. Max page is 100. After 100 an error is raise and user is instructed to use the search endpoint|
-|`per_page`         |`int`  |How many entries per page to show. Default is 10. Max is 100|
+|Name             |Type|Description|
+|-----------------|----|-----------|
+|`page`             | `int`|Show specified page only. Default is 1. Max page is 100. To see more then 100 pages, the search endpoint must be used to narrow down the results|
+|`size`         | `int`|How many entries per page to show. Default is 10.|
 
 
-**Success Response**
-```
+**Success Response (list of articles)**
 Status: 200 OK
-```
-```json
-[{object},{object}...{object}]
-```
+
+[[ArticlePresenter](presenters/article.md#articlepresenter)]
+
 
 **Error Response (Max page number reached)**
 ```
@@ -205,26 +259,17 @@ Status: 400 Bad request
 |`title`            |`str`                  |The title for this article - `mandatory`|
 |`description`      |`str`                  |The article description. In a publisher case, usually this is the remote article description|
 |`tags`             |`array of str`         |List of tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])|
-|`links`            |`array of str`         |List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])|
+|`references`            |`array of str`         |List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])|
 |`categories`       |`array of int`         |List of category ids to be associated with the article(e.g [1, 23, 33, 66])|
 |`authors`          |`array of int|str`     |List of authors to be assosciated with the article. The list can contain author ids ([12121, 34345, 233323]) or author names([1212, 'John Doe']). No more then 10 authors. For adding more authors use the specific authors endpoint|
-|`custom_metadata`  |`dict`                 |List of key, values pairs to be associated with the article|
+|`custom_fields`  |`dict`                 |List of key, values pairs to be associated with the article|
+|defined_type       |`str`                  |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'stub', 'metadata']|
 
 
 **Success Response**
 ```
 Status: 201 Created
 Location: https://api.figshare.com/v2/account/articles/123
-```
-```json
-{object}
-```
-**Error Response (Missing mandatory field)**
-```
-Status: 400 Bad request
-```
-```json
-{"message": "Missing mandatory field - title"}
 ```
 
 
@@ -234,12 +279,10 @@ Status: 400 Bad request
 
 
 **Success Response**
-```
 Status: 200 OK
-```
-```json
-{object}
-```
+
+[ArticlePresenterL2](presenters/article.md#articlepresenterl2)
+
 **Error Response (Id not found)**
 ```
 Status: 404 Not found
@@ -257,21 +300,20 @@ Status: 404 Not found
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
-|`title`            |`str`                  |The title for this article |
+|`title`            |`str`                  |The title for this article - `mandatory`|
 |`description`      |`str`                  |The article description. In a publisher case, usually this is the remote article description|
 |`tags`             |`array of str`         |List of tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])|
-|`links`            |`array of str`         |List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])|
+|`references`            |`array of str`         |List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])|
 |`categories`       |`array of int`         |List of category ids to be associated with the article(e.g [1, 23, 33, 66])|
-|`authors`          |`array of int|str`     |List of authors to be assosciated with the article. The list can contain author ids ([12121, 34345, 233323]) or author names([1212, 'John Doe']). No more then 10 authors. For more authors use the authors specific endpoint|
-|`custom_metadata`  |`dict`                 |List of key, values pairs to be associated with the article. Similar to custom article fields|
+|`authors`          |`array of int|str`     |List of authors to be assosciated with the article. The list can contain author ids ([12121, 34345, 233323]) or author names([1212, 'John Doe']). No more then 10 authors. For adding more authors use the specific authors endpoint|
+|`custom_fields`  |`dict`                 |List of key, values pairs to be associated with the article|
+|defined_type       |`str`                  |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'stub', 'metadata']|
 
 
 **Success Response**
 ```
-Status: 200 OK
-```
-```json
-    {object}
+Status: 205 OK
+Location: https://api.figshare.com/v2/account/articles/123
 ```
 **Error Response (Id not found)**
 ```
@@ -355,12 +397,11 @@ Status: 400 Bad request
     GET /v2/account/articles/{id}/authors
 
 **Success Response**
-```
+
 Status: 200 OK
-```
-```json
-{object}
-```
+
+[[AuthorPresenter](presenters/author.md#authorpresenter)]
+
 **Error Response (article Id not found)**
 ```
 Status: 404 Not found
@@ -383,10 +424,8 @@ Status: 404 Not found
 
 **Success Response**
 ```
-Status: 200 OK
-```
-```json
-{object}
+Status: 205 OK
+Location: https://api.figshare.com/v2/account/articles/123/authors
 ```
 
 **Error Response (Author(s) id not found)**
@@ -411,10 +450,8 @@ Status: 400 Bad request
 
 **Success Response**
 ```
-Status: 200 OK
-```
-```json
-{object}
+Status: 205 OK
+Location: https://api.figshare.com/v2/account/articles/123/authors
 ```
 
 **Error Response (Author(s) id not found)**
@@ -432,10 +469,7 @@ Status: 400 Bad request
 
 **Success Response**
 ```
-Status: 200 OK
-```
-```json
-{object}
+Status: 204 No content
 ```
 
 **Error Response (Author(s) id not found)**
@@ -454,12 +488,10 @@ Status: 400 Bad request
     GET /v2/account/articles/{id}/categories
 
 **Success Response**
-```
+
 Status: 200 OK
-```
-```json
-{object}
-```
+
+[[CategoryPresenter](category.md#categorypresenter)]
 
 ###Associate new categories with the article
 
@@ -474,12 +506,10 @@ Status: 200 OK
 
 
 **Success Response**
-```
-Status: 200 OK
-```
-```json
-{object}
-```
+
+Status: 205 OK
+
+[CategoryPresenter](category.md#categorypresenter)
 
 **Error Response (Category ID not found)**
 ```
@@ -502,12 +532,10 @@ Status: 400 Bad request
 
 
 **Success Response**
-```
-Status: 200 OK
-```
-```json
-{object}
-```
+
+Status: 205 OK
+
+[CategoryPresenter](category.md#categorypresenter)
 
 **Error Response (Catgeory ID not found)**
 ```
@@ -524,7 +552,7 @@ Status: 400 Bad request
 
 **Success Response**
 ```
-Status: 200 OK
+Status: 204 OK
 ```
 ```json
 {object}
@@ -835,47 +863,4 @@ Status: 204 No content
 
 
 
-
-##Article versions subsection
-
-###List versions
-
-    GET /v2/account/articles/{id}/versions
-
-**Success Response**
-```
-Status: 200 OK
-```
-```json
-{object}
-```
-
-**Error Response (article ID not found)**
-```
-Status: 404 Not found
-```
-```json
-{"message": "article with ID not found"}
-```
-
-
-###View article version
-
-    GET /v2/account/articles/{id}/versions/{v_nr}
-
-**Success Response**
-```
-Status: 200 OK
-```
-```json
-{object}
-```
-
-**Error Response (article version not found)**
-```
-Status: 404 Not found
-```
-```json
-{"message": "Version {nr}  not found"}
-```
 
