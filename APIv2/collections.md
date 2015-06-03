@@ -37,8 +37,7 @@ Status: 200 OK
         "title": "Sample collection",
         "doi": "http://dx.doi.org/10.6084/m9.figshare.123",
         "url": "https://figshare.com/v2/collections/123"
-    },
-
+    }
 ]
 ```
 **Error Response (Max page number reached)**
@@ -103,8 +102,7 @@ Status: 200 OK
         "title": "Sample collection",
         "doi": "http://dx.doi.org/10.6084/m9.figshare.123",
         "url": "https://figshare.com/v2/collections/123"
-    },
-
+    }
 ]
 ```
 
@@ -117,7 +115,6 @@ Status: 422 Unprocessable Entity
     "message": "Invalid value received for order_by",
     "code": "InvalidValueReceivedException",
     "data": {}
-
 }
 ```
 
@@ -204,7 +201,7 @@ Status: 200 OK
         },
         {
             "size": "1 feet"
-        },
+        }
     ]
 }
 ```
@@ -305,15 +302,15 @@ Status: 200 OK
         },
         {
             "size": "1 feet"
-        },
+        }
     ]
-
 }
 ```
 
 **Error Response (Version not found)**
 ```
 Status: 404 Not Found
+```
 ```json
 {
     "message": "Version not found",
@@ -360,8 +357,7 @@ Status: 200 OK
         "title": "Sample collection",
         "doi": "http://dx.doi.org/10.6084/m9.figshare.123",
         "url": "https://figshare.com/v2/collections/123"
-    },
-
+    }
 ]
 ```
 
@@ -422,8 +418,7 @@ Status: 200 OK
         "title": "Sample collection",
         "doi": "http://dx.doi.org/10.6084/m9.figshare.123",
         "url": "https://figshare.com/v2/collections/123"
-    },
-
+    }
 ]
 ```
 
@@ -544,8 +539,8 @@ Location: https://api.figshare.com/v2/account/collections/123
         },
         {
             "size": "1 feet"
-        },
-
+        }
+    ]
 }
 ```
 **Error Response (Missing mandatory field)**
@@ -643,14 +638,15 @@ Status: 200 OK
         },
         {
             "size": "1 feet"
-        },
-
+        }
+    ]
 }
 ```
 
 **Error Response (Collection not found)**
 ```
 Status: 404 Not Found
+```
 ```json
 {
     "message": "Collection not found",
@@ -756,7 +752,8 @@ Status: 200 OK
         },
         {
             "size": "1 feet"
-        },
+        }
+    ]
 }
 ```
 **Error Response (Id not found)**
@@ -764,7 +761,7 @@ Status: 200 OK
 Status: 404 Not found
 ```
 ```json
-    {"message": "Collection not found"}
+{"message": "Collection not found"}
 ```
 
 
@@ -782,7 +779,7 @@ Status: 204 No content
 Status: 404 Not found
 ```
 ```json
-    {"message": "Collection not found"}
+{"message": "Collection not found"}
 ```
 
 
@@ -887,8 +884,8 @@ Location: https://api.figshare.com/v2/collections/123
         },
         {
             "size": "1 feet"
-        },
-
+        }
+    ]
 }
 ```
 
@@ -937,8 +934,6 @@ Status: 200 OK
         "active": 0,
         "url": ""
     }
-
-
 ]
 ```
 
@@ -978,8 +973,6 @@ Status: 200 OK
         "active": 0,
         "url": ""
     }
-
-
 ]
 ```
 
@@ -1031,7 +1024,6 @@ Status: 200 OK
         "active": 0,
         "url": ""
     }
-
 ]
 
 ```
@@ -1068,7 +1060,6 @@ Status: 422 Unprocessable Entity
     "code": "EntityNotFoundException",
     "data": {}
 }
-
 ```
 
 
@@ -1391,7 +1382,6 @@ Status: 404 Not found
     "code": "EntityNotFoundException",
     "data": {}
 }
-
 ```
 
 ##Collection private links subsection
@@ -1423,7 +1413,7 @@ Status: 200 OK
         "valid_until": "2015-12-24 12:14",
         "scope": "collection",
         "user": 0
-    },
+    }
 ]
 ```
 
@@ -1515,7 +1505,6 @@ Status: 404 Not found
     "code": "EntityNotFoundException",
     "data": {}
 }
-
 ```
 
 
@@ -1627,7 +1616,7 @@ Status: 200 OK
         },
         {
             "size": "1 feet"
-        },
+        }
     ]
 }
 ```
@@ -1643,4 +1632,3 @@ Status: 404 Not Found
     "data": {}
 }
 ```
-
