@@ -6,6 +6,7 @@
     "title": "Test article title",
     "doi": "http://dx.doi.org/10.6084/m9.figshare.1434614",
     "url": "http://api.figshare.com/articles/1434614"
+}
 ```
 
 
@@ -80,9 +81,18 @@
 ```json
 {
     "is_embargoed": 1,
-    "is_embargoed_published": 0,
-    "embargo_date": None",
+    "embargo_date": null,
     "embargo_type": "file",
     "embargo_reason": "just because"
+}
+```
+
+
+# ArticleConfidentialityPresenter
+
+```json
+{
+    "active": 1,
+    "reason": "just because"
 }
 ```

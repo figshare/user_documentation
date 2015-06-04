@@ -351,7 +351,7 @@ Status: 404 Not found
 Status: 200 OK
 ```
 ```json
-{"doi": "doi link"}
+{"doi": "10.5072/FK2.FIGSHARE.20345"}
 ```
 **Error Response (Id not found)**
 ```
@@ -574,12 +574,10 @@ Status: 404 Bad request
     GET /v2/account/articles/{id}/files
 
 **Success Response**
-```
+
 Status: 200 OK
-```
-```json
-{object}
-```
+
+[[FilePresenter](presenters/file.md#filepresenter)]
 
 ###Initiate new file upload within the article
 
@@ -598,16 +596,13 @@ Status: 200 OK
 **Success Response**
 ```
 Status: 201 OK
-Location: https://uploads.figshare.com/hash
-```
-```json
-{object}
-```
+
+Location: https://uploads.figshare.com/9dfc5fe3-d617-4d93-ac11-8afe7e984a4
 
 
 ###Complete file upload
 
-    POST /v2/account/articles/{id}/files/{file_id}/complete
+    POST /v2/account/articles/{id}/files/{file_id}
 
 **Success Response**
 ```
@@ -631,12 +626,10 @@ Status: 404 Not found
     GET /v2/account/articles/{id}/files/{file_id}
 
 **Success Response**
-```
+
 Status: 200 OK
-```
-```json
-{object}
-```
+
+[FilePresenter.L1](presenters/file.md#filepresenterl1)
 
 **Error Response (File_id not found)**
 ```
@@ -655,11 +648,9 @@ Status: 404 Not found
 
 **Success Response**
 ```
-Status: 200 OK
+Status: 204 OK
 ```
-```json
-{object}
-```
+
 **Error Response (File_id not found)**
 ```
 Status: 404 Not found
@@ -676,12 +667,10 @@ Status: 404 Not found
     GET /v2/account/articles/{id}/private_links
 
 **Success Response**
-```
+
 Status: 200 OK
-```
-```json
-{object}
-```
+
+[[PrivateLinkPresenter](presenters/private_link.md#privatelinkpresenter)]
 
 ###Create new private link for this article
 
@@ -692,18 +681,15 @@ Status: 200 OK
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
-|`valid_until`      |`date`                 |Date when this private link should expire - option. By default private links do not expire|
-|`scope`            |`str`                  |Private links can be accessed by public users or logged in users. Scope `public` implies that anyone can access the link. Scope `private` implies that only logged in users can access the link|
-|`user`             |`int`                  |Private links with `private` scope can be generated for specific users|
+|`expires_date`      |`date`                 |Date when this private link should expire - option. By default private links do not expire|
 
 
 
 **Success Response**
+
 ```
 Status: 201 OK
-```
-```json
-{object}
+Location: https://api.figshare.com/v2/account/articles/123/private_links/kjkjhg234k53o4i45p2o3i456..
 ```
 
 
@@ -715,18 +701,14 @@ Status: 201 OK
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
-|`valid_until`      |`date`                 |Date when this private link should expire - option. By default private links do not expire|
-|`scope`            |`str`                  |Private links can be accessed by public users or logged in users. Scope `public` implies that anyone can access the link. Scope `private` implies that only logged in users can access the link|
-|`user`             |`int`                  |Private links with `private` scope can be generated for specific users|
+|`expires_date`      |`date`                 |Date when this private link should expire - option. By default private links do not expire|
 
 
 
 **Success Response**
 ```
-Status: 200 OK
-```
-```json
-{object}
+Status: 205 OK
+Location: https://api.figshare.com/v2/account/articles/123/private_links/kjkjhg234k53o4i45p2o3i456..
 ```
 
 **Error Response (Private Link ID not found)**
@@ -744,7 +726,7 @@ Status: 404 Not found
 
 **Success Response**
 ```
-Status: 200 OK
+Status: 204 OK
 ```
 ```json
 {object}
@@ -766,12 +748,11 @@ Status: 404 Not found
     GET /v2/account/articles/{id}/embargo
 
 **Success Response**
-```
+
 Status: 200 OK
-```
-```json
-{object}
-```
+
+[ArticleEmbargoPresenter](presenters/article.md#articleembargopresenter)
+
 ###Update embargo settings
 
     PUT /v2/account/articles/{id}/embargo
@@ -780,17 +761,16 @@ Status: 200 OK
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
-|`active`           |`bool`                 |Confidentiality status. True, False|
-|`scope`            |`str`                  |Embargo can be enabled at the `article` or the `file` level. Possible values: `article`, `file`|
-|`expires`          |`date`                 |Date when the embargo expires and the article gets published|
+|`is_embargoed`           |`bool`                 |Confidentiality status. True, False|
+|`embargo_type`            |`str`                  |Embargo can be enabled at the `article` or the `file` level. Possible values: `article`, `file`|
+|`embargo_date`          |`date`                 |Date when the embargo expires and the article gets published|
+|`embargo_reason`          |`str`                 |Reason for setting embargo|
 
 
 **Success Response**
 ```
-Status: 200 OK
-```
-```json
-{object}
+Status: 205 OK
+Location: http://api.figshare.com/v2/account/articles/2000688/embargo
 ```
 
 **Input error**
@@ -810,9 +790,6 @@ Status: 400 Bad request
 ```
 Status: 204 No content
 ```
-```json
-{object}
-```
 
 
 
@@ -823,12 +800,12 @@ Status: 204 No content
     GET /v2/account/articles/{id}/confidentiality
 
 **Success Response**
-```
+
 Status: 200 OK
-```
-```json
-{object}
-```
+
+[ArticleConfidentialityPresenter](presenters/article.md#articleconfidentialitypresenter)
+
+
 ###Update confidentiality settings
 
     PUT /v2/account/articles/{id}/confidentiality
@@ -838,15 +815,13 @@ Status: 200 OK
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
-|`active`           |`bool`                 |Confidentiality status. True, False|
+|`reason`           |`str`                 |Confidentiality reason|
 
 
 **Success Response**
 ```
 Status: 200 OK
-```
-```json
-{object}
+Location: http://api.figshare.com/v2/account/articles/2000688/confidentiality
 ```
 
 ###Delete confidentiality settings
@@ -857,10 +832,3 @@ Status: 200 OK
 ```
 Status: 204 No content
 ```
-```json
-{object}
-```
-
-
-
-
