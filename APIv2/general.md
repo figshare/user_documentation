@@ -210,10 +210,16 @@ Status: 422 Unprocessable Entity
 
 ##Pagination
 Requests that return a list of entities will pe paginated by default to `10` items. You can specify further pages using the `page` parameter.
-You should be able to also set a custom page size up to 100 entities per page. The page size can be specified using the `size` param.
+You should be able to also set a custom page size up to 100 entities per page. The page size can be specified using the `page_size` param.
 
 Note that while you can specify further pages, this is limited to 100. This is for technical reasons. You can however the search endpoint to narrow down the list.
 Usually endpoints that return lists of entities also have a nested search endpoint:
+
+Instead of `page` and `page_size`, you can use `offset` and `limit` parameters:
+
+* `offset` represents the first entry to be returned, and it starts at `0`.
+* `limit` represents the number of returned entries. By default its value is `10`.
+
 
 ```
 GET /v2/collections

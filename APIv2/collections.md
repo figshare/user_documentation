@@ -8,10 +8,17 @@
 
 **Input**
 
-|Name             |Type|Description|
-|-----------------|----|-----------|
-|`page`             | `int`|Show specified page only. Default is 1. Max page is 100. To see more then 100 pages, the search endpoint must be used to narrow down the results|
-|`size`             | `int`|How many entries per page to show. Default is 10.|
+|Name         |Type |Description|
+|-------------|-----|-----------|
+|`page`       |`int`|Show specified page only. Default is 1. Max page is 100. To see more then 100 pages, the search endpoint must be used to narrow down the results|
+|`page_size`  |`int`|How many entries per page to show. Default is 10.|
+
+*OR*
+
+|Name      |Type |Description|
+|----------|-----|-----------|
+|`offset`  |`int`|The first entry to return. The offset of the initial entry is 0 (not 1).|
+|`limit`   |`int`|The number of returned entries. Default is 10.|
 
 
 **Success Response (list of collections)**
@@ -46,8 +53,8 @@ Search public collections. Ordered by published date desc
 
 |Name               |Type   |Description|
 |-------------------|-------|-----------|
-|`page`             |`int`  |(offset)Show specified page only. Default is 1. Max is 100|
-|`size`             |`int`  |(limit)How many entries per page to show. Default is 10. Max is 100|
+|`page`             |`int`  |Show specified page only. Default is 1. Max is 100|
+|`page_size`        |`int`  |How many entries per page to show. Default is 10. Max is 100|
 |`search_for`       |`str`  |(query)String to perform search for. Minimum of 4 characters|
 |`published_since`  |`date` |(filter)Narrow search  to collections published since the specified date|
 |`modified_since`   |`date` |(filter)Narrow search  to collections modified since the specified date|
@@ -57,6 +64,12 @@ Search public collections. Ordered by published date desc
 |`order_by`         |`str`  |(sort)Perform a sort using the `order_by`. Valid values are: `published_date`, `modified_date`, `views`, `shares`|
 |`order_method`     |`str`  |(sort)How to sort. Descending or ascending. Valid values are: `desc`, 'asc'|
 
+Alternatively, instead of `page` and `page_size`, one can use the following params for pagination:
+
+|Name      |Type |Description|
+|----------|-----|-----------|
+|`offset`  |`int`|The first entry to return. The offset of the initial entry is 0 (not 1).|
+|`limit`   |`int`|The number of returned entries. Default is 10.|
 
 
 The response body will use the collection `light` presenter.
@@ -152,10 +165,17 @@ Status: 404 Not Found
 
 **Input**
 
-|Name               |Type   |Description|
-|-------------------|-------|-----------|
-|`page`             |`int`  |Show specified page only. Default is 1. Max page is 100. After 100 an error is raise and user is instructed to use the search endpoint|
-|`size`             |`int`  |How many entries per page to show. Default is 10. Max is 100|
+|Name         |Type |Description|
+|-------------|-----|-----------|
+|`page`       |`int`|Show specified page only. Default is 1. Max page is 100. To see more then 100 pages, the search endpoint must be used to narrow down the results|
+|`page_size`  |`int`|How many entries per page to show. Default is 10.|
+
+*OR*
+
+|Name      |Type |Description|
+|----------|-----|-----------|
+|`offset`  |`int`|The first entry to return. The offset of the initial entry is 0 (not 1).|
+|`limit`   |`int`|The number of returned entries. Default is 10.|
 
 
 **Success Response**
@@ -187,8 +207,8 @@ Status: 422 Unprocessable Entity
 
 |Name               |Type   |Description|
 |-------------------|-------|-----------|
-|`page`             |`int`  |(offset)Show specified page only. Default is 1. Max is 100|
-|`size`             |`int`  |(limit)How many entries per page to show. Default is 10. Max is 100|
+|`page`             |`int`  |Show specified page only. Default is 1. Max is 100|
+|`page_size`        |`int`  |How many entries per page to show. Default is 10. Max is 100|
 |`search_for`       |`str`  |(query)String to perform search for. Minimum of 4 characters|
 |`published_since`  |`date` |(filter)Narrow search  to collections published since the specified date|
 |`modified_since`   |`date` |(filter)Narrow search  to collections modified since the specified date|
@@ -197,6 +217,13 @@ Status: 422 Unprocessable Entity
 |`group`            |`str`  |(filter)Filter results for this institution group only|
 |`order_by`         |`str`  |(sort)Perform a sort using the `order_by`. Valid values are: `published_date`, `modified_date`, `views`, `shares`|
 |`order_method`     |`str`  |(sort)How to sort. Descending or ascending. Valid values are: `desc`, 'asc'|
+
+Alternatively, instead of `page` and `page_size`, one can use the following params for pagination:
+
+|Name      |Type |Description|
+|----------|-----|-----------|
+|`offset`  |`int`|The first entry to return. The offset of the initial entry is 0 (not 1).|
+|`limit`   |`int`|The number of returned entries. Default is 10.|
 
 
 **Success Response (list of collections)**
