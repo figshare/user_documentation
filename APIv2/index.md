@@ -11,8 +11,8 @@ communication is done through *https* and all data is encoded as `JSON`.
 * [Conditional requests](#conditional-requests)
 * [CORS policy](#cors-policy)
 * Endpoints
-  - [collections]
-  - [items]
+  - [collections](collections.md)
+  - [items](articles.md)
 
 
 ## Resource representations

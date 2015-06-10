@@ -64,7 +64,7 @@ Standard [error responses](index.md#errors).
 Search public collections. Accepts `pagination`, `sorting`, `filtering`
 and `search` params.
 
-Filterse and defaults are the same as for  the
+Filters and defaults are the same as for  the
 [list public collections](#list-public-collections)
 
 The response body will use the collection `light` presenter.
