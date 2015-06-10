@@ -1,263 +1,159 @@
 # Collection public endpoints
 
+* Public
+  - [list collections](#list-public-endpoints)
+  - [search collections](#search-public-collections)
+  - [read collection](#read-collections)
+  - list public collection versions
+  - read public ocllection verison
 
-##List public collections
+* Private
+  - [list own collections](#list-own-collections)
+  - [read own collection](#read-own-collection)
+  - create new collection
+  - update collection
+
+## Public endpoints
+
+The following _public_ endpoints don't require
+authentication/authorization.
+
+
+===========================
+### List public collections
+
+#### Request
 
     GET /v2/collections
 
+Accepts `pagination`, `sorting`, `filtering` params. Accepted filters:
 
-**Input**
+|field|type|notes|
+|-----|----|-----|
+|`institution`|int|only return collections from this institution|
+|`group`|int|only return collections from this group|
+|`published_since`|date(ISO 8601)|Only collections published after the date|
 
-|Name         |Type |Description|
-|-------------|-----|-----------|
-|`page`       |`int`|Show specified page only. Default is 1. Max page is 100. To see more then 100 pages, the search endpoint must be used to narrow down the results|
-|`page_size`  |`int`|How many entries per page to show. Default is 10.|
+Defaults:
 
-*OR*
-
-|Name      |Type |Description|
-|----------|-----|-----------|
-|`offset`  |`int`|The first entry to return. The offset of the initial entry is 0 (not 1).|
-|`limit`   |`int`|The number of returned entries. Default is 10.|
-
-
-**Success Response (list of collections)**
-```
-Status: 200 OK
-```
-[[CollectionPresenter](presenters/collection.md#collectionpresenter)]
+|field|value|
+|-----|-----|
+|`order`|`published_date desc`|
+|`order_direction`|`desc`|
+|`page_size`|`10`|
 
 
-**Error Response (Max page number reached)**
+#### Response
 
-```
-Status: 422 Unprocessable Entity
-```
-```json
-{
-    "message": "Max page reached. Please narrow down your search",
-    "code": "PageLimitExceededException",
-    "data": {}
-}
-```
+* Status: `200 OK`
+* Body: List of [CollectionPresenter](presenters/collection.md#collectionpresenter)
 
 
-##Search public collections
+#### Errors
 
-Search public collections. Ordered by published date desc
+Standard [error responses](index.md#errors).
+
+
+=============================
+### Search public collections
+
+#### Request
 
     POST /v2/collections/search
 
+Search public collections. Accepts `pagination`, `sorting`, `filtering`
+and `search` params.
 
-**Input**
-
-|Name               |Type   |Description|
-|-------------------|-------|-----------|
-|`page`             |`int`  |Show specified page only. Default is 1. Max is 100|
-|`page_size`        |`int`  |How many entries per page to show. Default is 10. Max is 100|
-|`search_for`       |`str`  |(query)String to perform search for. Minimum of 4 characters|
-|`published_since`  |`date` |(filter)Narrow search  to collections published since the specified date|
-|`modified_since`   |`date` |(filter)Narrow search  to collections modified since the specified date|
-|`resource_doi`     |`str`  |(filter)DOI(resource DOI) to search for|
-|`institution`      |`str`  |(filter)Filter results for this instritution only|
-|`group`            |`str`  |(filter)Filter results for this institution group only|
-|`order_by`         |`str`  |(sort)Perform a sort using the `order_by`. Valid values are: `published_date`, `modified_date`, `views`, `shares`|
-|`order_method`     |`str`  |(sort)How to sort. Descending or ascending. Valid values are: `desc`, 'asc'|
-
-Alternatively, instead of `page` and `page_size`, one can use the following params for pagination:
-
-|Name      |Type |Description|
-|----------|-----|-----------|
-|`offset`  |`int`|The first entry to return. The offset of the initial entry is 0 (not 1).|
-|`limit`   |`int`|The number of returned entries. Default is 10.|
-
+Filterse and defaults are the same as for  the
+[list public collections](#list-public-collections)
 
 The response body will use the collection `light` presenter.
-**Success Response (list of collections)**
-```
-Status: 200 OK
-```
-[[CollectionPresenter](presenters/collection.md#collectionpresenter)]
 
-**Error Response (Invalid order_by)**
-```
-Status: 422 Unprocessable Entity
-```
-```json
-{
-    "message": "Invalid value received for order_by",
-    "code": "InvalidValueReceivedException",
-    "data": {}
-}
-```
+#### Response
 
-##Read public collection
+* status: `200 OK`
+* body: List of [CollectionPresenter](presenters/collection.md#collectionpresenter)
+
+
+#### Errors
+
+Standard [error responses](index.md#errors).
+
+
+==========================
+### Read public collection
+
+#### Request
 
     GET /v2/collections/{id}
 
 
-**Success Response (collection object)**
+#### Response
+
 The collection `detailed` presenter will be used.
-```
-Status: 200 OK
-```
 
-[CollectionPresenter.L1](presenters/collection.md#collectionpresenterl1)
+* Status: `200 OK`
+* Body: [detailed CollectionPresenter(L1)](presenters/collection.md#collectionpresenterl1)
 
 
-**Error Response (collection not found)**
-```
-Status: 404 Not Found
-```
-```json
-{
-    "message": "Collection not found",
-    "code": "EntityNotFoundException",
-    "data": {}
-}
-```
+#### Errors
 
-##Collection versions subsection
+Standard [error responses](index.md#errors).
 
-###List versions
+===================================
+### List public collection versions
+
+#### Request
 
     GET /v2/collections/{id}/versions
 
-The collection version `light` presenter will be used.
+#### Response
 
-**Success Response**
-```
-Status: 200 OK
-```
-[[CollectionVersionPresenter](presenters/collection.md#collectionversionpresenter)]
+* Status: `200 OK`
+* Body: List of [CollectionVersionPresenter (light)](presenters/collection.md#collectionversionpresenter)
 
-###Read public collection version
+#### Errors
 
-Read public collection that has {id} and {v_number}
-
-    GET /v2/collections/{id}/versions/{v_number}
+Standard [error responses](index.md#errors).
 
 
-**Success Response (collection object for specified version)**
-```
-Status: 200 OK
-```
-[CollectionPresenter.L1](presenters/collection.md#collectionpresenterl1)
+===================================
+### Read public collection version
 
-**Error Response (Version not found)**
-```
-Status: 404 Not Found
-```
-```json
-{
-    "message": "Version not found",
-    "code": "EntityVersionNotFoundException",
-    "data": {}
-}
-```
+    GET /v2/collections/{id}/versions/{version_number}
 
 
-#Collection private endpoints (OAuth required)
+#### Response
+* Status: `200 OK`
+* Body: [CollectionPresenter (detailed)](presenters/collection.md#collectionpresenterl1)
 
-##Get own collections
+#### Errors:
+
+Standard [error responses](index.md#errors).
+
+
+## Private endpoints
+
+These requests require authorization/authentication. Missing valid auth
+will result in 403 and 401 errors.
+
+The attribute **own** means resources owned(created or authored) by the
+authenticated account.
+
+
+==========================
+### List _own_ collections
 
     GET /v2/account/collections
 
-**Input**
+Identical to [list public collections](#list-public-collections)
 
-|Name         |Type |Description|
-|-------------|-----|-----------|
-|`page`       |`int`|Show specified page only. Default is 1. Max page is 100. To see more then 100 pages, the search endpoint must be used to narrow down the results|
-|`page_size`  |`int`|How many entries per page to show. Default is 10.|
-
-*OR*
-
-|Name      |Type |Description|
-|----------|-----|-----------|
-|`offset`  |`int`|The first entry to return. The offset of the initial entry is 0 (not 1).|
-|`limit`   |`int`|The number of returned entries. Default is 10.|
-
-
-**Success Response**
-```
-Status: 200 OK
-```
-[[CollectionPresenter](presenters/collection.md#collectionpresenter)]
-
-
-**Error Response (Max page number reached)**
-```
-Status: 422 Unprocessable Entity
-```
-```json
-{
-    "message": "Max page reached. Please narrow down your search",
-    "code": "PageLimitExceededException",
-    "data": {}
-}
-```
-
-
-##Search own collections
-
-    POST /v2/account/collections/search
-
-
-**Input**
-
-|Name               |Type   |Description|
-|-------------------|-------|-----------|
-|`page`             |`int`  |Show specified page only. Default is 1. Max is 100|
-|`page_size`        |`int`  |How many entries per page to show. Default is 10. Max is 100|
-|`search_for`       |`str`  |(query)String to perform search for. Minimum of 4 characters|
-|`published_since`  |`date` |(filter)Narrow search  to collections published since the specified date|
-|`modified_since`   |`date` |(filter)Narrow search  to collections modified since the specified date|
-|`resource_doi`     |`str`  |(filter)DOI(resource DOI) to search for|
-|`institution`      |`str`  |(filter)Filter results for this instritution only|
-|`group`            |`str`  |(filter)Filter results for this institution group only|
-|`order_by`         |`str`  |(sort)Perform a sort using the `order_by`. Valid values are: `published_date`, `modified_date`, `views`, `shares`|
-|`order_method`     |`str`  |(sort)How to sort. Descending or ascending. Valid values are: `desc`, 'asc'|
-
-Alternatively, instead of `page` and `page_size`, one can use the following params for pagination:
-
-|Name      |Type |Description|
-|----------|-----|-----------|
-|`offset`  |`int`|The first entry to return. The offset of the initial entry is 0 (not 1).|
-|`limit`   |`int`|The number of returned entries. Default is 10.|
-
-
-**Success Response (list of collections)**
-```
-Status: 200 OK
-```
-[[CollectionPresenter](presenters/collection.md#collectionpresenter)]
-
-
-**Error Response (invalid input)**
-```
-Status: 400 Bad request
-```
-```json
-{"message": "Invalid value received for order_by"}
-```
-**Error Response (Max page number reached)**
-```
-Status: 422 Unprocessable Entity
-```
-```json
-{
-    "message": "Max page reached. Please narrow down your search",
-    "code": "PageLimitExceededException",
-    "data": {}
-}
-```
-
-##Create a new collection
+==========================
+### Create a new collection
 
     POST /v2/account/collections
 
-
-**Input**
+#### Request
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
@@ -266,56 +162,40 @@ Status: 422 Unprocessable Entity
 |`tags`             |`array of str`         |List of tags to be associated with the collection (e.g ['tag1', 'tag2', 'tagn'])|
 |`categories`       | `array of int`        |List of category ids to be associated with the collection (e.g [5, 7, 9])|
 |`authors`          | `array of int`        |List of author ids to be associated with the collection (e.g [4, 8, 16])|
-|`resource_doi`       |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article DOI|
-|`resource_link`      |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article link|
-|`resource_title`     |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article title|
-|`resource_version`   |`int`                  |Not applicable to regular users. In a publisher case, this is the publisher article version|
-|`custom_fields`  |`dict`                 |List of key, values pairs to be associated with the collection. Similar to custom article fields|
-
-In the success response the  `detailed` collection presenter will be used.
-
-**Success Response**
-```
-Status: 201 Created
-Location: https://api.figshare.com/v2/account/collections/123
-```
-
-**Error Response (Missing mandatory field)**
-```
-Status: 422 Unprocessable Entity
-```
-```json
-{
-    "message": "Missing mandatory field",
-    "cpde": "MissingMandatoryField",
-    "data": {}
-}
-```
+|`resource_doi`     |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article DOI|
+|`resource_link`    |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article link|
+|`resource_title`   |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article title|
+|`resource_version` |`int`                  |Not applicable to regular users. In a publisher case, this is the publisher article version|
+|`custom_fields`    |`dict`                 |List of key, values pairs to be associated with the collection. Similar to custom article fields|
 
 
-##Read own collection
+#### Response
+
+* Status: `201 Created`
+* Headers:
+    ```
+        Location: https://api.figshare.com/v2/account/collections/123
+    ```
+* Body: [CollectionPresenter (detailed)](presenters/collection.md#collectionpresenterl1)
+
+#### Errors
+
+Standard [error responses](index.md#errors).
+
+=======================
+### Read _own_ collection
 
     GET /v2/account/collections/{id}
 
 
-**Success Response**
-```
-Status: 200 OK
-```
-[CollectionPresenter.L1](presenters/collection.md#collectionpresenterl1)
+#### Response
 
+* Status: `200 OK`
+* Body: [CollectionPresenter (detailed)](presenters/collection.md#collectionpresenterl1)
 
-**Error Response (Collection not found)**
-```
-Status: 404 Not Found
-```
-```json
-{
-    "message": "Collection not found",
-    "code": "EntityNotFoundException",
-    "data": {}
-}
-```
+#### Errors
+
+Standard [error responses](index.md#errors).
 
 
 ##Update collection
