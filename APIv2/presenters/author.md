@@ -4,8 +4,8 @@
 {
     "id": 97657,
     "full_name": "John Doe",
-    "active": 1,
-    "url": "http://api.figshare.com/authors/97657"
+    "is_active": 1,
+    "url_name": "http://api.figshare.com/authors/97657"
 }
 ```
 

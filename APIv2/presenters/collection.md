@@ -33,12 +33,11 @@
 
 ```json
 {
-    "id": 123,
-    "title": "Sample collection",
-    "doi": "http://dx.doi.org/10.6084/m9.figshare.123",
     "resource_id": "AS124056",
-    "collection_version": 1,
     "resource_doi": "http://dx.doi.org/10.608/m9.pub.7481",
+    "resource_title": "demo title",
+    "resource_link": "http://dx.doi.org/10.321/m9.pub.1231",
+    "version": 1,
     "description": "Sample description",
     "categories": [CategoryPresenter],
     "references": [
