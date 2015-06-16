@@ -19,30 +19,30 @@
 ```json
 {
     "citation": "Hand, Demario; (): title1. figshare.\n\n Retrieved 12:32, Jun 03, 2015 (GMT)",
-    "confidentialReason": "",
-    "embargoType": 0,
-    "isConfidential": 0,
+    "confidential_reason": "",
+    "embargo_type": 0,
+    "is_confidential": 0,
     "size": 0,
     "funding": "",
     "tags": ["t1", "t2"],
     "version": 0,
-    "isActive": 1,
-    "isMetadataRecord": false,
-    "metadataReason": "",
+    "is_active": 1,
+    "is_metadata_record": false,
+    "metadata_reason": "",
     "status": "draft",
     "description": "desc2",
-    "isEmbargoed": 0,
-    "embargoDate": null,
-    "isPublic": false,
-    "modifiedDate": null,
-    "createdDate": "2015-06-03T09:09:39",
-    "hasLinkedFile": false,
+    "is_embargoed": 0,
+    "embargo_date": null,
+    "is_public": false,
+    "modified_date": null,
+    "created_date": "2015-06-03T09:09:39",
+    "has_linked_file": false,
     "categories": [CategoryPresenter],
-    "isEmbargoedPublished": 0,
+    "is_embargoed_published": 0,
     "license": LicensePresenter,
-    "definedType": 3,
-    "publishedDate": null,
-    "embargoReason": "",
+    "defined_type": 3,
+    "published_date": null,
+    "embargo_reason": "",
     "references": ["http://link1", "http://link2", "http://link3"]
 }
 ```
@@ -61,7 +61,7 @@
     "files": [FilePresenter],
     "authors": [AuthorPresenter],
     "versions": [ArticleVersionPresenter],
-    "customFields": [CustomArticleFieldPresenter]
+    "custom_fields": [CustomArticleFieldPresenter]
 }
 ```
 
@@ -70,7 +70,7 @@
 
 ```json
 {
-    "version": 3
+    "version": 3,
     "url": "http://api.figshare.com/v2/articles/6547/versions/3"
 }
 ```

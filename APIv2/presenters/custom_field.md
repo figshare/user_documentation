@@ -4,6 +4,5 @@
 {
     "name": "location",
     "value": "Iasi",
-    "isMandatory": 1
+    "is_mandatory": 1
 ```
-
