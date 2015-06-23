@@ -1,6 +1,6 @@
 # Collection endpoints
 
-* **Public**
+* **[Public](#public-endpoints)**
   - [list collections](#list-public-collections)
   - [search collections](#search-public-collections)
   - [read collection](#read-public-collection)
@@ -8,7 +8,7 @@
   - [read public collection version](#read-public-collection-version)
 
 
-* **Private**
+* **[Private](#private-endpoints)**
   - [list own collections](#list-own-collections)
   - [create new collection](#create-a-new-collection)
   - [read own collection](#read-own-collection)
