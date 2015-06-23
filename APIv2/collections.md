@@ -1,17 +1,42 @@
-# Collection public endpoints
+# Collection endpoints
 
-* Public
-  - [list collections](#list-public-endpoints)
+* **Public**
+  - [list collections](#list-public-collections)
   - [search collections](#search-public-collections)
-  - [read collection](#read-collections)
-  - list public collection versions
-  - read public ocllection verison
+  - [read collection](#read-public-collection)
+  - [list public collection versions](#list-public-collection-versions)
+  - [read public collection version](#read-public-collection-version)
 
-* Private
+
+* **Private**
   - [list own collections](#list-own-collections)
+  - [create new collection](#create-a-new-collection)
   - [read own collection](#read-own-collection)
-  - create new collection
-  - update collection
+  - [update collection](#update-collection)
+  - [delete own private collection](#delete-own-private-collection)
+  - [reserve doi for collection](#reserve-doi-for-collection)
+  - [publish collection](#publish-collection)
+  - [collection authors](#collection-authors-subsection)
+    - [list authors](#list-authors)
+    - [associate new authors](#associate-new-authors-with-the-collection)
+    - [associate and replace authors](#associate-and-replace-existing-authors-of-this-collection)
+    - [de-associate author](#de-associate-author-from-collection)
+  - [collection categories](#collection-categories-subsection)
+    - [list categories](#list-categories)
+    - [associate new categories](#associate-new-categories-with-the-collection)
+    - [associate and replace categories](#associate-and-replace-existing-categories-of-this-collection)
+    - [de-associate category](#de-associate-category-from-collection)
+  - [collection articles](#collection-articles-subsection)
+    - [list articles](#list-articles)
+    - [associate new articles](#associate-new-articles-with-the-collection)
+    - [associate and replace articles](#associate-and-replace-existing-articles-of-this-collection)
+    - [de-associate article](#de-associate-article-from-collection)
+  - [private links](#collection-private-links-subsection)
+    - [list private links](#list-private-links)
+    - [create new private link](#create-new-private-link-for-this-collection)
+    - [update existing private link](#update-existing-private-link-for-this--collection)
+    - [disable/delete private link](#disabledelete-private-link-for-collection)
+
 
 ## Public endpoints
 
