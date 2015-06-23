@@ -83,7 +83,7 @@
     "is_embargoed": 1,
     "embargo_date": null,
     "embargo_type": "file",
-    "embargo_reason": "just because"
+    "embargo_reason": "privacy requirements"
 }
 ```
 
@@ -93,6 +93,6 @@
 ```json
 {
     "active": 1,
-    "reason": "just because"
+    "reason": "privacy requirements"
 }
 ```

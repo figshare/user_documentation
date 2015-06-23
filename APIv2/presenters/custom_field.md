@@ -3,6 +3,6 @@
 ```json
 {
     "name": "location",
-    "value": "Iasi",
+    "value": "Amsterdam",
     "is_mandatory": 1
 ```

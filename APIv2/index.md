@@ -22,7 +22,7 @@ endpoints that return a list of resources will send a _lighter_
 representation of each resource while an endpoint for an individual
 resource will use a more _detailed_ and _complete_ representation.
 
-Representations for each resource type are documented [here] and the
+Representations for each resource type are documented [here](https://github.com/figshare/user_documentation/tree/master/APIv2/presenters) and the
 documentation for each endpoint will specify what kind of representation
 it's using.
 
