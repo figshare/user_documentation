@@ -291,7 +291,7 @@ Status: 400 Bad request
 |`categories`       |`array of int`         |List of category ids to be associated with the article(e.g [1, 23, 33, 66])|
 |`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more then 10 authors. For adding more authors use the specific authors endpoint|
 |`custom_fields`  |`dict`                 |List of key, values pairs to be associated with the article|
-|defined_type       |`str`                  |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'stub', 'metadata']|
+|defined_type       |`str`                  |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'metadata']|
 
 
 **Success Response**
