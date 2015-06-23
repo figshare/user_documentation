@@ -256,9 +256,8 @@ Alternatively, instead of `page` and `page_size`, one can use the following para
 ```
 Status: 200 OK
 ```
-```json
-[{object},{object}...{object}]
-```
+[[ArticlePresenter](presenters/article.md#articlepresenter)]
+
 
 **Error Response (invalid input)**
 ```
@@ -341,7 +340,7 @@ Status: 404 Not found
 
 **Success Response**
 ```
-Status: 205 OK
+Status: 205 Reset Content
 Location: https://api.figshare.com/v2/account/articles/123
 ```
 **Error Response (Id not found)**
@@ -359,7 +358,7 @@ Status: 404 Not found
 
 **Success Response**
 ```
-Status: 204 No content
+Status: 204 No Content
 ```
 
 **Error Response (Id not found)**
@@ -399,9 +398,7 @@ Status: 404 Not found
 Status: 201 Created
 Location: https://api.figshare.com/v2/articles/123
 ```
-```json
-{object}
-```
+
 **Error Response (Id not found)**
 ```
 Status: 404 Not found
@@ -453,7 +450,7 @@ Status: 404 Not found
 
 **Success Response**
 ```
-Status: 205 OK
+Status: 205 Reset Content
 Location: https://api.figshare.com/v2/account/articles/123/authors
 ```
 
@@ -479,7 +476,7 @@ Status: 400 Bad request
 
 **Success Response**
 ```
-Status: 205 OK
+Status: 205 Reset Content
 Location: https://api.figshare.com/v2/account/articles/123/authors
 ```
 
@@ -498,7 +495,7 @@ Status: 400 Bad request
 
 **Success Response**
 ```
-Status: 204 No content
+Status: 204 No Content
 ```
 
 **Error Response (Author(s) id not found)**
@@ -536,7 +533,7 @@ Status: 200 OK
 
 **Success Response**
 
-Status: 205 OK
+Status: 205 Reset Content
 
 [CategoryPresenter](category.md#categorypresenter)
 
@@ -562,7 +559,7 @@ Status: 400 Bad request
 
 **Success Response**
 
-Status: 205 OK
+Status: 205 Reset Content
 
 [CategoryPresenter](category.md#categorypresenter)
 
@@ -581,10 +578,7 @@ Status: 400 Bad request
 
 **Success Response**
 ```
-Status: 204 OK
-```
-```json
-{object}
+Status: 204 No Content
 ```
 
 **Error Response (Category id not found)**
@@ -677,7 +671,7 @@ Status: 404 Not found
 
 **Success Response**
 ```
-Status: 204 OK
+Status: 204 No Content
 ```
 
 **Error Response (File_id not found)**
@@ -736,7 +730,7 @@ Location: https://api.figshare.com/v2/account/articles/123/private_links/kjkjhg2
 
 **Success Response**
 ```
-Status: 205 OK
+Status: 205 Reset Content
 Location: https://api.figshare.com/v2/account/articles/123/private_links/kjkjhg234k53o4i45p2o3i456..
 ```
 
@@ -755,10 +749,7 @@ Status: 404 Not found
 
 **Success Response**
 ```
-Status: 204 OK
-```
-```json
-{object}
+Status: 204 No Content
 ```
 
 **Error Response (Private link ID not found)**
@@ -798,7 +789,7 @@ Status: 200 OK
 
 **Success Response**
 ```
-Status: 205 OK
+Status: 205 Reset Content
 Location: http://api.figshare.com/v2/account/articles/2000688/embargo
 ```
 
@@ -817,7 +808,7 @@ Status: 400 Bad request
 
 **Success Response**
 ```
-Status: 204 No content
+Status: 204 No Content
 ```
 
 
@@ -859,5 +850,5 @@ Location: http://api.figshare.com/v2/account/articles/2000688/confidentiality
 
 **Success Response**
 ```
-Status: 204 No content
+Status: 204 No Content
 ```
