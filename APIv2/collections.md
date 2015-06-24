@@ -180,18 +180,22 @@ Identical to [list public collections](#list-public-collections)
 
 #### Request
 
-|Name               |Type                   |Description                                |
-|-------------------|-----------------------|-------------------------------------------|
-|`title`            |`str`                  |The title for this collection - `mandatory`|
-|`description`      |`str`                  |The collection description. In a publisher case, usually this is the resource article description|
-|`tags`             |`array of str`         |List of tags to be associated with the collection (e.g ['tag1', 'tag2', 'tagn'])|
-|`categories`       | `array of int`        |List of category ids to be associated with the collection (e.g [5, 7, 9])|
-|`authors`          |`array of dictionaries {'id':int} or {'name':str}`|List of new authors to be assosciated with the collection. The list can contain author ids ([12121, 34345, 233323]) or author names([1212, 'John Doe'])|
-|`resource_doi`     |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article DOI|
-|`resource_link`    |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article link|
-|`resource_title`   |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article title|
-|`resource_version` |`int`                  |Not applicable to regular users. In a publisher case, this is the publisher article version|
-|`custom_fields`    |`dict`                 |List of key, values pairs to be associated with the collection. Similar to custom article fields|
+|Name               |Type         |Description                                |
+|-------------------|-------------|-------------------------------------------|
+|`title`            |`str`        |The title for this collection - `mandatory`|
+|`description`      |`str`        |The collection description. In a publisher case, usually this is the resource article description|
+|`doi`              |`str`        |Article's Digital Object Identifier|
+|`articles`         |`array of int`|List of articles to be associated with the collection (e.g `[1, 4]`)|
+|`authors`          |`array of dictionaries {'id':int} or {'name':str}`|List of new authors to be assosciated with the collection. Each element identifies an author by `id` or `name`: `[{'id':1212}, 'name':'John Doe'}]`)|
+|`categories`       |`array of int` |List of category ids to be associated with the collection (e.g `[5, 7, 9]`)|
+|`tags`             |`array of str` |List of tags to be associated with the collection (e.g `['tag1', 'tag2']`)|
+|`references`       |`array of str`   |List of references to be associated with the collection (e.g `['http://figshare.com', 'http://figshare.com/articles/browse']`)|
+|`resource_id`      |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article id|
+|`resource_doi`     |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article DOI|
+|`resource_link`    |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article link|
+|`resource_title`   |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article title|
+|`resource_version` |`int`  |Not applicable to regular users. In a publisher case, this is the publisher article version|
+|`custom_fields`    |`dict` |List of key, values pairs to be associated with the collection. Similar to custom article fields|
 
 
 #### Response
@@ -230,18 +234,22 @@ Standard [error responses](index.md#errors).
 
 **Input**
 
-|Name               |Type                   |Description                                |
-|-------------------|-----------------------|-------------------------------------------|
-|`title`            |`str`                  |The title for this collection |
-|`description`      |`str`                  |The collection description. In a publisher case, usually this is the resource article description|
-|`tags`             |`array of str`         |List of tags to be associated with the collection (e.g ['tag1', 'tag2', 'tagn'])|
-|`categories`       | `array of int`        |List of category ids to be associated with the collection (e.g [5, 7, 9])|
-|`authors`          |`array of dictionaries {'id':int} or {'name':str}`|List of new authors to be assosciated with the collection. The list can contain author ids ([12121, 34345, 233323]) or author names([1212, 'John Doe'])|
-|`resource_doi`     |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article DOI|
-|`resource_title`   |`str`                  |Not applicable to regular users. In a publisher case, this is the publisher article title|
-|`resource_version` |`int`                  |Not applicable to regular users. In a publisher case, this is the publisher article version|
-|`references`       |`array of str`         |List of URLs to be assosciated with the collection|
-|`custom_fields`  |`dict`                 |List of key, values pairs to be associated with the collection. Similar to custom article fields|
+|Name               |Type         |Description                                |
+|-------------------|-------------|-------------------------------------------|
+|`title`            |`str`        |The title for this collection|
+|`description`      |`str`        |The collection description. In a publisher case, usually this is the resource article description|
+|`doi`              |`str`        |Article's Digital Object Identifier|
+|`articles`         |`array of int`|List of articles to be associated with the collection (e.g `[1, 4]`)|
+|`authors`          |`array of dictionaries {'id':int} or {'name':str}`|List of new authors to be assosciated with the collection. Each element identifies an author by `id` or `name`: `[{'id':1212}, 'name':'John Doe'}]`)|
+|`categories`       |`array of int` |List of category ids to be associated with the collection (e.g `[5, 7, 9]`)|
+|`tags`             |`array of str` |List of tags to be associated with the collection (e.g `['tag1', 'tag2']`)|
+|`references`       |`array of str`   |List of references to be associated with the collection (e.g `['http://figshare.com', 'http://figshare.com/articles/browse']`)|
+|`resource_id`      |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article id|
+|`resource_doi`     |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article DOI|
+|`resource_link`    |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article link|
+|`resource_title`   |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article title|
+|`resource_version` |`int`  |Not applicable to regular users. In a publisher case, this is the publisher article version|
+|`custom_fields`    |`dict` |List of key, values pairs to be associated with the collection. Similar to custom article fields|
 
 
 **Success Response**
