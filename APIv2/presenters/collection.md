@@ -61,6 +61,7 @@
         {
             "size": "1 feet"
         }
-    ]
+    ],
+    "citation": "citation string"
 }
 ```
