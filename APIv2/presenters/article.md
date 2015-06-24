@@ -20,7 +20,7 @@
 {
     "citation": "Hand, Demario; (): title1. figshare.\n\n Retrieved 12:32, Jun 03, 2015 (GMT)",
     "confidential_reason": "",
-    "embargo_type": 0,
+    "embargo_type": "file",
     "is_confidential": 0,
     "size": 0,
     "funding": "",
@@ -38,7 +38,6 @@
     "created_date": "2015-06-03T09:09:39",
     "has_linked_file": false,
     "categories": [CategoryPresenter],
-    "is_embargoed_published": 0,
     "license": LicensePresenter,
     "defined_type": 3,
     "published_date": null,
