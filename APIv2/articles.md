@@ -647,8 +647,8 @@ Status: 404 Bad request
 
 ###Steps to upload file
 
-* [Initiate file upload](#initiate-new-file-upload-within-the-article) - this request returns an endpoint of the [Uploader Service](file_uploader.md) with dedicated file token
-* Send a `GET` request to the [Uploader Service](file_uploader.md) with the url provided in previous step and receive the number of file parts
+* [Initiate file upload](#initiate-new-file-upload-within-the-article) - this request returns an endpoint with file data
+* Send a `GET` request to the [Uploader Service](file_uploader.md) with the `upload_url` and `upload_token` provided in previous step and receive the number of file parts
 * Upload / Delete / Retry uploading file parts until all parts are uploaded successfully
 * [Complete file upload](#complete-file-upload)
 
@@ -685,7 +685,7 @@ Status: 200 OK
 **Success Response**
 ```
 Status: 201 Created
-Location: https://uploads.figshare.com/9dfc5fe3-d617-4d93-ac11-8afe7e984a4
+Location: /v2/account/articles/{id}/files/{file_id}
 ```
 
 ###Upload file content
