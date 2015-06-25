@@ -446,6 +446,8 @@ Status: 404 Not found
 
     POST /v2/account/articles/{id}/publish
 
+**Note**: if the whole article is under *embargo*, it will not be published immediatly, but when the embargo expires or is lifted.
+
 **Success Response**
 ```
 Status: 201 Created
@@ -844,14 +846,16 @@ Status: 200 OK
 
     PUT /v2/account/articles/{id}/embargo
 
+**Note**: setting an article under *whole embargo* does not imply that the article will be published when the embargo will expire. You must explicitly call the **publish** endpoint to enable this functionality.
+
 **Input**
 
-|Name               |Type                   |Description                                |
-|-------------------|-----------------------|-------------------------------------------|
-|`is_embargoed`           |`bool`                 |Confidentiality status. True, False|
-|`embargo_type`            |`str`                  |Embargo can be enabled at the `article` or the `file` level. Possible values: `article`, `file`|
-|`embargo_date`          |`date`                 |Date when the embargo expires and the article gets published|
-|`embargo_reason`          |`str`                 |Reason for setting embargo|
+|Name              |Type    |Description                                |
+|------------------|--------|-------------------------------------------|
+|`is_embargoed`    |`bool`  |Confidentiality status. True, False|
+|`embargo_type`    |`str`   |Embargo can be enabled at the `article` or the `file` level. Possible values: `article`, `file`|
+|`embargo_date`    |`date`  |Date when the embargo expires and the article gets published|
+|`embargo_reason`  |`str`   |Reason for setting embargo|
 
 
 **Success Response**
