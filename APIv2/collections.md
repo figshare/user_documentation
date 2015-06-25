@@ -184,7 +184,7 @@ Identical to [list public collections](#list-public-collections)
 |-------------------|-------------|-------------------------------------------|
 |`title`            |`str`        |The title for this collection - `mandatory`|
 |`description`      |`str`        |The collection description. In a publisher case, usually this is the resource article description|
-|`doi`              |`str`        |Article's Digital Object Identifier|
+|`doi`              |`str`        |Digital Object Identifier|
 |`articles`         |`array of int`|List of articles to be associated with the collection (e.g `[1, 4]`)|
 |`authors`          |`array of dictionaries {'id':int} or {'name':str}`|List of new authors to be assosciated with the collection. Each element identifies an author by `id` or `name`: `[{'id':1212}, 'name':'John Doe'}]`)|
 |`categories`       |`array of int` |List of category ids to be associated with the collection (e.g `[5, 7, 9]`)|
@@ -238,7 +238,7 @@ Standard [error responses](index.md#errors).
 |-------------------|-------------|-------------------------------------------|
 |`title`            |`str`        |The title for this collection|
 |`description`      |`str`        |The collection description. In a publisher case, usually this is the resource article description|
-|`doi`              |`str`        |Article's Digital Object Identifier|
+|`doi`              |`str`        |Digital Object Identifier|
 |`articles`         |`array of int`|List of articles to be associated with the collection (e.g `[1, 4]`)|
 |`authors`          |`array of dictionaries {'id':int} or {'name':str}`|List of new authors to be assosciated with the collection. Each element identifies an author by `id` or `name`: `[{'id':1212}, 'name':'John Doe'}]`)|
 |`categories`       |`array of int` |List of category ids to be associated with the collection (e.g `[5, 7, 9]`)|
