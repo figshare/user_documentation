@@ -62,7 +62,7 @@
     "custom_fields": [CustomArticleFieldPresenter]
 }
 ```
-**Note**: If the article is under *file embargo*, or is *confidential*, the `files` field will be missing from the JSON.  
+**Note**: On **public** endpoints, if the article is under *file embargo*, or is *confidential*, the `files` field will be missing from the JSON.
 
 
 # ArticleVersionPresenter
