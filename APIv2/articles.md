@@ -736,7 +736,7 @@ Status: 404 Not found
 
 ###Delete file  from article
 
-    DELETE /v2/account/articles/{id}/articles/{file_id}
+    DELETE /v2/account/articles/{id}/files/{file_id}
 
 **Success Response**
 ```
