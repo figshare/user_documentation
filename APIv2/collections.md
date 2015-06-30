@@ -351,7 +351,7 @@ Status: 200 OK
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
-|`authors`          |`array of dictionaries {'id':int} or {'name':str}`|List of new authors to be assosciated with the collection. The list can contain author ids ([12121, 34345, 233323]) or author names([1212, 'John Doe'])|
+|`authors`          |`array of dictionaries {'id':int} or {'name':str}`|List of new authors to be assosciated with the collection. The list can contain author ids or names. Example `{"authors": [ {"id": 1}, {"name": "Joe Doe"} ] }` represents two authors: one identified by `id` and one by `name`.|
 
 
 **Success Response**
@@ -380,7 +380,7 @@ Status: 422 Unprocessable Entity
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
-|`authors`          | `array of dictionaries {'id':int} or {'name':str}`|List of authors to be assosciated with the collection. The list can contain author ids ([12121, 34345, 233323]) or author names([1212, 'John Doe']). Existing authors will be replaced|
+|`authors`          | `array of dictionaries {'id':int} or {'name':str}`|List of authors to be assosciated with the collection. The list can contain author ids or names. Example `{"authors": [ {"id": 1}, {"name": "Joe Doe"} ] }` represents two authors: one identified by `id` and one by `name`.|
 
 To represent the author entity, the `light` presenter will be used.
 
