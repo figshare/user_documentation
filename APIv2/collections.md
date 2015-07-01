@@ -308,6 +308,11 @@ Status: 404 Not found
 
     POST /v2/account/collections/{id}/publish
 
+**Note**:  
+When a collection is published, a new public version will be generated.  
+Any further updates to the collection will affect the private collection data.  
+In order to make these changes publicly visible, an explicit *publish* operation is needed.  
+
 **Success Response**
 ```
 Status: 201 Created
