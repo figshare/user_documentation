@@ -643,7 +643,7 @@ Status: 200 OK
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
-|`expires_date`      |`date`                 |Date when this private link should expire - option. By default private links do not expire|
+|`expires_date`      |`date`                 |Date when this private link should expire - optional.  By default private links expire in 365 days.|
 
 
 
@@ -662,7 +662,7 @@ Location: https://api.figshare.com/v2/account/collections/123/private_links
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
-|`expires_date`      |`date`                 |Date when this private link should expire - option. By default private links expire in 365 days|
+|`expires_date`      |`date`                 |Date when this private link should expire - optional. By default private links expire in 365 days.|
 
 
 
