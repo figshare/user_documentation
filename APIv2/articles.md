@@ -337,7 +337,7 @@ Status: 400 Bad request
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
-|`title`            |`str`                  |The title for this article - `mandatory`|
+|`title`            |`str`                  |The title for this article|
 |`description`      |`str`                  |The article description. In a publisher case, usually this is the remote article description|
 |`tags`             |`array of str`         |List of tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])|
 |`references`            |`array of str`         |List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])|
