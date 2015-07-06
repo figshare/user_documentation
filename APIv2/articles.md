@@ -160,7 +160,7 @@ Status: 404 Not Found
 
 ###List versions
 
-    GET /v2/account/articles/{id}/versions
+    GET /v2/articles/{id}/versions
 
 **Success Response**
 
