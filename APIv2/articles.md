@@ -81,8 +81,10 @@ Defaults:
 
 
 **Success Response (list of articles)**
-Status: 200 OK
 
+```
+Status: 200 OK
+```
 [[ArticlePresenter](presenters/article.md#articlepresenter)]
 
 **Error Response (Max page number reached)**
@@ -107,8 +109,10 @@ Filters and defaults are the same as for  the
 [list public articles](#list-public-articles)
 
 **Success Response (list of articles)**
-Status: 200 OK
 
+```
+Status: 200 OK
+```
 [[ArticlePresenter](presenters/article.md#articlepresenter)]
 
 **Error Response (invalid input)**
@@ -439,7 +443,10 @@ Status: 404 Not found
 
     POST /v2/account/articles/{id}/publish
 
-**Note**: if the whole article is under *embargo*, it will not be published immediatly, but when the embargo expires or is lifted.
+**Note**: 
+* If the whole article is under *embargo*, it will not be published immediatly, but when the embargo expires or is lifted.
+* If the article has no files and its `defined_type` is not metadata record then the article cannot be published
+
 
 **Success Response**
 ```
@@ -647,6 +654,10 @@ Status: 404 Bad request
 * Upload / Delete / Retry uploading file parts until all parts are uploaded successfully
 * [Complete file upload](#complete-file-upload)
 
+**Note**: If the `defined_type` is metadata record the upload must not be intialized.
+The following error should be thrown:
+`Bad request. Cannot upload files when defined_type is metadata record. `
+
 ###List files
 
     GET /v2/account/articles/{id}/files
@@ -743,7 +754,10 @@ Status: 404 Not found
 ```json
 {"message": "File not found"}
 ```
-
+**Note**: 
+* When all files associated to the articles are deleted then `defined_type` is automatically set to metadata record only. 
+* When all files associated to the article are deleted then the `confidentiality` settings are automatically set to false.
+* When all files associated to the article are deleted then the `embargo` on files is automatically deactivated. 
 
 ## Article private links subsection
 
