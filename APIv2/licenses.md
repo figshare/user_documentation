@@ -2,7 +2,7 @@
 
     GET /v2/licenses
 
-Public endpoint, does not need OAuth/
+Public endpoint, does not need OAuth.
 
 **Success Response**
 ```
