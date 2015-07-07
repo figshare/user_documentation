@@ -51,13 +51,17 @@ authentication/authorization.
 
     GET /v2/collections
 
-Accepts `pagination`, `sorting`, `filtering` params. Accepted filters:
+Accepts `pagination`, `sorting`, `filtering` params. See [API feature list](index.md#api-feature-list) for details.
+
+Accepted filters:
 
 |field|type|notes|
 |-----|----|-----|
 |`institution`|int|only return collections from this institution|
 |`group`|int|only return collections from this group|
-|`published_since`|date(ISO 8601)|Only collections published after the date|
+|`published_since`|date (ISO 8601)|Only collections published after the date|
+|`modified_since` |date (ISO 8601)|Only collections published after the date|
+
 
 Defaults:
 
@@ -87,7 +91,7 @@ Standard [error responses](index.md#errors).
     POST /v2/collections/search
 
 Search public collections. Accepts `pagination`, `sorting`, `filtering`
-and `search` params.
+and `search` params.  See [API feature list](index.md#api-feature-list) for details.
 
 Filters and defaults are the same as for  the
 [list public collections](#list-public-collections)
