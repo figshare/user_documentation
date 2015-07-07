@@ -103,8 +103,8 @@ Status: 400 Bad request
 |`search_for`       |`str`  |(query)String to perform search for. Minimum of 4 characters|
 |`published_since`  |`date` |(filter)Narrow search  to articles published since the specified date|
 |`modified_since`   |`date` |(filter)Narrow search  to articles modified since the specified date|
-|`institution`      |`str`  |(filter)Filter results for this instritution only|
-|`group`            |`str`  |(filter)Filter results for this institution group only|
+|`institution`      |`int`  |(filter)Filter results for this instritution only|
+|`group`            |`int`  |(filter)Filter results for this institution group only|
 |`order_by`         |`str`  |(sort)Perform a sort using the `order_by`. Valid values are: `published_date`, `modified_date`, `views`, `shares`|
 |`order_method`     |`str`  |(sort)How to sort. Descending or ascending. Valid values are: `desc`, 'asc'|
 
@@ -291,8 +291,8 @@ Status: 400 Bad request
 |`search_for`       |`str`  |(query)String to perform search for. Minimum of 4 characters|
 |`published_since`  |`date` |(filter)Narrow search  to articles published since the specified date|
 |`modified_since`   |`date` |(filter)Narrow search  to articles modified since the specified date|
-|`institution`      |`str`  |(filter)Filter results for this instritution only|
-|`group`            |`str`  |(filter)Filter results for this institution group only|
+|`institution`      |`int`  |(filter)Filter results for this instritution only|
+|`group`            |`int`  |(filter)Filter results for this institution group only|
 |`order_by`         |`str`  |(sort)Perform a sort using the `order_by`. Valid values are: `published_date`, `modified_date`, `views`, `shares`|
 |`order_method`     |`str`  |(sort)How to sort. Descending or ascending. Valid values are: `desc`, 'asc'|
 
