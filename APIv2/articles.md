@@ -562,7 +562,7 @@ Status: 400 Bad request
 
 Status: 200 OK
 
-[[CategoryPresenter](category.md#categorypresenter)]
+[[CategoryPresenter](presenters/category.md#categorypresenter)]
 
 ###Associate new categories with the article
 
@@ -580,7 +580,7 @@ Status: 200 OK
 
 Status: 205 Reset Content
 
-[CategoryPresenter](category.md#categorypresenter)
+[CategoryPresenter](presenters/category.md#categorypresenter)
 
 **Error Response (Category ID not found)**
 ```
@@ -606,7 +606,7 @@ Status: 400 Bad request
 
 Status: 205 Reset Content
 
-[CategoryPresenter](category.md#categorypresenter)
+[CategoryPresenter](presenters/category.md#categorypresenter)
 
 **Error Response (Catgeory ID not found)**
 ```
