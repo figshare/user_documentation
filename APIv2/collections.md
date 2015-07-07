@@ -4,6 +4,7 @@
   - [list collections](#list-public-collections)
   - [search collections](#search-public-collections)
   - [read collection](#read-public-collection)
+  - [list collection articles](#list-collection-public-articles)
   - [list public collection versions](#list-public-collection-versions)
   - [read public collection version](#read-public-collection-version)
 
@@ -123,6 +124,26 @@ The collection `detailed` presenter will be used.
 
 * Status: `200 OK`
 * Body: [detailed CollectionPresenter(L1)](presenters/collection.md#collectionpresenterl1)
+
+
+#### Errors
+
+Standard [error responses](index.md#errors).
+
+
+===================================
+### List collection public articles
+
+#### Request
+
+    GET /v2/collections/{id}/articles
+
+Accepts `pagination` params. See [API feature list](index.md#api-feature-list) for details.
+
+#### Response
+
+* Status: `200 OK`
+* Body: A list of [ArticlePresenters](presenters/article.md#articlepresenter)
 
 
 #### Errors
