@@ -54,7 +54,6 @@
     "group_id": 445,
     "article_count": 100,
     "public": 1,
-    "articles": [ArticlePresenter],
     "custom_metadata": [
         {
             "location": "Paris"
