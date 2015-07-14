@@ -68,7 +68,7 @@ Defaults:
 
 |field|value|
 |-----|-----|
-|`order`|`published_date desc`|
+|`order`|`published_date`|
 |`order_direction`|`desc`|
 |`page_size`|`10`|
 
