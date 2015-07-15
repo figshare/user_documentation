@@ -91,7 +91,7 @@
 
 ```json
 {
-    "active": 1,
+    "active": true,
     "reason": "privacy requirements"
 }
 ```
