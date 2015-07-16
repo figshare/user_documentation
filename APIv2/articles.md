@@ -116,7 +116,7 @@ Status: 200 OK
 Status: 400 Bad request
 ```
 ```json
-{"message": "Invalid value received for order_by"}
+{"message": "Invalid value received for order"}
 ```
 **Error Response (Max page number reached)**
 ```
@@ -283,8 +283,8 @@ Status: 400 Bad request
 |`modified_since`   |`date` |(filter)Narrow search  to articles modified since the specified date|
 |`institution`      |`int`  |(filter)Filter results for this instritution only|
 |`group`            |`int`  |(filter)Filter results for this institution group only|
-|`order_by`         |`str`  |(sort)Perform a sort using the `order_by`. Valid values are: `published_date`, `modified_date`, `views`, `shares`|
-|`order_method`     |`str`  |(sort)How to sort. Descending or ascending. Valid values are: `desc`, 'asc'|
+|`order`         |`str`  |(sort)Perform a sort using the `order`. Valid values are: `published_date`, `modified_date`|
+|`order_direction`     |`str`  |(sort)How to sort. Descending or ascending. Valid values are: `desc`, `asc`|
 
 
 Alternatively, instead of `page` and `page_size`, one can use the following params for pagination:
@@ -307,7 +307,7 @@ Status: 200 OK
 Status: 400 Bad request
 ```
 ```json
-{"message": "Invalid value received for order_by"}
+{"message": "Invalid value received for order"}
 ```
 **Error Response (Max page number reached)**
 ```
