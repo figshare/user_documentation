@@ -145,9 +145,9 @@ Ordering is done via the `order` and `order_direction` params.
 
 #### Searching params
 
-|field|type|default|description|
-|-----|----|-------|-----------|
-|`search_for`|string|_mandatory_|Search endpoints require this field.  Usually min length is 4|
+|field|type|description|
+|-----|----|-----------|
+|`search_for`|string|Search endpoints require this field.  Usually min length is 3|
 
 #### Filtering params
 
