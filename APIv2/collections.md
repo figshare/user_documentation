@@ -211,10 +211,10 @@ Identical to [list public collections](#list-public-collections)
 |`description`      |`str`        |The collection description. In a publisher case, usually this is the resource article description|
 |`doi`              |`str`        |Digital Object Identifier|
 |`articles`         |`array of int`|List of articles to be associated with the collection (e.g `[1, 4]`)|
-|`authors`          |`array of dictionaries {'id':int} or {'name':str}`|List of new authors to be assosciated with the collection. Each element identifies an author by `id` or `name`: `[{'id':1212}, 'name':'John Doe'}]`)|
+|`authors`          |`array of dictionaries {'id':int} or {'name':str}`|List of new authors to be assosciated with the collection. Each element identifies an author by `id` or `name`: `[{"id":1212}, "name":"John Doe"}]`)|
 |`categories`       |`array of int` |List of category ids to be associated with the collection (e.g `[5, 7, 9]`)|
-|`tags`             |`array of str` |List of tags to be associated with the collection (e.g `['tag1', 'tag2']`)|
-|`references`       |`array of str`   |List of references to be associated with the collection (e.g `['http://figshare.com', 'http://figshare.com/articles/browse']`)|
+|`tags`             |`array of str` |List of tags to be associated with the collection (e.g `["tag1", "tag2"]`)|
+|`references`       |`array of str`   |List of references to be associated with the collection (e.g `["http://figshare.com", "http://figshare.com/articles/browse"]`)|
 |`resource_id`      |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article id|
 |`resource_doi`     |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article DOI|
 |`resource_link`    |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article link|
@@ -265,10 +265,10 @@ Standard [error responses](index.md#errors).
 |`description`      |`str`        |The collection description. In a publisher case, usually this is the resource article description|
 |`doi`              |`str`        |Digital Object Identifier|
 |`articles`         |`array of int`|List of articles to be associated with the collection (e.g `[1, 4]`)|
-|`authors`          |`array of dictionaries {'id':int} or {'name':str}`|List of new authors to be assosciated with the collection. Each element identifies an author by `id` or `name`: `[{'id':1212}, 'name':'John Doe'}]`)|
+|`authors`          |`array of dictionaries {'id':int} or {'name':str}`|List of new authors to be assosciated with the collection. Each element identifies an author by `id` or `name`: `[{"id":1212}, "name":"John Doe"}]`)|
 |`categories`       |`array of int` |List of category ids to be associated with the collection (e.g `[5, 7, 9]`)|
-|`tags`             |`array of str` |List of tags to be associated with the collection (e.g `['tag1', 'tag2']`)|
-|`references`       |`array of str`   |List of references to be associated with the collection (e.g `['http://figshare.com', 'http://figshare.com/articles/browse']`)|
+|`tags`             |`array of str` |List of tags to be associated with the collection (e.g `["tag1", "tag2"]`)|
+|`references`       |`array of str`   |List of references to be associated with the collection (e.g `["http://figshare.com", "http://figshare.com/articles/browse"]`)|
 |`resource_id`      |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article id|
 |`resource_doi`     |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article DOI|
 |`resource_link`    |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article link|
