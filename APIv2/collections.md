@@ -657,7 +657,7 @@ Status: 404 Not found
 ```
 Status: 200 OK
 ```
-[[PrivateLinkPresenter](presenters/collection.md#privatelinkpresenter)]
+[[PrivateLinkPresenter](presenters/private_link.md#privatelinkpresenter)]
 
 ###Create new private link for this collection
 
