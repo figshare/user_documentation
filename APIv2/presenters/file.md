@@ -20,6 +20,7 @@
     "is_link_only": false,
     "upload_url": "https://uploads.figshare.com",
     "upload_token": "9dfc5fe3-d617-4d93-ac11-8afe7e984a4b",
-    "md5": "043a51806d646e88cafbf19e7b82846f"
+    "supplied_md5": "043a51806d646e88cafbf19e7b82846f",
+    "computed_md5": "043a51806d646e88cafbf19e7b82846f"
 }
 ```
