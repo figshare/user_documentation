@@ -252,6 +252,7 @@ Status: 404 Not Found
 |`offset`  |`int`|The first entry to return. The offset of the initial entry is 0 (not 1).|
 |`limit`   |`int`|The number of returned entries. Default is 10.|
 
+By default the items are sorted by `created_date`, not `published_date`.
 
 **Success Response (list of articles)**
 Status: 200 OK
