@@ -196,7 +196,7 @@ authenticated account.
 
     GET /v2/account/collections
 
-Identical to [list public collections](#list-public-collections)
+Almost identical to [list public collections](#list-public-collections), but default sorting is by `created_date`, not `published_date`.
 
 ==========================
 ### Create a new collection
