@@ -666,9 +666,10 @@ Status: 200 OK
 
 **Input**
 
-|Name               |Type                   |Description                                |
-|-------------------|-----------------------|-------------------------------------------|
-|`expires_date`      |`date`                 |Date when this private link should expire - optional.  By default private links expire in 365 days.|
+|Name           |Type   |Description                                |
+|---------------|------ |-------------------------------------------|
+|`read_only`    |`bool` |Optional, default `true`. Set to `false` to give private link users editing rights for this collection. |
+|`expires_date` |`date` |Date when this private link should expire - optional.  By default private links expire in 365 days.|
 
 
 
