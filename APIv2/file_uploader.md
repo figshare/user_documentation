@@ -32,24 +32,13 @@ An upload status ca be:
     name: "my-file.zip",
     size: 10249281,
     md5: "filemd5",  // as provided on upload creation
-    metadata: {},  // as provided on upload creation
-    createdAt: "2014-12-23T15:21:17+00:00",
     status: "PENDING",
-
     parts: [
+      {
       // upload parts -- see parts API for representation
-    ],
-
-    // info about completed status
-    completedAt: "2014-12-24T15:21:17+00:00", // null if not completed
-    storageLocation: "http://bucket.s3.aws.amazon.com/my-file.zip",
-    storageETag: "md5"
-
-    // info about aborted status
-    abortedAt: "2014-12-25T16:12:31+00:00",   // null if not aborted
-    abortReason: null, // one of: user-request | timeout | internal-error
-    partsCount: 50,
-  }
+      }
+    ]
+}
   ```
 
 
