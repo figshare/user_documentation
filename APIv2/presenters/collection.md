@@ -5,7 +5,8 @@
     "id": 123,
     "title": "Sample collection",
     "doi": "http://dx.doi.org/10.6084/m9.figshare.123",
-    "url": "https://figshare.com/v2/collections/123"
+    "url": "https://figshare.com/v2/collections/123",
+    "published_date": "2015-08-12T00:39:55"
 }
 ```
 
