@@ -32,10 +32,12 @@ and inside and institution scope they have the format:
 
 where **counter** is one of `view`, `share` or `download`.
 
-The results on this endpoint can be filtered further by a `start_date` and `end_date`
-and a specified sub-item which can be one of: `category`, `item_type` or `referral`.
-By default, `start_date` and `end_date` are set to reflect the events of the last month.
-Also the number of results in the ranking can be specified as the `count` parameter which
+The results on this endpoint can be filtered further by a specified `sub_item`
+which can be one of: `category`, `item_type` or `referral`. The results can also be filtered
+by a `start_date` and `end_date` which by default are set to reflect the events of the last
+month **ONLY** if a `sub_item` filter has been specified. Otherwise, the results will reflect
+the total events.
+The number of results in the ranking can be specified as the `count` parameter which
 by default is set to`10`. The supplementary filters and options can be provided in the query
 parameters of the request.
 
@@ -46,8 +48,8 @@ The following table describes the optional parameters:
 
 |Parameter    | Comments|
 |-------------|---------|
-|`start_date` | By default this is set to the 1st of the current month.|
-|`end_date`   | By default this is set to today.|
+|`start_date` | By default this is set to the 1st of the current month if a `sub_item` is specified|
+|`end_date`   | By default this is set to today if a `sub_item` is specified.|
 |`sub_item`   | Can be one of `category`, `item_type` or `referral`. Acts as a filter on the result.|
 |`count`      | By default this is set to 10.|
 
