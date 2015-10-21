@@ -3,7 +3,8 @@
 The figshare api v2 is accessible at https://api.figshare.com/v2. All
 communication is done through *https* and all data is encoded as `JSON`.
 
-* [Resource representations](#represetation)
+* [Sending parameters](#sending-parameters)
+* [Resource representations](#resource-representations)
 * [Authentication](#authentication)
 * [Errors](#errors)
 * [Searching, filtering and pagination](#searching-filtering-and-pagination)
@@ -14,6 +15,33 @@ communication is done through *https* and all data is encoded as `JSON`.
   - [collections](collections.md)
   - [items](articles.md)
 
+
+## Sending parameters
+
+Usually, endpoints that are accessed via `GET` method read their parameters 
+from the query string.  
+Endpoints that are available via `POST` and `PUT` methods read their data
+from the JSON request body.  
+In order to issue a `DELETE` request on a resource, its `id` is part of the URL.
+
+**Examples**
+
+* Sending `page` parameter when listing articles:
+```
+    GET https://api.figshare.com/v1/articles?page=3
+```
+* Sending `search_for` parameter when searching for articles:
+```
+    POST https://api.figshare.com/v2/articles/search
+    {
+        "search_for": "figshare"
+    }
+```
+* Deleting collection with id `12345678`:
+```
+    DELETE https://api.figshare.com/v2/account/collections/12345678
+    Authorization: token my_oauth2_access_token
+```
 
 ## Resource representations
 
