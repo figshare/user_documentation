@@ -57,7 +57,7 @@
 [ArticlePresenter.L1](article.md#articlepresenterl1) +
 ```json
 {
-    "figshare_url": "https://institution.figshare.com/articles/123456789",
+    "figshare_url": "https://institution.figshare.com/articles/article_title/123456789",
     "files": [FilePresenter],
     "authors": [AuthorPresenter],
     "custom_fields": [CustomArticleFieldPresenter]
