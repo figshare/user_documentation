@@ -88,10 +88,10 @@ Then:
   Body:
   ```js
   {
-    part_no: 3,
+    partNo: 3,
     uploadToken: "UPLOAD_TOKEN",
     startOffset: 1024,
-    endOffset: 2048,
+    endOffset: 2047,
     status: "PENDING",
     locked: false,
     completedAt: null,
