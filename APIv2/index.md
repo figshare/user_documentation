@@ -191,7 +191,7 @@ Not implemented at this point.
 ## Conditional requests
 
 Most responses should return an ETag header and a Last-Modified header.
-You can use the values of these headers to create condiditional requests.
+You can use the values of these headers to create conditional requests.
 We encourage  to use these whenever possible.
 
 
