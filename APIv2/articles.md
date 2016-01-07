@@ -3,7 +3,7 @@
 * **[Public](#article-public-endpoints)**
   - [list public articles](#list-public-articles)
   - [search public articles](#search-public-articles)
-  - [read publicarticle](#read-public-article)
+  - [read public article](#read-public-article)
   - [article versions](#article-versions-subsection)
     - [list versions](#list-versions)
     - [read public article version](#read-public-article-version)
