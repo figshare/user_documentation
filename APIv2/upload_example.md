@@ -17,7 +17,7 @@ import os
 import requests
 
 
-BASE_URL = 'https://api.figsh.com/v2/{endpoint}'
+BASE_URL = 'https://api.figshare.com/v2/{endpoint}'
 TOKEN = '<insert access token here>'
 FILE_NAME = '/home/adrian/tmp/cat.obj'
 
@@ -80,7 +80,7 @@ import requests
 from requests.exceptions import HTTPError
 
 
-BASE_URL = 'https://api.figsh.com/v2/{endpoint}'
+BASE_URL = 'https://api.figshare.com/v2/{endpoint}'
 TOKEN = '<insert access token here>'
 CHUNK_SIZE = 1048576
 
@@ -230,15 +230,15 @@ This is an example of how the script would output on an account with no added ar
 Listing current articles:
   No articles.
 
-Created article: https://api.figsh.com/v2/account/articles/2012182
+Created article: https://api.figshare.com/v2/account/articles/2012182
 
 Listing current articles:
-  https://api.figsh.com/v2/articles/2012182 - A 3D cat object model
+  https://api.figshare.com/v2/articles/2012182 - A 3D cat object model
 
 Listing files for article 2012182:
   No files.
 
-Initiated file upload: https://api.figsh.com/v2/account/articles/2012182/files/3008150
+Initiated file upload: https://api.figshare.com/v2/account/articles/2012182/files/3008150
 
 Uploading parts:
   Uploaded part 1 from 0 to 213325
