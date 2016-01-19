@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Collections - Figshare User Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Collections";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Figshare User Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Search</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Search/search/">Search</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>APIv2</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../articles/">Articles</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../categories/">Categories</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Collections</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#collection-endpoints">Collection endpoints</a></li>
+                
+                    <li><a class="toctree-l4" href="#public-endpoints">Public endpoints</a></li>
+                
+                    <li><a class="toctree-l4" href="#private-endpoints">Private endpoints</a></li>
+                
+                    <li><a class="toctree-l4" href="#update-collection">Update collection</a></li>
+                
+                    <li><a class="toctree-l4" href="#delete-own-private-collection">Delete own private collection</a></li>
+                
+                    <li><a class="toctree-l4" href="#reserve-doi-for-collection">Reserve DOI for collection**</a></li>
+                
+                    <li><a class="toctree-l4" href="#publish-collection">Publish collection</a></li>
+                
+                    <li><a class="toctree-l4" href="#collection-authors-subsection">Collection authors subsection</a></li>
+                
+                    <li><a class="toctree-l4" href="#collection-categories-subsection">Collection categories subsection</a></li>
+                
+                    <li><a class="toctree-l4" href="#collection-articles-subsection">Collection articles subsection</a></li>
+                
+                    <li><a class="toctree-l4" href="#collection-private-links-subsection">Collection private links subsection</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_uploader/">File uploader</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../hr_feed/">Hr feed</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../licenses/">Licenses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../upload_example/">Upload example</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Presenters</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/article/">Article</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/author/">Author</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/category/">Category</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/collection/">Collection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/custom_field/">Custom field</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/file/">File</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/license/">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/private_link/">Private link</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Stats</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/breakdown/">Breakdown</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/timeline/">Timeline</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/tops/">Tops</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/totals/">Totals</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Figshare User Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>APIv2 &raquo;</li>
+        
+      
+    
+    <li>Collections</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="collection-endpoints">Collection endpoints</h1>
+<ul>
+<li><strong><a href="#public-endpoints">Public</a></strong></li>
+<li><a href="#list-public-collections">list collections</a></li>
+<li><a href="#search-public-collections">search collections</a></li>
+<li><a href="#read-public-collection">read collection</a></li>
+<li><a href="#list-collection-public-articles">list collection articles</a></li>
+<li><a href="#list-public-collection-versions">list public collection versions</a></li>
+<li>
+<p><a href="#read-public-collection-version">read public collection version</a></p>
+</li>
+<li>
+<p><strong><a href="#private-endpoints">Private</a></strong></p>
+</li>
+<li><a href="#list-own-collections">list own collections</a></li>
+<li><a href="#create-a-new-collection">create new collection</a></li>
+<li><a href="#read-own-collection">read own collection</a></li>
+<li><a href="#update-collection">update collection</a></li>
+<li><a href="#delete-own-private-collection">delete own private collection</a></li>
+<li><a href="#reserve-doi-for-collection">reserve doi for collection</a></li>
+<li><a href="#publish-collection">publish collection</a></li>
+<li><a href="#collection-authors-subsection">collection authors</a><ul>
+<li><a href="#list-authors">list authors</a></li>
+<li><a href="#associate-new-authors-with-the-collection">associate new authors</a></li>
+<li><a href="#associate-and-replace-existing-authors-of-this-collection">associate and replace authors</a></li>
+<li><a href="#de-associate-author-from-collection">de-associate author</a></li>
+</ul>
+</li>
+<li><a href="#collection-categories-subsection">collection categories</a><ul>
+<li><a href="#list-categories">list categories</a></li>
+<li><a href="#associate-new-categories-with-the-collection">associate new categories</a></li>
+<li><a href="#associate-and-replace-existing-categories-of-this-collection">associate and replace categories</a></li>
+<li><a href="#de-associate-category-from-collection">de-associate category</a></li>
+</ul>
+</li>
+<li><a href="#collection-articles-subsection">collection articles</a><ul>
+<li><a href="#list-articles">list articles</a></li>
+<li><a href="#associate-new-articles-with-the-collection">associate new articles</a></li>
+<li><a href="#associate-and-replace-existing-articles-of-this-collection">associate and replace articles</a></li>
+<li><a href="#de-associate-article-from-collection">de-associate article</a></li>
+</ul>
+</li>
+<li><a href="#collection-private-links-subsection">private links</a><ul>
+<li><a href="#list-private-links">list private links</a></li>
+<li><a href="#create-new-private-link-for-this-collection">create new private link</a></li>
+<li><a href="#update-existing-private-link-for-this--collection">update existing private link</a></li>
+<li><a href="#disabledelete-private-link-for-collection">disable/delete private link</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="public-endpoints">Public endpoints</h2>
+<p>The following <em>public</em> endpoints don't require
+authentication/authorization.</p>
+<p>===========================</p>
+<h3 id="list-public-collections">List public collections</h3>
+<h4 id="request">Request</h4>
+<pre><code>GET /v2/collections
+</code></pre>
+<p>Accepts <code>pagination</code>, <code>sorting</code>, <code>filtering</code> params. See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<p>Accepted filters:</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>type</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>institution</code></td>
+<td>int</td>
+<td>only return collections from this institution</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td>int</td>
+<td>only return collections from this group</td>
+</tr>
+<tr>
+<td><code>published_since</code></td>
+<td>date (ISO 8601)</td>
+<td>Only collections published after the date</td>
+</tr>
+<tr>
+<td><code>modified_since</code></td>
+<td>date (ISO 8601)</td>
+<td>Only collections published after the date</td>
+</tr>
+</tbody>
+</table>
+<p>Defaults:</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>order</code></td>
+<td><code>published_date</code></td>
+</tr>
+<tr>
+<td><code>order_direction</code></td>
+<td><code>desc</code></td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td><code>10</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="response">Response</h4>
+<ul>
+<li>Status: <code>200 OK</code></li>
+<li>Body: List of <a href="../presenters/collection/#collectionpresenter">CollectionPresenter</a></li>
+</ul>
+<h4 id="errors">Errors</h4>
+<p>Standard <a href="../#errors">error responses</a>.</p>
+<p>=============================</p>
+<h3 id="search-public-collections">Search public collections</h3>
+<h4 id="request_1">Request</h4>
+<pre><code>POST /v2/collections/search
+</code></pre>
+<p>Search public collections. Accepts <code>pagination</code>, <code>sorting</code>, <code>filtering</code>
+and <code>search</code> params.  See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<p>Filters and defaults are the same as for  the
+<a href="#list-public-collections">list public collections</a></p>
+<p>The response body will use the collection <code>light</code> presenter.</p>
+<h4 id="response_1">Response</h4>
+<ul>
+<li>status: <code>200 OK</code></li>
+<li>body: List of <a href="../presenters/collection/#collectionpresenter">CollectionPresenter</a></li>
+</ul>
+<h4 id="errors_1">Errors</h4>
+<p>Standard <a href="../#errors">error responses</a>.</p>
+<p>==========================</p>
+<h3 id="read-public-collection">Read public collection</h3>
+<h4 id="request_2">Request</h4>
+<pre><code>GET /v2/collections/{id}
+</code></pre>
+<h4 id="response_2">Response</h4>
+<p>The collection <code>detailed</code> presenter will be used.</p>
+<ul>
+<li>Status: <code>200 OK</code></li>
+<li>Body: <a href="../presenters/collection/#collectionpresenterl1">detailed CollectionPresenter(L1)</a></li>
+</ul>
+<h4 id="errors_2">Errors</h4>
+<p>Standard <a href="../#errors">error responses</a>.</p>
+<p>===================================</p>
+<h3 id="list-collection-public-articles">List collection public articles</h3>
+<h4 id="request_3">Request</h4>
+<pre><code>GET /v2/collections/{id}/articles
+</code></pre>
+<p>Accepts <code>pagination</code> params. See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<h4 id="response_3">Response</h4>
+<ul>
+<li>Status: <code>200 OK</code></li>
+<li>Body: A list of <a href="../presenters/article/#articlepresenter">ArticlePresenters</a></li>
+</ul>
+<h4 id="errors_3">Errors</h4>
+<p>Standard <a href="../#errors">error responses</a>.</p>
+<p>===================================</p>
+<h3 id="list-public-collection-versions">List public collection versions</h3>
+<h4 id="request_4">Request</h4>
+<pre><code>GET /v2/collections/{id}/versions
+</code></pre>
+<h4 id="response_4">Response</h4>
+<ul>
+<li>Status: <code>200 OK</code></li>
+<li>Body: List of <a href="../presenters/collection/#collectionversionpresenter">CollectionVersionPresenter (light)</a></li>
+</ul>
+<h4 id="errors_4">Errors</h4>
+<p>Standard <a href="../#errors">error responses</a>.</p>
+<p>===================================</p>
+<h3 id="read-public-collection-version">Read public collection version</h3>
+<pre><code>GET /v2/collections/{id}/versions/{version_number}
+</code></pre>
+<h4 id="response_5">Response</h4>
+<ul>
+<li>Status: <code>200 OK</code></li>
+<li>Body: <a href="../presenters/collection/#collectionpresenterl1">CollectionPresenter (detailed)</a></li>
+</ul>
+<h4 id="errors_5">Errors:</h4>
+<p>Standard <a href="../#errors">error responses</a>.</p>
+<h2 id="private-endpoints">Private endpoints</h2>
+<p>These requests require authorization/authentication. Missing valid auth
+will result in 403 and 401 errors.</p>
+<p>The attribute <strong>own</strong> means resources owned(created or authored) by the
+authenticated account.</p>
+<p>==========================</p>
+<h3 id="list-own-collections">List <em>own</em> collections</h3>
+<pre><code>GET /v2/account/collections
+</code></pre>
+<p>Almost identical to <a href="#list-public-collections">list public collections</a>, but default sorting is by <code>created_date</code>, not <code>published_date</code>.</p>
+<p>==========================</p>
+<h3 id="create-a-new-collection">Create a new collection</h3>
+<pre><code>POST /v2/account/collections
+</code></pre>
+<h4 id="request_5">Request</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>str</code></td>
+<td>The title for this collection - <code>mandatory</code></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>str</code></td>
+<td>The collection description. In a publisher case, usually this is the resource article description</td>
+</tr>
+<tr>
+<td><code>doi</code></td>
+<td><code>str</code></td>
+<td>Digital Object Identifier</td>
+</tr>
+<tr>
+<td><code>articles</code></td>
+<td><code>array of int</code></td>
+<td>List of articles to be associated with the collection (e.g <code>[1, 4]</code>)</td>
+</tr>
+<tr>
+<td><code>authors</code></td>
+<td><code>array of dictionaries {'id':int} or {'name':str}</code></td>
+<td>List of new authors to be assosciated with the collection. Each element identifies an author by <code>id</code> or <code>name</code>: <code>[{"id":1212}, "name":"John Doe"}]</code>)</td>
+</tr>
+<tr>
+<td><code>categories</code></td>
+<td><code>array of int</code></td>
+<td>List of category ids to be associated with the collection (e.g <code>[5, 7, 9]</code>)</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td><code>array of str</code></td>
+<td>List of tags to be associated with the collection (e.g <code>["tag1", "tag2"]</code>)</td>
+</tr>
+<tr>
+<td><code>references</code></td>
+<td><code>array of str</code></td>
+<td>List of references to be associated with the collection (e.g <code>["http://figshare.com", "http://figshare.com/articles/browse"]</code>)</td>
+</tr>
+<tr>
+<td><code>resource_id</code></td>
+<td><code>str</code></td>
+<td>Not applicable to regular users. In a publisher case, this is the publisher article id</td>
+</tr>
+<tr>
+<td><code>resource_doi</code></td>
+<td><code>str</code></td>
+<td>Not applicable to regular users. In a publisher case, this is the publisher article DOI</td>
+</tr>
+<tr>
+<td><code>resource_link</code></td>
+<td><code>str</code></td>
+<td>Not applicable to regular users. In a publisher case, this is the publisher article link</td>
+</tr>
+<tr>
+<td><code>resource_title</code></td>
+<td><code>str</code></td>
+<td>Not applicable to regular users. In a publisher case, this is the publisher article title</td>
+</tr>
+<tr>
+<td><code>resource_version</code></td>
+<td><code>int</code></td>
+<td>Not applicable to regular users. In a publisher case, this is the publisher article version</td>
+</tr>
+<tr>
+<td><code>custom_fields</code></td>
+<td><code>dict</code></td>
+<td>List of key, values pairs to be associated with the collection. Similar to custom article fields</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response_6">Response</h4>
+<ul>
+<li>Status: <code>201 Created</code></li>
+<li>Headers:
+    <code>Location: https://api.figshare.com/v2/account/collections/123</code></li>
+<li>Body: <a href="../presenters/collection/#collectionpresenterl1">CollectionPresenter (detailed)</a></li>
+</ul>
+<h4 id="errors_6">Errors</h4>
+<p>Standard <a href="../#errors">error responses</a>.</p>
+<p>=======================</p>
+<h3 id="read-own-collection">Read <em>own</em> collection</h3>
+<pre><code>GET /v2/account/collections/{id}
+</code></pre>
+<h4 id="response_7">Response</h4>
+<ul>
+<li>Status: <code>200 OK</code></li>
+<li>Body: <a href="../presenters/collection/#collectionpresenterl1">CollectionPresenter (detailed)</a></li>
+</ul>
+<h4 id="errors_7">Errors</h4>
+<p>Standard <a href="../#errors">error responses</a>.</p>
+<h2 id="update-collection">Update collection</h2>
+<pre><code>PUT /v2/account/collections/{id}
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>str</code></td>
+<td>The title for this collection</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>str</code></td>
+<td>The collection description. In a publisher case, usually this is the resource article description</td>
+</tr>
+<tr>
+<td><code>doi</code></td>
+<td><code>str</code></td>
+<td>Digital Object Identifier</td>
+</tr>
+<tr>
+<td><code>articles</code></td>
+<td><code>array of int</code></td>
+<td>List of articles to be associated with the collection (e.g <code>[1, 4]</code>)</td>
+</tr>
+<tr>
+<td><code>authors</code></td>
+<td><code>array of dictionaries {'id':int} or {'name':str}</code></td>
+<td>List of new authors to be assosciated with the collection. Each element identifies an author by <code>id</code> or <code>name</code>: <code>[{"id":1212}, "name":"John Doe"}]</code>)</td>
+</tr>
+<tr>
+<td><code>categories</code></td>
+<td><code>array of int</code></td>
+<td>List of category ids to be associated with the collection (e.g <code>[5, 7, 9]</code>)</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td><code>array of str</code></td>
+<td>List of tags to be associated with the collection (e.g <code>["tag1", "tag2"]</code>)</td>
+</tr>
+<tr>
+<td><code>references</code></td>
+<td><code>array of str</code></td>
+<td>List of references to be associated with the collection (e.g <code>["http://figshare.com", "http://figshare.com/articles/browse"]</code>)</td>
+</tr>
+<tr>
+<td><code>resource_id</code></td>
+<td><code>str</code></td>
+<td>Not applicable to regular users. In a publisher case, this is the publisher article id</td>
+</tr>
+<tr>
+<td><code>resource_doi</code></td>
+<td><code>str</code></td>
+<td>Not applicable to regular users. In a publisher case, this is the publisher article DOI</td>
+</tr>
+<tr>
+<td><code>resource_link</code></td>
+<td><code>str</code></td>
+<td>Not applicable to regular users. In a publisher case, this is the publisher article link</td>
+</tr>
+<tr>
+<td><code>resource_title</code></td>
+<td><code>str</code></td>
+<td>Not applicable to regular users. In a publisher case, this is the publisher article title</td>
+</tr>
+<tr>
+<td><code>resource_version</code></td>
+<td><code>int</code></td>
+<td>Not applicable to regular users. In a publisher case, this is the publisher article version</td>
+</tr>
+<tr>
+<td><code>custom_fields</code></td>
+<td><code>dict</code></td>
+<td>List of key, values pairs to be associated with the collection. Similar to custom article fields</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 205 Reset Content
+Location: https://api.figshare.com/v2/account/collections/123
+</code></pre>
+
+<p><strong>Error Response (Id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Collection not found&quot;}
+</code></pre>
+
+<h2 id="delete-own-private-collection">Delete own private collection</h2>
+<pre><code>DELETE /v2/account/collections/{id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 204 No content
+</code></pre>
+
+<p><strong>Error Response (Id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Collection not found&quot;}
+</code></pre>
+
+<h2 id="reserve-doi-for-collection">Reserve DOI for collection**</h2>
+<pre><code>POST /v2/account/collections/{id}/reserve_doi
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 200 OK
+</code></pre>
+
+<pre><code class="json">{&quot;doi&quot;: &quot;doi link&quot;}
+</code></pre>
+
+<p><strong>Error Response (Id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Collection not found&quot;}
+</code></pre>
+
+<h2 id="publish-collection">Publish collection</h2>
+<pre><code>POST /v2/account/collections/{id}/publish
+</code></pre>
+<p><strong>Note</strong>:<br />
+When a collection is published, a new public version will be generated.<br />
+Any further updates to the collection will affect the private collection data.<br />
+In order to make these changes publicly visible, an explicit <em>publish</em> operation is needed.  </p>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 201 Created
+Location: https://api.figshare.com/v2/collections/123
+</code></pre>
+
+<p><strong>Error Response (Missing mandatory fields for publish (e.g authors))</strong></p>
+<pre><code>Status: 428 Precondition failed
+</code></pre>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Collection has no associated authors&quot;,
+    &quot;code&quot;: &quot;MissingMandatoryFieldException&quot;,
+    &quot;data&quot;: {}
+}
+</code></pre>
+
+<h2 id="collection-authors-subsection">Collection authors subsection</h2>
+<h3 id="list-authors">List authors</h3>
+<pre><code>GET /v2/account/collections/{id}/authors
+</code></pre>
+<p>To represent the authors, the author's <code>light</code> presenter will be used.</p>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 200 OK
+</code></pre>
+
+<p>[<a href="../presenters/author/#authorpresenter">AuthorPresenter</a>]</p>
+<h3 id="associate-new-authors-with-the-collection">Associate new authors with the collection</h3>
+<pre><code>POST /v2/account/collections/{id}/authors
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authors</code></td>
+<td><code>array of dictionaries {'id':int} or {'name':str}</code></td>
+<td>List of new authors to be assosciated with the collection. The list can contain author ids or names. Example <code>{"authors": [ {"id": 1}, {"name": "Joe Doe"} ] }</code> represents two authors: one identified by <code>id</code> and one by <code>name</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 201 Created
+Location: https://api.figshare.com/v2/account/collections/123/authors
+</code></pre>
+
+<p><strong>Error Response (Author(s) id not found)</strong></p>
+<pre><code>Status: 422 Unprocessable Entity
+</code></pre>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Author not found&quot;,
+    &quot;code&quot;: &quot;EntityNotFoundException&quot;,
+    &quot;data&quot;: {}
+}
+</code></pre>
+
+<h3 id="associate-and-replace-existing-authors-of-this-collection">Associate and replace existing authors of this collection</h3>
+<pre><code>PUT /v2/account/collections/{id}/authors
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authors</code></td>
+<td><code>array of dictionaries {'id':int} or {'name':str}</code></td>
+<td>List of authors to be assosciated with the collection. The list can contain author ids or names. Example <code>{"authors": [ {"id": 1}, {"name": "Joe Doe"} ] }</code> represents two authors: one identified by <code>id</code> and one by <code>name</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>To represent the author entity, the <code>light</code> presenter will be used.</p>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 205 Reset Content
+Location: https://api.figshare.com/v2/account/collections/123/authors
+</code></pre>
+
+<p><strong>Error Response (Author(s) id not found)</strong></p>
+<pre><code>Status: 422 Unprocessable Entity
+</code></pre>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Author not found&quot;,
+    &quot;code&quot;: &quot;EntityNotFoundException&quot;,
+    &quot;data&quot;: {}
+}
+</code></pre>
+
+<h3 id="de-associate-author-from-collection">De-associate author from collection</h3>
+<pre><code>DELETE /v2/account/collections/{id}/authors/{author_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 204 No content
+</code></pre>
+
+<p><strong>Error Response (Author id not found)</strong></p>
+<pre><code>Status: 422 Unprocessable Entity
+</code></pre>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Author not found&quot;,
+    &quot;code&quot;: &quot;EntityNotFoundException&quot;,
+    &quot;data&quot;: {}
+}
+</code></pre>
+
+<h2 id="collection-categories-subsection">Collection categories subsection</h2>
+<h3 id="list-categories">List categories</h3>
+<pre><code>GET /v2/account/collections/{id}/categories
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 200 OK
+</code></pre>
+
+<p>[<a href="../presenters/category/#categorypresenter">CategoryPresenter</a>]</p>
+<h3 id="associate-new-categories-with-the-collection">Associate new categories with the collection</h3>
+<pre><code>POST /v2/account/collections/{id}/categories
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>categories</code></td>
+<td><code>array of int</code></td>
+<td>List of new categories to be assosciated with the collection</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 201 Created
+Location: https://api.figshare.com/v2/account/collections/123/categories
+</code></pre>
+
+<p><strong>Error Response (Category ID not found)</strong></p>
+<pre><code>Status: 422 Unprocessable Entity
+</code></pre>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Category not found&quot;,
+    &quot;code&quot;: &quot;EntityNotFoundException&quot;,
+    &quot;data&quot;: {}
+}
+</code></pre>
+
+<h3 id="associate-and-replace-existing-categories-of-this-collection">Associate and replace existing categories of this collection</h3>
+<pre><code>PUT /v2/account/collections/{id}/categories
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>categories</code></td>
+<td><code>array of int</code></td>
+<td>List of categories to be assosciated with the collection. Existing categories will be replaced</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 205 Reset Content
+Location: https://api.figshare.com/v2/account/collections/123/categories
+</code></pre>
+
+<p><strong>Error Response (Category ID not found)</strong></p>
+<pre><code>Status: 422 Unprocessable Entity
+</code></pre>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Category not found&quot;,
+    &quot;code&quot;: &quot;EntityNotFoundException&quot;,
+    &quot;data&quot;: {}
+}
+</code></pre>
+
+<h3 id="de-associate-category-from-collection">De-associate category from collection</h3>
+<pre><code>DELETE /v2/account/collections/{id}/categories/{category_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 204 No Content
+</code></pre>
+
+<p><strong>Error Response (Category id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Category not found&quot;,
+    &quot;code&quot;: &quot;EntityNotFoundException&quot;,
+    &quot;data&quot;: {}
+}
+</code></pre>
+
+<h2 id="collection-articles-subsection">Collection articles subsection</h2>
+<h3 id="list-articles">List articles</h3>
+<pre><code>GET /v2/account/collections/{id}/articles
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 200 OK
+</code></pre>
+
+<p>[<a href="../presenters/article/#articlepresenter">ArticlePresenter</a>]</p>
+<h3 id="associate-new-articles-with-the-collection">Associate new articles with the collection</h3>
+<pre><code>POST /v2/account/collections/{id}/articles
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>articles</code></td>
+<td><code>array of int</code></td>
+<td>List of new articles to be assosciated with the collection. No more then 10 article IDs per request</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 201 Created
+Location: https://api.figshare.com/v2/account/collections/123/articles
+</code></pre>
+
+<p><strong>Error Response (Article ID not found)</strong></p>
+<pre><code>Status: 422 Unprocessable Entity
+</code></pre>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Article not found&quot;,
+    &quot;code&quot;: &quot;EntityNotFoundException&quot;,
+    &quot;data&quot;: {}
+}
+</code></pre>
+
+<h3 id="associate-and-replace-existing-articles-of-this-collection">Associate and replace existing articles of this collection</h3>
+<pre><code>PUT /v2/account/collections/{id}/articles
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>articles</code></td>
+<td><code>array of int</code></td>
+<td>List of articles to be assosciated with the collection. Existing articles will be replaced. No more then 10 article IDs</td>
+</tr>
+</tbody>
+</table>
+<p>To represent the article entity, the <code>light</code> presenter will be used.</p>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 205 Reset Content
+Location: https://api.figshare.com/v2/account/collections/123/articles
+</code></pre>
+
+<p><strong>Error Response (Article ID not found in collection)</strong></p>
+<pre><code>Status: 422 Unprocessable Entity
+</code></pre>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Article not found&quot;,
+    &quot;code&quot;: &quot;EntityNotFoundException&quot;,
+    &quot;data&quot;: {}
+}
+</code></pre>
+
+<h3 id="de-associate-article-from-collection">De-associate article from collection</h3>
+<pre><code>DELETE /v2/account/collections/{id}/articles/{article_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 204 No content
+</code></pre>
+
+<p><strong>Error Response (Article ID not found in collection)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Private link not found in collection&quot;,
+    &quot;code&quot;: &quot;EntityNotFoundException&quot;,
+    &quot;data&quot;: {}
+}
+</code></pre>
+
+<h2 id="collection-private-links-subsection">Collection private links subsection</h2>
+<h3 id="list-private-links">List private links</h3>
+<pre><code>GET /v2/account/collections/{id}/private_links
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 200 OK
+</code></pre>
+
+<p>[<a href="../presenters/private_link/#privatelinkpresenter">PrivateLinkPresenter</a>]</p>
+<h3 id="create-new-private-link-for-this-collection">Create new private link for this collection</h3>
+<pre><code>POST /v2/account/collections/{id}/private_links
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>read_only</code></td>
+<td><code>bool</code></td>
+<td>Optional, default <code>true</code>. Set to <code>false</code> to give private link users editing rights for this collection.</td>
+</tr>
+<tr>
+<td><code>expires_date</code></td>
+<td><code>date</code></td>
+<td>Date when this private link should expire - optional.  By default private links expire in 365 days.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 201 Created
+Location: https://api.figshare.com/v2/account/collections/123/private_links
+</code></pre>
+
+<h3 id="update-existing-private-link-for-this-collection">Update existing private link for this  collection</h3>
+<pre><code>PUT /v2/account/collections/{id}/private_links/{p_id}
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expires_date</code></td>
+<td><code>date</code></td>
+<td>Date when this private link should expire - optional. By default private links expire in 365 days.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 205 Reset Content
+Location: https://api.figshare.com/v2/account/collections/123/private_links
+</code></pre>
+
+<p><strong>Error Response (Private Link ID not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Private link not found&quot;,
+    &quot;code&quot;: &quot;EntityNotFoundException&quot;,
+    &quot;data&quot;: {}
+}
+</code></pre>
+
+<h3 id="disabledelete-private-link-for-collection">Disable/delete private link for collection</h3>
+<pre><code>DELETE /v2/account/collections/{id}/private_links/{private_link_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 204 No content
+</code></pre>
+
+<p><strong>Error Response (Private link ID not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Private link not found&quot;,
+    &quot;code&quot;: &quot;EntityNotFoundException&quot;,
+    &quot;data&quot;: {}
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../file_uploader/" class="btn btn-neutral float-right" title="File uploader"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../categories/" class="btn btn-neutral" title="Categories"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../categories/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../file_uploader/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

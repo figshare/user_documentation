@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Breakdown - Figshare User Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Breakdown";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Figshare User Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Search</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Search/search/">Search</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>APIv2</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/articles/">Articles</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/categories/">Categories</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/collections/">Collections</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/file_uploader/">File uploader</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/hr_feed/">Hr feed</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/licenses/">Licenses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/upload_example/">Upload example</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Presenters</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/presenters/article/">Article</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/presenters/author/">Author</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/presenters/category/">Category</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/presenters/collection/">Collection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/presenters/custom_field/">Custom field</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/presenters/file/">File</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/presenters/license/">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../APIv2/presenters/private_link/">Private link</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Stats</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Breakdown</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#endpoints-for-retrieving-a-breakdown">Endpoints for retrieving a breakdown</a></li>
+                
+                    <li><a class="toctree-l4" href="#authorization">Authorization</a></li>
+                
+                    <li><a class="toctree-l4" href="#endpoint-format">Endpoint format</a></li>
+                
+                    <li><a class="toctree-l4" href="#request-parameters">Request parameters</a></li>
+                
+                    <li><a class="toctree-l4" href="#examples">Examples</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../timeline/">Timeline</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../tops/">Tops</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../totals/">Totals</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Figshare User Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Stats &raquo;</li>
+        
+      
+    
+    <li>Breakdown</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="endpoints-for-retrieving-a-breakdown">Endpoints for retrieving a <strong>breakdown</strong></h1>
+<p>This type of endpoint enables the retrieval of a geo-location breakdown of the number
+of <em>views</em>, <em>downloads</em> or <em>shares</em> for a specific item.</p>
+<ul>
+<li><a href="#authorization">Authorization</a></li>
+<li><a href="#endpoint-format">Endpoint format</a></li>
+<li><a href="#request-parameters">Request parameters</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+<h2 id="authorization">Authorization</h2>
+<p>Basic HTTP authentication is required for timeline endpoints within the scope of an institution.</p>
+<h2 id="endpoint-format">Endpoint format</h2>
+<p>For items outside an institution scope the endpoints have the format:</p>
+<pre><code>/breakdown/{granularity}/{counter}/{item}/{item_id}
+</code></pre>
+
+<p>and inside an institution scope they have the format:</p>
+<pre><code>/{institution}/breakdown/{granularity}{counter}/{item}/{item_id}
+</code></pre>
+
+<p>where <strong>granularity</strong> is one of <code>year</code>, <code>month</code>, <code>day</code> or <code>total</code>
+and <strong>counter</strong> is one of <code>views</code>, <code>downloads</code> or <code>shares</code>.</p>
+<p>The results on this endpoint can be filtered further by a <code>start_date</code> and <code>end_date</code> and
+a specified <code>category</code> or <code>item_type</code>. By default, <code>start_date</code> and <code>end_date</code> are set
+to reflect the events of the last month. The supplementary filters can be provided in the
+query parameters of the request.</p>
+<h2 id="request-parameters">Request parameters</h2>
+<p>The following table describes the optional parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start_date</code></td>
+<td>By default this is set to the 1st of the current month.</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>By default this is set to today.</td>
+</tr>
+<tr>
+<td><code>sub_item</code></td>
+<td>Can be one of <code>category</code> and <code>item_type</code>. Acts as a filter on the result.</td>
+</tr>
+<tr>
+<td><code>sub_item_id</code></td>
+<td>Required if <code>sub_item</code> is also specified.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<h3 id="daily-breakdown-of-shares-for-an-unaffiliated-article">Daily breakdown of shares for an unaffiliated article</h3>
+<p><strong>Request</strong></p>
+<pre><code class="http">GET https://stats.figshare.com/breakdown/day/shares/article/23?start_date=2014-03-08&amp;end_date=2014-05-21
+</code></pre>
+
+<p><strong>Response</strong></p>
+<pre><code class="http">HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+
+{
+  &quot;breakdown&quot;: {
+    &quot;2014-03-08&quot;: {
+      &quot;Spain&quot;: {
+        &quot;Seville&quot;: 8,
+        &quot;Madrid&quot;: 11,
+        &quot;total&quot;: 19
+      }
+    },
+    &quot;2014-02-20&quot;: {
+      &quot;Spain&quot;: {
+        &quot;Seville&quot;: 3,
+        &quot;total&quot;: 3
+      }
+    },
+    &quot;2014-05-04&quot;: {
+      &quot;China&quot;: {
+        &quot;Fuzhou&quot;: 7,
+        &quot;Chengdu&quot;: 3,
+        &quot;total&quot;: 10
+      }
+    }
+  }
+}
+</code></pre>
+
+<h3 id="yearly-breakdown-of-views-for-a-project-associated-to-an-institution">Yearly breakdown of views for a project associated to an institution</h3>
+<p><strong>Request</strong></p>
+<pre><code class="http">GET https://stats.figshare.com/monash/breakdown/year/views/project/1345?start_date=2013-01-01&amp;end_date=2015-01-01
+Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+</code></pre>
+
+<p><strong>Response</strong></p>
+<pre><code class="http">HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+
+{
+  &quot;breakdown&quot;: {
+    &quot;2013&quot;: {
+      &quot;Spain&quot;: {
+        &quot;Seville&quot;: 5,
+        &quot;Madrid&quot;: 3,
+        &quot;total&quot;: 8
+      },
+      &quot;China&quot;: {
+        &quot;Fuzhou&quot;: 2,
+        &quot;Chengdu&quot;: 3,
+        &quot;total&quot;: 5
+      }
+    },
+    &quot;2014&quot;: {
+      &quot;United States&quot;: {
+        &quot;Kansas City&quot;: 3,
+        &quot;Orlando&quot;: 1,
+        &quot;total&quot;: 4
+      },
+      &quot;Venezuela&quot;: {
+        &quot;Caracas&quot;: 5,
+        &quot;total&quot;: 5
+      },
+      &quot;Brazil&quot;: {
+        &quot;total&quot;: 7,
+        &quot;Indaiatuba&quot;: 4,
+        &quot;Campinas&quot;: 3
+      }
+    }
+  }
+}
+</code></pre>
+
+<h3 id="total-breakdown-of-downloads-from-filesets-found-in-a-specified-institutional-group">Total breakdown of downloads from filesets found in a specified institutional group</h3>
+<p><strong>Request</strong></p>
+<pre><code class="http">GET https://stats.figshare.com/lboro/breakdown/total/downloads/group/17?sub_item=item_type&amp;sub_item_id=fileset&amp;start_date=2015-02-11&amp;end_date=2015-05-17
+Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+</code></pre>
+
+<p><strong>Response</strong></p>
+<pre><code class="http">HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+
+{
+  &quot;breakdown&quot;: {
+    &quot;total&quot;: {
+      &quot;Spain&quot;: {
+        &quot;Seville&quot;: 6,
+        &quot;Barcelona&quot;: 7,
+        &quot;Madrid&quot;: 3,
+        &quot;total&quot;: 16
+      },
+      &quot;China&quot;: {
+        &quot;Chengdu&quot;: 7,
+        &quot;Fuzhou&quot;: 4,
+        &quot;total&quot;: 11
+      },
+      &quot;United States&quot;: {
+        &quot;Kansas City&quot;: 3,
+        &quot;Orlando&quot;: 7,
+        &quot;total&quot;: 10
+      },
+      &quot;Brazil&quot;: {
+        &quot;total&quot;: 2,
+        &quot;Indaiatuba&quot;: 2
+      }
+    }
+  }
+}
+</code></pre>
+
+<h3 id="monthly-breakdown-of-views-from-projects-found-in-a-specified-institutional-group">Monthly breakdown of views from projects found in a specified institutional group</h3>
+<p><strong>Request</strong></p>
+<pre><code class="http">GET https://stats.figshare.com/melbourne/breakdown/month/views/group/234&amp;sub_item=item_type&amp;sub_item_id=project&amp;start_date=2015-02-11&amp;end_date=2015-03-17
+Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+</code></pre>
+
+<p><strong>Response</strong></p>
+<pre><code class="http">HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+
+{
+  &quot;breakdown&quot;: {
+    &quot;2015-02&quot;: {
+      &quot;France&quot;: {
+        &quot;Paris&quot;: 12,
+        &quot;Montpellier&quot;: 7,
+        &quot;total&quot;: 19
+      },
+      &quot;Germany&quot;: {
+        &quot;Munich&quot;: 13,
+        &quot;Frankfurt&quot;: 2,
+        &quot;total&quot;: 15
+      }
+    },
+    &quot;2015-03&quot;: {
+      &quot;Spain&quot;: {
+        &quot;Madrid&quot;: 3,
+        &quot;Mallorca&quot;: 5,
+        &quot;total&quot;: 8
+      }
+    }
+  }
+}
+</code></pre>
+
+<h3 id="breakdown-of-institutional-statistics-with-missing-authorization">Breakdown of institutional statistics with missing authorization</h3>
+<p><strong><em>Request</em></strong></p>
+<pre><code class="http">GET https://stats.figshare.com/melbourne/breakdown/month/views/group/234
+</code></pre>
+
+<p><strong><em>Response</em></strong></p>
+<pre><code class="http">HTTP/1.1 403 Forbidden
+Content-Type: application/json; charset=UTF-8
+
+{
+  &quot;data&quot;: null,
+  &quot;code&quot;: &quot;Forbidden&quot;,
+  &quot;message&quot;: &quot;Unauthorized request&quot;
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../" class="btn btn-neutral float-right" title="Home"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../APIv2/presenters/private_link/" class="btn btn-neutral" title="Private link"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../APIv2/presenters/private_link/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
