@@ -18,29 +18,38 @@ communication is done through *https* and all data is encoded as `JSON`.
 
 ## Sending parameters
 
-Usually, endpoints that are accessed via `GET` method read their parameters 
-from the query string.  
-Endpoints that are available via `POST` and `PUT` methods read their data
-from the JSON request body.  
-In order to issue a `DELETE` request on a resource, its `id` is part of the URL.
+More often than not you need to send parameters to an endpoint. For
+`GET` requests these are usualy sent in the query string but for `POST`
+and `PUT` requsts they are usualy in the body of the request.
 
-**Examples**
+### Query string
 
-* Sending `page` parameter when listing articles:
+Query strings can contain parameters encoded as `application/x-www-form-urlencoded`. Very common for `GET` requests.
+
+**Example**: Sending `page` parameter when listing articles:
+
+```http
+GET /v2/articles?page=3 HTTP/1.1
+Host: api.figshare.com
+Authorization: token a287ab8c7ebdbe6
 ```
-    GET https://api.figshare.com/v2/articles?page=3
-```
-* Sending `search_for` parameter when searching for articles:
-```
-    POST https://api.figshare.com/v2/articles/search
-    {
-        "search_for": "figshare"
-    }
-```
-* Deleting collection with id `12345678`:
-```
-    DELETE https://api.figshare.com/v2/account/collections/12345678
-    Authorization: token my_oauth2_access_token
+
+### Request json body
+
+`POST` and `PUT` request usualy read their params from the body of the
+http request. Our API only understands `application/json` encoded
+bodies.
+
+**Example**: Sending `search_for` parameter when searching for articles:
+
+```http
+POST /v2/articles/search HTTP/1.1
+Host: api.figshare.com
+Authorization: token a287ab8c7ebdbe6
+
+{
+    "search_for": "figshare"
+}
 ```
 
 ## Resource representations
@@ -60,16 +69,39 @@ of being omitted.
 
 ## Authentication
 
-Currently API v2 only supports OAuth2 Token authentication. This can be
-sent as:
+The v2 API supports OAuth2 access tokens, issued as
+described in the [oauth documentation page](../oauth.md).
 
-header (_recommended_)
+In addition to oauth access tokens, you can also use a _personal token_
+which grants you full access to your account. Personal tokens can be
+created and managed from the [applications
+page](https://figshare.com/account/applications) at figshare.
+
+Any of these tokens can be used to authenticate and there are 2 options
+to include them in requests:
+
+### HTTP header (_recommended_)
+
+```http
+GET /v2/token HTTP/1.1
+Host: api.figshare.com
+Authorization: token ACCESS_TOKEN
+```
+
+Example with `curl`:
 
 ```bash
 curl -H "Authorization: token ACCESS_TOKEN" https://api.figshare.com/v2
 ```
 
-query string param:
+### Query param:
+
+```http
+GET /v2/token?access_token=ACCESS_TOKEN HTTP/1.1
+Host: api.figshare.com
+```
+
+Example with `curl`:
 
 ```bash
 curl https://api.figshare.com/v2?access_token=ACCESS_TOKEN
