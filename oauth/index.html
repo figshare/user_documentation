@@ -206,8 +206,21 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../oauth/">Home</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Home</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#oauth">OAuth</a></li>
+                
+                    <li><a class="toctree-l4" href="#quick-guide">Quick guide</a></li>
+                
+                    <li><a class="toctree-l4" href="#scope">Scope</a></li>
+                
+                    <li><a class="toctree-l4" href="#grant-types">Grant Types</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -222,48 +235,35 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="breakdown/">Breakdown</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Home</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#figshare-statistics-service">figshare statistics service</a></li>
-                
-                    <li><a class="toctree-l4" href="#authentication">Authentication</a></li>
-                
-                    <li><a class="toctree-l4" href="#errors">Errors</a></li>
-                
-                    <li><a class="toctree-l4" href="#endpoints">Endpoints</a></li>
-                
-            
-            </ul>
+        <a class="" href="../Stats/breakdown/">Breakdown</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="timeline/">Timeline</a>
+        <a class="" href="../Stats/">Home</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="tops/">Tops</a>
+        <a class="" href="../Stats/timeline/">Timeline</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="totals/">Totals</a>
+        <a class="" href="../Stats/tops/">Tops</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Stats/totals/">Totals</a>
         
     </li>
 
@@ -293,7 +293,7 @@
     
       
         
-          <li>Stats &raquo;</li>
+          <li>Oauth &raquo;</li>
         
       
     
@@ -307,96 +307,79 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="figshare-statistics-service">fig<strong>share</strong> statistics service</h1>
-<p>The fig<strong>share</strong> statistics service is available at https://stats.figshare.com and
-it supports retrieving information about the number of <em>views</em>, <em>downloads</em> and <em>shares</em>
-related to items available of fig<strong>share</strong>. From here on, an event is one of <em>view</em>,
-<em>download</em> or <em>share</em>.</p>
-<p>All communication with the service is done through <em>https</em> and all data is encoded as <em>json</em>.
-Optional authorization for specific endpoints is done through basic access authentication.</p>
+                <h1 id="oauth">OAuth</h1>
+<p>Since January 2016 figshare supports the <a href="http://tutorials.jenkov.com/oauth2/index.html">OAuth 2.0 Authorization Framework</a>. If you're new to OAuth make sure you have at least a basic understanding before moving on.</p>
+<h2 id="quick-guide">Quick guide</h2>
+<p>To receive a client id and secret you need to register an application in
+our system. You can easily do this from the <a href="https://figshare.com/account/applications">figshare applications
+page</a> in your account.</p>
+<h3 id="authorization-endpoint">Authorization endpoint</h3>
+<p>The authorization endpoint is located at
+<code>https://figshare.com/account/applications/authorize</code>. The endpoint
+supports both
+<a href="http://tools.ietf.org/html/rfc6749#section-4.1.1">authorization code grant</a> and <a href="http://tools.ietf.org/html/rfc6749#section-4.2">implicit grant</a>.</p>
+<h4 id="request-params">Request params</h4>
 <ul>
-<li><a href="#authentication">Authentication</a></li>
-<li><a href="#errors">Errors</a></li>
-<li><a href="#endpoints">Endpoints</a></li>
+<li><code>client_id</code></li>
+<li><code>response_type</code></li>
+<li><code>scope</code></li>
+<li><code>state</code></li>
+<li><code>redirect_uri</code></li>
 </ul>
-<h2 id="authentication">Authentication</h2>
-<p>For some specialized endpoints, access to institution specific statistics requires
-sending a <code>base64</code>-encoded pair of <code>username:password</code> in the basic authorization header:</p>
-<pre><code class="http">GET https://stats.figshare.com/lboro/top/views/article
-Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
-</code></pre>
-
-<p>Please note that the analogous endpoint for retrieving statistics for items outside
-the institutional scope, requires no authentication:</p>
-<pre><code class="http">GET https://stats.figshare.com/top/views/article
-</code></pre>
-
-<h2 id="errors">Errors</h2>
-<p>Error responses are common for all endpoints an are presented below.</p>
-<p>Each error response will have a specific HTTP status code and a JSON body with the
-following fields</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>message</td>
-<td>A human friendly message explaining the error.</td>
-</tr>
-<tr>
-<td>code</td>
-<td>A machine friendly error code, used by the dev team to identify the error.</td>
-</tr>
-<tr>
-<td>data</td>
-<td>An object containing extra information about the error.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="400-bad-request">400 Bad Request</h3>
-<p>This error response will be raised when an invalid field is sent in the parameters of the
-request or when a field is missing from the parameters of the request. Required and
-optional fields in the body are documented for each endpoint, where applicable.</p>
-<h3 id="403-forbidden">403 Forbidden</h3>
-<p>This error response is presented when attempting to retrieve information from a protected endpoint
-without the appropriate <code>Authorization</code> header.</p>
-<h3 id="404-not-found">404 Not Found</h3>
-<p>This error response is presented when attempting to access a non existing endpoint. Please note
-that it will not be raised when attempting to gather statistics for an item which doesn't
-exist on <strong>fig</strong>share, instead an appropriate empty result will be returned.</p>
-<h2 id="endpoints">Endpoints</h2>
-<p>The statistics service endpoints can be classified in 4 categories:</p>
+<h4 id="response-params">Response params</h4>
+<p>User is redirected back to <code>redirect_uri</code> with the following params
+atted to the query:</p>
+<p><strong>Success</strong> as described in <a href="http://tools.ietf.org/html/rfc6749#section-4.1.2">rfc6749#section-4.1.2</a> or <a href="http://tools.ietf.org/html/rfc6749#section-4.2.2">rfc6749#section-4.2.2</a>:</p>
 <ul>
-<li><a href="#totals">Totals</a></li>
-<li><a href="#timeline">Timeline</a></li>
-<li><a href="#breakdown">Breakdown</a></li>
-<li><a href="#tops">Tops</a></li>
+<li><code>code</code></li>
+<li><code>state</code></li>
 </ul>
-<h3 id="scope">Scope</h3>
-<p>All endpoints are applicable for the following items:</p>
+<p><strong>Error</strong> as described in <a href="http://tools.ietf.org/html/rfc6749#section-4.1.2.1">rfc6749#4.1.2.1</a>:</p>
 <ul>
-<li><strong>group</strong>: events on items inside the specified group</li>
-<li><strong>author</strong>: events on items authored by the specified user</li>
-<li><strong>article</strong>: events on the specified article</li>
-<li><strong>project</strong>: events on the specified project</li>
-<li><strong>collection</strong>: events on the specified collection</li>
+<li><code>error</code></li>
+<li><code>error_description</code></li>
 </ul>
-<h3 id="totals">Totals</h3>
-<p>This type of endpoint enables the retrieval of the total number of events for a specific item.
-More details and examples are provided <a href="totals/">here</a>.</p>
-<h3 id="timeline">Timeline</h3>
-<p>This type of endpoint enables the retrieval of a timeline of the number of events for a specific
-item, with a specified granularity. More details and examples are provided <a href="timeline/">here</a>.</p>
-<h3 id="breakdown">Breakdown</h3>
-<p>This type of endpoint enables the retrieval of a geo-location breakdown of the number of events for a specific
-item, with a specified granularity. More details and examples are provided <a href="breakdown/">here</a>.</p>
-<h3 id="tops">Tops</h3>
-<p>This type of endpoint enables the retrieval of rankings of the most viewed, downloaded or shared items,
-over a specific period of time. More details and examples are provided <a href="tops/">here</a>.</p>
+<h3 id="token-endpoint">Token endpoint</h3>
+<p>The token endpoint is located at <code>https://api.figshare.com/v2/token</code>.
+In order to receive an access token you need to make a <code>POST</code> request.</p>
+<h4 id="request">Request</h4>
+<p>Then endpoint accepts both <code>application/x-www-form-urlencoded</code> and
+<code>application/json</code> content types. It will only respond with JSON
+content.</p>
+<ul>
+<li><code>client_id</code></li>
+<li><code>client_secret</code></li>
+<li><code>grant_type</code></li>
+</ul>
+<p>and, based on the value of <code>grant_type</code>:</p>
+<ul>
+<li><code>code</code></li>
+<li><code>refresh_token</code></li>
+<li><code>username</code></li>
+<li><code>password</code></li>
+</ul>
+<h5 id="response">Response</h5>
+<p><strong>Successfull responses are always <code>200</code> and failed ones are always <code>400</code>,
+even for failed authoziration.</strong></p>
+<p><strong>Success</strong> response is a JSON as described in <a href="http://tools.ietf.org/html/rfc6749#section-5.1">http://tools.ietf.org/html/rfc6749#section-5.1</a>.</p>
+<ul>
+<li><code>access_token</code></li>
+<li><code>token_type</code></li>
+<li><code>expires_in</code></li>
+<li><code>refresh_token</code></li>
+<li><code>scope</code> - <em>not available yet</em></li>
+</ul>
+<p><strong>Error</strong> response as described in <a href="http://tools.ietf.org/html/rfc6749#section-5.2">rfc6749#section-5.2</a></p>
+<h2 id="scope">Scope</h2>
+<p>Currently the only scope available is <code>all</code> which grants full access to
+the resource owner's data. We're working on a more flexible approach.</p>
+<h2 id="grant-types">Grant Types</h2>
+<p>The supported grant types at this moment are:</p>
+<ul>
+<li><code>authorization_code</code></li>
+<li><code>refresh_token</code></li>
+<li><code>password</code></li>
+</ul>
               
             </div>
           </div>
@@ -404,10 +387,10 @@ over a specific period of time. More details and examples are provided <a href="
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="timeline/" class="btn btn-neutral float-right" title="Timeline"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Stats/breakdown/" class="btn btn-neutral float-right" title="Breakdown"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="breakdown/" class="btn btn-neutral" title="Breakdown"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../APIv2/presenters/private_link/" class="btn btn-neutral" title="Private link"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -433,10 +416,10 @@ over a specific period of time. More details and examples are provided <a href="
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="breakdown/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../APIv2/presenters/private_link/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="timeline/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../Stats/breakdown/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
