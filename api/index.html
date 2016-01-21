@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Home - Figshare User Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../styles.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Home";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Figshare User Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../oauth/">Oauth</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Search</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Search/search/">Search</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Stats</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Stats/breakdown/">Breakdown</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Stats/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Stats/timeline/">Timeline</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Stats/tops/">Tops</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Stats/totals/">Totals</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Api</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="articles/">Articles</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="categories/">Categories</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="collections/">Collections</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="file_uploader/">File uploader</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="hr_feed/">Hr feed</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Home</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#api-feature-list">API feature list</a></li>
+                
+                    <li><a class="toctree-l4" href="#sending-parameters">Sending parameters</a></li>
+                
+                    <li><a class="toctree-l4" href="#resource-representations">Resource representations</a></li>
+                
+                    <li><a class="toctree-l4" href="#authentication">Authentication</a></li>
+                
+                    <li><a class="toctree-l4" href="#errors">Errors</a></li>
+                
+                    <li><a class="toctree-l4" href="#searching-filtering-and-pagination">Searching, filtering and pagination</a></li>
+                
+                    <li><a class="toctree-l4" href="#rate-limiting">Rate limiting</a></li>
+                
+                    <li><a class="toctree-l4" href="#conditional-requests">Conditional requests</a></li>
+                
+                    <li><a class="toctree-l4" href="#cors-policy">CORS policy</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="licenses/">Licenses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="upload_example/">Upload example</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Presenters</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="presenters/article/">Article</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="presenters/author/">Author</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="presenters/category/">Category</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="presenters/collection/">Collection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="presenters/custom_field/">Custom field</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="presenters/file/">File</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="presenters/license/">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="presenters/private_link/">Private link</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Figshare User Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Api &raquo;</li>
+        
+      
+    
+    <li>Home</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="api-feature-list">API feature list</h1>
+<p>The figshare api v2 is accessible at https://api.figshare.com/v2. All
+communication is done through <em>https</em> and all data is encoded as <code>JSON</code>.</p>
+<ul>
+<li><a href="#sending-parameters">Sending parameters</a></li>
+<li><a href="#resource-representations">Resource representations</a></li>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#errors">Errors</a></li>
+<li><a href="#searching-filtering-and-pagination">Searching, filtering and pagination</a></li>
+<li><a href="#rate-limiting">Rate limiting</a></li>
+<li><a href="#conditional-requests">Conditional requests</a></li>
+<li><a href="#cors-policy">CORS policy</a></li>
+<li>Endpoints</li>
+<li><a href="collections/">collections</a></li>
+<li><a href="articles/">items</a></li>
+</ul>
+<h2 id="sending-parameters">Sending parameters</h2>
+<p>More often than not you need to send parameters to an endpoint. For
+<code>GET</code> requests these are usualy sent in the query string but for <code>POST</code>
+and <code>PUT</code> requsts they are usualy in the body of the request.</p>
+<h3 id="query-string">Query string</h3>
+<p>Query strings can contain parameters encoded as <code>application/x-www-form-urlencoded</code>. Very common for <code>GET</code> requests.</p>
+<p><strong>Example</strong>: Sending <code>page</code> parameter when listing articles:</p>
+<pre><code class="http">GET /v2/articles?page=3 HTTP/1.1
+Host: api.figshare.com
+Authorization: token a287ab8c7ebdbe6
+</code></pre>
+
+<h3 id="request-json-body">Request json body</h3>
+<p><code>POST</code> and <code>PUT</code> request usualy read their params from the body of the
+http request. Our API only understands <code>application/json</code> encoded
+bodies.</p>
+<p><strong>Example</strong>: Sending <code>search_for</code> parameter when searching for articles:</p>
+<pre><code class="http">POST /v2/articles/search HTTP/1.1
+Host: api.figshare.com
+Authorization: token a287ab8c7ebdbe6
+
+{
+    &quot;search_for&quot;: &quot;figshare&quot;
+}
+</code></pre>
+
+<h2 id="resource-representations">Resource representations</h2>
+<p>Resources can be presented differently across endpoints. Usually
+endpoints that return a list of resources will send a <em>lighter</em>
+representation of each resource while an endpoint for an individual
+resource will use a more <em>detailed</em> and <em>complete</em> representation.</p>
+<p>Representations for each resource type are documented <a href="https://github.com/figshare/user_documentation/tree/master/APIv2/presenters">here</a> and the
+documentation for each endpoint will specify what kind of representation
+it's using.</p>
+<p>Blank resource fields are included in the representation as <code>null</code> instead
+of being omitted.</p>
+<h2 id="authentication">Authentication</h2>
+<p>The v2 API supports OAuth2 access tokens, issued as
+described in the <a href="../oauth/">oauth documentation page</a>.</p>
+<p>In addition to oauth access tokens, you can also use a <em>personal token</em>
+which grants you full access to your account. Personal tokens can be
+created and managed from the <a href="https://figshare.com/account/applications">applications
+page</a> at figshare.</p>
+<p>Any of these tokens can be used to authenticate and there are 2 options
+to include them in requests:</p>
+<h3 id="http-header-recommended">HTTP header (<em>recommended</em>)</h3>
+<pre><code class="http">GET /v2/token HTTP/1.1
+Host: api.figshare.com
+Authorization: token ACCESS_TOKEN
+</code></pre>
+
+<p>Example with <code>curl</code>:</p>
+<pre><code class="bash">curl -H &quot;Authorization: token ACCESS_TOKEN&quot; https://api.figshare.com/v2
+</code></pre>
+
+<h3 id="query-param">Query param:</h3>
+<pre><code class="http">GET /v2/token?access_token=ACCESS_TOKEN HTTP/1.1
+Host: api.figshare.com
+</code></pre>
+
+<p>Example with <code>curl</code>:</p>
+<pre><code class="bash">curl https://api.figshare.com/v2?access_token=ACCESS_TOKEN
+</code></pre>
+
+<h2 id="errors">Errors</h2>
+<p>Endpoints can respond with error responses. The common error responses
+for all endpoints are presented below and errors specific to individual
+enpoints are documented along with the endpoint.</p>
+<p>Each error response will have a specific HTTP status code and a JSON
+body with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>A human friendly message explaining the error.</td>
+</tr>
+<tr>
+<td>code</td>
+<td>A machine friendly error code, used by the dev team to identify the error.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>An object containing extra information about the error. Documented for each error.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="404-not-found">404 Not found</h3>
+<p>Trying to access resources that do not exist, will trigger this response
+from the API.</p>
+<p>This is also returned if you try to access a resource on which you don't
+have a <code>read</code> permission.</p>
+<h3 id="400-bad-request">400 Bad request</h3>
+<p>Sending a body that cannot be parsed as JSON will result in  this error
+response.</p>
+<h3 id="422-unprocessable-entity">422 Unprocessable Entity</h3>
+<p>Sending an invalid data structure in the body will trigger this error.
+Invalid data can be any of the following:</p>
+<ul>
+<li>missing field</li>
+<li>invalid value for a field</li>
+<li>any other rules specific to an endpoint</li>
+</ul>
+<h3 id="401-unauthorized">401 Unauthorized</h3>
+<p>This error is returned when the authorization was unsuccessfull. This can
+be either due to:</p>
+<ul>
+<li>missing authorization info in the request</li>
+<li>invalid or unknown authorization info</li>
+<li>expired or disabled account</li>
+</ul>
+<h3 id="403-forbidden">403 Forbidden</h3>
+<p>This response is presented whenever you try to do something which is not
+permitted for your current authorization.
+authorization info</p>
+<h2 id="searching-filtering-and-pagination">Searching, filtering and pagination</h2>
+<p>Endpoints that list items usually support any of the following features:</p>
+<ul>
+<li>pagination</li>
+<li>ordering</li>
+<li>searching</li>
+<li>filtering</li>
+</ul>
+<h4 id="pagination-params">Pagination params</h4>
+<p>Pagination can be done by specifing either <code>page</code> and <code>page_size</code> params
+pair or the <code>limit</code> and <code>offset</code> params pair. If confusing combinations
+appear in a request, a <code>422 Unprocessable Entity</code> will be returned.</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>type</th>
+<th>default</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page</code></td>
+<td>int</td>
+<td>1</td>
+<td>Page number</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td>int</td>
+<td>10</td>
+<td>The number of results included on a page</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>int</td>
+<td>10</td>
+<td>Number of results included on a page</td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td>int</td>
+<td>0</td>
+<td>Where to start the listing(the offset of the first result)</td>
+</tr>
+</tbody>
+</table>
+<p>Please note that there's a limit on the maximum offset or page you can require.
+The offset is currently limited at 1000 and if exceeded a <code>422 Unprocessable
+Entity</code> error will be returned. For pages, it depends on the <code>page_size</code>
+but for a <code>page_size</code> of <code>10</code>, the maximum page would be <code>1000 / 10 = 100</code></p>
+<h4 id="ordering-params">Ordering params</h4>
+<p>Ordering is done via the <code>order</code> and <code>order_direction</code> params.</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>type</th>
+<th>default</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>order</code></td>
+<td>string</td>
+<td><em>varies</em></td>
+<td>The field by which to order. Default varies by endpoint/resource. For articles and collections, valid values are: <code>published_date</code> and <code>modified_date</code>.</td>
+</tr>
+<tr>
+<td><code>order_direction</code></td>
+<td>string</td>
+<td><em>varies</em></td>
+<td>Only <code>asc</code> and <code>desc</code> values are supported. Default varies by endpoint/resource</td>
+</tr>
+</tbody>
+</table>
+<h4 id="searching-params">Searching params</h4>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>search_for</code></td>
+<td>string</td>
+<td>Search endpoints require this field.  Usually min length is 3</td>
+</tr>
+</tbody>
+</table>
+<h4 id="filtering-params">Filtering params</h4>
+<p>Some endpoints allow filtering results. Filters are extra fields in the
+body and the documentation for each endpoint will present them in detail.</p>
+<h2 id="rate-limiting">Rate limiting</h2>
+<p>Not implemented at this point.</p>
+<h2 id="conditional-requests">Conditional requests</h2>
+<p>Most responses should return an ETag header and a Last-Modified header.
+You can use the values of these headers to create conditional requests.
+We encourage  to use these whenever possible.</p>
+<h2 id="cors-policy">CORS policy</h2>
+<p>The API supports CORS for AJAX requests from any origin.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="licenses/" class="btn btn-neutral float-right" title="Licenses"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="hr_feed/" class="btn btn-neutral" title="Hr feed"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="hr_feed/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="licenses/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

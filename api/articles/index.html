@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Articles - Figshare User Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../styles.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Articles";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Figshare User Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../oauth/">Oauth</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Search</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Search/search/">Search</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Stats</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/breakdown/">Breakdown</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/timeline/">Timeline</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/tops/">Tops</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/totals/">Totals</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Api</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Articles</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#article-endpoints">Article endpoints</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#article-public-endpoints">Article public endpoints</a></li>
+                
+                    <li><a class="toctree-l4" href="#list-public-articles">List public articles</a></li>
+                
+                    <li><a class="toctree-l4" href="#search-public-articles">Search public articles</a></li>
+                
+                    <li><a class="toctree-l4" href="#read-public-article">Read public article</a></li>
+                
+                    <li><a class="toctree-l4" href="#article-versions-subsection">Article versions subsection</a></li>
+                
+                    <li><a class="toctree-l4" href="#read-public-article-version">Read public article version</a></li>
+                
+                    <li><a class="toctree-l4" href="#read-public-article-version-embargo">Read public article version embargo</a></li>
+                
+                    <li><a class="toctree-l4" href="#read-public-article-version-confidentiality">Read public article version confidentiality</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#article-private-endpoints-oauth-required">Article private endpoints (OAuth required)</a></li>
+                
+                    <li><a class="toctree-l4" href="#get-own-articles">Get own articles</a></li>
+                
+                    <li><a class="toctree-l4" href="#search-own-articles">Search own articles</a></li>
+                
+                    <li><a class="toctree-l4" href="#create-a-new-article">Create a new article</a></li>
+                
+                    <li><a class="toctree-l4" href="#read-own-article">Read own article</a></li>
+                
+                    <li><a class="toctree-l4" href="#update-article">Update article</a></li>
+                
+                    <li><a class="toctree-l4" href="#delete-own-private-article">Delete own private article</a></li>
+                
+                    <li><a class="toctree-l4" href="#reserve-doi-for-article">Reserve DOI for article**</a></li>
+                
+                    <li><a class="toctree-l4" href="#publish-article">Publish article</a></li>
+                
+                    <li><a class="toctree-l4" href="#article-authors-subsection">article authors subsection</a></li>
+                
+                    <li><a class="toctree-l4" href="#article-categories-subsection">article categories subsection</a></li>
+                
+                    <li><a class="toctree-l4" href="#article-files-subsection">Article files subsection</a></li>
+                
+                    <li><a class="toctree-l4" href="#article-private-links-subsection">Article private links subsection</a></li>
+                
+                    <li><a class="toctree-l4" href="#article-embargo-subsection">Article embargo subsection</a></li>
+                
+                    <li><a class="toctree-l4" href="#article-confidentiality-subsection">Article confidentiality subsection</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../categories/">Categories</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../collections/">Collections</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_uploader/">File uploader</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../hr_feed/">Hr feed</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../licenses/">Licenses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../upload_example/">Upload example</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Presenters</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/article/">Article</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/author/">Author</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/category/">Category</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/collection/">Collection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/custom_field/">Custom field</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/file/">File</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/license/">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/private_link/">Private link</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Figshare User Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Api &raquo;</li>
+        
+      
+    
+    <li>Articles</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="article-endpoints">Article endpoints</h1>
+<ul>
+<li><strong><a href="#article-public-endpoints">Public</a></strong></li>
+<li><a href="#list-public-articles">list public articles</a></li>
+<li><a href="#search-public-articles">search public articles</a></li>
+<li><a href="#read-public-article">read public article</a></li>
+<li>
+<p><a href="#article-versions-subsection">article versions</a></p>
+<ul>
+<li><a href="#list-versions">list versions</a></li>
+<li><a href="#read-public-article-version">read public article version</a></li>
+<li><a href="#read-public-article-version-embargo">read public article version embargo</a></li>
+<li><a href="#read-public-article-version-confidentiality">read public article version confidentiality</a></li>
+</ul>
+</li>
+<li>
+<p><strong><a href="#article-private-endpoints-oauth-required">Private</a></strong></p>
+</li>
+<li><a href="#get-own-articles">get own articles</a></li>
+<li><a href="#search-own-articles">search own articles</a></li>
+<li><a href="#create-a-new-article">create a new article</a></li>
+<li><a href="#read-own-article">read own article</a></li>
+<li><a href="#update-article">update article</a></li>
+<li><a href="#delete-own-private-article">delete own private article</a></li>
+<li><a href="#reserve-doi-for-article">reserve doi for article</a></li>
+<li><a href="#publish-article">publish article</a></li>
+<li><a href="#article-authors-subsection">article authors</a><ul>
+<li><a href="#list-authors">list authors</a></li>
+<li><a href="#associate-new-authors-with-the-article">associate new authors</a></li>
+<li><a href="#associate-and-replace-existing-authors-of-this-article">associate and replace authors</a></li>
+<li><a href="#de-associate-author-from-article">de-associate author</a></li>
+</ul>
+</li>
+<li><a href="#article-categories-subsection">article categories</a><ul>
+<li><a href="#list-categories">list categories</a></li>
+<li><a href="#associate-new-categories-with-the-article">associate new categories</a></li>
+<li><a href="#associate-and-replace-existing-categories-of-this-article">associate and replace categories</a></li>
+<li><a href="#de-associate-category-from-article">de-associate category</a></li>
+</ul>
+</li>
+<li><a href="#article-files-subsection">article files</a><ul>
+<li><a href="#list-files">list files</a></li>
+<li><a href="#initiate-new-file-upload-within-the-article">initiate new file upload</a></li>
+<li><a href="#upload-file-content">upload file content</a></li>
+<li><a href="#complete-file-upload">complete file upload</a></li>
+<li><a href="#view-file-information">view file information</a></li>
+<li><a href="#delete-file--from-article">delete file from article</a></li>
+</ul>
+</li>
+<li><a href="#article-private-links-subsection">article private links</a><ul>
+<li><a href="#list-private-links">list private links</a></li>
+<li><a href="#create-new-private-link-for-this-article">create new private link</a></li>
+<li><a href="#update-existing-private-link-for-this--article">update existing private link</a></li>
+<li><a href="#disabledelete-private-link-for-article">disable/delete private link</a></li>
+</ul>
+</li>
+<li><a href="#article-embargo-subsection">article embargo</a><ul>
+<li><a href="#view-embargo-settings">view embargo settings</a></li>
+<li><a href="#update-embargo-settings">update embargo settings</a></li>
+<li><a href="#delete-embargo-settings">delete embargo settings</a></li>
+</ul>
+</li>
+<li><a href="#article-confidentiality-subsection">article confidentiality</a><ul>
+<li><a href="#view-confidentiality-settings">view confidentiality settings</a></li>
+<li><a href="#update-confidentiality-settings">update confidentiality settings</a></li>
+<li><a href="#delete-confidentiality-settings">delete confidentiality settings</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="article-public-endpoints">Article public endpoints</h1>
+<h2 id="list-public-articles">List public articles</h2>
+<pre><code>GET /v2/articles
+</code></pre>
+<p><strong>Input</strong></p>
+<p>Accepts <code>pagination</code>, <code>sorting</code>, <code>filtering</code> params. See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<p>Accepted filters:</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>type</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>institution</code></td>
+<td>int</td>
+<td>only return collections from this institution</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td>int</td>
+<td>only return collections from this group</td>
+</tr>
+<tr>
+<td><code>published_since</code></td>
+<td>date(ISO 8601)</td>
+<td>Only collections published after the date</td>
+</tr>
+<tr>
+<td><code>modified_since</code></td>
+<td>date(ISO 8601)</td>
+<td>Only collections published after the date</td>
+</tr>
+</tbody>
+</table>
+<p>Defaults:</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>order</code></td>
+<td><code>published_date</code></td>
+</tr>
+<tr>
+<td><code>order_direction</code></td>
+<td><code>desc</code></td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td><code>10</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response (list of articles)</strong>
+Status: 200 OK</p>
+<p>[<a href="../presenters/article/#articlepresenter">ArticlePresenter</a>]</p>
+<p><strong>Error Response (Max page number reached)</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Max page reached. Please narrow down your search&quot;}
+</code></pre>
+
+<h2 id="search-public-articles">Search public articles</h2>
+<pre><code>POST /v2/articles/search
+</code></pre>
+<p><strong>Input</strong></p>
+<p>Accepts <code>pagination</code>, <code>sorting</code>, <code>filtering</code> and <code>search</code> params. See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<p>Filters and defaults are the same as for  the
+<a href="#list-public-articles">list public articles</a></p>
+<p><strong>Success Response (list of articles)</strong>
+Status: 200 OK</p>
+<p>[<a href="../presenters/article/#articlepresenter">ArticlePresenter</a>]</p>
+<p><strong>Error Response (invalid input)</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Invalid value received for order&quot;}
+</code></pre>
+
+<p><strong>Error Response (Max page number reached)</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Max page reached. Please narrow down your search&quot;}
+</code></pre>
+
+<h2 id="read-public-article">Read public article</h2>
+<pre><code>GET /v2/articles/{id}
+</code></pre>
+<p><strong>Success Response (article object)</strong>
+Status: 200 OK</p>
+<p><a href="../presenters/article/#articlepresenterl2">ArticlePresenter.L2</a></p>
+<p><strong>Error Response (article not found)</strong></p>
+<pre><code>Status: 404 Not Found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Article with specified ID does not exist&quot;}
+</code></pre>
+
+<h2 id="article-versions-subsection">Article versions subsection</h2>
+<h3 id="list-versions">List versions</h3>
+<pre><code>GET /v2/articles/{id}/versions
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: 200 OK</p>
+<p>[<a href="../presenters/article/#articleversionpresenter">ArticleVersionPresenter</a>]</p>
+<p><strong>Error Response (article ID not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;article with ID not found&quot;}
+</code></pre>
+
+<h2 id="read-public-article-version">Read public article version</h2>
+<p>Read public article that has {id} and {v_number}</p>
+<pre><code>GET /v2/articles/{id}/versions/{v_number}
+</code></pre>
+<p><strong>Success Response (article object for specified version)</strong></p>
+<p>Status: 200 OK</p>
+<p><a href="../presenters/article/#articlepresenterl2">ArticlePresenter.L2</a></p>
+<p><strong>Error Response (Version not found)</strong></p>
+<pre><code>Status: 404 Not Found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Version does not exist&quot;}
+</code></pre>
+
+<h2 id="read-public-article-version-embargo">Read public article version embargo</h2>
+<p>Read public article embargo that has {id} and {v_number}</p>
+<pre><code>GET /v2/articles/{id}/versions/{v_number}/embargo
+</code></pre>
+<p><strong>Success Response (article object for specified version)</strong></p>
+<p>Status: 200 OK</p>
+<p><a href="../presenters/article/#articleembargopresenter">ArticleEmbargoPresenter</a></p>
+<p><strong>Error Response (Version not found)</strong></p>
+<pre><code>Status: 404 Not Found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Version does not exist&quot;}
+</code></pre>
+
+<h2 id="read-public-article-version-confidentiality">Read public article version confidentiality</h2>
+<p>Read public article confidentiality that has {id} and {v_number}</p>
+<pre><code>GET /v2/articles/{id}/versions/{v_number}/confidentiality
+</code></pre>
+<p><strong>Success Response (article object for specified version)</strong></p>
+<p>Status: 200 OK</p>
+<p><a href="../presenters/article/#articleconfidentialitypresenter">ArticleConfidentialityPresenter</a></p>
+<p><strong>Error Response (Version not found)</strong></p>
+<pre><code>Status: 404 Not Found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Version does not exist&quot;}
+</code></pre>
+
+<h1 id="article-private-endpoints-oauth-required">Article private endpoints (OAuth required)</h1>
+<h2 id="get-own-articles">Get own articles</h2>
+<pre><code>GET /v2/account/articles
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page</code></td>
+<td><code>int</code></td>
+<td>Show specified page only. Default is 1. Max page is 100. To see more then 100 pages, the search endpoint must be used to narrow down the results</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td><code>int</code></td>
+<td>How many entries per page to show. Default is 10.</td>
+</tr>
+</tbody>
+</table>
+<p><em>OR</em></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>offset</code></td>
+<td><code>int</code></td>
+<td>The first entry to return. The offset of the initial entry is 0 (not 1).</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td><code>int</code></td>
+<td>The number of returned entries. Default is 10.</td>
+</tr>
+</tbody>
+</table>
+<p>By default the items are sorted by <code>created_date</code>, not <code>published_date</code>.</p>
+<p><strong>Success Response (list of articles)</strong>
+Status: 200 OK</p>
+<p>[<a href="../presenters/article/#articlepresenter">ArticlePresenter</a>]</p>
+<p><strong>Error Response (Max page number reached)</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Max page reached. Please narrow down your search&quot;}
+</code></pre>
+
+<h2 id="search-own-articles">Search own articles</h2>
+<pre><code>POST /v2/account/articles/search
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page</code></td>
+<td><code>int</code></td>
+<td>Show specified page only. Default is 1. Max is 100</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td><code>int</code></td>
+<td>How many entries per page to show. Default is 10. Max is 100</td>
+</tr>
+<tr>
+<td><code>search_for</code></td>
+<td><code>str</code></td>
+<td>(query)String to perform search for. Minimum of 4 characters</td>
+</tr>
+<tr>
+<td><code>published_since</code></td>
+<td><code>date</code></td>
+<td>(filter)Narrow search  to articles published since the specified date</td>
+</tr>
+<tr>
+<td><code>modified_since</code></td>
+<td><code>date</code></td>
+<td>(filter)Narrow search  to articles modified since the specified date</td>
+</tr>
+<tr>
+<td><code>institution</code></td>
+<td><code>int</code></td>
+<td>(filter)Filter results for this instritution only</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td><code>int</code></td>
+<td>(filter)Filter results for this institution group only</td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td><code>str</code></td>
+<td>(sort)Perform a sort using the <code>order</code>. Valid values are: <code>published_date</code>, <code>modified_date</code></td>
+</tr>
+<tr>
+<td><code>order_direction</code></td>
+<td><code>str</code></td>
+<td>(sort)How to sort. Descending or ascending. Valid values are: <code>desc</code>, <code>asc</code></td>
+</tr>
+</tbody>
+</table>
+<p>Alternatively, instead of <code>page</code> and <code>page_size</code>, one can use the following params for pagination:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>offset</code></td>
+<td><code>int</code></td>
+<td>The first entry to return. The offset of the initial entry is 0 (not 1).</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td><code>int</code></td>
+<td>The number of returned entries. Default is 10.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response (list of articles)</strong></p>
+<pre><code>Status: 200 OK
+</code></pre>
+
+<p>[<a href="../presenters/article/#articlepresenter">ArticlePresenter</a>]</p>
+<p><strong>Error Response (invalid input)</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Invalid value received for order&quot;}
+</code></pre>
+
+<p><strong>Error Response (Max page number reached)</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Max page reached. Please narrow down your search&quot;}
+</code></pre>
+
+<h2 id="create-a-new-article">Create a new article</h2>
+<pre><code>POST /v2/account/articles
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>str</code></td>
+<td>The title for this article</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>str</code></td>
+<td>The article description. In a publisher case, usually this is the remote article description</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td><code>array of str</code></td>
+<td>List of tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])</td>
+</tr>
+<tr>
+<td><code>references</code></td>
+<td><code>array of str</code></td>
+<td>List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])</td>
+</tr>
+<tr>
+<td><code>categories</code></td>
+<td><code>array of int</code></td>
+<td>List of category ids to be associated with the article(e.g [1, 23, 33, 66])</td>
+</tr>
+<tr>
+<td><code>authors</code></td>
+<td><code>array</code></td>
+<td>List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more then 10 authors. For adding more authors use the specific authors endpoint</td>
+</tr>
+<tr>
+<td><code>custom_fields</code></td>
+<td><code>dict</code></td>
+<td>List of key, values pairs to be associated with the article</td>
+</tr>
+<tr>
+<td><code>defined_type</code></td>
+<td><code>str</code></td>
+<td>Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'metadata']</td>
+</tr>
+<tr>
+<td><code>funding</code></td>
+<td><code>str</code></td>
+<td>Grant number or funding authority</td>
+</tr>
+<tr>
+<td><code>license</code></td>
+<td><code>int</code></td>
+<td>License id for this article. Licenses listing endpoints are described <a href="../licenses/">here</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 201 Created
+Location: https://api.figshare.com/v2/account/articles/123
+</code></pre>
+
+<h2 id="read-own-article">Read own article</h2>
+<pre><code>GET /v2/account/articles/{id}
+</code></pre>
+<p><strong>Success Response</strong>
+Status: 200 OK</p>
+<p><a href="../presenters/article/#articlepresenterl2">ArticlePresenterL2</a></p>
+<p><strong>Error Response (Id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Article not found&quot;}
+</code></pre>
+
+<h2 id="update-article">Update article</h2>
+<pre><code>PUT /v2/account/articles/{id}
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>str</code></td>
+<td>The title for this article - <code>mandatory</code></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>str</code></td>
+<td>The article description. In a publisher case, usually this is the remote article description</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td><code>array of str</code></td>
+<td>List of tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])</td>
+</tr>
+<tr>
+<td><code>references</code></td>
+<td><code>array of str</code></td>
+<td>List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])</td>
+</tr>
+<tr>
+<td><code>categories</code></td>
+<td><code>array of int</code></td>
+<td>List of category ids to be associated with the article(e.g [1, 23, 33, 66])</td>
+</tr>
+<tr>
+<td><code>authors</code></td>
+<td><code>array</code></td>
+<td>List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more then 10 authors. For adding more authors use the specific authors endpoint</td>
+</tr>
+<tr>
+<td><code>custom_fields</code></td>
+<td><code>dict</code></td>
+<td>List of key, values pairs to be associated with the article</td>
+</tr>
+<tr>
+<td><code>defined_type</code></td>
+<td><code>str</code></td>
+<td>Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'stub', 'metadata']</td>
+</tr>
+<tr>
+<td><code>funding</code></td>
+<td><code>str</code></td>
+<td>Grant number or funding authority</td>
+</tr>
+<tr>
+<td><code>license</code></td>
+<td><code>int</code></td>
+<td>License id for this article. Licenses listing endpoints are described <a href="../licenses/">here</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 205 Reset Content
+Location: https://api.figshare.com/v2/account/articles/123
+</code></pre>
+
+<p><strong>Error Response (Id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">    {&quot;message&quot;: &quot;Article not found&quot;}
+</code></pre>
+
+<h2 id="delete-own-private-article">Delete own private article</h2>
+<pre><code>DELETE /v2/account/articles/{id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 204 No Content
+</code></pre>
+
+<p><strong>Error Response (Id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">    {&quot;message&quot;: &quot;article not found&quot;}
+</code></pre>
+
+<h2 id="reserve-doi-for-article">Reserve DOI for article**</h2>
+<pre><code>POST /v2/account/articles/{id}/reserve_doi
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 200 OK
+</code></pre>
+
+<pre><code class="json">{&quot;doi&quot;: &quot;10.5072/FK2.FIGSHARE.20345&quot;}
+</code></pre>
+
+<p><strong>Error Response (Id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;article not found&quot;}
+</code></pre>
+
+<h2 id="publish-article">Publish article</h2>
+<pre><code>POST /v2/account/articles/{id}/publish
+</code></pre>
+<p><strong>Notes</strong>: 
+- If the whole article is under <em>embargo</em>, it will not be published immediatly, but when the embargo expires or is lifted.<br />
+- When an article is published, a new public version will be generated.
+Any further updates to the article will affect the private article data.
+In order to make these changes publicly visible, an explicit publish operation is needed.</p>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 201 Created
+Location: https://api.figshare.com/v2/articles/123
+</code></pre>
+
+<p><strong>Error Response (Id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;article not found&quot;}
+</code></pre>
+
+<p><strong>Error Response (Missing mandatory fields for publish (e.g authors))</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Missing mandatory field for publication - authors&quot;}
+</code></pre>
+
+<h2 id="article-authors-subsection">article authors subsection</h2>
+<h3 id="list-authors">List authors</h3>
+<pre><code>GET /v2/account/articles/{id}/authors
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: 200 OK</p>
+<p>[<a href="../presenters/author/#authorpresenter">AuthorPresenter</a>]</p>
+<p><strong>Error Response (article Id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;article not found&quot;}
+</code></pre>
+
+<h3 id="associate-new-authors-with-the-article">Associate new authors with the article</h3>
+<pre><code>POST /v2/account/articles/{id}/authors
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authors</code></td>
+<td><code>array</code></td>
+<td>List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more then 10 authors. For adding more authors use the specific authors endpoint</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 205 Reset Content
+Location: https://api.figshare.com/v2/account/articles/123/authors
+</code></pre>
+
+<p><strong>Error Response (Author(s) id not found)</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Author with ID not found&quot;}
+</code></pre>
+
+<h3 id="associate-and-replace-existing-authors-of-this-article">Associate and replace existing authors of this article</h3>
+<pre><code>PUT /v2/account/articles/{id}/authors
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authors</code></td>
+<td><code>array</code></td>
+<td>List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more then 10 authors. For adding more authors use the specific authors endpoint</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 205 Reset Content
+Location: https://api.figshare.com/v2/account/articles/123/authors
+</code></pre>
+
+<p><strong>Error Response (Author(s) id not found)</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Author with ID  not found&quot;}
+</code></pre>
+
+<h3 id="de-associate-author-from-article">De-associate author from article</h3>
+<pre><code>DELETE /v2/account/articles/{id}/authors/{author_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 204 No Content
+</code></pre>
+
+<p><strong>Error Response (Author(s) id not found)</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Author with ID  not found&quot;}
+</code></pre>
+
+<h2 id="article-categories-subsection">article categories subsection</h2>
+<h3 id="list-categories">List categories</h3>
+<pre><code>GET /v2/account/articles/{id}/categories
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: 200 OK</p>
+<p>[<a href="../presenters/category/#categorypresenter">CategoryPresenter</a>]</p>
+<h3 id="associate-new-categories-with-the-article">Associate new categories with the article</h3>
+<pre><code>POST /v2/account/articles/{id}/categories
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>categories</code></td>
+<td><code>array of int</code></td>
+<td>List of new categories to be assosciated with the article</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<p>Status: 205 Reset Content</p>
+<p><a href="../presenters/category/#categorypresenter">CategoryPresenter</a></p>
+<p><strong>Error Response (Category ID not found)</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Category with ID not found&quot;}
+</code></pre>
+
+<h3 id="associate-and-replace-existing-categories-of-this-article">Associate and replace existing categories of this article</h3>
+<pre><code>PUT /v2/account/articles/{id}/categories
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>categories</code></td>
+<td><code>array of int</code></td>
+<td>List of categories to be assosciated with the article. Existing categories will be replaced</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<p>Status: 205 Reset Content</p>
+<p><a href="../presenters/category/#categorypresenter">CategoryPresenter</a></p>
+<p><strong>Error Response (Catgeory ID not found)</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Category with ID  not found&quot;}
+</code></pre>
+
+<h3 id="de-associate-category-from-article">De-associate category from article</h3>
+<pre><code>DELETE /v2/account/articles/{id}/categories/{category_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 204 No Content
+</code></pre>
+
+<p><strong>Error Response (Category id not found)</strong></p>
+<pre><code>Status: 404 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Category with ID  not found&quot;}
+</code></pre>
+
+<h2 id="article-files-subsection">Article files subsection</h2>
+<h3 id="steps-to-upload-file">Steps to upload file</h3>
+<ul>
+<li><a href="#initiate-new-file-upload-within-the-article">Initiate file upload</a> - this request returns an endpoint with file data</li>
+<li>Send a <code>GET</code> request to the <a href="../file_uploader/">Uploader Service</a> with the <code>upload_url</code> and <code>upload_token</code> provided in previous step and receive the number of file parts</li>
+<li>Upload / Delete / Retry uploading file parts until all parts are uploaded successfully</li>
+<li><a href="#complete-file-upload">Complete file upload</a></li>
+</ul>
+<h3 id="list-files">List files</h3>
+<pre><code>GET /v2/account/articles/{id}/files
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: 200 OK</p>
+<p>[<a href="../presenters/file/#filepresenter">FilePresenter</a>]</p>
+<h3 id="initiate-new-file-upload-within-the-article">Initiate new file upload within the article</h3>
+<pre><code>POST /v2/account/articles/{id}/files
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>link</code></td>
+<td><code>str</code></td>
+<td>Url for an existing file that will not be uploaded on figshare</td>
+</tr>
+</tbody>
+</table>
+<p><em>or</em></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>md5</code></td>
+<td><code>str</code></td>
+<td>MD5 sum pre computed on the client side</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>str</code></td>
+<td>File name including the exception</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td><code>int</code></td>
+<td>File size in bytes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 201 Created
+Location: /v2/account/articles/{id}/files/{file_id}
+</code></pre>
+
+<h3 id="upload-file-content">Upload file content</h3>
+<p><a href="../file_uploader/">Figshare Upload Service</a></p>
+<h3 id="complete-file-upload">Complete file upload</h3>
+<pre><code>POST /v2/account/articles/{id}/files/{file_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 202 Accepted
+</code></pre>
+
+<p><strong>Error Response (File_id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;File not found&quot;}
+</code></pre>
+
+<h3 id="view-file-information">View file information</h3>
+<pre><code>GET /v2/account/articles/{id}/files/{file_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: 200 OK</p>
+<p><a href="../presenters/file/#filepresenterl1">FilePresenter.L1</a></p>
+<p><strong>Error Response (File_id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;File not found&quot;}
+</code></pre>
+
+<h3 id="delete-file-from-article">Delete file  from article</h3>
+<pre><code>DELETE /v2/account/articles/{id}/files/{file_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 204 No Content
+</code></pre>
+
+<p><strong>Error Response (File_id not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;File not found&quot;}
+</code></pre>
+
+<h2 id="article-private-links-subsection">Article private links subsection</h2>
+<h3 id="list-private-links">List private links</h3>
+<pre><code>GET /v2/account/articles/{id}/private_links
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: 200 OK</p>
+<p>[<a href="../presenters/private_link/#privatelinkpresenter">PrivateLinkPresenter</a>]</p>
+<h3 id="create-new-private-link-for-this-article">Create new private link for this article</h3>
+<pre><code>POST /v2/account/articles/{id}/private_links
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expires_date</code></td>
+<td><code>date</code></td>
+<td>Date when this private link should expire - optional.  By default private links expire in 365 days.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 201 OK
+Location: https://api.figshare.com/v2/account/articles/123/private_links/kjkjhg234k53o4i45p2o3i456..
+</code></pre>
+
+<h3 id="update-existing-private-link-for-this-article">Update existing private link for this  article</h3>
+<pre><code>PUT /v2/account/articles/{id}/private_links/{private_link_token}
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expires_date</code></td>
+<td><code>date</code></td>
+<td>Date when this private link should expire - optional. By default private links expire in 365 days.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 205 Reset Content
+Location: https://api.figshare.com/v2/account/articles/123/private_links/kjkjhg234k53o4i45p2o3i456..
+</code></pre>
+
+<p><strong>Error Response (Private Link ID not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Private Link with ID  not found&quot;}
+</code></pre>
+
+<h3 id="disabledelete-private-link-for-article">Disable/delete private link for article</h3>
+<pre><code>DELETE /v2/account/articles/{id}/private_links/{private_link_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 204 No Content
+</code></pre>
+
+<p><strong>Error Response (Private link ID not found)</strong></p>
+<pre><code>Status: 404 Not found
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Private link with ID not in article&quot;}
+</code></pre>
+
+<h2 id="article-embargo-subsection">Article embargo subsection</h2>
+<h3 id="view-embargo-settings">View embargo settings</h3>
+<pre><code>GET /v2/account/articles/{id}/embargo
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: 200 OK</p>
+<p><a href="../presenters/article/#articleembargopresenter">ArticleEmbargoPresenter</a></p>
+<h3 id="update-embargo-settings">Update embargo settings</h3>
+<pre><code>PUT /v2/account/articles/{id}/embargo
+</code></pre>
+<p><strong>Note</strong>: setting an article under <em>whole embargo</em> does not imply that the article will be published when the embargo will expire. You must explicitly call the <strong>publish</strong> endpoint to enable this functionality.</p>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>is_embargoed</code></td>
+<td><code>bool</code></td>
+<td>Confidentiality status. True, False</td>
+</tr>
+<tr>
+<td><code>embargo_type</code></td>
+<td><code>str</code></td>
+<td>Embargo can be enabled at the <code>article</code> or the <code>file</code> level. Possible values: <code>article</code>, <code>file</code></td>
+</tr>
+<tr>
+<td><code>embargo_date</code></td>
+<td><code>date</code></td>
+<td>Date when the embargo expires and the article gets published</td>
+</tr>
+<tr>
+<td><code>embargo_reason</code></td>
+<td><code>str</code></td>
+<td>Reason for setting embargo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 205 Reset Content
+Location: http://api.figshare.com/v2/account/articles/2000688/embargo
+</code></pre>
+
+<p><strong>Input error</strong></p>
+<pre><code>Status: 400 Bad request
+</code></pre>
+
+<pre><code class="json">{&quot;message&quot;: &quot;Invalid expires date&quot;}
+</code></pre>
+
+<h3 id="delete-embargo-settings">Delete embargo settings</h3>
+<pre><code>DELETE /v2/account/articles/{id}/embargo
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 204 No Content
+</code></pre>
+
+<h2 id="article-confidentiality-subsection">Article confidentiality subsection</h2>
+<h3 id="view-confidentiality-settings">View confidentiality settings</h3>
+<pre><code>GET /v2/account/articles/{id}/confidentiality
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: 200 OK</p>
+<p><a href="../presenters/article/#articleconfidentialitypresenter">ArticleConfidentialityPresenter</a></p>
+<h3 id="update-confidentiality-settings">Update confidentiality settings</h3>
+<pre><code>PUT /v2/account/articles/{id}/confidentiality
+</code></pre>
+<p><strong>Input</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reason</code></td>
+<td><code>str</code></td>
+<td>Confidentiality reason</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 200 OK
+Location: http://api.figshare.com/v2/account/articles/2000688/confidentiality
+</code></pre>
+
+<h3 id="delete-confidentiality-settings">Delete confidentiality settings</h3>
+<pre><code>DELETE /v2/account/articles/{id}/confidentiality
+</code></pre>
+<p><strong>Success Response</strong></p>
+<pre><code>Status: 204 No Content
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../categories/" class="btn btn-neutral float-right" title="Categories"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../Stats/totals/" class="btn btn-neutral" title="Totals"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../Stats/totals/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../categories/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

@@ -4,7 +4,15 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2016-01-20</lastmod>
+     <lastmod>2016-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/oauth/</loc>
+     <lastmod>2016-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,75 +21,7 @@
         
     <url>
      <loc>None/Search/search/</loc>
-     <lastmod>2016-01-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>None/APIv2/articles/</loc>
-     <lastmod>2016-01-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/APIv2/categories/</loc>
-     <lastmod>2016-01-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/APIv2/collections/</loc>
-     <lastmod>2016-01-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/APIv2/file_uploader/</loc>
-     <lastmod>2016-01-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/APIv2/hr_feed/</loc>
-     <lastmod>2016-01-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/APIv2/</loc>
-     <lastmod>2016-01-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/APIv2/licenses/</loc>
-     <lastmod>2016-01-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/APIv2/upload_example/</loc>
-     <lastmod>2016-01-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None</loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>None/oauth/</loc>
-     <lastmod>2016-01-20</lastmod>
+     <lastmod>2016-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -91,31 +31,89 @@
         
     <url>
      <loc>None/Stats/breakdown/</loc>
-     <lastmod>2016-01-20</lastmod>
+     <lastmod>2016-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/Stats/</loc>
-     <lastmod>2016-01-20</lastmod>
+     <lastmod>2016-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/Stats/timeline/</loc>
-     <lastmod>2016-01-20</lastmod>
+     <lastmod>2016-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/Stats/tops/</loc>
-     <lastmod>2016-01-20</lastmod>
+     <lastmod>2016-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/Stats/totals/</loc>
-     <lastmod>2016-01-20</lastmod>
+     <lastmod>2016-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>None/api/articles/</loc>
+     <lastmod>2016-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/api/categories/</loc>
+     <lastmod>2016-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/api/collections/</loc>
+     <lastmod>2016-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/api/file_uploader/</loc>
+     <lastmod>2016-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/api/hr_feed/</loc>
+     <lastmod>2016-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/api/</loc>
+     <lastmod>2016-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/api/licenses/</loc>
+     <lastmod>2016-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/api/upload_example/</loc>
+     <lastmod>2016-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
