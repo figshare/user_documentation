@@ -28,7 +28,7 @@ In order to issue a `DELETE` request on a resource, its `id` is part of the URL.
 
 * Sending `page` parameter when listing articles:
 ```
-    GET https://api.figshare.com/v1/articles?page=3
+    GET https://api.figshare.com/v2/articles?page=3
 ```
 * Sending `search_for` parameter when searching for articles:
 ```
