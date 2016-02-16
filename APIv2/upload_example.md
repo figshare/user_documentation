@@ -16,52 +16,53 @@ import os
 
 import requests
 
-
 BASE_URL = 'https://api.figshare.com/v2/{endpoint}'
 TOKEN = '<insert access token here>'
-FILE_NAME = '/home/adrian/tmp/cat.obj'
+HEADERS = {'Authorization': 'token ' + TOKEN}
 
+file_path = os.path.realpath(__file__)  # current python script
+file_name = os.path.basename(file_path)
 
-def main():
-    # Setup
-    basename = os.path.basename(FILE_NAME)
-    headers = {'Authorization': 'token ' + TOKEN}
+# Create article
+data = json.dumps({'title': file_name})
+endpoint = 'account/articles'
+resp = requests.post(BASE_URL.format(endpoint=endpoint), headers=HEADERS, data=data)
 
-    # Create Article
-    data = {'title': basename}
-    resp = requests.post(BASE_URL.format(endpoint='account/articles'), headers=headers,
-                         data=json.dumps(data))
-    article_id = json.loads(resp.content)['location'].rsplit('/', 1)[1]
+article_id = json.loads(resp.content)['location'].rsplit('/', 1)[1]
 
-    # Initiate Upload
-    endpoint = 'account/articles/{}/files'
-    endpoint = endpoint.format(article_id)
-    with open(FILE_NAME, 'rb') as fin:
-        fin.seek(0, 2)  # Go to end of file
-        size = fin.tell()
-    data = {'name': basename,
-            'size': size}
-    resp = requests.post(BASE_URL.format(endpoint=endpoint), headers=headers,
-                         data=json.dumps(data))
-    file_id = json.loads(resp.content)['location'].rsplit('/', 1)[1]
+# Get file info
+with open(file_path, 'rb') as fin:
+    fin.seek(0, 2)  # Go to end of file
+    size = fin.tell()
+data = json.dumps({'name': file_name, 'size': size})
 
-    # Get upload/parts Info
-    endpoint = 'account/articles/{}/files/{}'
-    endpoint = endpoint.format(article_id, file_id)
-    resp = requests.get(BASE_URL.format(endpoint=endpoint), headers=headers)
+# Initiate upload
+endpoint = 'account/articles/{}/files'.format(article_id)
+resp = requests.post(BASE_URL.format(endpoint=endpoint), headers=HEADERS, data=data)
 
-    url = '{upload_url}/{upload_token}'.format(**json.loads(resp.content))
-    parts = json.loads(requests.get(url).content)['parts']
-    # Uploading Parts
-    with open(FILE_NAME, 'rb') as fin:
-        for part in parts:
-            size = part['endOffset'] - part['startOffset'] + 1
-            requests.put(url, data=fin.read(size))
+file_id = json.loads(resp.content)['location'].rsplit('/', 1)[1]
 
-    requests.post(BASE_URL.format(endpoint=endpoint), headers=headers)
+# Get upload/parts info
+endpoint = 'account/articles/{}/files/{}'.format(article_id, file_id)
+resp = requests.get(BASE_URL.format(endpoint=endpoint), headers=HEADERS)
 
-if __name__ == '__main__':
-    main()
+url = '{upload_url}'.format(**json.loads(resp.content))
+parts = json.loads(requests.get(url).content)['parts']
+
+# Upload parts
+with open(file_path, 'rb') as fin:
+    for part in parts:
+        size = part['endOffset'] - part['startOffset'] + 1
+        address = '{}/{}'.format(url, part['partNo'])
+        requests.put(address, data=fin.read(size))
+
+# Mark file upload as completed
+requests.post(BASE_URL.format(endpoint=endpoint), headers=HEADERS)
+
+# List files
+endpoint = 'account/articles/{}/files'.format(article_id)
+resp = requests.get(BASE_URL.format(endpoint=endpoint), headers=HEADERS)
+print resp.content
 ```
 
 ## Example Script
@@ -180,7 +181,7 @@ def complete_upload(article_id, file_id):
 
 
 def upload_parts(file_info):
-    url = '{upload_url}/{upload_token}'.format(**file_info)
+    url = '{upload_url}'.format(**file_info)
     result = raw_issue_request('GET', url)
 
     print 'Uploading parts:'
@@ -193,7 +194,7 @@ def upload_parts(file_info):
 def upload_part(file_info, stream, part):
     udata = file_info.copy()
     udata.update(part)
-    url = '{upload_url}/{upload_token}/{partNo}'.format(**udata)
+    url = '{upload_url}/{partNo}'.format(**udata)
 
     stream.seek(part['startOffset'])
     data = stream.read(part['endOffset'] - part['startOffset'] + 1)

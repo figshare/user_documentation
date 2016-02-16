@@ -649,7 +649,7 @@ Status: 404 Bad request
 ###Steps to upload file
 
 * [Initiate file upload](#initiate-new-file-upload-within-the-article) - this request returns an endpoint with file data
-* Send a `GET` request to the [Uploader Service](file_uploader.md) with the `upload_url` and `upload_token` provided in previous step and receive the number of file parts
+* Send a `GET` request to the [Uploader Service](file_uploader.md) with the `upload_url` (which also contains the`upload_token`) provided in previous step and receive the number of file parts
 * Upload / Delete / Retry uploading file parts until all parts are uploaded successfully
 * [Complete file upload](#complete-file-upload)
 
