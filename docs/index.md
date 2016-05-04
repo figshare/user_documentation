@@ -9,5 +9,6 @@ The sources for these pages are publicly hosted on github at [figshare/user_docu
 
 * [Get started with OAuth](oauth.md)
 * [Using the API](api/index.md)
+* [OAI-PMH](OAI-PMH/index.md)
 * [Search](Search/index.md)
 * [Statistics](Stats/index.md)
