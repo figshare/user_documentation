@@ -1,6 +1,6 @@
 # API feature list
 
-The figshare api v2 is accessible at https://api.figshare.com/v2. All
+The figshare api v2 is accessible at `https://api.figshare.com/v2`. All
 communication is done through *https* and all data is encoded as `JSON`.
 
 * [Sending parameters](#sending-parameters)
