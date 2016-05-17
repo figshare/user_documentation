@@ -337,7 +337,9 @@ Status: 400 Bad request
 |`custom_fields`  |`dict`                 |List of key, values pairs to be associated with the article|
 |`defined_type`   |`str`                  |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'metadata']|
 |`funding` | `str` | Grant number or funding authority |
-|`license` | `int` | License id for this article. Licenses listing endpoints are described [here](licenses.md).
+|`license` | `int` | License id for this article. Licenses listing endpoints are described [here](licenses.md). |
+|`resource_doi` |`str` | Not applicable to regular users. In a publisher case, this is the publisher article DOI. |
+|`resource_title` |`str` | Not applicable to regular users. In a publisher case, this is the publisher article title. |
 
 **Success Response**
 ```
@@ -382,7 +384,10 @@ Status: 404 Not found
 |`custom_fields`  |`dict`                 |List of key, values pairs to be associated with the article|
 |`defined_type`   |`str`                  |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'stub', 'metadata']|
 |`funding` | `str` | Grant number or funding authority |
-|`license` | `int` | License id for this article. Licenses listing endpoints are described [here](licenses.md).
+|`license` | `int` | License id for this article. Licenses listing endpoints are described [here](licenses.md). |
+|`resource_doi` |`str` | Not applicable to regular users. In a publisher case, this is the publisher article DOI. |
+|`resource_title` |`str` | Not applicable to regular users. In a publisher case, this is the publisher article title. |
+
 
 
 **Success Response**
