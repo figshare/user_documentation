@@ -14,6 +14,7 @@ communication is done through *https* and all data is encoded as `JSON`.
 * Endpoints
   - [collections](collections.md)
   - [items](articles.md)
+  - [projects](projects.md)
 
 
 ## Sending parameters
