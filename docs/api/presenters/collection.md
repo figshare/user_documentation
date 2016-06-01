@@ -1,3 +1,13 @@
+**Important**:
+
+Please use a presenter as an `associative array` - a collection of (key, value) pairs,
+not as a class with a fixed number of fields.
+
+The presenters should be interpreted as a guarantee of what data would be presented by our API.
+While we avoid removing key value pairs, we reserve the right to add new data at any time and
+eventually commit to the new fields by documenting and guaranteeing them.
+
+
 # CollectionPresenter
 
 ```json

@@ -1,3 +1,13 @@
+**Important**:
+
+Please use a presenter as an `associative array` - a collection of (key, value) pairs,
+not as a class with a fixed number of fields.
+
+The presenters should be interpreted as a guarantee of what data would be presented by our API.
+While we avoid removing key value pairs, we reserve the right to add new data at any time and
+eventually commit to the new fields by documenting and guaranteeing them.
+
+
 # ArticlePresenter
 
 ```json
@@ -61,11 +71,15 @@
     "figshare_url": "https://figshare.com/articles/article_title/123456789",
     "files": [FilePresenter],
     "authors": [AuthorPresenter],
-    "custom_fields": [CustomArticleFieldPresenter]
+    "custom_fields": [CustomArticleFieldPresenter],
+    "resource_title": "Resource title",
+    "resource_doi": "10.1000/xyz123"
 }
 ```
-**Note**: On **public** endpoints, if the article is under *file embargo*, or is *confidential*, the `files` field will be missing from the JSON.
 
+**Notes**:
+* On **public** endpoints, if the article is under *file embargo*, or is *confidential*, the `files` field will be missing from the JSON.
+* `resource_title` and `resource_doi` are the title and doi of the published item which is supplemented by this figshare item
 
 # ArticleVersionPresenter
 
