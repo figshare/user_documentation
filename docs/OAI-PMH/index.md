@@ -37,6 +37,7 @@ You can get a list of all the sets supported with the
 At this moment selectieve harvesting can be performed using sets representing:
 
 - an [item type](https://api.figshare.com/v2/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&set=item_type_7)
+
   ```
     <set>
       <setSpec>item_type_7</setSpec>
@@ -45,6 +46,7 @@ At this moment selectieve harvesting can be performed using sets representing:
   ```
 
 - a [portal/institution](https://api.figshare.com/v2/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&set=portal_63)
+
   ```
     <set>
       <setSpec>portal_63</setSpec>
@@ -53,6 +55,7 @@ At this moment selectieve harvesting can be performed using sets representing:
   ```
 
 - or a [category](https://api.figshare.com/v2/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&set=category_150):
+
   ```
     <set>
       <setSpec>category_150</setSpec>
