@@ -33,8 +33,33 @@ The earliest datestamp is given in the `<earliestDatestamp>` element of the
 
 You can get a list of all the sets supported with the
 [ListSets](https://api.figshare.com/v2/oai?verb=ListSets) verb.
-At this moment selective harvesting can be performed using a set representing
-a category or a set representing a portal/institution.
+
+At this moment selectieve harvesting can be performed using sets representing:
+
+- an [item type](https://api.figshare.com/v2/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&set=item_type_7)
+  ```
+    <set>
+      <setSpec>item_type_7</setSpec>
+      <setName>Article type: presentation</setName>
+    </set>
+  ```
+
+- a [portal/institution](https://api.figshare.com/v2/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&set=portal_63)
+  ```
+    <set>
+      <setSpec>portal_63</setSpec>
+      <setName>American Chemical Society</setName>
+  </set>
+  ```
+
+- or a [category](https://api.figshare.com/v2/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&set=category_150):
+  ```
+    <set>
+      <setSpec>category_150</setSpec>
+      <setName>Extragalactic Astronomy</setName>
+    </set>
+  ```
+
 
 
 ## Update schedule
