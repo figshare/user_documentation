@@ -114,12 +114,12 @@ Content-Type: application/json; charset=UTF-8
 ```
 
 
-### Number of likes for an unaffiliated article
+### Unsupported counter request for an unaffiliated article
 
 **Request**
 
 ```http
-GET https://stats.figshare.com/total/likes/article/215
+GET https://stats.figshare.com/total/hugs/article/215
 ```
 
 **Response**
@@ -130,7 +130,7 @@ Content-Type: application/json; charset=UTF-8
 
 {
   "data": {
-    "extra": "Counter type not supported: likes",
+    "extra": "Counter type not supported: hugs",
     "invalid_params": "counter"
   },
   "code": "InvalidParams",
