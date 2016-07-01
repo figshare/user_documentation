@@ -30,7 +30,7 @@ and inside and institution scope they have the format:
 /{institution}/top/{counter}/{item}
 ```
 
-where **counter** is one of `view`, `share` or `download`.
+where **counter** is one of `views`, `shares` or `downloads`.
 
 The results on this endpoint can be filtered further by a specified `sub_item`
 which can be one of: `category`, `item_type` or `referral`. The results can also be filtered
