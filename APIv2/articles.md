@@ -4,6 +4,7 @@
   - [list public articles](#list-public-articles)
   - [search public articles](#search-public-articles)
   - [read public article](#read-public-article)
+  - [download public files](#download-public-files)
   - [article versions](#article-versions-subsection)
     - [list versions](#list-versions)
     - [read public article version](#read-public-article-version)
@@ -36,6 +37,7 @@
     - [upload file content](#upload-file-content)
     - [complete file upload](#complete-file-upload)
     - [view file information](#view-file-information)
+    - [download private files](#download-private-files)
     - [delete file from article](#delete-file--from-article)
   - [article private links](#article-private-links-subsection)
     - [list private links](#list-private-links)
@@ -144,6 +146,11 @@ Status: 404 Not Found
 ```json
 {"message": "Article with specified ID does not exist"}
 ```
+
+##Download public files
+
+A public article might contain `files` - a list of [PublicFilePresenter](presenters/file.md#publicfilepresenter)
+dictionaries. In order to download such a public file, one should perform an `HTTP GET` to the `download_url` value.
 
 
 ##Article versions subsection
@@ -475,7 +482,7 @@ Status: 400 Bad request
 ```
 
 
-##article authors subsection
+##Article authors subsection
 
 ###List authors
 
@@ -664,9 +671,9 @@ Status: 404 Bad request
 
 **Success Response**
 
-Status: 200 OK
+Status: `200 OK`
 
-[[FilePresenter](presenters/file.md#filepresenter)]
+Body: List of [PrivateFilePresenter](presenters/file.md#privatefilepresenter)
 
 ###Initiate new file upload within the article
 
@@ -723,9 +730,10 @@ Status: 404 Not found
 
 **Success Response**
 
-Status: 200 OK
+Status: `200 OK`
 
-[FilePresenter.L1](presenters/file.md#filepresenterl1)
+Body: [PrivateFilePresenter](presenters/file.md#privatefilepresenter)
+
 
 **Error Response (File_id not found)**
 ```
@@ -736,9 +744,35 @@ Status: 404 Not found
 ```
 
 
+###Download private files
+
+####Download private files hosted on figshare
+
+The downloader subsystem handles all downloads for files hosted on figshare.
+The base URL is https://ndownloader.figshare.com.
+
+In order to access private files, some form of authorization is needed.
+Most of the time, the session from the website will suffice but the app
+also supports oauth tokens and private links.
+
+An oauth or private link token can be sent as a param in the query string:
+
+   ```
+   GET /files/23434?token=28a7278bea87c HTTP/1.1
+   Host: ndownloader.figshare.com
+   Accept: */*
+   ```
+
+Use `?private_link=VALUE` for private links and `?token=VALUE`
+for OAuth2 access tokens.
 
 
-###Delete file  from article
+####Download private linked files (not hosted on fighsare)
+
+Use the `download_url` of the file linked to an article.
+
+
+###Delete file from article
 
     DELETE /v2/account/articles/{id}/files/{file_id}
 

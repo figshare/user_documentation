@@ -336,7 +336,7 @@ See [API feature list](index.md#api-feature-list) for details.
 
 Status: `200 OK`
 
-Body: [[FilePresenter](<presenters/file.md#filepresenter>)]
+Body: List of [PrivateFilePresenter](<presenters/file.md#privatefilepresenter>)
 
 
 ### Get article file
@@ -347,7 +347,7 @@ Body: [[FilePresenter](<presenters/file.md#filepresenter>)]
 
 Status: `200 OK`
 
-Body: [FilePresenter](<presenters/file.md#filepresenter>)
+Body: [PrivateFilePresenter](<presenters/file.md#privatefilepresenter>)
 
 
 ## Project collaborators subsection
