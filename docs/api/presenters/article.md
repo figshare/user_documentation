@@ -60,7 +60,7 @@ eventually commit to the new fields by documenting and guaranteeing them.
 
 # ArticlePresenter.L2
 
-* [FilePresenter](file.md#filepresenter)
+* [PublicFilePresenter](file.md#publicfilepresenter)
 * [AuthorPresenter](author.md#authorpresenter)
 * [ArticleVersionPresenter](article.md#articleversionpresenter)
 * [CustomArticleFieldPresenter](custon_field.md#customarticlefieldpresenter)
@@ -69,7 +69,7 @@ eventually commit to the new fields by documenting and guaranteeing them.
 ```json
 {
     "figshare_url": "https://figshare.com/articles/article_title/123456789",
-    "files": [FilePresenter],
+    "files": [PublicFilePresenter],
     "authors": [AuthorPresenter],
     "custom_fields": [CustomArticleFieldPresenter],
     "resource_title": "Resource title",
