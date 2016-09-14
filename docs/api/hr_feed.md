@@ -69,6 +69,7 @@ The following examples all have the final goal of generating and issuing the upp
 
 ##### Python #####
 One of the simpler examples is in *python*. For this to work one would need to install the *requests* python package.
+
 ```python
 #!/usr/bin/env python
 
@@ -97,6 +98,7 @@ if __name__ == '__main__':
 
 ##### Java #####
 For java one can use apache *httpcomponents*:
+
 ```java
 import java.io.File;
 import java.io.FileInputStream;
@@ -154,6 +156,7 @@ public class HRFeedUploaderExample {
 ```
 
 Or if you don't mind getting down and dirty with raw **HTTP**:
+
 ```java
 import java.io.File;
 import java.io.FileInputStream;
@@ -210,7 +213,9 @@ public class HRFeedUploaderExample {
 
 ##### C# #####
 For the **.NET / mono** users there's this snippet of code:
-```C#
+
+```Csharp
+
 using System;
 using System.Net.Http;
 using System.IO;
@@ -218,50 +223,51 @@ using System.Threading.Tasks;
 
 namespace HRFeedUploadExample
 {
-	class MainClass
-	{
-		private const String API_URL = "https://api.figshare.com/v2/institution/hrfeed/upload";
-		private const String TOKEN = "86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df";
-		private String fileName = null;
+  class MainClass
+  {
+    private const String API_URL = "https://api.figshare.com/v2/institution/hrfeed/upload";
+    private const String TOKEN = "86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df";
+    private String fileName = null;
 
-		public static void Main (string[] args)
-		{
-			MainClass app = new MainClass (args [0]);
-			app.Upload ();
-		}
+    public static void Main (string[] args)
+    {
+      MainClass app = new MainClass (args [0]);
+      app.Upload ();
+    }
 
-		MainClass(String fileName) {
-			this.fileName = fileName;
-		}
+    MainClass(String fileName) {
+      this.fileName = fileName;
+    }
 
-		public void Upload() {
-			HttpClient httpClient = new HttpClient ();
-			httpClient.DefaultRequestHeaders.Add ("Authorization", "token " + MainClass.TOKEN);
+    public void Upload() {
+      HttpClient httpClient = new HttpClient ();
+      httpClient.DefaultRequestHeaders.Add ("Authorization", "token " + MainClass.TOKEN);
 
-			MultipartFormDataContent form = new MultipartFormDataContent ();
-			using (StreamReader sr = new StreamReader (this.fileName)) {
-				String content = sr.ReadToEnd ();
-				byte[] data = System.Text.Encoding.UTF8.GetBytes (content);
+      MultipartFormDataContent form = new MultipartFormDataContent ();
+      using (StreamReader sr = new StreamReader (this.fileName)) {
+        String content = sr.ReadToEnd ();
+        byte[] data = System.Text.Encoding.UTF8.GetBytes (content);
 
-				form.Add (new ByteArrayContent (data, 0, data.Length), "hrfeed", this.fileName);
-			}
+        form.Add (new ByteArrayContent (data, 0, data.Length), "hrfeed", this.fileName);
+      }
 
-			Task<HttpResponseMessage> task = httpClient.PostAsync (MainClass.API_URL, form);
-			task.Wait();
-			HttpResponseMessage response = task.Result;
-			response.EnsureSuccessStatusCode();
+      Task<HttpResponseMessage> task = httpClient.PostAsync (MainClass.API_URL, form);
+      task.Wait();
+      HttpResponseMessage response = task.Result;
+      response.EnsureSuccessStatusCode();
 
-			Console.WriteLine ("Status code was: " + response.StatusCode);
+      Console.WriteLine ("Status code was: " + response.StatusCode);
 
-			httpClient.Dispose();
-		}
-	}
+      httpClient.Dispose();
+    }
+  }
 }
 ```
 
 ##### CURL #####
 Probably one of the most versatile ways of uploading an HRFeed is through **curl** given the possibility
 of integrating it into any other command line utility on linux/unix.
+
 ```curl
 curl -XPOST\
     -H"Authorization: token 86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df"\
@@ -284,6 +290,7 @@ curl -XPOST\
 
 Standard [error responses](index.md#errors)
 Most common:
+
 ```json
 {
     "message": "Previous feed import not complete.",
@@ -291,6 +298,7 @@ Most common:
     "errcode": "FigshareAPIException"
 }
 ```
+
 when the feed has already been submitted within a 24 hour span.
 
 #### Notes ####
@@ -302,3 +310,4 @@ There are plans for a way to get more in depth information for the state of the 
 The *token* given in the upper examples is a general fig**share** API personal token of any of
 the admins at the institution. No other user should be able to access this endpoint, apart from
 those given the express permission of uploading HR feeds.
+
