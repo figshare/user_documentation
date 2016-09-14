@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Home - Figshare User Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../styles.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Home";
+    var mkdocs_page_input_path = "OAI-PMH/index.md";
+    var mkdocs_page_url = "/OAI-PMH/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Figshare User Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../oauth/">Oauth</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>OAI PMH</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Home</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#oai-pmh">OAI-PMH</a></li>
+                
+                    <li><a class="toctree-l4" href="#base-url">Base URL</a></li>
+                
+                    <li><a class="toctree-l4" href="#item-article">Item == Article</a></li>
+                
+                    <li><a class="toctree-l4" href="#metadata-formats">Metadata formats</a></li>
+                
+                    <li><a class="toctree-l4" href="#datestamps">Datestamps</a></li>
+                
+                    <li><a class="toctree-l4" href="#sets">Sets</a></li>
+                
+                    <li><a class="toctree-l4" href="#update-schedule">Update schedule</a></li>
+                
+                    <li><a class="toctree-l4" href="#pagination-resumption-token-expiration">Pagination &amp; Resumption Token Expiration</a></li>
+                
+                    <li><a class="toctree-l4" href="#rate-limit">Rate limit</a></li>
+                
+                    <li><a class="toctree-l4" href="#future-development">Future development</a></li>
+                
+                    <li><a class="toctree-l4" href="#some-examples">Some examples</a></li>
+                
+                    <li><a class="toctree-l4" href="#changes">Changes</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Search</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Search/search/">Search</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Stats</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Stats/breakdown/">Breakdown</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Stats/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Stats/timeline/">Timeline</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Stats/tops/">Tops</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Stats/totals/">Totals</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Api</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/articles/">Articles</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/categories/">Categories</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/collections/">Collections</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/file_uploader/">File uploader</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/hr_feed/">Hr feed</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/institution_and_groups/">Institution and groups</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/licenses/">Licenses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/projects/">Projects</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/upload_example/">Upload example</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Presenters</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/article/">Article</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/author/">Author</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/category/">Category</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/collaborator/">Collaborator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/collection/">Collection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/custom_field/">Custom field</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/file/">File</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/group/">Group</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/institution/">Institution</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/license/">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/note/">Note</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/private_link/">Private link</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/project/">Project</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/presenters/project_article/">Project article</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Figshare User Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>OAI PMH &raquo;</li>
+        
+      
+    
+    <li>Home</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="oai-pmh">OAI-PMH</h1>
+<p>fig<strong>share</strong> supports the Open Archives Initiative (OAI) and implements the
+<strong>OAI-PMH</strong> service to provide access to public articles metadata.
+For more detailed information, please refer to the
+<a href="https://www.openarchives.org/OAI/openarchivesprotocol.html">protocol specification</a>.</p>
+<h2 id="base-url">Base URL</h2>
+<p>fig<strong>share</strong> OAI-PMH v2.0 implementation has at the following <strong>baseURL</strong>:
+<a href="https://api.figshare.com/v2/oai">https://api.figshare.com/v2/oai</a></p>
+<h2 id="item-article">Item == Article</h2>
+<p>An Item in the OAI-PMH interface is the most recent version of an article.</p>
+<h2 id="metadata-formats">Metadata formats</h2>
+<p>Currently the only metadata format is <strong>Dublin Core</strong> (<em>oai_dc</em>).</p>
+<h2 id="datestamps">Datestamps</h2>
+<p>Every record has a datestamp which is the published datetime of that article. 
+The earliest datestamp is given in the <code>&lt;earliestDatestamp&gt;</code> element of the
+<a href="https://api.figshare.com/v2/oai?verb=Identify">Identify</a> response.</p>
+<h2 id="sets">Sets</h2>
+<p>You can get a list of all the sets supported with the
+<a href="https://api.figshare.com/v2/oai?verb=ListSets">ListSets</a> verb.</p>
+<p>At this moment selectieve harvesting can be performed using sets representing:</p>
+<ul>
+<li>an <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=item_type_7">item type</a></li>
+</ul>
+<p><code>&lt;set&gt;
+      &lt;setSpec&gt;item_type_7&lt;/setSpec&gt;
+      &lt;setName&gt;Article type: presentation&lt;/setName&gt;
+    &lt;/set&gt;</code></p>
+<ul>
+<li>a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=portal_63">portal/institution</a></li>
+</ul>
+<p><code>&lt;set&gt;
+      &lt;setSpec&gt;portal_63&lt;/setSpec&gt;
+      &lt;setName&gt;American Chemical Society&lt;/setName&gt;
+  &lt;/set&gt;</code></p>
+<ul>
+<li>or a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=category_150">category</a>:</li>
+</ul>
+<p><code>&lt;set&gt;
+      &lt;setSpec&gt;category_150&lt;/setSpec&gt;
+      &lt;setName&gt;Extragalactic Astronomy&lt;/setName&gt;
+    &lt;/set&gt;</code></p>
+<h2 id="update-schedule">Update schedule</h2>
+<p>Usually, metadata for a published article becomes available in a few moments
+after its publication on fig<strong>share</strong>.</p>
+<h2 id="pagination-resumption-token-expiration">Pagination &amp; Resumption Token Expiration</h2>
+<p>Results for <strong>ListSets</strong>, <strong>ListIdentifiers</strong>, <strong>ListRecords</strong> are paginated.
+To request the next page, use the resumptionToken value provided for the
+current page. You can read more
+<a href="https://www.openarchives.org/OAI/openarchivesprotocol.html#FlowControl">here</a>,
+but your harvesting software system should be able to use resumption tokens with
+no problem.
+One particularity on fig<strong>share</strong> OAI-PMH is the expiration datetime (UTC) for
+resumption tokens. Thus, a token expires after an hour.</p>
+<h2 id="rate-limit">Rate limit</h2>
+<p>Currently no rate limiting is implemented.
+We recommend you to make no more than one request per second.</p>
+<h2 id="future-development">Future development</h2>
+<p>Please <a href="https://figshare.com/contact">let us know</a> that you are harvesting us.
+Your input will drive the future development of the OAI-PMH protocol at figshare.</p>
+<h2 id="some-examples">Some examples</h2>
+<p><strong>Identify</strong></p>
+<pre><code>curl https://api.figshare.com/v2/oai?verb=Identify
+
+&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="/v2/static/oai2.xsl"?&gt;
+&lt;OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"&gt;
+    &lt;responseDate&gt;2016-04-29T11:58:28Z&lt;/responseDate&gt;
+    &lt;request verb="Identify"&gt;https://api.figshare.com/v2/oai&lt;/request&gt;
+    &lt;Identify&gt;
+        &lt;repositoryName&gt;figshare&lt;/repositoryName&gt;
+        &lt;baseURL&gt;https://api.figshare.com/v2/oai&lt;/baseURL&gt;
+        &lt;protocolVersion&gt;2.0&lt;/protocolVersion&gt;
+        &lt;adminEmail&gt;info@figshare.com&lt;/adminEmail&gt;
+        &lt;earliestDatestamp&gt;2003-08-18T08:32:56Z&lt;/earliestDatestamp&gt;
+        &lt;deletedRecord&gt;transient&lt;/deletedRecord&gt;
+        &lt;granularity&gt;YYYY-MM-DDThh:mm:ssZ&lt;/granularity&gt;
+    &lt;/Identify&gt;
+&lt;/OAI-PMH&gt;
+</code></pre>
+<hr />
+<p><strong>ListSets</strong></p>
+<pre><code>curl https://api.figshare.com/v2/oai?verb=ListSets
+
+&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="/v2/static/oai2.xsl"?&gt;
+&lt;OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"&gt;
+     &lt;responseDate&gt;2016-04-29T12:00:46Z&lt;/responseDate&gt;
+     &lt;request verb="ListSets"&gt;https://api.figshare.com/v2/oai&lt;/request&gt;
+     &lt;ListSets&gt;
+         &lt;set&gt;
+             &lt;setSpec&gt;portal_147&lt;/setSpec&gt;
+             &lt;setName&gt;Karger Publishers&lt;/setName&gt;
+         &lt;/set&gt;
+         &lt;set&gt;
+             &lt;setSpec&gt;portal_144&lt;/setSpec&gt;
+             &lt;setName&gt;Digital Science&lt;/setName&gt;
+         &lt;/set&gt;
+         &lt;!-- ... -&gt;
+         &lt;set&gt;
+             &lt;setSpec&gt;portal_102&lt;/setSpec&gt;
+             &lt;setName&gt;Wiley&lt;/setName&gt;
+         &lt;/set&gt;
+         &lt;resumptionToken expirationDate="2016-04-29T13:00:46Z"&gt;dmVyYj1MaXN0U2V0cyZwYWdlPTI=&lt;/resumptionToken&gt;
+    &lt;/ListSets&gt;
+&lt;/OAI-PMH&gt;
+</code></pre>
+<hr />
+<p><strong>ListIdentifiers</strong></p>
+<p>Selective harvesting: using set <code>category_539</code> (Chemical Engineering Design).</p>
+<pre><code>curl "https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=category_539"
+
+&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="/v2/static/oai2.xsl"?&gt;
+&lt;OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"&gt;
+&lt;responseDate&gt;2016-04-29T12:11:18Z&lt;/responseDate&gt;
+&lt;request metadataPrefix="oai_dc" set="category_539" verb="ListIdentifiers"&gt;https://api.figshare.com/v2/oai&lt;/request&gt;
+    &lt;ListIdentifiers&gt;
+        &lt;header&gt;
+            &lt;identifier&gt;oai:figshare.com:article/2060079&lt;/identifier&gt;
+            &lt;datestamp&gt;2016-01-04T08:32:32Z&lt;/datestamp&gt;
+            &lt;setSpec&gt;category_539&lt;/setSpec&gt;
+            &lt;setSpec&gt;category_614&lt;/setSpec&gt;
+            &lt;setSpec&gt;category_1094&lt;/setSpec&gt;
+            &lt;setSpec&gt;category_1100&lt;/setSpec&gt;
+        &lt;/header&gt;
+    &lt;/ListIdentifiers&gt;
+&lt;/OAI-PMH&gt;
+</code></pre>
+<hr />
+<p><strong>ListRecords</strong></p>
+<p>Selective harvesting: only articles published <code>until</code> 2003-08-18T08:33:01Z.</p>
+<pre><code>curl "https://api.figshare.com/v2/oai?verb=ListRecords&amp;metadataPrefix=oai_dc&amp;until=2003-08-18T08:33:01Z"
+
+&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="/v2/static/oai2.xsl"?&gt;
+&lt;OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"&gt;
+  &lt;responseDate&gt;2016-04-29T12:15:55Z&lt;/responseDate&gt;
+  &lt;request metadataPrefix="oai_dc" until="2003-08-18T08:33:01Z" verb="ListRecords"&gt;https://api.figshare.com/v2/oai&lt;/request&gt;
+  &lt;ListRecords&gt;
+    &lt;record&gt;
+      &lt;header&gt;
+        &lt;identifier&gt;oai:figshare.com:article/1069659&lt;/identifier&gt;
+        &lt;datestamp&gt;2003-08-18T08:32:56Z&lt;/datestamp&gt;
+        &lt;setSpec&gt;category_13&lt;/setSpec&gt;
+        &lt;setSpec&gt;category_24&lt;/setSpec&gt;
+        &lt;setSpec&gt;category_39&lt;/setSpec&gt;
+        &lt;setSpec&gt;portal_5&lt;/setSpec&gt;
+      &lt;/header&gt;
+      &lt;metadata&gt;
+        &lt;oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+                   xsi:schemaLocation="http://purl.org/dc/elements/1.1/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd"&gt;
+            &lt;dc:title&gt;Borneo elephant&lt;/dc:title&gt;
+            &lt;dc:creator&gt;The PLOS Biology Staff&lt;/dc:creator&gt;
+            &lt;dc:subject&gt;ecology&lt;/dc:subject&gt;
+            &lt;dc:subject&gt;Evolutionary biology&lt;/dc:subject&gt;
+            &lt;dc:subject&gt;genetics and genomics&lt;/dc:subject&gt;
+            &lt;dc:description&gt;&amp;lt;p&amp;gt;Borneo elephant&amp;lt;/p&amp;gt;&lt;/dc:description&gt;
+            &lt;dc:identifier&gt;10.1371/journal.pbio.0000007.g001&lt;/dc:identifier&gt;
+            &lt;dc:relation&gt;https://figshare.com/articles/_Borneo_elephant_/1069659&lt;/dc:relation&gt;
+        &lt;/oai_dc:dc&gt;
+      &lt;/metadata&gt;
+    &lt;/record&gt;
+  &lt;/ListRecords&gt;
+&lt;/OAI-PMH&gt;
+</code></pre>
+<h2 id="changes">Changes</h2>
+<p><strong>May, 2016</strong>
+Initial release of OAI-PMH API</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Search/search/" class="btn btn-neutral float-right" title="Search">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../oauth/" class="btn btn-neutral" title="Oauth"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../oauth/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Search/search/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

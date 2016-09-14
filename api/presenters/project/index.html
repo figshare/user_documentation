@@ -8,7 +8,7 @@
   
   
   
-  <title>Collection - Figshare User Documentation</title>
+  <title>Project - Figshare User Documentation</title>
   
 
   <link rel="shortcut icon" href="../../../img/favicon.ico">
@@ -24,9 +24,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Collection";
-    var mkdocs_page_input_path = "api/presenters/collection.md";
-    var mkdocs_page_url = "/api/presenters/collection/";
+    var mkdocs_page_name = "Project";
+    var mkdocs_page_input_path = "api/presenters/project.md";
+    var mkdocs_page_url = "/api/presenters/project/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js"></script>
@@ -251,21 +251,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Collection</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#collectionpresenter">CollectionPresenter</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#collectionversionpresenter">CollectionVersionPresenter</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#collectionpresenterl1">CollectionPresenter.L1</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../collection/">Collection</a>
         
     </li>
 
@@ -320,8 +307,24 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../project/">Project</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Project</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#public-project-lite-presenter">Public Project Lite Presenter</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#private-project-lite-presenter">Private Project Lite Presenter</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#public-project-full-presenter">Public Project Full Presenter</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#private-project-full-presenter">Private Project Full Presenter</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -369,7 +372,7 @@
         
       
     
-    <li>Collection</li>
+    <li>Project</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -379,68 +382,85 @@
           <div role="main">
             <div class="section">
               
-                <p><strong>Important</strong>:</p>
-<p>Please use a presenter as an <code>associative array</code> - a collection of (key, value) pairs,
-not as a class with a fixed number of fields.</p>
-<p>The presenters should be interpreted as a guarantee of what data would be presented by our API.
-While we avoid removing key value pairs, we reserve the right to add new data at any time and
-eventually commit to the new fields by documenting and guaranteeing them.</p>
-<h1 id="collectionpresenter">CollectionPresenter</h1>
+                <p><strong>Note:</strong> <code>Public</code> and <code>Private</code> reffer to the kind of endpoint used for obtaining the JSON,
+not the status (private/published) of the project.</p>
+<h1 id="public-project-lite-presenter">Public Project Lite Presenter</h1>
 <pre><code class="json">{
-    &quot;id&quot;: 123,
-    &quot;title&quot;: &quot;Sample collection&quot;,
-    &quot;doi&quot;: &quot;http://dx.doi.org/10.6084/m9.figshare.123&quot;,
-    &quot;url&quot;: &quot;https://figshare.com/v2/collections/123&quot;,
-    &quot;published_date&quot;: &quot;2015-08-12T00:39:55&quot;
+    &quot;id&quot;: 1, 
+    &quot;title&quot;: &quot;example&quot;,
+    &quot;published_date&quot;: &quot;2016-05-04T19:40:57Z&quot;,
+    &quot;url&quot;: &quot;https://api.figshare.com/v2/projects/5070&quot;
 }
 </code></pre>
 
-<h1 id="collectionversionpresenter">CollectionVersionPresenter</h1>
+<h1 id="private-project-lite-presenter">Private Project Lite Presenter</h1>
 <pre><code class="json">{
-    &quot;version&quot;: 1,
-    &quot;url&quot;: &quot;&quot;
+    &quot;id&quot;: 1,
+    &quot;title&quot;: &quot;example&quot;,
+    &quot;role&quot;: &quot;Owner&quot;,
+    &quot;storage&quot;: &quot;individual&quot;,
+    &quot;published_date&quot;: &quot;2016-05-04T19:40:57Z&quot;,
+    &quot;url&quot;: &quot;https://api.figshare.com/v2/projects/5070&quot;
 }
 </code></pre>
 
-<h1 id="collectionpresenterl1">CollectionPresenter.L1</h1>
 <ul>
-<li><a href="../category/#categorypresenter">CategoryPresenter</a></li>
-<li><a href="../author/#authorpresenter">AuthorPresenter</a></li>
-<li><a href="../article/#articlepresenter">ArticlePresenter</a></li>
+<li><code>role</code> can be: <code>Owner</code>, <code>Collaborator</code>, or <code>Viewer</code></li>
+<li><code>storage</code> can be: <code>individual</code> or <code>group</code></li>
 </ul>
-<p><a href="presenters/collection.md#collectionpresenter">CollectionPresenter</a></p>
-<p>+</p>
+<h1 id="public-project-full-presenter">Public Project Full Presenter</h1>
 <pre><code class="json">{
-    &quot;resource_id&quot;: &quot;AS124056&quot;,
-    &quot;resource_doi&quot;: &quot;http://dx.doi.org/10.608/m9.pub.7481&quot;,
-    &quot;resource_title&quot;: &quot;demo title&quot;,
-    &quot;resource_link&quot;: &quot;http://dx.doi.org/10.321/m9.pub.1231&quot;,
-    &quot;resource_version&quot;: &quot;1&quot;,
-    &quot;version&quot;: 1,
-    &quot;description&quot;: &quot;Sample description&quot;,
-    &quot;categories&quot;: [CategoryPresenter],
-    &quot;references&quot;: [
-        &quot;http://link1&quot;,
-        &quot;http://link2&quot;
-    ],
-    &quot;tags&quot;: [
-        &quot;tag1&quot;,
-        &quot;tag2&quot;
-    ],
-    &quot;authors&quot;: [AuthorPresenter],
-    &quot;institution_id&quot;: 154,
-    &quot;group_id&quot;: 445,
-    &quot;article_count&quot;: 100,
-    &quot;public&quot;: 1,
-    &quot;custom_metadata&quot;: [
+    &quot;id&quot;: 1, 
+    &quot;title&quot;: &quot;example&quot;, 
+    &quot;description&quot;: &quot;example description&quot;,
+    &quot;published_date&quot;: &quot;2016-05-04T19:40:57Z&quot;,
+    &quot;funding&quot;: &quot;no funding&quot;,
+    &quot;url&quot;: &quot;https://api.figshare.com/v2/projects/1&quot;,
+    &quot;figshare_url&quot;: &quot;https://figshare.com/projects/example/1&quot;,
+    &quot;collaborators&quot;: [
         {
-            &quot;location&quot;: &quot;Paris&quot;
+            &quot;role_name&quot;: &quot;Owner&quot;,
+            &quot;user_id&quot;: 1,
+            &quot;name&quot;: &quot;test&quot;
         },
         {
-            &quot;size&quot;: &quot;1 feet&quot;
+            &quot;role_name&quot;: &quot;Collaborator&quot;,
+            &quot;user_id&quot;: 2,
+            &quot;name&quot;: &quot;other&quot;
+        }
+    ]
+}
+</code></pre>
+
+<h1 id="private-project-full-presenter">Private Project Full Presenter</h1>
+<pre><code class="json">{
+    &quot;id&quot;: 1,
+    &quot;title&quot;: &quot;example&quot;,
+    &quot;description&quot;: &quot;example description&quot;,
+    &quot;created_date&quot;: &quot;2016-02-03T12:39:46Z&quot;,
+    &quot;modified_date&quot;: &quot;2016-02-03T12:42:27Z&quot;,
+    &quot;published_date&quot;: &quot;2016-05-04T19:40:57Z&quot;,
+    &quot;funding&quot;: &quot;no funding&quot;,
+    &quot;url&quot;: &quot;https://api.figshare.com/v2/projects/1&quot;,
+    &quot;figshare_url&quot;: &quot;https://figshare.com/projects/example/1&quot;,
+    &quot;collaborators&quot;: [
+        {
+            &quot;role_name&quot;: &quot;Owner&quot;,
+            &quot;user_id&quot;: 1,
+            &quot;name&quot;: &quot;test&quot;
+        },
+        {
+            &quot;role_name&quot;: &quot;Collaborator&quot;,
+            &quot;user_id&quot;: 2,
+            &quot;name&quot;: &quot;other&quot;
         }
     ],
-    &quot;citation&quot;: &quot;citation string&quot;
+    &quot;storage&quot;: &quot;individual&quot;,
+    &quot;group_id&quot;: 0,
+    &quot;quota&quot;: 0,
+    &quot;used_quota&quot;: 166164,
+    &quot;used_quota_private&quot;: 166164,
+    &quot;used_quota_public&quot;: 0
 }
 </code></pre>
               
@@ -450,10 +470,10 @@ eventually commit to the new fields by documenting and guaranteeing them.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../custom_field/" class="btn btn-neutral float-right" title="Custom field">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../project_article/" class="btn btn-neutral float-right" title="Project article">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../collaborator/" class="btn btn-neutral" title="Collaborator"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../private_link/" class="btn btn-neutral" title="Private link"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -479,10 +499,10 @@ eventually commit to the new fields by documenting and guaranteeing them.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../collaborator/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../private_link/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../custom_field/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../project_article/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

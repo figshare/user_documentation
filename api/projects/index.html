@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Projects - Figshare User Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../styles.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Projects";
+    var mkdocs_page_input_path = "api/projects.md";
+    var mkdocs_page_url = "/api/projects/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Figshare User Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../oauth/">Oauth</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>OAI PMH</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../OAI-PMH/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Search</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Search/search/">Search</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Stats</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/breakdown/">Breakdown</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/timeline/">Timeline</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/tops/">Tops</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Stats/totals/">Totals</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Api</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../articles/">Articles</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../categories/">Categories</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../collections/">Collections</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_uploader/">File uploader</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../hr_feed/">Hr feed</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../institution_and_groups/">Institution and groups</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../licenses/">Licenses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Projects</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#projects-api-endpoints">Projects API endpoints</a></li>
+                
+                    <li><a class="toctree-l4" href="#public-endpoints">Public endpoints</a></li>
+                
+                    <li><a class="toctree-l4" href="#private-endpoints">Private endpoints</a></li>
+                
+                    <li><a class="toctree-l4" href="#project-articles-subsection">Project articles subsection</a></li>
+                
+                    <li><a class="toctree-l4" href="#project-files-subsection">Project files subsection</a></li>
+                
+                    <li><a class="toctree-l4" href="#project-collaborators-subsection">Project collaborators subsection</a></li>
+                
+                    <li><a class="toctree-l4" href="#project-notes-subsection">Project notes subsection</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../upload_example/">Upload example</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Presenters</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/article/">Article</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/author/">Author</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/category/">Category</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/collaborator/">Collaborator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/collection/">Collection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/custom_field/">Custom field</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/file/">File</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/group/">Group</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/institution/">Institution</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/license/">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/note/">Note</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/private_link/">Private link</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/project/">Project</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../presenters/project_article/">Project article</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Figshare User Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Api &raquo;</li>
+        
+      
+    
+    <li>Projects</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="projects-api-endpoints">Projects API endpoints</h1>
+<ul>
+<li><strong><a href="#public-endpoints">Public</a></strong></li>
+<li><a href="#list-public-projects">list public projects</a></li>
+<li><a href="#search-public-projects">search public projects</a></li>
+<li><a href="#view-project-details">view project details</a></li>
+<li><a href="#list-project-articles">list project articles</a></li>
+<li><strong><a href="#private-endpoints">Private</a></strong></li>
+<li><a href="#list-private-projects">list private projects</a></li>
+<li><a href="#search-private-projects">search private projects</a></li>
+<li><a href="#create-a-new-project">create new project</a></li>
+<li><a href="#get-project-information">read project information</a></li>
+<li><a href="#update-project-information">update project information</a></li>
+<li><a href="#publish-project">publish project</a></li>
+<li><a href="#delete-own-project">delete own project</a></li>
+<li><a href="#project-articles-subsection">articles</a><ul>
+<li><a href="#list-articles">list articles</a></li>
+<li><a href="#get-article">retrieve article</a></li>
+<li><a href="#create-a-new-project-article">create article</a></li>
+<li><a href="#delete-project-article">delete article</a></li>
+</ul>
+</li>
+<li><a href="#project-files-subsection">files</a><ul>
+<li><a href="#list-article-files">list article files</a></li>
+<li><a href="#get-article-file">get article file</a></li>
+</ul>
+</li>
+<li><a href="#project-collaborators-subsection">collaborators</a><ul>
+<li><a href="#list-collaborators-and-invited-users">list collaborators</a></li>
+<li><a href="#invite-collaborator">invite collaborator</a></li>
+<li><a href="#remove-collaborator">remove collaborator</a></li>
+<li><a href="#leave-project">leave project</a></li>
+</ul>
+</li>
+<li><a href="#project-notes-subsection">notes</a><ul>
+<li><a href="#list-notes">list notes</a></li>
+<li><a href="#add-note">add note</a></li>
+<li><a href="#update-note">update note</a></li>
+<li><a href="#delete-note">delete note</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="public-endpoints">Public endpoints</h2>
+<h3 id="list-public-projects">List public projects</h3>
+<pre><code>GET /v2/projects
+</code></pre>
+<p><strong>Input</strong></p>
+<p>Accepts <code>pagination</code>, <code>sorting</code>, <code>filtering</code> params. See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<p>Accepted filters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>institution</code></td>
+<td>int</td>
+<td>Only return projects from this institution</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td>int</td>
+<td>Only return projects from this group</td>
+</tr>
+<tr>
+<td><code>published_since</code></td>
+<td>date(ISO 8601)</td>
+<td>Only projects published after the date</td>
+</tr>
+</tbody>
+</table>
+<p>Defaults:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>order</code></td>
+<td><code>published_date</code></td>
+</tr>
+<tr>
+<td><code>order_direction</code></td>
+<td><code>desc</code></td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td><code>10</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Call example</strong></p>
+<pre><code>curl "https://api.figshare.com/v2/projects?page=2&amp;page_size=3&amp;published_since=2016-01-01"
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: List of <a href="../presenters/project/#public-project-lite-presenter">Public Project Lite Presenter</a></p>
+<h3 id="search-public-projects">Search public projects</h3>
+<pre><code>POST /v2/projects/search
+</code></pre>
+<p><strong>Input</strong></p>
+<p>Accepts <code>pagination</code>, <code>sorting</code>, <code>filtering</code> and <code>search</code> params.
+See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<p>Filters and defaults are the same as for  the <a href="#list-public-projects">list public projects</a> endpoint.</p>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: List of <a href="../presenters/project/#public-project-lite-presenter">Public Project Lite Presenter</a></p>
+<h3 id="view-project-details">View project details</h3>
+<pre><code>GET /v2/projects/{id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: <a href="../presenters/project/#public-project-full-presenter">Public Project Full Presenter</a></p>
+<h3 id="list-project-articles">List project articles</h3>
+<pre><code>GET /v2/projects/{id}/articles
+</code></pre>
+<p>Accepts <code>pagination</code> params (<code>page</code> and <code>page_size</code>).
+See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: List of <a href="../presenters/article/#articlepresenter">Article Presenter</a></p>
+<h2 id="private-endpoints">Private endpoints</h2>
+<p>These endpoints require authorization/authentication. Missing valid auth will
+result in 403 and 401 errors.</p>
+<h3 id="list-private-projects">List private projects</h3>
+<pre><code>GET /v2/account/projects
+</code></pre>
+<p><strong>Input</strong></p>
+<p>Accepts <code>pagination</code>, <code>sorting</code> and <code>filtering</code> params, sent as <em>request parameters</em>.
+See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<p>Accepted filters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>storage</code></td>
+<td><code>str</code></td>
+<td><code>group</code> or <code>individual</code>.</td>
+</tr>
+<tr>
+<td><code>roles</code></td>
+<td><code>str</code></td>
+<td>Any combination of <code>owner</code>, <code>collaborator</code>, <code>viewer</code> separated by comma. Examples: "owner" or "owner,collaborator".</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response (list of projects)</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: List of <a href="../presenters/project/#private-project-lite-presenter">Private Project Lite Presenter</a></p>
+<h3 id="search-private-projects">Search private projects</h3>
+<pre><code>POST /v2/account/projects/search
+</code></pre>
+<p><strong>Input</strong></p>
+<p>Accepts <code>pagination</code>, <code>sorting</code>, <code>filtering</code> and <code>search</code> params.
+See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<p>Accepted filters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>storage</code></td>
+<td><code>str</code></td>
+<td><code>group</code> or <code>individual</code>.</td>
+</tr>
+<tr>
+<td><code>roles</code></td>
+<td><code>str</code></td>
+<td>Any combination of <code>owner</code>, <code>collaborator</code>, <code>viewer</code> separated by comma. Examples: "owner" or "owner,collaborator".</td>
+</tr>
+<tr>
+<td><code>published_since</code></td>
+<td>date(ISO 8601)</td>
+<td>Only projects published after the date</td>
+</tr>
+<tr>
+<td><code>modified_since</code></td>
+<td>date(ISO 8601)</td>
+<td>Only projects published after the date</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>int</code></td>
+<td><code>1</code> for public projects, <code>0</code> for private projects.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: List of <a href="../presenters/project/#private-project-lite-presenter">Private Project Lite Presenter</a></p>
+<h3 id="create-a-new-project">Create a new project</h3>
+<pre><code>POST /v2/account/projects
+</code></pre>
+<p><strong>Input</strong></p>
+<p>Accepted parameters sent as JSON request body:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>str</code></td>
+<td>The title for this project - <code>mandatory</code>. 3 - 500 characters.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>str</code></td>
+<td>Project's description</td>
+</tr>
+<tr>
+<td><code>funding</code></td>
+<td><code>str</code></td>
+<td>Grant number or organization(s) that funded this project.</td>
+</tr>
+<tr>
+<td><code>group_id</code></td>
+<td><code>int</code></td>
+<td>Only of project type is <code>group</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>201 Created</code></p>
+<p>Headers: <code>Location: https://api.figshare.com/v2/account/projects/123</code></p>
+<h3 id="get-project-information">Get project information</h3>
+<pre><code>GET /v2/account/projects/{id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: <a href="../presenters/project/#private-project-full-presenter">Private Project Full Presenter</a></p>
+<h3 id="update-project-information">Update project information</h3>
+<pre><code>PUT /v2/account/projects/{id}
+</code></pre>
+<p><strong>Input</strong></p>
+<p>Accepted parameters sent as JSON request body:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>str</code></td>
+<td>The title for this project.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>str</code></td>
+<td>The project description.</td>
+</tr>
+<tr>
+<td><code>funding</code></td>
+<td><code>str</code></td>
+<td>Grant number or organization(s) that funded this project.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>205 Reset Content</code></p>
+<p>Headers: <code>Location: https://api.figshare.com/v2/account/projects/123</code></p>
+<h3 id="publish-project">Publish project</h3>
+<pre><code>POST /v2/account/projects/{id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>201 Created</code>
+Body: <code>Project {id} has been published.</code></p>
+<h3 id="delete-own-project">Delete own project</h3>
+<pre><code>DELETE /v2/account/projects/{id}
+</code></pre>
+<p>A project can be deleted only if:
+- it is not public
+- it does not have public articles</p>
+<p>When an <strong>individual</strong> project is  deleted, all the articles are <em>moved</em> to
+<strong>my data</strong> of each owner*.</p>
+<p>When a <strong>group</strong> project is deleted, all the articles and files are <em>deleted</em>
+as well. Only project owner, group admin and above can delete a project.</p>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>204 No content</code></p>
+<h2 id="project-articles-subsection">Project articles subsection</h2>
+<h3 id="list-articles">List articles</h3>
+<pre><code>GET /v2/account/projects/{id}/articles
+</code></pre>
+<p>Accepts <code>pagination</code>, <code>sorting</code> and <code>filtering</code> params, sent as <em>request parameters</em>.
+See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: List of <a href="../presenters/project_article/#projectarticlepresenter">Project Article Presenter</a></p>
+<h3 id="get-article">Get article</h3>
+<pre><code>GET /v2/account/projects/{id}/articles/{article_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: <a href="../presenters/article/#articlepresenter">ArticlePresenter</a></p>
+<h3 id="create-a-new-project-article">Create a new project article</h3>
+<pre><code>POST /v2/account/projects/{id}/articles
+</code></pre>
+<p><strong>Input</strong></p>
+<p>Accepted parameters sent as JSON request body:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>str</code></td>
+<td>Article title - <code>mandatory</code>.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>str</code></td>
+<td>Article description.</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td><code>array of str</code></td>
+<td>Tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])</td>
+</tr>
+<tr>
+<td><code>references</code></td>
+<td><code>array of str</code></td>
+<td>List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])</td>
+</tr>
+<tr>
+<td><code>categories</code></td>
+<td><code>array of int</code></td>
+<td>List of category ids to be associated with the article (e.g [1, 23, 33, 66])</td>
+</tr>
+<tr>
+<td><code>authors</code></td>
+<td><code>array of dict</code></td>
+<td>List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more then 10 authors. For adding more authors use the specific authors endpoint</td>
+</tr>
+<tr>
+<td><code>custom_fields</code></td>
+<td><code>dict</code></td>
+<td>List of key, values pairs to be associated with the article</td>
+</tr>
+<tr>
+<td><code>defined_type</code></td>
+<td><code>str</code></td>
+<td>Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'metadata']</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>201 Created</code></p>
+<p>Headers: <code>Location: https://api.figshare.com/v2/account/project/1234/articles/456</code></p>
+<h3 id="delete-project-article">Delete project article</h3>
+<pre><code>DELETE /v2/account/projects/{id}/articles/{article_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>204 No content</code></p>
+<h2 id="project-files-subsection">Project files subsection</h2>
+<h3 id="list-article-files">List article files</h3>
+<pre><code>GET /v2/account/projects/{id}/articles/{article_id}/files
+</code></pre>
+<p>Accepts <code>pagination</code>, <code>sorting</code> and <code>filtering</code> params, sent as <em>request parameters</em>.
+See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: List of <a href="../presenters/file/#privatefilepresenter">PrivateFilePresenter</a></p>
+<h3 id="get-article-file">Get article file</h3>
+<pre><code>GET /v2/account/projects/{id}/articles/{article_id}/files/{file_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: <a href="../presenters/file/#privatefilepresenter">PrivateFilePresenter</a></p>
+<h2 id="project-collaborators-subsection">Project collaborators subsection</h2>
+<h3 id="list-collaborators-and-invited-users">List collaborators and invited users</h3>
+<pre><code>GET /v2/account/projects/{id}/collaborators
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: A list with <a href="../presenters/collaborator/#collaboratorpresenter">CollaboratorPresenter</a>s and <a href="../presenters/collaborator/#inviteduserpresenter">InvitedUserPresenter</a>s</p>
+<h3 id="invite-collaborator">Invite collaborator</h3>
+<pre><code>POST /v2/account/projects/{id}/collaborators
+</code></pre>
+<p><strong>Input</strong></p>
+<p>Accepted parameters sent as JSON request body:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>role_name</code></td>
+<td><code>str</code></td>
+<td>Valid roles: <code>viewer</code>, <code>collaborator</code> - <code>mandatory</code></td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td><code>str</code></td>
+<td>Text sent when inviting the user to the project - <code>optional</code></td>
+</tr>
+</tbody>
+</table>
+<p>Please note that is mandatory to send <em>either</em> <code>user_id</code> or <code>email</code> JSON parameters.</p>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>201 Created</code></p>
+<p>Body: <code>{"message": "User invited to project"}</code></p>
+<h3 id="remove-collaborator">Remove collaborator</h3>
+<pre><code>DELETE /v2/account/projects/{id}/collaborators/{user_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>204 No content</code></p>
+<h3 id="leave-project">Leave project</h3>
+<pre><code>POST /v2/account/projects/{id}/leave
+</code></pre>
+<p>Please note: project's owner cannot leave the project.</p>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>204 No content</code></p>
+<h2 id="project-notes-subsection">Project notes subsection</h2>
+<h3 id="list-notes">List notes</h3>
+<pre><code>GET /v2/account/projects/{id}/notes
+</code></pre>
+<p>Accepts <code>pagination</code> params (<code>page</code> and <code>page_size</code>), sent as <em>request parameters</em>.
+See <a href="../#api-feature-list">API feature list</a> for details.</p>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: <a href="../presenters/note/#projectnotepresenter">ProjectNotePresenter</a></p>
+<h3 id="get-note">Get note</h3>
+<pre><code>GET /v2/account/projects/{id}/notes/{note_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>200 OK</code></p>
+<p>Body: <a href="../presenters/note/#projectnotepresenterl1">ProjectNotePresenterL1</a></p>
+<h3 id="add-note">Add note</h3>
+<pre><code>POST /v2/account/projects/{id}/notes
+</code></pre>
+<p><strong>Input</strong></p>
+<p>Accepted parameter sent as JSON request body:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><code>str</code></td>
+<td>Mandatory. At least 3 characters.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>201 Created</code></p>
+<p>Headers: <code>Location: https://api.figshare.com/v2/account/projects/1/notes/2</code></p>
+<h3 id="update-note">Update note</h3>
+<pre><code>PUT /v2/account/projects/{id}/notes/{note_id}
+</code></pre>
+<p><strong>Input</strong></p>
+<p>Accepted parameter sent as JSON request body:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><code>str</code></td>
+<td>Mandatory. At least 3 characters.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>205 Reset Content</code></p>
+<p>Headers: <code>Location: https://api.figshare.com/v2/account/projects/1/notes/2</code></p>
+<h3 id="delete-note">Delete note</h3>
+<pre><code>DELETE /v2/account/projects/{id}/notes/{note_id}
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: <code>204 No Content</code></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../upload_example/" class="btn btn-neutral float-right" title="Upload example">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../licenses/" class="btn btn-neutral" title="Licenses"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../licenses/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../upload_example/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

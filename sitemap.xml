@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>None/oauth/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,8 +20,18 @@
     
         
     <url>
+     <loc>None/OAI-PMH/</loc>
+     <lastmod>2016-09-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
      <loc>None/Search/search/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -31,31 +41,31 @@
         
     <url>
      <loc>None/Stats/breakdown/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/Stats/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/Stats/timeline/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/Stats/tops/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/Stats/totals/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -65,49 +75,61 @@
         
     <url>
      <loc>None/api/articles/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/api/categories/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/api/collections/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/api/file_uploader/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/api/hr_feed/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/api/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/api/institution_and_groups/</loc>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/api/licenses/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/api/projects/</loc>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/api/upload_example/</loc>
-     <lastmod>2016-01-21</lastmod>
+     <lastmod>2016-09-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
