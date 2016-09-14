@@ -571,59 +571,59 @@ public class HRFeedUploaderExample {
 
 <h5 id="c">C#</h5>
 <p>For the <strong>.NET / mono</strong> users there's this snippet of code:</p>
-<p>```C#
+<pre><code class="Csharp">
 using System;
 using System.Net.Http;
 using System.IO;
-using System.Threading.Tasks;</p>
-<p>namespace HRFeedUploadExample
+using System.Threading.Tasks;
+
+namespace HRFeedUploadExample
 {
-    class MainClass
+  class MainClass
+  {
+    private const String API_URL = &quot;https://api.figshare.com/v2/institution/hrfeed/upload&quot;;
+    private const String TOKEN = &quot;86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df&quot;;
+    private String fileName = null;
+
+    public static void Main (string[] args)
     {
-        private const String API_URL = "https://api.figshare.com/v2/institution/hrfeed/upload";
-        private const String TOKEN = "86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df";
-        private String fileName = null;</p>
-<pre><code>    public static void Main (string[] args)
-    {
-        MainClass app = new MainClass (args [0]);
-        app.Upload ();
+      MainClass app = new MainClass (args [0]);
+      app.Upload ();
     }
 
     MainClass(String fileName) {
-        this.fileName = fileName;
+      this.fileName = fileName;
     }
 
     public void Upload() {
-        HttpClient httpClient = new HttpClient ();
-        httpClient.DefaultRequestHeaders.Add ("Authorization", "token " + MainClass.TOKEN);
+      HttpClient httpClient = new HttpClient ();
+      httpClient.DefaultRequestHeaders.Add (&quot;Authorization&quot;, &quot;token &quot; + MainClass.TOKEN);
 
-        MultipartFormDataContent form = new MultipartFormDataContent ();
-        using (StreamReader sr = new StreamReader (this.fileName)) {
-            String content = sr.ReadToEnd ();
-            byte[] data = System.Text.Encoding.UTF8.GetBytes (content);
+      MultipartFormDataContent form = new MultipartFormDataContent ();
+      using (StreamReader sr = new StreamReader (this.fileName)) {
+        String content = sr.ReadToEnd ();
+        byte[] data = System.Text.Encoding.UTF8.GetBytes (content);
 
-            form.Add (new ByteArrayContent (data, 0, data.Length), "hrfeed", this.fileName);
-        }
+        form.Add (new ByteArrayContent (data, 0, data.Length), &quot;hrfeed&quot;, this.fileName);
+      }
 
-        Task&lt;HttpResponseMessage&gt; task = httpClient.PostAsync (MainClass.API_URL, form);
-        task.Wait();
-        HttpResponseMessage response = task.Result;
-        response.EnsureSuccessStatusCode();
+      Task&lt;HttpResponseMessage&gt; task = httpClient.PostAsync (MainClass.API_URL, form);
+      task.Wait();
+      HttpResponseMessage response = task.Result;
+      response.EnsureSuccessStatusCode();
 
-        Console.WriteLine ("Status code was: " + response.StatusCode);
+      Console.WriteLine (&quot;Status code was: &quot; + response.StatusCode);
 
-        httpClient.Dispose();
+      httpClient.Dispose();
     }
+  }
 }
 </code></pre>
-<p>}</p>
-<pre><code>
-##### CURL #####
-Probably one of the most versatile ways of uploading an HRFeed is through **curl** given the possibility
-of integrating it into any other command line utility on linux/unix.
 
-```curl
-curl -XPOST\
+<h5 id="curl">CURL</h5>
+<p>Probably one of the most versatile ways of uploading an HRFeed is through <strong>curl</strong> given the possibility
+of integrating it into any other command line utility on linux/unix.</p>
+<pre><code class="curl">curl -XPOST\
     -H&quot;Authorization: token 86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df&quot;\
     -F&quot;hrfeed=@feed.csv&quot;\
     https://api.figshare.com/v2/institution/hrfeed/upload
