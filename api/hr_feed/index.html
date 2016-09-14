@@ -379,9 +379,10 @@
 <h2 id="hrfeed-private-endpoints">HRFeed Private Endpoints</h2>
 <h3 id="upload-hrfeed-file">Upload HRFeed File</h3>
 <h4 id="request">Request</h4>
-<pre><code>POST /v2/institution/hrfeed/upload
+<pre><code class="http">POST /v2/institution/hrfeed/upload
 </code></pre>
-<p>The request needs to be a <code>multipart/form-data</code> request where the <strong>Content-Type</strong> header is set to the said value and the body of the file is sent as the form data.
+
+<p>The request needs to be of type <code>multipart/form-data</code> and have its <strong>Content-Type</strong> header set to the same value; the body of the file is sent as the form data.
 A typical request looks like this:</p>
 <pre><code class="http">POST /v2/institution/hrfeed/upload HTTP/1.1
 Host: api.figshare.com
@@ -428,7 +429,10 @@ Content-Disposition: form-data; name=&quot;hrfeed&quot;; filename=&quot;feed.xml
 
 </code></pre>
 
-<p>For an example the following python code uses request to obtain the upper request:</p>
+<h4 id="examples">Examples</h4>
+<p>The following examples all have the final goal of generating and issuing the upper <strong>HTTP</strong> request.</p>
+<h5 id="python">Python</h5>
+<p>One of the simpler examples is in <em>python</em>. For this to work one would need to install the <em>requests</em> python package.</p>
 <pre><code class="python">#!/usr/bin/env python
 
 import requests
@@ -454,6 +458,176 @@ if __name__ == '__main__':
 
 </code></pre>
 
+<h5 id="java">Java</h5>
+<p>For java one can use apache <em>httpcomponents</em>:</p>
+<pre><code class="java">import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.Throwable;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+
+public class HRFeedUploaderExample {
+    public static void main(String[] args) {
+        try {
+            HRFeedUploaderExample hfue = new HRFeedUploaderExample(args[0]);
+            hfue.upload();
+        } catch (Throwable t) {
+            t.printStackTrace(System.err);
+        }
+    }
+
+    private static final String API_URL = &quot;https://api.figshare.com/v2/institution/hrfeed/upload&quot;;
+    private static final String TOKEN = &quot;86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df&quot;;
+
+    private String fileName = null;
+
+    HRFeedUploaderExample(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void upload() throws IOException {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        HttpPost uploadFile = new HttpPost(API_URL);
+
+        uploadFile.addHeader(&quot;Authorization&quot;, &quot;token &quot; + TOKEN);
+
+        MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+        File file = new File(fileName);
+
+        builder.addBinaryBody(&quot;hrfeed&quot;, new FileInputStream(file), ContentType.TEXT_PLAIN, file.getName());
+
+        HttpEntity multipart = builder.build();
+        uploadFile.setEntity(multipart);
+
+        CloseableHttpResponse response = httpClient.execute(uploadFile);
+        int status = response.getStatusLine().getStatusCode();
+
+        System.out.println(&quot;Status code was: &quot; + status);
+    }
+}
+</code></pre>
+
+<p>Or if you don't mind getting down and dirty with raw <strong>HTTP</strong>:</p>
+<pre><code class="java">import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.Throwable;
+import java.net.URL;
+import java.net.HttpURLConnection;
+
+public class HRFeedUploaderExample {
+    public static void main(String[] args) {
+        try {
+            HRFeedUploaderExample hfue = new HRFeedUploaderExample(args[0]);
+            hfue.upload();
+        } catch (Throwable t) {
+            t.printStackTrace(System.err);
+        }
+    }
+
+    private static final String API_URL = &quot;https://api.figshare.com/v2/institution/hrfeed/upload&quot;;
+    private static final String TOKEN = &quot;86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df&quot;;
+
+    private String fileName = null;
+
+    HRFeedUploaderExample(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void upload() throws IOException {
+        HttpURLConnection con = (HttpURLConnection) new URL(API_URL).openConnection();
+        String boundary = &quot;123456789boundary987654321&quot;;
+        byte[] byteBoundary = (&quot;\n--&quot; + boundary + &quot;\n&quot;).getBytes(&quot;UTF-8&quot;);
+
+        con.setDoOutput(true);
+        con.setRequestProperty(&quot;Content-Type&quot;, &quot;multipart/form-data; boundary=&quot; + boundary);
+        con.setRequestProperty(&quot;Authorization&quot;, &quot;token &quot; + TOKEN);
+
+        File file = new File(fileName);
+        try (OutputStream out = con.getOutputStream()) {
+            out.write(byteBoundary);
+            out.write((&quot;Content-Disposition: form-data; name=\&quot;hrfeed\&quot;; filename=\&quot;&quot; + fileName + &quot;\&quot;\n\n&quot;).getBytes(&quot;UTF-8&quot;));
+            try (FileInputStream in = new FileInputStream(file)) {
+                byte[] data = new byte[(int) file.length()];
+                in.read(data);
+                out.write(data);
+            }
+            out.write(byteBoundary);
+        }
+        int status = con.getResponseCode();
+        System.out.println(&quot;Status code was: &quot; + status);
+    }
+}
+</code></pre>
+
+<h5 id="c">C#</h5>
+<p>For the <strong>.NET / mono</strong> users there's this snippet of code:
+```C#
+using System;
+using System.Net.Http;
+using System.IO;
+using System.Threading.Tasks;</p>
+<p>namespace HRFeedUploadExample
+{
+    class MainClass
+    {
+        private const String API_URL = "https://api.figshare.com/v2/institution/hrfeed/upload";
+        private const String TOKEN = "86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df";
+        private String fileName = null;</p>
+<pre><code>    public static void Main (string[] args)
+    {
+        MainClass app = new MainClass (args [0]);
+        app.Upload ();
+    }
+
+    MainClass(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void Upload() {
+        HttpClient httpClient = new HttpClient ();
+        httpClient.DefaultRequestHeaders.Add ("Authorization", "token " + MainClass.TOKEN);
+
+        MultipartFormDataContent form = new MultipartFormDataContent ();
+        using (StreamReader sr = new StreamReader (this.fileName)) {
+            String content = sr.ReadToEnd ();
+            byte[] data = System.Text.Encoding.UTF8.GetBytes (content);
+
+            form.Add (new ByteArrayContent (data, 0, data.Length), "hrfeed", this.fileName);
+        }
+
+        Task&lt;HttpResponseMessage&gt; task = httpClient.PostAsync (MainClass.API_URL, form);
+        task.Wait();
+        HttpResponseMessage response = task.Result;
+        response.EnsureSuccessStatusCode();
+
+        Console.WriteLine ("Status code was: " + response.StatusCode);
+
+        httpClient.Dispose();
+    }
+}
+</code></pre>
+<p>}</p>
+<pre><code>
+##### CURL #####
+Probably one of the most versatile ways of uploading an HRFeed is through **curl** given the possibility
+of integrating it into any other command line utility on linux/unix.
+```curl
+curl -XPOST\
+    -H&quot;Authorization: token 86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df&quot;\
+    -F&quot;hrfeed=@feed.csv&quot;\
+    https://api.figshare.com/v2/institution/hrfeed/upload
+</code></pre>
+
 <h4 id="response">Response</h4>
 <ul>
 <li>Status: <code>200 OK</code></li>
@@ -476,6 +650,13 @@ Most common:</p>
 </code></pre>
 
 <p>when the feed has already been submitted within a 24 hour span.</p>
+<h4 id="notes">Notes</h4>
+<p>The <em>success</em> response doesn't give much information other than the fact that the system has
+understood the request, has received the file and has initiated the necessary tasks.
+There are plans for a way to get more in depth information for the state of the <strong>HRFeed Process</strong>.</p>
+<p>The <em>token</em> given in the upper examples is a general fig<strong>share</strong> API personal token of any of
+the admins at the institution. No other user should be able to access this endpoint, apart from
+those given the express permission of uploading HR feeds.</p>
               
             </div>
           </div>
