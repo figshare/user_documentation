@@ -19,7 +19,7 @@ An Item in the OAI-PMH interface is the most recent version of an article.
 
 ## Metadata formats
 
-Currently the only metadata format is **Dublin Core** (*oai_dc*).
+Currently, the supported formats are: **Dublin Core** (*oai_dc*), **Datacite** (*oai_datacite*) and **RDF** (*rdf*).
 
 
 ## Datestamps
@@ -78,6 +78,10 @@ current page. You can read more
 [here](https://www.openarchives.org/OAI/openarchivesprotocol.html#FlowControl),
 but your harvesting software system should be able to use resumption tokens with
 no problem.
+
+Be aware of the fact that due to a known limitation on content pagination, results above a 10000 limit (offset) cannot be displayed.
+We are looking at adding a new ListSet (month_year) that will allow you to pre-filter the result set by month.
+
 One particularity on fig**share** OAI-PMH is the expiration datetime (UTC) for
 resumption tokens. Thus, a token expires after an hour.
 
@@ -220,3 +224,9 @@ Selective harvesting: only articles published `until` 2003-08-18T08:33:01Z.
 
 **May, 2016**
 Initial release of OAI-PMH API
+
+**July, 2016**
+Datacite and RDF Metadata Formats are added
+
+**August, 2016**
+Keywords and Licences tags are added
