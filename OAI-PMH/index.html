@@ -402,7 +402,7 @@ For more detailed information, please refer to the
 <h2 id="item-article">Item == Article</h2>
 <p>An Item in the OAI-PMH interface is the most recent version of an article.</p>
 <h2 id="metadata-formats">Metadata formats</h2>
-<p>Currently the only metadata format is <strong>Dublin Core</strong> (<em>oai_dc</em>).</p>
+<p>Currently, the supported formats are: <strong>Dublin Core</strong> (<em>oai_dc</em>), <strong>Datacite</strong> (<em>oai_datacite</em>) and <strong>RDF</strong> (<em>rdf</em>).</p>
 <h2 id="datestamps">Datestamps</h2>
 <p>Every record has a datestamp which is the published datetime of that article. 
 The earliest datestamp is given in the <code>&lt;earliestDatestamp&gt;</code> element of the
@@ -441,8 +441,10 @@ To request the next page, use the resumptionToken value provided for the
 current page. You can read more
 <a href="https://www.openarchives.org/OAI/openarchivesprotocol.html#FlowControl">here</a>,
 but your harvesting software system should be able to use resumption tokens with
-no problem.
-One particularity on fig<strong>share</strong> OAI-PMH is the expiration datetime (UTC) for
+no problem.</p>
+<p>Be aware of the fact that due to a known limitation on content pagination, results above a 10000 limit (offset) cannot be displayed.
+We are looking at adding a new ListSet (month_year) that will allow you to pre-filter the result set by month.</p>
+<p>One particularity on fig<strong>share</strong> OAI-PMH is the expiration datetime (UTC) for
 resumption tokens. Thus, a token expires after an hour.</p>
 <h2 id="rate-limit">Rate limit</h2>
 <p>Currently no rate limiting is implemented.
@@ -563,6 +565,10 @@ Your input will drive the future development of the OAI-PMH protocol at figshare
 <h2 id="changes">Changes</h2>
 <p><strong>May, 2016</strong>
 Initial release of OAI-PMH API</p>
+<p><strong>July, 2016</strong>
+Datacite and RDF Metadata Formats are added</p>
+<p><strong>August, 2016</strong>
+Keywords and Licences tags are added</p>
               
             </div>
           </div>
