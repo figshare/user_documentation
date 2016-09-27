@@ -170,7 +170,8 @@ Status: 200 OK
 Status: 404 Not found
 ```
 ```json
-{"message": "article with ID not found"}
+{"message": "Entity not found: article",
+"code": "EntityNotFound"}
 ```
 
 ##Read public article version
@@ -191,7 +192,8 @@ Status: 200 OK
 Status: 404 Not Found
 ```
 ```json
-{"message": "Version does not exist"}
+{"message": "Entity not found: ArticleVersion",
+"code": "EntityNotFound"}
 ```
 
 
@@ -213,7 +215,8 @@ Status: 200 OK
 Status: 404 Not Found
 ```
 ```json
-{"message": "Version does not exist"}
+{"message": "Entity not found: ArticleVersion",
+"code": "EntityNotFound"}
 ```
 
 
@@ -691,7 +694,7 @@ Body: List of [PrivateFilePresenter](presenters/file.md#privatefilepresenter)
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
 |`md5`              |`str`                  |MD5 sum pre computed on the client side|
-|`name`              |`str`                  |File name including the exception|
+|`name`              |`str`                  |File name including the extension|
 |`size`              |`int`                  |File size in bytes|
 
 

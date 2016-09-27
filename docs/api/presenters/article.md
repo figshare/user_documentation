@@ -14,7 +14,7 @@ eventually commit to the new fields by documenting and guaranteeing them.
 {
     "id": 1434614,
     "title": "Test article title",
-    "doi": "http://dx.doi.org/10.6084/m9.figshare.1434614",
+    "doi": "10.6084/m9.figshare.1434614",
     "url": "http://api.figshare.com/articles/1434614",
     "published_date": "2015-12-31T23:59:59Z"
 }
@@ -37,7 +37,7 @@ eventually commit to the new fields by documenting and guaranteeing them.
     "funding": "",
     "tags": ["t1", "t2"],
     "version": 0,
-    "is_active": 1,
+    "is_active": true,
     "is_metadata_record": false,
     "metadata_reason": "",
     "status": "draft",
