@@ -691,7 +691,7 @@ Body: List of [PrivateFilePresenter](presenters/file.md#privatefilepresenter)
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
 |`md5`              |`str`                  |MD5 sum pre computed on the client side|
-|`name`              |`str`                  |File name including the exception|
+|`name`              |`str`                  |File name including the extension|
 |`size`              |`int`                  |File size in bytes|
 
 
