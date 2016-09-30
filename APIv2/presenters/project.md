@@ -93,6 +93,7 @@ Private Project Full Presenter
     "quota": 0,
     "used_quota": 166164,
     "used_quota_private": 166164,
-    "used_quota_public": 0
+    "used_quota_public": 0,
+    "role": "Owner"
 }
 ```

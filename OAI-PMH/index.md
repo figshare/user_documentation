@@ -114,7 +114,7 @@ Your input will drive the future development of the OAI-PMH protocol at figshare
             <baseURL>https://api.figshare.com/v2/oai</baseURL>
             <protocolVersion>2.0</protocolVersion>
             <adminEmail>info@figshare.com</adminEmail>
-            <earliestDatestamp>2003-08-18T08:32:56Z</earliestDatestamp>
+            <earliestDatestamp>2010-01-08T01:24:54Z</earliestDatestamp>
             <deletedRecord>transient</deletedRecord>
             <granularity>YYYY-MM-DDThh:mm:ssZ</granularity>
         </Identify>
@@ -172,6 +172,7 @@ Selective harvesting: using set `category_539` (Chemical Engineering Design).
                 <setSpec>category_614</setSpec>
                 <setSpec>category_1094</setSpec>
                 <setSpec>category_1100</setSpec>
+                <setSpec>item_type_6</setSpec>
             </header>
         </ListIdentifiers>
     </OAI-PMH>
@@ -180,40 +181,54 @@ ___
 
 **ListRecords**
 
-Selective harvesting: only articles published `until` 2003-08-18T08:33:01Z.
+Selective harvesting: only articles published `until` 2010-08-18T08:33:01Z.
 
-    curl "https://api.figshare.com/v2/oai?verb=ListRecords&metadataPrefix=oai_dc&until=2003-08-18T08:33:01Z"
+    curl "https://api.figshare.com/v2/oai?verb=ListRecords&metadataPrefix=oai_dc&until=2010-08-18T08:33:01Z"
 
     <?xml version='1.0' encoding='utf-8'?>
     <?xml-stylesheet type="text/xsl" href="/v2/static/oai2.xsl"?>
     <OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
-      <responseDate>2016-04-29T12:15:55Z</responseDate>
-      <request metadataPrefix="oai_dc" until="2003-08-18T08:33:01Z" verb="ListRecords">https://api.figshare.com/v2/oai</request>
+      <responseDate>2016-09-29T08:03:12Z</responseDate>
+      <request metadataPrefix="oai_dc" until="2010-08-18T08:33:01Z" verb="ListRecords">https://api.figshare.com/v2/oai</request>
       <ListRecords>
         <record>
           <header>
-            <identifier>oai:figshare.com:article/1069659</identifier>
-            <datestamp>2003-08-18T08:32:56Z</datestamp>
-            <setSpec>category_13</setSpec>
-            <setSpec>category_24</setSpec>
-            <setSpec>category_39</setSpec>
+            <identifier>oai:figshare.com:article/145088</identifier>
+            <datestamp>2010-01-08T01:24:54Z</datestamp>
+            <setSpec>category_4</setSpec>
+            <setSpec>category_12</setSpec>
             <setSpec>portal_5</setSpec>
+            <setSpec>item_type_3</setSpec>
           </header>
           <metadata>
-            <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
-                       xsi:schemaLocation="http://purl.org/dc/elements/1.1/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-                <dc:title>Borneo elephant</dc:title>
-                <dc:creator>The PLOS Biology Staff</dc:creator>
-                <dc:subject>ecology</dc:subject>
-                <dc:subject>Evolutionary biology</dc:subject>
-                <dc:subject>genetics and genomics</dc:subject>
-                <dc:description>&lt;p&gt;Borneo elephant&lt;/p&gt;</dc:description>
-                <dc:identifier>10.1371/journal.pbio.0000007.g001</dc:identifier>
-                <dc:relation>https://figshare.com/articles/_Borneo_elephant_/1069659</dc:relation>
+            <oai_dc:dc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:dc="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+                <dc:title>A Modular BAM Complex in the Outer Membrane of the α-Proteobacterium &lt;em&gt;Caulobacter crescentus&lt;/em&gt;</dc:title>
+                <dc:creator>Khatira Anwari</dc:creator>
+                <dc:creator>Sebastian Poggio</dc:creator>
+                <dc:creator>Andrew Perry</dc:creator>
+                <dc:creator>Xenia Gatsos</dc:creator>
+                <dc:creator>Sri Harsha Ramarathinam</dc:creator>
+                <dc:creator>Nicholas A. Williamson</dc:creator>
+                <dc:creator>Nicholas Noinaj</dc:creator>
+                <dc:creator>Susan Buchanan</dc:creator>
+                <dc:creator>Kipros Gabriel</dc:creator>
+                <dc:creator>Anthony W. Purcell</dc:creator>
+                <dc:creator>Christine Jacobs-Wagner</dc:creator>
+                <dc:creator>Trevor Lithgow</dc:creator>
+                <dc:subject>Biochemistry</dc:subject>
+                <dc:subject>Cell Biology</dc:subject>
+                <dc:subject>modular</dc:subject>
+                <dc:subject>bam</dc:subject>
+                <dc:subject>membrane</dc:subject>
+                <dc:description>&lt;div&gt;&lt;p&gt;Mitochondria are organelles derived from an intracellular α-proteobacterium. The biogenesis of mitochondria relies on the assembly of β-barrel proteins into the mitochondrial outer membrane, a process inherited from the bacterial ancestor. &lt;em&gt;Caulobacter crescentus&lt;/em&gt; is an α-proteobacterium, and the BAM (β-barrel assembly machinery) complex was purified and characterized from this model organism. Like the mitochondrial sorting and assembly machinery complex, we find the BAM complex to be modular in nature. A ∼150 kDa core BAM complex containing BamA, BamB, BamD, and BamE associates with additional modules in the outer membrane. One of these modules, Pal, is a lipoprotein that provides a means for anchorage to the peptidoglycan layer of the cell wall. We suggest the modular design of the BAM complex facilitates access to substrates from the protein translocase in the inner membrane.&lt;/p&gt;&lt;/div&gt;</dc:description>
+                <dc:date>2010-01-08T01:24:48Z</dc:date>
+                <dc:type>Dataset</dc:type>
+                <dc:identifier>10.1371/journal.pone.0008619</dc:identifier>
+                <dc:relation>https://figshare.com/articles/A_Modular_BAM_Complex_in_the_Outer_Membrane_of_the_Proteobacterium_em_Caulobacter_crescentus_em_/145088</dc:relation>
             </oai_dc:dc>
           </metadata>
-        </record>
+         </record>
       </ListRecords>
     </OAI-PMH>
 
