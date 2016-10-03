@@ -616,7 +616,7 @@ See <a href="../#api-feature-list">API feature list</a> for details.</p>
 <tr>
 <td><code>funding</code></td>
 <td><code>str</code></td>
-<td>Grant number or organization(s) that funded this project.</td>
+<td>Grant number or organization(s) that funded this project. Up to 2000 characters permitted.</td>
 </tr>
 <tr>
 <td><code>group_id</code></td>
@@ -661,7 +661,7 @@ See <a href="../#api-feature-list">API feature list</a> for details.</p>
 <tr>
 <td><code>funding</code></td>
 <td><code>str</code></td>
-<td>Grant number or organization(s) that funded this project.</td>
+<td>Grant number or organization(s) that funded this project. Up to 2000 characters permitted.</td>
 </tr>
 </tbody>
 </table>
@@ -669,7 +669,7 @@ See <a href="../#api-feature-list">API feature list</a> for details.</p>
 <p>Status: <code>205 Reset Content</code></p>
 <p>Headers: <code>Location: https://api.figshare.com/v2/account/projects/123</code></p>
 <h3 id="publish-project">Publish project</h3>
-<pre><code>POST /v2/account/projects/{id}
+<pre><code>POST /v2/account/projects/{id}/publish
 </code></pre>
 <p><strong>Success Response</strong></p>
 <p>Status: <code>201 Created</code>
@@ -754,6 +754,26 @@ See <a href="../#api-feature-list">API feature list</a> for details.</p>
 <td><code>defined_type</code></td>
 <td><code>str</code></td>
 <td>Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'metadata']</td>
+</tr>
+<tr>
+<td><code>funding</code></td>
+<td><code>str</code></td>
+<td>Grant number of funding authority. Max of 2000 characters permitted.</td>
+</tr>
+<tr>
+<td><code>license</code></td>
+<td><code>str</code></td>
+<td>Licence id for this article.</td>
+</tr>
+<tr>
+<td><code>resource_doi</code></td>
+<td><code>str</code></td>
+<td>Not applicable to regular users. In a publisher case, this is the publisher article DOI.</td>
+</tr>
+<tr>
+<td><code>resource_title</code></td>
+<td><code>str</code></td>
+<td>Not applicable to regular users. In a publisher case, this is the publisher article title.</td>
 </tr>
 </tbody>
 </table>

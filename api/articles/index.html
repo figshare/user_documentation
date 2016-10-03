@@ -612,7 +612,8 @@ dictionaries. In order to download such a public file, one should perform an <co
 <pre><code>Status: 404 Not found
 </code></pre>
 
-<pre><code class="json">{&quot;message&quot;: &quot;article with ID not found&quot;}
+<pre><code class="json">{&quot;message&quot;: &quot;Entity not found: article&quot;,
+&quot;code&quot;: &quot;EntityNotFound&quot;}
 </code></pre>
 
 <h2 id="read-public-article-version">Read public article version</h2>
@@ -626,7 +627,8 @@ dictionaries. In order to download such a public file, one should perform an <co
 <pre><code>Status: 404 Not Found
 </code></pre>
 
-<pre><code class="json">{&quot;message&quot;: &quot;Version does not exist&quot;}
+<pre><code class="json">{&quot;message&quot;: &quot;Entity not found: ArticleVersion&quot;,
+&quot;code&quot;: &quot;EntityNotFound&quot;}
 </code></pre>
 
 <h2 id="read-public-article-version-embargo">Read public article version embargo</h2>
@@ -640,7 +642,8 @@ dictionaries. In order to download such a public file, one should perform an <co
 <pre><code>Status: 404 Not Found
 </code></pre>
 
-<pre><code class="json">{&quot;message&quot;: &quot;Version does not exist&quot;}
+<pre><code class="json">{&quot;message&quot;: &quot;Entity not found: ArticleVersion&quot;,
+&quot;code&quot;: &quot;EntityNotFound&quot;}
 </code></pre>
 
 <h2 id="read-public-article-version-confidentiality">Read public article version confidentiality</h2>
@@ -1280,7 +1283,7 @@ Location: https://api.figshare.com/v2/account/articles/123/authors
 <tr>
 <td><code>name</code></td>
 <td><code>str</code></td>
-<td>File name including the exception</td>
+<td>File name including the extension</td>
 </tr>
 <tr>
 <td><code>size</code></td>
