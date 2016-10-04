@@ -182,12 +182,12 @@ Body: List of [Private Project Lite Presenter](presenters/project.md#private-pro
 
 Accepted parameters sent as JSON request body:
 
-| Name                  | Type    | Description                                                   |
-|-----------------------|---------|---------------------------------------------------------------|
-| `title`               | `str`   | The title for this project - `mandatory`. 3 - 500 characters. |
-| `description`         | `str`   | Project's description                                         |
-| `funding`             | `str`   | Grant number or organization(s) that funded this project.     |
-| `group_id`            | `int`   | Only of project type is `group`.                              |
+| Name                  | Type    | Description                                                                                  |
+|-----------------------|---------|----------------------------------------------------------------------------------------------|
+| `title`               | `str`   | The title for this project - `mandatory`. 3 - 500 characters.                                |
+| `description`         | `str`   | Project's description                                                                        |
+| `funding`             | `str`   | Grant number or organization(s) that funded this project. Up to 2000 characters permitted.   |
+| `group_id`            | `int`   | Only of project type is `group`.                                                             |
 
 **Success Response**
 
@@ -219,7 +219,7 @@ Accepted parameters sent as JSON request body:
 |-----------------------|---------|-------------------------------------------|
 | `title`               | `str`   | The title for this project.               |
 | `description`         | `str`   | The project description.                  |
-| `funding`             | `str`   | Grant number or organization(s) that funded this project. |
+| `funding`             | `str`   | Grant number or organization(s) that funded this project. Up to 2000 characters permitted. |
 
 
 **Success Response**
@@ -231,7 +231,7 @@ Headers: `Location: https://api.figshare.com/v2/account/projects/123`
 
 ### Publish project
 
-    POST /v2/account/projects/{id}
+    POST /v2/account/projects/{id}/publish
 
 **Success Response**
 
@@ -305,7 +305,10 @@ Accepted parameters sent as JSON request body:
 |`authors`       |`array of dict` |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more then 10 authors. For adding more authors use the specific authors endpoint|
 |`custom_fields` |`dict`          |List of key, values pairs to be associated with the article|
 |`defined_type`  |`str`           |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'metadata']|
-
+|`funding`       |`str`           |Grant number of funding authority. Max of 2000 characters permitted. |
+|`license`       |`str`           |Licence id for this article. |
+|`resource_doi`  |`str`           |Not applicable to regular users. In a publisher case, this is the publisher article DOI.|
+|`resource_title`|`str`           |Not applicable to regular users. In a publisher case, this is the publisher article title.|
 
 **Success Response**
 
