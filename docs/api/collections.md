@@ -210,7 +210,7 @@ Almost identical to [list public collections](#list-public-collections), but def
 |`title`            |`str`        |The title for this collection - `mandatory`|
 |`description`      |`str`        |The collection description. In a publisher case, usually this is the resource article description|
 |`articles`         |`array of int`|List of articles to be associated with the collection (e.g `[1, 4]`)|
-|`authors`          |`array of dictionaries|List of new authors to be assosciated with the collection. Each element identifies an author by `id` OR `name` (e.g `[{"id":1212}, {"name":"John Doe"}]`)|
+|`authors`          |`array of dictionaries` `{"id": int}` or `{"name": str}` |List of new authors to be assosciated with the collection. Each element identifies an author by `id` OR `name` (e.g `[{"id":1212}, {"name":"John Doe"}]`)|
 |`categories`       |`array of int` |List of category ids to be associated with the collection (e.g `[5, 7, 9]`)|
 |`tags`             |`array of str` |List of tags to be associated with the collection (e.g `["tag1", "tag2"]`)|
 |`references`       |`array of str`   |List of references to be associated with the collection (e.g `["http://figshare.com", "http://figshare.com/articles/browse"]`)|
@@ -263,7 +263,7 @@ Standard [error responses](index.md#errors).
 |`title`            |`str`        |The title for this collection|
 |`description`      |`str`        |The collection description. In a publisher case, usually this is the resource article description|
 |`articles`         |`array of int`|List of articles to be associated with the collection (e.g `[1, 4]`)|
-|`authors`          |`array of dictionaries`|List of new authors to be assosciated with the collection. Each element identifies an author by `id` OR `name`.(e.g `[{"id":1212}, {"name":"John Doe"}]`)|
+|`authors`          |`array of dictionaries` `{"id": int}` or `{"name": str}` |List of new authors to be assosciated with the collection. Each element identifies an author by `id` OR `name`.(e.g `[{"id":1212}, {"name":"John Doe"}]`)|
 |`categories`       |`array of int` |List of category ids to be associated with the collection (e.g `[5, 7, 9]`)|
 |`tags`             |`array of str` |List of tags to be associated with the collection (e.g `["tag1", "tag2"]`)|
 |`references`       |`array of str`   |List of references to be associated with the collection (e.g `["http://figshare.com", "http://figshare.com/articles/browse"]`)|
