@@ -46,7 +46,7 @@ file_id = json.loads(resp.content)['location'].rsplit('/', 1)[1]
 endpoint = 'account/articles/{}/files/{}'.format(article_id, file_id)
 resp = requests.get(BASE_URL.format(endpoint=endpoint), headers=HEADERS)
 
-url = '{upload_url}'.format(**json.loads(resp.content['upload_url']))
+url = '{upload_url}'.format(**json.loads(resp.content))
 parts = json.loads(requests.get(url).content)['parts']
 
 # Upload parts
