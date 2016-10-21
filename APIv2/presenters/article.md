@@ -16,7 +16,8 @@ eventually commit to the new fields by documenting and guaranteeing them.
     "title": "Test article title",
     "doi": "10.6084/m9.figshare.1434614",
     "url": "http://api.figshare.com/articles/1434614",
-    "published_date": "2015-12-31T23:59:59Z"
+    "published_date": "2015-12-31T23:59:59Z",
+    "thumb": "https://ndownloader.figshare.com/files/123456789/preview/12345678/thumb.png"
 }
 ```
 
