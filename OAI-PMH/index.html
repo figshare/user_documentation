@@ -414,24 +414,85 @@ The earliest datestamp is given in the <code>&lt;earliestDatestamp&gt;</code> el
 <ul>
 <li>an <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=item_type_7">item type</a></li>
 </ul>
-<p><code>&lt;set&gt;
+<p><code>...
+    &lt;header&gt;
+      &lt;identifier&gt;oai:figshare.com:article/2001969&lt;/identifier&gt;
+      &lt;datestamp&gt;2015-08-17T14:09:33Z&lt;/datestamp&gt;
+      &lt;setSpec&gt;category_184&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_185&lt;/setSpec&gt;
+      &lt;setSpec&gt;portal_15&lt;/setSpec&gt;
       &lt;setSpec&gt;item_type_7&lt;/setSpec&gt;
-      &lt;setName&gt;Article type: presentation&lt;/setName&gt;
-    &lt;/set&gt;</code></p>
+    &lt;/header&gt;
+    ...</code></p>
 <ul>
 <li>a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=portal_63">portal/institution</a></li>
 </ul>
-<p><code>&lt;set&gt;
+<p><code>...
+    &lt;header&gt;
+      &lt;identifier&gt;oai:figshare.com:article/2009490&lt;/identifier&gt;
+      &lt;datestamp&gt;2015-12-16T14:30:27Z&lt;/datestamp&gt;
+      &lt;setSpec&gt;category_1&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_4&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_12&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_14&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_19&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_21&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_128&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_133&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_272&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_873&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_931&lt;/setSpec&gt;
       &lt;setSpec&gt;portal_63&lt;/setSpec&gt;
-      &lt;setName&gt;American Chemical Society&lt;/setName&gt;
-  &lt;/set&gt;</code></p>
+      &lt;setSpec&gt;item_type_6&lt;/setSpec&gt;
+    &lt;/header&gt;
+    ...</code></p>
 <ul>
-<li>or a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=category_150">category</a>:</li>
-</ul>
-<p><code>&lt;set&gt;
+<li>
+<p>a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=category_150">category</a>:
+  <code>...
+    &lt;header&gt;
+      &lt;identifier&gt;oai:figshare.com:article/2058654&lt;/identifier&gt;
+      &lt;datestamp&gt;2015-12-27T23:40:01Z&lt;/datestamp&gt;
+      &lt;setSpec&gt;category_54&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_55&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_56&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_57&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_58&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_59&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_145&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_146&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_147&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_148&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_149&lt;/setSpec&gt;
       &lt;setSpec&gt;category_150&lt;/setSpec&gt;
-      &lt;setName&gt;Extragalactic Astronomy&lt;/setName&gt;
-    &lt;/set&gt;</code></p>
+      &lt;setSpec&gt;category_492&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_493&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_494&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_496&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_497&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_498&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_499&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_500&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_501&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_502&lt;/setSpec&gt;
+      &lt;setSpec&gt;item_type_6&lt;/setSpec&gt;
+    &lt;/header&gt;
+    ...</code></p>
+</li>
+<li>
+<p>or a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=month_year_10_2016">month_year</a>:
+  <code>...
+    &lt;header&gt;
+      &lt;identifier&gt;oai:figshare.com:article/2004335&lt;/identifier&gt;
+      &lt;datestamp&gt;2016-10-31T11:14:47Z&lt;/datestamp&gt;
+      &lt;setSpec&gt;category_215&lt;/setSpec&gt;
+      &lt;setSpec&gt;category_239&lt;/setSpec&gt;
+      &lt;setSpec&gt;portal_15&lt;/setSpec&gt;
+      &lt;setSpec&gt;item_type_11&lt;/setSpec&gt;
+    &lt;/header&gt;
+    ...</code></p>
+</li>
+</ul>
 <h2 id="update-schedule">Update schedule</h2>
 <p>Usually, metadata for a published article becomes available in a few moments
 after its publication on fig<strong>share</strong>.</p>
@@ -442,8 +503,7 @@ current page. You can read more
 <a href="https://www.openarchives.org/OAI/openarchivesprotocol.html#FlowControl">here</a>,
 but your harvesting software system should be able to use resumption tokens with
 no problem.</p>
-<p>Be aware of the fact that due to a known limitation on content pagination, results above a 10000 limit (offset) cannot be displayed.
-We are looking at adding a new ListSet (month_year) that will allow you to pre-filter the result set by month.</p>
+<p>Be aware of the fact that due to a known limitation on content pagination, results above a 10000 limit (offset) cannot be displayed.</p>
 <p>One particularity on fig<strong>share</strong> OAI-PMH is the expiration datetime (UTC) for
 resumption tokens. Thus, a token expires after an hour.</p>
 <h2 id="rate-limit">Rate limit</h2>
@@ -549,18 +609,18 @@ Your input will drive the future development of the OAI-PMH protocol at figshare
       &lt;metadata&gt;
         &lt;oai_dc:dc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:dc="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd"&gt;
             &lt;dc:title&gt;A Modular BAM Complex in the Outer Membrane of the α-Proteobacterium &amp;lt;em&amp;gt;Caulobacter crescentus&amp;lt;/em&amp;gt;&lt;/dc:title&gt;
-            &lt;dc:creator&gt;Khatira Anwari&lt;/dc:creator&gt;
-            &lt;dc:creator&gt;Sebastian Poggio&lt;/dc:creator&gt;
-            &lt;dc:creator&gt;Andrew Perry&lt;/dc:creator&gt;
-            &lt;dc:creator&gt;Xenia Gatsos&lt;/dc:creator&gt;
-            &lt;dc:creator&gt;Sri Harsha Ramarathinam&lt;/dc:creator&gt;
-            &lt;dc:creator&gt;Nicholas A. Williamson&lt;/dc:creator&gt;
-            &lt;dc:creator&gt;Nicholas Noinaj&lt;/dc:creator&gt;
-            &lt;dc:creator&gt;Susan Buchanan&lt;/dc:creator&gt;
-            &lt;dc:creator&gt;Kipros Gabriel&lt;/dc:creator&gt;
-            &lt;dc:creator&gt;Anthony W. Purcell&lt;/dc:creator&gt;
-            &lt;dc:creator&gt;Christine Jacobs-Wagner&lt;/dc:creator&gt;
-            &lt;dc:creator&gt;Trevor Lithgow&lt;/dc:creator&gt;
+            &lt;dc:creator&gt;Anthony W. Purcell (105036)&lt;/dc:creator&gt;
+            &lt;dc:creator&gt;Trevor Lithgow (105055)&lt;/dc:creator&gt;
+            &lt;dc:creator&gt;Kipros Gabriel (189246)&lt;/dc:creator&gt;
+            &lt;dc:creator&gt;Nicholas Noinaj (216256)&lt;/dc:creator&gt;
+            &lt;dc:creator&gt;Sebastian Poggio (251019)&lt;/dc:creator&gt;
+            &lt;dc:creator&gt;Khatira Anwari (254980)&lt;/dc:creator&gt;
+            &lt;dc:creator&gt;Andrew Perry (254989)&lt;/dc:creator&gt;
+            &lt;dc:creator&gt;Xenia Gatsos (254994)&lt;/dc:creator&gt;
+            &lt;dc:creator&gt;Sri Harsha Ramarathinam (255001)&lt;/dc:creator&gt;
+            &lt;dc:creator&gt;Nicholas A. Williamson (255006)&lt;/dc:creator&gt;
+            &lt;dc:creator&gt;Susan Buchanan (255012)&lt;/dc:creator&gt;
+            &lt;dc:creator&gt;Christine Jacobs-Wagner (255016)&lt;/dc:creator&gt;
             &lt;dc:subject&gt;Biochemistry&lt;/dc:subject&gt;
             &lt;dc:subject&gt;Cell Biology&lt;/dc:subject&gt;
             &lt;dc:subject&gt;modular&lt;/dc:subject&gt;
@@ -578,6 +638,10 @@ Your input will drive the future development of the OAI-PMH protocol at figshare
 &lt;/OAI-PMH&gt;
 </code></pre>
 <h2 id="changes">Changes</h2>
+<p><strong>October, 2016</strong>
+Add correct output for ListIdentifiers
+Add month_year set / param
+Add user IDs in the <creator> tags</p>
 <p><strong>May, 2016</strong>
 Initial release of OAI-PMH API</p>
 <p><strong>July, 2016</strong>
