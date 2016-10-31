@@ -38,30 +38,91 @@ At this moment selectieve harvesting can be performed using sets representing:
 
 - an [item type](https://api.figshare.com/v2/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&set=item_type_7)
 
-  ```
-    <set>
+```
+    ...
+    <header>
+      <identifier>oai:figshare.com:article/2001969</identifier>
+      <datestamp>2015-08-17T14:09:33Z</datestamp>
+      <setSpec>category_184</setSpec>
+      <setSpec>category_185</setSpec>
+      <setSpec>portal_15</setSpec>
       <setSpec>item_type_7</setSpec>
-      <setName>Article type: presentation</setName>
-    </set>
-  ```
+    </header>
+    ...
+```
 
 - a [portal/institution](https://api.figshare.com/v2/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&set=portal_63)
 
-  ```
-    <set>
+```
+    ...
+    <header>
+      <identifier>oai:figshare.com:article/2009490</identifier>
+      <datestamp>2015-12-16T14:30:27Z</datestamp>
+      <setSpec>category_1</setSpec>
+      <setSpec>category_4</setSpec>
+      <setSpec>category_12</setSpec>
+      <setSpec>category_14</setSpec>
+      <setSpec>category_19</setSpec>
+      <setSpec>category_21</setSpec>
+      <setSpec>category_128</setSpec>
+      <setSpec>category_133</setSpec>
+      <setSpec>category_272</setSpec>
+      <setSpec>category_873</setSpec>
+      <setSpec>category_931</setSpec>
       <setSpec>portal_63</setSpec>
-      <setName>American Chemical Society</setName>
-  </set>
-  ```
+      <setSpec>item_type_6</setSpec>
+    </header>
+    ...
+```
 
-- or a [category](https://api.figshare.com/v2/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&set=category_150):
+- a [category](https://api.figshare.com/v2/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&set=category_150):
 
-  ```
-    <set>
+```
+    ...
+    <header>
+      <identifier>oai:figshare.com:article/2058654</identifier>
+      <datestamp>2015-12-27T23:40:01Z</datestamp>
+      <setSpec>category_54</setSpec>
+      <setSpec>category_55</setSpec>
+      <setSpec>category_56</setSpec>
+      <setSpec>category_57</setSpec>
+      <setSpec>category_58</setSpec>
+      <setSpec>category_59</setSpec>
+      <setSpec>category_145</setSpec>
+      <setSpec>category_146</setSpec>
+      <setSpec>category_147</setSpec>
+      <setSpec>category_148</setSpec>
+      <setSpec>category_149</setSpec>
       <setSpec>category_150</setSpec>
-      <setName>Extragalactic Astronomy</setName>
-    </set>
-  ```
+      <setSpec>category_492</setSpec>
+      <setSpec>category_493</setSpec>
+      <setSpec>category_494</setSpec>
+      <setSpec>category_496</setSpec>
+      <setSpec>category_497</setSpec>
+      <setSpec>category_498</setSpec>
+      <setSpec>category_499</setSpec>
+      <setSpec>category_500</setSpec>
+      <setSpec>category_501</setSpec>
+      <setSpec>category_502</setSpec>
+      <setSpec>item_type_6</setSpec>
+    </header>
+    ...
+```
+
+- or a [month\_year](https://api.figshare.com/v2/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&set=month_year_10_2016):
+
+```
+    ...
+    <header>
+      <identifier>oai:figshare.com:article/2004335</identifier>
+      <datestamp>2016-10-31T11:14:47Z</datestamp>
+      <setSpec>category_215</setSpec>
+      <setSpec>category_239</setSpec>
+      <setSpec>portal_15</setSpec>
+      <setSpec>item_type_11</setSpec>
+    </header>
+    ...
+```
 
 
 ## Update schedule
@@ -80,7 +141,6 @@ but your harvesting software system should be able to use resumption tokens with
 no problem.
 
 Be aware of the fact that due to a known limitation on content pagination, results above a 10000 limit (offset) cannot be displayed.
-We are looking at adding a new ListSet (month_year) that will allow you to pre-filter the result set by month.
 
 One particularity on fig**share** OAI-PMH is the expiration datetime (UTC) for
 resumption tokens. Thus, a token expires after an hour.
@@ -206,18 +266,18 @@ Selective harvesting: only articles published `until` 2010-08-18T08:33:01Z.
           <metadata>
             <oai_dc:dc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:dc="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
                 <dc:title>A Modular BAM Complex in the Outer Membrane of the α-Proteobacterium &lt;em&gt;Caulobacter crescentus&lt;/em&gt;</dc:title>
-                <dc:creator>Khatira Anwari</dc:creator>
-                <dc:creator>Sebastian Poggio</dc:creator>
-                <dc:creator>Andrew Perry</dc:creator>
-                <dc:creator>Xenia Gatsos</dc:creator>
-                <dc:creator>Sri Harsha Ramarathinam</dc:creator>
-                <dc:creator>Nicholas A. Williamson</dc:creator>
-                <dc:creator>Nicholas Noinaj</dc:creator>
-                <dc:creator>Susan Buchanan</dc:creator>
-                <dc:creator>Kipros Gabriel</dc:creator>
-                <dc:creator>Anthony W. Purcell</dc:creator>
-                <dc:creator>Christine Jacobs-Wagner</dc:creator>
-                <dc:creator>Trevor Lithgow</dc:creator>
+                <dc:creator>Anthony W. Purcell (105036)</dc:creator>
+                <dc:creator>Trevor Lithgow (105055)</dc:creator>
+                <dc:creator>Kipros Gabriel (189246)</dc:creator>
+                <dc:creator>Nicholas Noinaj (216256)</dc:creator>
+                <dc:creator>Sebastian Poggio (251019)</dc:creator>
+                <dc:creator>Khatira Anwari (254980)</dc:creator>
+                <dc:creator>Andrew Perry (254989)</dc:creator>
+                <dc:creator>Xenia Gatsos (254994)</dc:creator>
+                <dc:creator>Sri Harsha Ramarathinam (255001)</dc:creator>
+                <dc:creator>Nicholas A. Williamson (255006)</dc:creator>
+                <dc:creator>Susan Buchanan (255012)</dc:creator>
+                <dc:creator>Christine Jacobs-Wagner (255016)</dc:creator>
                 <dc:subject>Biochemistry</dc:subject>
                 <dc:subject>Cell Biology</dc:subject>
                 <dc:subject>modular</dc:subject>
@@ -237,6 +297,11 @@ Selective harvesting: only articles published `until` 2010-08-18T08:33:01Z.
 
 ## Changes
 
+**October, 2016**
+Add correct output for ListIdentifiers
+Add month_year set / param
+Add user IDs in the <creator> tags
+
 **May, 2016**
 Initial release of OAI-PMH API
 
@@ -245,3 +310,9 @@ Datacite and RDF Metadata Formats are added
 
 **August, 2016**
 Keywords and Licences tags are added
+
+**October, 2016**
+Add correct output for ListIdentifiers
+Add month_year set / param
+Add user IDs in the <creator> tags
+
