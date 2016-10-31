@@ -414,7 +414,7 @@ The earliest datestamp is given in the <code>&lt;earliestDatestamp&gt;</code> el
 <ul>
 <li>an <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=item_type_7">item type</a></li>
 </ul>
-<p><code>...
+<pre><code>    ...
     &lt;header&gt;
       &lt;identifier&gt;oai:figshare.com:article/2001969&lt;/identifier&gt;
       &lt;datestamp&gt;2015-08-17T14:09:33Z&lt;/datestamp&gt;
@@ -423,11 +423,13 @@ The earliest datestamp is given in the <code>&lt;earliestDatestamp&gt;</code> el
       &lt;setSpec&gt;portal_15&lt;/setSpec&gt;
       &lt;setSpec&gt;item_type_7&lt;/setSpec&gt;
     &lt;/header&gt;
-    ...</code></p>
+    ...
+</code></pre>
+
 <ul>
 <li>a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=portal_63">portal/institution</a></li>
 </ul>
-<p><code>...
+<pre><code>    ...
     &lt;header&gt;
       &lt;identifier&gt;oai:figshare.com:article/2009490&lt;/identifier&gt;
       &lt;datestamp&gt;2015-12-16T14:30:27Z&lt;/datestamp&gt;
@@ -445,11 +447,13 @@ The earliest datestamp is given in the <code>&lt;earliestDatestamp&gt;</code> el
       &lt;setSpec&gt;portal_63&lt;/setSpec&gt;
       &lt;setSpec&gt;item_type_6&lt;/setSpec&gt;
     &lt;/header&gt;
-    ...</code></p>
+    ...
+</code></pre>
+
 <ul>
-<li>
-<p>a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=category_150">category</a>:
-  <code>...
+<li>a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=category_150">category</a>:</li>
+</ul>
+<pre><code>    ...
     &lt;header&gt;
       &lt;identifier&gt;oai:figshare.com:article/2058654&lt;/identifier&gt;
       &lt;datestamp&gt;2015-12-27T23:40:01Z&lt;/datestamp&gt;
@@ -477,11 +481,13 @@ The earliest datestamp is given in the <code>&lt;earliestDatestamp&gt;</code> el
       &lt;setSpec&gt;category_502&lt;/setSpec&gt;
       &lt;setSpec&gt;item_type_6&lt;/setSpec&gt;
     &lt;/header&gt;
-    ...</code></p>
-</li>
-<li>
-<p>or a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=month_year_10_2016">month_year</a>:
-  <code>...
+    ...
+</code></pre>
+
+<ul>
+<li>or a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=month_year_10_2016">month_year</a>:</li>
+</ul>
+<pre><code>    ...
     &lt;header&gt;
       &lt;identifier&gt;oai:figshare.com:article/2004335&lt;/identifier&gt;
       &lt;datestamp&gt;2016-10-31T11:14:47Z&lt;/datestamp&gt;
@@ -490,9 +496,9 @@ The earliest datestamp is given in the <code>&lt;earliestDatestamp&gt;</code> el
       &lt;setSpec&gt;portal_15&lt;/setSpec&gt;
       &lt;setSpec&gt;item_type_11&lt;/setSpec&gt;
     &lt;/header&gt;
-    ...</code></p>
-</li>
-</ul>
+    ...
+</code></pre>
+
 <h2 id="update-schedule">Update schedule</h2>
 <p>Usually, metadata for a published article becomes available in a few moments
 after its publication on fig<strong>share</strong>.</p>
@@ -648,6 +654,10 @@ Initial release of OAI-PMH API</p>
 Datacite and RDF Metadata Formats are added</p>
 <p><strong>August, 2016</strong>
 Keywords and Licences tags are added</p>
+<p><strong>October, 2016</strong>
+Add correct output for ListIdentifiers
+Add month_year set / param
+Add user IDs in the <creator> tags</p>
               
             </div>
           </div>
