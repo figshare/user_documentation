@@ -35,7 +35,7 @@
   - [private links](#collection-private-links-subsection)
     - [list private links](#list-private-links)
     - [create new private link](#create-new-private-link-for-this-collection)
-    - [update existing private link](#update-existing-private-link-for-this--collection)
+    - [update existing private link](#update-existing-private-link-for-this-collection)
     - [disable/delete private link](#disabledelete-private-link-for-collection)
 
 
