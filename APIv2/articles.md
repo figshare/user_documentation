@@ -38,7 +38,7 @@
     - [complete file upload](#complete-file-upload)
     - [view file information](#view-file-information)
     - [download private files](#download-private-files)
-    - [delete file from article](#delete-file--from-article)
+    - [delete file from article](#delete-file-from-article)
   - [article private links](#article-private-links-subsection)
     - [list private links](#list-private-links)
     - [create new private link](#create-new-private-link-for-this-article)
