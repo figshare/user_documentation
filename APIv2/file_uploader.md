@@ -5,7 +5,7 @@ Figshare Upload Service
 
 #### Upload status
 
-An upload status ca be:
+An upload status can be:
 
 * `PENDING` - waiting for it's parts to be uploaded
 * `COMPLETED` - all parts were uploaded and the file was assembled on the storage
@@ -83,7 +83,7 @@ Then:
   | 500 Internal Server Error | internal error                      | _empty_           |
   | 404 Not Found             | unknown upload token or part number | _empty_           |
 
-  **202 Accepted**
+  **200 OK**
 
   Body:
   ```js
@@ -121,7 +121,7 @@ Then:
   | 404 Not Found             | unknown upload token or part number | _empty_           |
   | 409 Conflict              | part data cannot be uploaded        | _empty_           |
 
-  **202 Accepted**
+  **200 OK**
 
   Body:
   ```js
