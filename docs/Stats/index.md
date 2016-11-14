@@ -32,7 +32,7 @@ GET https://stats.figshare.com/top/views/article
 
 ## Errors
 
-Error responses are common for all endpoints an are presented below.
+Error responses are common for all endpoints and are presented below.
 
 Each error response will have a specific HTTP status code and a JSON body with the
 following fields

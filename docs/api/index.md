@@ -21,7 +21,7 @@ communication is done through *https* and all data is encoded as `JSON`.
 
 More often than not you need to send parameters to an endpoint. For
 `GET` requests these are usualy sent in the query string but for `POST`
-and `PUT` requsts they are usualy in the body of the request.
+and `PUT` requests they are usually in the body of the request.
 
 ### Query string
 
@@ -190,9 +190,8 @@ appear in a request, a `422 Unprocessable Entity` will be returned.
 |`limit`|int|10|Number of results included on a page|
 |`offset`|int|0|Where to start the listing(the offset of the first result)|
 
-Please note that there's a limit on the maximum offset or page you can require.
-The offset is currently limited at 1000 and if exceeded a `422 Unprocessable
-Entity` error will be returned. For pages, it depends on the `page_size`
+Please note that there's a limit on the maximum offset or page number  you can require.
+The offset is currently limited at 1000 and if exceeded a `422 Unprocessable Entity` error will be returned. For pages, it depends on the `page_size`
 but for a `page_size` of `10`, the maximum page would be `1000 / 10 = 100`
 
 #### Ordering params

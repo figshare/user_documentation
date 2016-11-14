@@ -252,7 +252,7 @@ Status: 404 Not Found
 
 |Name        |Type |Description|
 |------------|-----|-----------|
-|`page`      |`int`|Show specified page only. Default is 1. Max page is 100. To see more then 100 pages, the search endpoint must be used to narrow down the results|
+|`page`      |`int`|Show specified page only. Default is 1. Max page is 100. To see more than 100 pages, the search endpoint must be used to narrow down the results|
 |`page_size` |`int`|How many entries per page to show. Default is 10.|
 
 *OR*
@@ -343,7 +343,7 @@ Status: 400 Bad request
 |`tags`             |`array of str`         |List of tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])|
 |`references`            |`array of str`         |List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])|
 |`categories`       |`array of int`         |List of category ids to be associated with the article(e.g [1, 23, 33, 66])|
-|`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more then 10 authors. For adding more authors use the specific authors endpoint|
+|`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more than 10 authors. For adding more authors use the specific authors endpoint.|
 |`custom_fields`  |`dict`                 |List of key, values pairs to be associated with the article|
 |`defined_type`   |`str`                  |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'metadata']|
 |`funding` | `str` | Grant number or funding authority |
@@ -390,7 +390,7 @@ Status: 404 Not found
 |`tags`           |`array of str`         |List of tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])|
 |`references`      |`array of str`         |List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])|
 |`categories`       |`array of int`         |List of category ids to be associated with the article(e.g [1, 23, 33, 66])|
-|`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more then 10 authors. For adding more authors use the specific authors endpoint|
+|`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more than 10 authors. For adding more authors use the specific authors endpoint.|
 |`custom_fields`  |`dict`                 |List of key, values pairs to be associated with the article|
 |`defined_type`   |`str`                  |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'stub', 'metadata']|
 |`funding` | `str` | Grant number or funding authority |
@@ -514,7 +514,7 @@ Status: 404 Not found
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
-|`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more then 10 authors. For adding more authors use the specific authors endpoint|
+|`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more than 10 authors. For adding more authors use the specific authors endpoint.|
 
 
 **Success Response**
@@ -540,7 +540,7 @@ Status: 400 Bad request
 
 |Name               |Type                   |Description                                |
 |-------------------|-----------------------|-------------------------------------------|
-|`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more then 10 authors. For adding more authors use the specific authors endpoint|
+|`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more than 10 authors. For adding more authors use the specific authors endpoint.|
 
 
 **Success Response**

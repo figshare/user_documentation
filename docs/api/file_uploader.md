@@ -103,7 +103,7 @@ Then:
 * `PUT /upload/<token>/<part_no>` - receives part data
 
   The entire body of the request is piped as-is to S3. It is assumed that the
-  body is the correct pice of the file, from `startOffset` to `endOffset`
+  body is the correct piece of the file, from `startOffset` to `endOffset`
 
   While this requests is being processed the part is going to be in a
   locked state. The request can end with a `409` status code if a

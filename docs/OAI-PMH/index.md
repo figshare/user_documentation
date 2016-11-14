@@ -203,7 +203,7 @@ ___
                  <setSpec>portal_144</setSpec>
                  <setName>Digital Science</setName>
              </set>
-             <!-- ... ->
+             <!-- ... -->
              <set>
                  <setSpec>portal_102</setSpec>
                  <setName>Wiley</setName>
@@ -297,11 +297,6 @@ Selective harvesting: only articles published `until` 2010-08-18T08:33:01Z.
 
 ## Changes
 
-**October, 2016**
-Add correct output for ListIdentifiers
-Add month_year set / param
-Add user IDs in the <creator> tags
-
 **May, 2016**
 Initial release of OAI-PMH API
 
@@ -315,4 +310,7 @@ Keywords and Licences tags are added
 Add correct output for ListIdentifiers
 Add month_year set / param
 Add user IDs in the <creator> tags
+
+**November, 2016**
+CERIF XML Metadata Format was added
 

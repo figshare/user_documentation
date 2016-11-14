@@ -65,8 +65,8 @@ and, based on the value of `grant_type`:
 
 ##### Response
 
-**Successfull responses are always `200` and failed ones are always `400`,
-even for failed authoziration.**
+**Successful responses are always `200` and failed ones are always `400`,
+even for failed authorization.**
 
 **Success** response is a JSON as described in [http://tools.ietf.org/html/rfc6749#section-5.1](http://tools.ietf.org/html/rfc6749#section-5.1).
 
