@@ -19,7 +19,7 @@ An Item in the OAI-PMH interface is the most recent version of an article.
 
 ## Metadata formats
 
-Currently, the supported formats are: **Dublin Core** (*oai_dc*), **Datacite** (*oai_datacite*), **RDF** (*rdf*) and **CERIF XML** (*cerif*).
+Currently, the supported formats are: **Dublin Core** (*oai_dc*), **Datacite** (*oai_datacite*), **RDF** (*rdf*), **CERIF XML** (*cerif*), and **Qualified Dublin Core** (*qdc*) (hasPart support).
 
 
 ## Datestamps
