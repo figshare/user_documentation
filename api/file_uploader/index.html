@@ -501,7 +501,7 @@ indexes zero-based and inclusive. Example:</p>
 <li><code>PUT /upload/&lt;token&gt;/&lt;part_no&gt;</code> - receives part data</li>
 </ul>
 <p>The entire body of the request is piped as-is to S3. It is assumed that the
-  body is the correct pice of the file, from <code>startOffset</code> to <code>endOffset</code></p>
+  body is the correct piece of the file, from <code>startOffset</code> to <code>endOffset</code></p>
 <p>While this requests is being processed the part is going to be in a
   locked state. The request can end with a <code>409</code> status code if a
   lock for the part could not be obtained.</p>

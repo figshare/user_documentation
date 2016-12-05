@@ -405,7 +405,7 @@ communication is done through <em>https</em> and all data is encoded as <code>JS
 <h2 id="sending-parameters">Sending parameters</h2>
 <p>More often than not you need to send parameters to an endpoint. For
 <code>GET</code> requests these are usualy sent in the query string but for <code>POST</code>
-and <code>PUT</code> requsts they are usualy in the body of the request.</p>
+and <code>PUT</code> requests they are usually in the body of the request.</p>
 <h3 id="query-string">Query string</h3>
 <p>Query strings can contain parameters encoded as <code>application/x-www-form-urlencoded</code>. Very common for <code>GET</code> requests.</p>
 <p><strong>Example</strong>: Sending <code>page</code> parameter when listing articles:</p>
@@ -570,9 +570,8 @@ appear in a request, a <code>422 Unprocessable Entity</code> will be returned.</
 </tr>
 </tbody>
 </table>
-<p>Please note that there's a limit on the maximum offset or page you can require.
-The offset is currently limited at 1000 and if exceeded a <code>422 Unprocessable
-Entity</code> error will be returned. For pages, it depends on the <code>page_size</code>
+<p>Please note that there's a limit on the maximum offset or page number  you can require.
+The offset is currently limited at 1000 and if exceeded a <code>422 Unprocessable Entity</code> error will be returned. For pages, it depends on the <code>page_size</code>
 but for a <code>page_size</code> of <code>10</code>, the maximum page would be <code>1000 / 10 = 100</code></p>
 <h4 id="ordering-params">Ordering params</h4>
 <p>Ordering is done via the <code>order</code> and <code>order_direction</code> params.</p>
