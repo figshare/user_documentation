@@ -2,71 +2,6 @@
 
 To upload a file to the fig**share**, one needs to use the standard _fig**share** API_, coupled
 with the _fig**share** upload system API_.
-
-## TL;DR.
-
-A slimmed down version of the script in the next section, which only takes into account
-the essentials looks like this:
-
-```python
-#!/usr/bin/env python
-
-import json
-import os
-
-import requests
-
-BASE_URL = 'https://api.figshare.com/v2/{endpoint}'
-TOKEN = '<insert access token here>'
-HEADERS = {'Authorization': 'token ' + TOKEN}
-
-file_path = os.path.realpath(__file__)  # current python script
-file_name = os.path.basename(file_path)
-
-# Create article
-data = json.dumps({'title': file_name})
-endpoint = 'account/articles'
-resp = requests.post(BASE_URL.format(endpoint=endpoint), headers=HEADERS, data=data)
-
-article_id = json.loads(resp.content)['location'].rsplit('/', 1)[1]
-
-# Get file info
-with open(file_path, 'rb') as fin:
-    fin.seek(0, 2)  # Go to end of file
-    size = fin.tell()
-data = json.dumps({'name': file_name, 'size': size})
-
-# Initiate upload
-endpoint = 'account/articles/{}/files'.format(article_id)
-resp = requests.post(BASE_URL.format(endpoint=endpoint), headers=HEADERS, data=data)
-
-file_id = json.loads(resp.content)['location'].rsplit('/', 1)[1]
-
-# Get upload/parts info
-endpoint = 'account/articles/{}/files/{}'.format(article_id, file_id)
-resp = requests.get(BASE_URL.format(endpoint=endpoint), headers=HEADERS)
-
-url = '{upload_url}'.format(**json.loads(resp.content))
-parts = json.loads(requests.get(url).content)['parts']
-
-# Upload parts
-with open(file_path, 'rb') as fin:
-    for part in parts:
-        size = part['endOffset'] - part['startOffset'] + 1
-        address = '{}/{}'.format(url, part['partNo'])
-        requests.put(address, data=fin.read(size))
-
-# Mark file upload as completed
-requests.post(BASE_URL.format(endpoint=endpoint), headers=HEADERS)
-
-# List files
-endpoint = 'account/articles/{}/files'.format(article_id)
-resp = requests.get(BASE_URL.format(endpoint=endpoint), headers=HEADERS)
-print resp.content
-```
-
-## Example Script
-
 A full script that lists articles *before* and *after* the new **article** and **file** are created
 would look like this:
 
@@ -89,9 +24,9 @@ FILE_NAME = '/path/to/work/directory/cat.obj'
 TITLE = 'A 3D cat object model'
 
 
-def raw_issue_request(method, url, data=None):
+def raw_issue_request(method, url, data=None, binary=False):
     headers = {'Authorization': 'token ' + TOKEN}
-    if data is not None:
+    if data is not None and not binary:
         data = json.dumps(data)
     response = requests.request(method, url, headers=headers, data=data)
     try:
@@ -199,7 +134,7 @@ def upload_part(file_info, stream, part):
     stream.seek(part['startOffset'])
     data = stream.read(part['endOffset'] - part['startOffset'] + 1)
 
-    raw_issue_request('PUT', url, data=data)
+    raw_issue_request('PUT', url, data=data, binary=True)
     print '  Uploaded part {partNo} from {startOffset} to {endOffset}'.format(**part)
 
 
