@@ -28,7 +28,7 @@ and inside an institution scope they have the format:
 /{institution}/total/{counter}/{item}/{item_id}
 ```
 
-where **counter** is one of `views`, `downloads` or `shares`.
+where **counter** is one of `views`, `downloads` or `shares` and **item** is one of `article`, `author`, `collection`, `group` or `project`.
 
 
 ## Examples

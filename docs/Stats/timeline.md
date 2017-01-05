@@ -32,7 +32,8 @@ and inside an institution scope they have the format:
 ```
 
 where **granularity** is one of `year`, `month`, `day` or `total`
-and **counter** is one of `views`, `downloads` or `shares`.
+, **counter** is one of `views`, `downloads` or `shares`
+and **item** is one of `article`, `author`, `collection`, `group` or `project`.
 
 
 The results on this endpoint can be filtered further by a `start_date` and `end_date` and
