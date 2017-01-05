@@ -397,8 +397,9 @@ of <em>views</em>, <em>downloads</em> or <em>shares</em> for a specific item.</p
 <pre><code>/{institution}/breakdown/{granularity}{counter}/{item}/{item_id}
 </code></pre>
 
-<p>where <strong>granularity</strong> is one of <code>year</code>, <code>month</code>, <code>day</code> or <code>total</code>
-and <strong>counter</strong> is one of <code>views</code>, <code>downloads</code> or <code>shares</code>.</p>
+<p>where <strong>granularity</strong> is one of <code>year</code>, <code>month</code>, <code>day</code> or <code>total</code>,
+<strong>counter</strong> is one of <code>views</code>, <code>downloads</code> or <code>shares</code>
+and <strong>item</strong> is one of <code>article</code>, <code>author</code>, <code>collection</code>, <code>group</code> or <code>project</code>.</p>
 <p>The results on this endpoint can be filtered further by a <code>start_date</code> and <code>end_date</code> and
 a specified <code>category</code> or <code>item_type</code>. By default, <code>start_date</code> and <code>end_date</code> are set
 to reflect the events of the last month. The supplementary filters can be provided in the
