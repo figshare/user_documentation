@@ -16,10 +16,18 @@ eventually commit to the new fields by documenting and guaranteeing them.
     "title": "Test article title",
     "doi": "10.6084/m9.figshare.1434614",
     "url": "http://api.figshare.com/articles/1434614",
+    "url_public_html": "https://figshare.com/articles/Test_article_title/1434614",
+    "url_public_api": "https://api.figshare.com/articles/1434614",
+    "url_private_html": "https://figshare.com/account/articles/1434614",
+    "url_private_api": "https://api.figshare.com/account/articles/1434614",
     "published_date": "2015-12-31T23:59:59Z",
     "thumb": "https://ndownloader.figshare.com/files/123456789/preview/12345678/thumb.png"
 }
 ```
+
+Note:
+> `url` will eventually be deprecated in favour of the `url_(private|public)_(api|html)` flavours.  
+> It is here for backwards compatibility.
 
 
 # ArticlePresenter.L1
