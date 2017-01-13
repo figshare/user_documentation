@@ -3,16 +3,16 @@
 
     
     <url>
-     <loc>None/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/oauth/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/oauth/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,18 +20,8 @@
     
         
     <url>
-     <loc>None/OAI-PMH/</loc>
-     <lastmod>2017-01-05</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>None/Search/search/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/OAI-PMH/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -40,32 +30,8 @@
     
         
     <url>
-     <loc>None/Stats/breakdown/</loc>
-     <lastmod>2017-01-05</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/Stats/</loc>
-     <lastmod>2017-01-05</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/Stats/timeline/</loc>
-     <lastmod>2017-01-05</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/Stats/tops/</loc>
-     <lastmod>2017-01-05</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/Stats/totals/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/Search/search/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -74,67 +40,101 @@
     
         
     <url>
-     <loc>None/api/articles/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/Stats/breakdown/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/api/categories/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/Stats/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/api/collections/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/Stats/timeline/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/api/file_uploader/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/Stats/tops/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/api/hr_feed/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/Stats/totals/</loc>
+     <lastmod>2017-01-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>/api/articles/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/api/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/api/categories/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/api/institution_and_groups/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/api/collections/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/api/licenses/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/api/file_uploader/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/api/projects/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/api/hr_feed/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/api/upload_example/</loc>
-     <lastmod>2017-01-05</lastmod>
+     <loc>/api/</loc>
+     <lastmod>2017-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None</loc>
+     <loc>/api/institution_and_groups/</loc>
+     <lastmod>2017-01-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/api/licenses/</loc>
+     <lastmod>2017-01-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/api/projects/</loc>
+     <lastmod>2017-01-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/api/upload_example/</loc>
+     <lastmod>2017-01-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc></loc>
      <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>

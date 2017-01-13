@@ -7,20 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
-  <title>Article - Figshare User Documentation</title>
-  
-
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-
-  
+  <title>Article - Figshare User Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../../../css/highlight.css">
   <link href="../../../styles.css" rel="stylesheet">
-
   
   <script>
     // Current page data
@@ -31,9 +25,7 @@
   
   <script src="../../../js/jquery-2.1.1.min.js"></script>
   <script src="../../../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../../../js/highlight.pack.js"></script>
-  <script src="../../../js/theme.js"></script> 
-
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script> 
   
 </head>
 
@@ -53,7 +45,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
+	<ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -400,11 +392,20 @@ eventually commit to the new fields by documenting and guaranteeing them.</p>
     &quot;title&quot;: &quot;Test article title&quot;,
     &quot;doi&quot;: &quot;10.6084/m9.figshare.1434614&quot;,
     &quot;url&quot;: &quot;http://api.figshare.com/articles/1434614&quot;,
+    &quot;url_public_html&quot;: &quot;https://figshare.com/articles/Test_article_title/1434614&quot;,
+    &quot;url_public_api&quot;: &quot;https://api.figshare.com/articles/1434614&quot;,
+    &quot;url_private_html&quot;: &quot;https://figshare.com/account/articles/1434614&quot;,
+    &quot;url_private_api&quot;: &quot;https://api.figshare.com/account/articles/1434614&quot;,
     &quot;published_date&quot;: &quot;2015-12-31T23:59:59Z&quot;,
     &quot;thumb&quot;: &quot;https://ndownloader.figshare.com/files/123456789/preview/12345678/thumb.png&quot;
 }
 </code></pre>
 
+<p>Note:</p>
+<blockquote>
+<p><code>url</code> will eventually be deprecated in favour of the <code>url_(private|public)_(api|html)</code> flavours.<br />
+It is here for backwards compatibility.</p>
+</blockquote>
 <h1 id="articlepresenterl1">ArticlePresenter.L1</h1>
 <ul>
 <li><a href="../category/#categorypresenter">CategoryPresenter</a></li>
@@ -512,10 +513,10 @@ eventually commit to the new fields by documenting and guaranteeing them.</p>
       </div>
 
     </section>
-
+    
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
@@ -526,6 +527,7 @@ eventually commit to the new fields by documenting and guaranteeing them.</p>
       
     </span>
 </div>
+    <script src="../../../js/theme.js"></script>
 
 </body>
 </html>
