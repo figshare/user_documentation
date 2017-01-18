@@ -89,14 +89,10 @@ Then:
   ```js
   {
     partNo: 3,
-    uploadToken: "UPLOAD_TOKEN",
     startOffset: 1024,
     endOffset: 2047,
     status: "PENDING",
-    locked: false,
-    completedAt: null,
-    uploadUrl: "http://upload.figshare.com/upload/<token>/3",
-    infoUrl: "http://upload.figshare.com/upload/<token>/3"
+    locked: false
   }
   ```
 
@@ -123,12 +119,6 @@ Then:
 
   **200 OK**
 
-  Body:
-  ```js
-  {
-    md5: "received part md5"
-  }
-  ```
 
 * `DELETE /upload/<token>/<part_no>` - reset part data
 
