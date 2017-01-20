@@ -326,6 +326,11 @@ Headers: `Location: https://api.figshare.com/v2/account/project/1234/articles/45
 Status: `204 No content`
 
 
+### Move project article
+
+Currently, moving an article to a project or removing an article from a project actions are available only on our website platform [https://figshare.com](https://figshare.com). We plan to deliver this functionality to the API system in the near future.
+
+
 ## Project files subsection
 
 ### List article files
