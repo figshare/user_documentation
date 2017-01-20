@@ -480,14 +480,10 @@ indexes zero-based and inclusive. Example:</p>
   <code>js
   {
     partNo: 3,
-    uploadToken: "UPLOAD_TOKEN",
     startOffset: 1024,
     endOffset: 2047,
     status: "PENDING",
-    locked: false,
-    completedAt: null,
-    uploadUrl: "http://upload.figshare.com/upload/&lt;token&gt;/3",
-    infoUrl: "http://upload.figshare.com/upload/&lt;token&gt;/3"
+    locked: false
   }</code></p>
 <ul>
 <li><code>PUT /upload/&lt;token&gt;/&lt;part_no&gt;</code> - receives part data</li>
@@ -532,11 +528,6 @@ indexes zero-based and inclusive. Example:</p>
 </tbody>
 </table>
 <p><strong>200 OK</strong></p>
-<p>Body:
-  <code>js
-  {
-    md5: "received part md5"
-  }</code></p>
 <ul>
 <li><code>DELETE /upload/&lt;token&gt;/&lt;part_no&gt;</code> - reset part data</li>
 </ul>
