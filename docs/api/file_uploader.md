@@ -129,7 +129,7 @@ Then:
 
   | Status Code               | Explanation                         | Body    |
   |---------------------------|-------------------------------------|---------|
-  | 202 Accepted              | all good                            | _empty_ |
+  | 200 Accepted              | all good                            | _empty_ |
   | 500 Internal Server Error | internal error                      | _empty_ |
   | 404 Not Found             | unknown upload token or part number | _empty_ |
   | 409 Conflict              | upload completed or part locked     | _empty_ |

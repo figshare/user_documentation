@@ -28,7 +28,3 @@
 ```
 
 For linked files (`is_link_only: true`), the `upload_url` and `upload_token` fields are missing (as the files will not be uploaded to figshare).
-
-## Changes
-
-**July 2015**: Added `is_link_only` and `download_url` fields to all file presenters.

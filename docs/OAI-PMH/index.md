@@ -288,7 +288,8 @@ Selective harvesting: only articles published `until` 2010-08-18T08:33:01Z.
                 <dc:type>Dataset</dc:type>
                 <dc:identifier>10.1371/journal.pone.0008619</dc:identifier>
                 <dc:relation>https://figshare.com/articles/A_Modular_BAM_Complex_in_the_Outer_Membrane_of_the_Proteobacterium_em_Caulobacter_crescentus_em_/145088</dc:relation>
-            </oai_dc:dc>
+                <dc:rights>CC BY</dc:rights>
+           </oai_dc:dc>
           </metadata>
          </record>
       </ListRecords>
@@ -313,4 +314,3 @@ Add user IDs in the <creator> tags
 
 **November, 2016**
 CERIF XML Metadata Format was added
-

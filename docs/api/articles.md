@@ -340,8 +340,8 @@ Status: 400 Bad request
 |-------------------|-----------------------|-------------------------------------------|
 |`title`            |`str`                  |The title for this article|
 |`description`      |`str`                  |The article description. In a publisher case, usually this is the remote article description|
-|`tags`             |`array of str`         |List of tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])|
-|`references`            |`array of str`         |List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])|
+|`tags`             |`array of str`         |List of tags to be associated with the article (e.g ["tag1", "tag2", "tagn"])|
+|`references`            |`array of str`         |List of links to be associated with the article (e.g ["http://link1", "http://link2", "http://link3"])|
 |`categories`       |`array of int`         |List of category ids to be associated with the article(e.g [1, 23, 33, 66])|
 |`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more than 10 authors. For adding more authors use the specific authors endpoint.|
 |`custom_fields`  |`dict`                 |List of key, values pairs to be associated with the article|
@@ -387,8 +387,8 @@ Status: 404 Not found
 |-----------------|-----------------------|-------------------------------------------|
 |`title`          |`str`                  |The title for this article - `mandatory`|
 |`description`    |`str`                  |The article description. In a publisher case, usually this is the remote article description|
-|`tags`           |`array of str`         |List of tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])|
-|`references`      |`array of str`         |List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])|
+|`tags`           |`array of str`         |List of tags to be associated with the article (e.g ["tag1", "tag2", "tagn"])|
+|`references`      |`array of str`         |List of links to be associated with the article (e.g ["http://link1", "http://link2", "http://link3"])|
 |`categories`       |`array of int`         |List of category ids to be associated with the article(e.g [1, 23, 33, 66])|
 |`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more than 10 authors. For adding more authors use the specific authors endpoint.|
 |`custom_fields`  |`dict`                 |List of key, values pairs to be associated with the article|
@@ -456,7 +456,7 @@ Status: 404 Not found
     POST /v2/account/articles/{id}/publish
 
 **Notes**: 
-- If the whole article is under *embargo*, it will not be published immediatly, but when the embargo expires or is lifted.  
+- If the whole article is under *embargo*, it will not be published immediatly, but when the embargo expires or is lifted.
 - When an article is published, a new public version will be generated.
 Any further updates to the article will affect the private article data.
 In order to make these changes publicly visible, an explicit publish operation is needed.

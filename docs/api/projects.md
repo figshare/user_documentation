@@ -19,6 +19,7 @@ Projects API endpoints
     - [retrieve article](#get-article)
     - [create article](#create-a-new-project-article)
     - [delete article](#delete-project-article)
+    - [move article from project](#move-article-from-project)
   - [files](#project-files-subsection)
     - [list article files](#list-article-files)
     - [get article file](#get-article-file)
@@ -326,7 +327,7 @@ Headers: `Location: https://api.figshare.com/v2/account/project/1234/articles/45
 Status: `204 No content`
 
 
-### Move project article
+### Move article from project
 
 Currently, moving an article to a project or removing an article from a project actions are available only on our website platform [https://figshare.com](https://figshare.com). We plan to deliver this functionality to the API system in the near future.
 
