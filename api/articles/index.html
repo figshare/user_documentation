@@ -838,12 +838,12 @@ Status: 200 OK</p>
 <tr>
 <td><code>tags</code></td>
 <td><code>array of str</code></td>
-<td>List of tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])</td>
+<td>List of tags to be associated with the article (e.g ["tag1", "tag2", "tagn"])</td>
 </tr>
 <tr>
 <td><code>references</code></td>
 <td><code>array of str</code></td>
-<td>List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])</td>
+<td>List of links to be associated with the article (e.g ["http://link1", "http://link2", "http://link3"])</td>
 </tr>
 <tr>
 <td><code>categories</code></td>
@@ -931,12 +931,12 @@ Status: 200 OK</p>
 <tr>
 <td><code>tags</code></td>
 <td><code>array of str</code></td>
-<td>List of tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])</td>
+<td>List of tags to be associated with the article (e.g ["tag1", "tag2", "tagn"])</td>
 </tr>
 <tr>
 <td><code>references</code></td>
 <td><code>array of str</code></td>
-<td>List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])</td>
+<td>List of links to be associated with the article (e.g ["http://link1", "http://link2", "http://link3"])</td>
 </tr>
 <tr>
 <td><code>categories</code></td>
@@ -1027,7 +1027,7 @@ Location: https://api.figshare.com/v2/account/articles/123
 <pre><code>POST /v2/account/articles/{id}/publish
 </code></pre>
 <p><strong>Notes</strong>: 
-- If the whole article is under <em>embargo</em>, it will not be published immediatly, but when the embargo expires or is lifted.<br />
+- If the whole article is under <em>embargo</em>, it will not be published immediatly, but when the embargo expires or is lifted.
 - When an article is published, a new public version will be generated.
 Any further updates to the article will affect the private article data.
 In order to make these changes publicly visible, an explicit publish operation is needed.</p>
