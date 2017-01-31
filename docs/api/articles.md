@@ -456,7 +456,7 @@ Status: 404 Not found
     POST /v2/account/articles/{id}/publish
 
 **Notes**: 
-- If the whole article is under *embargo*, it will not be published immediatly, but when the embargo expires or is lifted.
+- If the whole article is under *embargo*, it will not be published immediatly, but when the embargo expires or is lifted.  
 - When an article is published, a new public version will be generated.
 Any further updates to the article will affect the private article data.
 In order to make these changes publicly visible, an explicit publish operation is needed.

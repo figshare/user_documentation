@@ -300,8 +300,8 @@ Accepted parameters sent as JSON request body:
 |----------------|----------------|-------------------------------------------|
 |`title`         |`str`           |Article title - `mandatory`.               |
 |`description`   |`str`           |Article description.                       |
-|`tags`          |`array of str`  |Tags to be associated with the article (e.g ['tag1', 'tag2', 'tagn'])|
-|`references`    |`array of str`  |List of links to be associated with the article (e.g ['http://link1', 'http://link2', 'http://link3'])|
+|`tags`          |`array of str`  |Tags to be associated with the article (e.g ["tag1", "tag2", "tagn"])|
+|`references`    |`array of str`  |List of links to be associated with the article (e.g ["http://link1", "http://link2", "http://link3"])|
 |`categories`    |`array of int`  |List of category ids to be associated with the article (e.g [1, 23, 33, 66])|
 |`authors`       |`array of dict` |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more then 10 authors. For adding more authors use the specific authors endpoint|
 |`custom_fields` |`dict`          |List of key, values pairs to be associated with the article|
