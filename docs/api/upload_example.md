@@ -20,7 +20,7 @@ BASE_URL = 'https://api.figshare.com/v2/{endpoint}'
 TOKEN = '<insert access token here>'
 CHUNK_SIZE = 1048576
 
-FILE_NAME = '/path/to/work/directory/cat.obj'
+FILE_PATH = '/path/to/work/directory/cat.obj'
 TITLE = 'A 3D cat object model'
 
 
@@ -120,7 +120,7 @@ def upload_parts(file_info):
     result = raw_issue_request('GET', url)
 
     print 'Uploading parts:'
-    with open(FILE_NAME, 'rb') as fin:
+    with open(FILE_PATH, 'rb') as fin:
         for part in result['parts']:
             upload_part(file_info, fin, part)
     print
@@ -146,7 +146,7 @@ def main():
     list_files_of_article(article_id)
 
     # Then we upload the file.
-    file_info = initiate_new_upload(article_id, FILE_NAME)
+    file_info = initiate_new_upload(article_id, FILE_PATH)
     # Until here we used the figshare API; following lines use the figshare upload service API.
     upload_parts(file_info)
     # We return to the figshare API to complete the file upload process.
