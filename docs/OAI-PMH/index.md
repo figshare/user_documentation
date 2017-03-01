@@ -140,10 +140,9 @@ current page. You can read more
 but your harvesting software system should be able to use resumption tokens with
 no problem.
 
-Be aware of the fact that due to a known limitation on content pagination, results above a 10000 limit (offset) cannot be displayed.
 
 One particularity on fig**share** OAI-PMH is the expiration datetime (UTC) for
-resumption tokens. Thus, a token expires after an hour.
+resumption tokens. Thus, a token expires after 5 minutes.
 
 
 ## Rate limit
