@@ -501,9 +501,8 @@ current page. You can read more
 <a href="https://www.openarchives.org/OAI/openarchivesprotocol.html#FlowControl">here</a>,
 but your harvesting software system should be able to use resumption tokens with
 no problem.</p>
-<p>Be aware of the fact that due to a known limitation on content pagination, results above a 10000 limit (offset) cannot be displayed.</p>
 <p>One particularity on fig<strong>share</strong> OAI-PMH is the expiration datetime (UTC) for
-resumption tokens. Thus, a token expires after an hour.</p>
+resumption tokens. Thus, a token expires after 5 minutes.</p>
 <h2 id="rate-limit">Rate limit</h2>
 <p>Currently no rate limiting is implemented.
 We recommend you to make no more than one request per second.</p>
