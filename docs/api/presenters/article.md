@@ -15,13 +15,15 @@ eventually commit to the new fields by documenting and guaranteeing them.
     "id": 1434614,
     "title": "Test article title",
     "doi": "10.6084/m9.figshare.1434614",
+    "group_id": 1234,
     "url": "http://api.figshare.com/articles/1434614",
     "url_public_html": "https://figshare.com/articles/Test_article_title/1434614",
     "url_public_api": "https://api.figshare.com/articles/1434614",
     "url_private_html": "https://figshare.com/account/articles/1434614",
     "url_private_api": "https://api.figshare.com/account/articles/1434614",
     "published_date": "2015-12-31T23:59:59Z",
-    "thumb": "https://ndownloader.figshare.com/files/123456789/preview/12345678/thumb.png"
+    "thumb": "https://ndownloader.figshare.com/files/123456789/preview/12345678/thumb.png",
+    "defined_type": 3
 }
 ```
 
@@ -59,7 +61,6 @@ Note:
     "has_linked_file": false,
     "categories": [CategoryPresenter],
     "license": LicensePresenter,
-    "defined_type": 3,
     "published_date": null,
     "embargo_reason": "",
     "references": ["http://link1", "http://link2", "http://link3"]
