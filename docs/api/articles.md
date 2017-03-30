@@ -348,6 +348,7 @@ Status: 400 Bad request
 |`defined_type`   |`str`                  |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'metadata']|
 |`funding` | `str` | Grant number or funding authority |
 |`license` | `int` | License id for this article. Licenses listing endpoints are described [here](licenses.md). |
+|`doi`| `str` | Not appliable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system. |
 |`resource_doi` |`str` | Not applicable to regular users. In a publisher case, this is the publisher article DOI. |
 |`resource_title` |`str` | Not applicable to regular users. In a publisher case, this is the publisher article title. |
 
@@ -392,9 +393,10 @@ Status: 404 Not found
 |`categories`       |`array of int`         |List of category ids to be associated with the article(e.g [1, 23, 33, 66])|
 |`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more than 10 authors. For adding more authors use the specific authors endpoint.|
 |`custom_fields`  |`dict`                 |List of key, values pairs to be associated with the article|
-|`defined_type`   |`str`                  |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'stub', 'metadata']|
+|`defined_type`   |`str`                  |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'metadata']|
 |`funding` | `str` | Grant number or funding authority |
 |`license` | `int` | License id for this article. Licenses listing endpoints are described [here](licenses.md). |
+|`doi`| `str` | Not appliable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system. |
 |`resource_doi` |`str` | Not applicable to regular users. In a publisher case, this is the publisher article DOI. |
 |`resource_title` |`str` | Not applicable to regular users. In a publisher case, this is the publisher article title. |
 

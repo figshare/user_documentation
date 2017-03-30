@@ -308,6 +308,7 @@ Accepted parameters sent as JSON request body:
 |`defined_type`  |`str`           |Article type, one of ['figure', 'media', 'dataset', 'fileset', 'poster', 'paper', 'presentation', 'thesis', 'code', 'metadata']|
 |`funding`       |`str`           |Grant number of funding authority. Max of 2000 characters permitted. |
 |`license`       |`str`           |Licence id for this article. |
+|`doi`| `str` | Not appliable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system. |
 |`resource_doi`  |`str`           |Not applicable to regular users. In a publisher case, this is the publisher article DOI.|
 |`resource_title`|`str`           |Not applicable to regular users. In a publisher case, this is the publisher article title.|
 
