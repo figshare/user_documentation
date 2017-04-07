@@ -152,7 +152,14 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#list-categories">List categories</a></li>
+                <li class="toctree-l3"><a href="#categories-public-endpoint-no-oauth-required">Categories public endpoint (no OAuth required)</a></li>
+                
+                    <li><a class="toctree-l4" href="#list-categories">List categories</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#categories-private-endpoint-oauth-required">Categories private endpoint (OAuth required)</a></li>
+                
+                    <li><a class="toctree-l4" href="#list-institution-categories-including-parent-categories">List institution categories (including parent Categories)</a></li>
                 
             
             </ul>
@@ -361,8 +368,16 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="list-categories">List categories</h1>
+                <h1 id="categories-public-endpoint-no-oauth-required">Categories public endpoint (no OAuth required)</h1>
+<h2 id="list-categories">List categories</h2>
 <pre><code>GET /v2/categories
+</code></pre>
+<p><strong>Success Response</strong></p>
+<p>Status: 200 OK</p>
+<p>A list of <a href="../presenters/category/#categorypresenter">Category Presenters</a></p>
+<h1 id="categories-private-endpoint-oauth-required">Categories private endpoint (OAuth required)</h1>
+<h2 id="list-institution-categories-including-parent-categories">List institution categories (including parent Categories)</h2>
+<pre><code>GET /v2/account/categories
 </code></pre>
 <p><strong>Success Response</strong></p>
 <p>Status: 200 OK</p>

@@ -877,13 +877,28 @@
         }, 
         {
             "location": "/api/categories/", 
-            "text": "List categories\n\n\nGET /v2/categories\n\n\n\nSuccess Response\n\n\nStatus: 200 OK\n\n\nA list of \nCategory Presenters", 
+            "text": "Categories public endpoint (no OAuth required)\n\n\nList categories\n\n\nGET /v2/categories\n\n\n\nSuccess Response\n\n\nStatus: 200 OK\n\n\nA list of \nCategory Presenters\n\n\nCategories private endpoint (OAuth required)\n\n\nList institution categories (including parent Categories)\n\n\nGET /v2/account/categories\n\n\n\nSuccess Response\n\n\nStatus: 200 OK\n\n\nA list of \nCategory Presenters", 
             "title": "Categories"
+        }, 
+        {
+            "location": "/api/categories/#categories-public-endpoint-no-oauth-required", 
+            "text": "", 
+            "title": "Categories public endpoint (no OAuth required)"
         }, 
         {
             "location": "/api/categories/#list-categories", 
             "text": "GET /v2/categories  Success Response  Status: 200 OK  A list of  Category Presenters", 
             "title": "List categories"
+        }, 
+        {
+            "location": "/api/categories/#categories-private-endpoint-oauth-required", 
+            "text": "", 
+            "title": "Categories private endpoint (OAuth required)"
+        }, 
+        {
+            "location": "/api/categories/#list-institution-categories-including-parent-categories", 
+            "text": "GET /v2/account/categories  Success Response  Status: 200 OK  A list of  Category Presenters", 
+            "title": "List institution categories (including parent Categories)"
         }, 
         {
             "location": "/api/collections/", 
