@@ -200,7 +200,7 @@ Ordering is done via the `order` and `order_direction` params.
 
 |field|type|default|description|
 |-----|----|-------|-----------|
-|`order`|string|_varies_|The field by which to order. Default varies by endpoint/resource. For articles and collections, valid values are: `published_date` and `modified_date`.|
+|`order`|string|_varies_|The field by which to order. Default varies by endpoint/resource. For articles and collections, valid values are: `published_date`, `modified_date`, `views`, `shares`, `downloads` and `cites`. |
 |`order_direction`|string|_varies_|Only `asc` and `desc` values are supported. Default varies by endpoint/resource|
 
 #### Searching params
