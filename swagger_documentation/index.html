@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Figshare documentation</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!--style type="text/css"></style-->
+
+    <link href="css/index.css" rel="stylesheet"/>
+    <link href='css/standalone.css' rel='stylesheet'/>
+    <link href='css/api-explorer.css' rel='stylesheet' type='text/css'/>
+    <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+
+    <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
+    <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
+    <script src='lib/jquery.wiggle.min.js' type='text/javascript'></script>
+    <script src='lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
+    <script src='lib/handlebars-2.0.0.js' type='text/javascript'></script>
+    <script src='lib/underscore-min.js' type='text/javascript'></script>
+    <script src='lib/backbone-min.js' type='text/javascript'></script>
+    <script src='lib/figshare.js' type='text/javascript'></script>
+    <script src='swagger-ui.js' type='text/javascript'></script>
+    <script src='lib/jsoneditor.js' type='text/javascript'></script>
+    <script src='lib/highlight.7.3.pack.js' type='text/javascript'></script>
+    <script src='lib/marked.js' type='text/javascript'></script>
+    <script src='lib/swagger-oauth.js' type='text/javascript'></script>
+    <script src='lib/bootstrap.min.js' type='text/javascript'></script>
+
+    <script type="text/javascript">
+        jQuery.browser = jQuery.browser || {};
+        (function () {
+            jQuery.browser.msie = jQuery.browser.msie || false;
+            jQuery.browser.version = jQuery.browser.version || 0;
+            if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+                jQuery.browser.msie = true;
+                jQuery.browser.version = RegExp.$1;
+            }
+        })();
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            var url = window.location.search.match(/url=([^&]+)/);
+            if (url && url.length > 1) {
+                url = decodeURIComponent(url[1]);
+            } else {
+                url = window.location.toString().replace(/\/*#?.*/, '/swagger_parsed.json');
+            }
+
+            window.swaggerUi = new SwaggerUi({
+                url: url,
+                dom_id: "swagger-ui-container",
+                supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+                docExpansion: "none",
+                onComplete: function (swaggerApi, swaggerUi) {
+                    if (typeof initOAuth == "function") {
+
+                        initOAuth({
+                            clientId: "ffe7748a-3a3f-4860-a02a-42ab08e4fde2",
+                            realm: "realm",
+                            appName: "Swagger"
+                        });
+
+                    }
+
+                    $('pre code').each(function (i, e) {
+                        hljs.highlightBlock(e)
+                    });
+
+                    //$('.model-signature div.collapse').addClass('in');
+
+                    if (swaggerUi.options.url) {
+                        $('#input_baseUrl').val(swaggerUi.options.url);
+                    }
+                    if (swaggerUi.options.apiKey) {
+                        $('#input_apiKey').val(swaggerUi.options.apiKey);
+                    }
+
+                    $("[data-toggle='tooltip']").tooltip();
+
+
+                    $('#input_apiKey').change(addApiKeyAuthorization);
+                    addApiKeyAuthorization();
+
+
+                    addSampleCodesToOperations();
+                    addAdditionalDescriptions();
+                },
+                onFailure: function (data) {
+                    log("Unable to Load SwaggerUI");
+                },
+                sorter: "alpha"
+            });
+
+            function addApiKeyAuthorization() {
+                var key = encodeURIComponent($('#input_apiKey')[0].value);
+                if (key && key.trim() != "") {
+                    var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("authorization", "token " + key, "header");
+                    window.swaggerUi.api.clientAuthorizations.add("authorization", apiKeyAuth);
+                    log("added key " + key);
+                }
+            }
+
+            $('#input_apiKey').change(addApiKeyAuthorization);
+            // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
+            /*
+             var apiKey = "myApiKeyXXXX123456789";
+             $('#input_apiKey').val(apiKey);
+             */
+
+            window.swaggerUi.load();
+
+            function log() {
+                if ('console' in window) {
+                    console.log.apply(console, arguments);
+                }
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            $(window).scroll(function () {
+                var sticky = $(".sticky-nav");
+
+                i(sticky);
+                r(sticky);
+
+                function n() {
+                    return window.matchMedia("(min-width: 992px)").matches
+                }
+
+                function e() {
+                    n() ? sticky.parents(".sticky-nav-placeholder").removeAttr("style") : sticky.parents(".sticky-nav-placeholder").css("min-height", sticky.outerHeight())
+                }
+
+                function i(n) {
+                    n.hasClass("fixed") || (navOffset = n.offset().top);
+                    e();
+                    $(window).scrollTop() > navOffset ? $(".modal.in").length || n.addClass("fixed") : n.removeClass("fixed")
+                }
+
+                function r(e) {
+                    function i() {
+                        var i = $(window).scrollTop(), r = e.parents(".sticky-nav");
+                        return r.hasClass("fixed") && !n() && (i = i + r.outerHeight() + 40), i
+                    }
+
+                    function r(e) {
+                        var t = o.next("[data-endpoint]"), n = o.prev("[data-endpoint]");
+                        return "next" === e ? t.length ? t : o.parent().next().find("[data-endpoint]").first() : "prev" === e ? n.length ? n : o.parent().prev().find("[data-endpoint]").last() : []
+                    }
+
+                    var nav = e.find("[data-navigator]");
+                    if (nav.find("[data-endpoint][data-selected]").length) {
+                        var o = nav.find("[data-endpoint][data-selected]"),
+                            a = $("#" + o.attr("data-endpoint")),
+                            s = a.offset().top,
+                            l = (s + a.outerHeight(), r("next")),
+                            u = r("prev");
+                        if (l.length) {
+                            {
+                                var d = $("#" + l.attr("data-endpoint")), f = d.offset().top;
+                                f + d.outerHeight()
+                            }
+                            i() >= f && c(l)
+                        }
+                        if (u.length) {
+                            var p = $("#" + u.attr("data-endpoint")),
+                            g = u.offset().top;
+                            v = (g + p.outerHeight(), 100);
+                            i() < s - v && c(u)
+                        }
+                    }
+                }
+
+                function s() {
+                    var e = $(".sticky-nav [data-navigator]"),
+                        n = e.find("[data-endpoint]").first();
+                    n.attr("data-selected", "");
+                    u.find("[data-selected-value]").html(n.text())
+                }
+
+                function c(e) {
+                    {
+                        var n = $(".sticky-nav [data-navigator]");
+                        $("#" + e.attr("data-endpoint"))
+                    }
+                    n.find("[data-resource]").removeClass("active");
+                    n.find("[data-selected]").removeAttr("data-selected");
+                    e.closest("[data-resource]").addClass("active");
+                    e.attr("data-selected", "");
+                    sticky.find("[data-selected-value]").html(e.text())
+                }
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("[data-toggle='tooltip']").tooltip();
+        });
+    </script>
+
+</head>
+
+<body class="page-docs" style="zoom: 1;">
+<header class="site-header">
+    <nav role="navigation" class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle"><span
+                        class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                        class="icon-bar"></span><span class="icon-bar"></span></button>
+                <h1 class="navbar-brand"><a href="http://swagger.io"><span>Figshare documentation</span></a></h1>
+            </div>
+            <div id="navbar-collapse" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="li-why"><a href="http://swagger.io" style="font-size: 25px; padding-left: 0px"> API documentation</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section class="content">
+    <div id="api2-explorer">
+        <div class="swagger-section page-docs" style="zoom: 1">
+            <div class="main-section">
+                <div id="swagger-ui-container" class="swagger-ui-wrap">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden_descriptions" style="display: none;">
+      <div id="description_search_intro">
+        <h2 id="introductory-considerations">Introductory considerations</h2>
+        <p>Searching the figshare website can be performed either by using the front-end interface or by using the API we provide. Either way, the search query will be analyzed and sent to a search engine built by figshare on top of the open source <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> server.
+        In the following document, we will try to detail the type of searches one may perform and the results one should expect from the search engine. The environment used for demonstrating the figshare search feature is comprised of six research documents, scraped for this purpose from the archives of the <a href="https://www.plos.org/">Public Library of Open Science</a>. For reference purposes, we provide the links to the articles below:
+        <em> <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0127223">Article 1</a>
+        </em> <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a>
+        <em> <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0014098">Article 3</a>
+        </em> <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a>
+        <em> <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111421">Article 5</a>
+        </em> <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112540">Article 6</a></p>
+        <p>The actual article content is indexed and analyzed from the first part of each article's introduction, the tags are the subject areas, and the categories are parsed from the article's .xml file, and are the same as the categories that appear on the figshare page corresponding to the article.</p>
+      </div>
+      <div id="description_search_general">
+        <h2 id="general-search-engine-featurescharacteristics">General search engine features/characteristics</h2>
+        <ol>
+        <li><em><strong>Stemming</strong></em> of words:</li>
+        <li>All indexed words are stemmed, so, search queries like <em>process</em>/<em>processes</em>/<em>processing</em> are equivalent.</li>
+        <li><em><strong>Stopword</strong></em> elimination:</li>
+        <li>Stopwords like prepositions for instance are not indexed by the search engine, so, search queries like "just in time"/"just on time"/"just of time" are equivalent.</li>
+        </ol>
+        <blockquote>
+        <p>Please note however that, even if the stopwords do not get indexed, in the case of the phrase search detailed below, the fact that a stopword exists somewhere in the actual phrase does matter. Thus, search queries like "standing on the table"/"standing table" are not equivalent. </p>
+        </blockquote>
+      </div>
+      <div id="description_search_types">
+        <h2 id="search-types-and-expected-results">Search types and expected results</h2>
+        <h3 id="general-term-search">General term search</h3>
+        <p>This is the basic type of search one can perform on the figshare website or API, and it works pretty much as expected, with documents returned in the order of relevance as follows: documents where the query term appears more times are ranked higher. All article fields (in this case: title, description, tags, categories) are taken into consideration.</p>
+        <h4 id="example">Example:</h4>
+        <h5 id="query-string-therapy">Query string: "therapy"</h5>
+        <h5 id="return-results-with-relevant-paragraphstagscategories">Return results with relevant paragraphs/tags/categories:</h5>
+        <ol>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
+        <li><em>Title</em>: A National Survey of Teachers on Antiretroviral <em><strong>Therapy</strong></em> in Malawi: Access, Retention in <em><strong>Therapy</strong></em> and Survival</li>
+        <li><em>Description</em>: [...] Malawi is scaling up antiretroviral <em><strong>therapy</strong></em> (ART) (...)</li>
+        <li><em>Description</em>: [...] retention in <em><strong>therapy</strong></em> and survival (...)</li>
+        <li><em>Tags</em>: Antiretroviral <em><strong>therapy</strong></em></li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
+        <li><em>Title</em>: Uptake of WHO Recommendations for First-Line Antiretroviral <em><strong>Therapy</strong></em> in Kenya, Uganda, and Zambia</li>
+        <li><em>Description</em>: [...] first-line antiretroviral <em><strong>therapies</strong></em> (ART) (...)</li>
+        <li><em>Description</em>: [...] TDF combined <em><strong>therapy</strong></em> offers (...) </li>
+        <li><em>Description</em>: [...] TDF-based <em><strong>therapy</strong></em> as the preferred option with AZT-based <em><strong>therapies</strong></em> listed as alternatives. (...)</li>
+        <li><em>Description</em>: [...] triple combination <em><strong>therapies</strong></em> containing AZT and TDF. (...)</li>
+        <li><em>Description</em>: [...] lower prices for AZT and TDF combination <em><strong>therapy</strong></em>, (...)</li>
+        <li><em>Description</em>: [...] more expensive than d4T-based <em><strong>therapies</strong></em>, respectively.  (...)</li>
+        <li><em>Description</em>: [...] AZT- and TDF-based <em><strong>therapies</strong></em>, (...)</li>
+        <li><em>Tags</em>: Antiretroviral <em><strong>therapy</strong></em></li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0014098">Article 3</a></li>
+        <li><em>Description</em>: [...] access to antiretroviral <em><strong>therapy</strong></em> (ART) (...)</li>
+        <li><em>Description</em>: [...] life-long HIV <em><strong>therapy</strong></em> with limited (...)</li>
+        <li><em>Tags</em>: Antiretroviral <em><strong>therapy</strong></em></li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111421">Article 5</a></li>
+        <li><em>Description</em>: [...] Antiretroviral <em><strong>therapy</strong></em> (ART) is effective (...)</li>
+        <li><em>Tags</em>: Antiretroviral <em><strong>therapy</strong></em></li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0127223">Article 1</a></li>
+        <li><em>Tags</em>: Antiretroviral <em><strong>therapy</strong></em></li>
+        </ol>
+        <blockquote>
+        <p>Please note that <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a> is ranked higher than <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a>, even though the latter has more occurences of our search term. The reason for this is that the former has two of those occurences in the title, and the scoring is weighed rather heavily towards the title field. </p>
+        </blockquote>
+        <hr />
+        <h3 id="field-term-search">Field term search</h3>
+        <p>This works exactly as the general term search described above, however, it is a bit more specialized, in that it allows selecting the field(s) in which to perform the search. As in the general term search above, documents where the query term appears more times are ranked higher. This type of search works on the figshare website, as well as in the API.</p>
+        <h4 id="example_1">Example:</h4>
+        <h5 id="query-string-title-therapy">Query string: "title: therapy"</h5>
+        <h5 id="return-results-with-relevant-paragraphstagscategories_1">Return results with relevant paragraphs/tags/categories:</h5>
+        <ol>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
+        <li><em>Title</em>: A National Survey of Teachers on Antiretroviral <em><strong>Therapy</strong></em> in Malawi: Access, Retention in <em><strong>Therapy</strong></em> and Survival</li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
+        <li><em>Title</em>: Uptake of WHO Recommendations for First-Line Antiretroviral <em><strong>Therapy</strong></em> in Kenya, Uganda, and Zambia</li>
+        </ol>
+        <blockquote>
+        <p>Please note that articles 1, 3 and 5 do not appear in the search results anymore, as just the items with the word <em>therapy</em> in the title are returned.</p>
+        </blockquote>
+        <hr />
+        <h3 id="general-multi-term-search">General multi-term search</h3>
+        <p>This is the general multi-word search that returns documents that contain at least one of the query terms. This works like a boolean "OR" search, and ranking rules are the same as the types of searches listed above. This type of search works on the figshare website, as well as in the API.</p>
+        <h4 id="example_2">Example:</h4>
+        <h5 id="query-string-verticality-endorse-progress">Query string: "verticality endorse progress"</h5>
+        <h5 id="return-results-with-relevant-paragraphstagscategories_2">Return results with relevant paragraphs/tags/categories:</h5>
+        <ol>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0127223">Article 1</a></li>
+        <li><em>Description</em>: [...] Initially, the South African National Department of Health <em><strong>endorsed</strong></em> a <em><strong>vertical</strong></em> ART (...)</li>
+        <li><em>Description</em>: [...] system able to signpost programme <em><strong>progress</strong></em> and performance (...)</li>
+        <li><em>Description</em>: [...] These <em><strong>vertical</strong></em> M&amp;E systems ran parallel (...)</li>
+        <li><em>Description</em>: [...] Kawonga and colleagues discuss the limitations inherent to such a <em><strong>vertical</strong></em> (...)</li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
+        <li><em>Description</em>: [...] this recommendation, stating that countries should take steps to <em><strong>progressively</strong></em> reduce (...)</li>
+        </ol>
+        <hr />
+        <h3 id="field-multi-term-search">Field multi-term search</h3>
+        <p>This works like the general multi-term search described above, only it allows specifying the field(s) on which to perform the search. Ranking rules are the same as the types of searches listed above. This type of search works on the figshare website, as well as in the API.</p>
+        <h4 id="example_3">Example:</h4>
+        <h5 id="query-string-title-antiretroviral-therapies">Query string: "title: antiretroviral therapies"</h5>
+        <h5 id="return-results-with-relevant-paragraphstagscategories_3">Return results with relevant paragraphs/tags/categories:</h5>
+        <ol>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
+        <li><em>Title</em>: A National Survey of Teachers on <em><strong>Antiretroviral Therapy</strong></em> in Malawi: Access, Retention in <em><strong>Therapy</strong></em> and Survival</li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
+        <li><em>Title</em>: Uptake of WHO Recommendations for First-Line <em><strong>Antiretroviral Therapy</strong></em> in Kenya, Uganda, and Zambia</li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0127223">Article 1</a></li>
+        <li><em>Title</em>: Implementation of an Electronic Monitoring and Evaluation System for the <em><strong>Antiretroviral</strong></em> Treatment Programme in the Cape Winelands District, South Africa: A Qualitative Evaluation</li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0014098">Article 3</a></li>
+        <li><em>Title</em>: Diminishing Availability of Publicly Funded Slots for <em><strong>Antiretroviral</strong></em> Initiation among HIV-Infected ART-Eligible Patients in Uganda</li>
+        </ol>
+        <hr />
+        <h3 id="general-compound-term-search">General compound term search</h3>
+        <p>This is the equivalent of a boolean "AND" search and returns only the documents with occurences of all of the words contained in the search string. Ranking rules are unchanged with regard to the search types described above. This type of search works on the figshare website, as well as in the API.</p>
+        <h4 id="example_4">Example:</h4>
+        <h5 id="query-string-antiretroviral-therapies">Query string: "antiretroviral, therapies"</h5>
+        <h5 id="return-results-with-relevant-paragraphstagscategories_4">Return results with relevant paragraphs/tags/categories:</h5>
+        <ol>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
+        <li><em>Title</em>: A National Survey of Teachers on <em><strong>Antiretroviral Therapy</strong></em> in Malawi: Access, Retention in <em><strong>Therapy</strong></em> and Survival</li>
+        <li><em>Description</em>: [...] <em><strong>antiretroviral therapy</strong></em> (ART) (...)</li>
+        <li><em>Description</em>: [...] access, retention in <em><strong>therapy</strong></em> and survival for subgroups of the population. We have (...)</li>
+        <li><em>Tags</em>: <em><strong>Antiretroviral therapy</strong></em></li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
+        <li><em>Title</em>: Uptake of WHO Recommendations for First-Line <em><strong>Antiretroviral Therapy</strong></em> in Kenya, Uganda, and Zambia</li>
+        <li><em>Description</em>: [...] to transition away from first-line <em><strong>antiretroviral therapies</strong></em> (ART) containing stavudine (...)</li>
+        <li><em>Description</em>: [...] the likelihood of drug resistance. TDF combined <em><strong>therapy</strong></em> offers an additional benefit (...)</li>
+        <li><em>Description</em>: [...] WHO consolidated guidelines on the use of ART named a TDF-based <em><strong>therapy</strong></em> (...)</li>
+        <li><em>Description</em>: [...] AZT-based <em><strong>therapies</strong></em> listed as alternatives (...)</li>
+        <li><em>Description</em>: [...] combination <em><strong>therapies</strong></em> containing AZT and TDF</li>
+        <li><em>Tags</em>: <em><strong>Antiretroviral therapy</strong></em></li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0127223">Article 1</a></li>
+        <li><em>Title</em>: Implementation of an Electronic Monitoring and Evaluation System for the <em><strong>Antiretroviral</strong></em> Treatment Programme in the Cape Winelands District, South Africa: A Qualitative Evaluation</li>
+        <li><em>Description</em>: [...] South Africa's <em><strong>antiretroviral</strong></em> treatment (ART) programme (...)</li>
+        <li><em>Tags</em>: <em><strong>Antiretroviral therapy</strong></em></li>
+        <li><em>Tags</em>: <em><strong>antiretrovirals</strong></em></li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0014098">Article 3</a></li>
+        <li><em>Title</em>: Diminishing Availability of Publicly Funded Slots for <em><strong>Antiretroviral</strong></em> Initiation among HIV-Infected ART-Eligible Patients in Uganda</li>
+        <li><em>Description</em>: [...] about the future of access to <em><strong>antiretroviral therapy</strong></em> (...)</li>
+        <li><em>Description</em>: [...] the feasibility of implementing life-long HIV <em><strong>therapy</strong></em> with limited health care infrastructure (...)</li>
+        <li><em>Tags</em>: <em><strong>Antiretroviral therapy</strong></em></li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111421">Article 5</a></li>
+        <li><em>Description</em>: [...] <em><strong>Antiretroviral therapy</strong></em> (ART) is effective in reducing maternal (...)</li>
+        <li><em>Tags</em>: <em><strong>Antiretroviral therapy</strong></em></li>
+        </ol>
+        <blockquote>
+        <p>Please note that, just like in the case of the general term search, <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a> is ranked higher than <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a>, even though we can see more occurences of the query string words in the latter. The reason, just like above, is the weighing applied on the title field, deemed more important than the description field.</p>
+        </blockquote>
+        <hr />
+        <h3 id="field-compound-term-search">Field compound term search</h3>
+        <p>This works like the general compound term search above, only it allows specifying the field(s) on which to perform the search. Ranking rules are unchanged with regard to the search types described above. This type of search works on the figshare website, as well as in the API.</p>
+        <h4 id="example_5">Example:</h4>
+        <h5 id="query-string-title-antiretroviral-therapies_1">Query string: "title: antiretroviral, therapies"</h5>
+        <h5 id="return-results-with-relevant-paragraphstagscategories_5">Return results with relevant paragraphs/tags/categories:</h5>
+        <ol>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
+        <li><em>Title</em>: A National Survey of Teachers on <em><strong>Antiretroviral Therapy</strong></em> in Malawi: Access, Retention in <em><strong>Therapy</strong></em> and Survival</li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
+        <li><em>Title</em>: Uptake of WHO Recommendations for First-Line <em><strong>Antiretroviral Therapy</strong></em> in Kenya, Uganda, and Zambia</li>
+        </ol>
+        <hr />
+        <h3 id="general-phrase-search">General phrase search</h3>
+        <p>This is the most restrictive type of search, as it returns only those documents in which an occurence of the full query string (word ordering matters) is found. Ranking rules are unchanged with regard to the search types described above. This type of search works on the figshare website, as well as in the API.</p>
+        <h4 id="example_6">Example:</h4>
+        <h5 id="query-string-antiretroviral-therapy-art">Query string: " 'antiretroviral therapy (ART)' "</h5>
+        <h5 id="return-results-with-relevant-paragraphstagscategories_6">Return results with relevant paragraphs/tags/categories:</h5>
+        <ol>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
+        <li><em>Description</em>: [...] <em><strong>antiretroviral therapy (ART)</strong></em> [6]. Data on all ART patients (...)</li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
+        <li><em>Description</em>: [...] to transition away from first-line <em><strong>antiretroviral therapies (ART)</strong></em> containing stavudine (...)</li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111421">Article 5</a></li>
+        <li><em>Description</em>: [...] service needs. <em><strong>Antiretroviral therapy (ART)</strong></em> is effective in reducing maternal (...)</li>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0014098">Article 3</a></li>
+        <li><em>Description</em>: [...] have raised uncertainty about the future of access to <em><strong>antiretroviral therapy (ART)</strong></em> and the goal of universal access. (...)</li>
+        </ol>
+        <blockquote>
+        <p>Please note that the ranking, in this case, takes into consideration individual term occurences in the documents, hence the ordering (remarkably similar to the ordering in the case of the general term search)</p>
+        </blockquote>
+        <hr />
+        <h3 id="field-phrase-search">Field phrase search</h3>
+        <p>This works like the general phrase search above, only it allows specifying the field(s) on which to perform the search. Ranking rules are unchanged with regard to the search types described above. This type of search works on the figshare website, as well as in the API.</p>
+        <h4 id="example_7">Example:</h4>
+        <h5 id="query-string-title-therapy-and-survival">Query string: "title 'therapy and survival' "</h5>
+        <h5 id="return-results-with-relevant-paragraphstagscategories_7">Return results with relevant paragraphs/tags/categories:</h5>
+        <ol>
+        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
+        <li><em>Title</em>: A National Survey of Teachers on Antiretroviral Therapy in Malawi: Access, Retention in <em><strong>Therapy and Survival</strong></em></li>
+        </ol>
+      </div>
+      <div id="description_oauth_intro">
+        <h2 id="oauth">OAuth</h2>
+        <p>Since January 2016 figshare supports the <a href="http://tutorials.jenkov.com/oauth2/index.html">OAuth 2.0 Authorization Framework</a>. If you're new to OAuth make sure you have at least a basic understanding before moving on.</p>
+      </div>
+      <div id="description_oauth_quick">
+        <h2 id="quick-guide">Quick guide</h2>
+        <p>To receive a client id and secret you need to register an application in
+        our system. You can easily do this from the <a href="https://figshare.com/account/applications">figshare applications
+        page</a> in your account.</p>
+        <h3 id="authorization-endpoint">Authorization endpoint</h3>
+        <p>The authorization endpoint is located at
+        <code>https://figshare.com/account/applications/authorize</code>. The endpoint
+        supports both
+        <a href="http://tools.ietf.org/html/rfc6749#section-4.1.1">authorization code grant</a> and <a href="http://tools.ietf.org/html/rfc6749#section-4.2">implicit grant</a>.</p>
+        <h4 id="request-params">Request params</h4>
+        <ul>
+        <li><code>client_id</code></li>
+        <li><code>response_type</code></li>
+        <li><code>scope</code></li>
+        <li><code>state</code></li>
+        <li><code>redirect_uri</code></li>
+        </ul>
+        <h4 id="response-params">Response params</h4>
+        <p>User is redirected back to <code>redirect_uri</code> with the following params
+        atted to the query:</p>
+        <p><strong>Success</strong> as described in <a href="http://tools.ietf.org/html/rfc6749#section-4.1.2">rfc6749#section-4.1.2</a> or <a href="http://tools.ietf.org/html/rfc6749#section-4.2.2">rfc6749#section-4.2.2</a>:</p>
+        <ul>
+        <li><code>code</code></li>
+        <li><code>state</code></li>
+        </ul>
+        <p><strong>Error</strong> as described in <a href="http://tools.ietf.org/html/rfc6749#section-4.1.2.1">rfc6749#4.1.2.1</a>:</p>
+        <ul>
+        <li><code>error</code></li>
+        <li><code>error_description</code></li>
+        </ul>
+        <h3 id="token-endpoint">Token endpoint</h3>
+        <p>The token endpoint is located at <code>https://api.figshare.com/v2/token</code>.
+        In order to receive an access token you need to make a <code>POST</code> request.</p>
+        <p>To get info about an existing access token use the <code>GET</code> method with the usual authorization means.</p>
+        <h4 id="request">Request</h4>
+        <p>Then endpoint accepts both <code>application/x-www-form-urlencoded</code> and
+        <code>application/json</code> content types. It will only respond with JSON
+        content.</p>
+        <ul>
+        <li><code>client_id</code></li>
+        <li><code>client_secret</code></li>
+        <li><code>grant_type</code></li>
+        </ul>
+        <p>and, based on the value of <code>grant_type</code>:</p>
+        <ul>
+        <li><code>code</code></li>
+        <li><code>refresh_token</code></li>
+        <li><code>username</code></li>
+        <li><code>password</code></li>
+        </ul>
+        <h5 id="response">Response</h5>
+        <p><strong>Successful responses are always <code>200</code> and failed ones are always <code>400</code>,
+        even for failed authorization.</strong></p>
+        <p><strong>Success</strong> response is a JSON as described in <a href="http://tools.ietf.org/html/rfc6749#section-5.1">http://tools.ietf.org/html/rfc6749#section-5.1</a>.</p>
+        <ul>
+        <li><code>access_token</code></li>
+        <li><code>token_type</code></li>
+        <li><code>expires_in</code></li>
+        <li><code>refresh_token</code></li>
+        <li><code>scope</code> - <em>not available yet</em></li>
+        </ul>
+        <p><strong>Error</strong> response as described in <a href="http://tools.ietf.org/html/rfc6749#section-5.2">rfc6749#section-5.2</a></p>
+      </div>
+      <div id="description_oauth_scope">
+        <h2 id="scope">Scope</h2>
+        <p>Currently the only scope available is <code>all</code> which grants full access to
+        the resource owner's data. We're working on a more flexible approach.</p>
+      </div>
+      <div id="description_oauth_grant">
+        <h2 id="grant-types">Grant Types</h2>
+        <p>The supported grant types at this moment are:</p>
+        <ul>
+        <li><code>authorization_code</code></li>
+        <li><code>refresh_token</code></li>
+        <li><code>password</code></li>
+        </ul>
+      </div>
+      <div id="description_intro">
+        <h2>figshare documentation</h2>
+        <p>The definite guide for figshare and the home of all user documentation.</p>
+        <p>The sources for these pages are publicly hosted on github at figshare/user_documentation and it's open for contributions. If you feel you can improve anything, fix a mistake, expand on a topic, feel free to open up a pull request.</p>
+        <p><a href="http://api.figshare.com">Looking for the old docs?</a></p>
+      </div>
+      <div id="other_sample_codes">
+        <h4>You can download one of the following complete clients:</h4>
+        <ul class="other_sample_codes_list">
+          <li><a target="_blank" href="/clients/java.zip">Java</a></li>
+          <li><a target="_blank" href="/clients/csharp.zip">C#</a></li>
+          <li><a target="_blank" href="/clients/php.zip">PHP</a></li>
+          <li><a target="_blank" href="/clients/perl.zip">Perl</a></li>
+          <li><a target="_blank" href="/clients/python.zip">Python</a></li>
+          <li><a target="_blank" href="/clients/python-flask.zip">Python with Flask</a></li>
+          <li><a target="_blank" href="/clients/go.zip">Golang</a></li>
+          <li><a target="_blank" href="/clients/go-server.zip">Golang Server</a></li>
+          <li><a target="_blank" href="/clients/javascript.zip">Javascript</a></li>
+          <li><a target="_blank" href="/clients/javascript-closure-angular.zip">Javascript with Closure &amp; Angular</a></li>
+          <li><a target="_blank" href="/clients/nodejs-server.zip">Node.js server</a></li>
+          <li><a target="_blank" href="/clients/ruby.zip">Ruby</a></li>
+          <li><a target="_blank" href="/clients/dynamic-html.zip">Dynamic Html Page</a></li>
+          <li><a target="_blank" href="/clients/swift.zip">Swift</a></li>
+          <li><a target="_blank" href="/clients/clojure.zip">Clojure</a></li>
+          <li><a target="_blank" href="/clients/haskell.zip">Haskell</a></li>
+        </ul>
+      </div>
+    </div>
+
+</section>
+</body>
+</html>

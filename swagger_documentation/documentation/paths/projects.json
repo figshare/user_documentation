@@ -1,0 +1,1469 @@
+{
+    "/projects": {
+        "get": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "projectsGet", 
+            "summary": "Public Projects", 
+            "description": "Returns a list of public projects", 
+            "security": [], 
+            "parameters": [
+                {
+                    "name": "page", 
+                    "in": "query", 
+                    "description": "Page number. Used for pagination with page_size", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 1000
+                }, 
+                {
+                    "name": "page_size", 
+                    "in": "query", 
+                    "description": "The number of results included on a page. Used for pagination with page", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100, 
+                    "default": 10
+                }, 
+                {
+                    "name": "limit", 
+                    "in": "query", 
+                    "description": "Number of results included on a page. Used for pagination with query", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100
+                }, 
+                {
+                    "name": "offset", 
+                    "in": "query", 
+                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 1000
+                }, 
+                {
+                    "name": "order", 
+                    "in": "query", 
+                    "description": "The field by which to order. Default varies by endpoint/resource.", 
+                    "type": "string", 
+                    "enum": [
+                        "published_date", 
+                        "modified_date"
+                    ], 
+                    "default": "published_date", 
+                    "required": false
+                }, 
+                {
+                    "name": "order_direction", 
+                    "in": "query", 
+                    "type": "string", 
+                    "enum": [
+                        "asc", 
+                        "desc"
+                    ], 
+                    "default": "desc", 
+                    "required": false
+                }, 
+                {
+                    "name": "institution", 
+                    "in": "query", 
+                    "description": "only return collections from this institution", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64"
+                }, 
+                {
+                    "name": "published_since", 
+                    "in": "query", 
+                    "description": "Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD", 
+                    "type": "string", 
+                    "required": false
+                }, 
+                {
+                    "name": "group", 
+                    "in": "query", 
+                    "description": "only return collections from this group", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "required": false
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of projects", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/projects.json#ProjectPresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "422": {
+                    "description": "Bad Request"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/projects/search": {
+        "post": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "projects_search_Post", 
+            "summary": "Public Projects Search", 
+            "description": "Returns a list of public articles", 
+            "security": [], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "search", 
+                    "description": "Search Parameters", 
+                    "schema": {
+                        "$ref": "../models/common.json#CommonSearch"
+                    }, 
+                    "required": false
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of projects", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/projects.json#ProjectPresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "422": {
+                    "description": "Bad Request"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/projects/{project_id}": {
+        "get": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "projects_project_Get", 
+            "summary": "Public Project", 
+            "description": "View a proejct", 
+            "security": [], 
+            "parameters": [
+                {
+                    "name": "project_id", 
+                    "in": "path", 
+                    "description": "Project Unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Project representation", 
+                    "schema": {
+                        "$ref": "../models/projects.json#ProjectPresenter.L1"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/projects/{project_id}/articles": {
+        "get": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "projects_project_articles_Get", 
+            "summary": "Public Project Articles", 
+            "security": [], 
+            "parameters": [
+                {
+                    "name": "project_id", 
+                    "in": "path", 
+                    "description": "Project Unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Project articles list", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/articles.json#ArticlePresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects": {
+        "get": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_Get", 
+            "summary": "Private Projects", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "page", 
+                    "in": "query", 
+                    "description": "Page number. Used for pagination with page_size", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100
+                }, 
+                {
+                    "name": "page_size", 
+                    "in": "query", 
+                    "description": "The number of results included on a page. Used for pagination with page", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100, 
+                    "default": 10
+                }, 
+                {
+                    "name": "limit", 
+                    "in": "query", 
+                    "description": "Number of results included on a page. Used for pagination with query", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100
+                }, 
+                {
+                    "name": "offset", 
+                    "in": "query", 
+                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100
+                }, 
+                {
+                    "name": "order", 
+                    "in": "query", 
+                    "description": "The field by which to order. Default varies by endpoint/resource.", 
+                    "type": "string", 
+                    "enum": [
+                        "published_date", 
+                        "modified_date"
+                    ], 
+                    "default": "published_date", 
+                    "required": false
+                }, 
+                {
+                    "name": "order_direction", 
+                    "in": "query", 
+                    "type": "string", 
+                    "enum": [
+                        "asc", 
+                        "desc"
+                    ], 
+                    "default": "desc", 
+                    "required": false
+                }, 
+                {
+                    "name": "storage", 
+                    "in": "query", 
+                    "description": "only return collections from this institution", 
+                    "required": false, 
+                    "type": "string", 
+                    "enum": [
+                        "group", 
+                        "individual"
+                    ]
+                }, 
+                {
+                    "name": "roles", 
+                    "in": "query", 
+                    "description": "Any combination of owner, collaborator, viewer separated by comma. Examples: \"owner\" or \"owner,collaborator\".", 
+                    "required": false, 
+                    "type": "string"
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of projects", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/projects.json#PrivateProjectPresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "post": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_Post", 
+            "summary": "Private Project Create", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "Project", 
+                    "description": "Project  description", 
+                    "schema": {
+                        "$ref": "../models/projects.json#ProjectCreate"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "201": {
+                    "description": "Created", 
+                    "schema": {
+                        "$ref": "../models/common.json#LocationPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects/search": {
+        "post": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_search_Post", 
+            "summary": "Private Projects search", 
+            "security": [], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "search", 
+                    "description": "Search Parameters", 
+                    "schema": {
+                        "$ref": "../models/common.json#CommonSearch"
+                    }, 
+                    "required": false
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of projects", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/projects.json#PrivateProjectPresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "422": {
+                    "description": "Bad Request"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects/{project_id}": {
+        "parameters": [
+            {
+                "name": "project_id", 
+                "in": "path", 
+                "description": "Project unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_Get", 
+            "summary": "Private Project", 
+            "description": "View a private project", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Project representation", 
+                    "schema": {
+                        "$ref": "../models/projects.json#PrivateProjectPresenter.L1"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "put": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_Put", 
+            "summary": "Private Project Update", 
+            "description": "Updating an project by passing body parameters", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "Project", 
+                    "description": "Project description", 
+                    "schema": {
+                        "$ref": "../models/projects.json#ProjectUpdate"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "205": {
+                    "description": "Reset Content", 
+                    "headers": {
+                        "Location": {
+                            "type": "string", 
+                            "format": "link", 
+                            "description": "Location of project"
+                        }
+                    }
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "delete": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_Delete", 
+            "summary": "Private Project delete", 
+            "description": "A project can be deleted only if: - it is not public - it does not have public articles.\n\nWhen an individual project is deleted, all the articles are moved to my data of each owner*.\n\nWhen a group project is deleted, all the articles and files are deleted as well. Only project owner, group admin and above can delete a project.\n", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "204": {
+                    "description": "No Content"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects/{project_id}/publish": {
+        "post": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_publish_Post", 
+            "summary": "Private Project Publish", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "project_id", 
+                    "in": "path", 
+                    "description": "Project unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK", 
+                    "schema": {
+                        "$ref": "../models/common.json#MessageResponse"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects/{project_id}/leave": {
+        "post": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_leave_Post", 
+            "summary": "Private Project Leave", 
+            "description": "Please note: project's owner cannot leave the project.", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "project_id", 
+                    "in": "path", 
+                    "description": "Project unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "204": {
+                    "description": "No Content"
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects/{project_id}/notes": {
+        "parameters": [
+            {
+                "name": "project_id", 
+                "in": "path", 
+                "description": "Project unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_notes_Get", 
+            "summary": "Private Project notes", 
+            "description": "List project notes", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "page", 
+                    "in": "query", 
+                    "description": "Page number. Used for pagination with page_size", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100
+                }, 
+                {
+                    "name": "page_size", 
+                    "in": "query", 
+                    "description": "The number of results included on a page. Used for pagination with page", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100, 
+                    "default": 10
+                }, 
+                {
+                    "name": "limit", 
+                    "in": "query", 
+                    "description": "Number of results included on a page. Used for pagination with query", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100
+                }, 
+                {
+                    "name": "offset", 
+                    "in": "query", 
+                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. List of project notes", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/projects.json#ProjectNotePresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "post": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_notes_Post", 
+            "summary": "Private Project Note Create", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "Note", 
+                    "description": "Note message", 
+                    "schema": {
+                        "$ref": "../models/projects.json#ProjectNoteCreate"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "201": {
+                    "description": "Created", 
+                    "headers": {
+                        "Location": {
+                            "type": "string", 
+                            "format": "url", 
+                            "description": "Location note"
+                        }
+                    }, 
+                    "schema": {
+                        "$ref": "../models/common.json#LocationPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects/{project_id}/notes/{note_id}": {
+        "parameters": [
+            {
+                "name": "project_id", 
+                "in": "path", 
+                "description": "Project unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }, 
+            {
+                "name": "note_id", 
+                "in": "path", 
+                "description": "Note unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_notes_note_Get", 
+            "summary": "Private Project Note", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Note representation", 
+                    "schema": {
+                        "$ref": "../models/projects.json#ProjectNotePresenter.L1"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "put": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_notes_note_Put", 
+            "summary": "Private Project Note Update", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "Note", 
+                    "description": "Note message", 
+                    "schema": {
+                        "$ref": "../models/projects.json#ProjectNoteCreate"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "205": {
+                    "description": "Reset Content", 
+                    "headers": {
+                        "Location": {
+                            "type": "string", 
+                            "format": "url", 
+                            "description": "Location note"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "delete": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_notes_note_Delete", 
+            "summary": "Private Project Note Delete", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "204": {
+                    "description": "No Content"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects/{project_id}/collaborators": {
+        "parameters": [
+            {
+                "name": "project_id", 
+                "in": "path", 
+                "description": "Project unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_collaborators_Get", 
+            "summary": "Private Project Collaborators", 
+            "description": "List Project collaborators and invited users", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. List of Collaborators", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/projects.json#ProjectCollaborator"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "post": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_collaborators_Post", 
+            "summary": "Private Project Collaborators Invite", 
+            "description": "Invite users to collaborate on project or view the project", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "Collaborator", 
+                    "description": "viewer or collaborator role. User user_id or email of user", 
+                    "schema": {
+                        "$ref": "../models/projects.json#ProjectCollaboratorInvite"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "201": {
+                    "description": "Created", 
+                    "schema": {
+                        "$ref": "../models/common.json#MessageResponse"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects/{project_id}/collaborators/{user_id}": {
+        "delete": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_collaborators_collaborator_Delete", 
+            "summary": "Private Project Collaborator Remove", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "project_id", 
+                    "in": "path", 
+                    "description": "Project unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }, 
+                {
+                    "name": "user_id", 
+                    "in": "path", 
+                    "description": "User unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "204": {
+                    "description": "OK"
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects/{project_id}/articles": {
+        "parameters": [
+            {
+                "name": "project_id", 
+                "in": "path", 
+                "description": "Proejct unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_articles_Get", 
+            "summary": "Private Project Articles", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. List of articles", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/articles.json#ArticlePresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "post": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_articles_Post", 
+            "summary": "Private Project Article Create", 
+            "description": "Create a new Article and associate it with this project", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "Article", 
+                    "description": "Article description", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticleCreate"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "201": {
+                    "description": "Created", 
+                    "headers": {
+                        "Location": {
+                            "type": "string", 
+                            "format": "url", 
+                            "description": "Location of article"
+                        }
+                    }, 
+                    "schema": {
+                        "$ref": "../models/common.json#LocationPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects/{project_id}/articles/{article_id}": {
+        "parameters": [
+            {
+                "name": "project_id", 
+                "in": "path", 
+                "description": "Project unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }, 
+            {
+                "name": "article_id", 
+                "in": "path", 
+                "description": "Project Article unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_articles_article_Get", 
+            "summary": "Private Project Article", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Article representation", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticlePresenter.L1"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "delete": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_articles_article_Delete", 
+            "summary": "Private Project Article Delete", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "204": {
+                    "description": "No Content"
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects/{project_id}/articles/{article_id}/files": {
+        "get": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_articles_article_files_Get", 
+            "summary": "Private Project Article Files", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "project_id", 
+                    "in": "path", 
+                    "description": "Project unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }, 
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Project Article unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. List of files", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/common.json#PrivateFilePresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/projects/{project_id}/articles/{article_id}/files/{file_id}": {
+        "get": {
+            "tags": [
+                "projects"
+            ], 
+            "operationId": "account_projects_project_articles_article_files_file_Get", 
+            "summary": "Private Project Article File", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "project_id", 
+                    "in": "path", 
+                    "description": "Project unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }, 
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Project Article unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }, 
+                {
+                    "name": "file_id", 
+                    "in": "path", 
+                    "description": "File unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. File representation", 
+                    "schema": {
+                        "$ref": "../models/common.json#PrivateFilePresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }
+}

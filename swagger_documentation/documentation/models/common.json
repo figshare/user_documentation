@@ -1,0 +1,212 @@
+{
+    "Error": {
+        "x-tag": "common", 
+        "type": "object", 
+        "properties": {
+            "code": {
+                "type": "integer", 
+                "format": "int64"
+            }, 
+            "message": {
+                "type": "string"
+            }
+        }
+    }, 
+    "MessageResponse": {
+        "x-tag": "common", 
+        "type": "object", 
+        "properties": {
+            "message": {
+                "type": "string", 
+                "example": "Project 1 has been published"
+            }
+        }
+    }, 
+    "CommonSearch": {
+        "x-tag": "common", 
+        "type": "object", 
+        "properties": {
+            "search_for": {
+                "type": "string", 
+                "description": "Search term", 
+                "example": "figshare"
+            }, 
+            "page": {
+                "description": "Page number. Used for pagination with page_size", 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1, 
+                "maximum": 1000, 
+                "example": 1
+            }, 
+            "page_size": {
+                "description": "The number of results included on a page. Used for pagination with page", 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1, 
+                "maximum": 100, 
+                "default": 10, 
+                "example": 10
+            }, 
+            "limit": {
+                "description": "Number of results included on a page. Used for pagination with query", 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1, 
+                "maximum": 100, 
+                "example": 10
+            }, 
+            "offset": {
+                "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1, 
+                "maximum": 1000, 
+                "example": 1
+            }, 
+            "order": {
+                "description": "The field by which to order. Default varies by endpoint/resource.", 
+                "type": "string", 
+                "enum": [
+                    "published_date", 
+                    "modified_date"
+                ], 
+                "default": "published_date", 
+                "example": "published_date"
+            }, 
+            "order_direction": {
+                "type": "string", 
+                "description": "Direction of ordering", 
+                "enum": [
+                    "asc", 
+                    "desc"
+                ], 
+                "default": "desc", 
+                "example": "desc"
+            }, 
+            "institution": {
+                "description": "only return collections from this institution", 
+                "type": "integer", 
+                "format": "int64", 
+                "example": 2000013
+            }, 
+            "published_since": {
+                "description": "Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD", 
+                "type": "string", 
+                "example": "2017-12-22"
+            }, 
+            "modified_since": {
+                "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD", 
+                "type": "string", 
+                "example": "2017-12-22"
+            }, 
+            "group": {
+                "description": "only return collections from this group", 
+                "type": "integer", 
+                "format": "int64", 
+                "example": 2000013
+            }
+        }
+    }, 
+    "CategoryPresenter": {
+        "x-tag": "common", 
+        "type": "object", 
+        "properties": {
+            "parent_id": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 1
+            }, 
+            "id": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 11
+            }, 
+            "title": {
+                "type": "string", 
+                "example": "Anatomy"
+            }
+        }
+    }, 
+    "PublicFilePresenter": {
+        "x-tag": "common", 
+        "type": "object", 
+        "properties": {
+            "id": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 3000002
+            }, 
+            "name": {
+                "type": "string", 
+                "example": "test.xls"
+            }, 
+            "size": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 14848
+            }, 
+            "is_link_only": {
+                "type": "boolean", 
+                "example": false
+            }, 
+            "download_url": {
+                "type": "string", 
+                "format": "url", 
+                "example": "https://ndownloader.figshare.com/files/3000002"
+            }
+        }
+    }, 
+    "PrivateFilePresenter": {
+        "x-tag": "common", 
+        "type": "object", 
+        "allOf": [
+            {
+                "$ref": "#PublicFilePresenter"
+            }
+        ], 
+        "properties": {
+            "status": {
+                "type": [
+                    "string", 
+                    "null"
+                ], 
+                "example": "created"
+            }, 
+            "viewer_type": {
+                "type": "string"
+            }, 
+            "preview_state": {
+                "type": "string", 
+                "example": "preview not available"
+            }, 
+            "upload_url": {
+                "type": "string", 
+                "format": "url", 
+                "example": "https://uploads.figshare.com"
+            }, 
+            "upload_token": {
+                "type": "string", 
+                "example": "9dfc5fe3-d617-4d93-ac11-8afe7e984a4b"
+            }, 
+            "supplied_md5": {
+                "type": "string", 
+                "example": "043a51806d646e88cafbf19e7b82846f"
+            }, 
+            "computed_md5": {
+                "type": "string", 
+                "example": "043a51806d646e88cafbf19e7b82846f"
+            }
+        }
+    }, 
+    "LocationPresenter": {
+        "x-tag": "common", 
+        "type": "object", 
+        "properties": {
+            "location": {
+                "type": "string", 
+                "format": "url"
+            }
+        }
+    }
+}

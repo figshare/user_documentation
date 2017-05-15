@@ -1,0 +1,2222 @@
+{
+    "/articles": {
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "articles_Get", 
+            "summary": "Public Articles", 
+            "description": "Returns a list of public articles", 
+            "security": [], 
+            "parameters": [
+                {
+                    "name": "page", 
+                    "in": "query", 
+                    "description": "Page number. Used for pagination with page_size", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 1000
+                }, 
+                {
+                    "name": "page_size", 
+                    "in": "query", 
+                    "description": "The number of results included on a page. Used for pagination with page", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100, 
+                    "default": 10
+                }, 
+                {
+                    "name": "limit", 
+                    "in": "query", 
+                    "description": "Number of results included on a page. Used for pagination with query", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100
+                }, 
+                {
+                    "name": "offset", 
+                    "in": "query", 
+                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 1000
+                }, 
+                {
+                    "name": "order", 
+                    "in": "query", 
+                    "description": "The field by which to order. Default varies by endpoint/resource.", 
+                    "type": "string", 
+                    "enum": [
+                        "published_date", 
+                        "modified_date"
+                    ], 
+                    "default": "published_date", 
+                    "required": false
+                }, 
+                {
+                    "name": "order_direction", 
+                    "in": "query", 
+                    "type": "string", 
+                    "enum": [
+                        "asc", 
+                        "desc"
+                    ], 
+                    "default": "desc", 
+                    "required": false
+                }, 
+                {
+                    "name": "institution", 
+                    "in": "query", 
+                    "description": "only return collections from this institution", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64"
+                }, 
+                {
+                    "name": "published_since", 
+                    "in": "query", 
+                    "description": "Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD", 
+                    "type": "string", 
+                    "required": false
+                }, 
+                {
+                    "name": "modified_since", 
+                    "in": "query", 
+                    "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD", 
+                    "type": "string", 
+                    "required": false
+                }, 
+                {
+                    "name": "group", 
+                    "in": "query", 
+                    "description": "only return collections from this group", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "required": false
+                }, 
+                {
+                    "name": "resource_doi", 
+                    "in": "query", 
+                    "description": "only return collections with this resource_doi", 
+                    "type": "string", 
+                    "required": false
+                }, 
+                {
+                    "name": "item_type", 
+                    "in": "query", 
+                    "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code", 
+                    "type": "string", 
+                    "required": false
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of articles", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/articles.json#ArticlePresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "422": {
+                    "description": "Unprocessable Entity. Syntax is correct but one of the parameters isn't correctly processed"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/articles/search": {
+        "post": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "articles_search_Post", 
+            "summary": "Public Articles Search", 
+            "description": "Returns a list of public articles, filtered by the search parameters", 
+            "security": [], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "search", 
+                    "description": "Search Parameters", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticleSearch"
+                    }, 
+                    "required": false
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of articles", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/articles.json#ArticlePresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "422": {
+                    "description": "Unprocessable Entity. Syntax is correct but one of the parameters isn't correctly processed"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/articles/{article_id}": {
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "articles_article_Get", 
+            "summary": "Public Article View", 
+            "description": "View an article", 
+            "security": [], 
+            "parameters": [
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Article Unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Article representation", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticlePresenter.L2"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/articles/{article_id}/versions": {
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "articles_article_versions_Get", 
+            "summary": "Public Article versions", 
+            "description": "List public article versions", 
+            "security": [], 
+            "parameters": [
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Article Unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Article version representations", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/articles.json#VersionPresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request. Article ID must be an integer and bigger than 0."
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/articles/{article_id}/versions/{v_number}": {
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "articles_article_versions_version_Get", 
+            "summary": "Public Article with specified version", 
+            "description": "Article with specified version", 
+            "security": [], 
+            "parameters": [
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Article Unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }, 
+                {
+                    "name": "v_number", 
+                    "in": "path", 
+                    "description": "Article Version Number", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Article representation", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticlePresenter.L2"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/articles/{article_id}/versions/{v_number}/embargo": {
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "articles_article_versions_version_embargo_Get", 
+            "summary": "Public Article Embargo for article version", 
+            "description": "Embargo for article version", 
+            "security": [], 
+            "parameters": [
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Article Unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }, 
+                {
+                    "name": "v_number", 
+                    "in": "path", 
+                    "description": "Version Number", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Embargo representation", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticleEmbargoPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/articles/{article_id}/versions/{v_number}/confidentiality": {
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "articles_article_versions_version_confidentiality_Get", 
+            "summary": "Public Article Confidentiality for article version", 
+            "description": "Confidentiality for article version", 
+            "security": [], 
+            "parameters": [
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Article Unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }, 
+                {
+                    "name": "v_number", 
+                    "in": "path", 
+                    "description": "Version Number", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Confidentiality representation", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticleConfidentialityPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/articles/{article_id}/files": {
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "articles_article_files_Get", 
+            "summary": "Public Article Files list", 
+            "description": "Files list for article", 
+            "security": [], 
+            "parameters": [
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Article Unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. List of article files", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/common.json#PublicFilePresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/articles/{article_id}/files/{file_id}": {
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "articles_article_files_file_Get", 
+            "summary": "Public Article File", 
+            "description": "File by id", 
+            "security": [], 
+            "parameters": [
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Article Unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }, 
+                {
+                    "name": "file_id", 
+                    "in": "path", 
+                    "description": "File Unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. File representation", 
+                    "schema": {
+                        "$ref": "../models/common.json#PublicFilePresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/search": {
+        "post": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_search_Post", 
+            "summary": "Private Articles search", 
+            "description": "Returns a list of private articles filtered by the search parameters", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "search", 
+                    "description": "Search Parameters", 
+                    "schema": {
+                        "$ref": "../models/articles.json#PrivateArticleSearch"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of articles", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/articles.json#ArticlePresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles": {
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_Get", 
+            "summary": "Private Articles", 
+            "description": "Get Own Articles", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "page", 
+                    "in": "query", 
+                    "description": "Page number. Used for pagination with page_size", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100
+                }, 
+                {
+                    "name": "page_size", 
+                    "in": "query", 
+                    "description": "The number of results included on a page. Used for pagination with page", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100, 
+                    "default": 10
+                }, 
+                {
+                    "name": "limit", 
+                    "in": "query", 
+                    "description": "Number of results included on a page. Used for pagination with query", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100
+                }, 
+                {
+                    "name": "offset", 
+                    "in": "query", 
+                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 100
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of articles belonging to the account", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/articles.json#ArticlePresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "post": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_Post", 
+            "summary": "Private Article Create", 
+            "description": "Create a new Article by sending article information", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "Article", 
+                    "description": "Article description", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticleCreate"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "201": {
+                    "description": "Created", 
+                    "schema": {
+                        "$ref": "../models/common.json#LocationPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}": {
+        "parameters": [
+            {
+                "name": "article_id", 
+                "in": "path", 
+                "description": "Article unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_Get", 
+            "summary": "Private Article View", 
+            "description": "View a private article", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Article representation", 
+                    "schema": {
+                        "$ref": "../models/articles.json#PrivateArticlePresenter.L2"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "put": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_Put", 
+            "summary": "Private Article Update", 
+            "description": "Updating an article by passing body parameters", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "Article", 
+                    "description": "Article description", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticleCreate"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "205": {
+                    "description": "Reset Content", 
+                    "headers": {
+                        "Location": {
+                            "type": "string", 
+                            "format": "link", 
+                            "description": "Location of newly created article"
+                        }
+                    }
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "delete": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_Delete", 
+            "summary": "Private Article Delete", 
+            "description": "Delete an article", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "204": {
+                    "description": "No Content"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/embargo": {
+        "parameters": [
+            {
+                "name": "article_id", 
+                "in": "path", 
+                "description": "Article unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_embargo_Get", 
+            "summary": "Private Article embargo", 
+            "description": "View a private article embargo details", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Embargo for article", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticleEmbargoPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "put": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_embargo_Put", 
+            "summary": "Private Article Embargo Update", 
+            "description": "Note: setting an article under whole embargo does not imply that the article will be published when the embargo will expire. You must explicitly call the publish endpoint to enable this functionality.", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "EmbargoPresenter", 
+                    "description": "Embargo description", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticleEmbargoUpdater"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "205": {
+                    "description": "Reset Content", 
+                    "headers": {
+                        "Location": {
+                            "type": "string", 
+                            "format": "link", 
+                            "description": "Location of embargo"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "delete": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_embargo_Delete", 
+            "summary": "Private Article Embargo Delete", 
+            "description": "Will lift the embargo for the specified article", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "204": {
+                    "description": "No Content"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/publish": {
+        "post": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_publish_Post", 
+            "summary": "Private Article Publish", 
+            "description": "- If the whole article is under embargo, it will not be published immediatly, but when the embargo expires or is lifted.\n- When an article is published, a new public version will be generated. Any further updates to the article will affect the private article data. In order to make these changes publicly visible, an explicit publish operation is needed.", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Article unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "201": {
+                    "description": "Created", 
+                    "headers": {
+                        "Location": {
+                            "type": "string", 
+                            "format": "link", 
+                            "description": "Location of newly published article"
+                        }
+                    }, 
+                    "schema": {
+                        "$ref": "../models/common.json#LocationPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/reserve_doi": {
+        "post": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_reserve_doi_Post", 
+            "summary": "Private Article Reserve DOI", 
+            "description": "Reserve DOI for article", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Article unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticleDOIPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/authors": {
+        "parameters": [
+            {
+                "name": "article_id", 
+                "in": "path", 
+                "description": "Article unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_authors_Get", 
+            "summary": "Private Article authors", 
+            "description": "List article authors", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Authors list for article", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/articles.json#AuthorPresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "post": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_authors_Post", 
+            "summary": "Private Article authors add", 
+            "description": "Associate new authors with the article. This will add new authors to the list of already associated authors", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "Authors", 
+                    "description": "Authors description", 
+                    "schema": {
+                        "$ref": "../models/articles.json#AuthorsCreator"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "205": {
+                    "description": "Reset Content", 
+                    "headers": {
+                        "Location": {
+                            "type": "string", 
+                            "format": "url", 
+                            "description": "Location of list of authors"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "put": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_authors_Put", 
+            "summary": "Private Article Authors replace", 
+            "description": "Associate new authors with the article. This will remove all already associated authors and add these new ones", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "Authors", 
+                    "description": "Authors description", 
+                    "schema": {
+                        "$ref": "../models/articles.json#AuthorsCreator"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "205": {
+                    "description": "Reset Content", 
+                    "headers": {
+                        "Location": {
+                            "type": "string", 
+                            "format": "url", 
+                            "description": "Location of list of authors"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request. Article ID must be an integer and bigger than 0. Author with ID Not Found."
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/authors/{author_id}": {
+        "delete": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_authors_author_Delete", 
+            "summary": "Private Article author remove", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Article unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }, 
+                {
+                    "name": "author_id", 
+                    "in": "path", 
+                    "description": "Article Author unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "204": {
+                    "description": "No Content"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/categories": {
+        "parameters": [
+            {
+                "name": "article_id", 
+                "in": "path", 
+                "description": "Article unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_categories_Get", 
+            "summary": "Private Article Categories", 
+            "description": "List article categories", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Article categories", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/common.json#CategoryPresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "post": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_categories_Post", 
+            "summary": "Private Article Categories add", 
+            "description": "Associate new categories with the article. This will add new categories to the list of already associated categories", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "categories", 
+                    "schema": {
+                        "$ref": "../models/articles.json#CategoriesCreator"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "205": {
+                    "description": "Reset Content"
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "put": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_categories_Put", 
+            "summary": "Private Article Categories replace", 
+            "description": "Associate new categories with the article. This will remove all already associated categories and add these new ones", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "categories", 
+                    "schema": {
+                        "$ref": "../models/articles.json#CategoriesCreator"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "205": {
+                    "description": "Reset Content"
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/categories/{category_id}": {
+        "delete": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_categories_category_Delete", 
+            "summary": "Private Article Category remove", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Article unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }, 
+                {
+                    "name": "category_id", 
+                    "in": "path", 
+                    "description": "Category unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "204": {
+                    "description": "No Content"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/confidentiality": {
+        "parameters": [
+            {
+                "name": "article_id", 
+                "in": "path", 
+                "description": "Article unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_confidentiality_Get", 
+            "summary": "Private Article Confidentiality", 
+            "description": "View confidentiality settings", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Article categories", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticleConfidentialityPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "put": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_confidentiality_Put", 
+            "summary": "Private Article Confidentiality Update", 
+            "description": "Update confidentiality settings", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "reason", 
+                    "schema": {
+                        "type": "string"
+                    }, 
+                    "required": false
+                }
+            ], 
+            "responses": {
+                "205": {
+                    "description": "Reset Content"
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "delete": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_confidentiality_Delete", 
+            "summary": "Private Article Confidentiality Delete", 
+            "description": "Delete confidentiality settings", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "204": {
+                    "description": "No Content"
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/private_links": {
+        "parameters": [
+            {
+                "name": "article_id", 
+                "in": "path", 
+                "description": "Article unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_privatelinks_Get", 
+            "summary": "Private Article Private Links", 
+            "description": "List private links", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Article private links", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/articles.json#PrivateLinkPresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "post": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_privatelinks_Post", 
+            "summary": "Private Article Private Links create", 
+            "description": "Create new private link for this article", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "private_link", 
+                    "schema": {
+                        "$ref": "../models/articles.json#PrivateLinkCreator"
+                    }, 
+                    "required": false
+                }
+            ], 
+            "responses": {
+                "201": {
+                    "description": "Created", 
+                    "headers": {
+                        "Location": {
+                            "type": "string", 
+                            "format": "url", 
+                            "description": "Location of private link"
+                        }
+                    }, 
+                    "schema": {
+                        "$ref": "../models/common.json#LocationPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "422": {
+                    "description": "Unprocessable Entity"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/private_links/{link_id}": {
+        "parameters": [
+            {
+                "name": "article_id", 
+                "in": "path", 
+                "description": "Article unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }, 
+            {
+                "name": "link_id", 
+                "in": "path", 
+                "description": "Private link token", 
+                "required": true, 
+                "type": "string"
+            }
+        ], 
+        "put": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_privatelinks_privatelink_Put", 
+            "summary": "Private Article Private Link update", 
+            "description": "Update existing private link for this article", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "private_link", 
+                    "schema": {
+                        "$ref": "../models/articles.json#PrivateLinkCreator"
+                    }, 
+                    "required": false
+                }
+            ], 
+            "responses": {
+                "205": {
+                    "description": "Reset Content", 
+                    "headers": {
+                        "Location": {
+                            "type": "string", 
+                            "format": "url", 
+                            "description": "Location of private link"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "422": {
+                    "description": "Unprocessable Entity"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "delete": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "account_articles_article_privatelinks_privatelink_Delete", 
+            "summary": "Private Article Private Link disable", 
+            "description": "Disable/delete private link for this article", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "204": {
+                    "description": "No Content"
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/files": {
+        "parameters": [
+            {
+                "name": "article_id", 
+                "in": "path", 
+                "description": "Article unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "summary": "Private Article Files", 
+            "description": "List private files", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Article files list", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/common.json#PrivateFilePresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "post": {
+            "tags": [
+                "articles"
+            ], 
+            "summary": "Private Article File Initiate Upload", 
+            "description": "Initiate new file upload within the article. Either use link to provide only an existing file that will not be uploaded on figshare or use the other 3 parameters(md5, name, size)", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "File", 
+                    "schema": {
+                        "$ref": "../models/articles.json#FileCreator"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "201": {
+                    "description": "Created", 
+                    "headers": {
+                        "Location": {
+                            "type": "string", 
+                            "format": "url", 
+                            "description": "Location of new file"
+                        }
+                    }, 
+                    "schema": {
+                        "$ref": "../models/common.json#LocationPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/files/{file_id}": {
+        "parameters": [
+            {
+                "name": "article_id", 
+                "in": "path", 
+                "description": "Article unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }, 
+            {
+                "name": "file_id", 
+                "in": "path", 
+                "description": "File unique identifier", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "summary": "Private Article File", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Article private file", 
+                    "schema": {
+                        "$ref": "../models/common.json#PrivateFilePresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "post": {
+            "tags": [
+                "articles"
+            ], 
+            "summary": "Private Article File Complete Upload", 
+            "description": "Complete file upload", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "202": {
+                    "description": "Accepted"
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "delete": {
+            "tags": [
+                "articles"
+            ], 
+            "summary": "Private Article File Delete", 
+            "description": "Complete file upload", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "204": {
+                    "description": "No Content"
+                }, 
+                "400": {
+                    "description": "Bad request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/upload/{token}": {
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "summary": "List private files", 
+            "description": "List private files", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "token", 
+                    "in": "path", 
+                    "description": "Token received after initializing an upload", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Upload Info", 
+                    "schema": {
+                        "$ref": "../models/upload.json#UploadInfo"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad request. Article ID must be an integer and bigger than 0."
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/upload/{token}/{partNo}": {
+        "parameters": [
+            {
+                "name": "token", 
+                "in": "path", 
+                "description": "Token received after initializing an upload", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }, 
+            {
+                "name": "partNo", 
+                "in": "path", 
+                "description": "Part Number", 
+                "required": true, 
+                "type": "integer", 
+                "format": "int64", 
+                "minimum": 1
+            }
+        ], 
+        "get": {
+            "tags": [
+                "articles"
+            ], 
+            "summary": "File upload part information", 
+            "description": "File upload part information", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Upload Info", 
+                    "schema": {
+                        "$ref": "../models/upload.json#UploadFilePart"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "put": {
+            "tags": [
+                "articles"
+            ], 
+            "summary": "receives part data", 
+            "description": "The entire body of the request is piped as-is to S3. It is assumed that the body is the correct piece of the file, from startOffset to endOffset", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "BinaryData", 
+                    "schema": {
+                        "type": "string", 
+                        "format": "byte", 
+                        "description": "The entire body of the request is piped as-is to S3. It is assumed that the body is the correct piece of the file, from startOffset to endOffset"
+                    }, 
+                    "required": true
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK", 
+                    "schema": {
+                        "$ref": "../models/upload.json#UploadFilePart"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }, 
+        "delete": {
+            "tags": [
+                "articles"
+            ], 
+            "summary": "reset part data", 
+            "description": "This will reset the part to it's PENDING state and remove any storage meta.", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Accepted"
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "409": {
+                    "description": "Conflict. Upload completed or part locked"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }
+}

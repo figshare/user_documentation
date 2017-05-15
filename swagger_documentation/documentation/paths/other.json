@@ -1,0 +1,157 @@
+{
+    "/account": {
+        "get": {
+            "tags": [
+                "other"
+            ], 
+            "operationId": "account_Get", 
+            "summary": "Private Account information", 
+            "description": "Account information for token/personal token", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. Account representation", 
+                    "schema": {
+                        "$ref": "../models/other.json#Account"
+                    }
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/categories": {
+        "get": {
+            "tags": [
+                "other"
+            ], 
+            "operationId": "categories_Get", 
+            "summary": "Public Categories", 
+            "description": "Returns a list of public categories", 
+            "security": [], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of categories", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/common.json#CategoryPresenter"
+                        }
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/licenses": {
+        "get": {
+            "tags": [
+                "other"
+            ], 
+            "operationId": "licenses_Get", 
+            "summary": "Public Licenses", 
+            "description": "Returns a list of public licenses", 
+            "security": [], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of licenses", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/institutions.json#LicensePresenter"
+                        }
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/licenses": {
+        "get": {
+            "tags": [
+                "other"
+            ], 
+            "operationId": "account_licenses_Get", 
+            "summary": "Private Account Licenses", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of personal licenses", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/institutions.json#LicensePresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/file/download/{file_id}": {
+        "get": {
+            "tags": [
+                "other"
+            ], 
+            "operationId": "file_download_Get", 
+            "summary": "Public File Download", 
+            "description": "Starts the download of a file", 
+            "security": [], 
+            "produces": [
+                "application/force-download"
+            ], 
+            "parameters": [
+                {
+                    "name": "file_id", 
+                    "in": "path", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }
+}

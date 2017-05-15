@@ -1,0 +1,119 @@
+{
+    "swagger": "2.0", 
+    "info": {
+        "title": "Figshare API", 
+        "description": "Figshare apiv2. Using Swagger, linking with pyramid through pyramid_swagger", 
+        "version": "2.0.0"
+    }, 
+    "host": "api.pdaniel.dev", 
+    "basePath": "/v2", 
+    "schemes": [
+        "http"
+    ], 
+    "produces": [
+        "application/json"
+    ], 
+    "paths": [
+        {
+            "$ref": "paths/articles.json"
+        }, 
+        {
+            "$ref": "paths/other.json"
+        }, 
+        {
+            "$ref": "paths/collections.json"
+        }, 
+        {
+            "$ref": "paths/projects.json"
+        }, 
+        {
+            "$ref": "paths/institutions.json"
+        }
+    ], 
+    "definitions": [
+        {
+            "$ref": "models/institutions.json"
+        }, 
+        {
+            "$ref": "models/common.json"
+        }, 
+        {
+            "$ref": "models/projects.json"
+        }, 
+        {
+            "$ref": "models/articles.json"
+        }, 
+        {
+            "$ref": "models/collections.json"
+        }, 
+        {
+            "$ref": "models/other.json"
+        }, 
+        {
+            "$ref": "models/upload.json"
+        }
+    ], 
+    "securityDefinitions": {
+        "OAuth2": {
+            "type": "oauth2", 
+            "flow": "accessCode", 
+            "authorizationUrl": "https://figshare.com/account/applications/authorize", 
+            "tokenUrl": "https://api.figshare.com/v2/token", 
+            "scopes": {
+                "all": "Grants all access"
+            }
+        }
+    }, 
+    "x-additional-descriptions": [
+        {
+            "title": "Search", 
+            "position": "bottom", 
+            "subsections": [
+                {
+                    "title": "Introductory considerations", 
+                    "content": "#description_search_intro"
+                }, 
+                {
+                    "title": "General search engine features", 
+                    "content": "#description_search_general"
+                }, 
+                {
+                    "title": "Search types and expected results", 
+                    "content": "#description_search_types"
+                }
+            ]
+        }, 
+        {
+            "title": "OAuth", 
+            "position": "bottom", 
+            "subsections": [
+                {
+                    "title": "Oauth", 
+                    "content": "#description_oauth_intro"
+                }, 
+                {
+                    "title": "Quick guide", 
+                    "content": "#description_oauth_quick"
+                }, 
+                {
+                    "title": "Scope", 
+                    "content": "#description_oauth_scope"
+                }, 
+                {
+                    "title": "Grant Types", 
+                    "content": "#description_oauth_grant"
+                }
+            ]
+        }, 
+        {
+            "title": "Introduction", 
+            "position": "top", 
+            "subsections": [
+                {
+                    "title": "figshare Documentation", 
+                    "content": "#description_intro"
+                }
+            ]
+        }
+    ]
+}

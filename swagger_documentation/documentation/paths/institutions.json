@@ -1,0 +1,208 @@
+{
+    "/institutions/{institution_string_id}/articles/filter-by": {
+        "get": {
+            "tags": [
+                "institutions"
+            ], 
+            "operationId": "institutions_institution_articles_search_Get", 
+            "summary": "Public Licenses", 
+            "description": "Returns a list of articles belonging to the institution", 
+            "parameters": [
+                {
+                    "name": "institution_string_id", 
+                    "in": "path", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                {
+                    "name": "resource_id", 
+                    "in": "query", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                {
+                    "name": "filename", 
+                    "in": "query", 
+                    "required": true, 
+                    "type": "string"
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of articles", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/articles.json#ArticlePresenter"
+                        }
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/institution/hrfeed/upload": {
+        "post": {
+            "tags": [
+                "institutions"
+            ], 
+            "operationId": "account_institution_hrfeed_upload_Post", 
+            "summary": "Private Institution HRfeed Upload", 
+            "description": " The success response doesn't give much information other than the fact that the system has understood the request, has received the file and has initiated the necessary tasks. There are plans for a way to get more in depth information for the state of the HRFeed Process.\n\nThe token given in the upper examples is a general figshare API personal token of any of the admins at the institution. No other user should be able to access this endpoint, apart from those given the express permission of uploading HR feeds.", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "consumes": [
+                "multipart/form-data"
+            ], 
+            "parameters": [
+                {
+                    "in": "formData", 
+                    "name": "upfile", 
+                    "type": "file", 
+                    "description": "A typical request looks like this:\n--529448d158064de596afd8f892c84e15\nContent-Disposition: form-data; name=\"hrfeed\"; filename=\"feed.xml\"\n\n<?xml version=\"1.0\"?>\n<HRFeed>\n    <Record>\n        <UniqueID>1234567</UniqueID>\n        <FirstName>Jane</FirstName>\n        <LastName>Doe</LastName>\n        <Title>Mrs</Title>\n        <Initials>JD</Initials>\n        <Suffix></Suffix>\n        <Email>j.doe@sillymail.io</Email>\n        <IsActive>Y</IsActive>\n        <UserQuota>1048576000</UserQuota>\n        <UserAssociationCriteria>IT</UserAssociationCriteria>\n    </Record>\n    <Record>\n        <UniqueID>1234568</UniqueID>\n        <FirstName>John</FirstName>\n        <LastName>Smith</LastName>\n        <Title>Mr</Title>\n        <Initials></Initials>\n        <Suffix></Suffix>\n        <Email>js@seriousness.com</Email>\n        <IsActive>Y</IsActive>\n        <UserQuota>10485760000</UserQuota>\n        <UserAssociationCriteria></UserAssociationCriteria>\n    </Record>\n</HRFeed>\n\n--529448d158064de596afd8f892c84e15--|\n"
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK", 
+                    "schema": {
+                        "$ref": "../models/common.json#MessageResponse"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/institution": {
+        "get": {
+            "tags": [
+                "institutions"
+            ], 
+            "operationId": "account_institution_Get", 
+            "summary": "Private Account Institutions", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of institutions", 
+                    "schema": {
+                        "$ref": "../models/institutions.json#InstitutionPresenter"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/categories": {
+        "get": {
+            "tags": [
+                "institutions"
+            ], 
+            "operationId": "account_categories_Get", 
+            "summary": "Private Account Categories", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of categories", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/common.json#CategoryPresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/institution/groups": {
+        "get": {
+            "tags": [
+                "institutions"
+            ], 
+            "operationId": "account_institution_groups_Get", 
+            "summary": "Private Account Institution Groups", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of Groups", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/institutions.json#GroupPresenter"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#Error"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }
+}

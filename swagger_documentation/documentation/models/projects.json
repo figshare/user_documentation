@@ -1,0 +1,338 @@
+{
+    "ProjectCollaboratorInvite": {
+        "x-tag": "projects", 
+        "type": "object", 
+        "required": [
+            "role_name"
+        ], 
+        "properties": {
+            "role_name": {
+                "type": "string", 
+                "enum": [
+                    "viewer", 
+                    "collaborator"
+                ], 
+                "example": "viewer"
+            }, 
+            "user_id": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 100008
+            }, 
+            "email": {
+                "type": "string", 
+                "example": "user@domain.com"
+            }, 
+            "comment": {
+                "type": "string", 
+                "example": "hey"
+            }
+        }
+    }, 
+    "ProjectNotePresenter": {
+        "x-tag": "projects", 
+        "type": "object", 
+        "properties": {
+            "id": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 1
+            }, 
+            "user_id": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 100008
+            }, 
+            "abstract": {
+                "type": "string", 
+                "example": "text"
+            }, 
+            "user_name": {
+                "type": "string", 
+                "example": "user"
+            }, 
+            "created_date": {
+                "type": "string", 
+                "example": "2017-05-16T16:49:11Z"
+            }, 
+            "modified_date": {
+                "type": "string", 
+                "example": "2017-05-16T16:49:11Z"
+            }
+        }
+    }, 
+    "ProjectNotePresenter.L1": {
+        "x-tag": "projects", 
+        "type": "object", 
+        "allOf": [
+            {
+                "$ref": "#ProjectNotePresenter"
+            }
+        ], 
+        "properties": {
+            "text": {
+                "type": "string", 
+                "example": "text"
+            }
+        }
+    }, 
+    "ProjectNoteCreate": {
+        "x-tag": "projects", 
+        "type": "object", 
+        "required": [
+            "text"
+        ], 
+        "properties": {
+            "text": {
+                "type": "string", 
+                "minLength": 3, 
+                "example": "note to remember"
+            }
+        }
+    }, 
+    "ProjectCreate": {
+        "x-tag": "projects", 
+        "type": "object", 
+        "required": [
+            "title"
+        ], 
+        "properties": {
+            "title": {
+                "type": "string", 
+                "description": "The title for this project - mandatory. 3 - 500 characters.", 
+                "example": "project title"
+            }, 
+            "description": {
+                "type": "string", 
+                "description": "Project's description", 
+                "example": "project description"
+            }, 
+            "funding": {
+                "type": "string", 
+                "description": "Grant number or organization(s) that funded this project. Up to 2000 characters permitted.", 
+                "example": ""
+            }, 
+            "group_id": {
+                "type": "integer", 
+                "format": "int64", 
+                "description": "Only if project type is group.", 
+                "example": 0
+            }
+        }
+    }, 
+    "ProjectUpdate": {
+        "x-tag": "projects", 
+        "type": "object", 
+        "required": [
+            "title"
+        ], 
+        "properties": {
+            "title": {
+                "type": "string", 
+                "description": "The title for this project - mandatory. 3 - 500 characters.", 
+                "example": "project title"
+            }, 
+            "description": {
+                "type": "string", 
+                "description": "Project's description", 
+                "example": "project description"
+            }, 
+            "funding": {
+                "type": "string", 
+                "description": "Grant number or organization(s) that funded this project. Up to 2000 characters permitted.", 
+                "example": ""
+            }
+        }
+    }, 
+    "ProjectPresenter": {
+        "x-tag": "projects", 
+        "type": "object", 
+        "properties": {
+            "url": {
+                "type": "string", 
+                "example": "http://api.figshare.com/v2/account/projects/1"
+            }, 
+            "published_date": {
+                "type": [
+                    "string", 
+                    "null"
+                ], 
+                "example": "2017-05-16T14:55:08Z"
+            }, 
+            "id": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 1
+            }, 
+            "title": {
+                "type": "string", 
+                "example": "project"
+            }
+        }
+    }, 
+    "PrivateProjectPresenter": {
+        "x-tag": "projects", 
+        "type": "object", 
+        "allOf": [
+            {
+                "$ref": "#ProjectPresenter"
+            }
+        ], 
+        "properties": {
+            "role": {
+                "type": "string", 
+                "enum": [
+                    "Owner", 
+                    "Collaborator", 
+                    "Viewer"
+                ], 
+                "example": "Owner"
+            }, 
+            "storage": {
+                "type": "string", 
+                "enum": [
+                    "individual", 
+                    "group"
+                ], 
+                "example": "individual"
+            }
+        }
+    }, 
+    "ProjectPresenter.L1": {
+        "x-tag": "projects", 
+        "type": "object", 
+        "allOf": [
+            {
+                "$ref": "#ProjectPresenter"
+            }
+        ], 
+        "properties": {
+            "funding": {
+                "type": "string", 
+                "example": "none"
+            }, 
+            "description": {
+                "type": "string", 
+                "example": "description"
+            }, 
+            "figshare_url": {
+                "type": [
+                    "string", 
+                    "null"
+                ], 
+                "example": "https://figshare.com/projects/project/1"
+            }, 
+            "collaborators": {
+                "type": "array", 
+                "items": {
+                    "$ref": "#CollaboratorPresenter"
+                }
+            }
+        }
+    }, 
+    "PrivateProjectPresenter.L1": {
+        "x-tag": "projects", 
+        "type": "object", 
+        "allOf": [
+            {
+                "$ref": "#PrivateProjectPresenter"
+            }
+        ], 
+        "properties": {
+            "funding": {
+                "type": "string", 
+                "example": "none"
+            }, 
+            "description": {
+                "type": "string", 
+                "example": "description"
+            }, 
+            "figshare_url": {
+                "type": [
+                    "string", 
+                    "null"
+                ], 
+                "example": "https://figshare.com/projects/project/1"
+            }, 
+            "collaborators": {
+                "type": "array", 
+                "items": {
+                    "$ref": "#CollaboratorPresenter"
+                }
+            }, 
+            "quota": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }, 
+            "used_quota": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }, 
+            "created_date": {
+                "type": "string", 
+                "example": "2017-05-16T14:52:54Z"
+            }, 
+            "modified_date": {
+                "type": "string", 
+                "example": "2017-05-16T14:52:54Z"
+            }, 
+            "used_quota_private": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }, 
+            "used_quota_public": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }, 
+            "group_id": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }
+        }
+    }, 
+    "ProjectCollaborator": {
+        "x-tag": "projects", 
+        "type": "object", 
+        "properties": {
+            "status": {
+                "type": "string", 
+                "example": "invited"
+            }, 
+            "role_name": {
+                "type": "string", 
+                "example": "Owner"
+            }, 
+            "user_id": {
+                "type": "integer", 
+                "example": 1
+            }, 
+            "name": {
+                "type": "string", 
+                "example": "name"
+            }
+        }
+    }, 
+    "CollaboratorPresenter": {
+        "x-tag": "projects", 
+        "type": "object", 
+        "properties": {
+            "role_name": {
+                "type": "string", 
+                "example": "Owner"
+            }, 
+            "user_id": {
+                "type": "integer", 
+                "example": 1
+            }, 
+            "name": {
+                "type": "string", 
+                "example": "name"
+            }
+        }
+    }
+}

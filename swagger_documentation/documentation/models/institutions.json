@@ -1,0 +1,68 @@
+{
+    "GroupPresenter": {
+        "x-tag": "institutions", 
+        "type": "object", 
+        "properties": {
+            "id": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 1
+            }, 
+            "name": {
+                "type": "string", 
+                "example": "Materials"
+            }, 
+            "resource_id": {
+                "type": "string", 
+                "example": ""
+            }, 
+            "parent_id": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }
+        }
+    }, 
+    "InstitutionPresenter": {
+        "x-tag": "institutions", 
+        "type": "object", 
+        "properties": {
+            "id": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }, 
+            "name": {
+                "type": "string", 
+                "example": "Institution"
+            }, 
+            "domain": {
+                "type": [
+                    "string", 
+                    "null"
+                ], 
+                "example": null
+            }
+        }
+    }, 
+    "LicensePresenter": {
+        "x-tag": "institutions", 
+        "type": "object", 
+        "properties": {
+            "value": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 1
+            }, 
+            "name": {
+                "type": "string", 
+                "example": "CC BY"
+            }, 
+            "url": {
+                "type": "string", 
+                "format": "url", 
+                "example": "http://creativecommons.org/licenses/by/4.0/"
+            }
+        }
+    }
+}

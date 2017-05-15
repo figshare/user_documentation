@@ -1,0 +1,79 @@
+{
+    "Account": {
+        "x-tag": "other", 
+        "type": "object", 
+        "properties": {
+            "id": {
+                "type": "integer", 
+                "description": "Account id", 
+                "format": "int64", 
+                "example": 1495682
+            }, 
+            "first_name": {
+                "type": "string", 
+                "description": "First Name", 
+                "example": "Doe"
+            }, 
+            "last_name": {
+                "type": "string", 
+                "description": "Last Name", 
+                "example": "John"
+            }, 
+            "used_quota_private": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }, 
+            "modified_date": {
+                "type": "string", 
+                "example": "2018-05-22T04:04:04"
+            }, 
+            "used_quota": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }, 
+            "created_date": {
+                "type": "string", 
+                "example": "2018-05-22T04:04:04"
+            }, 
+            "quota": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }, 
+            "institution_user_id": {
+                "type": "string", 
+                "example": 1
+            }, 
+            "institution_id": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 1
+            }, 
+            "email": {
+                "type": "string", 
+                "example": "user@domain.com"
+            }, 
+            "used_quota_public": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }, 
+            "pending_quota_request": {
+                "type": "boolean", 
+                "example": true
+            }, 
+            "active": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }, 
+            "maximum_file_size": {
+                "type": "integer", 
+                "format": "int64", 
+                "example": 0
+            }
+        }
+    }
+}
