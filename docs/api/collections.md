@@ -97,6 +97,13 @@ and `search` params.  See [API feature list](index.md#api-feature-list) for deta
 Filters and defaults are the same as for  the
 [list public collections](#list-public-collections)
 
+Additional filters:
+
+|field|type|notes|
+|-----|----|-----|
+|`resource_doi`|`str`|only return collections with this resource_doi|
+|`resource_title`|`str`|only return collections with this resource_title|
+
 The response body will use the collection `light` presenter.
 
 #### Response
@@ -197,6 +204,62 @@ authenticated account.
     GET /v2/account/collections
 
 Almost identical to [list public collections](#list-public-collections), but default sorting is by `created_date`, not `published_date`.
+
+
+==========================
+### Search own collections
+
+    POST /v2/account/collections/search
+
+
+**Input**
+
+|Name               |Type   |Description|
+|-------------------|-------|-----------|
+|`page`             |`int`  |Show specified page only. Default is 1. Max is 100|
+|`page_size`         |`int` |How many entries per page to show. Default is 10. Max is 100|
+|`search_for`       |`str`  |(query)String to perform search for. Minimum of 4 characters|
+|`published_since`  |`date` |(filter)Narrow search  to articles published since the specified date|
+|`modified_since`   |`date` |(filter)Narrow search  to articles modified since the specified date|
+|`institution`      |`int`  |(filter)Filter results for this instritution only|
+|`group`            |`int`  |(filter)Filter results for this institution group only|
+|`order`         |`str`  |(sort)Perform a sort using the `order`. Valid values are: `published_date`, `modified_date`|
+|`order_direction`     |`str`  |(sort)How to sort. Descending or ascending. Valid values are: `desc`, `asc`|
+|`resource_id`|`str`|only return collections with this resource_id|
+|`resource_doi`|`str`|only return collections with this resource_doi|
+|`resource_title`|`str`|only return collections with this resource_title|
+
+
+Alternatively, instead of `page` and `page_size`, one can use the following params for pagination:
+
+|Name      |Type |Description|
+|----------|-----|-----------|
+|`offset`  |`int`|The first entry to return. The offset of the initial entry is 0 (not 1).|
+|`limit`   |`int`|The number of returned entries. Default is 10.|
+
+
+**Success Response (list of articles)**
+```
+Status: 200 OK
+```
+[[CollectionPresenter](presenters/collection.md#collectionpresenter)]
+
+
+**Error Response (invalid input)**
+```
+Status: 400 Bad request
+```
+```json
+{"message": "Invalid value received for order"}
+```
+**Error Response (Max page number reached)**
+```
+Status: 400 Bad request
+```
+```json
+{"message": "Max page reached. Please narrow down your search"}
+```
+
 
 ==========================
 ### Create a new collection

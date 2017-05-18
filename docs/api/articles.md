@@ -108,6 +108,14 @@ Accepts `pagination`, `sorting`, `filtering` and `search` params. See [API featu
 Filters and defaults are the same as for  the
 [list public articles](#list-public-articles)
 
+Additional filters:
+
+|field|type|notes|
+|-----|----|-----|
+|`resource_doi`|`str`|only return collections with this doi|
+|`resource_title`|`str`|only return collections with this resource_title|
+
+
 **Success Response (list of articles)**
 Status: 200 OK
 
@@ -296,6 +304,9 @@ Status: 400 Bad request
 |`group`            |`int`  |(filter)Filter results for this institution group only|
 |`order`         |`str`  |(sort)Perform a sort using the `order`. Valid values are: `published_date`, `modified_date`|
 |`order_direction`     |`str`  |(sort)How to sort. Descending or ascending. Valid values are: `desc`, `asc`|
+|`resource_id`|`str`|only return collections with this resource_id|
+|`resource_doi`|`str`|only return collections with this resource_doi|
+|`resource_title`|`str`|only return collections with this resource_title|
 
 
 Alternatively, instead of `page` and `page_size`, one can use the following params for pagination:
