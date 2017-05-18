@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>/oauth/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -21,7 +21,7 @@
         
     <url>
      <loc>/OAI-PMH/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -31,7 +31,7 @@
         
     <url>
      <loc>/Search/search/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -41,31 +41,31 @@
         
     <url>
      <loc>/Stats/breakdown/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Stats/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Stats/timeline/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Stats/tops/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Stats/totals/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -75,61 +75,61 @@
         
     <url>
      <loc>/api/articles/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api/categories/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api/collections/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api/file_uploader/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api/hr_feed/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api/institution_and_groups/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api/licenses/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api/projects/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api/upload_example/</loc>
-     <lastmod>2017-04-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
