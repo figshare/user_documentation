@@ -72,6 +72,7 @@ Accepted filters:
 |`group`|int|only return collections from this group|
 |`published_since`|date(ISO 8601)|Only collections published after the date|
 |`modified_since`|date(ISO 8601)|Only collections published after the date|
+|`item_type`|int|Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code|
 
 Defaults:
 
@@ -307,6 +308,7 @@ Status: 400 Bad request
 |`resource_id`|`str`|only return collections with this resource_id|
 |`resource_doi`|`str`|only return collections with this resource_doi|
 |`resource_title`|`str`|only return collections with this resource_title|
+|`item_type`|int|Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code|
 
 
 Alternatively, instead of `page` and `page_size`, one can use the following params for pagination:
@@ -468,7 +470,7 @@ Status: 404 Not found
 
     POST /v2/account/articles/{id}/publish
 
-**Notes**: 
+**Notes**:
 - If the whole article is under *embargo*, it will not be published immediatly, but when the embargo expires or is lifted.  
 - When an article is published, a new public version will be generated.
 Any further updates to the article will affect the private article data.
