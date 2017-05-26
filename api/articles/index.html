@@ -423,6 +423,11 @@
 <td>date(ISO 8601)</td>
 <td>Only collections published after the date</td>
 </tr>
+<tr>
+<td><code>item_type</code></td>
+<td>int</td>
+<td>Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code</td>
+</tr>
 </tbody>
 </table>
 <p>Defaults:</p>
@@ -711,6 +716,11 @@ Status: 200 OK</p>
 <td><code>str</code></td>
 <td>only return collections with this resource_title</td>
 </tr>
+<tr>
+<td><code>item_type</code></td>
+<td>int</td>
+<td>Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code</td>
+</tr>
 </tbody>
 </table>
 <p>Alternatively, instead of <code>page</code> and <code>page_size</code>, one can use the following params for pagination:</p>
@@ -978,7 +988,7 @@ Location: https://api.figshare.com/v2/account/articles/123
 <h2 id="publish-article">Publish article</h2>
 <pre><code>POST /v2/account/articles/{id}/publish
 </code></pre>
-<p><strong>Notes</strong>: 
+<p><strong>Notes</strong>:
 - If the whole article is under <em>embargo</em>, it will not be published immediatly, but when the embargo expires or is lifted.<br />
 - When an article is published, a new public version will be generated.
 Any further updates to the article will affect the private article data.
