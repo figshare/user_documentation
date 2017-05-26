@@ -63,7 +63,7 @@ eventually commit to the new fields by documenting and guaranteeing them.
     "authors": [AuthorPresenter],
     "institution_id": 154,
     "group_id": 445,
-    "article_count": 100,
+    "articles_count": 100,
     "public": 1,
     "custom_metadata": [
         {
