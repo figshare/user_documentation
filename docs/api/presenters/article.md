@@ -73,7 +73,7 @@ Note:
 * [PublicFilePresenter](file.md#publicfilepresenter)
 * [AuthorPresenter](author.md#authorpresenter)
 * [ArticleVersionPresenter](article.md#articleversionpresenter)
-* [CustomArticleFieldPresenter](custon_field.md#customarticlefieldpresenter)
+* [CustomArticleFieldPresenter](custom_field.md#customarticlefieldpresenter)
 
 [ArticlePresenter.L1](article.md#articlepresenterl1) +
 ```json

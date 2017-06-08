@@ -38,7 +38,7 @@ eventually commit to the new fields by documenting and guaranteeing them.
 * [ArticlePresenter](article.md#articlepresenter)
 
 
-[CollectionPresenter](presenters/collection.md#collectionpresenter)
+[CollectionPresenter](collection.md#collectionpresenter)
 
 +
 
