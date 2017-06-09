@@ -103,7 +103,7 @@ Additional filters:
 |-----|----|-----|
 |`resource_doi`|`str`|only return collections with this resource_doi|
 
-To search by resource title include it in the search_for parameter as such: "search_for":":resource.title: title"
+To search by resource title include it in the search_for parameter as such: "search_for":":resource_title: title"
 
 The response body will use the collection `light` presenter.
 
@@ -229,7 +229,7 @@ Almost identical to [list public collections](#list-public-collections), but def
 |`resource_id`|`str`|only return collections with this resource_id|
 |`resource_doi`|`str`|only return collections with this resource_doi|
 
-To search by resource title include it in the search_for parameter as such: "search_for":":resource.title: title"
+To search by resource title include it in the search_for parameter as such: "search_for":":resource_title: title"
 
 Alternatively, instead of `page` and `page_size`, one can use the following params for pagination:
 

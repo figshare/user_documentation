@@ -115,7 +115,7 @@ Additional filters:
 |-----|----|-----|
 |`resource_doi`|`str`|only return collections with this doi|
 
-To search by resource title include it in the search_for parameter as such: "search_for":":resource.title: title"
+To search by resource title include it in the search_for parameter as such: "search_for":":resource_title: title"
 
 
 **Success Response (list of articles)**
@@ -310,7 +310,7 @@ Status: 400 Bad request
 |`resource_doi`|`str`|only return collections with this resource_doi|
 |`item_type`|int|Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code|
 
-To search by resource title include it in the search_for parameter as such: "search_for":":resource.title: title"
+To search by resource title include it in the search_for parameter as such: "search_for":":resource_title: title"
 
 Alternatively, instead of `page` and `page_size`, one can use the following params for pagination:
 
