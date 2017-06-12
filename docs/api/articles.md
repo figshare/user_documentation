@@ -354,8 +354,7 @@ Status: 400 Bad request
 |-------------------|-----------------------|-------------------------------------------|
 |`title`            |`str`                  |The title for this article|
 |`description`      |`str`                  |The article description. In a publisher case, usually this is the remote article description|
-|`tags`             |`array of str`         |List of tags to be associated with the article (e.g ["tag1", "tag2", "tagn"]). Keywords can be used instead|
-|`keywords`             |`array of str`         |List of tags to be associated with the article (e.g ["tag1", "tag2", "tagn"]). Tags can be used instead|
+|`tags`             |`array of str`         |List of tags to be associated with the article (e.g ["tag1", "tag2", "tagn"]).|
 |`references`            |`array of str`         |List of links to be associated with the article (e.g ["http://link1", "http://link2", "http://link3"])|
 |`categories`       |`array of int`         |List of category ids to be associated with the article(e.g [1, 23, 33, 66])|
 |`authors`          |`array`                |List of authors to be assosciated with the article. The list can contain author ids or author names [{"id": 12121}, {"id": 34345}, {"name": "John Doe"}]. No more than 10 authors. For adding more authors use the specific authors endpoint.|

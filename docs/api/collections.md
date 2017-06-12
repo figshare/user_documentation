@@ -11,6 +11,7 @@
 
 * **[Private](#private-endpoints)**
   - [list own collections](#list-own-collections)
+  - [search own collections](#search-own-collections)
   - [create new collection](#create-a-new-collection)
   - [read own collection](#read-own-collection)
   - [update collection](#update-collection)
@@ -276,8 +277,7 @@ Status: 400 Bad request
 |`articles`         |`array of int`|List of articles to be associated with the collection (e.g `[1, 4]`)|
 |`authors`          |`array of dictionaries` `{"id": int}` or `{"name": str}` |List of new authors to be assosciated with the collection. Each element identifies an author by `id` OR `name` (e.g `[{"id":1212}, {"name":"John Doe"}]`)|
 |`categories`       |`array of int` |List of category ids to be associated with the collection (e.g `[5, 7, 9]`)|
-|`tags`             |`array of str` |List of tags to be associated with the collection (e.g `["tag1", "tag2"]`). Keywords can be used instead|
-|`keywords`             |`array of str` |List of tags to be associated with the collection (e.g `["tag1", "tag2"]`). Tags can be used instead|
+|`tags`             |`array of str` |List of tags to be associated with the collection (e.g `["tag1", "tag2"]`).|
 |`references`       |`array of str`   |List of references to be associated with the collection (e.g `["http://figshare.com", "http://figshare.com/articles/browse"]`)|
 |`resource_id`      |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article id|
 |`resource_doi`     |`str`  |Not applicable to regular users. In a publisher case, this is the publisher article DOI|
