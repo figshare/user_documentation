@@ -17,7 +17,7 @@ client_samples:
 documentation_directories:
 	cd documentation/ && python generate_dir_from_swagger.py
 
-documentation: swagger client_samples generate_clients
+documentation: swagger client_samples clients
 
 
 generate_client_go:
@@ -133,7 +133,7 @@ clean:
 	rm -r clients/*
 
 clients:
-	make clean generate_client_dirs zip_client_dirs delete_client_dirs
+	make generate_client_dirs zip_client_dirs delete_client_dirs
 
 
 .PHONY: configure swagger client_samples documentation_directories documentation clients
