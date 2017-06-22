@@ -511,7 +511,13 @@
         <h2>figshare documentation</h2>
         <p>The definite guide for figshare and the home of all user documentation.</p>
         <p>The sources for these pages are publicly hosted on github at figshare/user_documentation and it's open for contributions. If you feel you can improve anything, fix a mistake, expand on a topic, feel free to open up a pull request.</p>
-        <p><a href="http://api.figshare.com">Looking for the old docs?</a></p>
+        <p><a href="http://api.figshare.com/docs">Looking for the old docs?</a>&nbsp;<a href="http://api.figshare.com/docs">http://api.figshare.com/docs</a></p>
+        <h3>Base URL</h3>
+        <p>All URLs referenced in the documentation have the following base:</p>
+        <pre>https://api.figshare.com/v2</pre>
+        <p>The Figshare REST API is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.</p>
+        <h3>Authentication</h3>
+        <p>Figshare supports the OAuth 2.0 Authorization Framework. See more about it in the <a href="#description_Oauth">OAuth</a> section.
       </div>
       <div id="other_sample_codes">
         <h4>You can download one of the following complete clients:</h4>
@@ -534,7 +540,720 @@
           <li><a target="_blank" href="/clients/haskell.zip">Haskell</a></li>
         </ul>
       </div>
+      <div id="description_upload_steps">
+        <h3 id="steps-to-upload-file">Steps to upload file</h3>
+        <ul>
+          <li><a href="#initiate-new-file-upload-within-the-article">Initiate file upload</a> - this request returns an endpoint with file data</li>
+          <li>Send a <code>GET</code> request to the <a href="#description_upload_api">Uploader Service</a> with the <code>upload_url</code> (which also contains the<code>upload_token</code>) provided in previous step and receive the number of file parts</li>
+          <li>Upload / Delete / Retry uploading file parts until all parts are uploaded successfully</li>
+          <li><a href="#complete-file-upload">Complete file upload</a></li>
+        </ul>
+      </div>
+      <div id="description_upload_api">
+        <h3 id="uploads-api">Uploader Service</h3>
+        <h4 id="upload-status">Upload status</h4>
+        <p>An upload status can be:</p>
+        <ul>
+        <li><code>PENDING</code> - waiting for it's parts to be uploaded</li>
+        <li><code>COMPLETED</code> - all parts were uploaded and the file was assembled on the storage</li>
+        <li><code>ABORTED</code> - canceled for some reason(user request, timeout, error)</li>
+        </ul>
+        <h4 id="endpoints">Endpoints</h4>
+        <ul>
+        <li><code>GET /upload/&lt;token&gt;</code> - get upload info</li>
+        </ul>
+        <p>Response:</p>
+        <table class="docutils">
+        <thead>
+        <tr>
+        <th>Status Code</th>
+        <th>Explanation</th>
+        <th>Body</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>200 OK</td>
+        <td>all good</td>
+        <td><em>explained below</em></td>
+        </tr>
+        <tr>
+        <td>500 Internal Server Error</td>
+        <td>internal error</td>
+        <td><em>empty</em></td>
+        </tr>
+        <tr>
+        <td>404 Not Found</td>
+        <td>unknown upload token</td>
+        <td><em>empty</em></td>
+        </tr>
+        </tbody>
+        </table>
+        <p><strong>200 OK</strong></p>
+        <p>Body:
+          <code>js
+          {
+            token: "upload-token",
+            name: "my-file.zip",
+            size: 10249281,
+            md5: "filemd5",  // as provided on upload creation
+            status: "PENDING",
+            parts: [
+              {
+              // upload parts -- see parts API for representation
+              }
+            ]
+        }</code></p>
+      </div>
+      <div id="description_upload_parts_api">
+        <h3 id="parts-api">Parts API</h3>
+        <h4 id="part-status">Part status</h4>
+        <ul>
+        <li><code>PENDING</code> -- part is ready to be uploaded</li>
+        <li><code>COMPLETE</code> -- part data has been complete and saved to storage</li>
+        </ul>
+        <h4 id="part-locking">Part locking</h4>
+        <p>When a part is being uploaded it is being locked, by setting the
+        <code>locked</code> flag to true. No changes/uploads can happen on this part from
+        other requests.</p>
+        <h4 id="byte-ranges">Byte ranges</h4>
+        <p>The part range is specified by <code>startOffset</code> and <code>endOffset</code>. They
+        indexes zero-based and inclusive. Example:</p>
+        <p>Given:</p>
+        <ul>
+        <li>the following file data: "abcdefghij"</li>
+        <li><code>part1</code> with <code>startOffset=0</code> and <code>endOffset=3</code></li>
+        <li><code>part2</code> with <code>startOffset=4</code> and <code>endOffset=7</code></li>
+        </ul>
+        <p>Then:</p>
+        <ul>
+        <li><code>part1</code> is <code>abcd</code></li>
+        <li><code>part2</code> is <code>efgh</code></li>
+        </ul>
+        <h4 id="endpoints_1">Endpoints</h4>
+        <ul>
+        <li><code>GET /upload/&lt;token&gt;/&lt;part_no&gt;</code> - get part info</li>
+        </ul>
+        <p>Responses:</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Status Code</th>
+        <th>Explanation</th>
+        <th>Body</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>200 OK</td>
+        <td>all good</td>
+        <td><em>explained below</em></td>
+        </tr>
+        <tr>
+        <td>500 Internal Server Error</td>
+        <td>internal error</td>
+        <td><em>empty</em></td>
+        </tr>
+        <tr>
+        <td>404 Not Found</td>
+        <td>unknown upload token or part number</td>
+        <td><em>empty</em></td>
+        </tr>
+        </tbody>
+        </table>
+        <p><strong>200 OK</strong></p>
+        <p>Body:
+          <code>js
+          {
+            partNo: 3,
+            startOffset: 1024,
+            endOffset: 2047,
+            status: "PENDING",
+            locked: false
+          }</code></p>
+        <ul>
+        <li><code>PUT /upload/&lt;token&gt;/&lt;part_no&gt;</code> - receives part data</li>
+        </ul>
+        <p>The entire body of the request is piped as-is to S3. It is assumed that the
+          body is the correct piece of the file, from <code>startOffset</code> to <code>endOffset</code></p>
+        <p>While this requests is being processed the part is going to be in a
+          locked state. The request can end with a <code>409</code> status code if a
+          lock for the part could not be obtained.</p>
+        <p><strong>Warning</strong> if content length is less than part size the request will
+          timeout</p>
+        <p>Responses:</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Status Code</th>
+        <th>Explanation</th>
+        <th>Body</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>200 OK</td>
+        <td>all good</td>
+        <td><em>explained below</em></td>
+        </tr>
+        <tr>
+        <td>500 Internal Server Error</td>
+        <td>internal error</td>
+        <td><em>empty</em></td>
+        </tr>
+        <tr>
+        <td>404 Not Found</td>
+        <td>unknown upload token or part number</td>
+        <td><em>empty</em></td>
+        </tr>
+        <tr>
+        <td>409 Conflict</td>
+        <td>part data cannot be uploaded</td>
+        <td><em>empty</em></td>
+        </tr>
+        </tbody>
+        </table>
+        <p><strong>200 OK</strong></p>
+        <ul>
+        <li><code>DELETE /upload/&lt;token&gt;/&lt;part_no&gt;</code> - reset part data</li>
+        </ul>
+        <p>This will reset the part to it's <code>PENDING</code> state and remove any
+          storage meta.</p>
+        <p>Responses:</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Status Code</th>
+        <th>Explanation</th>
+        <th>Body</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>200 Accepted</td>
+        <td>all good</td>
+        <td><em>empty</em></td>
+        </tr>
+        <tr>
+        <td>500 Internal Server Error</td>
+        <td>internal error</td>
+        <td><em>empty</em></td>
+        </tr>
+        <tr>
+        <td>404 Not Found</td>
+        <td>unknown upload token or part number</td>
+        <td><em>empty</em></td>
+        </tr>
+        <tr>
+        <td>409 Conflict</td>
+        <td>upload completed or part locked</td>
+        <td><em>empty</em></td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+      <div id="description_upload_example">
+                <h1 id="example-upload-on-figshare">Example Upload on fig<strong>share</strong></h1>
+                <p>To upload a file to the fig<strong>share</strong>, one needs to use the standard <em>fig<strong>share</strong> API</em>, coupled
+                with the <em>fig<strong>share</strong> upload system API</em>.
+                A full script that lists articles <em>before</em> and <em>after</em> the new <strong>article</strong> and <strong>file</strong> are created
+                would look like this:</p>
+                <pre><code class="python hljs"><span class="hljs-comment">#!/usr/bin/env python</span>
+
+                <span class="hljs-keyword">import</span> hashlib
+                <span class="hljs-keyword">import</span> json
+                <span class="hljs-keyword">import</span> os
+
+                <span class="hljs-keyword">import</span> requests
+                <span class="hljs-keyword">from</span> requests.exceptions <span class="hljs-keyword">import</span> HTTPError
+
+
+                BASE_URL = <span class="hljs-string">'https://api.figshare.com/v2/{endpoint}'</span>
+                TOKEN = <span class="hljs-string">'&lt;insert access token here&gt;'</span>
+                CHUNK_SIZE = <span class="hljs-number">1048576</span>
+
+                FILE_PATH = <span class="hljs-string">'/path/to/work/directory/cat.obj'</span>
+                TITLE = <span class="hljs-string">'A 3D cat object model'</span>
+
+
+                <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">raw_issue_request</span><span class="hljs-params">(method, url, data=None, binary=False)</span>:</span>
+                    headers = {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'token '</span> + TOKEN}
+                    <span class="hljs-keyword">if</span> data <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">None</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> binary:
+                        data = json.dumps(data)
+                    response = requests.request(method, url, headers=headers, data=data)
+                    <span class="hljs-keyword">try</span>:
+                        response.raise_for_status()
+                        <span class="hljs-keyword">try</span>:
+                            data = json.loads(response.content)
+                        <span class="hljs-keyword">except</span> ValueError:
+                            data = response.content
+                    <span class="hljs-keyword">except</span> HTTPError <span class="hljs-keyword">as</span> error:
+                        <span class="hljs-keyword">print</span> <span class="hljs-string">'Caught an HTTPError: {}'</span>.format(error.message)
+                        <span class="hljs-keyword">print</span> <span class="hljs-string">'Body:\n'</span>, response.content
+                        <span class="hljs-keyword">raise</span>
+
+                    <span class="hljs-keyword">return</span> data
+
+
+                <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">issue_request</span><span class="hljs-params">(method, endpoint, *args, **kwargs)</span>:</span>
+                    <span class="hljs-keyword">return</span> raw_issue_request(method, BASE_URL.format(endpoint=endpoint), *args, **kwargs)
+
+
+                <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">list_articles</span><span class="hljs-params">()</span>:</span>
+                    result = issue_request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'account/articles'</span>)
+                    <span class="hljs-keyword">print</span> <span class="hljs-string">'Listing current articles:'</span>
+                    <span class="hljs-keyword">if</span> result:
+                        <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> result:
+                            <span class="hljs-keyword">print</span> <span class="hljs-string">u'  {url} - {title}'</span>.format(**item)
+                    <span class="hljs-keyword">else</span>:
+                        <span class="hljs-keyword">print</span> <span class="hljs-string">'  No articles.'</span>
+                    <span class="hljs-keyword">print</span>
+
+
+                <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create_article</span><span class="hljs-params">(title)</span>:</span>
+                    data = {
+                        <span class="hljs-string">'title'</span>: title  <span class="hljs-comment"># You may add any other information about the article here as you wish.</span>
+                    }
+                    result = issue_request(<span class="hljs-string">'POST'</span>, <span class="hljs-string">'account/articles'</span>, data=data)
+                    <span class="hljs-keyword">print</span> <span class="hljs-string">'Created article:'</span>, result[<span class="hljs-string">'location'</span>], <span class="hljs-string">'\n'</span>
+
+                    result = raw_issue_request(<span class="hljs-string">'GET'</span>, result[<span class="hljs-string">'location'</span>])
+
+                    <span class="hljs-keyword">return</span> result[<span class="hljs-string">'id'</span>]
+
+
+                <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">list_files_of_article</span><span class="hljs-params">(article_id)</span>:</span>
+                    result = issue_request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'account/articles/{}/files'</span>.format(article_id))
+                    <span class="hljs-keyword">print</span> <span class="hljs-string">'Listing files for article {}:'</span>.format(article_id)
+                    <span class="hljs-keyword">if</span> result:
+                        <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> result:
+                            <span class="hljs-keyword">print</span> <span class="hljs-string">'  {id} - {name}'</span>.format(**item)
+                    <span class="hljs-keyword">else</span>:
+                        <span class="hljs-keyword">print</span> <span class="hljs-string">'  No files.'</span>
+
+                    <span class="hljs-keyword">print</span>
+
+
+                <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_file_check_data</span><span class="hljs-params">(file_name)</span>:</span>
+                    <span class="hljs-keyword">with</span> open(file_name, <span class="hljs-string">'rb'</span>) <span class="hljs-keyword">as</span> fin:
+                        md5 = hashlib.md5()
+                        size = <span class="hljs-number">0</span>
+                        data = fin.read(CHUNK_SIZE)
+                        <span class="hljs-keyword">while</span> data:
+                            size += len(data)
+                            md5.update(data)
+                            data = fin.read(CHUNK_SIZE)
+                        <span class="hljs-keyword">return</span> md5.hexdigest(), size
+
+
+                <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initiate_new_upload</span><span class="hljs-params">(article_id, file_name)</span>:</span>
+                    endpoint = <span class="hljs-string">'account/articles/{}/files'</span>
+                    endpoint = endpoint.format(article_id)
+
+                    md5, size = get_file_check_data(file_name)
+                    data = {<span class="hljs-string">'name'</span>: os.path.basename(file_name),
+                            <span class="hljs-string">'md5'</span>: md5,
+                            <span class="hljs-string">'size'</span>: size}
+
+                    result = issue_request(<span class="hljs-string">'POST'</span>, endpoint, data=data)
+                    <span class="hljs-keyword">print</span> <span class="hljs-string">'Initiated file upload:'</span>, result[<span class="hljs-string">'location'</span>], <span class="hljs-string">'\n'</span>
+
+                    result = raw_issue_request(<span class="hljs-string">'GET'</span>, result[<span class="hljs-string">'location'</span>])
+
+                    <span class="hljs-keyword">return</span> result
+
+
+                <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">complete_upload</span><span class="hljs-params">(article_id, file_id)</span>:</span>
+                    issue_request(<span class="hljs-string">'POST'</span>, <span class="hljs-string">'account/articles/{}/files/{}'</span>.format(article_id, file_id))
+
+
+                <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">upload_parts</span><span class="hljs-params">(file_info)</span>:</span>
+                    url = <span class="hljs-string">'{upload_url}'</span>.format(**file_info)
+                    result = raw_issue_request(<span class="hljs-string">'GET'</span>, url)
+
+                    <span class="hljs-keyword">print</span> <span class="hljs-string">'Uploading parts:'</span>
+                    <span class="hljs-keyword">with</span> open(FILE_PATH, <span class="hljs-string">'rb'</span>) <span class="hljs-keyword">as</span> fin:
+                        <span class="hljs-keyword">for</span> part <span class="hljs-keyword">in</span> result[<span class="hljs-string">'parts'</span>]:
+                            upload_part(file_info, fin, part)
+                    <span class="hljs-keyword">print</span>
+
+
+                <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">upload_part</span><span class="hljs-params">(file_info, stream, part)</span>:</span>
+                    udata = file_info.copy()
+                    udata.update(part)
+                    url = <span class="hljs-string">'{upload_url}/{partNo}'</span>.format(**udata)
+
+                    stream.seek(part[<span class="hljs-string">'startOffset'</span>])
+                    data = stream.read(part[<span class="hljs-string">'endOffset'</span>] - part[<span class="hljs-string">'startOffset'</span>] + <span class="hljs-number">1</span>)
+
+                    raw_issue_request(<span class="hljs-string">'PUT'</span>, url, data=data, binary=<span class="hljs-keyword">True</span>)
+                    <span class="hljs-keyword">print</span> <span class="hljs-string">'  Uploaded part {partNo} from {startOffset} to {endOffset}'</span>.format(**part)
+
+
+                <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+                    <span class="hljs-comment"># We first create the article</span>
+                    list_articles()
+                    article_id = create_article(TITLE)
+                    list_articles()
+                    list_files_of_article(article_id)
+
+                    <span class="hljs-comment"># Then we upload the file.</span>
+                    file_info = initiate_new_upload(article_id, FILE_PATH)
+                    <span class="hljs-comment"># Until here we used the figshare API; following lines use the figshare upload service API.</span>
+                    upload_parts(file_info)
+                    <span class="hljs-comment"># We return to the figshare API to complete the file upload process.</span>
+                    complete_upload(article_id, file_info[<span class="hljs-string">'id'</span>])
+                    list_files_of_article(article_id)
+
+
+                <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+                    main()
+                </code></pre>
+                    </div>
+                    <div id="description_upload_output">
+                <h2 id="output-of-script">Output of Script</h2>
+                <p>This is an example of how the script would output on an account with no added articles or files yet.</p>
+                <pre><code class="hljs stylus">Listing current articles:
+                  No articles.
+
+                Created <span class="hljs-tag">article</span>: https:<span class="hljs-comment">//api.figshare.com/v2/account/articles/2012182</span>
+
+                Listing current articles:
+                  https:<span class="hljs-comment">//api.figshare.com/v2/articles/2012182 - A 3D cat object model</span>
+
+                Listing files <span class="hljs-keyword">for</span> <span class="hljs-tag">article</span> <span class="hljs-number">2012182</span>:
+                  No files.
+
+                Initiated file upload: https:<span class="hljs-comment">//api.figshare.com/v2/account/articles/2012182/files/3008150</span>
+
+                Uploading parts:
+                  Uploaded part <span class="hljs-number">1</span> from <span class="hljs-number">0</span> to <span class="hljs-number">213325</span>
+
+                Listing files <span class="hljs-keyword">for</span> <span class="hljs-tag">article</span> <span class="hljs-number">2012182</span>:
+                  <span class="hljs-number">3008150</span> - cat<span class="hljs-class">.obj</span>
+
+                </code></pre>
+
+      </div>
+      <div id="description_oai_pmh">
+        <h1 id="oai-pmh">OAI-PMH</h1>
+        <p>fig<strong>share</strong> supports the Open Archives Initiative (OAI) and implements the
+        <strong>OAI-PMH</strong> service to provide access to public articles metadata.
+        For more detailed information, please refer to the
+        <a href="https://www.openarchives.org/OAI/openarchivesprotocol.html">protocol specification</a>.</p>
+      </div>
+      <div id="description_oai_baseurl">
+        <h2 id="base-url">Base URL</h2>
+        <p>fig<strong>share</strong> OAI-PMH v2.0 implementation has at the following <strong>baseURL</strong>:
+        <a href="https://api.figshare.com/v2/oai">https://api.figshare.com/v2/oai</a></p>
+      </div>
+      <div id="description_oai_itemarticle">
+        <h2 id="item-article">Item == Article</h2>
+        <p>An Item in the OAI-PMH interface is the most recent version of an article.</p>
+      </div>
+      <div id="description_oai_metadata">
+        <h2 id="metadata-formats">Metadata formats</h2>
+        <p>Currently, the supported formats are: <strong>Dublin Core</strong> (<em>oai_dc</em>), <strong>Datacite</strong> (<em>oai_datacite</em>), <strong>RDF</strong> (<em>rdf</em>), <strong>CERIF XML</strong> (<em>cerif</em>), and <strong>Qualified Dublin Core</strong> (<em>qdc</em>) (hasPart support).</p>
+      </div>
+      <div id="description_oai_datestamp">
+        <h2 id="datestamps">Datestamps</h2>
+        <p>Every record has a datestamp which is the published datetime of that article.
+        The earliest datestamp is given in the <code>&lt;earliestDatestamp&gt;</code> element of the
+        <a href="https://api.figshare.com/v2/oai?verb=Identify">Identify</a> response.</p>
+      </div>
+      <div id="description_oai_sets">
+        <h2 id="sets">Sets</h2>
+        <p>You can get a list of all the sets supported with the
+        <a href="https://api.figshare.com/v2/oai?verb=ListSets">ListSets</a> verb.</p>
+        <p>At this moment selectieve harvesting can be performed using sets representing:</p>
+        <ul>
+        <li>an <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=item_type_7">item type</a></li>
+        </ul>
+        <pre><code>    ...
+            &lt;header&gt;
+              &lt;identifier&gt;oai:figshare.com:article/2001969&lt;/identifier&gt;
+              &lt;datestamp&gt;2015-08-17T14:09:33Z&lt;/datestamp&gt;
+              &lt;setSpec&gt;category_184&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_185&lt;/setSpec&gt;
+              &lt;setSpec&gt;portal_15&lt;/setSpec&gt;
+              &lt;setSpec&gt;item_type_7&lt;/setSpec&gt;
+            &lt;/header&gt;
+            ...
+        </code></pre>
+
+        <ul>
+        <li>a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=portal_63">portal/institution</a></li>
+        </ul>
+        <pre><code>    ...
+            &lt;header&gt;
+              &lt;identifier&gt;oai:figshare.com:article/2009490&lt;/identifier&gt;
+              &lt;datestamp&gt;2015-12-16T14:30:27Z&lt;/datestamp&gt;
+              &lt;setSpec&gt;category_1&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_4&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_12&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_14&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_19&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_21&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_128&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_133&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_272&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_873&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_931&lt;/setSpec&gt;
+              &lt;setSpec&gt;portal_63&lt;/setSpec&gt;
+              &lt;setSpec&gt;item_type_6&lt;/setSpec&gt;
+            &lt;/header&gt;
+            ...
+        </code></pre>
+
+        <ul>
+        <li>a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=category_150">category</a>:</li>
+        </ul>
+        <pre><code>    ...
+            &lt;header&gt;
+              &lt;identifier&gt;oai:figshare.com:article/2058654&lt;/identifier&gt;
+              &lt;datestamp&gt;2015-12-27T23:40:01Z&lt;/datestamp&gt;
+              &lt;setSpec&gt;category_54&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_55&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_56&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_57&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_58&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_59&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_145&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_146&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_147&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_148&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_149&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_150&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_492&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_493&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_494&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_496&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_497&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_498&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_499&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_500&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_501&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_502&lt;/setSpec&gt;
+              &lt;setSpec&gt;item_type_6&lt;/setSpec&gt;
+            &lt;/header&gt;
+            ...
+        </code></pre>
+
+        <ul>
+        <li>or a <a href="https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=month_year_10_2016">month_year</a>:</li>
+        </ul>
+        <pre><code>    ...
+            &lt;header&gt;
+              &lt;identifier&gt;oai:figshare.com:article/2004335&lt;/identifier&gt;
+              &lt;datestamp&gt;2016-10-31T11:14:47Z&lt;/datestamp&gt;
+              &lt;setSpec&gt;category_215&lt;/setSpec&gt;
+              &lt;setSpec&gt;category_239&lt;/setSpec&gt;
+              &lt;setSpec&gt;portal_15&lt;/setSpec&gt;
+              &lt;setSpec&gt;item_type_11&lt;/setSpec&gt;
+            &lt;/header&gt;
+            ...
+        </code></pre>
+
+      </div>
+      <div id="description_oai_update_schedule">
+          <h2 id="update-schedule">Update schedule</h2>
+          <p>Usually, metadata for a published article becomes available in a few moments
+          after its publication on fig<strong>share</strong>.</p>
+      </div>
+      <div id="description_oai_pagination">
+        <h2 id="pagination-resumption-token-expiration">Pagination &amp; Resumption Token Expiration</h2>
+        <p>Results for <strong>ListSets</strong>, <strong>ListIdentifiers</strong>, <strong>ListRecords</strong> are paginated.
+        To request the next page, use the resumptionToken value provided for the
+        current page. You can read more
+        <a href="https://www.openarchives.org/OAI/openarchivesprotocol.html#FlowControl">here</a>,
+        but your harvesting software system should be able to use resumption tokens with
+        no problem.</p>
+        <p>One particularity on fig<strong>share</strong> OAI-PMH is the expiration datetime (UTC) for
+        resumption tokens. Thus, a token expires after 5 minutes.</p>
     </div>
+    <div id="description_oai_ratelimit">
+        <h2 id="rate-limit">Rate limit</h2>
+        <p>Currently no rate limiting is implemented.
+        We recommend you to make no more than one request per second.</p>
+    </div>
+    <div id="description_oai_futuredev">
+        <h2 id="future-development">Future development</h2>
+        <p>Please <a href="https://figshare.com/contact">let us know</a> that you are harvesting us.
+        Your input will drive the future development of the OAI-PMH protocol at figshare.</p>
+    </div>
+    <div id="description_oai_someexamples">
+        <h2 id="some-examples">Some examples</h2>
+        <p><strong>Identify</strong></p>
+        <pre><code>curl https://api.figshare.com/v2/oai?verb=Identify
+
+        &lt;?xml version='1.0' encoding='utf-8'?&gt;
+        &lt;?xml-stylesheet type="text/xsl" href="/v2/static/oai2.xsl"?&gt;
+        &lt;OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"&gt;
+            &lt;responseDate&gt;2016-04-29T11:58:28Z&lt;/responseDate&gt;
+            &lt;request verb="Identify"&gt;https://api.figshare.com/v2/oai&lt;/request&gt;
+            &lt;Identify&gt;
+                &lt;repositoryName&gt;figshare&lt;/repositoryName&gt;
+                &lt;baseURL&gt;https://api.figshare.com/v2/oai&lt;/baseURL&gt;
+                &lt;protocolVersion&gt;2.0&lt;/protocolVersion&gt;
+                &lt;adminEmail&gt;info@figshare.com&lt;/adminEmail&gt;
+                &lt;earliestDatestamp&gt;2010-01-08T01:24:54Z&lt;/earliestDatestamp&gt;
+                &lt;deletedRecord&gt;transient&lt;/deletedRecord&gt;
+                &lt;granularity&gt;YYYY-MM-DDThh:mm:ssZ&lt;/granularity&gt;
+            &lt;/Identify&gt;
+        &lt;/OAI-PMH&gt;
+        </code></pre>
+        <hr />
+        <p><strong>ListSets</strong></p>
+        <pre><code>curl https://api.figshare.com/v2/oai?verb=ListSets
+
+        &lt;?xml version='1.0' encoding='utf-8'?&gt;
+        &lt;?xml-stylesheet type="text/xsl" href="/v2/static/oai2.xsl"?&gt;
+        &lt;OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"&gt;
+             &lt;responseDate&gt;2016-04-29T12:00:46Z&lt;/responseDate&gt;
+             &lt;request verb="ListSets"&gt;https://api.figshare.com/v2/oai&lt;/request&gt;
+             &lt;ListSets&gt;
+                 &lt;set&gt;
+                     &lt;setSpec&gt;portal_147&lt;/setSpec&gt;
+                     &lt;setName&gt;Karger Publishers&lt;/setName&gt;
+                 &lt;/set&gt;
+                 &lt;set&gt;
+                     &lt;setSpec&gt;portal_144&lt;/setSpec&gt;
+                     &lt;setName&gt;Digital Science&lt;/setName&gt;
+                 &lt;/set&gt;
+                 &lt;!-- ... --&gt;
+                 &lt;set&gt;
+                     &lt;setSpec&gt;portal_102&lt;/setSpec&gt;
+                     &lt;setName&gt;Wiley&lt;/setName&gt;
+                 &lt;/set&gt;
+                 &lt;resumptionToken expirationDate="2016-04-29T13:00:46Z"&gt;dmVyYj1MaXN0U2V0cyZwYWdlPTI=&lt;/resumptionToken&gt;
+            &lt;/ListSets&gt;
+        &lt;/OAI-PMH&gt;
+        </code></pre>
+        <hr />
+        <p><strong>ListIdentifiers</strong></p>
+        <p>Selective harvesting: using set <code>category_539</code> (Chemical Engineering Design).</p>
+        <pre><code>curl "https://api.figshare.com/v2/oai?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set=category_539"
+
+        &lt;?xml version='1.0' encoding='utf-8'?&gt;
+        &lt;?xml-stylesheet type="text/xsl" href="/v2/static/oai2.xsl"?&gt;
+        &lt;OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"&gt;
+        &lt;responseDate&gt;2016-04-29T12:11:18Z&lt;/responseDate&gt;
+        &lt;request metadataPrefix="oai_dc" set="category_539" verb="ListIdentifiers"&gt;https://api.figshare.com/v2/oai&lt;/request&gt;
+            &lt;ListIdentifiers&gt;
+                &lt;header&gt;
+                    &lt;identifier&gt;oai:figshare.com:article/2060079&lt;/identifier&gt;
+                    &lt;datestamp&gt;2016-01-04T08:32:32Z&lt;/datestamp&gt;
+                    &lt;setSpec&gt;category_539&lt;/setSpec&gt;
+                    &lt;setSpec&gt;category_614&lt;/setSpec&gt;
+                    &lt;setSpec&gt;category_1094&lt;/setSpec&gt;
+                    &lt;setSpec&gt;category_1100&lt;/setSpec&gt;
+                    &lt;setSpec&gt;item_type_6&lt;/setSpec&gt;
+                &lt;/header&gt;
+            &lt;/ListIdentifiers&gt;
+        &lt;/OAI-PMH&gt;
+        </code></pre>
+        <hr />
+        <p><strong>ListRecords</strong></p>
+        <p>Selective harvesting: only articles published <code>until</code> 2010-08-18T08:33:01Z.</p>
+        <pre><code>curl "https://api.figshare.com/v2/oai?verb=ListRecords&amp;metadataPrefix=oai_dc&amp;until=2010-08-18T08:33:01Z"
+
+        &lt;?xml version='1.0' encoding='utf-8'?&gt;
+        &lt;?xml-stylesheet type="text/xsl" href="/v2/static/oai2.xsl"?&gt;
+        &lt;OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"&gt;
+          &lt;responseDate&gt;2016-09-29T08:03:12Z&lt;/responseDate&gt;
+          &lt;request metadataPrefix="oai_dc" until="2010-08-18T08:33:01Z" verb="ListRecords"&gt;https://api.figshare.com/v2/oai&lt;/request&gt;
+          &lt;ListRecords&gt;
+            &lt;record&gt;
+              &lt;header&gt;
+                &lt;identifier&gt;oai:figshare.com:article/145088&lt;/identifier&gt;
+                &lt;datestamp&gt;2010-01-08T01:24:54Z&lt;/datestamp&gt;
+                &lt;setSpec&gt;category_4&lt;/setSpec&gt;
+                &lt;setSpec&gt;category_12&lt;/setSpec&gt;
+                &lt;setSpec&gt;portal_5&lt;/setSpec&gt;
+                &lt;setSpec&gt;item_type_3&lt;/setSpec&gt;
+              &lt;/header&gt;
+              &lt;metadata&gt;
+                &lt;oai_dc:dc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:dc="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd"&gt;
+                    &lt;dc:title&gt;A Modular BAM Complex in the Outer Membrane of the α-Proteobacterium &amp;lt;em&amp;gt;Caulobacter crescentus&amp;lt;/em&amp;gt;&lt;/dc:title&gt;
+                    &lt;dc:creator&gt;Anthony W. Purcell (105036)&lt;/dc:creator&gt;
+                    &lt;dc:creator&gt;Trevor Lithgow (105055)&lt;/dc:creator&gt;
+                    &lt;dc:creator&gt;Kipros Gabriel (189246)&lt;/dc:creator&gt;
+                    &lt;dc:creator&gt;Nicholas Noinaj (216256)&lt;/dc:creator&gt;
+                    &lt;dc:creator&gt;Sebastian Poggio (251019)&lt;/dc:creator&gt;
+                    &lt;dc:creator&gt;Khatira Anwari (254980)&lt;/dc:creator&gt;
+                    &lt;dc:creator&gt;Andrew Perry (254989)&lt;/dc:creator&gt;
+                    &lt;dc:creator&gt;Xenia Gatsos (254994)&lt;/dc:creator&gt;
+                    &lt;dc:creator&gt;Sri Harsha Ramarathinam (255001)&lt;/dc:creator&gt;
+                    &lt;dc:creator&gt;Nicholas A. Williamson (255006)&lt;/dc:creator&gt;
+                    &lt;dc:creator&gt;Susan Buchanan (255012)&lt;/dc:creator&gt;
+                    &lt;dc:creator&gt;Christine Jacobs-Wagner (255016)&lt;/dc:creator&gt;
+                    &lt;dc:subject&gt;Biochemistry&lt;/dc:subject&gt;
+                    &lt;dc:subject&gt;Cell Biology&lt;/dc:subject&gt;
+                    &lt;dc:subject&gt;modular&lt;/dc:subject&gt;
+                    &lt;dc:subject&gt;bam&lt;/dc:subject&gt;
+                    &lt;dc:subject&gt;membrane&lt;/dc:subject&gt;
+                    &lt;dc:description&gt;&amp;lt;div&amp;gt;&amp;lt;p&amp;gt;Mitochondria are organelles derived from an intracellular α-proteobacterium. The biogenesis of mitochondria relies on the assembly of β-barrel proteins into the mitochondrial outer membrane, a process inherited from the bacterial ancestor. &amp;lt;em&amp;gt;Caulobacter crescentus&amp;lt;/em&amp;gt; is an α-proteobacterium, and the BAM (β-barrel assembly machinery) complex was purified and characterized from this model organism. Like the mitochondrial sorting and assembly machinery complex, we find the BAM complex to be modular in nature. A ∼150 kDa core BAM complex containing BamA, BamB, BamD, and BamE associates with additional modules in the outer membrane. One of these modules, Pal, is a lipoprotein that provides a means for anchorage to the peptidoglycan layer of the cell wall. We suggest the modular design of the BAM complex facilitates access to substrates from the protein translocase in the inner membrane.&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;&lt;/dc:description&gt;
+                    &lt;dc:date&gt;2010-01-08T01:24:48Z&lt;/dc:date&gt;
+                    &lt;dc:type&gt;Dataset&lt;/dc:type&gt;
+                    &lt;dc:identifier&gt;10.1371/journal.pone.0008619&lt;/dc:identifier&gt;
+                    &lt;dc:relation&gt;https://figshare.com/articles/A_Modular_BAM_Complex_in_the_Outer_Membrane_of_the_Proteobacterium_em_Caulobacter_crescentus_em_/145088&lt;/dc:relation&gt;
+                    &lt;dc:rights&gt;CC BY&lt;/dc:rights&gt;
+               &lt;/oai_dc:dc&gt;
+              &lt;/metadata&gt;
+             &lt;/record&gt;
+          &lt;/ListRecords&gt;
+        &lt;/OAI-PMH&gt;
+        </code></pre>
+    </div>
+    <div id="description_oai_changes">
+        <h2 id="changes">Changes</h2>
+        <p><strong>May, 2016</strong>
+        Initial release of OAI-PMH API</p>
+        <p><strong>July, 2016</strong>
+        Datacite and RDF Metadata Formats are added</p>
+        <p><strong>August, 2016</strong>
+        Keywords and Licences tags are added</p>
+        <p><strong>October, 2016</strong>
+        Add correct output for ListIdentifiers
+        Add month_year set / param
+        Add user IDs in the <creator> tags</p>
+        <p><strong>November, 2016</strong>
+        CERIF XML Metadata Format was added</p>
+      </div>
+    </div>
+    <div id="description_stats_home_service">
+      <h1 id="figshare-statistics-service">fig<strong>share</strong> statistics service</h1>
+      <p>The fig<strong>share</strong> statistics service is available at https://stats.figshare.com and
+      it supports retrieving information about the number of <em>views</em>, <em>downloads</em> and <em>shares</em>
+      related to items available of fig<strong>share</strong>. From here on, an event is one of <em>view</em>,
+      <em>download</em> or <em>share</em>.</p>
+      <p>All communication with the service is done through <em>https</em> and all data is encoded as <em>json</em>.
+Optional authorization for specific endpoints is done through basic access authentication.</p>
+      <ul>
+        <li><a href="#authentication">Authentication</a></li>
+        <li><a href="#errors">Errors</a></li>
+        <li><a href="#endpoints">Endpoints</a></li>
+      </ul>
+    </div>
+    <div id="description_stats_home_authentication">
+      <h2 id="authentication">Authentication</h2>
+      <p>For some specialized endpoints, access to institution specific statistics requires
+      sending a <code>base64</code>-encoded pair of <code>username:password</code> in the basic authorization header:</p>
+      <pre><code class="http">GET https://stats.figshare.com/lboro/top/views/article
+      Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+      </code></pre>
+
+      <p>Please note that the analogous endpoint for retrieving statistics for items outside
+      the institutional scope, requires no authentication:</p>
+      <pre><code class="http">GET https://stats.figshare.com/top/views/article
+      </code></pre>
+
+    </div>
+
 
 </section>
 </body>

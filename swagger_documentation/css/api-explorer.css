@@ -1382,7 +1382,7 @@
 
 @media (min-width: 992px) {
     .changes-disclaimer {
-        display: block
+        display: none;
     }
 }
 
@@ -2421,4 +2421,122 @@ body {
 
 #resources_nav div::first-letter {
   text-transform: capitalize;
+}
+
+#resources_nav {
+  list-style-type: none;
+}
+
+#resources_nav ul {
+  width: 100%;
+  float: left;
+  margin: 0;
+  padding: 0;
+  background: #F8F8F8;
+}
+
+#resources_nav>ul>li {
+  border-bottom: 1px solid #e8eaeb;
+}
+
+#resources_nav ul li {
+  width: 100%;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+
+#resources_nav ul li span {
+  width: 100%;
+  display: inline-block;
+  float: left;
+  margin: 0;
+  padding: 5px 10px;
+  text-transform: lowercase;
+  transition: all 0.25s linear;
+  cursor: pointer;
+}
+
+#resources_nav ul li span:hover {
+  background: #e8eaeb;
+}
+
+#resources_nav ul li span::first-letter {
+  text-transform: capitalize;
+}
+
+#resources_nav>ul>li>span {
+}
+
+#resources_nav ul li ul {
+  width: 100%;
+  background: #FBFBFB;
+  display: none;
+}
+
+#resources_nav ul li ul>li>span {
+  padding-left: 10%;
+}
+
+#resources_nav ul li ul li ul>li>span {
+  padding-left: 20%;
+}
+
+#resources_nav ul span.active {
+  background: #e8eaeb;
+}
+
+#resources_nav ul li ul.active {
+  display: block;
+}
+
+#resources_nav ul li ul li ul {
+  width: 100%;
+  background: #F8F8F8;
+  display: none;
+}
+
+
+#resources_nav ul li ul li ul.active {
+  display: block;
+}
+
+#search_doc {
+    width: 90%;
+    margin: 5px 5% 20px 5%;
+}
+
+#resources_nav ul li span.icon_budicon_collapse {
+    width: auto;
+    float: right;
+    padding: 3px;
+    margin: -2px 0 0 0;
+    text-transform: none;
+}
+
+
+.search_doc_autocomplete {
+  position: absolute;
+  width: 90%;
+  margin: -20px 0 0 5%;
+  border: 1px solid #e8eaeb;
+  background: #FFF;
+  display: none;
+}
+
+.search_doc_autocomplete.active {
+  display: block;
+}
+
+.search_doc_autocomplete div {
+  width: 100%;
+  float: left;
+  border-bottom: 1px solid #e8eaeb;
+  cursor: pointer;
+  padding: 7px 10px;
+}
+
+.search_doc_autocomplete div:hover {
+  background: #F8F8F8;
 }

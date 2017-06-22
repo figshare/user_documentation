@@ -139,7 +139,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/ArticlePresenter"
+                                "$ref": "#/definitions/Article"
                             }
                         }
                     }, 
@@ -181,7 +181,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/ArticlePresenter"
+                                "$ref": "#/definitions/Article"
                             }
                         }
                     }, 
@@ -202,8 +202,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Public Article", 
                 "operationId": "articles_article_Get", 
-                "summary": "Public Article View", 
+                "summary": "View", 
                 "description": "View an article", 
                 "security": [], 
                 "parameters": [
@@ -221,7 +222,7 @@
                     "200": {
                         "description": "OK. Article representation", 
                         "schema": {
-                            "$ref": "#/definitions/ArticlePresenter.L2"
+                            "$ref": "#/definitions/ArticleComplete"
                         }
                     }, 
                     "400": {
@@ -241,8 +242,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Public Article", 
                 "operationId": "articles_article_versions_Get", 
-                "summary": "Public Article versions", 
+                "summary": "Versions", 
                 "description": "List public article versions", 
                 "security": [], 
                 "parameters": [
@@ -262,7 +264,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/VersionPresenter"
+                                "$ref": "#/definitions/Version"
                             }
                         }
                     }, 
@@ -283,8 +285,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Public Article", 
                 "operationId": "articles_article_versions_version_Get", 
-                "summary": "Public Article with specified version", 
+                "summary": "Specified version", 
                 "description": "Article with specified version", 
                 "security": [], 
                 "parameters": [
@@ -311,7 +314,7 @@
                     "200": {
                         "description": "OK. Article representation", 
                         "schema": {
-                            "$ref": "#/definitions/ArticlePresenter.L2"
+                            "$ref": "#/definitions/ArticleComplete"
                         }
                     }, 
                     "400": {
@@ -359,7 +362,7 @@
                     "200": {
                         "description": "OK. Embargo representation", 
                         "schema": {
-                            "$ref": "#/definitions/ArticleEmbargoPresenter"
+                            "$ref": "#/definitions/ArticleEmbargo"
                         }
                     }, 
                     "400": {
@@ -407,7 +410,7 @@
                     "200": {
                         "description": "OK. Confidentiality representation", 
                         "schema": {
-                            "$ref": "#/definitions/ArticleConfidentialityPresenter"
+                            "$ref": "#/definitions/ArticleConfidentiality"
                         }
                     }, 
                     "400": {
@@ -427,8 +430,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Public Article files", 
                 "operationId": "articles_article_files_Get", 
-                "summary": "Public Article Files list", 
+                "summary": "List", 
                 "description": "Files list for article", 
                 "security": [], 
                 "parameters": [
@@ -448,7 +452,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/PublicFilePresenter"
+                                "$ref": "#/definitions/PublicFile"
                             }
                         }
                     }, 
@@ -469,8 +473,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Public Article files", 
                 "operationId": "articles_article_files_file_Get", 
-                "summary": "Public Article File", 
+                "summary": "Single File", 
                 "description": "File by id", 
                 "security": [], 
                 "parameters": [
@@ -497,7 +502,7 @@
                     "200": {
                         "description": "OK. File representation", 
                         "schema": {
-                            "$ref": "#/definitions/PublicFilePresenter"
+                            "$ref": "#/definitions/PublicFile"
                         }
                     }, 
                     "400": {
@@ -537,7 +542,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -578,7 +583,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/ArticlePresenter"
+                                "$ref": "#/definitions/Article"
                             }
                         }
                     }, 
@@ -588,7 +593,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -661,7 +666,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/ArticlePresenter"
+                                "$ref": "#/definitions/Article"
                             }
                         }
                     }, 
@@ -671,7 +676,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -683,8 +688,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article", 
                 "operationId": "account_articles_Post", 
-                "summary": "Private Article Create", 
+                "summary": "Create", 
                 "description": "Create a new Article by sending article information", 
                 "security": [
                     {
@@ -708,7 +714,7 @@
                     "201": {
                         "description": "Created", 
                         "schema": {
-                            "$ref": "#/definitions/LocationPresenter"
+                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -717,7 +723,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -742,8 +748,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article", 
                 "operationId": "account_articles_article_Get", 
-                "summary": "Private Article View", 
+                "summary": "View", 
                 "description": "View a private article", 
                 "security": [
                     {
@@ -756,7 +763,7 @@
                     "200": {
                         "description": "OK. Article representation", 
                         "schema": {
-                            "$ref": "#/definitions/PrivateArticlePresenter.L2"
+                            "$ref": "#/definitions/ArticleCompletePrivate"
                         }
                     }, 
                     "400": {
@@ -765,7 +772,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -791,8 +798,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article", 
                 "operationId": "account_articles_article_Put", 
-                "summary": "Private Article Update", 
+                "summary": "Update", 
                 "description": "Updating an article by passing body parameters", 
                 "security": [
                     {
@@ -807,7 +815,7 @@
                         "name": "Article", 
                         "description": "Article description", 
                         "schema": {
-                            "$ref": "#/definitions/ArticleCreate"
+                            "$ref": "#/definitions/ArticleUpdate"
                         }, 
                         "required": true
                     }, 
@@ -835,7 +843,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -850,8 +858,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article", 
                 "operationId": "account_articles_article_Delete", 
-                "summary": "Private Article Delete", 
+                "summary": "Delete", 
                 "description": "Delete an article", 
                 "security": [
                     {
@@ -867,7 +876,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -906,8 +915,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Embargo", 
                 "operationId": "account_articles_article_embargo_Get", 
-                "summary": "Private Article embargo", 
+                "summary": "View", 
                 "description": "View a private article embargo details", 
                 "security": [
                     {
@@ -920,7 +930,7 @@
                     "200": {
                         "description": "OK. Embargo for article", 
                         "schema": {
-                            "$ref": "#/definitions/ArticleEmbargoPresenter"
+                            "$ref": "#/definitions/ArticleEmbargo"
                         }
                     }, 
                     "400": {
@@ -929,7 +939,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -955,8 +965,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Embargo", 
                 "operationId": "account_articles_article_embargo_Put", 
-                "summary": "Private Article Embargo Update", 
+                "summary": "Update", 
                 "description": "Note: setting an article under whole embargo does not imply that the article will be published when the embargo will expire. You must explicitly call the publish endpoint to enable this functionality.", 
                 "security": [
                     {
@@ -968,7 +979,7 @@
                 "parameters": [
                     {
                         "in": "body", 
-                        "name": "EmbargoPresenter", 
+                        "name": "Embargo", 
                         "description": "Embargo description", 
                         "schema": {
                             "$ref": "#/definitions/ArticleEmbargoUpdater"
@@ -1002,7 +1013,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1017,8 +1028,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Embargo", 
                 "operationId": "account_articles_article_embargo_Delete", 
-                "summary": "Private Article Embargo Delete", 
+                "summary": "Delete", 
                 "description": "Will lift the embargo for the specified article", 
                 "security": [
                     {
@@ -1034,7 +1046,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1094,7 +1106,7 @@
                             }
                         }, 
                         "schema": {
-                            "$ref": "#/definitions/LocationPresenter"
+                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -1103,7 +1115,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1145,7 +1157,7 @@
                     "200": {
                         "description": "OK", 
                         "schema": {
-                            "$ref": "#/definitions/ArticleDOIPresenter"
+                            "$ref": "#/definitions/ArticleDOI"
                         }
                     }, 
                     "400": {
@@ -1154,7 +1166,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1182,8 +1194,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Authors", 
                 "operationId": "account_articles_article_authors_Get", 
-                "summary": "Private Article authors", 
+                "summary": "View", 
                 "description": "List article authors", 
                 "security": [
                     {
@@ -1198,7 +1211,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/AuthorPresenter"
+                                "$ref": "#/definitions/Author"
                             }
                         }
                     }, 
@@ -1208,7 +1221,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1234,8 +1247,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Authors", 
                 "operationId": "account_articles_article_authors_Post", 
-                "summary": "Private Article authors add", 
+                "summary": "Add", 
                 "description": "Associate new authors with the article. This will add new authors to the list of already associated authors", 
                 "security": [
                     {
@@ -1281,7 +1295,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1296,8 +1310,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Authors", 
                 "operationId": "account_articles_article_authors_Put", 
-                "summary": "Private Article Authors replace", 
+                "summary": "Replace", 
                 "description": "Associate new authors with the article. This will remove all already associated authors and add these new ones", 
                 "security": [
                     {
@@ -1343,7 +1358,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1360,8 +1375,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Authors", 
                 "operationId": "account_articles_article_authors_author_Delete", 
-                "summary": "Private Article author remove", 
+                "summary": "Remove", 
                 "security": [
                     {
                         "OAuth2": [
@@ -1396,7 +1412,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1424,8 +1440,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Categories", 
                 "operationId": "account_articles_article_categories_Get", 
-                "summary": "Private Article Categories", 
+                "summary": "View", 
                 "description": "List article categories", 
                 "security": [
                     {
@@ -1440,7 +1457,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/CategoryPresenter"
+                                "$ref": "#/definitions/Category"
                             }
                         }
                     }, 
@@ -1450,7 +1467,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1476,8 +1493,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Categories", 
                 "operationId": "account_articles_article_categories_Post", 
-                "summary": "Private Article Categories add", 
+                "summary": "Add", 
                 "description": "Associate new categories with the article. This will add new categories to the list of already associated categories", 
                 "security": [
                     {
@@ -1515,7 +1533,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1530,8 +1548,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Categories", 
                 "operationId": "account_articles_article_categories_Put", 
-                "summary": "Private Article Categories replace", 
+                "summary": "Replace", 
                 "description": "Associate new categories with the article. This will remove all already associated categories and add these new ones", 
                 "security": [
                     {
@@ -1569,7 +1588,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1586,8 +1605,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Categories", 
                 "operationId": "account_articles_article_categories_category_Delete", 
-                "summary": "Private Article Category remove", 
+                "summary": "Remove", 
                 "security": [
                     {
                         "OAuth2": [
@@ -1622,7 +1642,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1650,8 +1670,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Confidentiality", 
                 "operationId": "account_articles_article_confidentiality_Get", 
-                "summary": "Private Article Confidentiality", 
+                "summary": "View", 
                 "description": "View confidentiality settings", 
                 "security": [
                     {
@@ -1664,7 +1685,7 @@
                     "200": {
                         "description": "OK. Article categories", 
                         "schema": {
-                            "$ref": "#/definitions/ArticleConfidentialityPresenter"
+                            "$ref": "#/definitions/ArticleConfidentiality"
                         }
                     }, 
                     "400": {
@@ -1673,7 +1694,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1699,8 +1720,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Confidentiality", 
                 "operationId": "account_articles_article_confidentiality_Put", 
-                "summary": "Private Article Confidentiality Update", 
+                "summary": "Update", 
                 "description": "Update confidentiality settings", 
                 "security": [
                     {
@@ -1714,9 +1736,9 @@
                         "in": "body", 
                         "name": "reason", 
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/ConfidentialityCreator"
                         }, 
-                        "required": false
+                        "required": true
                     }, 
                     {
                         "name": "article_id", 
@@ -1738,7 +1760,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1753,8 +1775,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Confidentiality", 
                 "operationId": "account_articles_article_confidentiality_Delete", 
-                "summary": "Private Article Confidentiality Delete", 
+                "summary": "Delete", 
                 "description": "Delete confidentiality settings", 
                 "security": [
                     {
@@ -1773,7 +1796,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1812,8 +1835,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Private Links", 
                 "operationId": "account_articles_article_privatelinks_Get", 
-                "summary": "Private Article Private Links", 
+                "summary": "View", 
                 "description": "List private links", 
                 "security": [
                     {
@@ -1828,7 +1852,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/PrivateLinkPresenter"
+                                "$ref": "#/definitions/PrivateLink"
                             }
                         }
                     }, 
@@ -1838,7 +1862,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1864,8 +1888,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Private Links", 
                 "operationId": "account_articles_article_privatelinks_Post", 
-                "summary": "Private Article Private Links create", 
+                "summary": "Create", 
                 "description": "Create new private link for this article", 
                 "security": [
                     {
@@ -1904,7 +1929,7 @@
                             }
                         }, 
                         "schema": {
-                            "$ref": "#/definitions/LocationPresenter"
+                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -1913,7 +1938,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -1951,8 +1976,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Private Links", 
                 "operationId": "account_articles_article_privatelinks_privatelink_Put", 
-                "summary": "Private Article Private Link update", 
+                "summary": "Update", 
                 "description": "Update existing private link for this article", 
                 "security": [
                     {
@@ -2004,7 +2030,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -2022,8 +2048,9 @@
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Private Article Private Links", 
                 "operationId": "account_articles_article_privatelinks_privatelink_Delete", 
-                "summary": "Private Article Private Link disable", 
+                "summary": "Disable", 
                 "description": "Disable/delete private link for this article", 
                 "security": [
                     {
@@ -2042,7 +2069,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -2088,7 +2115,8 @@
                 "tags": [
                     "articles"
                 ], 
-                "summary": "Private Article Files", 
+                "x-subcategory": "Private Article Files", 
+                "summary": "List", 
                 "description": "List private files", 
                 "security": [
                     {
@@ -2103,7 +2131,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/PrivateFilePresenter"
+                                "$ref": "#/definitions/PrivateFile"
                             }
                         }
                     }, 
@@ -2113,7 +2141,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -2139,7 +2167,8 @@
                 "tags": [
                     "articles"
                 ], 
-                "summary": "Private Article File Initiate Upload", 
+                "x-subcategory": "Private Article Files", 
+                "summary": "Initiate Upload", 
                 "description": "Initiate new file upload within the article. Either use link to provide only an existing file that will not be uploaded on figshare or use the other 3 parameters(md5, name, size)", 
                 "security": [
                     {
@@ -2178,7 +2207,7 @@
                             }
                         }, 
                         "schema": {
-                            "$ref": "#/definitions/LocationPresenter"
+                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -2187,7 +2216,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -2224,7 +2253,8 @@
                 "tags": [
                     "articles"
                 ], 
-                "summary": "Private Article File", 
+                "x-subcategory": "Private Article Files", 
+                "summary": "Single File", 
                 "security": [
                     {
                         "OAuth2": [
@@ -2236,7 +2266,7 @@
                     "200": {
                         "description": "OK. Article private file", 
                         "schema": {
-                            "$ref": "#/definitions/PrivateFilePresenter"
+                            "$ref": "#/definitions/PrivateFile"
                         }
                     }, 
                     "400": {
@@ -2245,7 +2275,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -2280,7 +2310,8 @@
                 "tags": [
                     "articles"
                 ], 
-                "summary": "Private Article File Complete Upload", 
+                "x-subcategory": "Private Article Files", 
+                "summary": "Complete Upload", 
                 "description": "Complete file upload", 
                 "security": [
                     {
@@ -2299,7 +2330,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -2334,7 +2365,8 @@
                 "tags": [
                     "articles"
                 ], 
-                "summary": "Private Article File Delete", 
+                "x-subcategory": "Private Article Files", 
+                "summary": "File Delete", 
                 "description": "Complete file upload", 
                 "security": [
                     {
@@ -2353,7 +2385,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -2377,232 +2409,6 @@
                         "name": "file_id", 
                         "in": "path", 
                         "description": "File unique identifier", 
-                        "required": true, 
-                        "type": "integer", 
-                        "format": "int64", 
-                        "minimum": 1
-                    }
-                ]
-            }
-        }, 
-        "/upload/{token}": {
-            "get": {
-                "tags": [
-                    "articles"
-                ], 
-                "summary": "List private files", 
-                "description": "List private files", 
-                "security": [
-                    {
-                        "OAuth2": [
-                            "all"
-                        ]
-                    }
-                ], 
-                "parameters": [
-                    {
-                        "name": "token", 
-                        "in": "path", 
-                        "description": "Token received after initializing an upload", 
-                        "required": true, 
-                        "type": "integer", 
-                        "format": "int64", 
-                        "minimum": 1
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "OK. Upload Info", 
-                        "schema": {
-                            "$ref": "#/definitions/UploadInfo"
-                        }
-                    }, 
-                    "400": {
-                        "description": "Bad request. Article ID must be an integer and bigger than 0."
-                    }, 
-                    "403": {
-                        "description": "Forbidden", 
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }, 
-                    "404": {
-                        "description": "Not Found"
-                    }, 
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            }
-        }, 
-        "/upload/{token}/{partNo}": {
-            "parameters": [
-                {
-                    "name": "token", 
-                    "in": "path", 
-                    "description": "Token received after initializing an upload", 
-                    "required": true, 
-                    "type": "integer", 
-                    "format": "int64", 
-                    "minimum": 1
-                }, 
-                {
-                    "name": "partNo", 
-                    "in": "path", 
-                    "description": "Part Number", 
-                    "required": true, 
-                    "type": "integer", 
-                    "format": "int64", 
-                    "minimum": 1
-                }
-            ], 
-            "get": {
-                "tags": [
-                    "articles"
-                ], 
-                "summary": "File upload part information", 
-                "description": "File upload part information", 
-                "security": [
-                    {
-                        "OAuth2": [
-                            "all"
-                        ]
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "OK. Upload Info", 
-                        "schema": {
-                            "$ref": "#/definitions/UploadFilePart"
-                        }
-                    }, 
-                    "404": {
-                        "description": "Not Found"
-                    }, 
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }, 
-                "parameters": [
-                    {
-                        "name": "token", 
-                        "in": "path", 
-                        "description": "Token received after initializing an upload", 
-                        "required": true, 
-                        "type": "integer", 
-                        "format": "int64", 
-                        "minimum": 1
-                    }, 
-                    {
-                        "name": "partNo", 
-                        "in": "path", 
-                        "description": "Part Number", 
-                        "required": true, 
-                        "type": "integer", 
-                        "format": "int64", 
-                        "minimum": 1
-                    }
-                ]
-            }, 
-            "put": {
-                "tags": [
-                    "articles"
-                ], 
-                "summary": "receives part data", 
-                "description": "The entire body of the request is piped as-is to S3. It is assumed that the body is the correct piece of the file, from startOffset to endOffset", 
-                "security": [
-                    {
-                        "OAuth2": [
-                            "all"
-                        ]
-                    }
-                ], 
-                "parameters": [
-                    {
-                        "in": "body", 
-                        "name": "BinaryData", 
-                        "schema": {
-                            "type": "string", 
-                            "format": "byte", 
-                            "description": "The entire body of the request is piped as-is to S3. It is assumed that the body is the correct piece of the file, from startOffset to endOffset"
-                        }, 
-                        "required": true
-                    }, 
-                    {
-                        "name": "token", 
-                        "in": "path", 
-                        "description": "Token received after initializing an upload", 
-                        "required": true, 
-                        "type": "integer", 
-                        "format": "int64", 
-                        "minimum": 1
-                    }, 
-                    {
-                        "name": "partNo", 
-                        "in": "path", 
-                        "description": "Part Number", 
-                        "required": true, 
-                        "type": "integer", 
-                        "format": "int64", 
-                        "minimum": 1
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "OK", 
-                        "schema": {
-                            "$ref": "#/definitions/UploadFilePart"
-                        }
-                    }, 
-                    "404": {
-                        "description": "Not Found"
-                    }, 
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            }, 
-            "delete": {
-                "tags": [
-                    "articles"
-                ], 
-                "summary": "reset part data", 
-                "description": "This will reset the part to it's PENDING state and remove any storage meta.", 
-                "security": [
-                    {
-                        "OAuth2": [
-                            "all"
-                        ]
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "OK. Accepted"
-                    }, 
-                    "404": {
-                        "description": "Not Found"
-                    }, 
-                    "409": {
-                        "description": "Conflict. Upload completed or part locked"
-                    }, 
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }, 
-                "parameters": [
-                    {
-                        "name": "token", 
-                        "in": "path", 
-                        "description": "Token received after initializing an upload", 
-                        "required": true, 
-                        "type": "integer", 
-                        "format": "int64", 
-                        "minimum": 1
-                    }, 
-                    {
-                        "name": "partNo", 
-                        "in": "path", 
-                        "description": "Part Number", 
                         "required": true, 
                         "type": "integer", 
                         "format": "int64", 
@@ -2729,7 +2535,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/CollectionPresenter"
+                                "$ref": "#/definitions/Collection"
                             }
                         }
                     }, 
@@ -2771,7 +2577,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/CollectionPresenter"
+                                "$ref": "#/definitions/Collection"
                             }
                         }
                     }, 
@@ -2792,8 +2598,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Public Collection", 
                 "operationId": "collections_collection_Get", 
-                "summary": "Public Collection", 
+                "summary": "View", 
                 "description": "View a collection", 
                 "security": [], 
                 "parameters": [
@@ -2811,7 +2618,7 @@
                     "200": {
                         "description": "OK. Collection representation", 
                         "schema": {
-                            "$ref": "#/definitions/CollectionPresenter.L1"
+                            "$ref": "#/definitions/CollectionComplete"
                         }
                     }, 
                     "400": {
@@ -2893,7 +2700,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/ArticlePresenter"
+                                "$ref": "#/definitions/Article"
                             }
                         }
                     }, 
@@ -2917,8 +2724,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Public Collection", 
                 "operationId": "collections_collection_versions_Get", 
-                "summary": "Public Collection Versions", 
+                "summary": "Versions", 
                 "description": "Returns a list of public collection Versions", 
                 "security": [], 
                 "parameters": [
@@ -2938,7 +2746,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/VersionPresenter"
+                                "$ref": "#/definitions/Version"
                             }
                         }
                     }, 
@@ -2959,8 +2767,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Public Collection", 
                 "operationId": "collections_collection_versions_version_Get", 
-                "summary": "Public Collection Version", 
+                "summary": "Version", 
                 "security": [], 
                 "parameters": [
                     {
@@ -2984,9 +2793,9 @@
                 ], 
                 "responses": {
                     "200": {
-                        "description": "OK. CollectionPresenter for that version", 
+                        "description": "OK. Collection for that version", 
                         "schema": {
-                            "$ref": "#/definitions/CollectionPresenter.L1"
+                            "$ref": "#/definitions/CollectionComplete"
                         }
                     }, 
                     "400": {
@@ -3087,7 +2896,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/CollectionPresenter"
+                                "$ref": "#/definitions/Collection"
                             }
                         }
                     }, 
@@ -3097,7 +2906,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -3109,8 +2918,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection", 
                 "operationId": "account_collections_Post", 
-                "summary": "Private Collection Create", 
+                "summary": "Create", 
                 "description": "Create a new Collection by sending collection information", 
                 "security": [
                     {
@@ -3134,7 +2944,7 @@
                     "201": {
                         "description": "Created", 
                         "schema": {
-                            "$ref": "#/definitions/CollectionPresenter.L1"
+                            "$ref": "#/definitions/CollectionComplete"
                         }
                     }, 
                     "400": {
@@ -3143,7 +2953,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -3168,8 +2978,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection", 
                 "operationId": "account_collections_collection_Get", 
-                "summary": "Private Collection", 
+                "summary": "View", 
                 "description": "View an collection", 
                 "security": [
                     {
@@ -3182,7 +2993,7 @@
                     "200": {
                         "description": "OK. Collection representation", 
                         "schema": {
-                            "$ref": "#/definitions/CollectionPresenter.L1"
+                            "$ref": "#/definitions/CollectionComplete"
                         }
                     }, 
                     "400": {
@@ -3211,8 +3022,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection", 
                 "operationId": "account_collections_collection_Put", 
-                "summary": "Private Collection Update", 
+                "summary": "Update", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3257,7 +3069,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -3272,8 +3084,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection", 
                 "operationId": "account_collections_collection_Delete", 
-                "summary": "Private Collection Delete", 
+                "summary": "Delete", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3291,7 +3104,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -3346,7 +3159,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/CollectionPresenter"
+                                "$ref": "#/definitions/Collection"
                             }
                         }
                     }, 
@@ -3356,7 +3169,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -3395,7 +3208,7 @@
                     "200": {
                         "description": "OK", 
                         "schema": {
-                            "$ref": "#/definitions/ArticleDOIPresenter"
+                            "$ref": "#/definitions/ArticleDOI"
                         }
                     }, 
                     "400": {
@@ -3404,7 +3217,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -3450,7 +3263,7 @@
                             }
                         }, 
                         "schema": {
-                            "$ref": "#/definitions/LocationPresenter"
+                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -3459,7 +3272,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -3484,8 +3297,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Authors", 
                 "operationId": "account_collections_collection_authors_Get", 
-                "summary": "Private Collection Authors", 
+                "summary": "View", 
                 "description": "List article authors", 
                 "security": [
                     {
@@ -3500,7 +3314,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/AuthorPresenter"
+                                "$ref": "#/definitions/Author"
                             }
                         }
                     }, 
@@ -3510,7 +3324,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -3536,8 +3350,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Authors", 
                 "operationId": "account_collections_collection_authors_Post", 
-                "summary": "Private Collection Authors Add", 
+                "summary": "Add", 
                 "description": "Associate new authors with the collection. This will add new authors to the list of already associated authors", 
                 "security": [
                     {
@@ -3577,7 +3392,7 @@
                             }
                         }, 
                         "schema": {
-                            "$ref": "#/definitions/LocationPresenter"
+                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -3586,7 +3401,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -3601,8 +3416,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Authors", 
                 "operationId": "account_collections_collection_authors_Put", 
-                "summary": "Private Collection Authors Replace", 
+                "summary": "Replace", 
                 "description": "Associate new authors with the collection. This will remove all already associated authors and add these new ones", 
                 "security": [
                     {
@@ -3648,7 +3464,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -3665,8 +3481,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Authors", 
                 "operationId": "account_collections_collection_authors_author_Delete", 
-                "summary": "Private Collection Author Remove", 
+                "summary": "Remove", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3701,7 +3518,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -3729,8 +3546,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Categories", 
                 "operationId": "account_collections_collection_categories_Get", 
-                "summary": "Private Collection Categories", 
+                "summary": "View", 
                 "description": "List article categories", 
                 "security": [
                     {
@@ -3745,7 +3563,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/CategoryPresenter"
+                                "$ref": "#/definitions/Category"
                             }
                         }
                     }, 
@@ -3755,7 +3573,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -3781,8 +3599,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Categories", 
                 "operationId": "account_collections_collection_categories_Post", 
-                "summary": "Private Collection Categories Add", 
+                "summary": "Add", 
                 "description": "Associate new categories with the collection. This will add new categories to the list of already associated categories", 
                 "security": [
                     {
@@ -3822,7 +3641,7 @@
                             }
                         }, 
                         "schema": {
-                            "$ref": "#/definitions/LocationPresenter"
+                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -3831,7 +3650,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -3846,8 +3665,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Categories", 
                 "operationId": "account_collections_collection_categories_Put", 
-                "summary": "Private Collections Categories Replace", 
+                "summary": "Replace", 
                 "description": "Associate new categories with the collection. This will remove all already associated categories and add these new ones", 
                 "security": [
                     {
@@ -3893,7 +3713,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -3910,8 +3730,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Categories", 
                 "operationId": "account_collections_collection_categories_category_Delete", 
-                "summary": "Private Collection Category Remove", 
+                "summary": "Remove", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3946,7 +3767,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -3974,8 +3795,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Articles", 
                 "operationId": "account_collections_collection_articles_Get", 
-                "summary": "Private Collection Articles", 
+                "summary": "View", 
                 "description": "List article articles", 
                 "security": [
                     {
@@ -3990,7 +3812,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/ArticlePresenter"
+                                "$ref": "#/definitions/Article"
                             }
                         }
                     }, 
@@ -4000,7 +3822,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -4026,8 +3848,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Articles", 
                 "operationId": "account_collections_collection_articles_Post", 
-                "summary": "Private Collection Articles Add", 
+                "summary": "Add", 
                 "description": "Associate new articles with the collection. This will add new articles to the list of already associated articles", 
                 "security": [
                     {
@@ -4067,7 +3890,7 @@
                             }
                         }, 
                         "schema": {
-                            "$ref": "#/definitions/LocationPresenter"
+                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -4076,7 +3899,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -4091,8 +3914,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Articles", 
                 "operationId": "account_collections_collection_articles_Put", 
-                "summary": "Private Collection Articles Replace", 
+                "summary": "Update", 
                 "description": "Associate new articles with the collection. This will remove all already associated articles and add these new ones", 
                 "security": [
                     {
@@ -4138,7 +3962,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -4155,8 +3979,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Articles", 
                 "operationId": "account_collections_collection_articles_article_Delete", 
-                "summary": "Private Collection Article Remove", 
+                "summary": "Delete", 
                 "security": [
                     {
                         "OAuth2": [
@@ -4191,7 +4016,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -4219,8 +4044,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Private Links", 
                 "operationId": "account_collections_collection_privatelinks_Get", 
-                "summary": "Private Collection Private Links", 
+                "summary": "View", 
                 "description": "List article private links", 
                 "security": [
                     {
@@ -4235,7 +4061,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/PrivateLinkPresenter"
+                                "$ref": "#/definitions/PrivateLink"
                             }
                         }
                     }, 
@@ -4245,7 +4071,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -4271,8 +4097,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Private Links", 
                 "operationId": "account_collections_collection_privatelinks_Post", 
-                "summary": "Private Collection Private Link Create", 
+                "summary": "Create", 
                 "description": "Create new private link", 
                 "security": [
                     {
@@ -4311,7 +4138,7 @@
                             }
                         }, 
                         "schema": {
-                            "$ref": "#/definitions/LocationPresenter"
+                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -4320,7 +4147,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -4355,8 +4182,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Private Links", 
                 "operationId": "account_collections_article_privatelinks_privatelink_Put", 
-                "summary": "Private Collection Private Link Update", 
+                "summary": "Update", 
                 "description": "Update existing private link for this collection", 
                 "security": [
                     {
@@ -4408,7 +4236,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -4426,8 +4254,9 @@
                 "tags": [
                     "collections"
                 ], 
+                "x-subcategory": "Private Collection Private Links", 
                 "operationId": "account_collections_article_privatelinks_privatelink_Delete", 
-                "summary": "Private Collection Private Link Delete", 
+                "summary": "Disable", 
                 "description": "Disable/delete private link for this collection", 
                 "security": [
                     {
@@ -4446,7 +4275,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -4580,7 +4409,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/ProjectPresenter"
+                                "$ref": "#/definitions/Project"
                             }
                         }
                     }, 
@@ -4622,7 +4451,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/ProjectPresenter"
+                                "$ref": "#/definitions/Project"
                             }
                         }
                     }, 
@@ -4662,7 +4491,7 @@
                     "200": {
                         "description": "OK. Project representation", 
                         "schema": {
-                            "$ref": "#/definitions/ProjectPresenter.L1"
+                            "$ref": "#/definitions/ProjectComplete"
                         }
                     }, 
                     "400": {
@@ -4702,7 +4531,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/ArticlePresenter"
+                                "$ref": "#/definitions/Article"
                             }
                         }
                     }, 
@@ -4822,7 +4651,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/PrivateProjectPresenter"
+                                "$ref": "#/definitions/ProjectPrivate"
                             }
                         }
                     }, 
@@ -4832,7 +4661,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -4844,8 +4673,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project", 
                 "operationId": "account_projects_Post", 
-                "summary": "Private Project Create", 
+                "summary": "Create", 
                 "security": [
                     {
                         "OAuth2": [
@@ -4868,7 +4698,7 @@
                     "201": {
                         "description": "Created", 
                         "schema": {
-                            "$ref": "#/definitions/LocationPresenter"
+                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -4877,7 +4707,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -4911,7 +4741,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/PrivateProjectPresenter"
+                                "$ref": "#/definitions/ProjectPrivate"
                             }
                         }
                     }, 
@@ -4943,8 +4773,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project", 
                 "operationId": "account_projects_project_Get", 
-                "summary": "Private Project", 
+                "summary": "View", 
                 "description": "View a private project", 
                 "security": [
                     {
@@ -4957,7 +4788,7 @@
                     "200": {
                         "description": "OK. Project representation", 
                         "schema": {
-                            "$ref": "#/definitions/PrivateProjectPresenter.L1"
+                            "$ref": "#/definitions/ProjectCompletePrivate"
                         }
                     }, 
                     "400": {
@@ -4966,7 +4797,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -4992,8 +4823,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project", 
                 "operationId": "account_projects_project_Put", 
-                "summary": "Private Project Update", 
+                "summary": "Update", 
                 "description": "Updating an project by passing body parameters", 
                 "security": [
                     {
@@ -5036,7 +4868,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5051,8 +4883,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project", 
                 "operationId": "account_projects_project_Delete", 
-                "summary": "Private Project delete", 
+                "summary": "Delete", 
                 "description": "A project can be deleted only if: - it is not public - it does not have public articles.\n\nWhen an individual project is deleted, all the articles are moved to my data of each owner*.\n\nWhen a group project is deleted, all the articles and files are deleted as well. Only project owner, group admin and above can delete a project.\n", 
                 "security": [
                     {
@@ -5068,7 +4901,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5120,7 +4953,7 @@
                     "200": {
                         "description": "OK", 
                         "schema": {
-                            "$ref": "#/definitions/MessageResponse"
+                            "$ref": "#/definitions/ResponseMessage"
                         }
                     }, 
                     "400": {
@@ -5129,7 +4962,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5177,7 +5010,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5205,8 +5038,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Notes", 
                 "operationId": "account_projects_project_notes_Get", 
-                "summary": "Private Project notes", 
+                "summary": "List", 
                 "description": "List project notes", 
                 "security": [
                     {
@@ -5273,7 +5107,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/ProjectNotePresenter"
+                                "$ref": "#/definitions/ProjectNote"
                             }
                         }
                     }, 
@@ -5283,7 +5117,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5298,8 +5132,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Notes", 
                 "operationId": "account_projects_project_notes_Post", 
-                "summary": "Private Project Note Create", 
+                "summary": "Create", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5338,7 +5173,7 @@
                             }
                         }, 
                         "schema": {
-                            "$ref": "#/definitions/LocationPresenter"
+                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -5347,7 +5182,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5384,8 +5219,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Notes", 
                 "operationId": "account_projects_project_notes_note_Get", 
-                "summary": "Private Project Note", 
+                "summary": "Single Note", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5397,7 +5233,7 @@
                     "200": {
                         "description": "OK. Note representation", 
                         "schema": {
-                            "$ref": "#/definitions/ProjectNotePresenter.L1"
+                            "$ref": "#/definitions/ProjectNotePrivate"
                         }
                     }, 
                     "400": {
@@ -5406,7 +5242,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5441,8 +5277,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Notes", 
                 "operationId": "account_projects_project_notes_note_Put", 
-                "summary": "Private Project Note Update", 
+                "summary": "Update", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5496,7 +5333,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5511,8 +5348,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Notes", 
                 "operationId": "account_projects_project_notes_note_Delete", 
-                "summary": "Private Project Note Delete", 
+                "summary": "Delete", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5527,7 +5365,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5575,8 +5413,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Collaborators", 
                 "operationId": "account_projects_project_collaborators_Get", 
-                "summary": "Private Project Collaborators", 
+                "summary": "View", 
                 "description": "List Project collaborators and invited users", 
                 "security": [
                     {
@@ -5601,7 +5440,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5627,8 +5466,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Collaborators", 
                 "operationId": "account_projects_project_collaborators_Post", 
-                "summary": "Private Project Collaborators Invite", 
+                "summary": "Invite", 
                 "description": "Invite users to collaborate on project or view the project", 
                 "security": [
                     {
@@ -5661,7 +5501,7 @@
                     "201": {
                         "description": "Created", 
                         "schema": {
-                            "$ref": "#/definitions/MessageResponse"
+                            "$ref": "#/definitions/ResponseMessage"
                         }
                     }, 
                     "400": {
@@ -5670,7 +5510,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5687,8 +5527,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Collaborators", 
                 "operationId": "account_projects_project_collaborators_collaborator_Delete", 
-                "summary": "Private Project Collaborator Remove", 
+                "summary": "Remove", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5726,7 +5567,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5754,8 +5595,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Articles", 
                 "operationId": "account_projects_project_articles_Get", 
-                "summary": "Private Project Articles", 
+                "summary": "List", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5769,7 +5611,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/ArticlePresenter"
+                                "$ref": "#/definitions/Article"
                             }
                         }
                     }, 
@@ -5779,7 +5621,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5805,8 +5647,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Articles", 
                 "operationId": "account_projects_project_articles_Post", 
-                "summary": "Private Project Article Create", 
+                "summary": "Create", 
                 "description": "Create a new Article and associate it with this project", 
                 "security": [
                     {
@@ -5846,7 +5689,7 @@
                             }
                         }, 
                         "schema": {
-                            "$ref": "#/definitions/LocationPresenter"
+                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -5855,7 +5698,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5892,8 +5735,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Articles", 
                 "operationId": "account_projects_project_articles_article_Get", 
-                "summary": "Private Project Article", 
+                "summary": "Single Article", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5905,7 +5749,7 @@
                     "200": {
                         "description": "OK. Article representation", 
                         "schema": {
-                            "$ref": "#/definitions/ArticlePresenter.L1"
+                            "$ref": "#/definitions/ProjectArticle"
                         }
                     }, 
                     "400": {
@@ -5914,7 +5758,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -5949,8 +5793,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Articles", 
                 "operationId": "account_projects_project_articles_article_Delete", 
-                "summary": "Private Project Article Delete", 
+                "summary": "Delete", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5968,7 +5813,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -6005,8 +5850,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Articles", 
                 "operationId": "account_projects_project_articles_article_files_Get", 
-                "summary": "Private Project Article Files", 
+                "summary": "Article Files", 
                 "security": [
                     {
                         "OAuth2": [
@@ -6040,7 +5886,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/PrivateFilePresenter"
+                                "$ref": "#/definitions/PrivateFile"
                             }
                         }
                     }, 
@@ -6050,7 +5896,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -6067,8 +5913,9 @@
                 "tags": [
                     "projects"
                 ], 
+                "x-subcategory": "Private Project Articles", 
                 "operationId": "account_projects_project_articles_article_files_file_Get", 
-                "summary": "Private Project Article File", 
+                "summary": "Article File", 
                 "security": [
                     {
                         "OAuth2": [
@@ -6109,7 +5956,7 @@
                     "200": {
                         "description": "OK. File representation", 
                         "schema": {
-                            "$ref": "#/definitions/PrivateFilePresenter"
+                            "$ref": "#/definitions/PrivateFile"
                         }
                     }, 
                     "400": {
@@ -6118,7 +5965,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "404": {
@@ -6145,7 +5992,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/CategoryPresenter"
+                                "$ref": "#/definitions/Category"
                             }
                         }
                     }, 
@@ -6170,7 +6017,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/LicensePresenter"
+                                "$ref": "#/definitions/License"
                             }
                         }
                     }, 
@@ -6214,7 +6061,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/ArticlePresenter"
+                                "$ref": "#/definitions/Article"
                             }
                         }
                     }, 
@@ -6254,7 +6101,7 @@
                     "200": {
                         "description": "OK", 
                         "schema": {
-                            "$ref": "#/definitions/MessageResponse"
+                            "$ref": "#/definitions/ResponseMessage"
                         }
                     }, 
                     "400": {
@@ -6263,7 +6110,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -6292,7 +6139,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/LicensePresenter"
+                                "$ref": "#/definitions/License"
                             }
                         }
                     }, 
@@ -6302,7 +6149,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -6329,7 +6176,7 @@
                     "200": {
                         "description": "OK. An array of institutions", 
                         "schema": {
-                            "$ref": "#/definitions/InstitutionPresenter"
+                            "$ref": "#/definitions/Institution"
                         }
                     }, 
                     "400": {
@@ -6338,7 +6185,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -6367,7 +6214,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/CategoryPresenter"
+                                "$ref": "#/definitions/Category"
                             }
                         }
                     }, 
@@ -6377,7 +6224,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -6406,7 +6253,7 @@
                         "schema": {
                             "type": "array", 
                             "items": {
-                                "$ref": "#/definitions/GroupPresenter"
+                                "$ref": "#/definitions/Group"
                             }
                         }
                     }, 
@@ -6416,7 +6263,7 @@
                     "403": {
                         "description": "Forbidden", 
                         "schema": {
-                            "$ref": "#/definitions/Error"
+                            "$ref": "#/definitions/ErrorMessage"
                         }
                     }, 
                     "500": {
@@ -6459,7 +6306,7 @@
         }
     }, 
     "definitions": {
-        "GroupPresenter": {
+        "Group": {
             "x-tag": "institutions", 
             "type": "object", 
             "properties": {
@@ -6483,7 +6330,7 @@
                 }
             }
         }, 
-        "InstitutionPresenter": {
+        "Institution": {
             "x-tag": "institutions", 
             "type": "object", 
             "properties": {
@@ -6505,7 +6352,7 @@
                 }
             }
         }, 
-        "Error": {
+        "ErrorMessage": {
             "x-tag": "common", 
             "type": "object", 
             "properties": {
@@ -6548,7 +6395,7 @@
                 }
             }
         }, 
-        "ProjectNotePresenter": {
+        "ProjectNote": {
             "x-tag": "projects", 
             "type": "object", 
             "properties": {
@@ -6580,12 +6427,12 @@
                 }
             }
         }, 
-        "ProjectNotePresenter.L1": {
+        "ProjectNotePrivate": {
             "x-tag": "projects", 
             "type": "object", 
             "allOf": [
                 {
-                    "$ref": "#/definitions/ProjectNotePresenter"
+                    "$ref": "#/definitions/ProjectNote"
                 }
             ], 
             "properties": {
@@ -6621,7 +6468,7 @@
                 }
             }
         }, 
-        "MessageResponse": {
+        "ResponseMessage": {
             "x-tag": "common", 
             "type": "object", 
             "properties": {
@@ -6699,7 +6546,7 @@
                 }
             }
         }, 
-        "ProjectPresenter": {
+        "Project": {
             "x-tag": "projects", 
             "type": "object", 
             "properties": {
@@ -6725,12 +6572,12 @@
                 }
             }
         }, 
-        "PrivateProjectPresenter": {
+        "ProjectPrivate": {
             "x-tag": "projects", 
             "type": "object", 
             "allOf": [
                 {
-                    "$ref": "#/definitions/ProjectPresenter"
+                    "$ref": "#/definitions/Project"
                 }
             ], 
             "properties": {
@@ -6773,12 +6620,12 @@
                 }
             }
         }, 
-        "ProjectPresenter.L1": {
+        "ProjectComplete": {
             "x-tag": "projects", 
             "type": "object", 
             "allOf": [
                 {
-                    "$ref": "#/definitions/ProjectPresenter"
+                    "$ref": "#/definitions/Project"
                 }
             ], 
             "properties": {
@@ -6800,7 +6647,7 @@
                 "collaborators": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/CollaboratorPresenter"
+                        "$ref": "#/definitions/Collaborator"
                     }
                 }, 
                 "url": {
@@ -6825,12 +6672,12 @@
                 }
             }
         }, 
-        "PrivateProjectPresenter.L1": {
+        "ProjectCompletePrivate": {
             "x-tag": "projects", 
             "type": "object", 
             "allOf": [
                 {
-                    "$ref": "#/definitions/PrivateProjectPresenter"
+                    "$ref": "#/definitions/ProjectPrivate"
                 }
             ], 
             "properties": {
@@ -6852,7 +6699,7 @@
                 "collaborators": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/CollaboratorPresenter"
+                        "$ref": "#/definitions/Collaborator"
                     }
                 }, 
                 "quota": {
@@ -6949,7 +6796,7 @@
                 }
             }
         }, 
-        "CollaboratorPresenter": {
+        "Collaborator": {
             "x-tag": "projects", 
             "type": "object", 
             "properties": {
@@ -7457,6 +7304,141 @@
                 }
             }
         }, 
+        "ArticleUpdate": {
+            "x-tag": "articles", 
+            "type": "object", 
+            "properties": {
+                "title": {
+                    "type": "string", 
+                    "description": "Title of article", 
+                    "minLength": 5, 
+                    "example": "Test article title"
+                }, 
+                "description": {
+                    "type": "string", 
+                    "description": "The article description. In a publisher case, usually this is the remote article description", 
+                    "default": "", 
+                    "example": "Test description of article"
+                }, 
+                "tags": {
+                    "type": "array", 
+                    "description": "List of tags to be associated with the article. Keywords can be used instead", 
+                    "items": {
+                        "type": "string"
+                    }, 
+                    "default": [], 
+                    "example": [
+                        "tag1", 
+                        "tag2"
+                    ]
+                }, 
+                "keywords": {
+                    "type": "array", 
+                    "description": "List of tags to be associated with the article. Tags can be used instead", 
+                    "items": {
+                        "type": "string"
+                    }, 
+                    "default": [], 
+                    "example": [
+                        "tag1", 
+                        "tag2"
+                    ]
+                }, 
+                "references": {
+                    "type": "array", 
+                    "items": {
+                        "type": "string", 
+                        "format": "link"
+                    }, 
+                    "description": "List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])", 
+                    "default": [], 
+                    "example": [
+                        "http://figshare.com", 
+                        "http://api.figshare.com"
+                    ]
+                }, 
+                "categories": {
+                    "type": "array", 
+                    "items": {
+                        "type": "integer", 
+                        "format": "int64"
+                    }, 
+                    "description": "List of category ids to be associated with the article(e.g [1, 23, 33, 66])", 
+                    "default": [], 
+                    "example": [
+                        1, 
+                        10, 
+                        11
+                    ]
+                }, 
+                "authors": {
+                    "type": "array", 
+                    "items": {
+                        "type": "object"
+                    }, 
+                    "description": "List of authors to be assosciated with the article. The list can contain author ids or author names. No more than 10 authors. For adding more authors use the specific authors endpoint.", 
+                    "default": [], 
+                    "example": [
+                        {
+                            "name": "John Doe"
+                        }, 
+                        {
+                            "id": 1000008
+                        }
+                    ]
+                }, 
+                "custom_fields": {
+                    "type": "object", 
+                    "description": "List of key, values pairs to be associated with the article", 
+                    "example": {
+                        "defined_key": "value for it"
+                    }
+                }, 
+                "defined_type": {
+                    "type": "string", 
+                    "enum": [
+                        "figure", 
+                        "media", 
+                        "dataset", 
+                        "fileset", 
+                        "poster", 
+                        "paper", 
+                        "presentation", 
+                        "thesis", 
+                        "code", 
+                        "metadata"
+                    ], 
+                    "example": "media"
+                }, 
+                "funding": {
+                    "type": "string", 
+                    "description": "Grant number or funding authority", 
+                    "default": ""
+                }, 
+                "license": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "License id for this article.", 
+                    "default": 0, 
+                    "example": 1
+                }, 
+                "doi": {
+                    "type": "string", 
+                    "description": "Not appliable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.", 
+                    "default": ""
+                }, 
+                "resource_doi": {
+                    "type": "string", 
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article DOI.", 
+                    "default": ""
+                }, 
+                "resource_title": {
+                    "type": "string", 
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article title.", 
+                    "default": ""
+                }
+            }
+        }, 
         "ArticleCreate": {
             "x-tag": "articles", 
             "type": "object", 
@@ -7595,7 +7577,7 @@
                 }
             }
         }, 
-        "ArticlePresenter": {
+        "Article": {
             "x-tag": "articles", 
             "type": "object", 
             "properties": {
@@ -7675,12 +7657,12 @@
                 }
             }
         }, 
-        "ArticlePresenter.L1": {
+        "ProjectArticle": {
             "x-tag": "articles", 
             "type": "object", 
             "allOf": [
                 {
-                    "$ref": "#/definitions/ArticlePresenter"
+                    "$ref": "#/definitions/Article"
                 }
             ], 
             "properties": {
@@ -7781,11 +7763,11 @@
                 "categories": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/CategoryPresenter"
+                        "$ref": "#/definitions/Category"
                     }
                 }, 
                 "license": {
-                    "$ref": "#/definitions/LicensePresenter"
+                    "$ref": "#/definitions/License"
                 }, 
                 "embargo_reason": {
                     "type": "string", 
@@ -7878,12 +7860,12 @@
                 }
             }
         }, 
-        "ArticlePresenter.L2": {
+        "ArticleComplete": {
             "x-tag": "articles", 
             "type": "object", 
             "allOf": [
                 {
-                    "$ref": "#/definitions/ArticlePresenter.L1"
+                    "$ref": "#/definitions/ProjectArticle"
                 }
             ], 
             "properties": {
@@ -7909,19 +7891,19 @@
                 "files": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/PublicFilePresenter"
+                        "$ref": "#/definitions/PublicFile"
                     }
                 }, 
                 "authors": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/AuthorPresenter"
+                        "$ref": "#/definitions/Author"
                     }
                 }, 
                 "custom_fields": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/CustomArticleFieldPresenter"
+                        "$ref": "#/definitions/CustomArticleField"
                     }
                 }, 
                 "citation": {
@@ -8021,11 +8003,11 @@
                 "categories": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/CategoryPresenter"
+                        "$ref": "#/definitions/Category"
                     }
                 }, 
                 "license": {
-                    "$ref": "#/definitions/LicensePresenter"
+                    "$ref": "#/definitions/License"
                 }, 
                 "embargo_reason": {
                     "type": "string", 
@@ -8118,12 +8100,12 @@
                 }
             }
         }, 
-        "PrivateArticlePresenter.L2": {
+        "ArticleCompletePrivate": {
             "x-tag": "articles", 
             "type": "object", 
             "allOf": [
                 {
-                    "$ref": "#/definitions/ArticlePresenter.L2"
+                    "$ref": "#/definitions/ArticleComplete"
                 }
             ], 
             "properties": {
@@ -8156,19 +8138,19 @@
                 "files": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/PublicFilePresenter"
+                        "$ref": "#/definitions/PublicFile"
                     }
                 }, 
                 "authors": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/AuthorPresenter"
+                        "$ref": "#/definitions/Author"
                     }
                 }, 
                 "custom_fields": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/CustomArticleFieldPresenter"
+                        "$ref": "#/definitions/CustomArticleField"
                     }
                 }, 
                 "citation": {
@@ -8268,11 +8250,11 @@
                 "categories": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/CategoryPresenter"
+                        "$ref": "#/definitions/Category"
                     }
                 }, 
                 "license": {
-                    "$ref": "#/definitions/LicensePresenter"
+                    "$ref": "#/definitions/License"
                 }, 
                 "embargo_reason": {
                     "type": "string", 
@@ -8365,7 +8347,7 @@
                 }
             }
         }, 
-        "CategoryPresenter": {
+        "Category": {
             "x-tag": "common", 
             "type": "object", 
             "properties": {
@@ -8385,7 +8367,7 @@
                 }
             }
         }, 
-        "LicensePresenter": {
+        "License": {
             "x-tag": "institutions", 
             "type": "object", 
             "properties": {
@@ -8405,7 +8387,7 @@
                 }
             }
         }, 
-        "VersionPresenter": {
+        "Version": {
             "x-tag": "articles", 
             "type": "object", 
             "properties": {
@@ -8421,7 +8403,7 @@
                 }
             }
         }, 
-        "ArticleEmbargoPresenter": {
+        "ArticleEmbargo": {
             "x-tag": "articles", 
             "type": "object", 
             "properties": {
@@ -8479,7 +8461,7 @@
                 }
             }
         }, 
-        "ArticleConfidentialityPresenter": {
+        "ArticleConfidentiality": {
             "x-tag": "articles", 
             "type": "object", 
             "properties": {
@@ -8493,7 +8475,7 @@
                 }
             }
         }, 
-        "CustomArticleFieldPresenter": {
+        "CustomArticleField": {
             "x-tag": "articles", 
             "type": "object", 
             "properties": {
@@ -8514,7 +8496,7 @@
                 }
             }
         }, 
-        "PublicFilePresenter": {
+        "PublicFile": {
             "x-tag": "common", 
             "type": "object", 
             "properties": {
@@ -8543,12 +8525,12 @@
                 }
             }
         }, 
-        "PrivateFilePresenter": {
+        "PrivateFile": {
             "x-tag": "common", 
             "type": "object", 
             "allOf": [
                 {
-                    "$ref": "#/definitions/PublicFilePresenter"
+                    "$ref": "#/definitions/PublicFile"
                 }
             ], 
             "properties": {
@@ -8608,7 +8590,7 @@
                 }
             }
         }, 
-        "AuthorPresenter": {
+        "Author": {
             "x-tag": "articles", 
             "type": "object", 
             "properties": {
@@ -8712,7 +8694,7 @@
                 }
             }
         }, 
-        "ArticleDOIPresenter": {
+        "ArticleDOI": {
             "x-tag": "articles", 
             "type": "object", 
             "properties": {
@@ -8820,7 +8802,7 @@
                 }
             }
         }, 
-        "PrivateLinkPresenter": {
+        "PrivateLink": {
             "x-tag": "articles", 
             "type": "object", 
             "properties": {
@@ -8943,7 +8925,7 @@
                 }
             }
         }, 
-        "CollectionPresenter": {
+        "Collection": {
             "x-tag": "collections", 
             "type": "object", 
             "properties": {
@@ -8973,12 +8955,12 @@
                 }
             }
         }, 
-        "CollectionPresenter.L1": {
+        "CollectionComplete": {
             "x-tag": "collections", 
             "type": "object", 
             "allOf": [
                 {
-                    "$ref": "#/definitions/CollectionPresenter"
+                    "$ref": "#/definitions/Collection"
                 }
             ], 
             "properties": {
@@ -9015,7 +8997,7 @@
                 "categories": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/CategoryPresenter"
+                        "$ref": "#/definitions/Category"
                     }
                 }, 
                 "references": {
@@ -9038,7 +9020,7 @@
                 "authors": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/AuthorPresenter"
+                        "$ref": "#/definitions/Author"
                     }
                 }, 
                 "institution_id": {
@@ -9074,7 +9056,7 @@
                 "custom_fields": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/CustomArticleFieldPresenter"
+                        "$ref": "#/definitions/CustomArticleField"
                     }
                 }, 
                 "modified_date": {
@@ -9239,7 +9221,15 @@
                 }
             }
         }, 
-        "LocationPresenter": {
+        "ConfidentialityCreator": {
+            "type": "object", 
+            "properties": {
+                "reason": {
+                    "type": "string"
+                }
+            }
+        }, 
+        "Location": {
             "x-tag": "common", 
             "type": "object", 
             "properties": {
@@ -9268,15 +9258,15 @@
             "subsections": [
                 {
                     "title": "Introductory considerations", 
-                    "content": "#description_search_intro"
+                    "content": "description_search_intro"
                 }, 
                 {
                     "title": "General search engine features", 
-                    "content": "#description_search_general"
+                    "content": "description_search_general"
                 }, 
                 {
                     "title": "Search types and expected results", 
-                    "content": "#description_search_types"
+                    "content": "description_search_types"
                 }
             ]
         }, 
@@ -9286,19 +9276,162 @@
             "subsections": [
                 {
                     "title": "Oauth", 
-                    "content": "#description_oauth_intro"
+                    "content": "description_oauth_intro"
                 }, 
                 {
                     "title": "Quick guide", 
-                    "content": "#description_oauth_quick"
+                    "content": "description_oauth_quick"
                 }, 
                 {
                     "title": "Scope", 
-                    "content": "#description_oauth_scope"
+                    "content": "description_oauth_scope"
                 }, 
                 {
                     "title": "Grant Types", 
-                    "content": "#description_oauth_grant"
+                    "content": "description_oauth_grant"
+                }
+            ]
+        }, 
+        {
+            "title": "Upload files", 
+            "position": "bottom", 
+            "subsections": [
+                {
+                    "title": "Steps to upload file", 
+                    "content": "description_upload_steps"
+                }, 
+                {
+                    "title": "Uploads API", 
+                    "content": "description_upload_api"
+                }, 
+                {
+                    "title": "Parts API", 
+                    "content": "description_upload_parts_api"
+                }, 
+                {
+                    "title": "Example Upload on figshare", 
+                    "content": "description_upload_example"
+                }, 
+                {
+                    "title": "Output of Script", 
+                    "content": "description_upload_output"
+                }
+            ]
+        }, 
+        {
+            "title": "OAI PMH", 
+            "position": "bottom", 
+            "subsections": [
+                {
+                    "title": "OAI-PMH", 
+                    "content": "description_oai_pmh"
+                }, 
+                {
+                    "title": "Base URL", 
+                    "content": "description_oai_baseurl"
+                }, 
+                {
+                    "title": "Item equals Article", 
+                    "content": "description_oai_itemarticle"
+                }, 
+                {
+                    "title": "Metadata formats", 
+                    "content": "description_oai_metadata"
+                }, 
+                {
+                    "title": "Datestamps", 
+                    "content": "description_oai_datestamp"
+                }, 
+                {
+                    "title": "Sets", 
+                    "content": "description_oai_sets"
+                }, 
+                {
+                    "title": "Update schedule", 
+                    "content": "description_oai_update_schedule"
+                }, 
+                {
+                    "title": "Pagination and Resumption Token Expiration", 
+                    "content": "description_oai_pagination"
+                }, 
+                {
+                    "title": "Rate limit", 
+                    "content": "description_oai_ratelimit"
+                }, 
+                {
+                    "title": "Future development", 
+                    "content": "description_oai_futuredev"
+                }, 
+                {
+                    "title": "Some examples", 
+                    "content": "description_oai_someexamples"
+                }, 
+                {
+                    "title": "Changes", 
+                    "content": "description_oai_changes"
+                }
+            ]
+        }, 
+        {
+            "title": "Stats", 
+            "position": "bottom", 
+            "subsections": [
+                {
+                    "title": "Home", 
+                    "subsections": [
+                        {
+                            "title": "figshare statistics service", 
+                            "content": "description_stats_home_service"
+                        }, 
+                        {
+                            "title": "Authentication", 
+                            "content": "description_stats_home_authentication"
+                        }
+                    ]
+                }, 
+                {
+                    "title": "Base URL", 
+                    "content": "description_oai_baseurl"
+                }, 
+                {
+                    "title": "Item equals Article", 
+                    "content": "description_oai_itemarticle"
+                }, 
+                {
+                    "title": "Metadata formats", 
+                    "content": "description_oai_metadata"
+                }, 
+                {
+                    "title": "Datestamps", 
+                    "content": "description_oai_datestamp"
+                }, 
+                {
+                    "title": "Sets", 
+                    "content": "description_oai_sets"
+                }, 
+                {
+                    "title": "Update schedule", 
+                    "content": "description_oai_update_schedule"
+                }, 
+                {
+                    "title": "Pagination and Resumption Token Expiration", 
+                    "content": "description_oai_pagination"
+                }, 
+                {
+                    "title": "Rate limit", 
+                    "content": "description_oai_ratelimit"
+                }, 
+                {
+                    "title": "Future development", 
+                    "content": "description_oai_futuredev"
+                }, 
+                {
+                    "title": "Some examples", 
+                    "content": "description_oai_someexamples"
+                }, 
+                {
+                    "title": "Changes", 
+                    "content": "description_oai_changes"
                 }
             ]
         }, 
@@ -9308,7 +9441,7 @@
             "subsections": [
                 {
                     "title": "figshare Documentation", 
-                    "content": "#description_intro"
+                    "content": "description_intro"
                 }
             ]
         }
