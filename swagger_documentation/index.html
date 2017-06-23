@@ -218,11 +218,11 @@
                 <button type="button" data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle"><span
                         class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
                         class="icon-bar"></span><span class="icon-bar"></span></button>
-                <h1 class="navbar-brand"><a href="http://swagger.io"><span>Figshare documentation</span></a></h1>
+                <h1 class="navbar-brand"><a href=""><span>Figshare documentation</span></a></h1>
             </div>
             <div id="navbar-collapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="li-why"><a href="http://swagger.io" style="font-size: 25px; padding-left: 0px"> API documentation</a></li>
+                    <li class="li-why"><a href="#" style="font-size: 25px; padding-left: 0px"> API documentation</a></li>
 
                 </ul>
             </div>
@@ -240,6 +240,769 @@
         </div>
     </div>
     <div class="hidden_descriptions" style="display: none;">
+      <div id="description_stats_service_intro">
+        <p>The fig<strong>share</strong> statistics service is available at https://stats.figshare.com and
+        it supports retrieving information about the number of <em>views</em>, <em>downloads</em> and <em>shares</em>
+        related to items available of fig<strong>share</strong>. From here on, an event is one of <em>view</em>,
+        <em>download</em> or <em>share</em>.</p>
+        <p>All communication with the service is done through <em>https</em> and all data is encoded as <em>json</em>.
+        Optional authorization for specific endpoints is done through basic access authentication.</p>
+        <ul>
+        <li><a href="#authentication">Authentication</a></li>
+        <li><a href="#errors">Errors</a></li>
+        <li><a href="#endpoints">Endpoints</a></li>
+        </ul>
+      </div>
+      <div id="description_stats_service_auth">
+        <h2 id="authentication">Authentication</h2>
+        <p>For some specialized endpoints, access to institution specific statistics requires
+        sending a <code>base64</code>-encoded pair of <code>username:password</code> in the basic authorization header:</p>
+        <pre><code class="http">GET https://stats.figshare.com/lboro/top/views/article
+        Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+        </code></pre>
+
+        <p>Please note that the analogous endpoint for retrieving statistics for items outside
+        the institutional scope, requires no authentication:</p>
+        <pre><code class="http">GET https://stats.figshare.com/top/views/article
+        </code></pre>
+      </div>
+      <div id="description_stats_service_errors">
+        <h2 id="errors">Errors</h2>
+        <p>Error responses are common for all endpoints and are presented below.</p>
+        <p>Each error response will have a specific HTTP status code and a JSON body with the
+        following fields</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Field</th>
+        <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>message</td>
+        <td>A human friendly message explaining the error.</td>
+        </tr>
+        <tr>
+        <td>code</td>
+        <td>A machine friendly error code, used by the dev team to identify the error.</td>
+        </tr>
+        <tr>
+        <td>data</td>
+        <td>An object containing extra information about the error.</td>
+        </tr>
+        </tbody>
+        </table>
+        <h3 id="400-bad-request">400 Bad Request</h3>
+        <p>This error response will be raised when an invalid field is sent in the parameters of the
+        request or when a field is missing from the parameters of the request. Required and
+        optional fields in the body are documented for each endpoint, where applicable.</p>
+        <h3 id="403-forbidden">403 Forbidden</h3>
+        <p>This error response is presented when attempting to retrieve information from a protected endpoint
+        without the appropriate <code>Authorization</code> header.</p>
+        <h3 id="404-not-found">404 Not Found</h3>
+        <p>This error response is presented when attempting to access a non existing endpoint. Please note
+        that it will not be raised when attempting to gather statistics for an item which doesn't
+        exist on <strong>fig</strong>share, instead an appropriate empty result will be returned.</p>
+      </div>
+      <div id="description_stats_service_endpoints">
+        <h2 id="endpoints">Endpoints</h2>
+        <p>The statistics service endpoints can be classified in 4 categories:</p>
+        <ul>
+        <li><a href="#totals">Totals</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#breakdown">Breakdown</a></li>
+        <li><a href="#tops">Tops</a></li>
+        </ul>
+        <h3 id="scope">Scope</h3>
+        <p>All endpoints are applicable for the following items:</p>
+        <ul>
+        <li><strong>group</strong>: events on items inside the specified group</li>
+        <li><strong>author</strong>: events on items authored by the specified user</li>
+        <li><strong>article</strong>: events on the specified article</li>
+        <li><strong>project</strong>: events on the specified project</li>
+        <li><strong>collection</strong>: events on the specified collection</li>
+        </ul>
+        <h3 id="totals">Totals</h3>
+        <p>This type of endpoint enables the retrieval of the total number of events for a specific item.
+        More details and examples are provided <a href="totals/">here</a>.</p>
+        <h3 id="timeline">Timeline</h3>
+        <p>This type of endpoint enables the retrieval of a timeline of the number of events for a specific
+        item, with a specified granularity. More details and examples are provided <a href="timeline/">here</a>.</p>
+        <h3 id="breakdown">Breakdown</h3>
+        <p>This type of endpoint enables the retrieval of a geo-location breakdown of the number of events for a specific
+        item, with a specified granularity. More details and examples are provided <a href="breakdown/">here</a>.</p>
+        <h3 id="tops">Tops</h3>
+        <p>This type of endpoint enables the retrieval of rankings of the most viewed, downloaded or shared items,
+        over a specific period of time. More details and examples are provided <a href="tops/">here</a>.</p>
+      </div>
+      <div id="description_stats_breakdown_endpoints">
+        <h1 id="endpoints-for-retrieving-a-breakdown">Endpoints for retrieving a <strong>breakdown</strong></h1>
+        <p>This type of endpoint enables the retrieval of a geo-location breakdown of the number
+        of <em>views</em>, <em>downloads</em> or <em>shares</em> for a specific item.</p>
+        <ul>
+        <li><a href="#authorization">Authorization</a></li>
+        <li><a href="#endpoint-format">Endpoint format</a></li>
+        <li><a href="#request-parameters">Request parameters</a></li>
+        <li><a href="#examples">Examples</a></li>
+        </ul>
+      </div>
+      <div id="description_stats_breakdown_auth">
+        <h2 id="authorization">Authorization</h2>
+        <p>Basic HTTP authentication is required for timeline endpoints within the scope of an institution.</p>
+      </div>
+      <div id="description_stats_breakdown_format">
+        <h2 id="endpoint-format">Endpoint format</h2>
+        <p>For items outside an institution scope the endpoints have the format:</p>
+        <pre><code>/breakdown/{granularity}/{counter}/{item}/{item_id}
+        </code></pre>
+
+        <p>and inside an institution scope they have the format:</p>
+        <pre><code>/{institution}/breakdown/{granularity}{counter}/{item}/{item_id}
+        </code></pre>
+
+        <p>where <strong>granularity</strong> is one of <code>year</code>, <code>month</code>, <code>day</code> or <code>total</code>,
+        <strong>counter</strong> is one of <code>views</code>, <code>downloads</code> or <code>shares</code>
+        and <strong>item</strong> is one of <code>article</code>, <code>author</code>, <code>collection</code>, <code>group</code> or <code>project</code>.</p>
+        <p>The results on this endpoint can be filtered further by a <code>start_date</code> and <code>end_date</code> and
+        a specified <code>category</code> or <code>item_type</code>. By default, <code>start_date</code> and <code>end_date</code> are set
+        to reflect the events of the last month. The supplementary filters can be provided in the
+        query parameters of the request.</p>
+      </div>
+      <div id="description_stats_breakdown_params">
+        <h2 id="request-parameters">Request parameters</h2>
+        <p>The following table describes the optional parameters:</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Parameter</th>
+        <th>Comments</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><code>start_date</code></td>
+        <td>By default this is set to the 1st of the current month.</td>
+        </tr>
+        <tr>
+        <td><code>end_date</code></td>
+        <td>By default this is set to today.</td>
+        </tr>
+        <tr>
+        <td><code>sub_item</code></td>
+        <td>Can be one of <code>category</code> and <code>item_type</code>. Acts as a filter on the result.</td>
+        </tr>
+        <tr>
+        <td><code>sub_item_id</code></td>
+        <td>Required if <code>sub_item</code> is also specified.</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+      <div id="description_stats_breakdown_examples">
+        <h2 id="examples">Examples</h2>
+        <h3 id="daily-breakdown-of-shares-for-an-unaffiliated-article">Daily breakdown of shares for an unaffiliated article</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/breakdown/day/shares/article/23?start_date=2014-03-08&amp;end_date=2014-05-21
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;breakdown&quot;: {
+            &quot;2014-03-08&quot;: {
+              &quot;Spain&quot;: {
+                &quot;Seville&quot;: 8,
+                &quot;Madrid&quot;: 11,
+                &quot;total&quot;: 19
+              }
+            },
+            &quot;2014-02-20&quot;: {
+              &quot;Spain&quot;: {
+                &quot;Seville&quot;: 3,
+                &quot;total&quot;: 3
+              }
+            },
+            &quot;2014-05-04&quot;: {
+              &quot;China&quot;: {
+                &quot;Fuzhou&quot;: 7,
+                &quot;Chengdu&quot;: 3,
+                &quot;total&quot;: 10
+              }
+            }
+          }
+        }
+        </code></pre>
+
+        <h3 id="yearly-breakdown-of-views-for-a-project-associated-to-an-institution">Yearly breakdown of views for a project associated to an institution</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/monash/breakdown/year/views/project/1345?start_date=2013-01-01&amp;end_date=2015-01-01
+        Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;breakdown&quot;: {
+            &quot;2013&quot;: {
+              &quot;Spain&quot;: {
+                &quot;Seville&quot;: 5,
+                &quot;Madrid&quot;: 3,
+                &quot;total&quot;: 8
+              },
+              &quot;China&quot;: {
+                &quot;Fuzhou&quot;: 2,
+                &quot;Chengdu&quot;: 3,
+                &quot;total&quot;: 5
+              }
+            },
+            &quot;2014&quot;: {
+              &quot;United States&quot;: {
+                &quot;Kansas City&quot;: 3,
+                &quot;Orlando&quot;: 1,
+                &quot;total&quot;: 4
+              },
+              &quot;Venezuela&quot;: {
+                &quot;Caracas&quot;: 5,
+                &quot;total&quot;: 5
+              },
+              &quot;Brazil&quot;: {
+                &quot;total&quot;: 7,
+                &quot;Indaiatuba&quot;: 4,
+                &quot;Campinas&quot;: 3
+              }
+            }
+          }
+        }
+        </code></pre>
+
+        <h3 id="total-breakdown-of-downloads-from-filesets-found-in-a-specified-institutional-group">Total breakdown of downloads from filesets found in a specified institutional group</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/lboro/breakdown/total/downloads/group/17?sub_item=item_type&amp;sub_item_id=fileset&amp;start_date=2015-02-11&amp;end_date=2015-05-17
+        Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;breakdown&quot;: {
+            &quot;total&quot;: {
+              &quot;Spain&quot;: {
+                &quot;Seville&quot;: 6,
+                &quot;Barcelona&quot;: 7,
+                &quot;Madrid&quot;: 3,
+                &quot;total&quot;: 16
+              },
+              &quot;China&quot;: {
+                &quot;Chengdu&quot;: 7,
+                &quot;Fuzhou&quot;: 4,
+                &quot;total&quot;: 11
+              },
+              &quot;United States&quot;: {
+                &quot;Kansas City&quot;: 3,
+                &quot;Orlando&quot;: 7,
+                &quot;total&quot;: 10
+              },
+              &quot;Brazil&quot;: {
+                &quot;total&quot;: 2,
+                &quot;Indaiatuba&quot;: 2
+              }
+            }
+          }
+        }
+        </code></pre>
+
+        <h3 id="monthly-breakdown-of-views-from-projects-found-in-a-specified-institutional-group">Monthly breakdown of views from projects found in a specified institutional group</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/melbourne/breakdown/month/views/group/234&amp;sub_item=item_type&amp;sub_item_id=project&amp;start_date=2015-02-11&amp;end_date=2015-03-17
+        Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;breakdown&quot;: {
+            &quot;2015-02&quot;: {
+              &quot;France&quot;: {
+                &quot;Paris&quot;: 12,
+                &quot;Montpellier&quot;: 7,
+                &quot;total&quot;: 19
+              },
+              &quot;Germany&quot;: {
+                &quot;Munich&quot;: 13,
+                &quot;Frankfurt&quot;: 2,
+                &quot;total&quot;: 15
+              }
+            },
+            &quot;2015-03&quot;: {
+              &quot;Spain&quot;: {
+                &quot;Madrid&quot;: 3,
+                &quot;Mallorca&quot;: 5,
+                &quot;total&quot;: 8
+              }
+            }
+          }
+        }
+        </code></pre>
+
+        <h3 id="breakdown-of-institutional-statistics-with-missing-authorization">Breakdown of institutional statistics with missing authorization</h3>
+        <p><strong><em>Request</em></strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/melbourne/breakdown/month/views/group/234
+        </code></pre>
+
+        <p><strong><em>Response</em></strong></p>
+        <pre><code class="http">HTTP/1.1 403 Forbidden
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;data&quot;: null,
+          &quot;code&quot;: &quot;Forbidden&quot;,
+          &quot;message&quot;: &quot;Unauthorized request&quot;
+        }
+        </code></pre>
+      </div>
+      <div id="description_stats_timeline_endpoints">
+        <h1 id="endpoints-for-retrieving-a-timeline">Endpoints for retrieving a <strong>timeline</strong></h1>
+        <p>This type of endpoint enables the retrieval of a timeline of the number of <em>views</em>, <em>downloads</em>
+        or <em>shares</em> for a specific item.</p>
+        <ul>
+        <li><a href="#authorization">Authorization</a></li>
+        <li><a href="#endpoint-format">Endpoint format</a></li>
+        <li><a href="#request-parameters">Request parameters</a></li>
+        <li><a href="#examples">Examples</a></li>
+        </ul>
+      </div>
+      <div id="description_stats_timeline_auth">
+        <h2 id="authorization">Authorization</h2>
+        <p>Basic HTTP authentication is required for timeline endpoints within the scope of an institution.</p>
+      </div>
+      <div id="description_stats_timeline_format">
+        <h2 id="endpoint-format">Endpoint format</h2>
+        <p>For items outside an institution scope the endpoints have the format:</p>
+        <pre><code>/timeline/{granularity}/{counter}/{item}/{item_id}
+
+        </code></pre>
+
+        <p>and inside an institution scope they have the format:</p>
+        <pre><code>/{institution}/timeline/{granularity}{counter}/{item}/{item_id}
+        </code></pre>
+
+        <p>where <strong>granularity</strong> is one of <code>year</code>, <code>month</code>, <code>day</code> or <code>total</code>
+        , <strong>counter</strong> is one of <code>views</code>, <code>downloads</code> or <code>shares</code>
+        and <strong>item</strong> is one of <code>article</code>, <code>author</code>, <code>collection</code>, <code>group</code> or <code>project</code>.</p>
+        <p>The results on this endpoint can be filtered further by a <code>start_date</code> and <code>end_date</code> and
+        a specified <code>category</code> or <code>item_type</code>. By default, <code>start_date</code> and <code>end_date</code> are set
+        to reflect the events of the last month. The supplementary filters can be provided in the
+        request parameters.</p>
+      </div>
+      <div id="description_stats_timeline_params">
+        <h2 id="request-parameters">Request parameters</h2>
+        <p>The following table describes the optional parameters:</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Parameter</th>
+        <th>Comments</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><code>start_date</code></td>
+        <td>By default this is set to the 1st of the current month.</td>
+        </tr>
+        <tr>
+        <td><code>end_date</code></td>
+        <td>By default this is set to today.</td>
+        </tr>
+        <tr>
+        <td><code>sub_item</code></td>
+        <td>Can be one of <code>category</code> and <code>item_type</code>. Acts as a filter on the result.</td>
+        </tr>
+        <tr>
+        <td><code>sub_item_id</code></td>
+        <td>Required if <code>sub_item</code> is also specified.</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+      <div id="description_stats_timeline_examples">
+        <h2 id="examples">Examples</h2>
+        <h3 id="daily-timeline-of-downloads-for-an-unaffiliated-article">Daily timeline of downloads for an unaffiliated article</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/timeline/day/downloads/article/23
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;timeline&quot;: {
+            &quot;2015-07-01&quot;: 7,
+            &quot;2015-07-02&quot;: 3,
+            &quot;2015-07-09&quot;: 1,
+            &quot;2015-07-15&quot;: 3,
+            &quot;2015-07-16&quot;: 2,
+            &quot;2015-07-18&quot;: 1
+          }
+        }
+        </code></pre>
+
+        <h3 id="yearly-timeline-of-views-for-an-article-associated-to-an-institution">Yearly timeline of views for an article associated to an institution</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/monash/timeline/year/views/article/2000000?start_date=2013-01-01&amp;end_date=2015-08-01
+        Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;timeline&quot;: {
+            &quot;2013&quot;: 16,
+            &quot;2014&quot;: 23,
+            &quot;2015&quot;: 12
+          }
+        }
+        </code></pre>
+
+        <h3 id="monthly-timeline-of-shares-for-items-in-a-specified-institutional-group-matching-a-specified-category">Monthly timeline of shares for items in a specified institutional group, matching a specified category</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/monash/timeline/month/shares/group/10?sub_item=category&amp;sub_item_id=2&amp;start_date=2014-01-03&amp;end_date=2014-05-12
+        Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;timeline&quot;: {
+            &quot;2014-01&quot;: 3,
+            &quot;2014-02&quot;: 5,
+            &quot;2014-03&quot;: 18,
+            &quot;2014-04&quot;: 4,
+            &quot;2014-05&quot;: 2
+          }
+        }
+        </code></pre>
+
+        <h3 id="daily-timeline-of-views-for-datasets-found-in-a-specified-institutional-group">Daily timeline of views for datasets found in a specified institutional group</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/monash/timeline/day/views/group/10?sub_item=item_type&amp;sub_item_id=dataset&amp;start_date=2014-03-01&amp;end_date=2014-03-04
+        Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;timeline&quot;: {
+            &quot;2014-03-01&quot;: 10,
+            &quot;2014-03-02&quot;: 14,
+            &quot;2014-03-03&quot;: 15,
+            &quot;2014-03-04&quot;: 9
+          }
+        }
+        </code></pre>
+
+        <h3 id="total-timeline-of-views-for-a-collection-associated-to-an-institution">Total timeline of views for a collection associated to an institution</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/lboro/timeline/total/views/collection/15?start_date=2014-01-02&amp;end_date=2014-03-05
+        Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;timeline&quot;: {
+            &quot;total&quot;: 10
+          }
+        }
+        </code></pre>
+
+        <h3 id="timeline-with-missing-request-parameter">Timeline with missing request parameter</h3>
+        <p><strong>Request</strong>*</p>
+        <pre><code class="http">GET https://stats.figshare.com/lboro/timeline/month/views/group/1?sub_item=category&amp;start_date=2014-01-01&amp;end_date=2015-02-03
+        Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 400 Bad Request
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;data&quot;: {
+            &quot;missing_params&quot;: &quot;sub_item_id&quot;,
+            &quot;parameters&quot;: {
+              &quot;end_date&quot;: &quot;2015-02-03&quot;,
+              &quot;start_date&quot;: &quot;2014-01-01&quot;,
+              &quot;sub_item&quot;: &quot;category&quot;
+            },
+            &quot;path&quot;: &quot;/lboro/timeline/month/views/group/1&quot;
+          },
+          &quot;code&quot;: &quot;MissingParams&quot;,
+          &quot;message&quot;: &quot;Missing required params: sub_item_id&quot;
+        }
+        </code></pre>
+
+      </div>
+      <div id="description_stats_tops_endpoints">
+        <h1 id="endpoints-for-retrieving-tops">Endpoints for retrieving <strong>tops</strong></h1>
+        <p>This type of endpoints enables the retrieval or rankings of the most viewed, downloaded or shared
+        items, over a specific period of time.</p>
+        <ul>
+        <li><a href="#authorization">Authorization</a></li>
+        <li><a href="#endpoint-format">Endpoint format</a></li>
+        <li><a href="#request-parameters">Request parameters</a></li>
+        <li><a href="#examples">Examples</a></li>
+        </ul>
+      </div>
+      <div id="description_stats_tops_auth">
+        <h2 id="authorization">Authorization</h2>
+        <p>Basic HTTP authentication is required for timeline endpoints within the scope of an institution.</p>
+      </div>
+      <div id="description_stats_tops_format">
+        <h2 id="endpoint-format">Endpoint format</h2>
+        <p>For items outside an institution scope the endpoints have the format:</p>
+        <pre><code>/top/{counter}/{item}
+        </code></pre>
+
+        <p>and inside and institution scope they have the format:</p>
+        <pre><code>/{institution}/top/{counter}/{item}
+        </code></pre>
+
+        <p>where <strong>counter</strong> is one of <code>views</code>, <code>shares</code> or <code>downloads</code> and <strong>item</strong> is one of <code>article</code>, <code>author</code>, <code>collection</code>, <code>group</code> or <code>project</code>.</p>
+        <p>The results on this endpoint can be filtered further by a specified <code>sub_item</code>
+        which can be one of: <code>category</code>, <code>item_type</code> or <code>referral</code>. The results can also be filtered
+        by a <code>start_date</code> and <code>end_date</code> which by default are set to reflect the events of the last
+        month <strong>ONLY</strong> if a <code>sub_item</code> filter has been specified. Otherwise, the results will reflect
+        the total events.
+        The number of results in the ranking can be specified as the <code>count</code> parameter which
+        by default is set to<code>10</code>. The supplementary filters and options can be provided in the query
+        parameters of the request.</p>
+      </div>
+      <div id="description_stats_tops_params">
+        <h2 id="request-parameters">Request parameters</h2>
+        <p>The following table describes the optional parameters:</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Parameter</th>
+        <th>Comments</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><code>start_date</code></td>
+        <td>By default this is set to the 1st of the current month if a <code>sub_item</code> is specified</td>
+        </tr>
+        <tr>
+        <td><code>end_date</code></td>
+        <td>By default this is set to today if a <code>sub_item</code> is specified.</td>
+        </tr>
+        <tr>
+        <td><code>sub_item</code></td>
+        <td>Can be one of <code>category</code>, <code>item_type</code> or <code>referral</code>. Acts as a filter on the result.</td>
+        </tr>
+        <tr>
+        <td><code>count</code></td>
+        <td>By default this is set to 10.</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+      <div id="description_stats_tops_examples">
+        <h2 id="examples">Examples</h2>
+        <h3 id="top-10-most-viewed-unaffiliated-articles-in-the-last-month">Top 10 most viewed unaffiliated articles in the last month</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/top/views/article
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;top&quot;: {
+            &quot;200341&quot;: 2341,
+            &quot;200134&quot;: 2111,
+            &quot;201342&quot;: 2001,
+            &quot;23144&quot;: 1930,
+            &quot;1998&quot;: 1900,
+            &quot;20023&quot;: 1802,
+            &quot;200321&quot;: 1720,
+            &quot;101342&quot;: 1517,
+            &quot;213454&quot;: 1516,
+            &quot;19341&quot;: 1516,
+          }
+        }
+        </code></pre>
+
+        <h3 id="top-3-most-viewed-categories-in-a-specified-institutional-group-in-2014">Top 3 most viewed categories in a specified institutional group in 2014</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/monash/top/views/group?item_id=2&amp;sub_item=category&amp;count=3&amp;start_date=2014-01-01&amp;end_date=2014-12-31
+        Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;top&quot;: {
+            &quot;2&quot;: 12351,
+            &quot;7&quot;: 11001,
+            &quot;3&quot;: 10435
+          }
+        }
+        </code></pre>
+
+        <h3 id="top-2-referrals-for-a-specific-unaffiliated-project-in-the-last-month">Top 2 referrals for a specific unaffiliated project in the last month</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/top/views/project?item_id=13&amp;count=2&amp;sub_item=referral
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;www.google.com&quot;: 212,
+          &quot;www.figshare.com&quot;: 175
+        }
+        </code></pre>
+
+        <h3 id="top-3-item-types-for-shares-related-to-a-specific-unaffiliated-author">Top 3 item types for shares related to a specific unaffiliated author</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/top/shares/author?item_id=13456&amp;count=3&amp;sub_item=item_type
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;fileset&quot;: 135,
+          &quot;collection&quot;: 120,
+          &quot;figure&quot;: 98
+        }
+        </code></pre>
+      </div>
+      <div id="description_stats_totals_endpoints">
+        <h1 id="endpoints-for-retrieving-totals">Endpoints for retrieving <strong>totals</strong></h1>
+        <p>This type of endpoint provides the total number of <em>views</em>, <em>downloads</em> or <em>shares</em>.</p>
+        <ul>
+        <li><a href="#authorization">Authorization</a></li>
+        <li><a href="#endpoint-format">Endpoint format</a></li>
+        <li><a href="#examples">Examples</a></li>
+        </ul>
+      </div>
+      <div id="description_stats_totals_auth">
+        <h2 id="authorization">Authorization</h2>
+        <p>No authorization is required.</p>
+      </div>
+      <div id="description_stats_totals_format">
+        <h2 id="endpoint-format">Endpoint format</h2>
+        <p>For items outside an institution scope the endpoints have the format:</p>
+        <pre><code>/total/{counter}/{item}/{item_id}
+        </code></pre>
+
+        <p>and inside an institution scope they have the format:</p>
+        <pre><code>/{institution}/total/{counter}/{item}/{item_id}
+        </code></pre>
+
+        <p>where <strong>counter</strong> is one of <code>views</code>, <code>downloads</code> or <code>shares</code> and <strong>item</strong> is one of <code>article</code>, <code>author</code>, <code>collection</code>, <code>group</code> or <code>project</code>.</p>
+      </div>
+      <div id="description_stats_totals_examples">
+        <h2 id="examples">Examples</h2>
+        <h3 id="number-of-views-for-an-unaffiliated-article">Number of views for an unaffiliated article</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/total/views/article/23
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;totals&quot;: 231
+        }
+        </code></pre>
+
+        <h3 id="number-of-shares-for-items-authored-by-a-specific-user">Number of shares for items authored by a specific user</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/total/shares/author/15
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;totals&quot;: 134
+        }
+        </code></pre>
+
+        <h3 id="number-of-downloads-for-items-in-an-institutional-group">Number of downloads for items in an institutional group</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/monash/total/downloads/group/10
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;totals&quot;: 5
+        }
+        </code></pre>
+
+        <h3 id="number-of-views-for-a-collection-associated-to-an-institution">Number of views for a collection associated to an institution</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/lboro/total/views/collection/15
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 200 OK
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;totals&quot;: 3
+        }
+        </code></pre>
+
+        <h3 id="unsupported-counter-request-for-an-unaffiliated-article">Unsupported counter request for an unaffiliated article</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">GET https://stats.figshare.com/total/hugs/article/215
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+        <pre><code class="http">HTTP/1.1 400 Bad Request
+        Content-Type: application/json; charset=UTF-8
+
+        {
+          &quot;data&quot;: {
+            &quot;extra&quot;: &quot;Counter type not supported: hugs&quot;,
+            &quot;invalid_params&quot;: &quot;counter&quot;
+          },
+          &quot;code&quot;: &quot;InvalidParams&quot;,
+          &quot;message&quot;: &quot;Invalid or unsupported params: counter&quot;
+        }
+        </code></pre>
+      </div>
       <div id="description_search_intro">
         <h2 id="introductory-considerations">Introductory considerations</h2>
         <p>Searching the figshare website can be performed either by using the front-end interface or by using the API we provide. Either way, the search query will be analyzed and sent to a search engine built by figshare on top of the open source <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> server.
@@ -589,7 +1352,7 @@
         </table>
         <p><strong>200 OK</strong></p>
         <p>Body:
-          <code>js
+          <pre><code>js
           {
             token: "upload-token",
             name: "my-file.zip",
@@ -601,7 +1364,9 @@
               // upload parts -- see parts API for representation
               }
             ]
-        }</code></p>
+        }</code>
+      </pre>
+      </p>
       </div>
       <div id="description_upload_parts_api">
         <h3 id="parts-api">Parts API</h3>
@@ -661,14 +1426,16 @@
         </table>
         <p><strong>200 OK</strong></p>
         <p>Body:
-          <code>js
+          <pre><code>js
           {
             partNo: 3,
             startOffset: 1024,
             endOffset: 2047,
             status: "PENDING",
             locked: false
-          }</code></p>
+          }</code>
+        </pre>
+        </p>
         <ul>
         <li><code>PUT /upload/&lt;token&gt;/&lt;part_no&gt;</code> - receives part data</li>
         </ul>

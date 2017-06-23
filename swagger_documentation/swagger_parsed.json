@@ -9255,24 +9255,6 @@
     }, 
     "x-additional-descriptions": [
         {
-            "title": "Search", 
-            "position": "bottom", 
-            "subsections": [
-                {
-                    "title": "Introductory considerations", 
-                    "content": "description_search_intro"
-                }, 
-                {
-                    "title": "General search engine features", 
-                    "content": "description_search_general"
-                }, 
-                {
-                    "title": "Search types and expected results", 
-                    "content": "description_search_types"
-                }
-            ]
-        }, 
-        {
             "title": "Upload files", 
             "position": "bottom", 
             "subsections": [
@@ -9299,56 +9281,143 @@
             ]
         }, 
         {
+            "title": "Search", 
+            "position": "bottom", 
+            "subsections": [
+                {
+                    "title": "Introductory considerations", 
+                    "content": "description_search_intro"
+                }, 
+                {
+                    "title": "General search engine features", 
+                    "content": "description_search_general"
+                }, 
+                {
+                    "title": "Search types and expected results", 
+                    "content": "description_search_types"
+                }
+            ]
+        }, 
+        {
             "title": "Stats", 
             "position": "bottom", 
             "subsections": [
                 {
-                    "title": "figshare statistics service", 
-                    "content": "description_stats_home_service"
+                    "title": "Stats service", 
+                    "subsections": [
+                        {
+                            "title": "Intro", 
+                            "content": "description_stats_service_intro"
+                        }, 
+                        {
+                            "title": "Authentication", 
+                            "content": "description_stats_service_auth"
+                        }, 
+                        {
+                            "title": "Errors", 
+                            "content": "description_stats_service_errors"
+                        }, 
+                        {
+                            "title": "Endpoints", 
+                            "content": "description_stats_service_endpoints"
+                        }
+                    ]
                 }, 
                 {
-                    "title": "Authentication", 
-                    "content": "description_stats_home_authentication"
+                    "title": "Breakdown", 
+                    "subsections": [
+                        {
+                            "title": "Endpoints for retrieving a breakdown", 
+                            "content": "description_stats_breakdown_endpoints"
+                        }, 
+                        {
+                            "title": "Authorization", 
+                            "content": "description_stats_breakdown_auth"
+                        }, 
+                        {
+                            "title": "Endpoint format", 
+                            "content": "description_stats_breakdown_format"
+                        }, 
+                        {
+                            "title": "Request parameters", 
+                            "content": "description_stats_breakdown_params"
+                        }, 
+                        {
+                            "title": "Examples", 
+                            "content": "description_stats_breakdown_examples"
+                        }
+                    ]
                 }, 
                 {
-                    "title": "Base URL", 
-                    "content": "description_oai_baseurl"
+                    "title": "Timeline", 
+                    "subsections": [
+                        {
+                            "title": "Endpoints for retrieving a timeline", 
+                            "content": "description_stats_timeline_endpoints"
+                        }, 
+                        {
+                            "title": "Authorization", 
+                            "content": "description_stats_timeline_auth"
+                        }, 
+                        {
+                            "title": "Endpoint format", 
+                            "content": "description_stats_timeline_format"
+                        }, 
+                        {
+                            "title": "Request parameters", 
+                            "content": "description_stats_timeline_params"
+                        }, 
+                        {
+                            "title": "Examples", 
+                            "content": "description_stats_timeline_examples"
+                        }
+                    ]
                 }, 
                 {
-                    "title": "Item equals Article", 
-                    "content": "description_oai_itemarticle"
+                    "title": "Tops", 
+                    "subsections": [
+                        {
+                            "title": "Endpoints for retrieving tops", 
+                            "content": "description_stats_tops_endpoints"
+                        }, 
+                        {
+                            "title": "Authorization", 
+                            "content": "description_stats_tops_auth"
+                        }, 
+                        {
+                            "title": "Endpoint format", 
+                            "content": "description_stats_tops_format"
+                        }, 
+                        {
+                            "title": "Request parameters", 
+                            "content": "description_stats_tops_params"
+                        }, 
+                        {
+                            "title": "Examples", 
+                            "content": "description_stats_tops_examples"
+                        }
+                    ]
                 }, 
                 {
-                    "title": "Metadata formats", 
-                    "content": "description_oai_metadata"
-                }, 
-                {
-                    "title": "Datestamps", 
-                    "content": "description_oai_datestamp"
-                }, 
-                {
-                    "title": "Sets", 
-                    "content": "description_oai_sets"
-                }, 
-                {
-                    "title": "Update schedule", 
-                    "content": "description_oai_update_schedule"
-                }, 
-                {
-                    "title": "Pagination and Resumption Token Expiration", 
-                    "content": "description_oai_pagination"
-                }, 
-                {
-                    "title": "Rate limit", 
-                    "content": "description_oai_ratelimit"
-                }, 
-                {
-                    "title": "Future development", 
-                    "content": "description_oai_futuredev"
-                }, 
-                {
-                    "title": "Some examples", 
-                    "content": "description_oai_someexamples"
+                    "title": "Totals", 
+                    "subsections": [
+                        {
+                            "title": "Endpoints for retrieving totals", 
+                            "content": "description_stats_totals_endpoints"
+                        }, 
+                        {
+                            "title": "Authorization", 
+                            "content": "description_stats_totals_auth"
+                        }, 
+                        {
+                            "title": "Endpoint format", 
+                            "content": "description_stats_totals_format"
+                        }, 
+                        {
+                            "title": "Examples", 
+                            "content": "description_stats_totals_examples"
+                        }
+                    ]
                 }
             ]
         }, 
