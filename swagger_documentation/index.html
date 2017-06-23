@@ -88,6 +88,9 @@
 
                     addSampleCodesToOperations();
                     addAdditionalDescriptions();
+                    window.setTimeout(function(){
+                    $('.figsh_loader').hide();
+                  },300);
                 },
                 onFailure: function (data) {
                     log("Unable to Load SwaggerUI");
@@ -231,6 +234,7 @@
 </header>
 
 <section class="content">
+    <div class="figsh_loader"><div><img src="images/loader.gif" /></div></div>
     <div id="api2-explorer">
         <div class="swagger-section page-docs" style="zoom: 1">
             <div class="main-section">
