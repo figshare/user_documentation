@@ -204,7 +204,7 @@
                 ], 
                 "x-subcategory": "Public Article", 
                 "operationId": "articles_article_Get", 
-                "summary": "View", 
+                "summary": "View article details", 
                 "description": "View an article", 
                 "security": [], 
                 "parameters": [
@@ -244,7 +244,7 @@
                 ], 
                 "x-subcategory": "Public Article", 
                 "operationId": "articles_article_versions_Get", 
-                "summary": "Versions", 
+                "summary": "List article versions", 
                 "description": "List public article versions", 
                 "security": [], 
                 "parameters": [
@@ -287,7 +287,7 @@
                 ], 
                 "x-subcategory": "Public Article", 
                 "operationId": "articles_article_versions_version_Get", 
-                "summary": "Specified version", 
+                "summary": "Article details for version", 
                 "description": "Article with specified version", 
                 "security": [], 
                 "parameters": [
@@ -432,7 +432,7 @@
                 ], 
                 "x-subcategory": "Public Article files", 
                 "operationId": "articles_article_files_Get", 
-                "summary": "List", 
+                "summary": "List article files", 
                 "description": "Files list for article", 
                 "security": [], 
                 "parameters": [
@@ -475,7 +475,7 @@
                 ], 
                 "x-subcategory": "Public Article files", 
                 "operationId": "articles_article_files_file_Get", 
-                "summary": "Single File", 
+                "summary": "Article file details", 
                 "description": "File by id", 
                 "security": [], 
                 "parameters": [
@@ -510,40 +510,6 @@
                     }, 
                     "404": {
                         "description": "Not Found"
-                    }, 
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            }
-        }, 
-        "/account": {
-            "get": {
-                "tags": [
-                    "other"
-                ], 
-                "operationId": "account_Get", 
-                "summary": "Private Account information", 
-                "description": "Account information for token/personal token", 
-                "security": [
-                    {
-                        "OAuth2": [
-                            "all"
-                        ]
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "OK. Account representation", 
-                        "schema": {
-                            "$ref": "#/definitions/Account"
-                        }
-                    }, 
-                    "403": {
-                        "description": "Forbidden", 
-                        "schema": {
-                            "$ref": "#/definitions/ErrorMessage"
-                        }
                     }, 
                     "500": {
                         "description": "Internal Server Error"
@@ -690,7 +656,7 @@
                 ], 
                 "x-subcategory": "Private Article", 
                 "operationId": "account_articles_Post", 
-                "summary": "Create", 
+                "summary": "Create new Article", 
                 "description": "Create a new Article by sending article information", 
                 "security": [
                     {
@@ -750,7 +716,7 @@
                 ], 
                 "x-subcategory": "Private Article", 
                 "operationId": "account_articles_article_Get", 
-                "summary": "View", 
+                "summary": "Article details", 
                 "description": "View a private article", 
                 "security": [
                     {
@@ -800,7 +766,7 @@
                 ], 
                 "x-subcategory": "Private Article", 
                 "operationId": "account_articles_article_Put", 
-                "summary": "Update", 
+                "summary": "Update article", 
                 "description": "Updating an article by passing body parameters", 
                 "security": [
                     {
@@ -860,7 +826,7 @@
                 ], 
                 "x-subcategory": "Private Article", 
                 "operationId": "account_articles_article_Delete", 
-                "summary": "Delete", 
+                "summary": "Delete article", 
                 "description": "Delete an article", 
                 "security": [
                     {
@@ -917,7 +883,7 @@
                 ], 
                 "x-subcategory": "Private Article Embargo", 
                 "operationId": "account_articles_article_embargo_Get", 
-                "summary": "View", 
+                "summary": "Article Embargo Details", 
                 "description": "View a private article embargo details", 
                 "security": [
                     {
@@ -967,7 +933,7 @@
                 ], 
                 "x-subcategory": "Private Article Embargo", 
                 "operationId": "account_articles_article_embargo_Put", 
-                "summary": "Update", 
+                "summary": "Update Article Embargo", 
                 "description": "Note: setting an article under whole embargo does not imply that the article will be published when the embargo will expire. You must explicitly call the publish endpoint to enable this functionality.", 
                 "security": [
                     {
@@ -1030,7 +996,7 @@
                 ], 
                 "x-subcategory": "Private Article Embargo", 
                 "operationId": "account_articles_article_embargo_Delete", 
-                "summary": "Delete", 
+                "summary": "Delete Article Embargo", 
                 "description": "Will lift the embargo for the specified article", 
                 "security": [
                     {
@@ -1196,7 +1162,7 @@
                 ], 
                 "x-subcategory": "Private Article Authors", 
                 "operationId": "account_articles_article_authors_Get", 
-                "summary": "View", 
+                "summary": "List article authors", 
                 "description": "List article authors", 
                 "security": [
                     {
@@ -1249,7 +1215,7 @@
                 ], 
                 "x-subcategory": "Private Article Authors", 
                 "operationId": "account_articles_article_authors_Post", 
-                "summary": "Add", 
+                "summary": "Add article authors", 
                 "description": "Associate new authors with the article. This will add new authors to the list of already associated authors", 
                 "security": [
                     {
@@ -1312,7 +1278,7 @@
                 ], 
                 "x-subcategory": "Private Article Authors", 
                 "operationId": "account_articles_article_authors_Put", 
-                "summary": "Replace", 
+                "summary": "Replace article authors", 
                 "description": "Associate new authors with the article. This will remove all already associated authors and add these new ones", 
                 "security": [
                     {
@@ -1377,7 +1343,7 @@
                 ], 
                 "x-subcategory": "Private Article Authors", 
                 "operationId": "account_articles_article_authors_author_Delete", 
-                "summary": "Remove", 
+                "summary": "Delete article author", 
                 "security": [
                     {
                         "OAuth2": [
@@ -1442,7 +1408,7 @@
                 ], 
                 "x-subcategory": "Private Article Categories", 
                 "operationId": "account_articles_article_categories_Get", 
-                "summary": "View", 
+                "summary": "List article categories", 
                 "description": "List article categories", 
                 "security": [
                     {
@@ -1495,7 +1461,7 @@
                 ], 
                 "x-subcategory": "Private Article Categories", 
                 "operationId": "account_articles_article_categories_Post", 
-                "summary": "Add", 
+                "summary": "Add article categories", 
                 "description": "Associate new categories with the article. This will add new categories to the list of already associated categories", 
                 "security": [
                     {
@@ -1550,7 +1516,7 @@
                 ], 
                 "x-subcategory": "Private Article Categories", 
                 "operationId": "account_articles_article_categories_Put", 
-                "summary": "Replace", 
+                "summary": "Replace article categories", 
                 "description": "Associate new categories with the article. This will remove all already associated categories and add these new ones", 
                 "security": [
                     {
@@ -1607,7 +1573,7 @@
                 ], 
                 "x-subcategory": "Private Article Categories", 
                 "operationId": "account_articles_article_categories_category_Delete", 
-                "summary": "Remove", 
+                "summary": "Delete article category", 
                 "security": [
                     {
                         "OAuth2": [
@@ -1672,7 +1638,7 @@
                 ], 
                 "x-subcategory": "Private Article Confidentiality", 
                 "operationId": "account_articles_article_confidentiality_Get", 
-                "summary": "View", 
+                "summary": "Article confidentiality details", 
                 "description": "View confidentiality settings", 
                 "security": [
                     {
@@ -1722,7 +1688,7 @@
                 ], 
                 "x-subcategory": "Private Article Confidentiality", 
                 "operationId": "account_articles_article_confidentiality_Put", 
-                "summary": "Update", 
+                "summary": "Update article confidentiality", 
                 "description": "Update confidentiality settings", 
                 "security": [
                     {
@@ -1777,7 +1743,7 @@
                 ], 
                 "x-subcategory": "Private Article Confidentiality", 
                 "operationId": "account_articles_article_confidentiality_Delete", 
-                "summary": "Delete", 
+                "summary": "Delete article confidentiality", 
                 "description": "Delete confidentiality settings", 
                 "security": [
                     {
@@ -1837,7 +1803,7 @@
                 ], 
                 "x-subcategory": "Private Article Private Links", 
                 "operationId": "account_articles_article_privatelinks_Get", 
-                "summary": "View", 
+                "summary": "List private links", 
                 "description": "List private links", 
                 "security": [
                     {
@@ -1890,7 +1856,7 @@
                 ], 
                 "x-subcategory": "Private Article Private Links", 
                 "operationId": "account_articles_article_privatelinks_Post", 
-                "summary": "Create", 
+                "summary": "Create private link", 
                 "description": "Create new private link for this article", 
                 "security": [
                     {
@@ -1978,7 +1944,7 @@
                 ], 
                 "x-subcategory": "Private Article Private Links", 
                 "operationId": "account_articles_article_privatelinks_privatelink_Put", 
-                "summary": "Update", 
+                "summary": "Update private link", 
                 "description": "Update existing private link for this article", 
                 "security": [
                     {
@@ -2050,7 +2016,7 @@
                 ], 
                 "x-subcategory": "Private Article Private Links", 
                 "operationId": "account_articles_article_privatelinks_privatelink_Delete", 
-                "summary": "Disable", 
+                "summary": "Disable private link", 
                 "description": "Disable/delete private link for this article", 
                 "security": [
                     {
@@ -2116,7 +2082,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Files", 
-                "summary": "List", 
+                "summary": "List article files", 
                 "description": "List private files", 
                 "security": [
                     {
@@ -2600,7 +2566,7 @@
                 ], 
                 "x-subcategory": "Public Collection", 
                 "operationId": "collections_collection_Get", 
-                "summary": "View", 
+                "summary": "Collection details", 
                 "description": "View a collection", 
                 "security": [], 
                 "parameters": [
@@ -2623,6 +2589,97 @@
                     }, 
                     "400": {
                         "description": "Bad request"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/collections/{collection_id}/versions": {
+            "get": {
+                "tags": [
+                    "collections"
+                ], 
+                "x-subcategory": "Public Collection", 
+                "operationId": "collections_collection_versions_Get", 
+                "summary": "Collection Versions list", 
+                "description": "Returns a list of public collection Versions", 
+                "security": [], 
+                "parameters": [
+                    {
+                        "name": "collection_id", 
+                        "in": "path", 
+                        "description": "Collection Unique identifier", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of versions", 
+                        "schema": {
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/Version"
+                            }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/collections/{collection_id}/versions/{version_id}": {
+            "get": {
+                "tags": [
+                    "collections"
+                ], 
+                "x-subcategory": "Public Collection", 
+                "operationId": "collections_collection_versions_version_Get", 
+                "summary": "Collection Version details", 
+                "security": [], 
+                "parameters": [
+                    {
+                        "name": "collection_id", 
+                        "in": "path", 
+                        "description": "Collection Unique identifier", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }, 
+                    {
+                        "name": "version_id", 
+                        "in": "path", 
+                        "description": "Version Number", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. Collection for that version", 
+                        "schema": {
+                            "$ref": "#/definitions/CollectionComplete"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
                     }, 
                     "404": {
                         "description": "Not Found"
@@ -2712,97 +2769,6 @@
                     }, 
                     "422": {
                         "description": "Bad Request"
-                    }, 
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            }
-        }, 
-        "/collections/{collection_id}/versions": {
-            "get": {
-                "tags": [
-                    "collections"
-                ], 
-                "x-subcategory": "Public Collection", 
-                "operationId": "collections_collection_versions_Get", 
-                "summary": "Versions", 
-                "description": "Returns a list of public collection Versions", 
-                "security": [], 
-                "parameters": [
-                    {
-                        "name": "collection_id", 
-                        "in": "path", 
-                        "description": "Collection Unique identifier", 
-                        "required": true, 
-                        "type": "integer", 
-                        "format": "int64", 
-                        "minimum": 1
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "OK. An array of versions", 
-                        "schema": {
-                            "type": "array", 
-                            "items": {
-                                "$ref": "#/definitions/Version"
-                            }
-                        }
-                    }, 
-                    "400": {
-                        "description": "Bad Request"
-                    }, 
-                    "404": {
-                        "description": "Not Found"
-                    }, 
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            }
-        }, 
-        "/collections/{collection_id}/versions/{version_id}": {
-            "get": {
-                "tags": [
-                    "collections"
-                ], 
-                "x-subcategory": "Public Collection", 
-                "operationId": "collections_collection_versions_version_Get", 
-                "summary": "Version", 
-                "security": [], 
-                "parameters": [
-                    {
-                        "name": "collection_id", 
-                        "in": "path", 
-                        "description": "Collection Unique identifier", 
-                        "required": true, 
-                        "type": "integer", 
-                        "format": "int64", 
-                        "minimum": 1
-                    }, 
-                    {
-                        "name": "version_id", 
-                        "in": "path", 
-                        "description": "Version Number", 
-                        "required": true, 
-                        "type": "integer", 
-                        "format": "int64", 
-                        "minimum": 1
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "OK. Collection for that version", 
-                        "schema": {
-                            "$ref": "#/definitions/CollectionComplete"
-                        }
-                    }, 
-                    "400": {
-                        "description": "Bad Request"
-                    }, 
-                    "404": {
-                        "description": "Not Found"
                     }, 
                     "500": {
                         "description": "Internal Server Error"
@@ -2920,7 +2886,7 @@
                 ], 
                 "x-subcategory": "Private Collection", 
                 "operationId": "account_collections_Post", 
-                "summary": "Create", 
+                "summary": "Create collection", 
                 "description": "Create a new Collection by sending collection information", 
                 "security": [
                     {
@@ -2980,7 +2946,7 @@
                 ], 
                 "x-subcategory": "Private Collection", 
                 "operationId": "account_collections_collection_Get", 
-                "summary": "View", 
+                "summary": "Collection details", 
                 "description": "View an collection", 
                 "security": [
                     {
@@ -3024,7 +2990,7 @@
                 ], 
                 "x-subcategory": "Private Collection", 
                 "operationId": "account_collections_collection_Put", 
-                "summary": "Update", 
+                "summary": "Update collection", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3086,7 +3052,7 @@
                 ], 
                 "x-subcategory": "Private Collection", 
                 "operationId": "account_collections_collection_Delete", 
-                "summary": "Delete", 
+                "summary": "Delete collection", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3299,8 +3265,8 @@
                 ], 
                 "x-subcategory": "Private Collection Authors", 
                 "operationId": "account_collections_collection_authors_Get", 
-                "summary": "View", 
-                "description": "List article authors", 
+                "summary": "List collection authors", 
+                "description": "List collection authors", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3352,7 +3318,7 @@
                 ], 
                 "x-subcategory": "Private Collection Authors", 
                 "operationId": "account_collections_collection_authors_Post", 
-                "summary": "Add", 
+                "summary": "Add collection authors", 
                 "description": "Associate new authors with the collection. This will add new authors to the list of already associated authors", 
                 "security": [
                     {
@@ -3418,7 +3384,7 @@
                 ], 
                 "x-subcategory": "Private Collection Authors", 
                 "operationId": "account_collections_collection_authors_Put", 
-                "summary": "Replace", 
+                "summary": "Replace collection authors", 
                 "description": "Associate new authors with the collection. This will remove all already associated authors and add these new ones", 
                 "security": [
                     {
@@ -3483,7 +3449,7 @@
                 ], 
                 "x-subcategory": "Private Collection Authors", 
                 "operationId": "account_collections_collection_authors_author_Delete", 
-                "summary": "Remove", 
+                "summary": "Delete collection author", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3548,8 +3514,8 @@
                 ], 
                 "x-subcategory": "Private Collection Categories", 
                 "operationId": "account_collections_collection_categories_Get", 
-                "summary": "View", 
-                "description": "List article categories", 
+                "summary": "List collection categories", 
+                "description": "List collection categories", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3601,7 +3567,7 @@
                 ], 
                 "x-subcategory": "Private Collection Categories", 
                 "operationId": "account_collections_collection_categories_Post", 
-                "summary": "Add", 
+                "summary": "Add collection categories", 
                 "description": "Associate new categories with the collection. This will add new categories to the list of already associated categories", 
                 "security": [
                     {
@@ -3667,7 +3633,7 @@
                 ], 
                 "x-subcategory": "Private Collection Categories", 
                 "operationId": "account_collections_collection_categories_Put", 
-                "summary": "Replace", 
+                "summary": "Replace collection categories", 
                 "description": "Associate new categories with the collection. This will remove all already associated categories and add these new ones", 
                 "security": [
                     {
@@ -3732,7 +3698,7 @@
                 ], 
                 "x-subcategory": "Private Collection Categories", 
                 "operationId": "account_collections_collection_categories_category_Delete", 
-                "summary": "Remove", 
+                "summary": "Delete collection category", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3797,8 +3763,8 @@
                 ], 
                 "x-subcategory": "Private Collection Articles", 
                 "operationId": "account_collections_collection_articles_Get", 
-                "summary": "View", 
-                "description": "List article articles", 
+                "summary": "List collection articles", 
+                "description": "List collection articles", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3850,7 +3816,7 @@
                 ], 
                 "x-subcategory": "Private Collection Articles", 
                 "operationId": "account_collections_collection_articles_Post", 
-                "summary": "Add", 
+                "summary": "Add collection articles", 
                 "description": "Associate new articles with the collection. This will add new articles to the list of already associated articles", 
                 "security": [
                     {
@@ -3916,7 +3882,7 @@
                 ], 
                 "x-subcategory": "Private Collection Articles", 
                 "operationId": "account_collections_collection_articles_Put", 
-                "summary": "Update", 
+                "summary": "Replace collection articles", 
                 "description": "Associate new articles with the collection. This will remove all already associated articles and add these new ones", 
                 "security": [
                     {
@@ -3981,7 +3947,7 @@
                 ], 
                 "x-subcategory": "Private Collection Articles", 
                 "operationId": "account_collections_collection_articles_article_Delete", 
-                "summary": "Delete", 
+                "summary": "Delete collection article", 
                 "security": [
                     {
                         "OAuth2": [
@@ -4046,7 +4012,7 @@
                 ], 
                 "x-subcategory": "Private Collection Private Links", 
                 "operationId": "account_collections_collection_privatelinks_Get", 
-                "summary": "View", 
+                "summary": "List collection private links", 
                 "description": "List article private links", 
                 "security": [
                     {
@@ -4099,7 +4065,7 @@
                 ], 
                 "x-subcategory": "Private Collection Private Links", 
                 "operationId": "account_collections_collection_privatelinks_Post", 
-                "summary": "Create", 
+                "summary": "Create collection private link", 
                 "description": "Create new private link", 
                 "security": [
                     {
@@ -4184,7 +4150,7 @@
                 ], 
                 "x-subcategory": "Private Collection Private Links", 
                 "operationId": "account_collections_article_privatelinks_privatelink_Put", 
-                "summary": "Update", 
+                "summary": "Update collection private link", 
                 "description": "Update existing private link for this collection", 
                 "security": [
                     {
@@ -4256,7 +4222,7 @@
                 ], 
                 "x-subcategory": "Private Collection Private Links", 
                 "operationId": "account_collections_article_privatelinks_privatelink_Delete", 
-                "summary": "Disable", 
+                "summary": "Disable private link", 
                 "description": "Disable/delete private link for this collection", 
                 "security": [
                     {
@@ -4547,6 +4513,47 @@
                 }
             }
         }, 
+        "/account/projects/search": {
+            "post": {
+                "tags": [
+                    "projects"
+                ], 
+                "operationId": "account_projects_search_Post", 
+                "summary": "Private Projects search", 
+                "security": [], 
+                "parameters": [
+                    {
+                        "in": "body", 
+                        "name": "search", 
+                        "description": "Search Parameters", 
+                        "schema": {
+                            "$ref": "#/definitions/CommonSearch"
+                        }, 
+                        "required": false
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of projects", 
+                        "schema": {
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/ProjectPrivate"
+                            }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "422": {
+                        "description": "Bad Request"
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
         "/account/projects": {
             "get": {
                 "tags": [
@@ -4675,7 +4682,7 @@
                 ], 
                 "x-subcategory": "Private Project", 
                 "operationId": "account_projects_Post", 
-                "summary": "Create", 
+                "summary": "Create ", 
                 "security": [
                     {
                         "OAuth2": [
@@ -4716,47 +4723,6 @@
                 }
             }
         }, 
-        "/account/projects/search": {
-            "post": {
-                "tags": [
-                    "projects"
-                ], 
-                "operationId": "account_projects_search_Post", 
-                "summary": "Private Projects search", 
-                "security": [], 
-                "parameters": [
-                    {
-                        "in": "body", 
-                        "name": "search", 
-                        "description": "Search Parameters", 
-                        "schema": {
-                            "$ref": "#/definitions/CommonSearch"
-                        }, 
-                        "required": false
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "OK. An array of projects", 
-                        "schema": {
-                            "type": "array", 
-                            "items": {
-                                "$ref": "#/definitions/ProjectPrivate"
-                            }
-                        }
-                    }, 
-                    "400": {
-                        "description": "Bad Request"
-                    }, 
-                    "422": {
-                        "description": "Bad Request"
-                    }, 
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            }
-        }, 
         "/account/projects/{project_id}": {
             "parameters": [
                 {
@@ -4775,7 +4741,7 @@
                 ], 
                 "x-subcategory": "Private Project", 
                 "operationId": "account_projects_project_Get", 
-                "summary": "View", 
+                "summary": "Project details", 
                 "description": "View a private project", 
                 "security": [
                     {
@@ -4825,7 +4791,7 @@
                 ], 
                 "x-subcategory": "Private Project", 
                 "operationId": "account_projects_project_Put", 
-                "summary": "Update", 
+                "summary": "Update project", 
                 "description": "Updating an project by passing body parameters", 
                 "security": [
                     {
@@ -4885,7 +4851,7 @@
                 ], 
                 "x-subcategory": "Private Project", 
                 "operationId": "account_projects_project_Delete", 
-                "summary": "Delete", 
+                "summary": "Delete project", 
                 "description": "A project can be deleted only if: - it is not public - it does not have public articles.\n\nWhen an individual project is deleted, all the articles are moved to my data of each owner*.\n\nWhen a group project is deleted, all the articles and files are deleted as well. Only project owner, group admin and above can delete a project.\n", 
                 "security": [
                     {
@@ -5040,7 +5006,7 @@
                 ], 
                 "x-subcategory": "Private Project Notes", 
                 "operationId": "account_projects_project_notes_Get", 
-                "summary": "List", 
+                "summary": "List project notes", 
                 "description": "List project notes", 
                 "security": [
                     {
@@ -5134,7 +5100,7 @@
                 ], 
                 "x-subcategory": "Private Project Notes", 
                 "operationId": "account_projects_project_notes_Post", 
-                "summary": "Create", 
+                "summary": "Create project note", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5221,7 +5187,7 @@
                 ], 
                 "x-subcategory": "Private Project Notes", 
                 "operationId": "account_projects_project_notes_note_Get", 
-                "summary": "Single Note", 
+                "summary": "Project note details", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5279,7 +5245,7 @@
                 ], 
                 "x-subcategory": "Private Project Notes", 
                 "operationId": "account_projects_project_notes_note_Put", 
-                "summary": "Update", 
+                "summary": "Update project note", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5350,7 +5316,7 @@
                 ], 
                 "x-subcategory": "Private Project Notes", 
                 "operationId": "account_projects_project_notes_note_Delete", 
-                "summary": "Delete", 
+                "summary": "Delete project note", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5415,7 +5381,7 @@
                 ], 
                 "x-subcategory": "Private Project Collaborators", 
                 "operationId": "account_projects_project_collaborators_Get", 
-                "summary": "View", 
+                "summary": "List project collaborators", 
                 "description": "List Project collaborators and invited users", 
                 "security": [
                     {
@@ -5468,7 +5434,7 @@
                 ], 
                 "x-subcategory": "Private Project Collaborators", 
                 "operationId": "account_projects_project_collaborators_Post", 
-                "summary": "Invite", 
+                "summary": "Invite project collaborators", 
                 "description": "Invite users to collaborate on project or view the project", 
                 "security": [
                     {
@@ -5529,7 +5495,7 @@
                 ], 
                 "x-subcategory": "Private Project Collaborators", 
                 "operationId": "account_projects_project_collaborators_collaborator_Delete", 
-                "summary": "Remove", 
+                "summary": "Remove project collaborator", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5597,7 +5563,7 @@
                 ], 
                 "x-subcategory": "Private Project Articles", 
                 "operationId": "account_projects_project_articles_Get", 
-                "summary": "List", 
+                "summary": "List project articles", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5649,7 +5615,7 @@
                 ], 
                 "x-subcategory": "Private Project Articles", 
                 "operationId": "account_projects_project_articles_Post", 
-                "summary": "Create", 
+                "summary": "Create project article", 
                 "description": "Create a new Article and associate it with this project", 
                 "security": [
                     {
@@ -5737,7 +5703,7 @@
                 ], 
                 "x-subcategory": "Private Project Articles", 
                 "operationId": "account_projects_project_articles_article_Get", 
-                "summary": "Single Article", 
+                "summary": "Project article details", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5795,7 +5761,7 @@
                 ], 
                 "x-subcategory": "Private Project Articles", 
                 "operationId": "account_projects_project_articles_article_Delete", 
-                "summary": "Delete", 
+                "summary": "Delete project article", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5852,7 +5818,7 @@
                 ], 
                 "x-subcategory": "Private Project Articles", 
                 "operationId": "account_projects_project_articles_article_files_Get", 
-                "summary": "Article Files", 
+                "summary": "Project article list files", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5915,7 +5881,7 @@
                 ], 
                 "x-subcategory": "Private Project Articles", 
                 "operationId": "account_projects_project_articles_article_files_file_Get", 
-                "summary": "Article File", 
+                "summary": "Project article file details", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5970,56 +5936,6 @@
                     }, 
                     "404": {
                         "description": "Not Found"
-                    }, 
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            }
-        }, 
-        "/categories": {
-            "get": {
-                "tags": [
-                    "other"
-                ], 
-                "operationId": "categories_Get", 
-                "summary": "Public Categories", 
-                "description": "Returns a list of public categories", 
-                "security": [], 
-                "responses": {
-                    "200": {
-                        "description": "OK. An array of categories", 
-                        "schema": {
-                            "type": "array", 
-                            "items": {
-                                "$ref": "#/definitions/Category"
-                            }
-                        }
-                    }, 
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            }
-        }, 
-        "/licenses": {
-            "get": {
-                "tags": [
-                    "other"
-                ], 
-                "operationId": "licenses_Get", 
-                "summary": "Public Licenses", 
-                "description": "Returns a list of public licenses", 
-                "security": [], 
-                "responses": {
-                    "200": {
-                        "description": "OK. An array of licenses", 
-                        "schema": {
-                            "type": "array", 
-                            "items": {
-                                "$ref": "#/definitions/License"
-                            }
-                        }
                     }, 
                     "500": {
                         "description": "Internal Server Error"
@@ -6111,6 +6027,90 @@
                         "description": "Forbidden", 
                         "schema": {
                             "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/account": {
+            "get": {
+                "tags": [
+                    "other"
+                ], 
+                "operationId": "account_Get", 
+                "summary": "Private Account information", 
+                "description": "Account information for token/personal token", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. Account representation", 
+                        "schema": {
+                            "$ref": "#/definitions/Account"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/categories": {
+            "get": {
+                "tags": [
+                    "other"
+                ], 
+                "operationId": "categories_Get", 
+                "summary": "Public Categories", 
+                "description": "Returns a list of public categories", 
+                "security": [], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of categories", 
+                        "schema": {
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/Category"
+                            }
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/licenses": {
+            "get": {
+                "tags": [
+                    "other"
+                ], 
+                "operationId": "licenses_Get", 
+                "summary": "Public Licenses", 
+                "description": "Returns a list of public licenses", 
+                "security": [], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of licenses", 
+                        "schema": {
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/License"
+                            }
                         }
                     }, 
                     "500": {
@@ -7406,7 +7406,8 @@
                         "presentation", 
                         "thesis", 
                         "code", 
-                        "metadata"
+                        "metadata", 
+                        "preprint"
                     ], 
                     "example": "media"
                 }, 
@@ -7544,7 +7545,8 @@
                         "presentation", 
                         "thesis", 
                         "code", 
-                        "metadata"
+                        "metadata", 
+                        "preprint"
                     ], 
                     "example": "media"
                 }, 
@@ -9271,28 +9273,6 @@
             ]
         }, 
         {
-            "title": "OAuth", 
-            "position": "bottom", 
-            "subsections": [
-                {
-                    "title": "Oauth", 
-                    "content": "description_oauth_intro"
-                }, 
-                {
-                    "title": "Quick guide", 
-                    "content": "description_oauth_quick"
-                }, 
-                {
-                    "title": "Scope", 
-                    "content": "description_oauth_scope"
-                }, 
-                {
-                    "title": "Grant Types", 
-                    "content": "description_oauth_grant"
-                }
-            ]
-        }, 
-        {
             "title": "Upload files", 
             "position": "bottom", 
             "subsections": [
@@ -9315,6 +9295,60 @@
                 {
                     "title": "Output of Script", 
                     "content": "description_upload_output"
+                }
+            ]
+        }, 
+        {
+            "title": "Stats", 
+            "position": "bottom", 
+            "subsections": [
+                {
+                    "title": "figshare statistics service", 
+                    "content": "description_stats_home_service"
+                }, 
+                {
+                    "title": "Authentication", 
+                    "content": "description_stats_home_authentication"
+                }, 
+                {
+                    "title": "Base URL", 
+                    "content": "description_oai_baseurl"
+                }, 
+                {
+                    "title": "Item equals Article", 
+                    "content": "description_oai_itemarticle"
+                }, 
+                {
+                    "title": "Metadata formats", 
+                    "content": "description_oai_metadata"
+                }, 
+                {
+                    "title": "Datestamps", 
+                    "content": "description_oai_datestamp"
+                }, 
+                {
+                    "title": "Sets", 
+                    "content": "description_oai_sets"
+                }, 
+                {
+                    "title": "Update schedule", 
+                    "content": "description_oai_update_schedule"
+                }, 
+                {
+                    "title": "Pagination and Resumption Token Expiration", 
+                    "content": "description_oai_pagination"
+                }, 
+                {
+                    "title": "Rate limit", 
+                    "content": "description_oai_ratelimit"
+                }, 
+                {
+                    "title": "Future development", 
+                    "content": "description_oai_futuredev"
+                }, 
+                {
+                    "title": "Some examples", 
+                    "content": "description_oai_someexamples"
                 }
             ]
         }, 
@@ -9365,83 +9399,37 @@
                 {
                     "title": "Some examples", 
                     "content": "description_oai_someexamples"
-                }, 
-                {
-                    "title": "Changes", 
-                    "content": "description_oai_changes"
                 }
             ]
         }, 
         {
-            "title": "Stats", 
-            "position": "bottom", 
-            "subsections": [
-                {
-                    "title": "Home", 
-                    "subsections": [
-                        {
-                            "title": "figshare statistics service", 
-                            "content": "description_stats_home_service"
-                        }, 
-                        {
-                            "title": "Authentication", 
-                            "content": "description_stats_home_authentication"
-                        }
-                    ]
-                }, 
-                {
-                    "title": "Base URL", 
-                    "content": "description_oai_baseurl"
-                }, 
-                {
-                    "title": "Item equals Article", 
-                    "content": "description_oai_itemarticle"
-                }, 
-                {
-                    "title": "Metadata formats", 
-                    "content": "description_oai_metadata"
-                }, 
-                {
-                    "title": "Datestamps", 
-                    "content": "description_oai_datestamp"
-                }, 
-                {
-                    "title": "Sets", 
-                    "content": "description_oai_sets"
-                }, 
-                {
-                    "title": "Update schedule", 
-                    "content": "description_oai_update_schedule"
-                }, 
-                {
-                    "title": "Pagination and Resumption Token Expiration", 
-                    "content": "description_oai_pagination"
-                }, 
-                {
-                    "title": "Rate limit", 
-                    "content": "description_oai_ratelimit"
-                }, 
-                {
-                    "title": "Future development", 
-                    "content": "description_oai_futuredev"
-                }, 
-                {
-                    "title": "Some examples", 
-                    "content": "description_oai_someexamples"
-                }, 
-                {
-                    "title": "Changes", 
-                    "content": "description_oai_changes"
-                }
-            ]
-        }, 
-        {
-            "title": "Introduction", 
+            "title": "figshare Documentation", 
             "position": "top", 
             "subsections": [
                 {
-                    "title": "figshare Documentation", 
+                    "title": "Introduction", 
                     "content": "description_intro"
+                }, 
+                {
+                    "title": "OAuth", 
+                    "subsections": [
+                        {
+                            "title": "Intro", 
+                            "content": "description_oauth_intro"
+                        }, 
+                        {
+                            "title": "Quick guide", 
+                            "content": "description_oauth_quick"
+                        }, 
+                        {
+                            "title": "Scope", 
+                            "content": "description_oauth_scope"
+                        }, 
+                        {
+                            "title": "Grant Types", 
+                            "content": "description_oauth_grant"
+                        }
+                    ]
                 }
             ]
         }

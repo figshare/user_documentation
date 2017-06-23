@@ -2425,6 +2425,8 @@ body {
 
 #resources_nav {
   list-style-type: none;
+    margin-bottom: 100px;
+    float: left;
 }
 
 #resources_nav ul {
@@ -2452,7 +2454,7 @@ body {
   display: inline-block;
   float: left;
   margin: 0;
-  padding: 5px 10px;
+  padding: 10px 10px;
   text-transform: lowercase;
   transition: all 0.25s linear;
   cursor: pointer;
@@ -2483,11 +2485,11 @@ body {
   padding-left: 20%;
 }
 
-#resources_nav ul span.active {
+#resources_nav ul li.active>span {
   background: #e8eaeb;
 }
 
-#resources_nav ul li ul.active {
+#resources_nav ul li.active>ul {
   display: block;
 }
 
@@ -2497,10 +2499,6 @@ body {
   display: none;
 }
 
-
-#resources_nav ul li ul li ul.active {
-  display: block;
-}
 
 #search_doc {
     width: 90%;
@@ -2539,4 +2537,19 @@ body {
 
 .search_doc_autocomplete div:hover {
   background: #F8F8F8;
+}
+
+#resources_nav ul li span span.icon_figmenu_collapse {
+  width: 20px;
+  height: 10px;
+  background: url(../images/arrow-up-down-icon.png) 0 100% no-repeat;
+  background-size: 100% auto;
+  float: right;
+  margin: 3px 0 0 0;
+  padding: 0;
+  transition: none;
+}
+
+#resources_nav ul li.active>span span.icon_figmenu_collapse {
+  background-position: 0 0;
 }

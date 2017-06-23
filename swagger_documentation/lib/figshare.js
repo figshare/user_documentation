@@ -113,18 +113,25 @@ function replaceMenus(data) {
   menu_html = '';
   for (var i=0; i<menu.length; i++)
     {
-    menu_html += '<li><span>'+menu[i].name+'<span data-close="" class="icon_budicon_collapse">&gt;</span></span><ul class="submenu">';
+    menu_html += '<li><span>'+menu[i].name+'<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="submenu">';
     var subtags = [];
     for (var j=0; j<menu[i].submenu.length; j++)
       if (typeof(menu[i].submenu[j].subtag)=='undefined')
         menu_html += '<li><span endpoint_id="'+menu[i].name+'_'+menu[i].submenu[j].id+'">'+menu[i].submenu[j].name+'</span></li>';
         else {
           if (subtags.indexOf(menu[i].submenu[j].subtag) == -1) {
-            menu_html += '<li><span>'+menu[i].submenu[j].subtag+'<span data-close="" class="icon_budicon_collapse">&gt;</span></span><ul class="subsubmenu">';
+
+            $('#'+menu[i].name+'_'+menu[i].submenu[j].id).before('<li class="operation" id="description_'+ToSmallCase(menu[i].submenu[j].subtag)+'"><div class="content"><h2 class="operation-title">'+menu[i].submenu[j].subtag+'</h2></div></li>');
+            $('#description_'+ToSmallCase(menu[i].submenu[j].subtag)).css('min-height', 'auto');
+
+            menu_html += '<li><span endpoint_id="description_'+ToSmallCase(menu[i].submenu[j].subtag)+'">'+menu[i].submenu[j].subtag+'<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="subsubmenu">';
             for (var k=j; k<menu[i].submenu.length; k++)
               if (typeof(menu[i].submenu[k].subtag)!='undefined')
                 if (menu[i].submenu[k].subtag == menu[i].submenu[j].subtag)
+                  {
                   menu_html += '<li><span endpoint_id="'+menu[i].name+'_'+menu[i].submenu[k].id+'">'+menu[i].submenu[k].name+'</span></li>';
+                  $('#'+menu[i].name+'_'+menu[i].submenu[k].id).find('h2.operation-title').removeClass('operation-title');
+                  }
             menu_html += '</ul></li>';
             subtags.push(menu[i].submenu[j].subtag);
           }
@@ -152,12 +159,12 @@ function replaceMenus(data) {
 function processAdditionalDescriptions(desc) {
   additional_menu = {"bottom":"","top":""};
   for (var i=0; i<desc.length; i++) {
-    menu = '<li><span>'+desc[i].title+'<span data-close="" class="icon_budicon_collapse">&gt;</span></span><ul class="submenu">';
+    menu = '<li><span endpoint_id="description_'+ToSmallCase(desc[i].title)+'">'+desc[i].title+'<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="submenu">';
     for (var j=0; j<desc[i].subsections.length; j++)
       if (typeof(desc[i].subsections[j].subsections) == 'undefined')
         menu += '<li><span endpoint_id="description_'+ToSmallCase(desc[i].subsections[j].title)+'">'+desc[i].subsections[j].title+'</span></li>';
         else {
-          menu += '<li><span>'+desc[i].subsections[j].title+'<span data-close="" class="icon_budicon_collapse">&gt;</span></span><ul class="subsubmenu">';
+          menu += '<li><span endpoint_id="description_'+ToSmallCase(desc[i].subsections[j].title)+'">'+desc[i].subsections[j].title+'<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="subsubmenu">';
           for (var k=0; k<desc[i].subsections[j].subsections.length; k++)
               menu += '<li><span endpoint_id="description_'+ToSmallCase(desc[i].subsections[j].subsections[k].title)+'">'+desc[i].subsections[j].subsections[k].title+'</span></li>';
           menu += '</ul></li>';
@@ -175,12 +182,14 @@ function processAdditionalDescriptions(desc) {
       addfunction = 'prepend';
     //$('#resources_nav')[addfunction]('<div data-resource="'+resource_id+'" label="'+title+'"></div>');
     $('#resources')[addfunction]('<li id="'+resource_id+'" class="resource"><ul class="endpoints"><li class="endpoint"><ul class="operations"></ul></li></ul></div>');
+    $('#'+resource_id+' .operations').append('<li class="operation" id="description_'+ToSmallCase(title)+'"><div class="content"><h2 class="operation-title">'+title+'</h2></div></li>');
 
     for (var j=0; j<desc[i]['subsections'].length; j++)
         {
         title  = desc[i]['subsections'][j]['title'];
         if (typeof(desc[i]['subsections'][j].subsections)!='undefined')
           {
+          $('#'+resource_id+' .operations').append('<li class="operation" id="description_'+ToSmallCase(title)+'"><div class="content"><h2 class="operation-title">'+title+'</h2></div></li>');
           for (var k=0; k<desc[i].subsections[j].subsections.length; k++)
             {
 
@@ -188,7 +197,7 @@ function processAdditionalDescriptions(desc) {
               title  = desc[i]['subsections'][j].subsections[k]['title'];
               $('#'+resource_id+' .operations').append('<li class="operation" id="description_'+ToSmallCase(title)+'"><div class="content">'+content+'</div></li>');
             }
-          $('div[data-resource="'+resource_id+'"]').append('<div data-endpoint="description_'+ToSmallCase(title)+'" class="item">'+title+'</div>');
+
           }
           else
           {
@@ -208,25 +217,32 @@ function menuSpanClicked() {
       window.scrollTo(0,$('#'+$(this).attr('endpoint_id')).offset().top);
   }
   else {
-    ActivateMenuEndpoint(this);
+    //if ($(span).get(0) != $('#resources_nav li.active>span').get(0))
   }
+  if ($(this).parent().hasClass('active'))
+    DeActivateMenuEndpoint(this);
+    else
+    ActivateMenuEndpoint(this);
+
 }
 
+function DeActivateMenuEndpoint(span) {
+  var p = $(span).parent();
+  $(p).removeClass('active');
+  $(p).find('li.active').removeClass('active');
+}
 
 function ActivateMenuEndpoint(span) {
-  if ($(span).get(0) != $('#resources_nav span.active').get(0))
+  $('#resources_nav ul').removeClass('active');
+  $('#resources_nav li').removeClass('active');
+  var p = $(span).parent();
+  $(p).addClass('active');
+  if ($(p).parent().hasClass('submenu'))
+    $(p).parent().parent().addClass('active');
+  if ($(p).parent().hasClass('subsubmenu'))
     {
-    $('#resources_nav ul').removeClass('active');
-    $('#resources_nav span').removeClass('active');
-    var p = $(span).parent();
-    $(p).children('ul').addClass('active');
-    if ($(p).parent().hasClass('submenu'))
-      $(p).parent().addClass('active');
-    if ($(p).parent().hasClass('subsubmenu')) {
-      $(p).parent().addClass('active');
-      $(p).parent().parent().parent().addClass('active');
-    }
-    $(span).addClass('active');
+    $(p).parent().parent().addClass('active');
+    $(p).parent().parent().parent().parent().addClass('active');
     }
 }
 
