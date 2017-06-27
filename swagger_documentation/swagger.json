@@ -128,7 +128,7 @@
                     {
                         "name": "item_type",
                         "in": "query",
-                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code",
+                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint",
                         "type": "integer",
                         "format": "int64",
                         "required": false
@@ -5392,6 +5392,108 @@
                 }
             }
         },
+        "/account/authors/search": {
+            "post": {
+                "tags": [
+                    "authors"
+                ],
+                "operationId": "account_authors_search_Post",
+                "summary": "Search Authors",
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "search",
+                        "description": "Search Parameters",
+                        "schema": {
+                            "$ref": "#/definitions/PrivateAuthorsSearch"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of authors",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Author"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/account/authors/{author_id}": {
+            "parameters": [
+                {
+                    "name": "author_id",
+                    "in": "path",
+                    "description": "Author unique identifier",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1
+                }
+            ],
+            "get": {
+                "tags": [
+                    "authors"
+                ],
+                "x-subcategory": "Private Article",
+                "operationId": "account_authors_author_Get",
+                "summary": "Author details",
+                "description": "View author details",
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK. Article representation",
+                        "schema": {
+                            "$ref": "#/definitions/AuthorComplete"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
         "/account": {
             "get": {
                 "tags": [
@@ -5856,9 +5958,6 @@
         "ProjectUpdate": {
             "x-tag": "projects",
             "type": "object",
-            "required": [
-                "title"
-            ],
             "properties": {
                 "title": {
                     "type": "string",
@@ -6169,7 +6268,7 @@
                     "example": "10.6084/m9.figshare.1407024"
                 },
                 "item_type": {
-                    "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code",
+                    "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint",
                     "type": "integer",
                     "format": "int64",
                     "example": 1
@@ -6208,6 +6307,93 @@
                 }
             }
         },
+        "PrivateAuthorsSearch": {
+            "x-tag": "authors",
+            "type": "object",
+            "properties": {
+                "search_for": {
+                    "type": "string",
+                    "description": "Search term",
+                    "example": "figshare"
+                },
+                "page": {
+                    "description": "Page number. Used for pagination with page_size",
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1,
+                    "maximum": 5000,
+                    "example": 1
+                },
+                "page_size": {
+                    "description": "The number of results included on a page. Used for pagination with page",
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "default": 10,
+                    "example": 10
+                },
+                "limit": {
+                    "description": "Number of results included on a page. Used for pagination with query",
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "example": 10
+                },
+                "offset": {
+                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit",
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1,
+                    "maximum": 5000,
+                    "example": 1
+                },
+                "order": {
+                    "description": "The field by which to order. Default varies by endpoint/resource.",
+                    "type": "string",
+                    "enum": [
+                        "published_date",
+                        "modified_date"
+                    ],
+                    "default": "published_date",
+                    "example": "published_date"
+                },
+                "order_direction": {
+                    "type": "string",
+                    "description": "Direction of ordering",
+                    "enum": [
+                        "asc",
+                        "desc"
+                    ],
+                    "default": "desc",
+                    "example": "desc"
+                },
+                "institution_id": {
+                    "type": "integer",
+                    "description": "Return only authors associated to this institution",
+                    "format": "int64",
+                    "example": 1
+                },
+                "orcid": {
+                    "type": "string",
+                    "description": "Orcid of author"
+                },
+                "group_id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Return only authors in this group or subgroups of the group"
+                },
+                "is_active": {
+                    "type": "boolean",
+                    "description": "Return only active authors if True"
+                },
+                "is_public": {
+                    "type": "boolean",
+                    "description": "Return only authors that have published items if True"
+                }
+            }
+        },
         "PrivateCollectionSearch": {
             "x-tag": "collections",
             "type": "object",
@@ -6231,7 +6417,7 @@
                 "title": {
                     "type": "string",
                     "description": "Title of article",
-                    "minLength": 5,
+                    "minLength": 3,
                     "example": "Test article title"
                 },
                 "description": {
@@ -6370,7 +6556,7 @@
                 "title": {
                     "type": "string",
                     "description": "Title of article",
-                    "minLength": 5,
+                    "minLength": 3,
                     "example": "Test article title"
                 },
                 "description": {
@@ -6995,7 +7181,7 @@
             }
         },
         "Author": {
-            "x-tag": "articles",
+            "x-tag": "authors",
             "type": "object",
             "properties": {
                 "id": {
@@ -7018,6 +7204,44 @@
                 "orcid_id": {
                     "type": "string",
                     "example": "1234-5678-91234-1234"
+                }
+            }
+        },
+        "AuthorComplete": {
+            "x-tag": "authors",
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Author"
+                }
+            ],
+            "properties": {
+                "institution_id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Institution id"
+                },
+                "group_id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Group id"
+                },
+                "first_name": {
+                    "type": "string",
+                    "description": "First Name"
+                },
+                "last_name": {
+                    "type": "string",
+                    "description": "Last Name"
+                },
+                "is_public": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "if 1 then the author has published items"
+                },
+                "job_title": {
+                    "type": "string",
+                    "description": "Job title"
                 }
             }
         },
@@ -7483,7 +7707,7 @@
                 "title": {
                     "type": "string",
                     "description": "Title of article",
-                    "minLength": 5,
+                    "minLength": 3,
                     "example": "Test article title"
                 },
                 "description": {
