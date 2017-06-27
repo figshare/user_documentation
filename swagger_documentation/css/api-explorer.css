@@ -115,6 +115,14 @@
     font-weight: 700;
     margin: 20px 0;
     text-transform: lowercase;
+
+
+}
+
+
+.swagger-section .static_description h2.operation-title {
+  border-bottom: 1px solid #464646;
+  padding-bottom: 5px;
 }
 
 
@@ -1884,7 +1892,8 @@ body {
 .swagger-section .swagger-ui-wrap caption, .swagger-section .swagger-ui-wrap td, .swagger-section .swagger-ui-wrap th {
     text-align: left;
     font-weight: 400;
-    vertical-align: middle
+    vertical-align: middle;
+    padding: 5px;
 }
 
 .swagger-section .swagger-ui-wrap form.formtastic fieldset.inputs ol li.text textarea {
@@ -2159,7 +2168,7 @@ body {
 }
 
 .swagger-section .swagger-ui-wrap h3 {
-    color: #000;
+    color: #464646;
     padding: 10px 0
 }
 

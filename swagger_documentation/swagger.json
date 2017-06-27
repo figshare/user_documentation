@@ -5935,12 +5935,15 @@
                 "title": {
                     "type": "string",
                     "description": "The title for this project - mandatory. 3 - 500 characters.",
-                    "example": "project title"
+                    "example": "project title",
+                    "maxLength": 500,
+                    "minLength": 3
                 },
                 "description": {
                     "type": "string",
                     "description": "Project's description",
-                    "example": "project description"
+                    "example": "project description",
+                    "maxLength": 10000
                 },
                 "funding": {
                     "type": "string",
@@ -5962,12 +5965,15 @@
                 "title": {
                     "type": "string",
                     "description": "The title for this project - mandatory. 3 - 500 characters.",
-                    "example": "project title"
+                    "example": "project title",
+                    "maxLength": 500,
+                    "minLength": 3
                 },
                 "description": {
                     "type": "string",
                     "description": "Project's description",
-                    "example": "project description"
+                    "example": "project description",
+                    "maxLength": 10000
                 },
                 "funding": {
                     "type": "string",
@@ -6417,6 +6423,7 @@
                 "title": {
                     "type": "string",
                     "description": "Title of article",
+                    "maxLength": 500,
                     "minLength": 3,
                     "example": "Test article title"
                 },
@@ -6424,7 +6431,8 @@
                     "type": "string",
                     "description": "The article description. In a publisher case, usually this is the remote article description",
                     "default": "",
-                    "example": "Test description of article"
+                    "example": "Test description of article",
+                    "maxLength": 10000
                 },
                 "tags": {
                     "type": "array",
@@ -6556,6 +6564,7 @@
                 "title": {
                     "type": "string",
                     "description": "Title of article",
+                    "maxLength": 500,
                     "minLength": 3,
                     "example": "Test article title"
                 },
@@ -6563,7 +6572,8 @@
                     "type": "string",
                     "description": "The article description. In a publisher case, usually this is the remote article description",
                     "default": "",
-                    "example": "Test description of article"
+                    "example": "Test description of article",
+                    "maxLength": 10000
                 },
                 "tags": {
                     "type": "array",
@@ -7707,6 +7717,7 @@
                 "title": {
                     "type": "string",
                     "description": "Title of article",
+                    "maxLength": 500,
                     "minLength": 3,
                     "example": "Test article title"
                 },
@@ -7714,7 +7725,8 @@
                     "type": "string",
                     "description": "The article description. In a publisher case, usually this is the remote article description",
                     "default": "",
-                    "example": "Test description of article"
+                    "example": "Test description of article",
+                    "maxLength": 10000
                 },
                 "articles": {
                     "type": "array",

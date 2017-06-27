@@ -22180,6 +22180,12 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
       pre = $('<pre class="json" />').append(code);
     }
 
+    if (content)
+      {
+      content_parsed = JSON.parse(content);
+      if (content_parsed.length>1)
+        $($(this.el).find('.response h5').get(1)).text('Response Body ('+content_parsed.length+')');
+      }
     var response_body = pre;
     $('.request_url', $(this.el)).html('<pre></pre>');
     $('.request_url pre', $(this.el)).text(url);

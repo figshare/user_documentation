@@ -182,20 +182,20 @@ function processAdditionalDescriptions(desc) {
       addfunction = 'prepend';
     //$('#resources_nav')[addfunction]('<div data-resource="'+resource_id+'" label="'+title+'"></div>');
     $('#resources')[addfunction]('<li id="'+resource_id+'" class="resource"><ul class="endpoints"><li class="endpoint"><ul class="operations"></ul></li></ul></div>');
-    $('#'+resource_id+' .operations').append('<li class="operation" id="description_'+ToSmallCase(title)+'"><div class="content"><h2 class="operation-title">'+title+'</h2></div></li>');
+    $('#'+resource_id+' .operations').append('<li class="operation static_description" id="description_'+ToSmallCase(title)+'"><div class="content"><h2 class="operation-title">'+title+'</h2></div></li>');
 
     for (var j=0; j<desc[i]['subsections'].length; j++)
         {
         title  = desc[i]['subsections'][j]['title'];
         if (typeof(desc[i]['subsections'][j].subsections)!='undefined')
           {
-          $('#'+resource_id+' .operations').append('<li class="operation" id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(title)+'"><div class="content"><h2 class="operation-title">'+title+'</h2></div></li>');
+          $('#'+resource_id+' .operations').append('<li class="operation static_description" id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(title)+'"><div class="content"><h2 class="operation-title">'+title+'</h2></div></li>');
           for (var k=0; k<desc[i].subsections[j].subsections.length; k++)
             {
 
               content = $('#'+desc[i]['subsections'][j].subsections[k].content).html();
               title  = desc[i]['subsections'][j].subsections[k]['title'];
-              $('#'+resource_id+' .operations').append('<li class="operation" id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(title)+'"><div class="content">'+content+'</div></li>');
+              $('#'+resource_id+' .operations').append('<li class="operation static_description" id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(title)+'"><div class="content">'+content+'</div></li>');
             }
 
           }
@@ -203,7 +203,7 @@ function processAdditionalDescriptions(desc) {
           {
           content = $('#'+desc[i]['subsections'][j].content).html();
           //$('div[data-resource="'+resource_id+'"]').append('<div data-endpoint="description_'+ToSmallCase(title)+'" class="item">'+title+'</div>');
-          $('#'+resource_id+' .operations').append('<li class="operation" id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(title)+'"><div class="content">'+content+'</div></li>');
+          $('#'+resource_id+' .operations').append('<li class="operation static_description" id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(title)+'"><div class="content">'+content+'</div></li>');
           }
         }
         $('#'+resource_id+' .operations .operation').css('min-height','auto');

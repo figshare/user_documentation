@@ -26,7 +26,7 @@ supports both
 #### Response params
 
 User is redirected back to `redirect_uri` with the following params
-atted to the query:
+added to the query:
 
 **Success** as described in [rfc6749#section-4.1.2](http://tools.ietf.org/html/rfc6749#section-4.1.2) or [rfc6749#section-4.2.2](http://tools.ietf.org/html/rfc6749#section-4.2.2):
 
