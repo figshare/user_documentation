@@ -5653,6 +5653,46 @@
                 }
             }
         },
+        "/account/institution/articles": {
+            "get": {
+                "tags": [
+                    "institutions"
+                ],
+                "operationId": "account_institution_articles_Get",
+                "summary": "Private Institution Articles",
+                "description": "Get Articles from own institution. User must be administrator of the institution",
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of articles belonging to the institution",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Article"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
         "/account/categories": {
             "get": {
                 "tags": [
