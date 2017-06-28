@@ -5668,6 +5668,109 @@
                         ]
                     }
                 ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number. Used for pagination with page_size",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 5000
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "The number of results included on a page. Used for pagination with page",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 100,
+                        "default": 10
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of results included on a page. Used for pagination with query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 100
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Where to start the listing(the offset of the first result). Used for pagination with limit",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 5000
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "The field by which to order. Default varies by endpoint/resource.",
+                        "type": "string",
+                        "enum": [
+                            "published_date",
+                            "modified_date"
+                        ],
+                        "default": "published_date",
+                        "required": false
+                    },
+                    {
+                        "name": "order_direction",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "asc",
+                            "desc"
+                        ],
+                        "default": "desc",
+                        "required": false
+                    },
+                    {
+                        "name": "published_since",
+                        "in": "query",
+                        "description": "Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "name": "modified_since",
+                        "in": "query",
+                        "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "name": "group",
+                        "in": "query",
+                        "description": "only return collections from this group",
+                        "type": "integer",
+                        "format": "int64",
+                        "required": false
+                    },
+                    {
+                        "name": "resource_doi",
+                        "in": "query",
+                        "description": "only return collections with this resource_doi",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "name": "item_type",
+                        "in": "query",
+                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint",
+                        "type": "integer",
+                        "format": "int64",
+                        "required": false
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK. An array of articles belonging to the institution",
