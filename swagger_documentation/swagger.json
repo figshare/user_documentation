@@ -5747,9 +5747,9 @@
                         "required": false
                     },
                     {
-                        "name": "group",
+                        "name": "status",
                         "in": "query",
-                        "description": "only return collections from this group",
+                        "description": "only return collections with this status",
                         "type": "integer",
                         "format": "int64",
                         "required": false
@@ -7355,7 +7355,7 @@
                 },
                 "orcid_id": {
                     "type": "string",
-                    "example": "johndoe"
+                    "example": "0000-0000-0000-0000"
                 }
             }
         },
@@ -8168,16 +8168,32 @@
             "position": "bottom",
             "subsections": [
                 {
-                    "title": "Introductory considerations",
+                    "title": "How to find data on figshare",
                     "content": "description_search_intro"
                 },
                 {
-                    "title": "General search engine features",
-                    "content": "description_search_general"
+                    "title": "Search operators",
+                    "content": "description_search_operators"
                 },
                 {
-                    "title": "Search types and expected results",
-                    "content": "description_search_types"
+                    "title": "Searchable attributes",
+                    "content": "description_search_attributes"
+                },
+                {
+                    "title": "Quick search",
+                    "content": "description_search_quick"
+                },
+                {
+                    "title": "Advanced search",
+                    "content": "description_search_advanced"
+                },
+                {
+                    "title": "Combined field search",
+                    "content": "description_search_combined"
+                },
+                {
+                    "title": "Complex searches",
+                    "content": "description_search_complex"
                 }
             ]
         },
@@ -8380,6 +8396,47 @@
                         {
                             "title": "Grant Types",
                             "content": "description_oauth_grant"
+                        }
+                    ]
+                },
+                {
+                    "title": "API description",
+                    "subsections": [
+                        {
+                            "title": "Feature list",
+                            "content": "description_api_features"
+                        },
+                        {
+                            "title": "Sending parameters",
+                            "content": "description_api_parameters"
+                        },
+                        {
+                            "title": "Resource representations",
+                            "content": "description_api_resourcerepresentation"
+                        },
+                        {
+                            "title": "Authentication",
+                            "content": "description_api_auth"
+                        },
+                        {
+                            "title": "Errors",
+                            "content": "description_api_errors"
+                        },
+                        {
+                            "title": "Searching filtering and pagination",
+                            "content": "description_api_search"
+                        },
+                        {
+                            "title": "Rate limiting",
+                            "content": "description_api_ratelimit"
+                        },
+                        {
+                            "title": "Conditional requests",
+                            "content": "description_api_requests"
+                        },
+                        {
+                            "title": "CORS policy",
+                            "content": "description_api_cors"
                         }
                     ]
                 }
