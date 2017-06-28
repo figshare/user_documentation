@@ -22180,7 +22180,7 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
       pre = $('<pre class="json" />').append(code);
     }
 
-    if (content)
+    if (content && (response.status >= 200 && response.status<300))
       {
       content_parsed = JSON.parse(content);
       if (content_parsed.length>1)

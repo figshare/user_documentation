@@ -2498,7 +2498,7 @@
                     "collections"
                 ],
                 "operationId": "account_collections_Get",
-                "summary": "Private Collections",
+                "summary": "Private Collections List",
                 "security": [
                     {
                         "OAuth2": [
@@ -2709,7 +2709,7 @@
                         "name": "Collection",
                         "description": "Collection description",
                         "schema": {
-                            "$ref": "#/definitions/CollectionCreate"
+                            "$ref": "#/definitions/CollectionUpdate"
                         },
                         "required": true
                     }
@@ -5413,8 +5413,7 @@
                         "description": "Search Parameters",
                         "schema": {
                             "$ref": "#/definitions/PrivateAuthorsSearch"
-                        },
-                        "required": true
+                        }
                     }
                 ],
                 "responses": {
@@ -7253,7 +7252,7 @@
                 },
                 "orcid_id": {
                     "type": "string",
-                    "example": "1234-5678-91234-1234"
+                    "example": "johndoe"
                 }
             }
         },
@@ -7753,6 +7752,133 @@
             "required": [
                 "title"
             ],
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Title of article",
+                    "maxLength": 500,
+                    "minLength": 3,
+                    "example": "Test article title"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The article description. In a publisher case, usually this is the remote article description",
+                    "default": "",
+                    "example": "Test description of article",
+                    "maxLength": 10000
+                },
+                "articles": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "List of articles to be associated with the collection",
+                    "example": [
+                        2000001,
+                        2000005
+                    ]
+                },
+                "authors": {
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    },
+                    "description": "List of authors to be assosciated with the article. The list can contain author ids or author names. No more than 10 authors. For adding more authors use the specific authors endpoint.",
+                    "default": [],
+                    "example": [
+                        {
+                            "name": "John Doe"
+                        },
+                        {
+                            "id": 20005
+                        }
+                    ]
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "description": "List of category ids to be associated with the article(e.g [1, 23, 33, 66])",
+                    "default": [],
+                    "example": [
+                        1,
+                        10,
+                        11
+                    ]
+                },
+                "tags": {
+                    "type": "array",
+                    "description": "List of tags to be associated with the article. Keywords can be used instead",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "example": [
+                        "tag1",
+                        "tag2"
+                    ]
+                },
+                "keywords": {
+                    "type": "array",
+                    "description": "List of tags to be associated with the article. Tags can be used instead",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "example": [
+                        "tag1",
+                        "tag2"
+                    ]
+                },
+                "references": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "link"
+                    },
+                    "description": "List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])",
+                    "default": [],
+                    "example": [
+                        "http://figshare.com",
+                        "http://api.figshare.com"
+                    ]
+                },
+                "custom_fields": {
+                    "type": "object",
+                    "description": "List of key, values pairs to be associated with the article",
+                    "example": {
+                        "defined_key": "value for it"
+                    }
+                },
+                "resource_id": {
+                    "type": "string",
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article id"
+                },
+                "resource_doi": {
+                    "type": "string",
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article DOI.",
+                    "default": ""
+                },
+                "resource_link": {
+                    "type": "string",
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article link"
+                },
+                "resource_title": {
+                    "type": "string",
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article title.",
+                    "default": ""
+                },
+                "resource_version": {
+                    "type": "integer",
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article version"
+                }
+            }
+        },
+        "CollectionUpdate": {
+            "x-tag": "collections",
+            "type": "object",
             "properties": {
                 "title": {
                     "type": "string",
