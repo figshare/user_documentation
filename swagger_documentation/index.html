@@ -90,7 +90,8 @@
                     addAdditionalDescriptions();
                     window.setTimeout(function(){
                     $('.figsh_loader').hide();
-                  },300);
+                    verifyHashOnLoad();
+                  },1000);
                 },
                 onFailure: function (data) {
                     log("Unable to Load SwaggerUI");
@@ -313,10 +314,10 @@
         <h2 id="endpoints">Endpoints</h2>
         <p>The statistics service endpoints can be classified in 4 categories:</p>
         <ul>
-        <li><a href="#totals">Totals</a></li>
-        <li><a href="#timeline">Timeline</a></li>
-        <li><a href="#breakdown">Breakdown</a></li>
-        <li><a href="#tops">Tops</a></li>
+        <li><a href="#stats_service_endpoints_totals">Totals</a></li>
+        <li><a href="#stats_service_endpoints_timeline">Timeline</a></li>
+        <li><a href="#stats_service_endpoints_breakdown">Breakdown</a></li>
+        <li><a href="#stats_service_endpoints_tops">Tops</a></li>
         </ul>
         <h3 id="scope">Scope</h3>
         <p>All endpoints are applicable for the following items:</p>
@@ -327,28 +328,28 @@
         <li><strong>project</strong>: events on the specified project</li>
         <li><strong>collection</strong>: events on the specified collection</li>
         </ul>
-        <h3 id="totals">Totals</h3>
+        <h3 id="stats_service_endpoints_totals">Totals</h3>
         <p>This type of endpoint enables the retrieval of the total number of events for a specific item.
-        More details and examples are provided <a href="totals/">here</a>.</p>
-        <h3 id="timeline">Timeline</h3>
+        More details and examples are provided <a href="#description_Stats_Totals">here</a>.</p>
+        <h3 id="stats_service_endpoints_timeline">Timeline</h3>
         <p>This type of endpoint enables the retrieval of a timeline of the number of events for a specific
-        item, with a specified granularity. More details and examples are provided <a href="timeline/">here</a>.</p>
-        <h3 id="breakdown">Breakdown</h3>
+        item, with a specified granularity. More details and examples are provided <a href="#description_Stats_Timeline">here</a>.</p>
+        <h3 id="stats_service_endpoints_breakdown">Breakdown</h3>
         <p>This type of endpoint enables the retrieval of a geo-location breakdown of the number of events for a specific
-        item, with a specified granularity. More details and examples are provided <a href="breakdown/">here</a>.</p>
-        <h3 id="tops">Tops</h3>
+        item, with a specified granularity. More details and examples are provided <a href="#description_Stats_Breakdown">here</a>.</p>
+        <h3 id="stats_service_endpoints_tops">Tops</h3>
         <p>This type of endpoint enables the retrieval of rankings of the most viewed, downloaded or shared items,
-        over a specific period of time. More details and examples are provided <a href="tops/">here</a>.</p>
+        over a specific period of time. More details and examples are provided <a href="#description_Stats_Tops">here</a>.</p>
       </div>
       <div id="description_stats_breakdown_endpoints">
         <h1 id="endpoints-for-retrieving-a-breakdown">Endpoints for retrieving a <strong>breakdown</strong></h1>
         <p>This type of endpoint enables the retrieval of a geo-location breakdown of the number
         of <em>views</em>, <em>downloads</em> or <em>shares</em> for a specific item.</p>
         <ul>
-        <li><a href="#authorization">Authorization</a></li>
-        <li><a href="#endpoint-format">Endpoint format</a></li>
-        <li><a href="#request-parameters">Request parameters</a></li>
-        <li><a href="#examples">Examples</a></li>
+        <li><a href="#description_Stats_Breakdown_Authorization">Authorization</a></li>
+        <li><a href="#description_Stats_Breakdown_Endpointformat">Endpoint format</a></li>
+        <li><a href="#description_Stats_Breakdown_Requestparameters">Request parameters</a></li>
+        <li><a href="#description_Stats_Breakdown_Examples">Examples</a></li>
         </ul>
       </div>
       <div id="description_stats_breakdown_auth">
@@ -578,10 +579,10 @@
         <p>This type of endpoint enables the retrieval of a timeline of the number of <em>views</em>, <em>downloads</em>
         or <em>shares</em> for a specific item.</p>
         <ul>
-        <li><a href="#authorization">Authorization</a></li>
-        <li><a href="#endpoint-format">Endpoint format</a></li>
-        <li><a href="#request-parameters">Request parameters</a></li>
-        <li><a href="#examples">Examples</a></li>
+        <li><a href="#description_Stats_Timeline_Authorization">Authorization</a></li>
+        <li><a href="#description_Stats_Timeline_Endpointformat">Endpoint format</a></li>
+        <li><a href="#description_Stats_Timeline_Requestparameters">Request parameters</a></li>
+        <li><a href="#description_Stats_Timeline_Examples">Examples</a></li>
         </ul>
       </div>
       <div id="description_stats_timeline_auth">
@@ -768,10 +769,10 @@
         <p>This type of endpoints enables the retrieval or rankings of the most viewed, downloaded or shared
         items, over a specific period of time.</p>
         <ul>
-        <li><a href="#authorization">Authorization</a></li>
-        <li><a href="#endpoint-format">Endpoint format</a></li>
-        <li><a href="#request-parameters">Request parameters</a></li>
-        <li><a href="#examples">Examples</a></li>
+        <li><a href="#description_Stats_Tops_Authorization">Authorization</a></li>
+        <li><a href="#description_Stats_Tops_Endpointformat">Endpoint format</a></li>
+        <li><a href="#description_Stats_Tops_Requestparameters">Request parameters</a></li>
+        <li><a href="#description_Stats_Tops_Examples">Examples</a></li>
         </ul>
       </div>
       <div id="description_stats_tops_auth">
@@ -909,9 +910,9 @@
         <h1 id="endpoints-for-retrieving-totals">Endpoints for retrieving <strong>totals</strong></h1>
         <p>This type of endpoint provides the total number of <em>views</em>, <em>downloads</em> or <em>shares</em>.</p>
         <ul>
-        <li><a href="#authorization">Authorization</a></li>
-        <li><a href="#endpoint-format">Endpoint format</a></li>
-        <li><a href="#examples">Examples</a></li>
+        <li><a href="#description_Stats_Totals_Authorization">Authorization</a></li>
+        <li><a href="#description_Stats_Totals_Endpointformat">Endpoint format</a></li>
+        <li><a href="#description_Stats_Totals_Examples">Examples</a></li>
         </ul>
       </div>
       <div id="description_stats_totals_auth">
@@ -1282,7 +1283,7 @@
         <pre>https://api.figshare.com/v2</pre>
         <p>The Figshare REST API is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.</p>
         <h3>Authentication</h3>
-        <p>Figshare supports the OAuth 2.0 Authorization Framework. See more about it in the <a href="#description_Oauth">OAuth</a> section.
+        <p>Figshare supports the OAuth 2.0 Authorization Framework. See more about it in the <a href="#description_figsharedocumentation_OAuth">OAuth</a> section.
       </div>
       <div id="other_sample_codes">
         <h4>You can download one of the following complete clients:</h4>
@@ -1308,10 +1309,10 @@
       <div id="description_upload_steps">
         <h3 id="steps-to-upload-file">Steps to upload file</h3>
         <ul>
-          <li><a href="#initiate-new-file-upload-within-the-article">Initiate file upload</a> - this request returns an endpoint with file data</li>
+          <li><a href="#articles_post_account_articles_article_id_files">Initiate file upload</a> - this request returns an endpoint with file data</li>
           <li>Send a <code>GET</code> request to the <a href="#description_upload_api">Uploader Service</a> with the <code>upload_url</code> (which also contains the<code>upload_token</code>) provided in previous step and receive the number of file parts</li>
           <li>Upload / Delete / Retry uploading file parts until all parts are uploaded successfully</li>
-          <li><a href="#complete-file-upload">Complete file upload</a></li>
+          <li><a href="#articles_post_account_articles_article_id_files_file_id">Complete file upload</a></li>
         </ul>
       </div>
       <div id="description_upload_api">
@@ -1987,9 +1988,9 @@
       <p>All communication with the service is done through <em>https</em> and all data is encoded as <em>json</em>.
 Optional authorization for specific endpoints is done through basic access authentication.</p>
       <ul>
-        <li><a href="#authentication">Authentication</a></li>
-        <li><a href="#errors">Errors</a></li>
-        <li><a href="#endpoints">Endpoints</a></li>
+        <li><a href="#description_Stats_Authentication">Authentication</a></li>
+        <li><a href="#description_Stats_Errors">Errors</a></li>
+        <li><a href="#description_Stats_Endpoints">Endpoints</a></li>
       </ul>
     </div>
     <div id="description_stats_home_authentication">

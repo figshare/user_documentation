@@ -153,6 +153,7 @@ function replaceMenus(data) {
   $('#search_doc').focusout(SearchFocusOut);
   $('#search_doc').focusin(SearchFocusIn);
   prepareSearchList();
+  $('.param-property textarea.ui-form-control').keydown(ParamTextareaTabHandle);
 }
 
 
@@ -166,7 +167,7 @@ function processAdditionalDescriptions(desc) {
         else {
           menu += '<li><span endpoint_id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(desc[i].subsections[j].title)+'">'+desc[i].subsections[j].title+'<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="subsubmenu">';
           for (var k=0; k<desc[i].subsections[j].subsections.length; k++)
-              menu += '<li><span endpoint_id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(desc[i].subsections[j].subsections[k].title)+'">'+desc[i].subsections[j].subsections[k].title+'</span></li>';
+              menu += '<li><span endpoint_id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(desc[i].subsections[j].title)+'_'+ToSmallCase(desc[i].subsections[j].subsections[k].title)+'">'+desc[i].subsections[j].subsections[k].title+'</span></li>';
           menu += '</ul></li>';
         }
     menu += '</ul></li>';
@@ -195,7 +196,7 @@ function processAdditionalDescriptions(desc) {
 
               content = $('#'+desc[i]['subsections'][j].subsections[k].content).html();
               title  = desc[i]['subsections'][j].subsections[k]['title'];
-              $('#'+resource_id+' .operations').append('<li class="operation static_description" id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(title)+'"><div class="content">'+content+'</div></li>');
+              $('#'+resource_id+' .operations').append('<li class="operation static_description" id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(desc[i].subsections[j].title)+'_'+ToSmallCase(title)+'"><div class="content">'+content+'</div></li>');
             }
 
           }
@@ -214,6 +215,7 @@ function processAdditionalDescriptions(desc) {
 
 function menuSpanClicked() {
   if ($(this).attr('endpoint_id')) {
+      window.location.hash = $(this).attr('endpoint_id');
       window.scrollTo(0,$('#'+$(this).attr('endpoint_id')).offset().top);
   }
   else {
@@ -317,4 +319,31 @@ function SearchFocusOut() {
 function SearchFocusIn() {
   if ($('.search_doc_autocomplete div').length>0)
     $('.search_doc_autocomplete').addClass('active');
+}
+
+function ParamTextareaTabHandle(event) {
+  if(event.keyCode===9)
+    {
+    var v=this.value,s=this.selectionStart,e=this.selectionEnd;
+    this.value=v.substring(0, s)+'\t'+v.substring(e);
+    this.selectionStart=this.selectionEnd=s+1;
+    return false;
+    }
+}
+
+function verifyHashOnLoad() {
+  let hash = window.location.hash;
+  if(hash == "#!/articles/articles_Get") {
+    if(window.history.pushState) {
+        window.history.pushState('', '/', window.location.pathname)
+    } else {
+        window.location.hash = '';
+    }
+  }
+  else
+  if ($(hash).length>0)
+    {
+    window.scrollTo(0,$(hash).offset().top);
+    }
+
 }
