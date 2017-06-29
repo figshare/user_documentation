@@ -149,7 +149,7 @@
 }
 
 .swagger-section h4 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
 }
 
@@ -2421,7 +2421,11 @@ body {
 }
 
 .operation ul.nav-tabs-examples {
+    padding: 0 20px;
+}
 
+.operation .tab-content {
+    padding: 0 20px;
 }
 
 #resources_nav div {
@@ -2608,7 +2612,7 @@ body {
 
 .presenter_properties span.propType {
     border-radius: 3px;
-    padding: 3px 5px;
+    padding: 5px 10px;
     display: inline-block;
     border: 1px solid;
     font-weight: 400;
@@ -2616,10 +2620,12 @@ body {
     max-width: 120px;
     text-overflow: ellipsis;
     overflow: hidden;
-    margin: 0 7px 0 0;
+    margin: -3px 7px 0 0;
     background: #556471;
+    color: #FFF;
 }
 
+/*
 .presenter_properties span.propType[title] {
     color: #ff9ce3
 }
@@ -2635,7 +2641,7 @@ body {
 .presenter_properties span.propType[title="array[string]"], .presenter_properties span.propType[title="array[object]"], .presenter_properties span.propType[title=array]{
     color: #eaca2c
 }
-
+*/
 
 .presenter_properties span.propDesc {
     width: 97%;
@@ -2652,4 +2658,8 @@ body {
 
 #description_presenters h2 {
     text-transform: none;
+}
+
+.btn.btn-primary {
+    background-color: #c7404d;
 }
