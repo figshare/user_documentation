@@ -72,7 +72,7 @@
 
 @media (min-width: 992px) {
     .swagger-section .operation {
-        min-height: 100vh
+
     }
 
     .swagger-section .operation:after {
