@@ -142,7 +142,8 @@ function replaceMenus(data) {
 
 
   additional_menu = processAdditionalDescriptions(data['x-additional-descriptions']);
-  menu_html = '<ul>'+additional_menu['top'] + menu_html + additional_menu['bottom'] + '</ul>';
+  presenters_menu = createPresentersHtml();
+  menu_html = '<ul>'+additional_menu['top'] + menu_html + additional_menu['bottom'] + presenters_menu + '</ul>';
   $('#resources_nav').html(menu_html);
   $('#resources_nav ul li span').click(menuSpanClicked);
   $(window).scroll(windowScrolling);
@@ -182,7 +183,7 @@ function processAdditionalDescriptions(desc) {
       else
       addfunction = 'prepend';
     //$('#resources_nav')[addfunction]('<div data-resource="'+resource_id+'" label="'+title+'"></div>');
-    $('#resources')[addfunction]('<li id="'+resource_id+'" class="resource"><ul class="endpoints"><li class="endpoint"><ul class="operations"></ul></li></ul></div>');
+    $('#resources')[addfunction]('<li id="'+resource_id+'" class="resource"><ul class="endpoints"><li class="endpoint"><ul class="operations"></ul></li></ul></li>');
     $('#'+resource_id+' .operations').append('<li class="operation static_description" id="description_'+ToSmallCase(title)+'"><div class="content"><h2 class="operation-title">'+title+'</h2></div></li>');
 
     for (var j=0; j<desc[i]['subsections'].length; j++)
@@ -210,6 +211,58 @@ function processAdditionalDescriptions(desc) {
         $('#'+resource_id+' .operations .operation').css('min-height','auto');
   }
   return additional_menu;
+}
+
+function createPresentersHtml() {
+    const models = swaggerUi.api.models;
+    console.log(models.length);
+    let menu = '<li><span endpoint_id="description_presenters">Presenters<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="submenu">';
+    model_keys = Object.keys(models);
+    model_keys = model_keys.sort();
+    for (var i = 0; i<model_keys.length; i++) {
+        key = model_keys[i];
+        menu += '<li><span endpoint_id="description_presenters_'+ToSmallCase(models[key].name)+'">'+models[key].name+'</span></li>';
+    }
+    menu += '</ul></li>';
+
+    $('#resources').append('<li id="description_presenters" class="resource"><ul class="endpoints"><li class="endpoint"><ul class="operations"></ul></li></ul></li>');
+    for (var i = 0; i<model_keys.length; i++) {
+        key = model_keys[i];
+        var presenterHtml = '<li class="operation static_description" id="description_presenters_'+ToSmallCase(models[key].name)+'"><div class="content"><h2 class="operation-title">'+models[key].name+'</h2><ul class="presenter_properties">';
+        properties = models[key].definition.properties;
+        propKeys = Object.keys(properties);
+        for (var j=0; j<propKeys.length; j++)
+            {
+            propKey = propKeys[j];
+            var prop = properties[propKey];
+            presenterHtml += '<li><span class="propName">'+propKey+'</span>';
+            if (typeof(prop['$ref']) != 'undefined')
+                presenterHtml += '<span class="propType" title="object">'+prop['$ref'].substr(prop['$ref'].lastIndexOf('/')+1)+'</span>';
+            if (prop.type == 'array')
+                {
+                presenterHtml += '<span class="propType" title="'+prop.type+'">array[';
+                if (typeof(prop.items.type)!='undefined')
+                    presenterHtml += prop.items.type;
+                if (typeof(prop.items['$ref'])!='undefined')
+                    presenterHtml += prop.items['$ref'].substr(prop.items['$ref'].lastIndexOf('/')+1);
+                presenterHtml += ']</span>';
+                }
+                else
+                presenterHtml += '<span class="propType" title="'+prop.type+'">'+prop.type+'</span>';
+            if (typeof(prop.description) != 'undefined')
+                presenterHtml += '<span class="propDesc">'+prop.description+'</span>';
+                else
+                presenterHtml += '<span class="propDesc"></span>';
+            if (typeof(prop.example) != 'undefined')
+                presenterHtml += '<span class="propExample">'+JSON.stringify(prop.example)+'</span>';
+            presenterHtml += '</li>';
+
+            }
+        presenterHtml += '</ul></div></li>';
+        $('#description_presenters .operations').append(presenterHtml);
+    }
+
+    return menu;
 }
 
 

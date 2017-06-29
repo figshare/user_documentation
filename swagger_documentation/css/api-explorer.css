@@ -2582,3 +2582,74 @@ body {
     top: 45%;
     text-align: center;
 }
+
+#description_presenters .presenter_properties {
+    padding: 0;
+}
+
+#description_presenters .presenter_properties li {
+    float: left;
+    margin: 10px 0;
+    width: 100%;
+    border-bottom: 1px solid #e8eaeb;
+    padding: 0 0 10px 5px;
+}
+
+.presenter_properties span {
+    float: left;
+    display: inline-block;
+}
+
+.presenter_properties span.propName {
+    font-size: 1.2em;
+    margin: 0 10px 0 0;
+}
+
+
+.presenter_properties span.propType {
+    border-radius: 3px;
+    padding: 3px 5px;
+    display: inline-block;
+    border: 1px solid;
+    font-weight: 400;
+    font-size: 0.9em;
+    max-width: 120px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0 7px 0 0;
+    background: #556471;
+}
+
+.presenter_properties span.propType[title] {
+    color: #ff9ce3
+}
+
+.presenter_properties span.propType[title=string] {
+    color: #a3cd3d
+}
+
+.presenter_properties span.propType[title=boolean], .presenter_properties span.propType[title=integer] {
+    color: #59c4bc
+}
+
+.presenter_properties span.propType[title="array[string]"], .presenter_properties span.propType[title="array[object]"], .presenter_properties span.propType[title=array]{
+    color: #eaca2c
+}
+
+
+.presenter_properties span.propDesc {
+    width: 97%;
+    margin: 7px 0 0 0;
+}
+
+.presenter_properties span.propExample {
+    margin: 7px 0 0 3%;
+    background: #556471;
+    color: #FFF;
+    padding: 5px 10px;
+    display: none;
+}
+
+#description_presenters h2 {
+    text-transform: none;
+}
