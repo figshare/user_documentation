@@ -5994,8 +5994,8 @@
                     "institutions"
                 ], 
                 "operationId": "account_institution_hrfeed_upload_Post", 
-                "summary": "Private Institution HRfeed Upload", 
-                "description": "More info in the <a href=\"#description_HRfeed\">HR Feed section</a>", 
+                "summary": "Private Institution HRfeed Upload",
+                "description": "More info in the <a href=\"#description_HRfeed\">HR Feed section</a>",
                 "security": [
                     {
                         "OAuth2": [
@@ -6008,7 +6008,7 @@
                 ], 
                 "parameters": [
                     {
-                        "in": "formData", 
+                        "in": "formData",
                         "name": "hrfeed", 
                         "type": "file", 
                         "description": "You can find an example in the Hr Feed section"
@@ -6238,8 +6238,8 @@
                     "other"
                 ], 
                 "operationId": "account_licenses_Get", 
-                "summary": "Private Account Licenses", 
-                "description": "This is a private endpoint that requires OAuth. It will return a list with figshare public licenses AND licenses defined for account's institution.", 
+                "summary": "Private Account Licenses",
+                "description": "This is a private endpoint that requires OAuth. It will return a list with figshare public licenses AND licenses defined for account's institution.",
                 "security": [
                     {
                         "OAuth2": [
@@ -6307,7 +6307,150 @@
                     }
                 }
             }
-        }, 
+        },
+        "/account/institution/articles": {
+            "get": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "account_institution_articles_Get", 
+                "summary": "Private Institution Articles", 
+                "description": "Get Articles from own institution. User must be administrator of the institution", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "page", 
+                        "in": "query", 
+                        "description": "Page number. Used for pagination with page_size", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1, 
+                        "maximum": 5000
+                    }, 
+                    {
+                        "name": "page_size", 
+                        "in": "query", 
+                        "description": "The number of results included on a page. Used for pagination with page", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1, 
+                        "maximum": 100, 
+                        "default": 10
+                    }, 
+                    {
+                        "name": "limit", 
+                        "in": "query", 
+                        "description": "Number of results included on a page. Used for pagination with query", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1, 
+                        "maximum": 100
+                    }, 
+                    {
+                        "name": "offset", 
+                        "in": "query", 
+                        "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1, 
+                        "maximum": 5000
+                    }, 
+                    {
+                        "name": "order", 
+                        "in": "query", 
+                        "description": "The field by which to order. Default varies by endpoint/resource.", 
+                        "type": "string", 
+                        "enum": [
+                            "published_date", 
+                            "modified_date"
+                        ], 
+                        "default": "published_date", 
+                        "required": false
+                    }, 
+                    {
+                        "name": "order_direction", 
+                        "in": "query", 
+                        "type": "string", 
+                        "enum": [
+                            "asc", 
+                            "desc"
+                        ], 
+                        "default": "desc", 
+                        "required": false
+                    }, 
+                    {
+                        "name": "published_since", 
+                        "in": "query", 
+                        "description": "Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD", 
+                        "type": "string", 
+                        "required": false
+                    }, 
+                    {
+                        "name": "modified_since", 
+                        "in": "query", 
+                        "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD", 
+                        "type": "string", 
+                        "required": false
+                    }, 
+                    {
+                        "name": "group", 
+                        "in": "query", 
+                        "description": "only return collections from this group", 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "required": false
+                    }, 
+                    {
+                        "name": "resource_doi", 
+                        "in": "query", 
+                        "description": "only return collections with this resource_doi", 
+                        "type": "string", 
+                        "required": false
+                    }, 
+                    {
+                        "name": "item_type", 
+                        "in": "query", 
+                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint", 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "required": false
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of articles belonging to the institution", 
+                        "schema": {
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/Article"
+                            }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
         "/account/categories": {
             "get": {
                 "tags": [
@@ -8824,7 +8967,7 @@
                     "example": "John_Doe"
                 }, 
                 "orcid_id": {
-                    "type": "string", 
+                    "type": "string",
                     "example": "1234-5678-9123-1234"
                 }
             }
@@ -8883,7 +9026,7 @@
                     "example": "John_Doe"
                 }, 
                 "orcid_id": {
-                    "type": "string", 
+                    "type": "string",
                     "example": "1234-5678-9123-1234"
                 }
             }
@@ -9683,16 +9826,32 @@
             "position": "bottom", 
             "subsections": [
                 {
-                    "title": "Introductory considerations", 
+                    "title": "How to find data on figshare", 
                     "content": "description_search_intro"
                 }, 
                 {
-                    "title": "General search engine features", 
-                    "content": "description_search_general"
+                    "title": "Search operators", 
+                    "content": "description_search_operators"
                 }, 
                 {
-                    "title": "Search types and expected results", 
-                    "content": "description_search_types"
+                    "title": "Searchable attributes", 
+                    "content": "description_search_attributes"
+                }, 
+                {
+                    "title": "Quick search", 
+                    "content": "description_search_quick"
+                }, 
+                {
+                    "title": "Advanced search", 
+                    "content": "description_search_advanced"
+                }, 
+                {
+                    "title": "Combined field search", 
+                    "content": "description_search_combined"
+                }, 
+                {
+                    "title": "Complex searches", 
+                    "content": "description_search_complex"
                 }
             ]
         }, 
@@ -9868,7 +10027,7 @@
                     "content": "description_oai_someexamples"
                 }
             ]
-        }, 
+        },
         {
             "title": "HR Feed", 
             "position": "bottom", 
@@ -9911,7 +10070,7 @@
                     "content": "description_hrfeed_notes"
                 }
             ]
-        }, 
+        },
         {
             "title": "figshare Documentation", 
             "position": "top", 
@@ -9938,6 +10097,47 @@
                         {
                             "title": "Grant Types", 
                             "content": "description_oauth_grant"
+                        }
+                    ]
+                }, 
+                {
+                    "title": "API description", 
+                    "subsections": [
+                        {
+                            "title": "Feature list", 
+                            "content": "description_api_features"
+                        }, 
+                        {
+                            "title": "Sending parameters", 
+                            "content": "description_api_parameters"
+                        }, 
+                        {
+                            "title": "Resource representations", 
+                            "content": "description_api_resourcerepresentation"
+                        }, 
+                        {
+                            "title": "Authentication", 
+                            "content": "description_api_auth"
+                        }, 
+                        {
+                            "title": "Errors", 
+                            "content": "description_api_errors"
+                        }, 
+                        {
+                            "title": "Searching filtering and pagination", 
+                            "content": "description_api_search"
+                        }, 
+                        {
+                            "title": "Rate limiting", 
+                            "content": "description_api_ratelimit"
+                        }, 
+                        {
+                            "title": "Conditional requests", 
+                            "content": "description_api_requests"
+                        }, 
+                        {
+                            "title": "CORS policy", 
+                            "content": "description_api_cors"
                         }
                     ]
                 }

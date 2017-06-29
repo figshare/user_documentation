@@ -12,6 +12,18 @@ These are private endpoints, OAuth is required.
 * Body: [Institution Presenter](presenters/institution.md)
 
 
+## List institution articles
+
+    GET /v2/account/institution/articles
+
+Returns the articles from the institution of the account. User must be administrator of the institution.
+
+**Success Response**
+
+* Status: `200 OK`
+* Body: A list of [Group Presenter](presenters/group.md)
+
+
 ## List groups
 
     GET /v2/account/institution/groups

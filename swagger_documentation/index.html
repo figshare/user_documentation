@@ -406,82 +406,389 @@
       </div>
       <div id="description_stats_breakdown_examples">
         <h2 id="examples">Examples</h2>
-        <h3 id="daily-breakdown-of-shares-for-an-unaffiliated-article">Daily breakdown of shares for an unaffiliated article</h3>
+        <h3 id="daily-breakdown-of-shares-for-an-unaffiliated-article">Daily breakdown of views for an unaffiliated article</h3>
         <p><strong>Request</strong></p>
-        <pre><code class="http">GET https://stats.figshare.com/breakdown/day/shares/article/23?start_date=2014-03-08&amp;end_date=2014-05-21
-        </code></pre>
+        <pre><code class="http">GET https://stats.figshare.com/breakdown/day/views/article/766364?start_date=2017-04-19&end_date=2017-04-21</code></pre>
 
         <p><strong>Response</strong></p>
 <pre><code class="http">HTTP/1.1 200 OK
 Content-Type: application/json; charset=UTF-8
 
-{
-&quot;breakdown&quot;: {
-&quot;2014-03-08&quot;: {
-&quot;Spain&quot;: {
-&quot;Seville&quot;: 8,
-&quot;Madrid&quot;: 11,
-&quot;total&quot;: 19
-}
-},
-&quot;2014-02-20&quot;: {
-&quot;Spain&quot;: {
-&quot;Seville&quot;: 3,
-&quot;total&quot;: 3
-}
-},
-&quot;2014-05-04&quot;: {
-&quot;China&quot;: {
-&quot;Fuzhou&quot;: 7,
-&quot;Chengdu&quot;: 3,
-&quot;total&quot;: 10
-}
-}
-}
+  {
+    "breakdown": {
+        "2017-04-20": {
+            "United States": {
+                "Bellevue": 1,
+                "Fayetteville": 2,
+                "total": 7,
+                "Wilmington": 3,
+                "Everett": 1
+            },
+            "Netherlands": {
+                "Unknown": 1,
+                "total": 2,
+                "Venlo": 1
+            },
+            "Pakistan": {
+                "Karachi": 2,
+                "total": 2
+            },
+            "South Africa": {
+                "Johannesburg": 2,
+                "total": 2
+            },
+            "United Kingdom": {
+                "Grimsby": 1,
+                "Southampton": 1,
+                "Liverpool": 1,
+                "Unknown": 2,
+                "Huntingdon": 1,
+                "Falkirk": 1,
+                "Middlesbrough": 1,
+                "London": 1,
+                "Oxford": 1,
+                "Colchester": 1,
+                "total": 12
+            },
+            "Ethiopia": {
+                "Unknown": 2,
+                "total": 2
+            },
+            "Sweden": {
+                "total": 2,
+                "Avesta": 2
+            },
+            "Australia": {
+                "Unknown": 1,
+                "total": 2,
+                "Darwin": 1
+            },
+            "Ireland": {
+                "total": 2,
+                "Dublin": 2
+            },
+            "Japan": {
+                "total": 1,
+                "Tokyo": 1
+            }
+        },
+        "2017-04-19": {
+            "Brazil": {
+                "Unknown": 1,
+                "total": 1
+            },
+            "United Kingdom": {
+                "Coventry": 1,
+                "Unknown": 1,
+                "Twickenham": 1,
+                "Canterbury": 1,
+                "Huddersfield": 1,
+                "total": 5
+            },
+            "Netherlands": {
+                "Babberich": 1,
+                "total": 3,
+                "Unknown": 1,
+                "Enschede": 1
+            },
+            "Canada": {
+                "total": 1,
+                "Niagara Falls": 1
+            },
+            "Egypt": {
+                "Unknown": 2,
+                "total": 2
+            },
+            "United Arab Emirates": {
+                "Dubai": 2,
+                "total": 2
+            },
+            "France": {
+                "total": 2,
+                "Nantes": 2
+            },
+            "United States": {
+                "Unknown": 3,
+                "Kansas City": 1,
+                "Mountain View": 1,
+                "San Francisco": 1,
+                "total": 7,
+                "Pomona": 1
+            },
+            "Australia": {
+                "Perth": 1,
+                "total": 6,
+                "Darwin": 1,
+                "Sydney": 3,
+                "Unknown": 1
+            },
+            "Chile": {
+                "Osorno": 1,
+                "total": 1
+            }
+        }
+    }
 }
 </code></pre>
 
-        <h3 id="yearly-breakdown-of-views-for-a-project-associated-to-an-institution">Yearly breakdown of views for a project associated to an institution</h3>
+        <h3 id="yearly-breakdown-of-views-for-a-project-associated-to-an-institution">Yearly breakdown of views for an article</h3>
         <p><strong>Request</strong></p>
-        <pre><code class="http">GET https://stats.figshare.com/monash/breakdown/year/views/project/1345?start_date=2013-01-01&amp;end_date=2015-01-01
-Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
-        </code></pre>
+        <pre><code class="http">GET https://stats.figshare.com/breakdown/year/views/article/766364?start_date=2015-04-19&end_date=2016-04-21</code></pre>
 
         <p><strong>Response</strong></p>
 <pre><code class="http">HTTP/1.1 200 OK
 Content-Type: application/json; charset=UTF-8
-
 {
-  &quot;breakdown&quot;: {
-    &quot;2013&quot;: {
-      &quot;Spain&quot;: {
-        &quot;Seville&quot;: 5,
-        &quot;Madrid&quot;: 3,
-        &quot;total&quot;: 8
-      },
-      &quot;China&quot;: {
-        &quot;Fuzhou&quot;: 2,
-        &quot;Chengdu&quot;: 3,
-        &quot;total&quot;: 5
-      }
-    },
-    &quot;2014&quot;: {
-      &quot;United States&quot;: {
-        &quot;Kansas City&quot;: 3,
-        &quot;Orlando&quot;: 1,
-        &quot;total&quot;: 4
-      },
-      &quot;Venezuela&quot;: {
-        &quot;Caracas&quot;: 5,
-        &quot;total&quot;: 5
-      },
-      &quot;Brazil&quot;: {
-        &quot;total&quot;: 7,
-        &quot;Indaiatuba&quot;: 4,
-        &quot;Campinas&quot;: 3
-      }
+    "breakdown": {
+        "2015": {
+            "Canada": {
+                "Toronto": 120,
+                "Edmonton": 35,
+                "Burnaby": 15,
+                "Ottawa": 46,
+                "London": 20,
+                "Vancouver": 45,
+                "Unkown": 49,
+                "Calgary": 19,
+                "Hamilton": 26,
+                "total": 688,
+                "Montreal": 36
+            },
+            "United Kingdom": {
+                "Edinburgh": 97,
+                "Liverpool": 47,
+                "Sheffield": 58,
+                "Leeds": 44,
+                "Unkown": 253,
+                "Nottingham": 56,
+                "Manchester": 78,
+                "London": 280,
+                "total": 1957,
+                "Birmingham": 51,
+                "Glasgow": 37
+            },
+            "Australia": {
+                "Bundoora": 16,
+                "Clayton North": 22,
+                "Canberra": 21,
+                "Brisbane": 153,
+                "Unkown": 249,
+                "Melbourne": 109,
+                "Perth": 99,
+                "Sydney": 114,
+                "Streaky Bay": 20,
+                "total": 1355,
+                "Adelaide": 62
+            },
+            "Singapore": {
+                "total": 195,
+                "Unkown": 13,
+                "Singapore": 182
+            },
+            "Unknown": {
+                "Unknown": 331,
+                "total": 345,
+                "Unkown": 14
+            },
+            "India": {
+                "New Delhi": 11,
+                "Pune": 8,
+                "Chennai": 9,
+                "Mumbai": 42,
+                "Delhi": 10,
+                "Unkown": 30,
+                "Chandigarh": 4,
+                "Hyderabad": 10,
+                "Kolkata": 7,
+                "Bangalore": 13,
+                "total": 191
+            },
+            "United States": {
+                "Phoenix": 33,
+                "Mountain View": 633,
+                "Washington": 36,
+                "Unkown": 232,
+                "Brooklyn": 31,
+                "New York": 46,
+                "Los Angeles": 43,
+                "Boston": 40,
+                "San Francisco": 81,
+                "total": 3415,
+                "Baltimore": 32
+            },
+            "Netherlands": {
+                "Groningen": 10,
+                "total": 161,
+                "The Hague": 4,
+                "Amstelveen": 4,
+                "Unkown": 26,
+                "Maastricht": 8,
+                "Utrecht": 9,
+                "Nijmegen": 4,
+                "Amsterdam": 17,
+                "Rotterdam": 14,
+                "Enschede": 5
+            },
+            "Ireland": {
+                "Galway": 22,
+                "Sligo": 3,
+                "Navan": 2,
+                "Drogheda": 2,
+                "Limerick": 5,
+                "Dublin": 84,
+                "Unkown": 67,
+                "Cork": 28,
+                "Ballina": 1,
+                "Naas": 2,
+                "total": 226
+            },
+            "Denmark": {
+                "Nibe": 2,
+                "Svendborg": 2,
+                "Odense": 40,
+                "Aalborg": 3,
+                "Lyngby": 2,
+                "Unkown": 17,
+                "Bronshoj": 4,
+                "Aarhus": 19,
+                "Frederiksberg": 8,
+                "Copenhagen": 15,
+                "total": 129
+            }
+        },
+        "2016": {
+            "Canada": {
+                "Toronto": 43,
+                "Hamilton": 8,
+                "Ottawa": 20,
+                "Saskatoon": 10,
+                "Vancouver": 15,
+                "Unkown": 11,
+                "Calgary": 11,
+                "London": 9,
+                "total": 277,
+                "Windsor": 15,
+                "Montreal": 19
+            },
+            "United Kingdom": {
+                "Liverpool": 41,
+                "Unknown": 60,
+                "Leeds": 30,
+                "Unkown": 165,
+                "Nottingham": 29,
+                "Newcastle upon Tyne": 53,
+                "Manchester": 82,
+                "London": 211,
+                "total": 1487,
+                "Birmingham": 34,
+                "Glasgow": 24
+            },
+            "Netherlands": {
+                "Groningen": 7,
+                "Rotterdam": 5,
+                "The Hague": 4,
+                "Leiden": 4,
+                "Unkown": 24,
+                "Centrum": 3,
+                "Maastricht": 8,
+                "Utrecht": 7,
+                "Unknown": 4,
+                "Amsterdam": 15,
+                "total": 113
+            },
+            "India": {
+                "Kumar": 2,
+                "Chennai": 6,
+                "Mumbai": 21,
+                "Delhi": 10,
+                "Unkown": 12,
+                "Secunderabad": 2,
+                "Jaipur": 2,
+                "New Delhi": 2,
+                "Kolkata": 3,
+                "Bangalore": 10,
+                "total": 85
+            },
+            "France": {
+                "Lyon": 1,
+                "Cr\u00e9teil": 1,
+                "Lille": 1,
+                "Paris": 3,
+                "Unknown": 74,
+                "Bondy": 2,
+                "Unkown": 12,
+                "Fontenay-aux-Roses": 2,
+                "total": 101,
+                "Caen": 1,
+                "Mouguerre": 1
+            },
+            "United States": {
+                "Redmond": 80,
+                "Los Angeles": 20,
+                "Chicago": 20,
+                "Unknown": 38,
+                "Unkown": 103,
+                "New York": 19,
+                "Denver": 20,
+                "Sunnyvale": 24,
+                "Mountain View": 485,
+                "San Francisco": 64,
+                "total": 1730
+            },
+            "Australia": {
+                "Bundoora": 9,
+                "Burwood": 7,
+                "Bentley": 4,
+                "Brisbane": 76,
+                "Unknown": 70,
+                "Unkown": 74,
+                "Melbourne": 27,
+                "Perth": 38,
+                "Sydney": 59,
+                "total": 540,
+                "Adelaide": 20
+            },
+            "Germany": {
+                "Hanover": 2,
+                "Unknown": 4,
+                "Munich": 12,
+                "Cologne": 3,
+                "Stuttgart": 4,
+                "Berlin": 8,
+                "Unkown": 26,
+                "Dortmund": 2,
+                "total": 92,
+                "Karlsruhe": 3,
+                "Bonn": 2
+            },
+            "Ireland": {
+                "Ballivor": 1,
+                "Galway": 12,
+                "Unknown": 4,
+                "Limerick": 7,
+                "Dublin": 34,
+                "Athlone": 14,
+                "Cork": 3,
+                "Unkown": 20,
+                "Waterford": 2,
+                "Letterkenny": 2,
+                "total": 105
+            },
+            "New Zealand": {
+                "Auckland": 31,
+                "Unknown": 2,
+                "Wellington": 5,
+                "Unkown": 7,
+                "Tauranga": 2,
+                "Hamilton": 8,
+                "Christchurch": 9,
+                "total": 75,
+                "Dunedin": 4,
+                "Hunterville": 1,
+                "Hastings": 1
+            }
+        }
     }
-  }
 }
 </code></pre>
 
@@ -642,7 +949,7 @@ Content-Type: application/json; charset=UTF-8
         <h2 id="examples">Examples</h2>
         <h3 id="daily-timeline-of-downloads-for-an-unaffiliated-article">Daily timeline of downloads for an unaffiliated article</h3>
         <p><strong>Request</strong></p>
-        <pre><code class="http">GET https://stats.figshare.com/timeline/day/downloads/article/23
+        <pre><code class="http">GET https://stats.figshare.com/timeline/day/downloads/article/766364
         </code></pre>
 
         <p><strong>Response</strong></p>
@@ -650,21 +957,26 @@ Content-Type: application/json; charset=UTF-8
 Content-Type: application/json; charset=UTF-8
 
 {
-  &quot;timeline&quot;: {
-    &quot;2015-07-01&quot;: 7,
-    &quot;2015-07-02&quot;: 3,
-    &quot;2015-07-09&quot;: 1,
-    &quot;2015-07-15&quot;: 3,
-    &quot;2015-07-16&quot;: 2,
-    &quot;2015-07-18&quot;: 1
+"timeline": {
+    "2015-11-19": 11,
+    "2015-11-18": 4,
+    "2015-11-11": 15,
+    "2015-11-10": 13,
+    "2015-11-13": 2,
+    "2015-11-12": 4,
+    "2015-11-15": 8,
+    "2015-11-14": 2,
+    "2015-11-17": 11,
+    "2015-11-16": 11,
   }
 }
 </code></pre>
 
-        <h3 id="yearly-timeline-of-views-for-an-article-associated-to-an-institution">Yearly timeline of views for an article associated to an institution</h3>
+
+        <h3 id="yearly-timeline-of-views-for-an-article-associated-to-an-institution">Yearly timeline of views for an article</h3>
         <p><strong>Request</strong></p>
-        <pre><code class="http">GET https://stats.figshare.com/monash/timeline/year/views/article/2000000?start_date=2013-01-01&amp;end_date=2015-08-01
-Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
+
+        <pre><code class="http">GET https://stats.figshare.com/timeline/year/views/article/766364
         </code></pre>
 
         <p><strong>Response</strong></p>
@@ -672,11 +984,13 @@ Authorization: Basic dGhpcyBpcyBub3QgdGhlIHJlYWwgcGFzc3dvcmQsIGZvb2wh
 Content-Type: application/json; charset=UTF-8
 
 {
-  &quot;timeline&quot;: {
-    &quot;2013&quot;: 16,
-    &quot;2014&quot;: 23,
-    &quot;2015&quot;: 12
-  }
+    "timeline": {
+        "2015": 14305,
+        "2014": 6867,
+        "2017": 6923,
+        "2016": 17026,
+        "2013": 967
+    }
 }
 </code></pre>
 
@@ -837,24 +1151,26 @@ Content-Type: application/json; charset=UTF-8
         </code></pre>
 
         <p><strong>Response</strong></p>
+
 <pre><code class="http">HTTP/1.1 200 OK
 Content-Type: application/json; charset=UTF-8
 
 {
-  &quot;top&quot;: {
-    &quot;200341&quot;: 2341,
-    &quot;200134&quot;: 2111,
-    &quot;201342&quot;: 2001,
-    &quot;23144&quot;: 1930,
-    &quot;1998&quot;: 1900,
-    &quot;20023&quot;: 1802,
-    &quot;200321&quot;: 1720,
-    &quot;101342&quot;: 1517,
-    &quot;213454&quot;: 1516,
-    &quot;19341&quot;: 1516,
-  }
+    "top": {
+        "1130885": 31334,
+        "1256369": 32128,
+        "2064072": 65819,
+        "1286826": 25929,
+        "653676": 33393,
+        "4291565": 36494,
+        "1018769": 46370,
+        "1031637": 36428,
+        "766364": 46088,
+        "3413821": 39133
+    }
 }
 </code></pre>
+
 
         <h3 id="top-3-most-viewed-categories-in-a-specified-institutional-group-in-2014">Top 3 most viewed categories in a specified institutional group in 2014</h3>
         <p><strong>Request</strong></p>
@@ -1009,190 +1325,129 @@ Content-Type: application/json; charset=UTF-8
 </code></pre>
       </div>
       <div id="description_search_intro">
-        <h2 id="introductory-considerations">Introductory considerations</h2>
-        <p>Searching the figshare website can be performed either by using the front-end interface or by using the API we provide. Either way, the search query will be analyzed and sent to a search engine built by figshare on top of the open source <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> server.
-        In the following document, we will try to detail the type of searches one may perform and the results one should expect from the search engine. The environment used for demonstrating the figshare search feature is comprised of six research documents, scraped for this purpose from the archives of the <a href="https://www.plos.org/">Public Library of Open Science</a>. For reference purposes, we provide the links to the articles below:
-        <em> <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0127223">Article 1</a>
-        </em> <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a>
-        <em> <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0014098">Article 3</a>
-        </em> <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a>
-        <em> <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111421">Article 5</a>
-        </em> <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112540">Article 6</a></p>
-        <p>The actual article content is indexed and analyzed from the first part of each article's introduction, the tags are the subject areas, and the categories are parsed from the article's .xml file, and are the same as the categories that appear on the figshare page corresponding to the article.</p>
+        <h2>How to find data on figshare</h2>
+        <p>Data appears on the portal homepage with the newest uploads appearing first, you also have the option to browse by Popular content and Categories. Categories will only appear available for browsing if there are public items with the category assigned.</p>
       </div>
-      <div id="description_search_general">
-        <h2 id="general-search-engine-featurescharacteristics">General search engine features/characteristics</h2>
-        <ol>
-        <li><em><strong>Stemming</strong></em> of words:</li>
-        <li>All indexed words are stemmed, so, search queries like <em>process</em>/<em>processes</em>/<em>processing</em> are equivalent.</li>
-        <li><em><strong>Stopword</strong></em> elimination:</li>
-        <li>Stopwords like prepositions for instance are not indexed by the search engine, so, search queries like "just in time"/"just on time"/"just of time" are equivalent.</li>
-        </ol>
-        <blockquote>
-        <p>Please note however that, even if the stopwords do not get indexed, in the case of the phrase search detailed below, the fact that a stopword exists somewhere in the actual phrase does matter. Thus, search queries like "standing on the table"/"standing table" are not equivalent. </p>
-        </blockquote>
+      <div id="description_search_operators">
+        <h2>Search operators</h2>
+        <p>figshare supports a predefined set of characters for the main search operators and for phrase searches.</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Operator</th>
+        <th>Supported characters</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>AND</td>
+        <td>AND</td>
+        </tr>
+
+        <tr>
+        <td>OR</td>
+        <td>OR</td>
+        </tr>
+        <tr>
+        <td>NOT</td>
+        <td>NOT</td>
+        </tr>
+        <tr>
+        <td>field delimiter</td>
+        <td>:</td>
+        </tr>
+        <tr>
+        <td>phrase search delimiter</td>
+        <td>" "</td>
+        </tr>
+        <tr>
+        <td>grouping</td>
+        <td>( )</td>
+        </tr>
+        </tbody>
+        </table>
+
       </div>
-      <div id="description_search_types">
-        <h2 id="search-types-and-expected-results">Search types and expected results</h2>
-        <h3 id="general-term-search">General term search</h3>
-        <p>This is the basic type of search one can perform on the figshare website or API, and it works pretty much as expected, with documents returned in the order of relevance as follows: documents where the query term appears more times are ranked higher. All article fields (in this case: title, description, tags, categories) are taken into consideration.</p>
-        <h4 id="example">Example:</h4>
-        <h5 id="query-string-therapy">Query string: "therapy"</h5>
-        <h5 id="return-results-with-relevant-paragraphstagscategories">Return results with relevant paragraphs/tags/categories:</h5>
-        <ol>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
-        <li><em>Title</em>: A National Survey of Teachers on Antiretroviral <em><strong>Therapy</strong></em> in Malawi: Access, Retention in <em><strong>Therapy</strong></em> and Survival</li>
-        <li><em>Description</em>: [...] Malawi is scaling up antiretroviral <em><strong>therapy</strong></em> (ART) (...)</li>
-        <li><em>Description</em>: [...] retention in <em><strong>therapy</strong></em> and survival (...)</li>
-        <li><em>Tags</em>: Antiretroviral <em><strong>therapy</strong></em></li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
-        <li><em>Title</em>: Uptake of WHO Recommendations for First-Line Antiretroviral <em><strong>Therapy</strong></em> in Kenya, Uganda, and Zambia</li>
-        <li><em>Description</em>: [...] first-line antiretroviral <em><strong>therapies</strong></em> (ART) (...)</li>
-        <li><em>Description</em>: [...] TDF combined <em><strong>therapy</strong></em> offers (...) </li>
-        <li><em>Description</em>: [...] TDF-based <em><strong>therapy</strong></em> as the preferred option with AZT-based <em><strong>therapies</strong></em> listed as alternatives. (...)</li>
-        <li><em>Description</em>: [...] triple combination <em><strong>therapies</strong></em> containing AZT and TDF. (...)</li>
-        <li><em>Description</em>: [...] lower prices for AZT and TDF combination <em><strong>therapy</strong></em>, (...)</li>
-        <li><em>Description</em>: [...] more expensive than d4T-based <em><strong>therapies</strong></em>, respectively.  (...)</li>
-        <li><em>Description</em>: [...] AZT- and TDF-based <em><strong>therapies</strong></em>, (...)</li>
-        <li><em>Tags</em>: Antiretroviral <em><strong>therapy</strong></em></li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0014098">Article 3</a></li>
-        <li><em>Description</em>: [...] access to antiretroviral <em><strong>therapy</strong></em> (ART) (...)</li>
-        <li><em>Description</em>: [...] life-long HIV <em><strong>therapy</strong></em> with limited (...)</li>
-        <li><em>Tags</em>: Antiretroviral <em><strong>therapy</strong></em></li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111421">Article 5</a></li>
-        <li><em>Description</em>: [...] Antiretroviral <em><strong>therapy</strong></em> (ART) is effective (...)</li>
-        <li><em>Tags</em>: Antiretroviral <em><strong>therapy</strong></em></li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0127223">Article 1</a></li>
-        <li><em>Tags</em>: Antiretroviral <em><strong>therapy</strong></em></li>
-        </ol>
-        <blockquote>
-        <p>Please note that <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a> is ranked higher than <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a>, even though the latter has more occurences of our search term. The reason for this is that the former has two of those occurences in the title, and the scoring is weighed rather heavily towards the title field. </p>
-        </blockquote>
-        <hr />
-        <h3 id="field-term-search">Field term search</h3>
-        <p>This works exactly as the general term search described above, however, it is a bit more specialized, in that it allows selecting the field(s) in which to perform the search. As in the general term search above, documents where the query term appears more times are ranked higher. This type of search works on the figshare website, as well as in the API.</p>
-        <h4 id="example_1">Example:</h4>
-        <h5 id="query-string-title-therapy">Query string: "title: therapy"</h5>
-        <h5 id="return-results-with-relevant-paragraphstagscategories_1">Return results with relevant paragraphs/tags/categories:</h5>
-        <ol>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
-        <li><em>Title</em>: A National Survey of Teachers on Antiretroviral <em><strong>Therapy</strong></em> in Malawi: Access, Retention in <em><strong>Therapy</strong></em> and Survival</li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
-        <li><em>Title</em>: Uptake of WHO Recommendations for First-Line Antiretroviral <em><strong>Therapy</strong></em> in Kenya, Uganda, and Zambia</li>
-        </ol>
-        <blockquote>
-        <p>Please note that articles 1, 3 and 5 do not appear in the search results anymore, as just the items with the word <em>therapy</em> in the title are returned.</p>
-        </blockquote>
-        <hr />
-        <h3 id="general-multi-term-search">General multi-term search</h3>
-        <p>This is the general multi-word search that returns documents that contain at least one of the query terms. This works like a boolean "OR" search, and ranking rules are the same as the types of searches listed above. This type of search works on the figshare website, as well as in the API.</p>
-        <h4 id="example_2">Example:</h4>
-        <h5 id="query-string-verticality-endorse-progress">Query string: "verticality endorse progress"</h5>
-        <h5 id="return-results-with-relevant-paragraphstagscategories_2">Return results with relevant paragraphs/tags/categories:</h5>
-        <ol>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0127223">Article 1</a></li>
-        <li><em>Description</em>: [...] Initially, the South African National Department of Health <em><strong>endorsed</strong></em> a <em><strong>vertical</strong></em> ART (...)</li>
-        <li><em>Description</em>: [...] system able to signpost programme <em><strong>progress</strong></em> and performance (...)</li>
-        <li><em>Description</em>: [...] These <em><strong>vertical</strong></em> M&amp;E systems ran parallel (...)</li>
-        <li><em>Description</em>: [...] Kawonga and colleagues discuss the limitations inherent to such a <em><strong>vertical</strong></em> (...)</li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
-        <li><em>Description</em>: [...] this recommendation, stating that countries should take steps to <em><strong>progressively</strong></em> reduce (...)</li>
-        </ol>
-        <hr />
-        <h3 id="field-multi-term-search">Field multi-term search</h3>
-        <p>This works like the general multi-term search described above, only it allows specifying the field(s) on which to perform the search. Ranking rules are the same as the types of searches listed above. This type of search works on the figshare website, as well as in the API.</p>
-        <h4 id="example_3">Example:</h4>
-        <h5 id="query-string-title-antiretroviral-therapies">Query string: "title: antiretroviral therapies"</h5>
-        <h5 id="return-results-with-relevant-paragraphstagscategories_3">Return results with relevant paragraphs/tags/categories:</h5>
-        <ol>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
-        <li><em>Title</em>: A National Survey of Teachers on <em><strong>Antiretroviral Therapy</strong></em> in Malawi: Access, Retention in <em><strong>Therapy</strong></em> and Survival</li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
-        <li><em>Title</em>: Uptake of WHO Recommendations for First-Line <em><strong>Antiretroviral Therapy</strong></em> in Kenya, Uganda, and Zambia</li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0127223">Article 1</a></li>
-        <li><em>Title</em>: Implementation of an Electronic Monitoring and Evaluation System for the <em><strong>Antiretroviral</strong></em> Treatment Programme in the Cape Winelands District, South Africa: A Qualitative Evaluation</li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0014098">Article 3</a></li>
-        <li><em>Title</em>: Diminishing Availability of Publicly Funded Slots for <em><strong>Antiretroviral</strong></em> Initiation among HIV-Infected ART-Eligible Patients in Uganda</li>
-        </ol>
-        <hr />
-        <h3 id="general-compound-term-search">General compound term search</h3>
-        <p>This is the equivalent of a boolean "AND" search and returns only the documents with occurences of all of the words contained in the search string. Ranking rules are unchanged with regard to the search types described above. This type of search works on the figshare website, as well as in the API.</p>
-        <h4 id="example_4">Example:</h4>
-        <h5 id="query-string-antiretroviral-therapies">Query string: "antiretroviral, therapies"</h5>
-        <h5 id="return-results-with-relevant-paragraphstagscategories_4">Return results with relevant paragraphs/tags/categories:</h5>
-        <ol>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
-        <li><em>Title</em>: A National Survey of Teachers on <em><strong>Antiretroviral Therapy</strong></em> in Malawi: Access, Retention in <em><strong>Therapy</strong></em> and Survival</li>
-        <li><em>Description</em>: [...] <em><strong>antiretroviral therapy</strong></em> (ART) (...)</li>
-        <li><em>Description</em>: [...] access, retention in <em><strong>therapy</strong></em> and survival for subgroups of the population. We have (...)</li>
-        <li><em>Tags</em>: <em><strong>Antiretroviral therapy</strong></em></li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
-        <li><em>Title</em>: Uptake of WHO Recommendations for First-Line <em><strong>Antiretroviral Therapy</strong></em> in Kenya, Uganda, and Zambia</li>
-        <li><em>Description</em>: [...] to transition away from first-line <em><strong>antiretroviral therapies</strong></em> (ART) containing stavudine (...)</li>
-        <li><em>Description</em>: [...] the likelihood of drug resistance. TDF combined <em><strong>therapy</strong></em> offers an additional benefit (...)</li>
-        <li><em>Description</em>: [...] WHO consolidated guidelines on the use of ART named a TDF-based <em><strong>therapy</strong></em> (...)</li>
-        <li><em>Description</em>: [...] AZT-based <em><strong>therapies</strong></em> listed as alternatives (...)</li>
-        <li><em>Description</em>: [...] combination <em><strong>therapies</strong></em> containing AZT and TDF</li>
-        <li><em>Tags</em>: <em><strong>Antiretroviral therapy</strong></em></li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0127223">Article 1</a></li>
-        <li><em>Title</em>: Implementation of an Electronic Monitoring and Evaluation System for the <em><strong>Antiretroviral</strong></em> Treatment Programme in the Cape Winelands District, South Africa: A Qualitative Evaluation</li>
-        <li><em>Description</em>: [...] South Africa's <em><strong>antiretroviral</strong></em> treatment (ART) programme (...)</li>
-        <li><em>Tags</em>: <em><strong>Antiretroviral therapy</strong></em></li>
-        <li><em>Tags</em>: <em><strong>antiretrovirals</strong></em></li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0014098">Article 3</a></li>
-        <li><em>Title</em>: Diminishing Availability of Publicly Funded Slots for <em><strong>Antiretroviral</strong></em> Initiation among HIV-Infected ART-Eligible Patients in Uganda</li>
-        <li><em>Description</em>: [...] about the future of access to <em><strong>antiretroviral therapy</strong></em> (...)</li>
-        <li><em>Description</em>: [...] the feasibility of implementing life-long HIV <em><strong>therapy</strong></em> with limited health care infrastructure (...)</li>
-        <li><em>Tags</em>: <em><strong>Antiretroviral therapy</strong></em></li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111421">Article 5</a></li>
-        <li><em>Description</em>: [...] <em><strong>Antiretroviral therapy</strong></em> (ART) is effective in reducing maternal (...)</li>
-        <li><em>Tags</em>: <em><strong>Antiretroviral therapy</strong></em></li>
-        </ol>
-        <blockquote>
-        <p>Please note that, just like in the case of the general term search, <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a> is ranked higher than <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a>, even though we can see more occurences of the query string words in the latter. The reason, just like above, is the weighing applied on the title field, deemed more important than the description field.</p>
-        </blockquote>
-        <hr />
-        <h3 id="field-compound-term-search">Field compound term search</h3>
-        <p>This works like the general compound term search above, only it allows specifying the field(s) on which to perform the search. Ranking rules are unchanged with regard to the search types described above. This type of search works on the figshare website, as well as in the API.</p>
-        <h4 id="example_5">Example:</h4>
-        <h5 id="query-string-title-antiretroviral-therapies_1">Query string: "title: antiretroviral, therapies"</h5>
-        <h5 id="return-results-with-relevant-paragraphstagscategories_5">Return results with relevant paragraphs/tags/categories:</h5>
-        <ol>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
-        <li><em>Title</em>: A National Survey of Teachers on <em><strong>Antiretroviral Therapy</strong></em> in Malawi: Access, Retention in <em><strong>Therapy</strong></em> and Survival</li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
-        <li><em>Title</em>: Uptake of WHO Recommendations for First-Line <em><strong>Antiretroviral Therapy</strong></em> in Kenya, Uganda, and Zambia</li>
-        </ol>
-        <hr />
-        <h3 id="general-phrase-search">General phrase search</h3>
-        <p>This is the most restrictive type of search, as it returns only those documents in which an occurence of the full query string (word ordering matters) is found. Ranking rules are unchanged with regard to the search types described above. This type of search works on the figshare website, as well as in the API.</p>
-        <h4 id="example_6">Example:</h4>
-        <h5 id="query-string-antiretroviral-therapy-art">Query string: " 'antiretroviral therapy (ART)' "</h5>
-        <h5 id="return-results-with-relevant-paragraphstagscategories_6">Return results with relevant paragraphs/tags/categories:</h5>
-        <ol>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
-        <li><em>Description</em>: [...] <em><strong>antiretroviral therapy (ART)</strong></em> [6]. Data on all ART patients (...)</li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120350">Article 2</a></li>
-        <li><em>Description</em>: [...] to transition away from first-line <em><strong>antiretroviral therapies (ART)</strong></em> containing stavudine (...)</li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111421">Article 5</a></li>
-        <li><em>Description</em>: [...] service needs. <em><strong>Antiretroviral therapy (ART)</strong></em> is effective in reducing maternal (...)</li>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0014098">Article 3</a></li>
-        <li><em>Description</em>: [...] have raised uncertainty about the future of access to <em><strong>antiretroviral therapy (ART)</strong></em> and the goal of universal access. (...)</li>
-        </ol>
-        <blockquote>
-        <p>Please note that the ranking, in this case, takes into consideration individual term occurences in the documents, hence the ordering (remarkably similar to the ordering in the case of the general term search)</p>
-        </blockquote>
-        <hr />
-        <h3 id="field-phrase-search">Field phrase search</h3>
-        <p>This works like the general phrase search above, only it allows specifying the field(s) on which to perform the search. Ranking rules are unchanged with regard to the search types described above. This type of search works on the figshare website, as well as in the API.</p>
-        <h4 id="example_7">Example:</h4>
-        <h5 id="query-string-title-therapy-and-survival">Query string: "title 'therapy and survival' "</h5>
-        <h5 id="return-results-with-relevant-paragraphstagscategories_7">Return results with relevant paragraphs/tags/categories:</h5>
-        <ol>
-        <li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0000620">Article 4</a></li>
-        <li><em>Title</em>: A National Survey of Teachers on Antiretroviral Therapy in Malawi: Access, Retention in <em><strong>Therapy and Survival</strong></em></li>
-        </ol>
+      <div id="description_search_attributes">
+        <h2>Searchable attributes</h2>
+        <p>You can build queries based on the following attributes:</p>
+        <ul>
+          <li>:title: - string (exact match),</li>
+          <li>:description: - string (exact match),</li>
+          <li>:tag: - string (exact match), the tag is the keyword used to describe an item such as ":tag: artificial intelligence"</li>
+          <li>:category: - string (exact match),</li>
+          <li>:author: - string (exact match),</li>
+          <li>:item_type:  - string, can be one of the following: [article, project, collection, dataset, figure, poster, media, presentation, paper, fileset, thesis, code]</li>
+          <li>:search_term: - string (will search in all fields and match phrase)</li>
+          <li>:orcid: - string (exact match)</li>
+          <li>:extension: - string (exact match for the file extensions)</li>
+          <li>:references: - string (exact match)</li>
+          <li>:doi: - string (exact match)</li>
+          <li>:institution: - string, this is only for institutions that have figshare and you would use the string id from the URL (for example, Loughborough University has the URL https://lboro.figshare.com/ and you would type ":institutions: lboro" into the search bar)</li>
+          <li>:project: - string (exact match)</li>
+          <li>:published_before: - string (exact match)</li>
+          <li>:published_after: - string (exact match)</li>
+          <li>:licence: - string (exact match), for example ":licence: CCBY"</li>
+
+          <li>:resource_doi: - string (exact match)</li>
+          <li>:resource_title: - string (exact match)</li>
+          <li>:resource_link: - string (exact match)</li>
+        </ul>
+        <p>In order for the search to filter the attribute the user must use the following syntax:  <strong>:tag: cell</strong></p>
       </div>
+      <div id="description_search_quick">
+        <h2>Quick Search</h2>
+        <h3>Simple search</h3>
+        <h4>Search string: cell</h4>
+        <p>As a result of this search you will see all figshare articles that will contain the word "cell" in any of the metadata fields. The search will also return the articles that contain the term cells or all inflected words derived from the common stem.</p>
+
+        <h3>Phrase search - phase 2</h3>
+        <h4>Search string: "stem cell"</h4>
+        <p>As a result of this search you will see all figshare articles that will contain the exact phrase "stem cell" in any of the metadata fields.</p>
+
+        <h3>Multi term search</h3>
+        <h4>Search string: cancer cells treatment</h4>
+        <p>As a result of this search you will see all figshare articles that contain at least one of the query terms. The results will be ordered by relevance first ones being the ones that would be found in a phrase search if available.</p>
+        <p>As explained also in the table above the space is used by the figshare search as an OR operator. The search will also return the articles that contain all inflected words derived from the common stems.</p>
+
+      </div>
+      <div id="description_search_advanced">
+        <h2>Advanced Search</h2>
+        <p>As the tags might contain special characters they will have a special treatment within the figshare search, where we would do an exact match. The examples below will illustrate how field search works in general and how is customised for tags.</p>
+        <h4>Search string:  :tag: cancer cell</h4>
+        <p>This search will return all articles with the exact tag cancer cell.</p>
+        <h4>Search string:  :tag: music and puppets</h4>
+        <p>This search will return all articles with the exact tag music and puppets. Only the operator AND will work as search delimiter.</p>
+        <h4>Search string:  :tag: "scrf=(cpcm,solvent=benzene)"</h4>
+        <p>This search will return all articles with the exact tag.</p>
+        <h4>Search string:  :tag: cancer category chemistry</h4>
+        <p>This search will return all articles with the exact tag "cancer category chemistry". If the user wants to break the tag and search also for a specific category please see Combined field search below.</p>
+        <h4>Search string:  :title: environmental science</h4>
+        <p>This search will return all articles that have at least one of the words in the title working as in field multi-term search by relevance.</p>
+        <h4>Search string:  :title: Line balancing for improving production</h4>
+        <p>Figshare engine will add the space where needed between the operator and the actual term<br />This search will return only the articles that have the specified phrase included in the title. As usual the search will return also with a lower priority results containing all inflected words derived from the common stems.</p>
+        <h4>Search string:  :description: growth of Indian manufacturing sector</h4>
+        <p>This search will return all articles that have at least one of the words from above contained in the description from the list above as multi-term search ordered by relevance. As usual, the search will return also with a lower priority results containing all inflected words derived from the common stems.</p>
+        <h4>Search string: description: "industrial case study"</h4>
+        <p>This search will return all articles that have the phrase from above contained in the description. As usual, the search will return also with a lower priority results containing all inflected words derived from the common stems.</p>
+      </div>
+      <div id="description_search_combined">
+        <h2>Combined field search</h2>
+        <h4>Search string:  :author: M. Hahnel  OR :author: J. Smith OR :Author:  Albert Einstein</h4>
+        <p>This search will return all articles that have at least one of the authors from the list above.</p>
+        <h4>Search string:  :title: Line balancing for improving production AND :tag: cancer cell</h4>
+        <p>This search will return all results where the title matches phrase (multi term search by relevance) from above and has the "cancer cell" tag. As usual the search will return also with a lower priority results containing all inflected words derived from the common stems.</p>
+        <h4>Search string:  :tag: chemistry applied AND :category: biochemistry</h4>
+        <p>This search will return all results where the tag is chemistry applied and the category is biochemistry. As usual the search will return also with a lower priority results containing all inflected words derived from the common stems.</p>
+      </div>
+      <div id="description_search_complex">
+        <h2>Complex searches</h2>
+        <h4>Search string:  :title: science AND :tag: cell AND  :search term: private research</h4>
+        <p>This search will return articles that have the word science in the title and the tag cell and has the expression private research in any metadata field.</p>
+        <h4>Search string:  :title: law OR :tag: democrat AND :search term: respect</h4>
+        <p>This search will return all articles that contain law in title or the tag democrat but also contain the word respect in any of the metadata fields.</p>
+      </div>
+
       <div id="description_oauth_intro">
         <p>Since January 2016 figshare supports the <a href="http://tutorials.jenkov.com/oauth2/index.html">OAuth 2.0 Authorization Framework</a>. If you're new to OAuth make sure you have at least a basic understanding before moving on.</p>
       </div>
@@ -2308,6 +2563,265 @@ json
         those given the express permission of uploading HR feeds.</p>
 
     </div>
+
+    <div id="description_api_features">
+      <h1 id="api-feature-list">API feature list</h1>
+      <p>The figshare api v2 is accessible at https://api.figshare.com/v2. All
+      communication is done through <em>https</em> and all data is encoded as <code>JSON</code>.</p>
+      <ul>
+      <li><a href="#description_figsharedocumentation_APIdescription_Sendingparameters">Sending parameters</a></li>
+      <li><a href="#description_figsharedocumentation_APIdescription_Resourcerepresentations">Resource representations</a></li>
+      <li><a href="#description_figsharedocumentation_APIdescription_Authentication">Authentication</a></li>
+      <li><a href="#description_figsharedocumentation_APIdescription_Errors">Errors</a></li>
+      <li><a href="#description_figsharedocumentation_APIdescription_Searchingfilteringandpagination">Searching, filtering and pagination</a></li>
+      <li><a href="#description_figsharedocumentation_APIdescription_Ratelimiting">Rate limiting</a></li>
+      <li><a href="#description_figsharedocumentation_APIdescription_Conditionalrequests">Conditional requests</a></li>
+      <li><a href="#description_figsharedocumentation_APIdescription_CORSpolicy">CORS policy</a></li>
+      <li>Endpoints</li>
+      <li><a href="#collections_collections_Get">collections</a></li>
+      <li><a href="#articles_articles_Get">items</a></li>
+      <li><a href="#projects_projectsGet">projects</a></li>
+      </ul>
+    </div>
+    <div id="description_api_parameters">
+      <h2 id="sending-parameters">Sending parameters</h2>
+      <p>More often than not you need to send parameters to an endpoint. For
+      <code>GET</code> requests these are usualy sent in the query string but for <code>POST</code>
+      and <code>PUT</code> requests they are usually in the body of the request.</p>
+      <h3 id="query-string">Query string</h3>
+      <p>Query strings can contain parameters encoded as <code>application/x-www-form-urlencoded</code>. Very common for <code>GET</code> requests.</p>
+      <p><strong>Example</strong>: Sending <code>page</code> parameter when listing articles:</p>
+      <pre><code class="http">GET /v2/articles?page=3 HTTP/1.1
+      Host: api.figshare.com
+      Authorization: token a287ab8c7ebdbe6
+      </code></pre>
+
+      <h3 id="request-json-body">Request json body</h3>
+      <p><code>POST</code> and <code>PUT</code> request usualy read their params from the body of the
+      http request. Our API only understands <code>application/json</code> encoded
+      bodies.</p>
+      <p><strong>Example</strong>: Sending <code>search_for</code> parameter when searching for articles:</p>
+      <pre><code class="http">POST /v2/articles/search HTTP/1.1
+      Host: api.figshare.com
+      Authorization: token a287ab8c7ebdbe6
+
+      {
+          &quot;search_for&quot;: &quot;figshare&quot;
+      }
+      </code></pre>
+
+    </div>
+    <div id="description_api_resourcerepresentation">
+      <h2 id="resource-representations">Resource representations</h2>
+      <p>Resources can be presented differently across endpoints. Usually
+      endpoints that return a list of resources will send a <em>lighter</em>
+      representation of each resource while an endpoint for an individual
+      resource will use a more <em>detailed</em> and <em>complete</em> representation.</p>
+      <p>Representations for each resource type are documented inside each endpoint in the Body Schema section.</p>
+      <p>Blank resource fields are included in the representation as <code>null</code> instead
+      of being omitted.</p>
+    </div>
+    <div id="description_api_auth">
+      <h2 id="authentication">Authentication</h2>
+      <p>The v2 API supports OAuth2 access tokens, issued as
+      described in the <a href="#description_figsharedocumentation_OAuth">oauth section</a>.</p>
+      <p>In addition to oauth access tokens, you can also use a <em>personal token</em>
+      which grants you full access to your account. Personal tokens can be
+      created and managed from the <a href="https://figshare.com/account/applications">applications
+      page</a> at figshare.</p>
+      <p>Any of these tokens can be used to authenticate and there are 2 options
+      to include them in requests:</p>
+      <h3 id="http-header-recommended">HTTP header (<em>recommended</em>)</h3>
+      <pre><code class="http">GET /v2/token HTTP/1.1
+      Host: api.figshare.com
+      Authorization: token ACCESS_TOKEN
+      </code></pre>
+
+      <p>Example with <code>curl</code>:</p>
+      <pre><code class="bash">curl -H &quot;Authorization: token ACCESS_TOKEN&quot; https://api.figshare.com/v2
+      </code></pre>
+
+      <h3 id="query-param">Query param:</h3>
+      <pre><code class="http">GET /v2/token?access_token=ACCESS_TOKEN HTTP/1.1
+      Host: api.figshare.com
+      </code></pre>
+
+      <p>Example with <code>curl</code>:</p>
+      <pre><code class="bash">curl https://api.figshare.com/v2?access_token=ACCESS_TOKEN
+      </code></pre>
+    </div>
+    <div id="description_api_errors">
+      <h2 id="errors">Errors</h2>
+      <p>Endpoints can respond with error responses. The common error responses
+      for all endpoints are presented below and errors specific to individual
+      enpoints are documented along with the endpoint.</p>
+      <p>Each error response will have a specific HTTP status code and a JSON
+      body with the following fields:</p>
+      <table>
+      <thead>
+      <tr>
+      <th>Field</th>
+      <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>message</td>
+      <td>A human friendly message explaining the error.</td>
+      </tr>
+      <tr>
+      <td>code</td>
+      <td>A machine friendly error code, used by the dev team to identify the error.</td>
+      </tr>
+      <tr>
+      <td>data</td>
+      <td>An object containing extra information about the error. Documented for each error.</td>
+      </tr>
+      </tbody>
+      </table>
+      <h3 id="404-not-found">404 Not found</h3>
+      <p>Trying to access resources that do not exist, will trigger this response
+      from the API.</p>
+      <p>This is also returned if you try to access a resource on which you don't
+      have a <code>read</code> permission.</p>
+      <h3 id="400-bad-request">400 Bad request</h3>
+      <p>Sending a body that cannot be parsed as JSON will result in  this error
+      response.</p>
+      <h3 id="422-unprocessable-entity">422 Unprocessable Entity</h3>
+      <p>Sending an invalid data structure in the body will trigger this error.
+      Invalid data can be any of the following:</p>
+      <ul>
+      <li>missing field</li>
+      <li>invalid value for a field</li>
+      <li>any other rules specific to an endpoint</li>
+      </ul>
+      <h3 id="401-unauthorized">401 Unauthorized</h3>
+      <p>This error is returned when the authorization was unsuccessfull. This can
+      be either due to:</p>
+      <ul>
+      <li>missing authorization info in the request</li>
+      <li>invalid or unknown authorization info</li>
+      <li>expired or disabled account</li>
+      </ul>
+      <h3 id="403-forbidden">403 Forbidden</h3>
+      <p>This response is presented whenever you try to do something which is not
+      permitted for your current authorization.
+      authorization info</p>
+    </div>
+    <div id="description_api_search">
+      <h2 id="searching-filtering-and-pagination">Searching, filtering and pagination</h2>
+      <p>Endpoints that list items usually support any of the following features:</p>
+      <ul>
+      <li>pagination</li>
+      <li>ordering</li>
+      <li>searching</li>
+      <li>filtering</li>
+      </ul>
+      <h4 id="pagination-params">Pagination params</h4>
+      <p>Pagination can be done by specifing either <code>page</code> and <code>page_size</code> params
+      pair or the <code>limit</code> and <code>offset</code> params pair. If confusing combinations
+      appear in a request, a <code>422 Unprocessable Entity</code> will be returned.</p>
+      <table>
+      <thead>
+      <tr>
+      <th>field</th>
+      <th>type</th>
+      <th>default</th>
+      <th>description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><code>page</code></td>
+      <td>int</td>
+      <td>1</td>
+      <td>Page number</td>
+      </tr>
+      <tr>
+      <td><code>page_size</code></td>
+      <td>int</td>
+      <td>10</td>
+      <td>The number of results included on a page</td>
+      </tr>
+      <tr>
+      <td><code>limit</code></td>
+      <td>int</td>
+      <td>10</td>
+      <td>Number of results included on a page</td>
+      </tr>
+      <tr>
+      <td><code>offset</code></td>
+      <td>int</td>
+      <td>0</td>
+      <td>Where to start the listing(the offset of the first result)</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>Please note that there's a limit on the maximum offset or page number  you can require.
+      The offset is currently limited at 1000 and if exceeded a <code>422 Unprocessable Entity</code> error will be returned. For pages, it depends on the <code>page_size</code>
+      but for a <code>page_size</code> of <code>10</code>, the maximum page would be <code>1000 / 10 = 100</code></p>
+      <h4 id="ordering-params">Ordering params</h4>
+      <p>Ordering is done via the <code>order</code> and <code>order_direction</code> params.</p>
+      <table>
+      <thead>
+      <tr>
+      <th>field</th>
+      <th>type</th>
+      <th>default</th>
+      <th>description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><code>order</code></td>
+      <td>string</td>
+      <td><em>varies</em></td>
+      <td>The field by which to order. Default varies by endpoint/resource. For articles and collections, valid values are: <code>published_date</code> and <code>modified_date</code>.</td>
+      </tr>
+      <tr>
+      <td><code>order_direction</code></td>
+      <td>string</td>
+      <td><em>varies</em></td>
+      <td>Only <code>asc</code> and <code>desc</code> values are supported. Default varies by endpoint/resource</td>
+      </tr>
+      </tbody>
+      </table>
+      <h4 id="searching-params">Searching params</h4>
+      <table>
+      <thead>
+      <tr>
+      <th>field</th>
+      <th>type</th>
+      <th>description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><code>search_for</code></td>
+      <td>string</td>
+      <td>Search endpoints require this field.  Usually min length is 3</td>
+      </tr>
+      </tbody>
+      </table>
+      <h4 id="filtering-params">Filtering params</h4>
+      <p>Some endpoints allow filtering results. Filters are extra fields in the
+      body and the documentation for each endpoint will present them in detail.</p>
+    </div>
+    <div id="description_api_ratelimit">
+      <h2 id="rate-limiting">Rate limiting</h2>
+      <p>Not implemented at this point.</p>
+    </div>
+    <div id="description_api_requests">
+      <h2 id="conditional-requests">Conditional requests</h2>
+      <p>Most responses should return an ETag header and a Last-Modified header.
+      You can use the values of these headers to create conditional requests.
+      We encourage  to use these whenever possible.</p>
+    </div>
+    <div id="description_api_cors">
+      <h2 id="cors-policy">CORS policy</h2>
+      <p>The API supports CORS for AJAX requests from any origin.</p>
+    </div>
+
 
 
 </section>
