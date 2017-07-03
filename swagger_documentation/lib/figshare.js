@@ -405,7 +405,7 @@ function ParamTextareaTabHandle(event) {
 
 function verifyHashOnLoad() {
   let hash = window.location.hash;
-  if(hash == "#!/articles/articles_Get") {
+  if(hash == "#!/articles/articles_list") {
     if(window.history.pushState) {
         window.history.pushState('', '/', window.location.pathname)
     } else {
