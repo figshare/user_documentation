@@ -2663,3 +2663,8 @@ body {
 .btn.btn-primary {
     background-color: #c7404d;
 }
+
+.parameter-item.body_schema_indicator {
+    padding: 15px 20px;
+    margin-bottom: 0;
+}

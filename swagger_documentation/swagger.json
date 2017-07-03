@@ -19,7 +19,7 @@
                 "tags": [
                     "articles"
                 ], 
-                "operationId": "articles_Get", 
+                "operationId": "articles_list", 
                 "summary": "Public Articles", 
                 "description": "Returns a list of public articles", 
                 "security": [], 
@@ -161,7 +161,7 @@
                 "tags": [
                     "articles"
                 ], 
-                "operationId": "articles_search_Post", 
+                "operationId": "articles_search", 
                 "summary": "Public Articles Search", 
                 "description": "Returns a list of public articles, filtered by the search parameters", 
                 "security": [], 
@@ -204,7 +204,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Public Article", 
-                "operationId": "articles_article_Get", 
+                "operationId": "article_details", 
                 "summary": "View article details", 
                 "description": "View an article", 
                 "security": [], 
@@ -244,7 +244,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Public Article", 
-                "operationId": "articles_article_versions_Get", 
+                "operationId": "article_versions", 
                 "summary": "List article versions", 
                 "description": "List public article versions", 
                 "security": [], 
@@ -287,7 +287,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Public Article", 
-                "operationId": "articles_article_versions_version_Get", 
+                "operationId": "article_version_details", 
                 "summary": "Article details for version", 
                 "description": "Article with specified version", 
                 "security": [], 
@@ -335,7 +335,7 @@
                 "tags": [
                     "articles"
                 ], 
-                "operationId": "articles_article_versions_version_embargo_Get", 
+                "operationId": "article_version_embargo", 
                 "summary": "Public Article Embargo for article version", 
                 "description": "Embargo for article version", 
                 "security": [], 
@@ -383,7 +383,7 @@
                 "tags": [
                     "articles"
                 ], 
-                "operationId": "articles_article_versions_version_confidentiality_Get", 
+                "operationId": "article_version_confidentiality", 
                 "summary": "Public Article Confidentiality for article version", 
                 "description": "Confidentiality for article version", 
                 "security": [], 
@@ -432,7 +432,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Public Article files", 
-                "operationId": "articles_article_files_Get", 
+                "operationId": "article_files", 
                 "summary": "List article files", 
                 "description": "Files list for article", 
                 "security": [], 
@@ -475,7 +475,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Public Article files", 
-                "operationId": "articles_article_files_file_Get", 
+                "operationId": "article_file_details", 
                 "summary": "Article file details", 
                 "description": "File by id", 
                 "security": [], 
@@ -523,7 +523,7 @@
                 "tags": [
                     "articles"
                 ], 
-                "operationId": "account_articles_search_Post", 
+                "operationId": "private_articles_search", 
                 "summary": "Private Articles search", 
                 "description": "Returns a list of private articles filtered by the search parameters", 
                 "security": [
@@ -574,7 +574,7 @@
                 "tags": [
                     "articles"
                 ], 
-                "operationId": "account_articles_Get", 
+                "operationId": "private_articles_list", 
                 "summary": "Private Articles", 
                 "description": "Get Own Articles", 
                 "security": [
@@ -656,7 +656,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article", 
-                "operationId": "account_articles_Post", 
+                "operationId": "private_article_create", 
                 "summary": "Create new Article", 
                 "description": "Create a new Article by sending article information", 
                 "security": [
@@ -716,7 +716,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article", 
-                "operationId": "account_articles_article_Get", 
+                "operationId": "private_article_details", 
                 "summary": "Article details", 
                 "description": "View a private article", 
                 "security": [
@@ -755,7 +755,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article", 
-                "operationId": "account_articles_article_Put", 
+                "operationId": "private_article_update", 
                 "summary": "Update article", 
                 "description": "Updating an article by passing body parameters", 
                 "security": [
@@ -806,7 +806,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article", 
-                "operationId": "account_articles_article_Delete", 
+                "operationId": "private_article_delete", 
                 "summary": "Delete article", 
                 "description": "Delete an article", 
                 "security": [
@@ -852,7 +852,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Embargo", 
-                "operationId": "account_articles_article_embargo_Get", 
+                "operationId": "private_article_embargo_details", 
                 "summary": "Article Embargo Details", 
                 "description": "View a private article embargo details", 
                 "security": [
@@ -891,7 +891,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Embargo", 
-                "operationId": "account_articles_article_embargo_Put", 
+                "operationId": "private_article_embargo_update", 
                 "summary": "Update Article Embargo", 
                 "description": "Note: setting an article under whole embargo does not imply that the article will be published when the embargo will expire. You must explicitly call the publish endpoint to enable this functionality.", 
                 "security": [
@@ -945,7 +945,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Embargo", 
-                "operationId": "account_articles_article_embargo_Delete", 
+                "operationId": "private_article_embargo_delete", 
                 "summary": "Delete Article Embargo", 
                 "description": "Will lift the embargo for the specified article", 
                 "security": [
@@ -979,7 +979,7 @@
                 "tags": [
                     "articles"
                 ], 
-                "operationId": "account_articles_article_publish_Post", 
+                "operationId": "private_article_publish", 
                 "summary": "Private Article Publish", 
                 "description": "- If the whole article is under embargo, it will not be published immediatly, but when the embargo expires or is lifted.\n- When an article is published, a new public version will be generated. Any further updates to the article will affect the private article data. In order to make these changes publicly visible, an explicit publish operation is needed.", 
                 "security": [
@@ -1037,7 +1037,7 @@
                 "tags": [
                     "articles"
                 ], 
-                "operationId": "account_articles_article_reserve_doi_Post", 
+                "operationId": "private_article_reserve_doi", 
                 "summary": "Private Article Reserve DOI", 
                 "description": "Reserve DOI for article", 
                 "security": [
@@ -1100,7 +1100,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Authors", 
-                "operationId": "account_articles_article_authors_Get", 
+                "operationId": "private_article_authors_list", 
                 "summary": "List article authors", 
                 "description": "List article authors", 
                 "security": [
@@ -1142,7 +1142,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Authors", 
-                "operationId": "account_articles_article_authors_Post", 
+                "operationId": "private_article_authors_add", 
                 "summary": "Add article authors", 
                 "description": "Associate new authors with the article. This will add new authors to the list of already associated authors", 
                 "security": [
@@ -1196,7 +1196,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Authors", 
-                "operationId": "account_articles_article_authors_Put", 
+                "operationId": "private_article_authors_replace", 
                 "summary": "Replace article authors", 
                 "description": "Associate new authors with the article. This will remove all already associated authors and add these new ones", 
                 "security": [
@@ -1252,8 +1252,9 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Authors", 
-                "operationId": "account_articles_article_authors_author_Delete", 
+                "operationId": "private_article_author_delete", 
                 "summary": "Delete article author", 
+                "description": "De-associate author from article", 
                 "security": [
                     {
                         "OAuth2": [
@@ -1317,7 +1318,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Categories", 
-                "operationId": "account_articles_article_categories_Get", 
+                "operationId": "private_article_categories_list", 
                 "summary": "List article categories", 
                 "description": "List article categories", 
                 "security": [
@@ -1359,7 +1360,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Categories", 
-                "operationId": "account_articles_article_categories_Post", 
+                "operationId": "private_article_categories_add", 
                 "summary": "Add article categories", 
                 "description": "Associate new categories with the article. This will add new categories to the list of already associated categories", 
                 "security": [
@@ -1405,7 +1406,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Categories", 
-                "operationId": "account_articles_article_categories_Put", 
+                "operationId": "private_article_categories_replace", 
                 "summary": "Replace article categories", 
                 "description": "Associate new categories with the article. This will remove all already associated categories and add these new ones", 
                 "security": [
@@ -1453,8 +1454,9 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Categories", 
-                "operationId": "account_articles_article_categories_category_Delete", 
+                "operationId": "private_article_category_delete", 
                 "summary": "Delete article category", 
+                "description": "De-associate category from article", 
                 "security": [
                     {
                         "OAuth2": [
@@ -1518,7 +1520,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Confidentiality", 
-                "operationId": "account_articles_article_confidentiality_Get", 
+                "operationId": "private_article_confidentiality_details", 
                 "summary": "Article confidentiality details", 
                 "description": "View confidentiality settings", 
                 "security": [
@@ -1557,7 +1559,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Confidentiality", 
-                "operationId": "account_articles_article_confidentiality_Put", 
+                "operationId": "private_article_confidentiality_update", 
                 "summary": "Update article confidentiality", 
                 "description": "Update confidentiality settings", 
                 "security": [
@@ -1603,7 +1605,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Confidentiality", 
-                "operationId": "account_articles_article_confidentiality_Delete", 
+                "operationId": "private_article_confidentiality_delete", 
                 "summary": "Delete article confidentiality", 
                 "description": "Delete confidentiality settings", 
                 "security": [
@@ -1652,7 +1654,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Private Links", 
-                "operationId": "account_articles_article_privatelinks_Get", 
+                "operationId": "private_article_private_link", 
                 "summary": "List private links", 
                 "description": "List private links", 
                 "security": [
@@ -1694,7 +1696,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Private Links", 
-                "operationId": "account_articles_article_privatelinks_Post", 
+                "operationId": "private_article_private_link_create", 
                 "summary": "Create private link", 
                 "description": "Create new private link for this article", 
                 "security": [
@@ -1773,7 +1775,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Private Links", 
-                "operationId": "account_articles_article_privatelinks_privatelink_Put", 
+                "operationId": "private_article_private_link_update", 
                 "summary": "Update private link", 
                 "description": "Update existing private link for this article", 
                 "security": [
@@ -1829,7 +1831,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Private Links", 
-                "operationId": "account_articles_article_privatelinks_privatelink_Delete", 
+                "operationId": "private_article_private_link_delete", 
                 "summary": "Disable private link", 
                 "description": "Disable/delete private link for this article", 
                 "security": [
@@ -1877,6 +1879,7 @@
                 "tags": [
                     "articles"
                 ], 
+                "operationId": "private_article_files_list", 
                 "x-subcategory": "Private Article Files", 
                 "summary": "List article files", 
                 "description": "List private files", 
@@ -1919,6 +1922,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Files", 
+                "operationId": "private_article_upload_initiate", 
                 "summary": "Initiate Upload", 
                 "description": "Initiate new file upload within the article. Either use link to provide only an existing file that will not be uploaded on figshare or use the other 3 parameters(md5, name, size)", 
                 "security": [
@@ -1996,7 +2000,9 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Files", 
+                "operationId": "private_article_file", 
                 "summary": "Single File", 
+                "description": "View details of file for specified article", 
                 "security": [
                     {
                         "OAuth2": [
@@ -2033,6 +2039,7 @@
                     "articles"
                 ], 
                 "x-subcategory": "Private Article Files", 
+                "operationId": "private_article_upload_complete", 
                 "summary": "Complete Upload", 
                 "description": "Complete file upload", 
                 "security": [
@@ -2069,6 +2076,7 @@
                 ], 
                 "x-subcategory": "Private Article Files", 
                 "summary": "File Delete", 
+                "operationId": "private_article_file_delete", 
                 "description": "Complete file upload", 
                 "security": [
                     {
@@ -2104,7 +2112,7 @@
                 "tags": [
                     "collections"
                 ], 
-                "operationId": "collections_Get", 
+                "operationId": "collections_list", 
                 "summary": "Public Collections", 
                 "description": "Returns a list of public collections", 
                 "security": [], 
@@ -2238,7 +2246,7 @@
                 "tags": [
                     "collections"
                 ], 
-                "operationId": "collections_search_Post", 
+                "operationId": "collections_search", 
                 "summary": "Public Collections Search", 
                 "description": "Returns a list of public collections", 
                 "security": [], 
@@ -2281,7 +2289,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Public Collection", 
-                "operationId": "collections_collection_Get", 
+                "operationId": "collection_details", 
                 "summary": "Collection details", 
                 "description": "View a collection", 
                 "security": [], 
@@ -2321,7 +2329,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Public Collection", 
-                "operationId": "collections_collection_versions_Get", 
+                "operationId": "collection_versions", 
                 "summary": "Collection Versions list", 
                 "description": "Returns a list of public collection Versions", 
                 "security": [], 
@@ -2364,8 +2372,9 @@
                     "collections"
                 ], 
                 "x-subcategory": "Public Collection", 
-                "operationId": "collections_collection_versions_version_Get", 
+                "operationId": "collection_version_details", 
                 "summary": "Collection Version details", 
+                "description": "View details for a certain version of a collection", 
                 "security": [], 
                 "parameters": [
                     {
@@ -2411,7 +2420,7 @@
                 "tags": [
                     "collections"
                 ], 
-                "operationId": "collections_collection_articles_Get", 
+                "operationId": "collection_articles", 
                 "summary": "Public Collection Articles", 
                 "description": "Returns a list of public collection articles", 
                 "security": [], 
@@ -2497,8 +2506,9 @@
                 "tags": [
                     "collections"
                 ], 
-                "operationId": "account_collections_Get", 
+                "operationId": "private_collections_list", 
                 "summary": "Private Collections List", 
+                "description": "List private collections", 
                 "security": [
                     {
                         "OAuth2": [
@@ -2601,7 +2611,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection", 
-                "operationId": "account_collections_Post", 
+                "operationId": "private_collection_create", 
                 "summary": "Create collection", 
                 "description": "Create a new Collection by sending collection information", 
                 "security": [
@@ -2661,9 +2671,9 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection", 
-                "operationId": "account_collections_collection_Get", 
+                "operationId": "private_collection_details", 
                 "summary": "Collection details", 
-                "description": "View an collection", 
+                "description": "View a collection", 
                 "security": [
                     {
                         "OAuth2": [
@@ -2694,8 +2704,9 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection", 
-                "operationId": "account_collections_collection_Put", 
+                "operationId": "private_collection_update", 
                 "summary": "Update collection", 
+                "description": "Update collection details", 
                 "security": [
                     {
                         "OAuth2": [
@@ -2747,8 +2758,9 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection", 
-                "operationId": "account_collections_collection_Delete", 
+                "operationId": "private_collection_delete", 
                 "summary": "Delete collection", 
+                "description": "Delete n collection", 
                 "security": [
                     {
                         "OAuth2": [
@@ -2783,7 +2795,7 @@
                 "tags": [
                     "collections"
                 ], 
-                "operationId": "account_collections_search_Post", 
+                "operationId": "private_collections_search", 
                 "summary": "Private Collections Search", 
                 "description": "Returns a list of private Collections", 
                 "security": [
@@ -2834,7 +2846,7 @@
                 "tags": [
                     "collections"
                 ], 
-                "operationId": "account_collections_collection_reservedoi_Post", 
+                "operationId": "private_collection_reserve_doi", 
                 "summary": "Private Collection Reserve DOI", 
                 "description": "Reserve DOI for collection", 
                 "security": [
@@ -2882,7 +2894,7 @@
                 "tags": [
                     "collections"
                 ], 
-                "operationId": "account_collections_collection_publish_Post", 
+                "operationId": "private_collection_publish", 
                 "summary": "Private Collection Publish", 
                 "description": "When a collection is published, a new public version will be generated. Any further updates to the collection will affect the private collection data. In order to make these changes publicly visible, an explicit publish operation is needed.", 
                 "security": [
@@ -2949,7 +2961,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Authors", 
-                "operationId": "account_collections_collection_authors_Get", 
+                "operationId": "private_collection_authors_list", 
                 "summary": "List collection authors", 
                 "description": "List collection authors", 
                 "security": [
@@ -2991,7 +3003,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Authors", 
-                "operationId": "account_collections_collection_authors_Post", 
+                "operationId": "private_collection_authors_add", 
                 "summary": "Add collection authors", 
                 "description": "Associate new authors with the collection. This will add new authors to the list of already associated authors", 
                 "security": [
@@ -3048,7 +3060,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Authors", 
-                "operationId": "account_collections_collection_authors_Put", 
+                "operationId": "private_collection_authors_replace", 
                 "summary": "Replace collection authors", 
                 "description": "Associate new authors with the collection. This will remove all already associated authors and add these new ones", 
                 "security": [
@@ -3104,8 +3116,9 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Authors", 
-                "operationId": "account_collections_collection_authors_author_Delete", 
+                "operationId": "private_collection_author_delete", 
                 "summary": "Delete collection author", 
+                "description": "Delete collection author", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3169,7 +3182,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Categories", 
-                "operationId": "account_collections_collection_categories_Get", 
+                "operationId": "private_collection_categories_list", 
                 "summary": "List collection categories", 
                 "description": "List collection categories", 
                 "security": [
@@ -3211,7 +3224,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Categories", 
-                "operationId": "account_collections_collection_categories_Post", 
+                "operationId": "private_collection_categories_add", 
                 "summary": "Add collection categories", 
                 "description": "Associate new categories with the collection. This will add new categories to the list of already associated categories", 
                 "security": [
@@ -3268,7 +3281,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Categories", 
-                "operationId": "account_collections_collection_categories_Put", 
+                "operationId": "private_collection_categories_replace", 
                 "summary": "Replace collection categories", 
                 "description": "Associate new categories with the collection. This will remove all already associated categories and add these new ones", 
                 "security": [
@@ -3324,8 +3337,9 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Categories", 
-                "operationId": "account_collections_collection_categories_category_Delete", 
+                "operationId": "private_collection_category_delete", 
                 "summary": "Delete collection category", 
+                "description": "De-associate category from collection", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3389,7 +3403,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Articles", 
-                "operationId": "account_collections_collection_articles_Get", 
+                "operationId": "private_collection_articles_list", 
                 "summary": "List collection articles", 
                 "description": "List collection articles", 
                 "security": [
@@ -3431,7 +3445,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Articles", 
-                "operationId": "account_collections_collection_articles_Post", 
+                "operationId": "private_collection_articles_add", 
                 "summary": "Add collection articles", 
                 "description": "Associate new articles with the collection. This will add new articles to the list of already associated articles", 
                 "security": [
@@ -3488,7 +3502,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Articles", 
-                "operationId": "account_collections_collection_articles_Put", 
+                "operationId": "private_collection_articles_replace", 
                 "summary": "Replace collection articles", 
                 "description": "Associate new articles with the collection. This will remove all already associated articles and add these new ones", 
                 "security": [
@@ -3544,8 +3558,9 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Articles", 
-                "operationId": "account_collections_collection_articles_article_Delete", 
+                "operationId": "private_collection_article_delete", 
                 "summary": "Delete collection article", 
+                "description": "De-associate article from collection", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3609,7 +3624,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Private Links", 
-                "operationId": "account_collections_collection_privatelinks_Get", 
+                "operationId": "private_collection_private_links_list", 
                 "summary": "List collection private links", 
                 "description": "List article private links", 
                 "security": [
@@ -3651,7 +3666,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Private Links", 
-                "operationId": "account_collections_collection_privatelinks_Post", 
+                "operationId": "private_collection_private_link_create", 
                 "summary": "Create collection private link", 
                 "description": "Create new private link", 
                 "security": [
@@ -3727,7 +3742,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Private Links", 
-                "operationId": "account_collections_article_privatelinks_privatelink_Put", 
+                "operationId": "private_collection_private_link_update", 
                 "summary": "Update collection private link", 
                 "description": "Update existing private link for this collection", 
                 "security": [
@@ -3783,7 +3798,7 @@
                     "collections"
                 ], 
                 "x-subcategory": "Private Collection Private Links", 
-                "operationId": "account_collections_article_privatelinks_privatelink_Delete", 
+                "operationId": "private_collection_private_link_delete", 
                 "summary": "Disable private link", 
                 "description": "Disable/delete private link for this collection", 
                 "security": [
@@ -3820,7 +3835,7 @@
                 "tags": [
                     "projects"
                 ], 
-                "operationId": "projectsGet", 
+                "operationId": "projects_list", 
                 "summary": "Public Projects", 
                 "description": "Returns a list of public projects", 
                 "security": [], 
@@ -3940,7 +3955,7 @@
                 "tags": [
                     "projects"
                 ], 
-                "operationId": "projects_search_Post", 
+                "operationId": "projects_search", 
                 "summary": "Public Projects Search", 
                 "description": "Returns a list of public articles", 
                 "security": [], 
@@ -3982,9 +3997,9 @@
                 "tags": [
                     "projects"
                 ], 
-                "operationId": "projects_project_Get", 
+                "operationId": "project_details", 
                 "summary": "Public Project", 
-                "description": "View a proejct", 
+                "description": "View a project", 
                 "security": [], 
                 "parameters": [
                     {
@@ -4021,8 +4036,9 @@
                 "tags": [
                     "projects"
                 ], 
-                "operationId": "projects_project_articles_Get", 
+                "operationId": "project_articles", 
                 "summary": "Public Project Articles", 
+                "description": "List articles in project", 
                 "security": [], 
                 "parameters": [
                     {
@@ -4062,8 +4078,9 @@
                 "tags": [
                     "projects"
                 ], 
-                "operationId": "account_projects_search_Post", 
+                "operationId": "private_projects_search", 
                 "summary": "Private Projects search", 
+                "description": "Search inside the private projects", 
                 "security": [], 
                 "parameters": [
                     {
@@ -4103,8 +4120,9 @@
                 "tags": [
                     "projects"
                 ], 
-                "operationId": "account_projects_Get", 
+                "operationId": "private_projects_list", 
                 "summary": "Private Projects", 
+                "description": "List private projects", 
                 "security": [
                     {
                         "OAuth2": [
@@ -4225,8 +4243,9 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project", 
-                "operationId": "account_projects_Post", 
-                "summary": "Create ", 
+                "operationId": "private_project_create", 
+                "description": "Create a new project", 
+                "summary": "Create project", 
                 "security": [
                     {
                         "OAuth2": [
@@ -4284,8 +4303,8 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project", 
-                "operationId": "account_projects_project_Get", 
-                "summary": "Project details", 
+                "operationId": "private_project_details", 
+                "summary": "View project details", 
                 "description": "View a private project", 
                 "security": [
                     {
@@ -4323,7 +4342,7 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project", 
-                "operationId": "account_projects_project_Put", 
+                "operationId": "private_project_update", 
                 "summary": "Update project", 
                 "description": "Updating an project by passing body parameters", 
                 "security": [
@@ -4374,9 +4393,9 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project", 
-                "operationId": "account_projects_project_Delete", 
+                "operationId": "private_project_delete", 
                 "summary": "Delete project", 
-                "description": "A project can be deleted only if: - it is not public - it does not have public articles.\n\nWhen an individual project is deleted, all the articles are moved to my data of each owner*.\n\nWhen a group project is deleted, all the articles and files are deleted as well. Only project owner, group admin and above can delete a project.\n", 
+                "description": "A project can be deleted only if: - it is not public - it does not have public articles.\n\nWhen an individual project is deleted, all the articles are moved to my data of each owner.\n\nWhen a group project is deleted, all the articles and files are deleted as well. Only project owner, group admin and above can delete a project.\n", 
                 "security": [
                     {
                         "OAuth2": [
@@ -4408,8 +4427,9 @@
                 "tags": [
                     "projects"
                 ], 
-                "operationId": "account_projects_project_publish_Post", 
+                "operationId": "private_project_publish", 
                 "summary": "Private Project Publish", 
+                "description": "Publish a project. Possible after all items inside it are public", 
                 "security": [
                     {
                         "OAuth2": [
@@ -4458,7 +4478,7 @@
                 "tags": [
                     "projects"
                 ], 
-                "operationId": "account_projects_project_leave_Post", 
+                "operationId": "private_project_leave", 
                 "summary": "Private Project Leave", 
                 "description": "Please note: project's owner cannot leave the project.", 
                 "security": [
@@ -4518,7 +4538,7 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Notes", 
-                "operationId": "account_projects_project_notes_Get", 
+                "operationId": "private_project_notes_list", 
                 "summary": "List project notes", 
                 "description": "List project notes", 
                 "security": [
@@ -4603,8 +4623,9 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Notes", 
-                "operationId": "account_projects_project_notes_Post", 
+                "operationId": "private_project_notes_create", 
                 "summary": "Create project note", 
+                "description": "Create a new project note", 
                 "security": [
                     {
                         "OAuth2": [
@@ -4681,7 +4702,7 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Notes", 
-                "operationId": "account_projects_project_notes_note_Get", 
+                "operationId": "private_project_note", 
                 "summary": "Project note details", 
                 "security": [
                     {
@@ -4719,7 +4740,7 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Notes", 
-                "operationId": "account_projects_project_notes_note_Put", 
+                "operationId": "private_project_note_update", 
                 "summary": "Update project note", 
                 "security": [
                     {
@@ -4772,7 +4793,7 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Notes", 
-                "operationId": "account_projects_project_notes_note_Delete", 
+                "operationId": "private_project_note_delete", 
                 "summary": "Delete project note", 
                 "security": [
                     {
@@ -4817,7 +4838,7 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Collaborators", 
-                "operationId": "account_projects_project_collaborators_Get", 
+                "operationId": "private_project_collaborators_list", 
                 "summary": "List project collaborators", 
                 "description": "List Project collaborators and invited users", 
                 "security": [
@@ -4859,7 +4880,7 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Collaborators", 
-                "operationId": "account_projects_project_collaborators_Post", 
+                "operationId": "private_project_collaborators_invite", 
                 "summary": "Invite project collaborators", 
                 "description": "Invite users to collaborate on project or view the project", 
                 "security": [
@@ -4911,8 +4932,9 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Collaborators", 
-                "operationId": "account_projects_project_collaborators_collaborator_Delete", 
+                "operationId": "private_project_collaborator__Delete", 
                 "summary": "Remove project collaborator", 
+                "description": "Remove project collaborator", 
                 "security": [
                     {
                         "OAuth2": [
@@ -4979,8 +5001,9 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Articles", 
-                "operationId": "account_projects_project_articles_Get", 
+                "operationId": "private_project_articles_list", 
                 "summary": "List project articles", 
+                "description": "List project articles", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5020,7 +5043,7 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Articles", 
-                "operationId": "account_projects_project_articles_Post", 
+                "operationId": "private_project_articles_create", 
                 "summary": "Create project article", 
                 "description": "Create a new Article and associate it with this project", 
                 "security": [
@@ -5099,8 +5122,9 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Articles", 
-                "operationId": "account_projects_project_articles_article_Get", 
+                "operationId": "private_project_article_details", 
                 "summary": "Project article details", 
+                "description": "Project article details", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5137,8 +5161,9 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Articles", 
-                "operationId": "account_projects_project_articles_article_Delete", 
+                "operationId": "private_project_article_delete", 
                 "summary": "Delete project article", 
+                "description": "Delete project article", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5174,8 +5199,9 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Articles", 
-                "operationId": "account_projects_project_articles_article_files_Get", 
+                "operationId": "private_project_article_files", 
                 "summary": "Project article list files", 
+                "description": "List article files", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5237,8 +5263,9 @@
                     "projects"
                 ], 
                 "x-subcategory": "Private Project Articles", 
-                "operationId": "account_projects_project_articles_article_files_file_Get", 
+                "operationId": "private_project_article_file", 
                 "summary": "Project article file details", 
+                "description": "Project article file details", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5305,7 +5332,7 @@
                 "tags": [
                     "institutions"
                 ], 
-                "operationId": "institutions_institution_articles_search_Get", 
+                "operationId": "institution_articles", 
                 "summary": "Public Licenses", 
                 "description": "Returns a list of articles belonging to the institution", 
                 "parameters": [
@@ -5349,9 +5376,9 @@
                 "tags": [
                     "institutions"
                 ], 
-                "operationId": "account_institution_hrfeed_upload_Post", 
+                "operationId": "institution_hrfeed_upload", 
                 "summary": "Private Institution HRfeed Upload", 
-                "description": "More info in the <a href=\"#description_HRfeed\">HR Feed section</a>", 
+                "description": "More info in the <a href=\"#hr_feed\">HR Feed section</a>", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5397,8 +5424,9 @@
                 "tags": [
                     "authors"
                 ], 
-                "operationId": "account_authors_search_Post", 
+                "operationId": "private_authors_search", 
                 "summary": "Search Authors", 
+                "description": "Search for authors", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5457,8 +5485,7 @@
                 "tags": [
                     "authors"
                 ], 
-                "x-subcategory": "Private Article", 
-                "operationId": "account_authors_author_Get", 
+                "operationId": "private_author_details", 
                 "summary": "Author details", 
                 "description": "View author details", 
                 "security": [
@@ -5498,7 +5525,7 @@
                 "tags": [
                     "other"
                 ], 
-                "operationId": "account_Get", 
+                "operationId": "private_account", 
                 "summary": "Private Account information", 
                 "description": "Account information for token/personal token", 
                 "security": [
@@ -5532,7 +5559,7 @@
                 "tags": [
                     "other"
                 ], 
-                "operationId": "categories_Get", 
+                "operationId": "categories_list", 
                 "summary": "Public Categories", 
                 "description": "Returns a list of public categories", 
                 "security": [], 
@@ -5557,7 +5584,7 @@
                 "tags": [
                     "other"
                 ], 
-                "operationId": "licenses_Get", 
+                "operationId": "licenses_list", 
                 "summary": "Public Licenses", 
                 "description": "Returns a list of public licenses", 
                 "security": [], 
@@ -5582,7 +5609,7 @@
                 "tags": [
                     "other"
                 ], 
-                "operationId": "account_licenses_Get", 
+                "operationId": "private_licenses_list", 
                 "summary": "Private Account Licenses", 
                 "description": "This is a private endpoint that requires OAuth. It will return a list with figshare public licenses AND licenses defined for account's institution.", 
                 "security": [
@@ -5622,8 +5649,9 @@
                 "tags": [
                     "institutions"
                 ], 
-                "operationId": "account_institution_Get", 
+                "operationId": "private_institution_details", 
                 "summary": "Private Account Institutions", 
+                "description": "Account institution details", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5652,157 +5680,158 @@
                     }
                 }
             }
-        },
+        }, 
         "/account/institution/articles": {
             "get": {
                 "tags": [
                     "institutions"
-                ],
-                "operationId": "account_institution_articles_Get",
-                "summary": "Private Institution Articles",
-                "description": "Get Articles from own institution. User must be administrator of the institution",
+                ], 
+                "operationId": "private_institution_articles", 
+                "summary": "Private Institution Articles", 
+                "description": "Get Articles from own institution. User must be administrator of the institution", 
                 "security": [
                     {
                         "OAuth2": [
                             "all"
                         ]
                     }
-                ],
+                ], 
                 "parameters": [
                     {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page number. Used for pagination with page_size",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int64",
-                        "minimum": 1,
+                        "name": "page", 
+                        "in": "query", 
+                        "description": "Page number. Used for pagination with page_size", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1, 
                         "maximum": 5000
-                    },
+                    }, 
                     {
-                        "name": "page_size",
-                        "in": "query",
-                        "description": "The number of results included on a page. Used for pagination with page",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int64",
-                        "minimum": 1,
-                        "maximum": 100,
+                        "name": "page_size", 
+                        "in": "query", 
+                        "description": "The number of results included on a page. Used for pagination with page", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1, 
+                        "maximum": 100, 
                         "default": 10
-                    },
+                    }, 
                     {
-                        "name": "limit",
-                        "in": "query",
-                        "description": "Number of results included on a page. Used for pagination with query",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int64",
-                        "minimum": 1,
+                        "name": "limit", 
+                        "in": "query", 
+                        "description": "Number of results included on a page. Used for pagination with query", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1, 
                         "maximum": 100
-                    },
+                    }, 
                     {
-                        "name": "offset",
-                        "in": "query",
-                        "description": "Where to start the listing(the offset of the first result). Used for pagination with limit",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int64",
-                        "minimum": 1,
+                        "name": "offset", 
+                        "in": "query", 
+                        "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1, 
                         "maximum": 5000
-                    },
+                    }, 
                     {
-                        "name": "order",
-                        "in": "query",
-                        "description": "The field by which to order. Default varies by endpoint/resource.",
-                        "type": "string",
+                        "name": "order", 
+                        "in": "query", 
+                        "description": "The field by which to order. Default varies by endpoint/resource.", 
+                        "type": "string", 
                         "enum": [
-                            "published_date",
+                            "published_date", 
                             "modified_date"
-                        ],
-                        "default": "published_date",
+                        ], 
+                        "default": "published_date", 
                         "required": false
-                    },
+                    }, 
                     {
-                        "name": "order_direction",
-                        "in": "query",
-                        "type": "string",
+                        "name": "order_direction", 
+                        "in": "query", 
+                        "type": "string", 
                         "enum": [
-                            "asc",
+                            "asc", 
                             "desc"
-                        ],
-                        "default": "desc",
+                        ], 
+                        "default": "desc", 
                         "required": false
-                    },
+                    }, 
                     {
-                        "name": "published_since",
-                        "in": "query",
-                        "description": "Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD",
-                        "type": "string",
+                        "name": "published_since", 
+                        "in": "query", 
+                        "description": "Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD", 
+                        "type": "string", 
                         "required": false
-                    },
+                    }, 
                     {
-                        "name": "modified_since",
-                        "in": "query",
-                        "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD",
-                        "type": "string",
+                        "name": "modified_since", 
+                        "in": "query", 
+                        "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD", 
+                        "type": "string", 
                         "required": false
-                    },
+                    }, 
                     {
-                        "name": "status",
-                        "in": "query",
-                        "description": "only return collections with this status",
-                        "type": "integer",
-                        "format": "int64",
+                        "name": "status", 
+                        "in": "query", 
+                        "description": "only return collections with this status", 
+                        "type": "integer", 
+                        "format": "int64", 
                         "required": false
-                    },
+                    }, 
                     {
-                        "name": "resource_doi",
-                        "in": "query",
-                        "description": "only return collections with this resource_doi",
-                        "type": "string",
+                        "name": "resource_doi", 
+                        "in": "query", 
+                        "description": "only return collections with this resource_doi", 
+                        "type": "string", 
                         "required": false
-                    },
+                    }, 
                     {
-                        "name": "item_type",
-                        "in": "query",
-                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint",
-                        "type": "integer",
-                        "format": "int64",
+                        "name": "item_type", 
+                        "in": "query", 
+                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint", 
+                        "type": "integer", 
+                        "format": "int64", 
                         "required": false
                     }
-                ],
+                ], 
                 "responses": {
                     "200": {
-                        "description": "OK. An array of articles belonging to the institution",
+                        "description": "OK. An array of articles belonging to the institution", 
                         "schema": {
-                            "type": "array",
+                            "type": "array", 
                             "items": {
                                 "$ref": "#/definitions/Article"
                             }
                         }
-                    },
+                    }, 
                     "400": {
                         "description": "Bad Request"
-                    },
+                    }, 
                     "403": {
-                        "description": "Forbidden",
+                        "description": "Forbidden", 
                         "schema": {
                             "$ref": "#/definitions/ErrorMessage"
                         }
-                    },
+                    }, 
                     "500": {
                         "description": "Internal Server Error"
                     }
                 }
             }
-        },
+        }, 
         "/account/categories": {
             "get": {
                 "tags": [
                     "institutions"
                 ], 
-                "operationId": "account_categories_Get", 
+                "operationId": "private_categories_list", 
                 "summary": "Private Account Categories", 
+                "description": "List institution categories (including parent Categories)", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5840,8 +5869,9 @@
                 "tags": [
                     "institutions"
                 ], 
-                "operationId": "account_institution_groups_Get", 
+                "operationId": "private_institution_groups_list", 
                 "summary": "Private Account Institution Groups", 
+                "description": "Returns the groups for which the account has administrative privileges (assigned and inherited).", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5879,7 +5909,7 @@
                 "tags": [
                     "other"
                 ], 
-                "operationId": "file_download_Get", 
+                "operationId": "file_download", 
                 "summary": "Public File Download", 
                 "description": "Starts the download of a file", 
                 "security": [], 
@@ -5915,19 +5945,23 @@
                 "id": {
                     "type": "integer", 
                     "format": "int64", 
+                    "description": "Group id", 
                     "example": 1
                 }, 
                 "name": {
                     "type": "string", 
-                    "example": "Materials"
+                    "example": "Materials", 
+                    "description": "Group name"
                 }, 
                 "resource_id": {
                     "type": "string", 
-                    "example": ""
+                    "example": "", 
+                    "description": "Group resource id"
                 }, 
                 "parent_id": {
                     "type": "integer", 
                     "format": "int64", 
+                    "description": "Parent group if any", 
                     "example": 0
                 }
             }
@@ -5939,13 +5973,16 @@
                 "id": {
                     "type": "integer", 
                     "format": "int64", 
+                    "description": "Institution id", 
                     "example": 0
                 }, 
                 "name": {
                     "type": "string", 
+                    "description": "Institution name", 
                     "example": "Institution"
                 }, 
                 "domain": {
+                    "description": "Institution domain", 
                     "type": [
                         "string", 
                         "null"
@@ -5959,10 +5996,12 @@
             "type": "object", 
             "properties": {
                 "code": {
+                    "description": "A machine friendly error code, used by the dev team to identify the error.", 
                     "type": "integer", 
                     "format": "int64"
                 }, 
                 "message": {
+                    "description": "A human friendly message explaining the error.", 
                     "type": "string"
                 }
             }
@@ -5976,6 +6015,7 @@
             "properties": {
                 "role_name": {
                     "type": "string", 
+                    "description": "Role of the the collaborator inside the project", 
                     "enum": [
                         "viewer", 
                         "collaborator"
@@ -5983,15 +6023,18 @@
                     "example": "viewer"
                 }, 
                 "user_id": {
+                    "description": "User id of the collaborator", 
                     "type": "integer", 
                     "format": "int64", 
                     "example": 100008
                 }, 
                 "email": {
+                    "description": "Collaborator email", 
                     "type": "string", 
                     "example": "user@domain.com"
                 }, 
                 "comment": {
+                    "description": "Text sent when inviting the user to the project", 
                     "type": "string", 
                     "example": "hey"
                 }
@@ -6002,28 +6045,34 @@
             "type": "object", 
             "properties": {
                 "id": {
+                    "description": "Project note id", 
                     "type": "integer", 
                     "format": "int64", 
                     "example": 1
                 }, 
                 "user_id": {
+                    "description": "User who wrote the note", 
                     "type": "integer", 
                     "format": "int64", 
                     "example": 100008
                 }, 
                 "abstract": {
+                    "description": "Note Abstract - short/truncated content", 
                     "type": "string", 
                     "example": "text"
                 }, 
                 "user_name": {
+                    "description": "Username of the one who wrote the note", 
                     "type": "string", 
                     "example": "user"
                 }, 
                 "created_date": {
+                    "description": "Date when note was created", 
                     "type": "string", 
                     "example": "2017-05-16T16:49:11Z"
                 }, 
                 "modified_date": {
+                    "description": "Date when note was last modified", 
                     "type": "string", 
                     "example": "2017-05-16T16:49:11Z"
                 }
@@ -6039,6 +6088,7 @@
             ], 
             "properties": {
                 "text": {
+                    "description": "Full text of note", 
                     "type": "string", 
                     "example": "text"
                 }
@@ -6049,6 +6099,7 @@
             "type": "object", 
             "properties": {
                 "message": {
+                    "description": "Response message text", 
                     "type": "string", 
                     "example": "Project 1 has been published"
                 }
@@ -6062,6 +6113,7 @@
             ], 
             "properties": {
                 "text": {
+                    "description": "Text of the note", 
                     "type": "string", 
                     "minLength": 3, 
                     "example": "note to remember"
@@ -6084,7 +6136,7 @@
                 }, 
                 "description": {
                     "type": "string", 
-                    "description": "Project's description", 
+                    "description": "Project description", 
                     "example": "project description", 
                     "maxLength": 10000
                 }, 
@@ -6114,7 +6166,7 @@
                 }, 
                 "description": {
                     "type": "string", 
-                    "description": "Project's description", 
+                    "description": "Project description", 
                     "example": "project description", 
                     "maxLength": 10000
                 }, 
@@ -6130,6 +6182,7 @@
             "type": "object", 
             "properties": {
                 "url": {
+                    "description": "Api endpoint", 
                     "type": "string", 
                     "example": "http://api.figshare.com/v2/account/projects/1"
                 }, 
@@ -6138,14 +6191,17 @@
                         "string", 
                         "null"
                     ], 
+                    "description": "Date when project was published", 
                     "example": "2017-05-16T14:55:08Z"
                 }, 
                 "id": {
+                    "description": "Project id", 
                     "type": "integer", 
                     "format": "int64", 
                     "example": 1
                 }, 
                 "title": {
+                    "description": "Project title", 
                     "type": "string", 
                     "example": "project"
                 }
@@ -6167,6 +6223,7 @@
                         "Collaborator", 
                         "Viewer"
                     ], 
+                    "description": "Role inside this project", 
                     "example": "Owner"
                 }, 
                 "storage": {
@@ -6175,6 +6232,7 @@
                         "individual", 
                         "group"
                     ], 
+                    "description": "Project storage type", 
                     "example": "individual"
                 }
             }
@@ -6190,10 +6248,12 @@
             "properties": {
                 "funding": {
                     "type": "string", 
+                    "description": "Project funding", 
                     "example": "none"
                 }, 
                 "description": {
                     "type": "string", 
+                    "description": "Project description", 
                     "example": "description"
                 }, 
                 "figshare_url": {
@@ -6201,10 +6261,12 @@
                         "string", 
                         "null"
                     ], 
+                    "description": "Project public url", 
                     "example": "https://figshare.com/projects/project/1"
                 }, 
                 "collaborators": {
                     "type": "array", 
+                    "description": "List of project collaborators", 
                     "items": {
                         "$ref": "#/definitions/Collaborator"
                     }
@@ -6221,11 +6283,13 @@
             ], 
             "properties": {
                 "funding": {
+                    "description": "Project funding", 
                     "type": "string", 
                     "example": "none"
                 }, 
                 "description": {
                     "type": "string", 
+                    "description": "Project description", 
                     "example": "description"
                 }, 
                 "figshare_url": {
@@ -6233,43 +6297,52 @@
                         "string", 
                         "null"
                     ], 
+                    "description": "Project public url", 
                     "example": "https://figshare.com/projects/project/1"
                 }, 
                 "collaborators": {
                     "type": "array", 
+                    "description": "List of project collaborators", 
                     "items": {
                         "$ref": "#/definitions/Collaborator"
                     }
                 }, 
                 "quota": {
+                    "description": "Project quota", 
                     "type": "integer", 
                     "format": "int64", 
                     "example": 0
                 }, 
                 "used_quota": {
+                    "description": "Project used quota", 
                     "type": "integer", 
                     "format": "int64", 
                     "example": 0
                 }, 
                 "created_date": {
+                    "description": "Date when project was created", 
                     "type": "string", 
                     "example": "2017-05-16T14:52:54Z"
                 }, 
                 "modified_date": {
+                    "description": "Date when project was last modified", 
                     "type": "string", 
                     "example": "2017-05-16T14:52:54Z"
                 }, 
                 "used_quota_private": {
+                    "description": "Project private quota used", 
                     "type": "integer", 
                     "format": "int64", 
                     "example": 0
                 }, 
                 "used_quota_public": {
+                    "description": "Project public quota used", 
                     "type": "integer", 
                     "format": "int64", 
                     "example": 0
                 }, 
                 "group_id": {
+                    "description": "Group of project if any", 
                     "type": "integer", 
                     "format": "int64", 
                     "example": 0
@@ -6281,18 +6354,22 @@
             "type": "object", 
             "properties": {
                 "status": {
+                    "description": "Status of collaborator invitation", 
                     "type": "string", 
                     "example": "invited"
                 }, 
                 "role_name": {
+                    "description": "Collaborator role", 
                     "type": "string", 
                     "example": "Owner"
                 }, 
                 "user_id": {
+                    "description": "Collaborator id", 
                     "type": "integer", 
                     "example": 1
                 }, 
                 "name": {
+                    "description": "Collaborator name", 
                     "type": "string", 
                     "example": "name"
                 }
@@ -6303,14 +6380,17 @@
             "type": "object", 
             "properties": {
                 "role_name": {
+                    "description": "Collaborator role", 
                     "type": "string", 
                     "example": "Owner"
                 }, 
                 "user_id": {
+                    "description": "Collaborator id", 
                     "type": "integer", 
                     "example": 1
                 }, 
                 "name": {
+                    "description": "Collaborator name", 
                     "type": "string", 
                     "example": "name"
                 }
@@ -6653,6 +6733,7 @@
                 }, 
                 "defined_type": {
                     "type": "string", 
+                    "description": "Article type", 
                     "enum": [
                         "figure", 
                         "media", 
@@ -6794,6 +6875,7 @@
                 }, 
                 "defined_type": {
                     "type": "string", 
+                    "description": "Article type", 
                     "enum": [
                         "figure", 
                         "media", 
@@ -6929,13 +7011,16 @@
             "properties": {
                 "citation": {
                     "type": "string", 
+                    "description": "Article citation", 
                     "example": "lilliput, figshare admin (2017): first project item. figshare.\n \n Retrieved: 14 01, May 22, 2017 (GMT)"
                 }, 
                 "confidential_reason": {
+                    "description": "Confidentiality reason", 
                     "type": "string", 
                     "example": "none"
                 }, 
                 "embargo_type": {
+                    "description": "Article embargo", 
                     "type": [
                         "string", 
                         "null"
@@ -6943,19 +7028,23 @@
                     "example": null
                 }, 
                 "is_confidential": {
+                    "description": "Article Confidentiality", 
                     "type": "boolean", 
                     "example": true
                 }, 
                 "size": {
+                    "description": "Article size", 
                     "type": "integer", 
                     "format": "int64", 
                     "example": 69939
                 }, 
                 "funding": {
+                    "description": "Article funding", 
                     "type": "string", 
                     "example": "none"
                 }, 
                 "tags": {
+                    "description": "List of article tags", 
                     "type": "array", 
                     "items": {
                         "type": "string"
@@ -6967,35 +7056,43 @@
                     ]
                 }, 
                 "version": {
+                    "description": "Article version", 
                     "type": "integer", 
                     "format": "int64", 
                     "example": 1
                 }, 
                 "is_active": {
+                    "description": "True if article is active", 
                     "type": "boolean", 
                     "example": true
                 }, 
                 "is_metadata_record": {
+                    "description": "True if article has no files", 
                     "type": "boolean", 
                     "example": false
                 }, 
                 "metadata_reason": {
+                    "description": "Article metadata reason", 
                     "type": "string", 
                     "example": "hosted somewhere else"
                 }, 
                 "status": {
                     "type": "string", 
+                    "description": "Article status", 
                     "example": "public"
                 }, 
                 "description": {
                     "type": "string", 
+                    "description": "Article description", 
                     "example": "article description"
                 }, 
                 "is_embargoed": {
                     "type": "boolean", 
+                    "description": "True if article is embargoed", 
                     "example": true
                 }, 
                 "embargo_date": {
+                    "description": "Date when embargo lifts", 
                     "type": [
                         "string", 
                         "null"
@@ -7003,10 +7100,12 @@
                     "example": "2017-05-18T11:49:03Z"
                 }, 
                 "is_public": {
+                    "description": "True if article is published", 
                     "type": "boolean", 
                     "example": true
                 }, 
                 "modified_date": {
+                    "description": "Date when article was last modified", 
                     "type": [
                         "string", 
                         "null"
@@ -7015,27 +7114,33 @@
                 }, 
                 "created_date": {
                     "type": "string", 
+                    "description": "Date when article was created", 
                     "example": "2017-05-18T11:49:03Z"
                 }, 
                 "has_linked_file": {
                     "type": "boolean", 
+                    "description": "True if any files are linked to the article", 
                     "example": true
                 }, 
                 "categories": {
                     "type": "array", 
+                    "description": "List of categories selected for the article", 
                     "items": {
                         "$ref": "#/definitions/Category"
                     }
                 }, 
                 "license": {
+                    "description": "Article selected license", 
                     "$ref": "#/definitions/License"
                 }, 
                 "embargo_reason": {
                     "type": "string", 
+                    "description": "Reason for embargo", 
                     "example": "not complete"
                 }, 
                 "references": {
                     "type": "array", 
+                    "description": "List of references", 
                     "items": {
                         "type": "string", 
                         "format": "url"
@@ -7059,6 +7164,7 @@
                 "figshare_url": {
                     "type": "string", 
                     "format": "url", 
+                    "description": "Article public url", 
                     "example": "http://figshare.com/articles/article_name/2000005"
                 }, 
                 "resource_title": {
@@ -7066,6 +7172,7 @@
                         "string", 
                         "null"
                     ], 
+                    "description": "Article resource title", 
                     "example": "first article"
                 }, 
                 "resource_doi": {
@@ -7073,22 +7180,26 @@
                         "string", 
                         "null"
                     ], 
+                    "description": "Article DOI", 
                     "example": "10.5072/FK2.developmentfigshare.2000005"
                 }, 
                 "files": {
                     "type": "array", 
+                    "description": "List of article files", 
                     "items": {
                         "$ref": "#/definitions/PublicFile"
                     }
                 }, 
                 "authors": {
                     "type": "array", 
+                    "description": "List of article authors", 
                     "items": {
                         "$ref": "#/definitions/Author"
                     }
                 }, 
                 "custom_fields": {
                     "type": "array", 
+                    "description": "List of custom fields values", 
                     "items": {
                         "$ref": "#/definitions/CustomArticleField"
                     }
@@ -7109,6 +7220,7 @@
                         "string", 
                         "null"
                     ], 
+                    "description": "Group resource id", 
                     "example": null
                 }
             }
@@ -7120,15 +7232,18 @@
                 "parent_id": {
                     "type": "integer", 
                     "format": "int64", 
+                    "description": "Parent category", 
                     "example": 1
                 }, 
                 "id": {
                     "type": "integer", 
                     "format": "int64", 
+                    "description": "Category id", 
                     "example": 11
                 }, 
                 "title": {
                     "type": "string", 
+                    "description": "Category title", 
                     "example": "Anatomy"
                 }
             }
@@ -7140,15 +7255,18 @@
                 "value": {
                     "type": "integer", 
                     "format": "int64", 
+                    "description": "License value", 
                     "example": 1
                 }, 
                 "name": {
                     "type": "string", 
+                    "description": "License name", 
                     "example": "CC BY"
                 }, 
                 "url": {
                     "type": "string", 
                     "format": "url", 
+                    "description": "License url", 
                     "example": "http://creativecommons.org/licenses/by/4.0/"
                 }
             }
@@ -7160,11 +7278,13 @@
                 "id": {
                     "type": "integer", 
                     "format": "int64", 
+                    "description": "Version number", 
                     "example": 1
                 }, 
                 "url": {
                     "type": "string", 
                     "format": "url", 
+                    "description": "Api endpoint for the item version", 
                     "example": "https://api.figshare.com/v2/articles/2000005/versions/1"
                 }
             }
@@ -7175,13 +7295,15 @@
             "properties": {
                 "is_embargoed": {
                     "type": "boolean", 
-                    "example": true
+                    "example": true, 
+                    "description": "True if embargoed"
                 }, 
                 "embargo_date": {
                     "type": [
                         "string", 
                         "null"
                     ], 
+                    "description": "Date when embargo lifts", 
                     "example": "2018-05-22T04:04:04"
                 }, 
                 "embargo_type": {
@@ -7189,9 +7311,11 @@
                         "string", 
                         "null"
                     ], 
+                    "description": "Embargo type", 
                     "example": ""
                 }, 
                 "embargo_reason": {
+                    "description": "Reason for embargo", 
                     "type": "string", 
                     "example": ""
                 }
@@ -7233,9 +7357,11 @@
             "properties": {
                 "is_confidential": {
                     "type": "boolean", 
+                    "description": "True if article is confidential", 
                     "example": true
                 }, 
                 "reason": {
+                    "description": "Reason for confidentiality", 
                     "type": "string", 
                     "example": "need to"
                 }
@@ -7246,14 +7372,17 @@
             "type": "object", 
             "properties": {
                 "name": {
+                    "description": "Custom  metadata name", 
                     "type": "string", 
                     "example": "key"
                 }, 
                 "value": {
+                    "description": "Custom metadata value", 
                     "type": "string", 
                     "example": "value"
                 }, 
                 "is_mandatory": {
+                    "description": "True if field completion is mandatory", 
                     "type": [
                         "boolean", 
                         "null"
@@ -7268,24 +7397,29 @@
             "properties": {
                 "id": {
                     "type": "integer", 
+                    "description": "File id", 
                     "format": "int64", 
                     "example": 3000002
                 }, 
                 "name": {
                     "type": "string", 
+                    "description": "File name", 
                     "example": "test.xls"
                 }, 
                 "size": {
                     "type": "integer", 
+                    "description": "File size", 
                     "format": "int64", 
                     "example": 14848
                 }, 
                 "is_link_only": {
+                    "description": "True if file is hosted somewhere else", 
                     "type": "boolean", 
                     "example": false
                 }, 
                 "download_url": {
                     "type": "string", 
+                    "description": "Url for file download", 
                     "format": "url", 
                     "example": "https://ndownloader.figshare.com/files/3000002"
                 }
@@ -7305,30 +7439,37 @@
                         "string", 
                         "null"
                     ], 
+                    "description": "Status for file upload", 
                     "example": "created"
                 }, 
                 "viewer_type": {
+                    "description": "File viewer type", 
                     "type": "string"
                 }, 
                 "preview_state": {
+                    "description": "File preview state", 
                     "type": "string", 
                     "example": "preview not available"
                 }, 
                 "upload_url": {
+                    "description": "Upload url for file", 
                     "type": "string", 
                     "format": "url", 
                     "example": "https://uploads.figshare.com"
                 }, 
                 "upload_token": {
                     "type": "string", 
+                    "description": "Token for file upload", 
                     "example": "9dfc5fe3-d617-4d93-ac11-8afe7e984a4b"
                 }, 
                 "supplied_md5": {
                     "type": "string", 
+                    "description": "File supplied md5", 
                     "example": "043a51806d646e88cafbf19e7b82846f"
                 }, 
                 "computed_md5": {
                     "type": "string", 
+                    "description": "File computed md5", 
                     "example": "043a51806d646e88cafbf19e7b82846f"
                 }
             }
@@ -7340,22 +7481,27 @@
                 "id": {
                     "type": "integer", 
                     "format": "int64", 
+                    "description": "Author id", 
                     "example": 97657
                 }, 
                 "full_name": {
                     "type": "string", 
+                    "description": "Author full name", 
                     "example": "John Doe"
                 }, 
                 "is_active": {
                     "type": "boolean", 
+                    "description": "True if author has published items", 
                     "example": 1
                 }, 
                 "url_name": {
                     "type": "string", 
+                    "description": "Author url name", 
                     "example": "John_Doe"
                 }, 
                 "orcid_id": {
                     "type": "string", 
+                    "description": "Author Orcid", 
                     "example": "1234-5678-9123-1234"
                 }
             }
@@ -7420,56 +7566,68 @@
                 }, 
                 "used_quota_private": {
                     "type": "integer", 
+                    "description": "Account used private quota", 
                     "format": "int64", 
                     "example": 0
                 }, 
                 "modified_date": {
                     "type": "string", 
+                    "description": "Date of last account modification", 
                     "example": "2018-05-22T04:04:04"
                 }, 
                 "used_quota": {
                     "type": "integer", 
+                    "description": "Account total used quota", 
                     "format": "int64", 
                     "example": 0
                 }, 
                 "created_date": {
                     "type": "string", 
+                    "description": "Date when account was created", 
                     "example": "2018-05-22T04:04:04"
                 }, 
                 "quota": {
                     "type": "integer", 
+                    "description": "Account quota", 
                     "format": "int64", 
                     "example": 0
                 }, 
                 "institution_user_id": {
                     "type": "string", 
+                    "description": "Account institution user id", 
                     "example": 1
                 }, 
                 "institution_id": {
                     "type": "integer", 
                     "format": "int64", 
+                    "description": "Account institution", 
                     "example": 1
                 }, 
                 "email": {
                     "type": "string", 
+                    "description": "User email", 
                     "example": "user@domain.com"
                 }, 
                 "used_quota_public": {
                     "type": "integer", 
+                    "description": "Account public used quota", 
                     "format": "int64", 
                     "example": 0
                 }, 
                 "pending_quota_request": {
                     "type": "boolean", 
+                    "description": "True if a quota request is pending", 
                     "example": true
                 }, 
                 "active": {
                     "type": "integer", 
+                    "description": "Account activity status", 
                     "format": "int64", 
                     "example": 0
                 }, 
                 "maximum_file_size": {
                     "type": "integer", 
+                    "description": "Maximum upload size for account", 
                     "format": "int64", 
                     "example": 0
                 }
@@ -7522,6 +7680,7 @@
             "properties": {
                 "categories": {
                     "type": "array", 
+                    "description": "List of category ids", 
                     "items": {
                         "type": "integer", 
                         "format": "int64", 
@@ -7544,6 +7703,7 @@
             "properties": {
                 "articles": {
                     "type": "array", 
+                    "description": "List of article ids", 
                     "items": {
                         "type": "integer", 
                         "format": "int64", 
@@ -7589,14 +7749,17 @@
             "properties": {
                 "id": {
                     "type": "string", 
+                    "description": "Private link id", 
                     "example": "0cfb0dbeac92df445df4aba45f63fdc85fa0b9a888b64e157ce3c93b576aa300fb3621ef3a219515dd482"
                 }, 
                 "is_active": {
                     "type": "boolean", 
+                    "description": "True if private link is active", 
                     "example": true
                 }, 
                 "expires_date": {
                     "type": "string", 
+                    "description": "Date when link will expire", 
                     "example": "2015-07-03T00:00:00"
                 }
             }
@@ -7678,6 +7841,7 @@
                 "partNo": {
                     "type": "integer", 
                     "format": "int64", 
+                    "description": "File part id", 
                     "example": 1
                 }, 
                 "startOffset": {
@@ -7713,25 +7877,30 @@
                 "id": {
                     "type": "integer", 
                     "format": "int64", 
+                    "description": "Collection id", 
                     "example": 123
                 }, 
                 "title": {
                     "type": "string", 
+                    "description": "Collection title", 
                     "example": "Sample collection"
                 }, 
                 "doi": {
                     "type": "string", 
+                    "description": "Collection DOI", 
                     "example": "http://dx.doi.org/10.6084/m9.figshare.123"
                 }, 
                 "url": {
                     "type": "string", 
-                    "example": "https://figshare.com/v2/collections/123"
+                    "description": "Api endpoint", 
+                    "example": "https://api.figshare.com/v2/collections/123"
                 }, 
                 "published_date": {
                     "type": [
                         "string", 
                         "null"
                     ], 
+                    "description": "Date when collection was published ", 
                     "example": "2015-08-12T00:39:55"
                 }
             }
@@ -7747,42 +7916,51 @@
             "properties": {
                 "resource_id": {
                     "type": "string", 
+                    "description": "Collection resource id", 
                     "example": ""
                 }, 
                 "resource_doi": {
                     "type": "string", 
+                    "description": "Collection resource doi", 
                     "example": "http://dx.doi.org/10.6084/m9.figshare.123"
                 }, 
                 "resource_title": {
                     "type": "string", 
+                    "description": "Collection resource title", 
                     "example": "test"
                 }, 
                 "resource_link": {
                     "type": "string", 
+                    "description": "Collection resource link", 
                     "example": "http://figshare.com"
                 }, 
                 "resource_version": {
                     "type": "integer", 
+                    "description": "Collection resource version", 
                     "format": "int64", 
                     "example": 0
                 }, 
                 "version": {
                     "type": "integer", 
+                    "description": "Collection version", 
                     "format": "int64", 
                     "example": 1
                 }, 
                 "description": {
                     "type": "string", 
+                    "description": "Collection description", 
                     "example": "description"
                 }, 
                 "categories": {
                     "type": "array", 
+                    "description": "List of collection categories", 
                     "items": {
                         "$ref": "#/definitions/Category"
                     }
                 }, 
                 "references": {
                     "type": "array", 
+                    "description": "List of collection references", 
                     "items": {
                         "type": "string", 
                         "format": "url"
@@ -7790,6 +7968,7 @@
                 }, 
                 "tags": {
                     "type": "array", 
+                    "description": "List of collection tags", 
                     "items": {
                         "type": "string"
                     }, 
@@ -7800,31 +7979,37 @@
                 }, 
                 "authors": {
                     "type": "array", 
+                    "description": "List of collection authors", 
                     "items": {
                         "$ref": "#/definitions/Author"
                     }
                 }, 
                 "institution_id": {
                     "type": "integer", 
+                    "description": "Collection institution", 
                     "format": "int64", 
                     "example": 1
                 }, 
                 "group_id": {
                     "type": "integer", 
+                    "description": "Collection group", 
                     "format": "int64", 
                     "example": 1
                 }, 
                 "articles_count": {
                     "type": "integer", 
+                    "description": "Number of articles in collection", 
                     "format": "int64", 
                     "example": 1
                 }, 
                 "public": {
                     "type": "boolean", 
+                    "description": "True if collection is published", 
                     "example": true
                 }, 
                 "citation": {
                     "type": "string", 
+                    "description": "Collection citation", 
                     "example": "citation"
                 }, 
                 "group_resource_id": {
@@ -7832,20 +8017,24 @@
                         "string", 
                         "null"
                     ], 
+                    "description": "Collection group resource id", 
                     "example": 1
                 }, 
                 "custom_fields": {
                     "type": "array", 
+                    "description": "Collection custom fields", 
                     "items": {
                         "$ref": "#/definitions/CustomArticleField"
                     }
                 }, 
                 "modified_date": {
                     "type": "string", 
+                    "description": "Date when collection was last modified", 
                     "example": "2017-05-15T15:12:26Z"
                 }, 
                 "created_date": {
                     "type": "string", 
+                    "description": "Date when collection was created", 
                     "example": "2017-05-15T15:12:26Z"
                 }
             }
@@ -8111,6 +8300,7 @@
             "type": "object", 
             "properties": {
                 "reason": {
+                    "description": "Reason for confidentiality", 
                     "type": "string"
                 }
             }
@@ -8120,6 +8310,7 @@
             "type": "object", 
             "properties": {
                 "location": {
+                    "description": "Url for item", 
                     "type": "string", 
                     "format": "url"
                 }
@@ -8169,31 +8360,31 @@
             "position": "bottom", 
             "subsections": [
                 {
-                    "title": "How to find data on figshare",
+                    "title": "How to find data on figshare", 
                     "content": "description_search_intro"
                 }, 
                 {
-                    "title": "Search operators",
+                    "title": "Search operators", 
                     "content": "description_search_operators"
-                },
+                }, 
                 {
-                    "title": "Searchable attributes",
+                    "title": "Searchable attributes", 
                     "content": "description_search_attributes"
-                },
+                }, 
                 {
-                    "title": "Quick search",
+                    "title": "Quick search", 
                     "content": "description_search_quick"
-                },
+                }, 
                 {
-                    "title": "Advanced search",
+                    "title": "Advanced search", 
                     "content": "description_search_advanced"
-                },
+                }, 
                 {
-                    "title": "Combined field search",
+                    "title": "Combined field search", 
                     "content": "description_search_combined"
-                },
+                }, 
                 {
-                    "title": "Complex searches",
+                    "title": "Complex searches", 
                     "content": "description_search_complex"
                 }
             ]
@@ -8442,44 +8633,44 @@
                             "content": "description_oauth_grant"
                         }
                     ]
-                },
+                }, 
                 {
-                    "title": "API description",
+                    "title": "API description", 
                     "subsections": [
                         {
-                            "title": "Feature list",
+                            "title": "Feature list", 
                             "content": "description_api_features"
-                        },
+                        }, 
                         {
-                            "title": "Sending parameters",
+                            "title": "Sending parameters", 
                             "content": "description_api_parameters"
-                        },
+                        }, 
                         {
-                            "title": "Resource representations",
+                            "title": "Resource representations", 
                             "content": "description_api_resourcerepresentation"
-                        },
+                        }, 
                         {
-                            "title": "Authentication",
+                            "title": "Authentication", 
                             "content": "description_api_auth"
-                        },
+                        }, 
                         {
-                            "title": "Errors",
+                            "title": "Errors", 
                             "content": "description_api_errors"
-                        },
+                        }, 
                         {
-                            "title": "Searching filtering and pagination",
+                            "title": "Searching filtering and pagination", 
                             "content": "description_api_search"
-                        },
+                        }, 
                         {
-                            "title": "Rate limiting",
+                            "title": "Rate limiting", 
                             "content": "description_api_ratelimit"
-                        },
+                        }, 
                         {
-                            "title": "Conditional requests",
+                            "title": "Conditional requests", 
                             "content": "description_api_requests"
-                        },
+                        }, 
                         {
-                            "title": "CORS policy",
+                            "title": "CORS policy", 
                             "content": "description_api_cors"
                         }
                     ]

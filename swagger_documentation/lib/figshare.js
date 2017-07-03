@@ -23,6 +23,11 @@ function ToSmallCase(s){
     return s.replace(/(\ \w)/g, function(m){return m[1].toLowerCase();});
 }
 
+function ToSmallUnderscoredCase(s) {
+    s = s.replace(/ /gi,'_');
+    return s.toLowerCase();
+}
+
 
 function processSampleCodes(sampleCodes) {
     var other_sample_codes = $('#other_sample_codes').html();
@@ -33,8 +38,13 @@ function processSampleCodes(sampleCodes) {
         for (var i=0; i<swaggerUi.api.apisArray[tagIndex].operationsArray.length; i++)
             {
             var nickname = swaggerUi.api.apisArray[tagIndex].operationsArray[i].nickname;
-            var nicknameCamel = ToCamelCase(nickname);
-            $('#'+tagName+'_'+nickname+' .content .heading').after(sampleCodes[nicknameCamel]);
+            var nicknameCamel = ToSmallUnderscoredCase(nickname);
+            $('#'+tagName+'_'+`nickname`+' .content .heading').after(sampleCodes[nicknameCamel]);
+            if (typeof(swaggerUi.api.apisArray[tagIndex].operationsArray[i].successResponse)!='undefined') {
+              var resp_key = Object.keys(swaggerUi.api.apisArray[tagIndex].operationsArray[i].successResponse);
+              $('#'+tagName+'_'+nickname+' .content .responses-wrapper table tbody').prepend('<tr><td><strong>'+swaggerUi.api.apisArray[tagIndex].operationsArray[i].successCode+'</srong></td><td>'+swaggerUi.api.apisArray[tagIndex].operationsArray[i].successResponse[resp_key[0]].description+'</td></tr>');
+              }
+
             }
         }
       var ul_examples = $('ul.nav-tabs-examples');
@@ -110,6 +120,14 @@ function replaceMenus(data) {
     menu.push({"name":swaggerUi.api.apisArray[i].name,"submenu":submenu});
     }
 
+  original_operations = $('#resources .operations .operation');
+  for (var i=0; i<original_operations.length; i++)
+    {
+    let id = $(original_operations[i]).attr('id');
+    id = id.substr(id.indexOf('_')+1);
+    $(original_operations[i]).attr('id', id);
+    }
+
   menu_html = '';
   for (var i=0; i<menu.length; i++)
     {
@@ -117,19 +135,19 @@ function replaceMenus(data) {
     var subtags = [];
     for (var j=0; j<menu[i].submenu.length; j++)
       if (typeof(menu[i].submenu[j].subtag)=='undefined')
-        menu_html += '<li><span endpoint_id="'+menu[i].name+'_'+menu[i].submenu[j].id+'">'+menu[i].submenu[j].name+'</span></li>';
+        menu_html += '<li><span endpoint_id="'+menu[i].submenu[j].id+'">'+menu[i].submenu[j].name+'</span></li>';
         else {
           if (subtags.indexOf(menu[i].submenu[j].subtag) == -1) {
 
-            $('#'+menu[i].name+'_'+menu[i].submenu[j].id).before('<li class="operation" id="description_'+ToSmallCase(menu[i].submenu[j].subtag)+'"><div class="content"><h2 class="operation-title">'+menu[i].submenu[j].subtag+'</h2></div></li>');
-            $('#description_'+ToSmallCase(menu[i].submenu[j].subtag)).css('min-height', 'auto');
+            $('#'+menu[i].submenu[j].id).before('<li class="operation" id="'+ToSmallUnderscoredCase(menu[i].submenu[j].subtag)+'"><div class="content"><h2 class="operation-title">'+menu[i].submenu[j].subtag+'</h2></div></li>');
+            $('#'+ToSmallUnderscoredCase(menu[i].submenu[j].subtag)).css('min-height', 'auto');
 
-            menu_html += '<li><span endpoint_id="description_'+ToSmallCase(menu[i].submenu[j].subtag)+'">'+menu[i].submenu[j].subtag+'<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="subsubmenu">';
+            menu_html += '<li><span endpoint_id="'+ToSmallUnderscoredCase(menu[i].submenu[j].subtag)+'">'+menu[i].submenu[j].subtag+'<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="subsubmenu">';
             for (var k=j; k<menu[i].submenu.length; k++)
               if (typeof(menu[i].submenu[k].subtag)!='undefined')
                 if (menu[i].submenu[k].subtag == menu[i].submenu[j].subtag)
                   {
-                  menu_html += '<li><span endpoint_id="'+menu[i].name+'_'+menu[i].submenu[k].id+'">'+menu[i].submenu[k].name+'</span></li>';
+                  menu_html += '<li><span endpoint_id="'+menu[i].submenu[k].id+'">'+menu[i].submenu[k].name+'</span></li>';
                   $('#'+menu[i].name+'_'+menu[i].submenu[k].id).find('h2.operation-title').removeClass('operation-title');
                   }
             menu_html += '</ul></li>';
@@ -154,6 +172,8 @@ function replaceMenus(data) {
   $('#search_doc').focusout(SearchFocusOut);
   $('#search_doc').focusin(SearchFocusIn);
   prepareSearchList();
+  correctMethodLinks();
+  addPutPostSchemaIndication();
   $('.param-property textarea.ui-form-control').keydown(ParamTextareaTabHandle);
 }
 
@@ -161,14 +181,14 @@ function replaceMenus(data) {
 function processAdditionalDescriptions(desc) {
   additional_menu = {"bottom":"","top":""};
   for (var i=0; i<desc.length; i++) {
-    menu = '<li><span endpoint_id="description_'+ToSmallCase(desc[i].title)+'">'+desc[i].title+'<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="submenu">';
+    menu = '<li><span endpoint_id="'+ToSmallUnderscoredCase(desc[i].title)+'">'+desc[i].title+'<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="submenu">';
     for (var j=0; j<desc[i].subsections.length; j++)
       if (typeof(desc[i].subsections[j].subsections) == 'undefined')
-        menu += '<li><span endpoint_id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(desc[i].subsections[j].title)+'">'+desc[i].subsections[j].title+'</span></li>';
+        menu += '<li><span endpoint_id="'+ToSmallUnderscoredCase(desc[i].title)+'_'+ToSmallUnderscoredCase(desc[i].subsections[j].title)+'">'+desc[i].subsections[j].title+'</span></li>';
         else {
-          menu += '<li><span endpoint_id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(desc[i].subsections[j].title)+'">'+desc[i].subsections[j].title+'<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="subsubmenu">';
+          menu += '<li><span endpoint_id="'+ToSmallUnderscoredCase(desc[i].title)+'_'+ToSmallUnderscoredCase(desc[i].subsections[j].title)+'">'+desc[i].subsections[j].title+'<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="subsubmenu">';
           for (var k=0; k<desc[i].subsections[j].subsections.length; k++)
-              menu += '<li><span endpoint_id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(desc[i].subsections[j].title)+'_'+ToSmallCase(desc[i].subsections[j].subsections[k].title)+'">'+desc[i].subsections[j].subsections[k].title+'</span></li>';
+              menu += '<li><span endpoint_id="'+ToSmallUnderscoredCase(desc[i].title)+'_'+ToSmallUnderscoredCase(desc[i].subsections[j].title)+'_'+ToSmallUnderscoredCase(desc[i].subsections[j].subsections[k].title)+'">'+desc[i].subsections[j].subsections[k].title+'</span></li>';
           menu += '</ul></li>';
         }
     menu += '</ul></li>';
@@ -177,35 +197,35 @@ function processAdditionalDescriptions(desc) {
 
   for (var i=0; i<desc.length; i++) {
     title = desc[i].title;
-    var resource_id = 'resource_'+ToSmallCase(title);
+    var resource_id = 'resource_'+ToSmallUnderscoredCase(title);
     if (desc[i].position=='bottom')
       addfunction = 'append';
       else
       addfunction = 'prepend';
     //$('#resources_nav')[addfunction]('<div data-resource="'+resource_id+'" label="'+title+'"></div>');
     $('#resources')[addfunction]('<li id="'+resource_id+'" class="resource"><ul class="endpoints"><li class="endpoint"><ul class="operations"></ul></li></ul></li>');
-    $('#'+resource_id+' .operations').append('<li class="operation static_description" id="description_'+ToSmallCase(title)+'"><div class="content"><h2 class="operation-title">'+title+'</h2></div></li>');
+    $('#'+resource_id+' .operations').append('<li class="operation static_description" id="'+ToSmallUnderscoredCase(title)+'"><div class="content"><h2 class="operation-title">'+title+'</h2></div></li>');
 
     for (var j=0; j<desc[i]['subsections'].length; j++)
         {
         title  = desc[i]['subsections'][j]['title'];
         if (typeof(desc[i]['subsections'][j].subsections)!='undefined')
           {
-          $('#'+resource_id+' .operations').append('<li class="operation static_description" id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(title)+'"><div class="content"><h2 class="operation-title">'+title+'</h2></div></li>');
+          $('#'+resource_id+' .operations').append('<li class="operation static_description" id="'+ToSmallUnderscoredCase(desc[i].title)+'_'+ToSmallUnderscoredCase(title)+'"><div class="content"><h2 class="operation-title">'+title+'</h2></div></li>');
           for (var k=0; k<desc[i].subsections[j].subsections.length; k++)
             {
 
               content = $('#'+desc[i]['subsections'][j].subsections[k].content).html();
               title  = desc[i]['subsections'][j].subsections[k]['title'];
-              $('#'+resource_id+' .operations').append('<li class="operation static_description" id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(desc[i].subsections[j].title)+'_'+ToSmallCase(title)+'"><div class="content">'+content+'</div></li>');
+              $('#'+resource_id+' .operations').append('<li class="operation static_description" id="'+ToSmallUnderscoredCase(desc[i].title)+'_'+ToSmallUnderscoredCase(desc[i].subsections[j].title)+'_'+ToSmallUnderscoredCase(title)+'"><div class="content">'+content+'</div></li>');
             }
 
           }
           else
           {
           content = $('#'+desc[i]['subsections'][j].content).html();
-          //$('div[data-resource="'+resource_id+'"]').append('<div data-endpoint="description_'+ToSmallCase(title)+'" class="item">'+title+'</div>');
-          $('#'+resource_id+' .operations').append('<li class="operation static_description" id="description_'+ToSmallCase(desc[i].title)+'_'+ToSmallCase(title)+'"><div class="content">'+content+'</div></li>');
+          //$('div[data-resource="'+resource_id+'"]').append('<div data-endpoint="description_'+ToSmallUnderscoredCase(title)+'" class="item">'+title+'</div>');
+          $('#'+resource_id+' .operations').append('<li class="operation static_description" id="'+ToSmallUnderscoredCase(desc[i].title)+'_'+ToSmallUnderscoredCase(title)+'"><div class="content">'+content+'</div></li>');
           }
         }
         $('#'+resource_id+' .operations .operation').css('min-height','auto');
@@ -215,20 +235,19 @@ function processAdditionalDescriptions(desc) {
 
 function createPresentersHtml() {
     const models = swaggerUi.api.models;
-    console.log(models.length);
     let menu = '<li><span endpoint_id="description_presenters">Presenters<span data-close="" class="icon_figmenu_collapse"></span></span><ul class="submenu">';
     model_keys = Object.keys(models);
     model_keys = model_keys.sort();
     for (var i = 0; i<model_keys.length; i++) {
         key = model_keys[i];
-        menu += '<li><span endpoint_id="description_presenters_'+ToSmallCase(models[key].name)+'">'+models[key].name+'</span></li>';
+        menu += '<li><span endpoint_id="description_presenters_'+ToSmallUnderscoredCase(models[key].name)+'">'+models[key].name+'</span></li>';
     }
     menu += '</ul></li>';
 
     $('#resources').append('<li id="description_presenters" class="resource"><ul class="endpoints"><li class="endpoint"><ul class="operations"></ul></li></ul></li>');
     for (var i = 0; i<model_keys.length; i++) {
         key = model_keys[i];
-        var presenterHtml = '<li class="operation static_description" id="description_presenters_'+ToSmallCase(models[key].name)+'"><div class="content"><h2 class="operation-title">'+models[key].name+'</h2><ul class="presenter_properties">';
+        var presenterHtml = '<li class="operation static_description" id="description_presenters_'+ToSmallUnderscoredCase(models[key].name)+'"><div class="content"><h2 class="operation-title">'+models[key].name+'</h2><ul class="presenter_properties">';
         properties = models[key].definition.properties;
         propKeys = Object.keys(properties);
         for (var j=0; j<propKeys.length; j++)
@@ -399,4 +418,55 @@ function verifyHashOnLoad() {
     window.scrollTo(0,$(hash).offset().top);
     }
 
+}
+
+function addPutPostSchemaIndication() {
+  for (var i=0; i<swaggerUi.api.apisArray.length; i++)
+    {
+    for (var j=0; j<swaggerUi.api.apisArray[i].operationsArray.length; j++)
+      if (swaggerUi.api.apisArray[i].operationsArray[j].method == 'post' || swaggerUi.api.apisArray[i].operationsArray[j].method == 'put') {
+          var tagName = swaggerUi.api.apisArray[i].name;
+          var nickname = swaggerUi.api.apisArray[i].operationsArray[j].nickname;
+          $('#'+tagName+'_'+nickname+' .content .operation-params').prepend('<div class="parameter-item body_schema_indicator">See complete body description in Body Schema section to the right</div>');
+      }
+
+    }
+}
+
+function verifyDuplicateLinks() {
+  let ls = $('[endpoint_id]');
+  let links = new Array();
+  for (var i=0; i<ls.length; i++)
+    {
+    l = $(ls[i]).attr('endpoint_id');
+    if (links.indexOf(l)>=0)
+      {
+      //console.log(l);
+      }
+    links.push(l);
+    }
+}
+
+function verifyBrokenLinks() {
+  let links = $('[href]');
+  for (var i=0; i<links.length; i++)
+    {
+    let href = $(links[i]).attr('href');
+    if (href[0] == '#' && href.length>1)
+      {
+      if ($(href).length==0)
+        console.log(href);
+      }
+    }
+}
+
+function correctMethodLinks() {
+  let method_links = $('.operation .http_method a');
+  for (var i=0; i<method_links.length; i++) {
+    $(method_links[i]).attr('href','#'+$(method_links[i]).parent().parent().parent().parent().parent().attr('id'));
+  }
+  method_links = $('.operation .path a');
+  for (var i=0; i<method_links.length; i++) {
+    $(method_links[i]).attr('href','#'+$(method_links[i]).parent().parent().parent().parent().parent().attr('id'));
+  }
 }

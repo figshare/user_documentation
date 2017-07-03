@@ -5,6 +5,12 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="/images/favicon-128.png" sizes="128x128">
+
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--style type="text/css"></style-->
@@ -13,6 +19,8 @@
     <link href='css/standalone.css' rel='stylesheet'/>
     <link href='css/api-explorer.css' rel='stylesheet' type='text/css'/>
     <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+
+
 
     <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
     <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
@@ -47,7 +55,7 @@
             if (url && url.length > 1) {
                 url = decodeURIComponent(url[1]);
             } else {
-                url = window.location.toString().replace(/\/*#?.*/, '/swagger_parsed.json');
+                url = window.location.toString().replace(/\/*#?.*/, '/swagger_parsed.json?v='+parseInt(Date.now()/1000/60/60));
             }
 
             window.swaggerUi = new SwaggerUi({
@@ -330,26 +338,26 @@
         </ul>
         <h3 id="stats_service_endpoints_totals">Totals</h3>
         <p>This type of endpoint enables the retrieval of the total number of events for a specific item.
-        More details and examples are provided <a href="#description_Stats_Totals">here</a>.</p>
+        More details and examples are provided <a href="#stats_totals">here</a>.</p>
         <h3 id="stats_service_endpoints_timeline">Timeline</h3>
         <p>This type of endpoint enables the retrieval of a timeline of the number of events for a specific
-        item, with a specified granularity. More details and examples are provided <a href="#description_Stats_Timeline">here</a>.</p>
+        item, with a specified granularity. More details and examples are provided <a href="#stats_timeline">here</a>.</p>
         <h3 id="stats_service_endpoints_breakdown">Breakdown</h3>
         <p>This type of endpoint enables the retrieval of a geo-location breakdown of the number of events for a specific
-        item, with a specified granularity. More details and examples are provided <a href="#description_Stats_Breakdown">here</a>.</p>
+        item, with a specified granularity. More details and examples are provided <a href="#stats_breakdown">here</a>.</p>
         <h3 id="stats_service_endpoints_tops">Tops</h3>
         <p>This type of endpoint enables the retrieval of rankings of the most viewed, downloaded or shared items,
-        over a specific period of time. More details and examples are provided <a href="#description_Stats_Tops">here</a>.</p>
+        over a specific period of time. More details and examples are provided <a href="#stats_tops">here</a>.</p>
       </div>
       <div id="description_stats_breakdown_endpoints">
         <h1 id="endpoints-for-retrieving-a-breakdown">Endpoints for retrieving a <strong>breakdown</strong></h1>
         <p>This type of endpoint enables the retrieval of a geo-location breakdown of the number
         of <em>views</em>, <em>downloads</em> or <em>shares</em> for a specific item.</p>
         <ul>
-        <li><a href="#description_Stats_Breakdown_Authorization">Authorization</a></li>
-        <li><a href="#description_Stats_Breakdown_Endpointformat">Endpoint format</a></li>
-        <li><a href="#description_Stats_Breakdown_Requestparameters">Request parameters</a></li>
-        <li><a href="#description_Stats_Breakdown_Examples">Examples</a></li>
+        <li><a href="#stats_breakdown_authorization">Authorization</a></li>
+        <li><a href="#stats_breakdown_endpoint_format">Endpoint format</a></li>
+        <li><a href="#stats_breakdown_request_parameters">Request parameters</a></li>
+        <li><a href="#stats_breakdown_examples">Examples</a></li>
         </ul>
       </div>
       <div id="description_stats_breakdown_auth">
@@ -886,10 +894,10 @@ Content-Type: application/json; charset=UTF-8
         <p>This type of endpoint enables the retrieval of a timeline of the number of <em>views</em>, <em>downloads</em>
         or <em>shares</em> for a specific item.</p>
         <ul>
-        <li><a href="#description_Stats_Timeline_Authorization">Authorization</a></li>
-        <li><a href="#description_Stats_Timeline_Endpointformat">Endpoint format</a></li>
-        <li><a href="#description_Stats_Timeline_Requestparameters">Request parameters</a></li>
-        <li><a href="#description_Stats_Timeline_Examples">Examples</a></li>
+        <li><a href="#stats_timeline_authorization">Authorization</a></li>
+        <li><a href="#stats_timeline_endpoint_format">Endpoint format</a></li>
+        <li><a href="#stats_timeline_request_parameters">Request parameters</a></li>
+        <li><a href="#stats_timeline_examples">Examples</a></li>
         </ul>
       </div>
       <div id="description_stats_timeline_auth">
@@ -1083,10 +1091,10 @@ Content-Type: application/json; charset=UTF-8
         <p>This type of endpoints enables the retrieval or rankings of the most viewed, downloaded or shared
         items, over a specific period of time.</p>
         <ul>
-        <li><a href="#description_Stats_Tops_Authorization">Authorization</a></li>
-        <li><a href="#description_Stats_Tops_Endpointformat">Endpoint format</a></li>
-        <li><a href="#description_Stats_Tops_Requestparameters">Request parameters</a></li>
-        <li><a href="#description_Stats_Tops_Examples">Examples</a></li>
+        <li><a href="#stats_tops_authorization">Authorization</a></li>
+        <li><a href="#stats_tops_endpoint_format">Endpoint format</a></li>
+        <li><a href="#stats_tops_request_parameters">Request parameters</a></li>
+        <li><a href="#stats_tops_examples">Examples</a></li>
         </ul>
       </div>
       <div id="description_stats_tops_auth">
@@ -1226,9 +1234,9 @@ Content-Type: application/json; charset=UTF-8
         <h1 id="endpoints-for-retrieving-totals">Endpoints for retrieving <strong>totals</strong></h1>
         <p>This type of endpoint provides the total number of <em>views</em>, <em>downloads</em> or <em>shares</em>.</p>
         <ul>
-        <li><a href="#description_Stats_Totals_Authorization">Authorization</a></li>
-        <li><a href="#description_Stats_Totals_Endpointformat">Endpoint format</a></li>
-        <li><a href="#description_Stats_Totals_Examples">Examples</a></li>
+        <li><a href="#stats_totals_authorization">Authorization</a></li>
+        <li><a href="#stats_totals_endpoint_format">Endpoint format</a></li>
+        <li><a href="#stats_totals_examples">Examples</a></li>
         </ul>
       </div>
       <div id="description_stats_totals_auth">
@@ -1538,7 +1546,7 @@ Content-Type: application/json; charset=UTF-8
         <pre>https://api.figshare.com/v2</pre>
         <p>The Figshare REST API is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.</p>
         <h3>Authentication</h3>
-        <p>Figshare supports the OAuth 2.0 Authorization Framework. See more about it in the <a href="#description_figsharedocumentation_OAuth">OAuth</a> section.
+        <p>Figshare supports the OAuth 2.0 Authorization Framework. See more about it in the <a href="#figshare_documentation_oauth">OAuth</a> section.
       </div>
       <div id="other_sample_codes">
         <h4>You can download one of the following complete clients:</h4>
@@ -1564,10 +1572,10 @@ Content-Type: application/json; charset=UTF-8
       <div id="description_upload_steps">
         <h3 id="steps-to-upload-file">Steps to upload file</h3>
         <ul>
-          <li><a href="#articles_post_account_articles_article_id_files">Initiate file upload</a> - this request returns an endpoint with file data</li>
+          <li><a href="#private_article_upload_initiate">Initiate file upload</a> - this request returns an endpoint with file data</li>
           <li>Send a <code>GET</code> request to the <a href="#description_upload_api">Uploader Service</a> with the <code>upload_url</code> (which also contains the<code>upload_token</code>) provided in previous step and receive the number of file parts</li>
           <li>Upload / Delete / Retry uploading file parts until all parts are uploaded successfully</li>
-          <li><a href="#articles_post_account_articles_article_id_files_file_id">Complete file upload</a></li>
+          <li><a href="#private_article_upload_complete">Complete file upload</a></li>
         </ul>
       </div>
       <div id="description_upload_api">
@@ -2243,9 +2251,9 @@ Listing files <span class="hljs-keyword">for</span> <span class="hljs-tag">artic
       <p>All communication with the service is done through <em>https</em> and all data is encoded as <em>json</em>.
 Optional authorization for specific endpoints is done through basic access authentication.</p>
       <ul>
-        <li><a href="#description_Stats_Authentication">Authentication</a></li>
-        <li><a href="#description_Stats_Errors">Errors</a></li>
-        <li><a href="#description_Stats_Endpoints">Endpoints</a></li>
+        <li><a href="#stats_stats_service_authentication">Authentication</a></li>
+        <li><a href="#stats_stats_service_errors">Errors</a></li>
+        <li><a href="#stats_stats_service_endpoints">Endpoints</a></li>
       </ul>
     </div>
     <div id="description_stats_home_authentication">
@@ -2569,18 +2577,18 @@ json
       <p>The figshare api v2 is accessible at https://api.figshare.com/v2. All
       communication is done through <em>https</em> and all data is encoded as <code>JSON</code>.</p>
       <ul>
-      <li><a href="#description_figsharedocumentation_APIdescription_Sendingparameters">Sending parameters</a></li>
-      <li><a href="#description_figsharedocumentation_APIdescription_Resourcerepresentations">Resource representations</a></li>
-      <li><a href="#description_figsharedocumentation_APIdescription_Authentication">Authentication</a></li>
-      <li><a href="#description_figsharedocumentation_APIdescription_Errors">Errors</a></li>
-      <li><a href="#description_figsharedocumentation_APIdescription_Searchingfilteringandpagination">Searching, filtering and pagination</a></li>
-      <li><a href="#description_figsharedocumentation_APIdescription_Ratelimiting">Rate limiting</a></li>
-      <li><a href="#description_figsharedocumentation_APIdescription_Conditionalrequests">Conditional requests</a></li>
-      <li><a href="#description_figsharedocumentation_APIdescription_CORSpolicy">CORS policy</a></li>
+      <li><a href="#figshare_documentation_api_description_sending_parameters">Sending parameters</a></li>
+      <li><a href="#figshare_documentation_api_description_resource_representations">Resource representations</a></li>
+      <li><a href="#figshare_documentation_api_description_authentication">Authentication</a></li>
+      <li><a href="#figshare_documentation_api_description_errors">Errors</a></li>
+      <li><a href="#figshare_documentation_api_description_searching_filtering_and_pagination">Searching, filtering and pagination</a></li>
+      <li><a href="#figshare_documentation_api_description_rate_limiting">Rate limiting</a></li>
+      <li><a href="#figshare_documentation_api_description_conditional_requests">Conditional requests</a></li>
+      <li><a href="#figshare_documentation_api_description_cors_policy">CORS policy</a></li>
       <li>Endpoints</li>
-      <li><a href="#collections_collections_Get">collections</a></li>
-      <li><a href="#articles_articles_Get">items</a></li>
-      <li><a href="#projects_projectsGet">projects</a></li>
+      <li><a href="#collections_list">collections</a></li>
+      <li><a href="#articles_list">items</a></li>
+      <li><a href="#projects_list">projects</a></li>
       </ul>
     </div>
     <div id="description_api_parameters">
@@ -2624,7 +2632,7 @@ json
     <div id="description_api_auth">
       <h2 id="authentication">Authentication</h2>
       <p>The v2 API supports OAuth2 access tokens, issued as
-      described in the <a href="#description_figsharedocumentation_OAuth">oauth section</a>.</p>
+      described in the <a href="#figshare_documentation_oauth">oauth section</a>.</p>
       <p>In addition to oauth access tokens, you can also use a <em>personal token</em>
       which grants you full access to your account. Personal tokens can be
       created and managed from the <a href="https://figshare.com/account/applications">applications

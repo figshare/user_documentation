@@ -22615,7 +22615,7 @@ SwaggerUi.Views.SignatureView = Backbone.View.extend({
   snippetToTextArea: function (e) {
     if (this.isParam) {
       if (e) {
-        e.preventDefault();
+        //e.preventDefault();
       }
 
       var textArea = $('textarea', $(this.el.parentNode.parentNode.parentNode));
