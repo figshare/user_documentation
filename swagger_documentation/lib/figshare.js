@@ -38,11 +38,12 @@ function processSampleCodes(sampleCodes) {
         for (var i=0; i<swaggerUi.api.apisArray[tagIndex].operationsArray.length; i++)
             {
             var nickname = swaggerUi.api.apisArray[tagIndex].operationsArray[i].nickname;
-            var nicknameCamel = ToSmallUnderscoredCase(nickname);
-            $('#'+tagName+'_'+`nickname`+' .content .heading').after(sampleCodes[nicknameCamel]);
+            var nicknameCamel = ToCamelCase(nickname);
+
+            $('#'+nickname+' .content .heading').after(sampleCodes[nicknameCamel]);
             if (typeof(swaggerUi.api.apisArray[tagIndex].operationsArray[i].successResponse)!='undefined') {
               var resp_key = Object.keys(swaggerUi.api.apisArray[tagIndex].operationsArray[i].successResponse);
-              $('#'+tagName+'_'+nickname+' .content .responses-wrapper table tbody').prepend('<tr><td><strong>'+swaggerUi.api.apisArray[tagIndex].operationsArray[i].successCode+'</srong></td><td>'+swaggerUi.api.apisArray[tagIndex].operationsArray[i].successResponse[resp_key[0]].description+'</td></tr>');
+              $('#'+nickname+' .content .responses-wrapper table tbody').prepend('<tr><td><strong>'+swaggerUi.api.apisArray[tagIndex].operationsArray[i].successCode+'</srong></td><td>'+swaggerUi.api.apisArray[tagIndex].operationsArray[i].successResponse[resp_key[0]].description+'</td></tr>');
               }
 
             }
