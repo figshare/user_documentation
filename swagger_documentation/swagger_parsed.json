@@ -4961,54 +4961,6 @@
                 }
             }
         }, 
-        "/account/projects/{project_id}/leave": {
-            "post": {
-                "tags": [
-                    "projects"
-                ], 
-                "operationId": "private_project_leave", 
-                "summary": "Private Project Leave", 
-                "description": "Please note: project's owner cannot leave the project.", 
-                "security": [
-                    {
-                        "OAuth2": [
-                            "all"
-                        ]
-                    }
-                ], 
-                "parameters": [
-                    {
-                        "name": "project_id", 
-                        "in": "path", 
-                        "description": "Project unique identifier", 
-                        "required": true, 
-                        "type": "integer", 
-                        "format": "int64", 
-                        "minimum": 1
-                    }
-                ], 
-                "responses": {
-                    "204": {
-                        "description": "No Content"
-                    }, 
-                    "400": {
-                        "description": "Bad request"
-                    }, 
-                    "403": {
-                        "description": "Forbidden", 
-                        "schema": {
-                            "$ref": "#/definitions/ErrorMessage"
-                        }
-                    }, 
-                    "404": {
-                        "description": "Not Found"
-                    }, 
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            }
-        }, 
         "/account/projects/{project_id}/notes": {
             "parameters": [
                 {
@@ -5383,6 +5335,55 @@
                         "minimum": 1
                     }
                 ]
+            }
+        }, 
+        "/account/projects/{project_id}/leave": {
+            "post": {
+                "tags": [
+                    "projects"
+                ], 
+                "x-subcategory": "Private Project Collaborators", 
+                "operationId": "private_project_leave", 
+                "summary": "Private Project Leave", 
+                "description": "Please note: project's owner cannot leave the project.", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "project_id", 
+                        "in": "path", 
+                        "description": "Project unique identifier", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }
+                ], 
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }, 
+                    "400": {
+                        "description": "Bad request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
             }
         }, 
         "/account/projects/{project_id}/collaborators": {

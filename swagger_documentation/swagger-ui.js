@@ -20404,8 +20404,6 @@ Request.prototype.end = function(fn){
   for (var field in this.header) {
     if (null == this.header[field]) continue;
 
-      console.log('here');
-      console.log(field);
 
     xhr.setRequestHeader(field, this.header[field]);
   }
@@ -21989,16 +21987,12 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
   // Show error from server
   showErrorStatus: function (data, parent) {
     $('#modal-' + parent.parentId + '_' + parent.nickname).modal();
-    console.log("error");
-    console.log(data);
     parent.showStatus(data);
   },
 
   // show the status codes
   showCompleteStatus: function (data, parent) {
     $('#modal-' + parent.parentId + '_' + parent.nickname).modal();
-    console.log("complete");
-    console.log(data);
     parent.showStatus(data);
   },
 

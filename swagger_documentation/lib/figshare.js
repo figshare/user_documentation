@@ -176,6 +176,7 @@ function replaceMenus(data) {
   correctMethodLinks();
   addPutPostSchemaIndication();
   $('.param-property textarea.ui-form-control').keydown(ParamTextareaTabHandle);
+  $(window).keyup(escKeyForModal);
 }
 
 
@@ -425,11 +426,12 @@ function addPutPostSchemaIndication() {
   for (var i=0; i<swaggerUi.api.apisArray.length; i++)
     {
     for (var j=0; j<swaggerUi.api.apisArray[i].operationsArray.length; j++)
-      if (swaggerUi.api.apisArray[i].operationsArray[j].method == 'post' || swaggerUi.api.apisArray[i].operationsArray[j].method == 'put') {
-          var tagName = swaggerUi.api.apisArray[i].name;
-          var nickname = swaggerUi.api.apisArray[i].operationsArray[j].nickname;
-          $('#'+tagName+'_'+nickname+' .content .operation-params').prepend('<div class="parameter-item body_schema_indicator">See complete body description in Body Schema section to the right</div>');
-      }
+      if (typeof(swaggerUi.api.apisArray[i].operationsArray[j].method)!='undefined')
+        if (swaggerUi.api.apisArray[i].operationsArray[j].method == 'post' || swaggerUi.api.apisArray[i].operationsArray[j].method == 'put') {
+            var tagName = swaggerUi.api.apisArray[i].name;
+            var nickname = swaggerUi.api.apisArray[i].operationsArray[j].nickname;
+            $('#'+nickname+' .content .operation-params').prepend('<div class="parameter-item body_schema_indicator">See complete body description in Body Schema section to the right</div>');
+        }
 
     }
 }
@@ -469,5 +471,12 @@ function correctMethodLinks() {
   method_links = $('.operation .path a');
   for (var i=0; i<method_links.length; i++) {
     $(method_links[i]).attr('href','#'+$(method_links[i]).parent().parent().parent().parent().parent().attr('id'));
+  }
+}
+
+function escKeyForModal(evt) {
+  if (e.which == 27 && $('.modal.in').length>0) {
+    $('.modal.in').removeClass('in');
+    evt.preventDefault();
   }
 }
