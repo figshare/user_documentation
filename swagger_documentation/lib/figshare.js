@@ -176,7 +176,7 @@ function replaceMenus(data) {
   correctMethodLinks();
   addPutPostSchemaIndication();
   $('.param-property textarea.ui-form-control').keydown(ParamTextareaTabHandle);
-  $(window).keyup(escKeyForModal);
+  $(document).keyup(escKeyForModal);
 }
 
 
@@ -475,7 +475,8 @@ function correctMethodLinks() {
 }
 
 function escKeyForModal(evt) {
-  if (e.which == 27 && $('.modal.in').length>0) {
+
+  if (evt.which == 27 && $('.modal.in').length>0) {
     $('.modal.in').removeClass('in');
     evt.preventDefault();
   }
