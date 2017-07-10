@@ -42,7 +42,7 @@
                         "type": "integer",
                         "format": "int64",
                         "minimum": 1,
-                        "maximum": 100,
+                        "maximum": 1000,
                         "default": 10
                     },
                     {
@@ -53,7 +53,7 @@
                         "type": "integer",
                         "format": "int64",
                         "minimum": 1,
-                        "maximum": 100
+                        "maximum": 1000
                     },
                     {
                         "name": "offset",
@@ -137,6 +137,13 @@
                         "format": "int64",
                         "minimum": 1,
                         "maximum": 12,
+                        "required": false
+                    },
+                    {
+                        "name": "doi",
+                        "in": "query",
+                        "description": "only return collections with this doi",
+                        "type": "string",
                         "required": false
                     }
                 ],
@@ -2225,6 +2232,13 @@
                         "name": "resource_doi",
                         "in": "query",
                         "description": "only return collections with this resource_doi",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "name": "doi",
+                        "in": "query",
+                        "description": "only return collections with this doi",
                         "type": "string",
                         "required": false
                     }
@@ -6536,6 +6550,11 @@
                     "minimum": 1,
                     "maximum": 12,
                     "example": 1
+                },
+                "doi": {
+                    "description": "only return collections with this doi",
+                    "type": "string",
+                    "example": "10.6084/m9.figshare.1407024"
                 }
             }
         },
@@ -6566,6 +6585,11 @@
             "properties": {
                 "resource_doi": {
                     "description": "only return collections with this resource_doi",
+                    "type": "string",
+                    "example": "10.6084/m9.figshare.1407024"
+                },
+                "doi": {
+                    "description": "only return collections with this doi",
                     "type": "string",
                     "example": "10.6084/m9.figshare.1407024"
                 }
