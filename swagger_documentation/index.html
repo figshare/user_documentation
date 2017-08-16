@@ -1332,6 +1332,52 @@ Content-Type: application/json; charset=UTF-8
 }
 </code></pre>
       </div>
+      <div id="description_stats_count_endpoints">
+        <h1 id="endpoints-for-retrieving-totals">Endpoints for retrieving number of articles in public groups</h1>
+        <p>This type of endpoint provides a way to get the number of articles in one or more public groups.</p>
+        <ul>
+        <li><a href="#stats_totals_authorization">Authorization</a></li>
+        <li><a href="#stats_totals_endpoint_format">Endpoint format</a></li>
+        <li><a href="#stats_totals_examples">Examples</a></li>
+        </ul>
+      </div>
+      <div id="description_stats_count_auth">
+        <h2 id="authorization">Authorization</h2>
+        <p>No authorization is required.</p>
+      </div>
+      <div id="description_stats_count_format">
+        <h2 id="endpoint-format">Endpoint format</h2>
+        <pre><code>/count/articles
+        </code></pre>
+      </div>
+      <div id="description_stats_count_examples">
+        <h2 id="examples">Example</h2>
+        <h3 id="number-of-views-for-an-unaffiliated-article">Number of articles in groups with ids 327, 328, 329</h3>
+        <p><strong>Request</strong></p>
+        <pre><code class="http">POST https://stats.figshare.com/count/articles
+        </code></pre>
+        <p><strong>Request Body</strong></p>
+        <pre><code class="http">
+{
+   "groups": [
+       {"id":327},
+       {"id":328},
+       {"id":329}
+   ]
+}
+        </code></pre>
+
+        <p><strong>Response</strong></p>
+<pre><code class="http">HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+
+{
+    "327": 20,
+    "328": 1,
+    "329": 1
+}
+</code></pre>
+      </div>
       <div id="description_search_intro">
         <h2>How to find data on figshare</h2>
         <p>Data appears on the portal homepage with the newest uploads appearing first, you also have the option to browse by Popular content and Categories. Categories will only appear available for browsing if there are public items with the category assigned.</p>

@@ -2,7 +2,7 @@
     "swagger": "2.0", 
     "info": {
         "title": "Figshare API", 
-        "description": "Figshare apiv2. Using Swagger, linking with pyramid through pyramid_swagger", 
+        "description": "Figshare apiv2. Using Swagger 2.0", 
         "version": "2.0.0"
     }, 
     "host": "api.figinternal.dev", 
@@ -42,7 +42,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100, 
+                        "maximum": 1000, 
                         "default": 10
                     }, 
                     {
@@ -53,7 +53,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100
+                        "maximum": 1000
                     }, 
                     {
                         "name": "offset", 
@@ -72,7 +72,11 @@
                         "type": "string", 
                         "enum": [
                             "published_date", 
-                            "modified_date"
+                            "modified_date", 
+                            "views", 
+                            "shares", 
+                            "downloads", 
+                            "cites"
                         ], 
                         "default": "published_date", 
                         "required": false
@@ -131,6 +135,15 @@
                         "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint", 
                         "type": "integer", 
                         "format": "int64", 
+                        "minimum": 1, 
+                        "maximum": 12, 
+                        "required": false
+                    }, 
+                    {
+                        "name": "doi", 
+                        "in": "query", 
+                        "description": "only return collections with this doi", 
+                        "type": "string", 
                         "required": false
                     }
                 ], 
@@ -227,7 +240,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "404": {
                         "description": "Not Found"
@@ -270,7 +283,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request. Article ID must be an integer and bigger than 0."
+                        "description": "Bad Request. Article ID must be an integer and bigger than 0."
                     }, 
                     "404": {
                         "description": "Not Found"
@@ -319,7 +332,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "404": {
                         "description": "Not Found"
@@ -367,7 +380,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "404": {
                         "description": "Not Found"
@@ -415,7 +428,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "404": {
                         "description": "Not Found"
@@ -458,7 +471,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "404": {
                         "description": "Not Found"
@@ -507,7 +520,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "404": {
                         "description": "Not Found"
@@ -603,7 +616,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100, 
+                        "maximum": 1000, 
                         "default": 10
                     }, 
                     {
@@ -614,7 +627,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100
+                        "maximum": 1000
                     }, 
                     {
                         "name": "offset", 
@@ -734,7 +747,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -901,7 +914,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1077,7 +1090,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1128,7 +1141,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1183,7 +1196,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1257,7 +1270,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1320,7 +1333,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request. Article ID must be an integer and bigger than 0. Author with ID Not Found."
+                        "description": "Bad Request. Article ID must be an integer and bigger than 0. Author with ID Not Found."
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1430,7 +1443,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1496,7 +1509,7 @@
                         "description": "Reset Content"
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1551,7 +1564,7 @@
                         "description": "Reset Content"
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1658,7 +1671,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1724,7 +1737,7 @@
                         "description": "Reset Content"
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1760,7 +1773,7 @@
                         "description": "No Content"
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1826,7 +1839,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1902,7 +1915,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -1994,7 +2007,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -2033,7 +2046,7 @@
                         "description": "No Content"
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -2106,7 +2119,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -2182,7 +2195,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -2243,7 +2256,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -2299,7 +2312,7 @@
                         "description": "Accepted"
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -2355,7 +2368,7 @@
                         "description": "No Content"
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -2420,7 +2433,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100, 
+                        "maximum": 1000, 
                         "default": 10
                     }, 
                     {
@@ -2431,7 +2444,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100
+                        "maximum": 1000
                     }, 
                     {
                         "name": "offset", 
@@ -2450,7 +2463,11 @@
                         "type": "string", 
                         "enum": [
                             "published_date", 
-                            "modified_date"
+                            "modified_date", 
+                            "views", 
+                            "shares", 
+                            "downloads", 
+                            "cites"
                         ], 
                         "default": "published_date", 
                         "required": false
@@ -2500,6 +2517,13 @@
                         "name": "resource_doi", 
                         "in": "query", 
                         "description": "only return collections with this resource_doi", 
+                        "type": "string", 
+                        "required": false
+                    }, 
+                    {
+                        "name": "doi", 
+                        "in": "query", 
+                        "description": "only return collections with this doi", 
                         "type": "string", 
                         "required": false
                     }
@@ -2597,7 +2621,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "404": {
                         "description": "Not Found"
@@ -2737,7 +2761,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100, 
+                        "maximum": 1000, 
                         "default": 10
                     }, 
                     {
@@ -2748,7 +2772,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100
+                        "maximum": 1000
                     }, 
                     {
                         "name": "offset", 
@@ -2820,7 +2844,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100, 
+                        "maximum": 1000, 
                         "default": 10
                     }, 
                     {
@@ -2831,7 +2855,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100
+                        "maximum": 1000
                     }, 
                     {
                         "name": "offset", 
@@ -2850,7 +2874,11 @@
                         "type": "string", 
                         "enum": [
                             "published_date", 
-                            "modified_date"
+                            "modified_date", 
+                            "views", 
+                            "shares", 
+                            "downloads", 
+                            "cites"
                         ], 
                         "default": "published_date", 
                         "required": false
@@ -2974,7 +3002,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "404": {
                         "description": "Not Found"
@@ -3298,7 +3326,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -3375,7 +3403,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -3438,7 +3466,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -3548,7 +3576,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -3625,7 +3653,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -3688,7 +3716,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -3798,7 +3826,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -3875,7 +3903,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -3938,7 +3966,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -4048,7 +4076,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -4124,7 +4152,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -4213,7 +4241,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -4252,7 +4280,7 @@
                         "description": "No Content"
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -4315,7 +4343,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100, 
+                        "maximum": 1000, 
                         "default": 10
                     }, 
                     {
@@ -4326,7 +4354,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100
+                        "maximum": 1000
                     }, 
                     {
                         "name": "offset", 
@@ -4345,7 +4373,11 @@
                         "type": "string", 
                         "enum": [
                             "published_date", 
-                            "modified_date"
+                            "modified_date", 
+                            "views", 
+                            "shares", 
+                            "downloads", 
+                            "cites"
                         ], 
                         "default": "published_date", 
                         "required": false
@@ -4477,7 +4509,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "404": {
                         "description": "Not Found"
@@ -4519,7 +4551,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "404": {
                         "description": "Not Found"
@@ -4606,7 +4638,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100, 
+                        "maximum": 1000, 
                         "default": 10
                     }, 
                     {
@@ -4617,7 +4649,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100
+                        "maximum": 1000
                     }, 
                     {
                         "name": "offset", 
@@ -4636,7 +4668,11 @@
                         "type": "string", 
                         "enum": [
                             "published_date", 
-                            "modified_date"
+                            "modified_date", 
+                            "views", 
+                            "shares", 
+                            "downloads", 
+                            "cites"
                         ], 
                         "default": "published_date", 
                         "required": false
@@ -4778,7 +4814,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -4944,7 +4980,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5007,7 +5043,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100, 
+                        "maximum": 1000, 
                         "default": 10
                     }, 
                     {
@@ -5018,7 +5054,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100
+                        "maximum": 1000
                     }, 
                     {
                         "name": "offset", 
@@ -5051,7 +5087,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5117,7 +5153,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5177,7 +5213,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5268,7 +5304,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5369,7 +5405,7 @@
                         "description": "No Content"
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5424,7 +5460,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5494,7 +5530,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5552,7 +5588,7 @@
                         "description": "OK"
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5607,7 +5643,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5684,7 +5720,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5745,7 +5781,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5801,7 +5837,7 @@
                         "description": "No Content"
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5885,7 +5921,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -5955,7 +5991,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -6148,7 +6184,7 @@
                         }
                     }, 
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad Request"
                     }, 
                     "403": {
                         "description": "Forbidden", 
@@ -6371,7 +6407,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100, 
+                        "maximum": 1000, 
                         "default": 10
                     }, 
                     {
@@ -6382,7 +6418,7 @@
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 100
+                        "maximum": 1000
                     }, 
                     {
                         "name": "offset", 
@@ -6401,7 +6437,11 @@
                         "type": "string", 
                         "enum": [
                             "published_date", 
-                            "modified_date"
+                            "modified_date", 
+                            "views", 
+                            "shares", 
+                            "downloads", 
+                            "cites"
                         ], 
                         "default": "published_date", 
                         "required": false
@@ -6452,6 +6492,8 @@
                         "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint", 
                         "type": "integer", 
                         "format": "int64", 
+                        "minimum": 1, 
+                        "maximum": 12, 
                         "required": false
                     }
                 ], 
@@ -7197,7 +7239,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "default": 10, 
                     "example": 10
                 }, 
@@ -7206,7 +7248,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "example": 10
                 }, 
                 "offset": {
@@ -7222,7 +7264,11 @@
                     "type": "string", 
                     "enum": [
                         "published_date", 
-                        "modified_date"
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "downloads", 
+                        "cites"
                     ], 
                     "default": "published_date", 
                     "example": "published_date"
@@ -7279,7 +7325,14 @@
                     "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint", 
                     "type": "integer", 
                     "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 12, 
                     "example": 1
+                }, 
+                "doi": {
+                    "description": "only return collections with this doi", 
+                    "type": "string", 
+                    "example": "10.6084/m9.figshare.1407024"
                 }, 
                 "search_for": {
                     "type": "string", 
@@ -7299,7 +7352,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "default": 10, 
                     "example": 10
                 }, 
@@ -7308,7 +7361,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "example": 10
                 }, 
                 "offset": {
@@ -7324,7 +7377,11 @@
                     "type": "string", 
                     "enum": [
                         "published_date", 
-                        "modified_date"
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "downloads", 
+                        "cites"
                     ], 
                     "default": "published_date", 
                     "example": "published_date"
@@ -7386,7 +7443,14 @@
                     "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint", 
                     "type": "integer", 
                     "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 12, 
                     "example": 1
+                }, 
+                "doi": {
+                    "description": "only return collections with this doi", 
+                    "type": "string", 
+                    "example": "10.6084/m9.figshare.1407024"
                 }, 
                 "search_for": {
                     "type": "string", 
@@ -7406,7 +7470,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "default": 10, 
                     "example": 10
                 }, 
@@ -7415,7 +7479,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "example": 10
                 }, 
                 "offset": {
@@ -7431,7 +7495,11 @@
                     "type": "string", 
                     "enum": [
                         "published_date", 
-                        "modified_date"
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "downloads", 
+                        "cites"
                     ], 
                     "default": "published_date", 
                     "example": "published_date"
@@ -7484,6 +7552,11 @@
                     "type": "string", 
                     "example": "10.6084/m9.figshare.1407024"
                 }, 
+                "doi": {
+                    "description": "only return collections with this doi", 
+                    "type": "string", 
+                    "example": "10.6084/m9.figshare.1407024"
+                }, 
                 "search_for": {
                     "type": "string", 
                     "description": "Search term", 
@@ -7502,7 +7575,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "default": 10, 
                     "example": 10
                 }, 
@@ -7511,7 +7584,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "example": 10
                 }, 
                 "offset": {
@@ -7527,7 +7600,11 @@
                     "type": "string", 
                     "enum": [
                         "published_date", 
-                        "modified_date"
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "downloads", 
+                        "cites"
                     ], 
                     "default": "published_date", 
                     "example": "published_date"
@@ -7588,7 +7665,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "default": 10, 
                     "example": 10
                 }, 
@@ -7597,7 +7674,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "example": 10
                 }, 
                 "offset": {
@@ -7613,7 +7690,11 @@
                     "type": "string", 
                     "enum": [
                         "published_date", 
-                        "modified_date"
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "downloads", 
+                        "cites"
                     ], 
                     "default": "published_date", 
                     "example": "published_date"
@@ -7672,6 +7753,11 @@
                     "type": "string", 
                     "example": "10.6084/m9.figshare.1407024"
                 }, 
+                "doi": {
+                    "description": "only return collections with this doi", 
+                    "type": "string", 
+                    "example": "10.6084/m9.figshare.1407024"
+                }, 
                 "search_for": {
                     "type": "string", 
                     "description": "Search term", 
@@ -7690,7 +7776,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "default": 10, 
                     "example": 10
                 }, 
@@ -7699,7 +7785,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "example": 10
                 }, 
                 "offset": {
@@ -7715,7 +7801,11 @@
                     "type": "string", 
                     "enum": [
                         "published_date", 
-                        "modified_date"
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "downloads", 
+                        "cites"
                     ], 
                     "default": "published_date", 
                     "example": "published_date"
@@ -10252,6 +10342,27 @@
                         {
                             "title": "Examples", 
                             "content": "description_stats_totals_examples"
+                        }
+                    ]
+                }, 
+                {
+                    "title": "Count Articles", 
+                    "subsections": [
+                        {
+                            "title": "Endpoint for retrieving counts", 
+                            "content": "description_stats_count_endpoints"
+                        }, 
+                        {
+                            "title": "Authorization", 
+                            "content": "description_stats_count_auth"
+                        }, 
+                        {
+                            "title": "Endpoint format", 
+                            "content": "description_stats_count_format"
+                        }, 
+                        {
+                            "title": "Example", 
+                            "content": "description_stats_count_examples"
                         }
                     ]
                 }
