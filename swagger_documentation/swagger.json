@@ -6838,6 +6838,12 @@
                     "type": "string", 
                     "description": "Not applicable to regular users. In a publisher case, this is the publisher article title.", 
                     "default": ""
+                }, 
+                "group_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups", 
+                    "default": ""
                 }
             }
         }, 
@@ -6979,6 +6985,12 @@
                 "resource_title": {
                     "type": "string", 
                     "description": "Not applicable to regular users. In a publisher case, this is the publisher article title.", 
+                    "default": ""
+                }, 
+                "group_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups", 
                     "default": ""
                 }
             }
@@ -8229,6 +8241,12 @@
                 "resource_version": {
                     "type": "integer", 
                     "description": "Not applicable to regular users. In a publisher case, this is the publisher article version"
+                }, 
+                "group_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups", 
+                    "default": ""
                 }
             }
         }, 
@@ -8356,6 +8374,12 @@
                 "resource_version": {
                     "type": "integer", 
                     "description": "Not applicable to regular users. In a publisher case, this is the publisher article version"
+                }, 
+                "group_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups", 
+                    "default": ""
                 }
             }
         }, 
