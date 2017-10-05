@@ -2876,8 +2876,33 @@ json
       <h2 id="cors-policy">CORS policy</h2>
       <p>The API supports CORS for AJAX requests from any origin.</p>
     </div>
+    <div id="description_api_impersonation">
+      <h2>Impersonation</h2>
+      <p>This feature is available only for institutional accounts with administrative privileges.</p>
+        <p>
+            To impersonate an account you have to include the <code>impersonate</code> option inside your http request.<br />
+            The value for <code>impersonate</code> must be the <code>account_id</code> of the account you wish to impersonate.<br />
+            You can see the accounts which can be impersonated using our <a href="#private_institution_accounts_list">account/institution/accounts</a> endpoint.<br />
+        </p>
+        <p>The <code>impersonate</code> option must be included in the query string when using the GET and DELETE methods, and in the body when using the POST and PUT methods.</p>
+        <h3>GET Impersonation example:</h3>
+        <p>Request:</p>
+        <pre><code>GET /v2/account/articles?impersonate=1000009 HTTP/1.1
+</code></pre>
+        <p>Response will contain articles of the impersonated account</p>
 
+        <h3>POST Impersonation example:</h3>
+        <p>Request:</p>
+        <pre><code>POST /v2/account/articles HTTP/1.1
+</code></pre>
+        <p>Body:</p>
+        <pre><code>{
+    "title": "test",
+    "impersonate": 1000009
+}</code></pre>
+        <p>Will create an article for the impersonated account</p>
 
+    </div>
 
 </section>
 </body>

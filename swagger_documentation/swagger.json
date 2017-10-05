@@ -5947,6 +5947,160 @@
                 }
             }
         }, 
+        "/account/institution/accounts": {
+            "get": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "private_institution_accounts_list", 
+                "summary": "Private Account Institution Accounts", 
+                "description": "Returns the accounts for which the account has administrative privileges (assigned and inherited).", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "page", 
+                        "in": "query", 
+                        "description": "Page number. Used for pagination with page_size", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1, 
+                        "maximum": 5000
+                    }, 
+                    {
+                        "name": "page_size", 
+                        "in": "query", 
+                        "description": "The number of results included on a page. Used for pagination with page", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1, 
+                        "maximum": 1000, 
+                        "default": 10
+                    }, 
+                    {
+                        "name": "limit", 
+                        "in": "query", 
+                        "description": "Number of results included on a page. Used for pagination with query", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1, 
+                        "maximum": 1000
+                    }, 
+                    {
+                        "name": "offset", 
+                        "in": "query", 
+                        "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1, 
+                        "maximum": 5000
+                    }, 
+                    {
+                        "name": "is_active", 
+                        "in": "query", 
+                        "description": "Filter by active status", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 0, 
+                        "maximum": 1
+                    }, 
+                    {
+                        "name": "is_public", 
+                        "in": "query", 
+                        "description": "Filter by public status", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 0, 
+                        "maximum": 1
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of Accounts", 
+                        "schema": {
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/ShortAccount"
+                            }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/account/institution/accounts/search": {
+            "post": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "private_institution_accounts_search", 
+                "summary": "Private Account Institution Accounts Search", 
+                "description": "Returns the accounts for which the account has administrative privileges (assigned and inherited).", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "in": "body", 
+                        "name": "search", 
+                        "description": "Search Parameters", 
+                        "schema": {
+                            "$ref": "#/definitions/InstitutionAccountsSearch"
+                        }, 
+                        "required": true
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of Accounts", 
+                        "schema": {
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/ShortAccount"
+                            }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
         "/file/download/{file_id}": {
             "get": {
                 "tags": [
@@ -6439,6 +6593,64 @@
                 }
             }
         }, 
+        "InstitutionAccountsSearch": {
+            "x-tag": "institutions", 
+            "type": "object", 
+            "properties": {
+                "search_for": {
+                    "type": "string", 
+                    "description": "Search term", 
+                    "example": "figshare"
+                }, 
+                "is_active": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Filter by active status", 
+                    "minimum": 0, 
+                    "maximum": 1
+                }, 
+                "ispublic": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Filter by public status", 
+                    "minimum": 0, 
+                    "maximum": 1
+                }, 
+                "page": {
+                    "description": "Page number. Used for pagination with page_size", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 5000, 
+                    "example": 1
+                }, 
+                "page_size": {
+                    "description": "The number of results included on a page. Used for pagination with page", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 1000, 
+                    "default": 10, 
+                    "example": 10
+                }, 
+                "limit": {
+                    "description": "Number of results included on a page. Used for pagination with query", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 1000, 
+                    "example": 10
+                }, 
+                "offset": {
+                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 5000, 
+                    "example": 1
+                }
+            }
+        }, 
         "CommonSearch": {
             "x-tag": "common", 
             "type": "object", 
@@ -6842,8 +7054,7 @@
                 "group_id": {
                     "type": "integer", 
                     "format": "int64", 
-                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups", 
-                    "default": ""
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
                 }
             }
         }, 
@@ -6974,7 +7185,7 @@
                 }, 
                 "doi": {
                     "type": "string", 
-                    "description": "Not appliable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.", 
+                    "description": "Not applicable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.", 
                     "default": ""
                 }, 
                 "resource_doi": {
@@ -6990,8 +7201,7 @@
                 "group_id": {
                     "type": "integer", 
                     "format": "int64", 
-                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups", 
-                    "default": ""
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
                 }
             }
         }, 
@@ -7708,6 +7918,45 @@
                 }
             }
         }, 
+        "ShortAccount": {
+            "x-tag": "other", 
+            "type": "object", 
+            "properties": {
+                "id": {
+                    "type": "integer", 
+                    "description": "Account id", 
+                    "format": "int64", 
+                    "example": 1495682
+                }, 
+                "first_name": {
+                    "type": "string", 
+                    "description": "First Name", 
+                    "example": "Doe"
+                }, 
+                "last_name": {
+                    "type": "string", 
+                    "description": "Last Name", 
+                    "example": "John"
+                }, 
+                "institution_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Account institution", 
+                    "example": 1
+                }, 
+                "email": {
+                    "type": "string", 
+                    "description": "User email", 
+                    "example": "user@domain.com"
+                }, 
+                "active": {
+                    "type": "integer", 
+                    "description": "Account activity status", 
+                    "format": "int64", 
+                    "example": 0
+                }
+            }
+        }, 
         "ArticleDOI": {
             "x-tag": "articles", 
             "type": "object", 
@@ -8245,8 +8494,7 @@
                 "group_id": {
                     "type": "integer", 
                     "format": "int64", 
-                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups", 
-                    "default": ""
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
                 }
             }
         }, 
@@ -8378,8 +8626,7 @@
                 "group_id": {
                     "type": "integer", 
                     "format": "int64", 
-                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups", 
-                    "default": ""
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
                 }
             }
         }, 
@@ -8780,6 +9027,10 @@
                         {
                             "title": "CORS policy", 
                             "content": "description_api_cors"
+                        }, 
+                        {
+                            "title": "Impersonation", 
+                            "content": "description_api_impersonation"
                         }
                     ]
                 }
