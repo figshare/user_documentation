@@ -39,7 +39,7 @@ function processSampleCodes(sampleCodes) {
             {
             var nickname = swaggerUi.api.apisArray[tagIndex].operationsArray[i].nickname;
             var nicknameCamel = ToCamelCase(nickname);
-
+            
             $('#'+nickname+' .content .heading').after(sampleCodes[nicknameCamel]);
             if (typeof(swaggerUi.api.apisArray[tagIndex].operationsArray[i].successResponse)!='undefined') {
               var resp_key = Object.keys(swaggerUi.api.apisArray[tagIndex].operationsArray[i].successResponse);

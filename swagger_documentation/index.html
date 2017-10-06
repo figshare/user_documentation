@@ -93,13 +93,13 @@
                     $('#input_apiKey').change(addApiKeyAuthorization);
                     addApiKeyAuthorization();
 
-
-                    addSampleCodesToOperations();
                     addAdditionalDescriptions();
+                    addSampleCodesToOperations();
+
                     window.setTimeout(function(){
-                    $('.figsh_loader').hide();
-                    verifyHashOnLoad();
-                  },1000);
+                      $('.figsh_loader').hide();
+                      verifyHashOnLoad();
+                    },1000);
                 },
                 onFailure: function (data) {
                     log("Unable to Load SwaggerUI");
