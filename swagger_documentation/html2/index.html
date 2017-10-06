@@ -1799,13 +1799,6 @@ margin-bottom: 20px;
       "minimum" : 0,
       "maximum" : 1
     },
-    "ispublic" : {
-      "type" : "integer",
-      "format" : "int64",
-      "description" : "Filter by public status",
-      "minimum" : 0,
-      "maximum" : 1
-    },
     "page" : {
       "type" : "integer",
       "format" : "int64",
@@ -34115,7 +34108,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Institutions-privateInstitutionAccountsList-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">get</span> "https://api.figinternal.dev/v2/account/institution/accounts?page=&pageSize=&limit=&offset=&isActive=&isPublic="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">get</span> "https://api.figinternal.dev/v2/account/institution/accounts?page=&pageSize=&limit=&offset=&isActive="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Institutions-privateInstitutionAccountsList-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -34141,9 +34134,8 @@ public class InstitutionsApiExample {
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
         Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         Long isActive = 789; // Long | Filter by active status
-        Long isPublic = 789; // Long | Filter by public status
         try {
-            array[ShortAccount] result = apiInstance.privateInstitutionAccountsList(page, pageSize, limit, offset, isActive, isPublic);
+            array[ShortAccount] result = apiInstance.privateInstitutionAccountsList(page, pageSize, limit, offset, isActive);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InstitutionsApi#privateInstitutionAccountsList");
@@ -34165,9 +34157,8 @@ public class InstitutionsApiExample {
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
         Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         Long isActive = 789; // Long | Filter by active status
-        Long isPublic = 789; // Long | Filter by public status
         try {
-            array[ShortAccount] result = apiInstance.privateInstitutionAccountsList(page, pageSize, limit, offset, isActive, isPublic);
+            array[ShortAccount] result = apiInstance.privateInstitutionAccountsList(page, pageSize, limit, offset, isActive);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InstitutionsApi#privateInstitutionAccountsList");
@@ -34191,7 +34182,6 @@ Long *pageSize = 789; // The number of results included on a page. Used for pagi
 Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
 Long *offset = 789; // Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
 Long *isActive = 789; // Filter by active status (optional)
-Long *isPublic = 789; // Filter by public status (optional)
 
 InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
 
@@ -34201,7 +34191,6 @@ InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
     limit:limit
     offset:offset
     isActive:isActive
-    isPublic:isPublic
               completionHandler: ^(array[ShortAccount] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -34228,8 +34217,7 @@ var opts = {
   'pageSize': 789, // {Long} The number of results included on a page. Used for pagination with page
   'limit': 789, // {Long} Number of results included on a page. Used for pagination with query
   'offset': 789, // {Long} Where to start the listing(the offset of the first result). Used for pagination with limit
-  'isActive': 789, // {Long} Filter by active status
-  'isPublic': 789 // {Long} Filter by public status
+  'isActive': 789 // {Long} Filter by active status
 };
 
 var callback = function(error, data, response) {
@@ -34269,12 +34257,11 @@ namespace Example
             var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
             var offset = 789;  // Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional) 
             var isActive = 789;  // Long | Filter by active status (optional) 
-            var isPublic = 789;  // Long | Filter by public status (optional) 
 
             try
             {
                 // Private Account Institution Accounts
-                array[ShortAccount] result = apiInstance.privateInstitutionAccountsList(page, pageSize, limit, offset, isActive, isPublic);
+                array[ShortAccount] result = apiInstance.privateInstitutionAccountsList(page, pageSize, limit, offset, isActive);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -34299,10 +34286,9 @@ $pageSize = 789; // Long | The number of results included on a page. Used for pa
 $limit = 789; // Long | Number of results included on a page. Used for pagination with query
 $offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
 $isActive = 789; // Long | Filter by active status
-$isPublic = 789; // Long | Filter by public status
 
 try {
-    $result = $api_instance->privateInstitutionAccountsList($page, $pageSize, $limit, $offset, $isActive, $isPublic);
+    $result = $api_instance->privateInstitutionAccountsList($page, $pageSize, $limit, $offset, $isActive);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InstitutionsApi->privateInstitutionAccountsList: ', $e->getMessage(), PHP_EOL;
@@ -34324,10 +34310,9 @@ my $pageSize = 789; # Long | The number of results included on a page. Used for 
 my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
 my $offset = 789; # Long | Where to start the listing(the offset of the first result). Used for pagination with limit
 my $isActive = 789; # Long | Filter by active status
-my $isPublic = 789; # Long | Filter by public status
 
 eval { 
-    my $result = $api_instance->privateInstitutionAccountsList(page => $page, pageSize => $pageSize, limit => $limit, offset => $offset, isActive => $isActive, isPublic => $isPublic);
+    my $result = $api_instance->privateInstitutionAccountsList(page => $page, pageSize => $pageSize, limit => $limit, offset => $offset, isActive => $isActive);
     print Dumper($result);
 };
 if ($@) {
@@ -34352,11 +34337,10 @@ pageSize = 789 # Long | The number of results included on a page. Used for pagin
 limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
 offset = 789 # Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
 isActive = 789 # Long | Filter by active status (optional)
-isPublic = 789 # Long | Filter by public status (optional)
 
 try: 
     # Private Account Institution Accounts
-    api_response = api_instance.privateInstitutionAccountsList(page=page, pageSize=pageSize, limit=limit, offset=offset, isActive=isActive, isPublic=isPublic)
+    api_response = api_instance.privateInstitutionAccountsList(page=page, pageSize=pageSize, limit=limit, offset=offset, isActive=isActive)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling InstitutionsApi->privateInstitutionAccountsList: %s\n" % e)</code></pre>
@@ -34553,42 +34537,6 @@ except ApiException as e:
 												});
 												</script>
 												<div id="d2e199_privateInstitutionAccountsList_isActive"></div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">is_public</td>
-<td>
-
-
-<script>
-												$(document).ready(function() {
-													var schemaWrapper = {
-  "name" : "is_public",
-  "in" : "query",
-  "description" : "Filter by public status",
-  "required" : false,
-  "type" : "integer",
-  "maximum" : 1,
-  "minimum" : 0,
-  "format" : "int64"
-};
-													var schema = schemaWrapper;
-
-
-
-
-													var view = new JSONSchemaView(schema,1);
-													var result = $('#d2e199_privateInstitutionAccountsList_isPublic');
-													result.empty();
-													result.append(view.render());
-
-
-
-
-
-												});
-												</script>
-												<div id="d2e199_privateInstitutionAccountsList_isPublic"></div>
 </td>
 </tr>
 
@@ -49389,7 +49337,7 @@ except ApiException as e:
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2017-10-05T13:56:42.197+03:00
+              Generated 2017-10-06T12:35:58.029+03:00
             </div>
           </div>
       </div>

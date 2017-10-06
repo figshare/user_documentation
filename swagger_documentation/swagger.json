@@ -6013,16 +6013,6 @@
                         "format": "int64", 
                         "minimum": 0, 
                         "maximum": 1
-                    }, 
-                    {
-                        "name": "is_public", 
-                        "in": "query", 
-                        "description": "Filter by public status", 
-                        "required": false, 
-                        "type": "integer", 
-                        "format": "int64", 
-                        "minimum": 0, 
-                        "maximum": 1
                     }
                 ], 
                 "responses": {
@@ -6606,13 +6596,6 @@
                     "type": "integer", 
                     "format": "int64", 
                     "description": "Filter by active status", 
-                    "minimum": 0, 
-                    "maximum": 1
-                }, 
-                "ispublic": {
-                    "type": "integer", 
-                    "format": "int64", 
-                    "description": "Filter by public status", 
                     "minimum": 0, 
                     "maximum": 1
                 }, 
