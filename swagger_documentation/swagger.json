@@ -6013,6 +6013,20 @@
                         "format": "int64",
                         "minimum": 0,
                         "maximum": 1
+                    },
+                    {
+                        "name": "institution_user_id",
+                        "in": "query",
+                        "description": "Filter by institution_user_id",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Filter by email",
+                        "required": false,
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -6631,6 +6645,16 @@
                     "minimum": 1,
                     "maximum": 5000,
                     "example": 1
+                },
+                "institution_user_id": {
+                    "description": "filter by institution_user_id",
+                    "type": "string",
+                    "example": "alan"
+                },
+                "email": {
+                    "description": "filter by email",
+                    "type": "string",
+                    "example": "alan@institution.com"
                 }
             }
         },
@@ -7937,6 +7961,11 @@
                     "description": "Account activity status",
                     "format": "int64",
                     "example": 0
+                },
+                "institution_user_id": {
+                    "type": "string",
+                    "description": "Account institution user id",
+                    "example": 1
                 }
             }
         },
