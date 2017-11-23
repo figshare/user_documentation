@@ -6668,6 +6668,20 @@
                         "format": "int64", 
                         "minimum": 0, 
                         "maximum": 1
+                    }, 
+                    {
+                        "name": "institution_user_id", 
+                        "in": "query", 
+                        "description": "Filter by institution_user_id", 
+                        "required": false, 
+                        "type": "string"
+                    }, 
+                    {
+                        "name": "email", 
+                        "in": "query", 
+                        "description": "Filter by email", 
+                        "required": false, 
+                        "type": "string"
                     }
                 ], 
                 "responses": {
@@ -6739,6 +6753,57 @@
                         "schema": {
                             "$ref": "#/definitions/ErrorMessage"
                         }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/account/institution/users/{account_id}": {
+            "get": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "private_account_institution_user", 
+                "summary": "Private Account Institution User", 
+                "description": "Retrieve institution user information using the account_id", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "account_id", 
+                        "in": "path", 
+                        "description": "Account identifier the user is associated to", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. User representation", 
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found"
                     }, 
                     "500": {
                         "description": "Internal Server Error"
@@ -7409,6 +7474,16 @@
                     "minimum": 1, 
                     "maximum": 5000, 
                     "example": 1
+                }, 
+                "institution_user_id": {
+                    "description": "filter by institution_user_id", 
+                    "type": "string", 
+                    "example": "alan"
+                }, 
+                "email": {
+                    "description": "filter by email", 
+                    "type": "string", 
+                    "example": "alan@institution.com"
                 }
             }
         }, 
@@ -9680,6 +9755,63 @@
                     "description": "Account activity status", 
                     "format": "int64", 
                     "example": 0
+                }, 
+                "institution_user_id": {
+                    "type": "string", 
+                    "description": "Account institution user id", 
+                    "example": 1
+                }
+            }
+        }, 
+        "User": {
+            "x-tag": "other", 
+            "type": "object", 
+            "properties": {
+                "id": {
+                    "type": "integer", 
+                    "description": "User id", 
+                    "format": "int64", 
+                    "example": 1495682
+                }, 
+                "first_name": {
+                    "type": "string", 
+                    "description": "First Name", 
+                    "example": "Doe"
+                }, 
+                "last_name": {
+                    "type": "string", 
+                    "description": "Last Name", 
+                    "example": "John"
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "Full Name", 
+                    "example": "John Doe"
+                }, 
+                "is_active": {
+                    "type": "boolean", 
+                    "description": "Account activity status", 
+                    "example": true
+                }, 
+                "url_name": {
+                    "type": "string", 
+                    "description": "Name that appears in website url", 
+                    "example": "John_Doe"
+                }, 
+                "is_public": {
+                    "type": "boolean", 
+                    "description": "Account public status", 
+                    "example": true
+                }, 
+                "job_title": {
+                    "type": "string", 
+                    "description": "User Job title", 
+                    "example": "programmer"
+                }, 
+                "orcid_id": {
+                    "type": "string", 
+                    "description": "Orcid associated to this User", 
+                    "example": "1234-5678-9123-1234"
                 }
             }
         }, 
@@ -10224,6 +10356,11 @@
                         "defined_key": "value for it"
                     }
                 }, 
+                "doi": {
+                    "type": "string", 
+                    "description": "Not applicable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.", 
+                    "default": ""
+                }, 
                 "resource_id": {
                     "type": "string", 
                     "description": "Not applicable to regular users. In a publisher case, this is the publisher article id"
@@ -10355,6 +10492,11 @@
                     "example": {
                         "defined_key": "value for it"
                     }
+                }, 
+                "doi": {
+                    "type": "string", 
+                    "description": "Not applicable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.", 
+                    "default": ""
                 }, 
                 "resource_id": {
                     "type": "string", 
