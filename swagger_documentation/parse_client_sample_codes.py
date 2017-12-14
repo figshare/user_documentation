@@ -1,12 +1,9 @@
 from pprint import pprint
 import json
-from bs4 import BeautifulSoup
 
-html_doc = open("html2/index.html").read()
+from lxml import html
+from lxml.etree import tostring
 
-soup = BeautifulSoup(html_doc, 'html.parser')
-
-sections = soup.find(id='sections')
 
 def getApiOperationID(name):
     name = name[:len(name)-2]
@@ -15,12 +12,16 @@ def getApiOperationID(name):
 
 sample_code = {}
 
-for section in sections.find_all('section'):
-    for div in section.find_all('article'):
-        operationId = getApiOperationID(div['id'])
-        nav_tab = div.find("ul", 'nav nav-tabs nav-tabs-examples')
-        tab_content = div.find("div", 'tab-content')
-        sample_code[operationId] = (str(nav_tab),str(tab_content))
+with open("html2/index.html", "r") as f:
+    page = f.read()
+tree = html.fromstring(page)
+sections = tree.get_element_by_id('sections')
+for section in sections.findall('section'):
+    for div in section.findall('div/article'):
+        operationId = getApiOperationID(div.attrib["id"])
+        nav_tab = div.find_class('nav-tabs-examples')[0]
+        tab_content = div.find_class('tab-content')[0]
+        sample_code[operationId] = (tostring(nav_tab), tostring(tab_content))
 
 
 with open('sample_code.json', 'w') as outfile:

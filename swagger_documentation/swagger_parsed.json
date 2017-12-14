@@ -6602,6 +6602,46 @@
                 }
             }
         }, 
+        "/account/institution/roles": {
+            "get": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "private_institution_roles_list", 
+                "summary": "Private Account Institution Roles", 
+                "description": "Returns the roles available for groups and the institution group.", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of Roles", 
+                        "schema": {
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/Role"
+                            }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
         "/account/institution/accounts": {
             "get": {
                 "tags": [
@@ -6702,6 +6742,293 @@
                         "schema": {
                             "$ref": "#/definitions/ErrorMessage"
                         }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }, 
+            "post": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "private_institution_accounts_create", 
+                "summary": "Create new Institution Account", 
+                "description": "Create a new Account by sending account information", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "in": "body", 
+                        "name": "Account", 
+                        "description": "Account description", 
+                        "schema": {
+                            "$ref": "#/definitions/AccountCreate"
+                        }, 
+                        "required": true
+                    }
+                ], 
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/account/institution/accounts/{account_id}": {
+            "put": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "private_institution_accounts_update", 
+                "summary": "Update Institution Account", 
+                "description": "Update Institution Account", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "account_id", 
+                        "in": "path", 
+                        "description": "Account identifier the user is associated to", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }, 
+                    {
+                        "in": "body", 
+                        "name": "Account", 
+                        "description": "Account description", 
+                        "schema": {
+                            "$ref": "#/definitions/AccountUpdate"
+                        }, 
+                        "required": true
+                    }
+                ], 
+                "responses": {
+                    "205": {
+                        "description": "Reset Content", 
+                        "headers": {
+                            "Location": {
+                                "type": "string", 
+                                "format": "link", 
+                                "description": "Location of newly created article"
+                            }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/account/institution/roles/{account_id}": {
+            "parameters": [
+                {
+                    "name": "account_id", 
+                    "in": "path", 
+                    "description": "Account identifier the user is associated to", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "get": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "private_institution_account_group_roles", 
+                "summary": "List Institution Account Group Roles", 
+                "description": "List Institution Account Group Roles", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. Account Group Roles", 
+                        "schema": {
+                            "$ref": "#/definitions/AccountGroupRoles"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }, 
+                "parameters": [
+                    {
+                        "name": "account_id", 
+                        "in": "path", 
+                        "description": "Account identifier the user is associated to", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }
+                ]
+            }, 
+            "post": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "private_institution_account_group_roles_create", 
+                "summary": "Add Institution Account Group Roles", 
+                "description": "Add Institution Account Group Roles", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "in": "body", 
+                        "name": "Account", 
+                        "description": "Account description", 
+                        "schema": {
+                            "$ref": "#/definitions/AccountGroupRolesCreate"
+                        }, 
+                        "required": true
+                    }, 
+                    {
+                        "name": "account_id", 
+                        "in": "path", 
+                        "description": "Account identifier the user is associated to", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }
+                ], 
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/account/institution/roles/{account_id}/{group_id}/{role_id}": {
+            "delete": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "private_institution_account_group_role_delete", 
+                "summary": "Delete Institution Account Group Role", 
+                "description": "Delete Institution Account Group Role", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "account_id", 
+                        "in": "path", 
+                        "description": "Account identifier for which to remove the role", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }, 
+                    {
+                        "name": "group_id", 
+                        "in": "path", 
+                        "description": "Group identifier for which to remove the role", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }, 
+                    {
+                        "name": "role_id", 
+                        "in": "path", 
+                        "description": "Role identifier", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }
+                ], 
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found"
                     }, 
                     "500": {
                         "description": "Internal Server Error"
@@ -6845,6 +7172,35 @@
         }
     }, 
     "definitions": {
+        "AccountGroupRoles": {
+            "x-tag": "institutions", 
+            "type": "object", 
+            "properties": {}, 
+            "example": {
+                "2": [
+                    {
+                        "category": "group", 
+                        "id": 7, 
+                        "name": "User"
+                    }
+                ]
+            }
+        }, 
+        "AccountGroupRolesCreate": {
+            "x-tag": "institutions", 
+            "type": "object", 
+            "properties": {}, 
+            "example": {
+                "2": [
+                    2, 
+                    7
+                ], 
+                "3": [
+                    7, 
+                    9
+                ]
+            }
+        }, 
         "Group": {
             "x-tag": "institutions", 
             "type": "object", 
@@ -6870,6 +7226,32 @@
                     "format": "int64", 
                     "description": "Parent group if any", 
                     "example": 0
+                }
+            }
+        }, 
+        "Role": {
+            "x-tag": "institutions", 
+            "type": "object", 
+            "properties": {
+                "id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Role id", 
+                    "example": 1
+                }, 
+                "name": {
+                    "type": "string", 
+                    "example": "Curator", 
+                    "description": "Role name"
+                }, 
+                "category": {
+                    "type": "string", 
+                    "example": "group", 
+                    "description": "Role category"
+                }, 
+                "description": {
+                    "type": "string", 
+                    "description": "Role description"
                 }
             }
         }, 
@@ -8114,6 +8496,82 @@
                 }
             }
         }, 
+        "AccountCreate": {
+            "x-tag": "institutions", 
+            "type": "object", 
+            "required": [
+                "email", 
+                "first_name", 
+                "last_name"
+            ], 
+            "properties": {
+                "email": {
+                    "type": "string", 
+                    "description": "Email of account", 
+                    "maxLength": 150, 
+                    "minLength": 3, 
+                    "example": "johndoe@example.com"
+                }, 
+                "first_name": {
+                    "type": "string", 
+                    "description": "First Name", 
+                    "default": "", 
+                    "example": "John", 
+                    "maxLength": 30
+                }, 
+                "last_name": {
+                    "type": "string", 
+                    "description": "Last Name", 
+                    "default": "", 
+                    "example": "Doe", 
+                    "maxLength": 30
+                }, 
+                "group_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
+                }, 
+                "institution_user_id": {
+                    "type": "string", 
+                    "description": "Institution user id", 
+                    "default": "", 
+                    "example": "johndoe", 
+                    "maxLength": 50
+                }, 
+                "symplectic_user_id": {
+                    "type": "string", 
+                    "description": "Symplectic user id", 
+                    "default": "", 
+                    "example": "johndoe", 
+                    "maxLength": 50
+                }, 
+                "quota": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Account quota", 
+                    "example": 1000
+                }, 
+                "is_active": {
+                    "type": "boolean", 
+                    "description": "Is account active"
+                }
+            }
+        }, 
+        "AccountUpdate": {
+            "x-tag": "institutions", 
+            "type": "object", 
+            "properties": {
+                "group_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
+                }, 
+                "is_active": {
+                    "type": "boolean", 
+                    "description": "Is account active"
+                }
+            }
+        }, 
         "ArticleUpdate": {
             "x-tag": "articles", 
             "type": "object", 
@@ -8390,12 +8848,12 @@
                 }, 
                 "resource_doi": {
                     "type": "string", 
-                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article DOI.", 
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article DOI. For linkback this needs to be used in combination with resource_title.", 
                     "default": ""
                 }, 
                 "resource_title": {
                     "type": "string", 
-                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article title.", 
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article title. For linkback this needs to be used in combination with resource_doi.", 
                     "default": ""
                 }, 
                 "group_id": {
@@ -9454,6 +9912,16 @@
                     "description": "Url for file download", 
                     "format": "url", 
                     "example": "https://ndownloader.figshare.com/files/3000002"
+                }, 
+                "supplied_md5": {
+                    "type": "string", 
+                    "description": "File supplied md5", 
+                    "example": "043a51806d646e88cafbf19e7b82846f"
+                }, 
+                "computed_md5": {
+                    "type": "string", 
+                    "description": "File computed md5", 
+                    "example": "043a51806d646e88cafbf19e7b82846f"
                 }
             }
         }, 
@@ -9494,16 +9962,6 @@
                     "description": "Token for file upload", 
                     "example": "9dfc5fe3-d617-4d93-ac11-8afe7e984a4b"
                 }, 
-                "supplied_md5": {
-                    "type": "string", 
-                    "description": "File supplied md5", 
-                    "example": "043a51806d646e88cafbf19e7b82846f"
-                }, 
-                "computed_md5": {
-                    "type": "string", 
-                    "description": "File computed md5", 
-                    "example": "043a51806d646e88cafbf19e7b82846f"
-                }, 
                 "id": {
                     "type": "integer", 
                     "description": "File id", 
@@ -9531,6 +9989,16 @@
                     "description": "Url for file download", 
                     "format": "url", 
                     "example": "https://ndownloader.figshare.com/files/3000002"
+                }, 
+                "supplied_md5": {
+                    "type": "string", 
+                    "description": "File supplied md5", 
+                    "example": "043a51806d646e88cafbf19e7b82846f"
+                }, 
+                "computed_md5": {
+                    "type": "string", 
+                    "description": "File computed md5", 
+                    "example": "043a51806d646e88cafbf19e7b82846f"
                 }
             }
         }, 
@@ -9675,6 +10143,12 @@
                 "quota": {
                     "type": "integer", 
                     "description": "Account quota", 
+                    "format": "int64", 
+                    "example": 0
+                }, 
+                "group_id": {
+                    "type": "integer", 
+                    "description": "Account group id", 
                     "format": "int64", 
                     "example": 0
                 }, 
@@ -10365,18 +10839,18 @@
                     "type": "string", 
                     "description": "Not applicable to regular users. In a publisher case, this is the publisher article id"
                 }, 
-                "resource_doi": {
-                    "type": "string", 
-                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article DOI.", 
-                    "default": ""
-                }, 
                 "resource_link": {
                     "type": "string", 
                     "description": "Not applicable to regular users. In a publisher case, this is the publisher article link"
                 }, 
+                "resource_doi": {
+                    "type": "string", 
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article DOI. For linkback this needs to be used in combination with resource_title.", 
+                    "default": ""
+                }, 
                 "resource_title": {
                     "type": "string", 
-                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article title.", 
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article title. For linkback this needs to be used in combination with resource_doi.", 
                     "default": ""
                 }, 
                 "resource_version": {
