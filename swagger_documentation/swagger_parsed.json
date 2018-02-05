@@ -11057,6 +11057,10 @@
                 {
                     "title": "Output of Script", 
                     "content": "description_upload_output"
+                }, 
+                {
+                    "title": "Bash Script", 
+                    "content": "description_upload_bash"
                 }
             ]
         }, 

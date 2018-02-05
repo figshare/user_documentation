@@ -196,7 +196,8 @@ function initOAuth(opts) {
   }
 
   $('pre code').each(function (i, e) {
-    hljs.highlightBlock(e)
+    if (!$(e).hasClass("nohighlight"))
+        hljs.highlightBlock(e)
   });
 
   var oauthBtn = $('.api-ic');
