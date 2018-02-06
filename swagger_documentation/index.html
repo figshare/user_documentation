@@ -2024,7 +2024,8 @@ Listing files <span class="hljs-keyword">for</span> <span class="hljs-tag">artic
 # exit script if any command fails
 set -e
 
-#modify ACCESS_TOKEN, FILE_NAME and FILE_PATH according to your needs
+#modify BASE_URL, ACCESS_TOKEN, FILE_NAME and FILE_PATH according to your needs
+BASE_URL='https://api.figshare.com/v2/account/articles'
 ACCESS_TOKEN='insert access token here'
 FILE_NAME='test.txt'
 FILE_PATH='/path/to/your/file/'$FILE_NAME
@@ -2038,13 +2039,13 @@ MD5=($(md5sum $FILE_PATH))
 
 # List all of the existing items
 echo 'List all of the existing items...'
-RESPONSE=$(curl -s -H 'Authorization: token '$ACCESS_TOKEN -X GET "https://api.figshare.com/v2/account/articles")
+RESPONSE=$(curl -s -f -H 'Authorization: token '$ACCESS_TOKEN -X GET "$BASE_URL")
 echo "The item list dict contains: "$RESPONSE
 echo ''
 
 # Create a new item
 echo 'Creating a new item...'
-RESPONSE=$(curl -s -d '{"title": "Sample upload item"}' -H 'Authorization: token '$ACCESS_TOKEN -H 'Content-Type: application/json' -X POST "https://api.figshare.com/v2/account/articles")
+RESPONSE=$(curl -s -f -d '{"title": "Sample upload item"}' -H 'Authorization: token '$ACCESS_TOKEN -H 'Content-Type: application/json' -X POST "$BASE_URL")
 echo "The location of the created item is "$RESPONSE
 echo ''
 
@@ -2056,13 +2057,13 @@ echo ''
 
 # List item files
 echo 'Retrieving the item files...'
-FILES_LIST=$(curl -s -H 'Authorization: token '$ACCESS_TOKEN -X GET "https://api.figshare.com/v2/account/articles/$ITEM_ID/files")
+FILES_LIST=$(curl -s -f -H 'Authorization: token '$ACCESS_TOKEN -X GET "$BASE_URL/$ITEM_ID/files")
 echo 'The files list of the newly-create item should be an empty one. Returned results: '$FILES_LIST
 echo ''
 
 # Initiate new upload:
 echo 'A new upload had been initiated...'
-RESPONSE=$(curl -s -d '{"md5": "'${MD5}'", "name": "'${FILE_NAME}'", "size": '${FILE_SIZE}'}' -H 'Content-Type: application/json' -H 'Authorization: token '$ACCESS_TOKEN -X POST "https://api.figshare.com/v2/account/articles/$ITEM_ID/files")
+RESPONSE=$(curl -s -f -d '{"md5": "'${MD5}'", "name": "'${FILE_NAME}'", "size": '${FILE_SIZE}'}' -H 'Content-Type: application/json' -H 'Authorization: token '$ACCESS_TOKEN -X POST "$BASE_URL/$ITEM_ID/files")
 echo $RESPONSE
 echo ''
 
@@ -2074,14 +2075,14 @@ echo ''
 
 # Retrieve the upload url
 echo 'Retrieving the upload URL...'
-RESPONSE=$(curl -s -H 'Authorization: token '$ACCESS_TOKEN -X GET "https://api.figshare.com/v2/account/articles/$ITEM_ID/files/$FILE_ID")
+RESPONSE=$(curl -s -f -H 'Authorization: token '$ACCESS_TOKEN -X GET "$BASE_URL/$ITEM_ID/files/$FILE_ID")
 UPLOAD_URL=$(echo "$RESPONSE" | sed -r 's/.*"upload_url":\s"([^"]+)".*/\1/')
 echo 'The upload URL is: '$UPLOAD_URL
 echo ''
 
 # Retrieve the upload parts
 echo 'Retrieving the part value...'
-RESPONSE=$(curl -s -H 'Authorization: token '$ACCESS_TOKEN -X GET "$UPLOAD_URL")
+RESPONSE=$(curl -s -f -H 'Authorization: token '$ACCESS_TOKEN -X GET "$UPLOAD_URL")
 PARTS_SIZE=$(echo "$RESPONSE" | sed -r 's/"endOffset":([0-9]+).*/\1/' | sed -r 's/.*,([0-9]+)/\1/')
 PARTS_SIZE=$(($PARTS_SIZE+1))
 echo 'The part value is: '$PARTS_SIZE
@@ -2108,7 +2109,7 @@ do
     then
         PART_VALUE='part_0'$i
     fi
-    RESPONSE=$(curl -s -H 'Authorization: token '$ACCESS_TOKEN -X PUT "$UPLOAD_URL/$i" --data-binary @$PART_VALUE)
+    RESPONSE=$(curl -s -f -H 'Authorization: token '$ACCESS_TOKEN -X PUT "$UPLOAD_URL/$i" --data-binary @$PART_VALUE)
     echo "Done uploading part nr: $i/"$MAX_PART
 done
 
@@ -2117,7 +2118,7 @@ echo ''
 
 # Complete upload
 echo 'Completing the file upload...'
-RESPONSE=$(curl -s -H 'Authorization: token '$ACCESS_TOKEN -X POST "https://api.figshare.com/v2/account/articles/$ITEM_ID/files/$FILE_ID")
+RESPONSE=$(curl -s -f -H 'Authorization: token '$ACCESS_TOKEN -X POST "$BASE_URL/$ITEM_ID/files/$FILE_ID")
 echo 'Done!'
 echo ''
 
@@ -2125,7 +2126,7 @@ echo ''
 rm part_*
 
 # List all of the existing items
-RESPONSE=$(curl -s -H 'Authorization: token '$ACCESS_TOKEN -X GET "https://api.figshare.com/v2/account/articles")
+RESPONSE=$(curl -s -f -H 'Authorization: token '$ACCESS_TOKEN -X GET "$BASE_URL")
 echo 'New list of items: '$RESPONSE
 echo ''
 </code></pre>
