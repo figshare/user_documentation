@@ -7776,7 +7776,7 @@
                 "defined_type": {
                     "type": "integer", 
                     "format": "int64", 
-                    "description": "Type of article identificator", 
+                    "description": "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code", 
                     "example": 3
                 }
             }

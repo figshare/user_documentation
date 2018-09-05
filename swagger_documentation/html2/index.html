@@ -940,7 +940,7 @@ margin-bottom: 20px;
       "type" : "integer",
       "format" : "int64",
       "example" : 3,
-      "description" : "Type of article identificator"
+      "description" : "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code"
     }
   },
   "x-tag" : "articles"
@@ -1693,15 +1693,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution" : {
       "type" : "integer",
@@ -1980,15 +1980,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution_id" : {
       "type" : "integer",
@@ -50142,7 +50142,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2018-02-05T11:13:49.844+02:00
+              Generated 2018-09-05T12:47:18.126+03:00
             </div>
           </div>
       </div>

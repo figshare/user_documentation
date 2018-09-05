@@ -142,7 +142,8 @@
                     "thesis", 
                     "code", 
                     "metadata"
-                ], 
+                ],
+                "description": "The response will contain an integer which is mapped to these types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code",
                 "example": "media"
             }, 
             "funding": {
@@ -247,9 +248,9 @@
                 "example": "https://ndownloader.figshare.com/files/123456789/preview/12345678/thumb.png"
             }, 
             "defined_type": {
-                "type": "integer", 
+                "type": "integer",
                 "format": "int64", 
-                "description": "Type of article identificator", 
+                "description": "Integer which is mapped to the types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code",
                 "example": 3
             }
         }
