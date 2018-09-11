@@ -14,7 +14,7 @@
                 "example": "10.6084/m9.figshare.1407024"
             }, 
             "item_type": {
-                "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code", 
+                "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
                 "type": "string", 
                 "example": 1
             }
@@ -143,7 +143,7 @@
                     "code", 
                     "metadata"
                 ],
-                "description": "The response will contain an integer which is mapped to these types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code",
+                "description": "The response will contain an integer which is mapped to these types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint",
                 "example": "media"
             }, 
             "funding": {
@@ -250,7 +250,7 @@
             "defined_type": {
                 "type": "integer",
                 "format": "int64", 
-                "description": "Integer which is mapped to the types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code",
+                "description": "Integer which is mapped to the types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint",
                 "example": 3
             }
         }
