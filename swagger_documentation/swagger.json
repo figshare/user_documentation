@@ -132,7 +132,7 @@
                     {
                         "name": "item_type", 
                         "in": "query", 
-                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint", 
+                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
@@ -5834,7 +5834,7 @@
                     {
                         "name": "item_type", 
                         "in": "query", 
-                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint", 
+                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
@@ -7176,7 +7176,7 @@
                     "example": "10.6084/m9.figshare.1407024"
                 }, 
                 "item_type": {
-                    "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint", 
+                    "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
@@ -7504,7 +7504,7 @@
                 }, 
                 "defined_type": {
                     "type": "string", 
-                    "description": "Article type", 
+                    "description": "Article type. In responses this will be an integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
                     "enum": [
                         "figure", 
                         "media", 
@@ -7651,7 +7651,7 @@
                 }, 
                 "defined_type": {
                     "type": "string", 
-                    "description": "Article type", 
+                    "description": "Article type. In responses this will be an integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
                     "enum": [
                         "figure", 
                         "media", 
@@ -7776,7 +7776,7 @@
                 "defined_type": {
                     "type": "integer", 
                     "format": "int64", 
-                    "description": "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code", 
+                    "description": "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
                     "example": 3
                 }
             }

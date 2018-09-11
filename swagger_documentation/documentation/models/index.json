@@ -584,7 +584,7 @@
                     "code", 
                     "metadata"
                 ], 
-                "description": "The response will contain an integer which is mapped to these types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code",
+                "description": "The response will contain an integer which is mapped to these types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint",
                 "example": "media"
             }, 
             "funding": {
@@ -690,7 +690,7 @@
             "defined_type": {
                 "type": "integer", 
                 "format": "int64", 
-                "description": "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code",
+                "description": "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint",
                 "example": 3
             }
         }

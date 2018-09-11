@@ -940,7 +940,7 @@ margin-bottom: 20px;
       "type" : "integer",
       "format" : "int64",
       "example" : 3,
-      "description" : "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code"
+      "description" : "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint"
     }
   },
   "x-tag" : "articles"
@@ -1037,7 +1037,7 @@ margin-bottom: 20px;
     "defined_type" : {
       "type" : "string",
       "example" : "media",
-      "description" : "Article type",
+      "description" : "Article type. In responses this will be an integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint",
       "enum" : [ "figure", "media", "dataset", "fileset", "poster", "paper", "presentation", "thesis", "code", "metadata", "preprint" ]
     },
     "funding" : {
@@ -1204,7 +1204,7 @@ margin-bottom: 20px;
     "defined_type" : {
       "type" : "string",
       "example" : "media",
-      "description" : "Article type",
+      "description" : "Article type. In responses this will be an integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint",
       "enum" : [ "figure", "media", "dataset", "fileset", "poster", "paper", "presentation", "thesis", "code", "metadata", "preprint" ]
     },
     "funding" : {
@@ -1693,15 +1693,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
-      "default" : "published_date"
+      "default" : "published_date",
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "enum" : [ "asc", "desc" ],
-      "default" : "desc"
+      "default" : "desc",
+      "enum" : [ "asc", "desc" ]
     },
     "institution" : {
       "type" : "integer",
@@ -1980,15 +1980,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
-      "default" : "published_date"
+      "default" : "published_date",
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "enum" : [ "asc", "desc" ],
-      "default" : "desc"
+      "default" : "desc",
+      "enum" : [ "asc", "desc" ]
     },
     "institution_id" : {
       "type" : "integer",
@@ -5421,7 +5421,7 @@ public class ArticlesApiExample {
         String modifiedSince = modifiedSince_example; // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
         Long group = 789; // Long | only return collections from this group
         String resourceDoi = resourceDoi_example; // String | only return collections with this resource_doi
-        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint
+        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
         String doi = doi_example; // String | only return collections with this doi
         try {
             array[Article] result = apiInstance.articlesList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, itemType, doi);
@@ -5452,7 +5452,7 @@ public class ArticlesApiExample {
         String modifiedSince = modifiedSince_example; // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
         Long group = 789; // Long | only return collections from this group
         String resourceDoi = resourceDoi_example; // String | only return collections with this resource_doi
-        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint
+        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
         String doi = doi_example; // String | only return collections with this doi
         try {
             array[Article] result = apiInstance.articlesList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, itemType, doi);
@@ -5480,7 +5480,7 @@ String *publishedSince = publishedSince_example; // Filter by article publishing
 String *modifiedSince = modifiedSince_example; // Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD (optional)
 Long *group = 789; // only return collections from this group (optional)
 String *resourceDoi = resourceDoi_example; // only return collections with this resource_doi (optional)
-Long *itemType = 789; // Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint (optional)
+Long *itemType = 789; // Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint (optional)
 String *doi = doi_example; // only return collections with this doi (optional)
 
 ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
@@ -5527,7 +5527,7 @@ var opts = {
   'modifiedSince': modifiedSince_example, // {String} Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
   'group': 789, // {Long} only return collections from this group
   'resourceDoi': resourceDoi_example, // {String} only return collections with this resource_doi
-  'itemType': 789, // {Long} Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint
+  'itemType': 789, // {Long} Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
   'doi': doi_example // {String} only return collections with this doi
 };
 
@@ -5571,7 +5571,7 @@ namespace Example
             var modifiedSince = modifiedSince_example;  // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD (optional) 
             var group = 789;  // Long | only return collections from this group (optional) 
             var resourceDoi = resourceDoi_example;  // String | only return collections with this resource_doi (optional) 
-            var itemType = 789;  // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint (optional) 
+            var itemType = 789;  // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint (optional) 
             var doi = doi_example;  // String | only return collections with this doi (optional) 
 
             try
@@ -5606,7 +5606,7 @@ $publishedSince = publishedSince_example; // String | Filter by article publishi
 $modifiedSince = modifiedSince_example; // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
 $group = 789; // Long | only return collections from this group
 $resourceDoi = resourceDoi_example; // String | only return collections with this resource_doi
-$itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint
+$itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
 $doi = doi_example; // String | only return collections with this doi
 
 try {
@@ -5635,7 +5635,7 @@ my $publishedSince = publishedSince_example; # String | Filter by article publis
 my $modifiedSince = modifiedSince_example; # String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
 my $group = 789; # Long | only return collections from this group
 my $resourceDoi = resourceDoi_example; # String | only return collections with this resource_doi
-my $itemType = 789; # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint
+my $itemType = 789; # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
 my $doi = doi_example; # String | only return collections with this doi
 
 eval { 
@@ -5667,7 +5667,7 @@ publishedSince = publishedSince_example # String | Filter by article publishing 
 modifiedSince = modifiedSince_example # String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD (optional)
 group = 789 # Long | only return collections from this group (optional)
 resourceDoi = resourceDoi_example # String | only return collections with this resource_doi (optional)
-itemType = 789 # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint (optional)
+itemType = 789 # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint (optional)
 doi = doi_example # String | only return collections with this doi (optional)
 
 try: 
@@ -5941,7 +5941,7 @@ except ApiException as e:
                     </span>
 
                     <div class="inner description">
-                        Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint
+                        Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
                     </div>
             </div>
         </div>
@@ -36291,7 +36291,7 @@ public class InstitutionsApiExample {
         String modifiedSince = modifiedSince_example; // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
         Long status = 789; // Long | only return collections with this status
         String resourceDoi = resourceDoi_example; // String | only return collections with this resource_doi
-        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint
+        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
         try {
             array[Article] result = apiInstance.privateInstitutionArticles(page, pageSize, limit, offset, order, orderDirection, publishedSince, modifiedSince, status, resourceDoi, itemType);
             System.out.println(result);
@@ -36320,7 +36320,7 @@ public class InstitutionsApiExample {
         String modifiedSince = modifiedSince_example; // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
         Long status = 789; // Long | only return collections with this status
         String resourceDoi = resourceDoi_example; // String | only return collections with this resource_doi
-        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint
+        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
         try {
             array[Article] result = apiInstance.privateInstitutionArticles(page, pageSize, limit, offset, order, orderDirection, publishedSince, modifiedSince, status, resourceDoi, itemType);
             System.out.println(result);
@@ -36351,7 +36351,7 @@ String *publishedSince = publishedSince_example; // Filter by article publishing
 String *modifiedSince = modifiedSince_example; // Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD (optional)
 Long *status = 789; // only return collections with this status (optional)
 String *resourceDoi = resourceDoi_example; // only return collections with this resource_doi (optional)
-Long *itemType = 789; // Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint (optional)
+Long *itemType = 789; // Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint (optional)
 
 InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
 
@@ -36399,7 +36399,7 @@ var opts = {
   'modifiedSince': modifiedSince_example, // {String} Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
   'status': 789, // {Long} only return collections with this status
   'resourceDoi': resourceDoi_example, // {String} only return collections with this resource_doi
-  'itemType': 789 // {Long} Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint
+  'itemType': 789 // {Long} Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
 };
 
 var callback = function(error, data, response) {
@@ -36444,7 +36444,7 @@ namespace Example
             var modifiedSince = modifiedSince_example;  // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD (optional) 
             var status = 789;  // Long | only return collections with this status (optional) 
             var resourceDoi = resourceDoi_example;  // String | only return collections with this resource_doi (optional) 
-            var itemType = 789;  // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint (optional) 
+            var itemType = 789;  // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint (optional) 
 
             try
             {
@@ -36480,7 +36480,7 @@ $publishedSince = publishedSince_example; // String | Filter by article publishi
 $modifiedSince = modifiedSince_example; // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
 $status = 789; // Long | only return collections with this status
 $resourceDoi = resourceDoi_example; // String | only return collections with this resource_doi
-$itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint
+$itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
 
 try {
     $result = $api_instance->privateInstitutionArticles($page, $pageSize, $limit, $offset, $order, $orderDirection, $publishedSince, $modifiedSince, $status, $resourceDoi, $itemType);
@@ -36510,7 +36510,7 @@ my $publishedSince = publishedSince_example; # String | Filter by article publis
 my $modifiedSince = modifiedSince_example; # String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
 my $status = 789; # Long | only return collections with this status
 my $resourceDoi = resourceDoi_example; # String | only return collections with this resource_doi
-my $itemType = 789; # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint
+my $itemType = 789; # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
 
 eval { 
     my $result = $api_instance->privateInstitutionArticles(page => $page, pageSize => $pageSize, limit => $limit, offset => $offset, order => $order, orderDirection => $orderDirection, publishedSince => $publishedSince, modifiedSince => $modifiedSince, status => $status, resourceDoi => $resourceDoi, itemType => $itemType);
@@ -36543,7 +36543,7 @@ publishedSince = publishedSince_example # String | Filter by article publishing 
 modifiedSince = modifiedSince_example # String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD (optional)
 status = 789 # Long | only return collections with this status (optional)
 resourceDoi = resourceDoi_example # String | only return collections with this resource_doi (optional)
-itemType = 789 # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint (optional)
+itemType = 789 # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint (optional)
 
 try: 
     # Private Institution Articles
@@ -36793,7 +36793,7 @@ except ApiException as e:
                     </span>
 
                     <div class="inner description">
-                        Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint
+                        Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
                     </div>
             </div>
         </div>
@@ -50142,7 +50142,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2018-09-05T12:47:18.126+03:00
+              Generated 2018-09-11T11:32:48.936+03:00
             </div>
           </div>
       </div>
