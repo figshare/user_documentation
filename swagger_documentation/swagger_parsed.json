@@ -62,7 +62,7 @@
                         "required": false, 
                         "type": "integer", 
                         "format": "int64", 
-                        "minimum": 1, 
+                        "minimum": 0, 
                         "maximum": 5000
                     }, 
                     {
@@ -132,11 +132,11 @@
                     {
                         "name": "item_type", 
                         "in": "query", 
-                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
+                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book", 
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 12, 
+                        "maximum": 13, 
                         "required": false
                     }, 
                     {
@@ -636,7 +636,7 @@
                         "required": false, 
                         "type": "integer", 
                         "format": "int64", 
-                        "minimum": 1, 
+                        "minimum": 0, 
                         "maximum": 5000
                     }
                 ], 
@@ -2453,7 +2453,7 @@
                         "required": false, 
                         "type": "integer", 
                         "format": "int64", 
-                        "minimum": 1, 
+                        "minimum": 0, 
                         "maximum": 5000
                     }, 
                     {
@@ -2781,7 +2781,7 @@
                         "required": false, 
                         "type": "integer", 
                         "format": "int64", 
-                        "minimum": 1, 
+                        "minimum": 0, 
                         "maximum": 5000
                     }
                 ], 
@@ -2864,7 +2864,7 @@
                         "required": false, 
                         "type": "integer", 
                         "format": "int64", 
-                        "minimum": 1, 
+                        "minimum": 0, 
                         "maximum": 5000
                     }, 
                     {
@@ -4363,7 +4363,7 @@
                         "required": false, 
                         "type": "integer", 
                         "format": "int64", 
-                        "minimum": 1, 
+                        "minimum": 0, 
                         "maximum": 5000
                     }, 
                     {
@@ -4658,7 +4658,7 @@
                         "required": false, 
                         "type": "integer", 
                         "format": "int64", 
-                        "minimum": 1, 
+                        "minimum": 0, 
                         "maximum": 5000
                     }, 
                     {
@@ -5063,7 +5063,7 @@
                         "required": false, 
                         "type": "integer", 
                         "format": "int64", 
-                        "minimum": 1, 
+                        "minimum": 0, 
                         "maximum": 5000
                     }, 
                     {
@@ -5610,7 +5610,7 @@
                 {
                     "name": "project_id", 
                     "in": "path", 
-                    "description": "Proejct unique identifier", 
+                    "description": "Project unique identifier", 
                     "required": true, 
                     "type": "integer", 
                     "format": "int64", 
@@ -5662,7 +5662,7 @@
                     {
                         "name": "project_id", 
                         "in": "path", 
-                        "description": "Proejct unique identifier", 
+                        "description": "Project unique identifier", 
                         "required": true, 
                         "type": "integer", 
                         "format": "int64", 
@@ -5698,7 +5698,7 @@
                     {
                         "name": "project_id", 
                         "in": "path", 
-                        "description": "Proejct unique identifier", 
+                        "description": "Project unique identifier", 
                         "required": true, 
                         "type": "integer", 
                         "format": "int64", 
@@ -6212,6 +6212,56 @@
                 ]
             }
         }, 
+        "/account/funding/search": {
+            "post": {
+                "tags": [
+                    "other"
+                ], 
+                "operationId": "private_funding_search", 
+                "summary": "Search Funding", 
+                "description": "Search for fundings", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "in": "body", 
+                        "name": "search", 
+                        "description": "Search Parameters", 
+                        "schema": {
+                            "$ref": "#/definitions/FundingSearch"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of funding information", 
+                        "schema": {
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/FundingInformation"
+                            }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
         "/account": {
             "get": {
                 "tags": [
@@ -6427,7 +6477,7 @@
                         "required": false, 
                         "type": "integer", 
                         "format": "int64", 
-                        "minimum": 1, 
+                        "minimum": 0, 
                         "maximum": 5000
                     }, 
                     {
@@ -6489,11 +6539,11 @@
                     {
                         "name": "item_type", 
                         "in": "query", 
-                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
+                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book", 
                         "type": "integer", 
                         "format": "int64", 
                         "minimum": 1, 
-                        "maximum": 12, 
+                        "maximum": 13, 
                         "required": false
                     }
                 ], 
@@ -6696,7 +6746,7 @@
                         "required": false, 
                         "type": "integer", 
                         "format": "int64", 
-                        "minimum": 1, 
+                        "minimum": 0, 
                         "maximum": 5000
                     }, 
                     {
@@ -7466,6 +7516,13 @@
                     "description": "Grant number or organization(s) that funded this project. Up to 2000 characters permitted.", 
                     "example": ""
                 }, 
+                "funding_list": {
+                    "type": "array", 
+                    "description": "Funding creation / update items", 
+                    "items": {
+                        "$ref": "#/definitions/FundingCreate"
+                    }
+                }, 
                 "group_id": {
                     "type": "integer", 
                     "format": "int64", 
@@ -7495,6 +7552,13 @@
                     "type": "string", 
                     "description": "Grant number or organization(s) that funded this project. Up to 2000 characters permitted.", 
                     "example": ""
+                }, 
+                "funding_list": {
+                    "type": "array", 
+                    "description": "Funding creation / update items", 
+                    "items": {
+                        "$ref": "#/definitions/FundingCreate"
+                    }
                 }
             }
         }, 
@@ -7594,7 +7658,15 @@
                 "funding": {
                     "type": "string", 
                     "description": "Project funding", 
-                    "example": "none"
+                    "example": ""
+                }, 
+                "funding_list": {
+                    "type": "array", 
+                    "description": "Full Project funding information", 
+                    "items": {
+                        "type": "object", 
+                        "$ref": "#/definitions/FundingInformation"
+                    }
                 }, 
                 "description": {
                     "type": "string", 
@@ -7652,9 +7724,17 @@
             ], 
             "properties": {
                 "funding": {
-                    "description": "Project funding", 
                     "type": "string", 
+                    "description": "Project funding", 
                     "example": "none"
+                }, 
+                "funding_list": {
+                    "type": "array", 
+                    "description": "Full Project funding information", 
+                    "items": {
+                        "type": "object", 
+                        "$ref": "#/definitions/FundingInformation"
+                    }
                 }, 
                 "description": {
                     "type": "string", 
@@ -7853,9 +7933,9 @@
                     "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
                     "type": "integer", 
                     "format": "int64", 
-                    "minimum": 1, 
+                    "minimum": 0, 
                     "maximum": 5000, 
-                    "example": 1
+                    "example": 0
                 }, 
                 "institution_user_id": {
                     "description": "filter by institution_user_id", 
@@ -7907,9 +7987,9 @@
                     "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
                     "type": "integer", 
                     "format": "int64", 
-                    "minimum": 1, 
+                    "minimum": 0, 
                     "maximum": 5000, 
-                    "example": 1
+                    "example": 0
                 }, 
                 "order": {
                     "description": "The field by which to order. Default varies by endpoint/resource.", 
@@ -7974,11 +8054,11 @@
                     "example": "10.6084/m9.figshare.1407024"
                 }, 
                 "item_type": {
-                    "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
+                    "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book", 
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 12, 
+                    "maximum": 13, 
                     "example": 1
                 }, 
                 "doi": {
@@ -8020,9 +8100,9 @@
                     "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
                     "type": "integer", 
                     "format": "int64", 
-                    "minimum": 1, 
+                    "minimum": 0, 
                     "maximum": 5000, 
-                    "example": 1
+                    "example": 0
                 }, 
                 "order": {
                     "description": "The field by which to order. Default varies by endpoint/resource.", 
@@ -8092,11 +8172,11 @@
                     "example": "10.6084/m9.figshare.1407024"
                 }, 
                 "item_type": {
-                    "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
+                    "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book", 
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 12, 
+                    "maximum": 13, 
                     "example": 1
                 }, 
                 "doi": {
@@ -8138,9 +8218,9 @@
                     "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
                     "type": "integer", 
                     "format": "int64", 
-                    "minimum": 1, 
+                    "minimum": 0, 
                     "maximum": 5000, 
-                    "example": 1
+                    "example": 0
                 }, 
                 "order": {
                     "description": "The field by which to order. Default varies by endpoint/resource.", 
@@ -8243,9 +8323,9 @@
                     "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
                     "type": "integer", 
                     "format": "int64", 
-                    "minimum": 1, 
+                    "minimum": 0, 
                     "maximum": 5000, 
-                    "example": 1
+                    "example": 0
                 }, 
                 "order": {
                     "description": "The field by which to order. Default varies by endpoint/resource.", 
@@ -8333,9 +8413,9 @@
                     "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
                     "type": "integer", 
                     "format": "int64", 
-                    "minimum": 1, 
+                    "minimum": 0, 
                     "maximum": 5000, 
-                    "example": 1
+                    "example": 0
                 }, 
                 "order": {
                     "description": "The field by which to order. Default varies by endpoint/resource.", 
@@ -8444,9 +8524,9 @@
                     "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
                     "type": "integer", 
                     "format": "int64", 
-                    "minimum": 1, 
+                    "minimum": 0, 
                     "maximum": 5000, 
-                    "example": 1
+                    "example": 0
                 }, 
                 "order": {
                     "description": "The field by which to order. Default varies by endpoint/resource.", 
@@ -8666,7 +8746,7 @@
                 }, 
                 "defined_type": {
                     "type": "string", 
-                    "description": "Article type. In responses this will be an integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
+                    "description": "Article type", 
                     "enum": [
                         "figure", 
                         "media", 
@@ -8678,7 +8758,8 @@
                         "thesis", 
                         "code", 
                         "metadata", 
-                        "preprint"
+                        "preprint", 
+                        "book"
                     ], 
                     "example": "media"
                 }, 
@@ -8686,6 +8767,13 @@
                     "type": "string", 
                     "description": "Grant number or funding authority", 
                     "default": ""
+                }, 
+                "funding_list": {
+                    "type": "array", 
+                    "description": "Funding creation / update items", 
+                    "items": {
+                        "$ref": "#/definitions/FundingCreate"
+                    }
                 }, 
                 "license": {
                     "type": "integer", 
@@ -8813,7 +8901,7 @@
                 }, 
                 "defined_type": {
                     "type": "string", 
-                    "description": "Article type. In responses this will be an integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
+                    "description": "Article type", 
                     "enum": [
                         "figure", 
                         "media", 
@@ -8825,7 +8913,8 @@
                         "thesis", 
                         "code", 
                         "metadata", 
-                        "preprint"
+                        "preprint", 
+                        "book"
                     ], 
                     "example": "media"
                 }, 
@@ -8833,6 +8922,13 @@
                     "type": "string", 
                     "description": "Grant number or funding authority", 
                     "default": ""
+                }, 
+                "funding_list": {
+                    "type": "array", 
+                    "description": "Funding creation / update items", 
+                    "items": {
+                        "$ref": "#/definitions/FundingCreate"
+                    }
                 }, 
                 "license": {
                     "type": "integer", 
@@ -8848,12 +8944,12 @@
                 }, 
                 "resource_doi": {
                     "type": "string", 
-                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article DOI. For linkback this needs to be used in combination with resource_title.", 
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article DOI.", 
                     "default": ""
                 }, 
                 "resource_title": {
                     "type": "string", 
-                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article title. For linkback this needs to be used in combination with resource_doi.", 
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article title.", 
                     "default": ""
                 }, 
                 "group_id": {
@@ -8938,7 +9034,7 @@
                 "defined_type": {
                     "type": "integer", 
                     "format": "int64", 
-                    "description": "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
+                    "description": "Type of article identificator", 
                     "example": 3
                 }
             }
@@ -8982,9 +9078,16 @@
                     "example": 69939
                 }, 
                 "funding": {
-                    "description": "Article funding", 
                     "type": "string", 
+                    "description": "Article funding", 
                     "example": "none"
+                }, 
+                "funding_list": {
+                    "type": "array", 
+                    "description": "Full article funding", 
+                    "items": {
+                        "type": "integer"
+                    }
                 }, 
                 "tags": {
                     "description": "List of article tags", 
@@ -9164,7 +9267,7 @@
                 "defined_type": {
                     "type": "integer", 
                     "format": "int64", 
-                    "description": "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
+                    "description": "Type of article identificator", 
                     "example": 3
                 }
             }
@@ -9251,9 +9354,16 @@
                     "example": 69939
                 }, 
                 "funding": {
-                    "description": "Article funding", 
                     "type": "string", 
+                    "description": "Article funding", 
                     "example": "none"
+                }, 
+                "funding_list": {
+                    "type": "array", 
+                    "description": "Full article funding", 
+                    "items": {
+                        "type": "integer"
+                    }
                 }, 
                 "tags": {
                     "description": "List of article tags", 
@@ -9433,7 +9543,7 @@
                 "defined_type": {
                     "type": "integer", 
                     "format": "int64", 
-                    "description": "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
+                    "description": "Type of article identificator", 
                     "example": 3
                 }
             }
@@ -9528,9 +9638,16 @@
                     "example": 69939
                 }, 
                 "funding": {
-                    "description": "Article funding", 
                     "type": "string", 
+                    "description": "Article funding", 
                     "example": "none"
+                }, 
+                "funding_list": {
+                    "type": "array", 
+                    "description": "Full article funding", 
+                    "items": {
+                        "type": "integer"
+                    }
                 }, 
                 "tags": {
                     "description": "List of article tags", 
@@ -9710,7 +9827,7 @@
                 "defined_type": {
                     "type": "integer", 
                     "format": "int64", 
-                    "description": "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
+                    "description": "Type of article identificator", 
                     "example": 3
                 }
             }
@@ -10570,6 +10687,14 @@
                 }
             ], 
             "properties": {
+                "funding": {
+                    "type": "array", 
+                    "description": "Full Collection funding information", 
+                    "items": {
+                        "type": "object", 
+                        "$ref": "#/definitions/FundingInformation"
+                    }
+                }, 
                 "resource_id": {
                     "type": "string", 
                     "description": "Collection resource id", 
@@ -10731,6 +10856,18 @@
                 "title"
             ], 
             "properties": {
+                "funding": {
+                    "type": "string", 
+                    "description": "Grant number or funding authority", 
+                    "default": ""
+                }, 
+                "funding_list": {
+                    "type": "array", 
+                    "description": "Funding creation / update items", 
+                    "items": {
+                        "$ref": "#/definitions/FundingCreate"
+                    }
+                }, 
                 "title": {
                     "type": "string", 
                     "description": "Title of article", 
@@ -10839,18 +10976,18 @@
                     "type": "string", 
                     "description": "Not applicable to regular users. In a publisher case, this is the publisher article id"
                 }, 
+                "resource_doi": {
+                    "type": "string", 
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article DOI.", 
+                    "default": ""
+                }, 
                 "resource_link": {
                     "type": "string", 
                     "description": "Not applicable to regular users. In a publisher case, this is the publisher article link"
                 }, 
-                "resource_doi": {
-                    "type": "string", 
-                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article DOI. For linkback this needs to be used in combination with resource_title.", 
-                    "default": ""
-                }, 
                 "resource_title": {
                     "type": "string", 
-                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article title. For linkback this needs to be used in combination with resource_doi.", 
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article title.", 
                     "default": ""
                 }, 
                 "resource_version": {
@@ -10868,6 +11005,18 @@
             "x-tag": "collections", 
             "type": "object", 
             "properties": {
+                "funding": {
+                    "type": "string", 
+                    "description": "Grant number or funding authority", 
+                    "default": ""
+                }, 
+                "funding_list": {
+                    "type": "array", 
+                    "description": "Funding creation / update items", 
+                    "items": {
+                        "$ref": "#/definitions/FundingCreate"
+                    }
+                }, 
                 "title": {
                     "type": "string", 
                     "description": "Title of article", 
@@ -11020,6 +11169,66 @@
                     "format": "url"
                 }
             }
+        }, 
+        "FundingInformation": {
+            "x-tag": "funding", 
+            "type": "object", 
+            "properties": {
+                "id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Funding id", 
+                    "example": 1
+                }, 
+                "title": {
+                    "type": "string", 
+                    "description": "The funding name", 
+                    "example": "Scholarly funding"
+                }, 
+                "grant_code": {
+                    "type": "string", 
+                    "description": "The grant code"
+                }, 
+                "funder_name": {
+                    "type": "string", 
+                    "description": "Funder's name"
+                }, 
+                "is_user_defined": {
+                    "type": "boolean", 
+                    "description": "Return whether the grant has been introduced manually"
+                }, 
+                "url": {
+                    "type": "string", 
+                    "format": "url", 
+                    "description": "The grant url", 
+                    "example": "https://app.dimensions.ai/details/grant/1"
+                }
+            }
+        }, 
+        "FundingSearch": {
+            "x-tag": "funding", 
+            "type": "object", 
+            "properties": {
+                "search_for": {
+                    "type": "string", 
+                    "description": "Search term"
+                }
+            }
+        }, 
+        "FundingCreate": {
+            "x-tag": "funding", 
+            "type": "object", 
+            "properties": {
+                "id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "A funding ID as returned by the Funding Search endpoint"
+                }, 
+                "title": {
+                    "type": "string", 
+                    "description": "The title of the new user created funding"
+                }
+            }
         }
     }, 
     "securityDefinitions": {
@@ -11057,10 +11266,6 @@
                 {
                     "title": "Output of Script", 
                     "content": "description_upload_output"
-                }, 
-                {
-                    "title": "Bash Script", 
-                    "content": "description_upload_bash"
                 }
             ]
         }, 

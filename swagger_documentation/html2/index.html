@@ -940,7 +940,7 @@ margin-bottom: 20px;
       "type" : "integer",
       "format" : "int64",
       "example" : 3,
-      "description" : "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint"
+      "description" : "Type of article identificator"
     }
   },
   "x-tag" : "articles"
@@ -1037,13 +1037,20 @@ margin-bottom: 20px;
     "defined_type" : {
       "type" : "string",
       "example" : "media",
-      "description" : "Article type. In responses this will be an integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint",
-      "enum" : [ "figure", "media", "dataset", "fileset", "poster", "paper", "presentation", "thesis", "code", "metadata", "preprint" ]
+      "description" : "Article type",
+      "enum" : [ "figure", "media", "dataset", "fileset", "poster", "paper", "presentation", "thesis", "code", "metadata", "preprint", "book" ]
     },
     "funding" : {
       "type" : "string",
       "description" : "Grant number or funding authority",
       "default" : ""
+    },
+    "funding_list" : {
+      "type" : "array",
+      "description" : "Funding creation / update items",
+      "items" : {
+        "$ref" : "#/definitions/FundingCreate"
+      }
     },
     "license" : {
       "type" : "integer",
@@ -1059,12 +1066,12 @@ margin-bottom: 20px;
     },
     "resource_doi" : {
       "type" : "string",
-      "description" : "Not applicable to regular users. In a publisher case, this is the publisher article DOI. For linkback this needs to be used in combination with resource_title.",
+      "description" : "Not applicable to regular users. In a publisher case, this is the publisher article DOI.",
       "default" : ""
     },
     "resource_title" : {
       "type" : "string",
-      "description" : "Not applicable to regular users. In a publisher case, this is the publisher article title. For linkback this needs to be used in combination with resource_doi.",
+      "description" : "Not applicable to regular users. In a publisher case, this is the publisher article title.",
       "default" : ""
     },
     "group_id" : {
@@ -1204,13 +1211,20 @@ margin-bottom: 20px;
     "defined_type" : {
       "type" : "string",
       "example" : "media",
-      "description" : "Article type. In responses this will be an integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint",
-      "enum" : [ "figure", "media", "dataset", "fileset", "poster", "paper", "presentation", "thesis", "code", "metadata", "preprint" ]
+      "description" : "Article type",
+      "enum" : [ "figure", "media", "dataset", "fileset", "poster", "paper", "presentation", "thesis", "code", "metadata", "preprint", "book" ]
     },
     "funding" : {
       "type" : "string",
       "description" : "Grant number or funding authority",
       "default" : ""
+    },
+    "funding_list" : {
+      "type" : "array",
+      "description" : "Funding creation / update items",
+      "items" : {
+        "$ref" : "#/definitions/FundingCreate"
+      }
     },
     "license" : {
       "type" : "integer",
@@ -1405,6 +1419,18 @@ margin-bottom: 20px;
   "type" : "object",
   "required" : [ "title" ],
   "properties" : {
+    "funding" : {
+      "type" : "string",
+      "description" : "Grant number or funding authority",
+      "default" : ""
+    },
+    "funding_list" : {
+      "type" : "array",
+      "description" : "Funding creation / update items",
+      "items" : {
+        "$ref" : "#/definitions/FundingCreate"
+      }
+    },
     "title" : {
       "type" : "string",
       "example" : "Test article title",
@@ -1491,18 +1517,18 @@ margin-bottom: 20px;
       "type" : "string",
       "description" : "Not applicable to regular users. In a publisher case, this is the publisher article id"
     },
+    "resource_doi" : {
+      "type" : "string",
+      "description" : "Not applicable to regular users. In a publisher case, this is the publisher article DOI.",
+      "default" : ""
+    },
     "resource_link" : {
       "type" : "string",
       "description" : "Not applicable to regular users. In a publisher case, this is the publisher article link"
     },
-    "resource_doi" : {
-      "type" : "string",
-      "description" : "Not applicable to regular users. In a publisher case, this is the publisher article DOI. For linkback this needs to be used in combination with resource_title.",
-      "default" : ""
-    },
     "resource_title" : {
       "type" : "string",
-      "description" : "Not applicable to regular users. In a publisher case, this is the publisher article title. For linkback this needs to be used in combination with resource_doi.",
+      "description" : "Not applicable to regular users. In a publisher case, this is the publisher article title.",
       "default" : ""
     },
     "resource_version" : {
@@ -1536,6 +1562,18 @@ margin-bottom: 20px;
             defs.CollectionUpdate = {
   "type" : "object",
   "properties" : {
+    "funding" : {
+      "type" : "string",
+      "description" : "Grant number or funding authority",
+      "default" : ""
+    },
+    "funding_list" : {
+      "type" : "array",
+      "description" : "Funding creation / update items",
+      "items" : {
+        "$ref" : "#/definitions/FundingCreate"
+      }
+    },
     "title" : {
       "type" : "string",
       "example" : "Test article title",
@@ -1684,24 +1722,24 @@ margin-bottom: 20px;
     "offset" : {
       "type" : "integer",
       "format" : "int64",
-      "example" : 1,
+      "example" : 0,
       "description" : "Where to start the listing(the offset of the first result). Used for pagination with limit",
-      "minimum" : 1,
+      "minimum" : 0,
       "maximum" : 5000
     },
     "order" : {
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution" : {
       "type" : "integer",
@@ -1795,6 +1833,66 @@ margin-bottom: 20px;
   },
   "x-tag" : "articles"
 };
+            defs.FundingCreate = {
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "integer",
+      "format" : "int64",
+      "description" : "A funding ID as returned by the Funding Search endpoint"
+    },
+    "title" : {
+      "type" : "string",
+      "description" : "The title of the new user created funding"
+    }
+  },
+  "x-tag" : "funding"
+};
+            defs.FundingInformation = {
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "integer",
+      "format" : "int64",
+      "example" : 1,
+      "description" : "Funding id"
+    },
+    "title" : {
+      "type" : "string",
+      "example" : "Scholarly funding",
+      "description" : "The funding name"
+    },
+    "grant_code" : {
+      "type" : "string",
+      "description" : "The grant code"
+    },
+    "funder_name" : {
+      "type" : "string",
+      "description" : "Funder's name"
+    },
+    "is_user_defined" : {
+      "type" : "boolean",
+      "description" : "Return whether the grant has been introduced manually"
+    },
+    "url" : {
+      "type" : "string",
+      "format" : "url",
+      "example" : "https://app.dimensions.ai/details/grant/1",
+      "description" : "The grant url"
+    }
+  },
+  "x-tag" : "funding"
+};
+            defs.FundingSearch = {
+  "type" : "object",
+  "properties" : {
+    "search_for" : {
+      "type" : "string",
+      "description" : "Search term"
+    }
+  },
+  "x-tag" : "funding"
+};
             defs.Group = {
   "type" : "object",
   "properties" : {
@@ -1883,9 +1981,9 @@ margin-bottom: 20px;
     "offset" : {
       "type" : "integer",
       "format" : "int64",
-      "example" : 1,
+      "example" : 0,
       "description" : "Where to start the listing(the offset of the first result). Used for pagination with limit",
-      "minimum" : 1,
+      "minimum" : 0,
       "maximum" : 5000
     },
     "institution_user_id" : {
@@ -1971,24 +2069,24 @@ margin-bottom: 20px;
     "offset" : {
       "type" : "integer",
       "format" : "int64",
-      "example" : 1,
+      "example" : 0,
       "description" : "Where to start the listing(the offset of the first result). Used for pagination with limit",
-      "minimum" : 1,
+      "minimum" : 0,
       "maximum" : 5000
     },
     "order" : {
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution_id" : {
       "type" : "integer",
@@ -2147,6 +2245,13 @@ margin-bottom: 20px;
       "example" : "",
       "description" : "Grant number or organization(s) that funded this project. Up to 2000 characters permitted."
     },
+    "funding_list" : {
+      "type" : "array",
+      "description" : "Funding creation / update items",
+      "items" : {
+        "$ref" : "#/definitions/FundingCreate"
+      }
+    },
     "group_id" : {
       "type" : "integer",
       "format" : "int64",
@@ -2227,6 +2332,13 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "",
       "description" : "Grant number or organization(s) that funded this project. Up to 2000 characters permitted."
+    },
+    "funding_list" : {
+      "type" : "array",
+      "description" : "Funding creation / update items",
+      "items" : {
+        "$ref" : "#/definitions/FundingCreate"
+      }
     }
   },
   "x-tag" : "projects"
@@ -2875,6 +2987,9 @@ margin-bottom: 20px;
                     </li>
                     <li data-group="Other" data-name="privateAccount" class="">
                       <a href="#api-Other-privateAccount">privateAccount</a>
+                    </li>
+                    <li data-group="Other" data-name="privateFundingSearch" class="">
+                      <a href="#api-Other-privateFundingSearch">privateFundingSearch</a>
                     </li>
                     <li data-group="Other" data-name="privateLicensesList" class="">
                       <a href="#api-Other-privateLicensesList">privateLicensesList</a>
@@ -5421,7 +5536,7 @@ public class ArticlesApiExample {
         String modifiedSince = modifiedSince_example; // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
         Long group = 789; // Long | only return collections from this group
         String resourceDoi = resourceDoi_example; // String | only return collections with this resource_doi
-        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
+        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book
         String doi = doi_example; // String | only return collections with this doi
         try {
             array[Article] result = apiInstance.articlesList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, itemType, doi);
@@ -5452,7 +5567,7 @@ public class ArticlesApiExample {
         String modifiedSince = modifiedSince_example; // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
         Long group = 789; // Long | only return collections from this group
         String resourceDoi = resourceDoi_example; // String | only return collections with this resource_doi
-        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
+        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book
         String doi = doi_example; // String | only return collections with this doi
         try {
             array[Article] result = apiInstance.articlesList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, itemType, doi);
@@ -5480,7 +5595,7 @@ String *publishedSince = publishedSince_example; // Filter by article publishing
 String *modifiedSince = modifiedSince_example; // Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD (optional)
 Long *group = 789; // only return collections from this group (optional)
 String *resourceDoi = resourceDoi_example; // only return collections with this resource_doi (optional)
-Long *itemType = 789; // Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint (optional)
+Long *itemType = 789; // Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book (optional)
 String *doi = doi_example; // only return collections with this doi (optional)
 
 ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
@@ -5527,7 +5642,7 @@ var opts = {
   'modifiedSince': modifiedSince_example, // {String} Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
   'group': 789, // {Long} only return collections from this group
   'resourceDoi': resourceDoi_example, // {String} only return collections with this resource_doi
-  'itemType': 789, // {Long} Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
+  'itemType': 789, // {Long} Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book
   'doi': doi_example // {String} only return collections with this doi
 };
 
@@ -5571,7 +5686,7 @@ namespace Example
             var modifiedSince = modifiedSince_example;  // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD (optional) 
             var group = 789;  // Long | only return collections from this group (optional) 
             var resourceDoi = resourceDoi_example;  // String | only return collections with this resource_doi (optional) 
-            var itemType = 789;  // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint (optional) 
+            var itemType = 789;  // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book (optional) 
             var doi = doi_example;  // String | only return collections with this doi (optional) 
 
             try
@@ -5606,7 +5721,7 @@ $publishedSince = publishedSince_example; // String | Filter by article publishi
 $modifiedSince = modifiedSince_example; // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
 $group = 789; // Long | only return collections from this group
 $resourceDoi = resourceDoi_example; // String | only return collections with this resource_doi
-$itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
+$itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book
 $doi = doi_example; // String | only return collections with this doi
 
 try {
@@ -5635,7 +5750,7 @@ my $publishedSince = publishedSince_example; # String | Filter by article publis
 my $modifiedSince = modifiedSince_example; # String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
 my $group = 789; # Long | only return collections from this group
 my $resourceDoi = resourceDoi_example; # String | only return collections with this resource_doi
-my $itemType = 789; # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
+my $itemType = 789; # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book
 my $doi = doi_example; # String | only return collections with this doi
 
 eval { 
@@ -5667,7 +5782,7 @@ publishedSince = publishedSince_example # String | Filter by article publishing 
 modifiedSince = modifiedSince_example # String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD (optional)
 group = 789 # Long | only return collections from this group (optional)
 resourceDoi = resourceDoi_example # String | only return collections with this resource_doi (optional)
-itemType = 789 # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint (optional)
+itemType = 789 # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book (optional)
 doi = doi_example # String | only return collections with this doi (optional)
 
 try: 
@@ -5941,7 +6056,7 @@ except ApiException as e:
                     </span>
 
                     <div class="inner description">
-                        Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
+                        Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book
                     </div>
             </div>
         </div>
@@ -36291,7 +36406,7 @@ public class InstitutionsApiExample {
         String modifiedSince = modifiedSince_example; // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
         Long status = 789; // Long | only return collections with this status
         String resourceDoi = resourceDoi_example; // String | only return collections with this resource_doi
-        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
+        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book
         try {
             array[Article] result = apiInstance.privateInstitutionArticles(page, pageSize, limit, offset, order, orderDirection, publishedSince, modifiedSince, status, resourceDoi, itemType);
             System.out.println(result);
@@ -36320,7 +36435,7 @@ public class InstitutionsApiExample {
         String modifiedSince = modifiedSince_example; // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
         Long status = 789; // Long | only return collections with this status
         String resourceDoi = resourceDoi_example; // String | only return collections with this resource_doi
-        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
+        Long itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book
         try {
             array[Article] result = apiInstance.privateInstitutionArticles(page, pageSize, limit, offset, order, orderDirection, publishedSince, modifiedSince, status, resourceDoi, itemType);
             System.out.println(result);
@@ -36351,7 +36466,7 @@ String *publishedSince = publishedSince_example; // Filter by article publishing
 String *modifiedSince = modifiedSince_example; // Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD (optional)
 Long *status = 789; // only return collections with this status (optional)
 String *resourceDoi = resourceDoi_example; // only return collections with this resource_doi (optional)
-Long *itemType = 789; // Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint (optional)
+Long *itemType = 789; // Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book (optional)
 
 InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
 
@@ -36399,7 +36514,7 @@ var opts = {
   'modifiedSince': modifiedSince_example, // {String} Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
   'status': 789, // {Long} only return collections with this status
   'resourceDoi': resourceDoi_example, // {String} only return collections with this resource_doi
-  'itemType': 789 // {Long} Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
+  'itemType': 789 // {Long} Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book
 };
 
 var callback = function(error, data, response) {
@@ -36444,7 +36559,7 @@ namespace Example
             var modifiedSince = modifiedSince_example;  // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD (optional) 
             var status = 789;  // Long | only return collections with this status (optional) 
             var resourceDoi = resourceDoi_example;  // String | only return collections with this resource_doi (optional) 
-            var itemType = 789;  // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint (optional) 
+            var itemType = 789;  // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book (optional) 
 
             try
             {
@@ -36480,7 +36595,7 @@ $publishedSince = publishedSince_example; // String | Filter by article publishi
 $modifiedSince = modifiedSince_example; // String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
 $status = 789; // Long | only return collections with this status
 $resourceDoi = resourceDoi_example; // String | only return collections with this resource_doi
-$itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
+$itemType = 789; // Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book
 
 try {
     $result = $api_instance->privateInstitutionArticles($page, $pageSize, $limit, $offset, $order, $orderDirection, $publishedSince, $modifiedSince, $status, $resourceDoi, $itemType);
@@ -36510,7 +36625,7 @@ my $publishedSince = publishedSince_example; # String | Filter by article publis
 my $modifiedSince = modifiedSince_example; # String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
 my $status = 789; # Long | only return collections with this status
 my $resourceDoi = resourceDoi_example; # String | only return collections with this resource_doi
-my $itemType = 789; # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
+my $itemType = 789; # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book
 
 eval { 
     my $result = $api_instance->privateInstitutionArticles(page => $page, pageSize => $pageSize, limit => $limit, offset => $offset, order => $order, orderDirection => $orderDirection, publishedSince => $publishedSince, modifiedSince => $modifiedSince, status => $status, resourceDoi => $resourceDoi, itemType => $itemType);
@@ -36543,7 +36658,7 @@ publishedSince = publishedSince_example # String | Filter by article publishing 
 modifiedSince = modifiedSince_example # String | Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD (optional)
 status = 789 # Long | only return collections with this status (optional)
 resourceDoi = resourceDoi_example # String | only return collections with this resource_doi (optional)
-itemType = 789 # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint (optional)
+itemType = 789 # Long | Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book (optional)
 
 try: 
     # Private Institution Articles
@@ -36793,7 +36908,7 @@ except ApiException as e:
                     </span>
 
                     <div class="inner description">
-                        Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint
+                        Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book
                     </div>
             </div>
         </div>
@@ -39047,6 +39162,400 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
+                    <div id="api-Other-privateFundingSearch">
+                      <article id="api-Other-privateFundingSearch-0" data-group="User" data-name="privateFundingSearch" data-version="0">
+                        <div class="pull-left">
+                          <h1>privateFundingSearch</h1>
+                          <p>Search Funding</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Search for fundings</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/funding/search</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Other-privateFundingSearch-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Other-privateFundingSearch-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Other-privateFundingSearch-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Other-privateFundingSearch-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Other-privateFundingSearch-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Other-privateFundingSearch-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Other-privateFundingSearch-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Other-privateFundingSearch-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Other-privateFundingSearch-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Other-privateFundingSearch-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Other-privateFundingSearch-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Other-privateFundingSearch-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/funding/search"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Other-privateFundingSearch-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.OtherApi;
+
+import java.io.File;
+import java.util.*;
+
+public class OtherApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OtherApi apiInstance = new OtherApi();
+        FundingSearch search = ; // FundingSearch | Search Parameters
+        try {
+            array[FundingInformation] result = apiInstance.privateFundingSearch(search);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OtherApi#privateFundingSearch");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Other-privateFundingSearch-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.OtherApi;
+
+public class OtherApiExample {
+
+    public static void main(String[] args) {
+        OtherApi apiInstance = new OtherApi();
+        FundingSearch search = ; // FundingSearch | Search Parameters
+        try {
+            array[FundingInformation] result = apiInstance.privateFundingSearch(search);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OtherApi#privateFundingSearch");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Other-privateFundingSearch-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Other-privateFundingSearch-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+FundingSearch *search = ; // Search Parameters (optional)
+
+OtherApi *apiInstance = [[OtherApi alloc] init];
+
+// Search Funding
+[apiInstance privateFundingSearchWith:search
+              completionHandler: ^(array[FundingInformation] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Other-privateFundingSearch-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.OtherApi()
+
+var opts = { 
+  'search':  // {FundingSearch} Search Parameters
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.privateFundingSearch(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Other-privateFundingSearch-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Other-privateFundingSearch-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class privateFundingSearchExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new OtherApi();
+            var search = new FundingSearch(); // FundingSearch | Search Parameters (optional) 
+
+            try
+            {
+                // Search Funding
+                array[FundingInformation] result = apiInstance.privateFundingSearch(search);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling OtherApi.privateFundingSearch: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Other-privateFundingSearch-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\OtherApi();
+$search = ; // FundingSearch | Search Parameters
+
+try {
+    $result = $api_instance->privateFundingSearch($search);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OtherApi->privateFundingSearch: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Other-privateFundingSearch-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::OtherApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::OtherApi->new();
+my $search = WWW::SwaggerClient::Object::FundingSearch->new(); # FundingSearch | Search Parameters
+
+eval { 
+    my $result = $api_instance->privateFundingSearch(search => $search);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling OtherApi->privateFundingSearch: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Other-privateFundingSearch-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.OtherApi()
+search =  # FundingSearch | Search Parameters (optional)
+
+try: 
+    # Search Funding
+    api_response = api_instance.private_funding_search(search=search)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling OtherApi->privateFundingSearch: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">search </td>
+<td>
+
+
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "in" : "body",
+  "name" : "search",
+  "description" : "Search Parameters",
+  "required" : false,
+  "schema" : {
+    "$ref" : "#/definitions/FundingSearch"
+  }
+};
+  var schema = schemaWrapper.schema;
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_privateFundingSearch_search');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_privateFundingSearch_search"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK. An array of funding information </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateFundingSearch-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateFundingSearch-200-schema">
+                                  <div id='responses-privateFundingSearch-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK. An array of funding information",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/FundingInformation"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateFundingSearch-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateFundingSearch-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateFundingSearch-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateFundingSearch-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateFundingSearch-403-schema">
+                                  <div id='responses-privateFundingSearch-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateFundingSearch-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateFundingSearch-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateFundingSearch-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Other-privateLicensesList">
                       <article id="api-Other-privateLicensesList-0" data-group="User" data-name="privateLicensesList" data-version="0">
                         <div class="pull-left">
@@ -41139,7 +41648,7 @@ public class ProjectsApiExample {
         OAuth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProjectsApi apiInstance = new ProjectsApi();
-        Long projectId = 789; // Long | Proejct unique identifier
+        Long projectId = 789; // Long | Project unique identifier
         ArticleCreate article = ; // ArticleCreate | Article description
         try {
             Location result = apiInstance.privateProjectArticlesCreate(projectId, article);
@@ -41159,7 +41668,7 @@ public class ProjectsApiExample {
 
     public static void main(String[] args) {
         ProjectsApi apiInstance = new ProjectsApi();
-        Long projectId = 789; // Long | Proejct unique identifier
+        Long projectId = 789; // Long | Project unique identifier
         ArticleCreate article = ; // ArticleCreate | Article description
         try {
             Location result = apiInstance.privateProjectArticlesCreate(projectId, article);
@@ -41181,7 +41690,7 @@ public class ProjectsApiExample {
 // Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
-Long *projectId = 789; // Proejct unique identifier
+Long *projectId = 789; // Project unique identifier
 ArticleCreate *article = ; // Article description
 
 ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
@@ -41210,7 +41719,7 @@ OAuth2.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new FigshareApi.ProjectsApi()
 
-var projectId = 789; // {Long} Proejct unique identifier
+var projectId = 789; // {Long} Project unique identifier
 
 var article = ; // {ArticleCreate} Article description
 
@@ -41247,7 +41756,7 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new ProjectsApi();
-            var projectId = 789;  // Long | Proejct unique identifier
+            var projectId = 789;  // Long | Project unique identifier
             var article = new ArticleCreate(); // ArticleCreate | Article description
 
             try
@@ -41274,7 +41783,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new Swagger\Client\Api\ProjectsApi();
-$projectId = 789; // Long | Proejct unique identifier
+$projectId = 789; // Long | Project unique identifier
 $article = ; // ArticleCreate | Article description
 
 try {
@@ -41295,7 +41804,7 @@ use WWW::SwaggerClient::ProjectsApi;
 $WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::ProjectsApi->new();
-my $projectId = 789; # Long | Proejct unique identifier
+my $projectId = 789; # Long | Project unique identifier
 my $article = WWW::SwaggerClient::Object::ArticleCreate->new(); # ArticleCreate | Article description
 
 eval { 
@@ -41319,7 +41828,7 @@ swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = swagger_client.ProjectsApi()
-projectId = 789 # Long | Proejct unique identifier
+projectId = 789 # Long | Project unique identifier
 article =  # ArticleCreate | Article description
 
 try: 
@@ -41354,7 +41863,7 @@ except ApiException as e:
                     </span>
 
                     <div class="inner description">
-                        Proejct unique identifier
+                        Project unique identifier
                     </div>
             </div>
                 <div class="inner required">
@@ -41606,7 +42115,7 @@ public class ProjectsApiExample {
         OAuth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProjectsApi apiInstance = new ProjectsApi();
-        Long projectId = 789; // Long | Proejct unique identifier
+        Long projectId = 789; // Long | Project unique identifier
         try {
             array[Article] result = apiInstance.privateProjectArticlesList(projectId);
             System.out.println(result);
@@ -41625,7 +42134,7 @@ public class ProjectsApiExample {
 
     public static void main(String[] args) {
         ProjectsApi apiInstance = new ProjectsApi();
-        Long projectId = 789; // Long | Proejct unique identifier
+        Long projectId = 789; // Long | Project unique identifier
         try {
             array[Article] result = apiInstance.privateProjectArticlesList(projectId);
             System.out.println(result);
@@ -41646,7 +42155,7 @@ public class ProjectsApiExample {
 // Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
-Long *projectId = 789; // Proejct unique identifier
+Long *projectId = 789; // Project unique identifier
 
 ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
 
@@ -41673,7 +42182,7 @@ OAuth2.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new FigshareApi.ProjectsApi()
 
-var projectId = 789; // {Long} Proejct unique identifier
+var projectId = 789; // {Long} Project unique identifier
 
 
 var callback = function(error, data, response) {
@@ -41708,7 +42217,7 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new ProjectsApi();
-            var projectId = 789;  // Long | Proejct unique identifier
+            var projectId = 789;  // Long | Project unique identifier
 
             try
             {
@@ -41734,7 +42243,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new Swagger\Client\Api\ProjectsApi();
-$projectId = 789; // Long | Proejct unique identifier
+$projectId = 789; // Long | Project unique identifier
 
 try {
     $result = $api_instance->privateProjectArticlesList($projectId);
@@ -41754,7 +42263,7 @@ use WWW::SwaggerClient::ProjectsApi;
 $WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::ProjectsApi->new();
-my $projectId = 789; # Long | Proejct unique identifier
+my $projectId = 789; # Long | Project unique identifier
 
 eval { 
     my $result = $api_instance->privateProjectArticlesList(projectId => $projectId);
@@ -41777,7 +42286,7 @@ swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = swagger_client.ProjectsApi()
-projectId = 789 # Long | Proejct unique identifier
+projectId = 789 # Long | Project unique identifier
 
 try: 
     # List project articles
@@ -41811,7 +42320,7 @@ except ApiException as e:
                     </span>
 
                     <div class="inner description">
-                        Proejct unique identifier
+                        Project unique identifier
                     </div>
             </div>
                 <div class="inner required">
@@ -50142,7 +50651,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2018-09-11T11:32:48.936+03:00
+              Generated 2018-11-15T15:13:52.319+02:00
             </div>
           </div>
       </div>
