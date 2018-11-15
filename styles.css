@@ -36,6 +36,11 @@ nav.stickynav {
   color: #464646;
 }
 
+.wy-side-nav-search a.new_docs_link {
+    font-size: 100%;
+    color: #c74d5a;
+}
+
 .wy-side-nav-search a, .wy-side-nav-search a:visited {
   color: #464646;
   font-size: 125%;
@@ -56,7 +61,7 @@ nav.stickynav {
 
 .wy-menu-vertical {
   position: absolute;
-  top: 200px;
+  top: 270px;
   bottom: 0;
   width: 100%;
   overflow-y: auto;
