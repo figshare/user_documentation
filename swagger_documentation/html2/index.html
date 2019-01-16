@@ -1020,7 +1020,7 @@ margin-bottom: 20px;
       }, {
         "id" : 1000008
       } ],
-      "description" : "List of authors to be assosciated with the article. The list can contain author ids or author names. No more than 10 authors. For adding more authors use the specific authors endpoint.",
+      "description" : "List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.",
       "items" : {
         "type" : "object",
         "properties" : { }
@@ -1187,7 +1187,7 @@ margin-bottom: 20px;
       }, {
         "id" : 1000008
       } ],
-      "description" : "List of authors to be assosciated with the article. The list can contain author ids or author names. No more than 10 authors. For adding more authors use the specific authors endpoint.",
+      "description" : "List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.",
       "items" : {
         "type" : "object",
         "properties" : { }
@@ -1304,7 +1304,7 @@ margin-bottom: 20px;
       }, {
         "name" : "John Doe"
       } ],
-      "description" : "List of authors to be assosciated with the article. The list can contain author ids or author names [{\"id\": 12121}, {\"id\": 34345}, {\"name\": \"John Doe\"}]. No more than 10 authors. For adding more authors use the specific authors endpoint.",
+      "description" : "List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.",
       "items" : {
         "type" : "object",
         "properties" : { }
@@ -1434,7 +1434,7 @@ margin-bottom: 20px;
       }, {
         "id" : 20005
       } ],
-      "description" : "List of authors to be assosciated with the article. The list can contain author ids or author names. No more than 10 authors. For adding more authors use the specific authors endpoint.",
+      "description" : "List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.",
       "items" : {
         "type" : "object",
         "properties" : { }
@@ -1565,7 +1565,7 @@ margin-bottom: 20px;
       }, {
         "id" : 20005
       } ],
-      "description" : "List of authors to be assosciated with the article. The list can contain author ids or author names. No more than 10 authors. For adding more authors use the specific authors endpoint.",
+      "description" : "List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.",
       "items" : {
         "type" : "object",
         "properties" : { }
@@ -1693,15 +1693,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution" : {
       "type" : "integer",
@@ -1980,15 +1980,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution_id" : {
       "type" : "integer",
@@ -50142,7 +50142,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2018-09-11T11:32:48.936+03:00
+              Generated 2019-01-16T14:18:23.350+02:00
             </div>
           </div>
       </div>
