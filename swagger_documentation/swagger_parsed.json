@@ -7226,6 +7226,11 @@
                     "format": "int64", 
                     "description": "Parent group if any", 
                     "example": 0
+                }, 
+                "associated_code": {
+                    "type": "string", 
+                    "example": "IT", 
+                    "description": "HR code associated with group, if code exists"
                 }
             }
         }, 
