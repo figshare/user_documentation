@@ -6552,7 +6552,7 @@
                     "description": "Parent group if any", 
                     "example": 0
                 }, 
-                "associated_code": {
+                "association_criteria": {
                     "type": "string", 
                     "example": "IT", 
                     "description": "HR code associated with group, if code exists"
