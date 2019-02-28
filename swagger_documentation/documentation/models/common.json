@@ -1,22 +1,25 @@
 {
-    "Error": {
+    "ErrorMessage": {
         "x-tag": "common", 
         "type": "object", 
         "properties": {
             "code": {
+                "description": "A machine friendly error code, used by the dev team to identify the error.", 
                 "type": "integer", 
                 "format": "int64"
             }, 
             "message": {
+                "description": "A human friendly message explaining the error.", 
                 "type": "string"
             }
         }
     }, 
-    "MessageResponse": {
+    "ResponseMessage": {
         "x-tag": "common", 
         "type": "object", 
         "properties": {
             "message": {
+                "description": "Response message text", 
                 "type": "string", 
                 "example": "Project 1 has been published"
             }
@@ -36,7 +39,7 @@
                 "type": "integer", 
                 "format": "int64", 
                 "minimum": 1, 
-                "maximum": 1000, 
+                "maximum": 5000, 
                 "example": 1
             }, 
             "page_size": {
@@ -44,7 +47,7 @@
                 "type": "integer", 
                 "format": "int64", 
                 "minimum": 1, 
-                "maximum": 100, 
+                "maximum": 1000, 
                 "default": 10, 
                 "example": 10
             }, 
@@ -53,23 +56,27 @@
                 "type": "integer", 
                 "format": "int64", 
                 "minimum": 1, 
-                "maximum": 100, 
+                "maximum": 1000, 
                 "example": 10
             }, 
             "offset": {
                 "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
                 "type": "integer", 
                 "format": "int64", 
-                "minimum": 1, 
-                "maximum": 1000, 
-                "example": 1
+                "minimum": 0, 
+                "maximum": 5000, 
+                "example": 0
             }, 
             "order": {
                 "description": "The field by which to order. Default varies by endpoint/resource.", 
                 "type": "string", 
                 "enum": [
                     "published_date", 
-                    "modified_date"
+                    "modified_date", 
+                    "views", 
+                    "shares", 
+                    "downloads", 
+                    "cites"
                 ], 
                 "default": "published_date", 
                 "example": "published_date"
@@ -108,61 +115,79 @@
             }
         }
     }, 
-    "CategoryPresenter": {
+    "Category": {
         "x-tag": "common", 
         "type": "object", 
         "properties": {
             "parent_id": {
                 "type": "integer", 
                 "format": "int64", 
+                "description": "Parent category", 
                 "example": 1
             }, 
             "id": {
                 "type": "integer", 
                 "format": "int64", 
+                "description": "Category id", 
                 "example": 11
             }, 
             "title": {
                 "type": "string", 
+                "description": "Category title", 
                 "example": "Anatomy"
             }
         }
     }, 
-    "PublicFilePresenter": {
+    "PublicFile": {
         "x-tag": "common", 
         "type": "object", 
         "properties": {
             "id": {
                 "type": "integer", 
+                "description": "File id", 
                 "format": "int64", 
                 "example": 3000002
             }, 
             "name": {
                 "type": "string", 
+                "description": "File name", 
                 "example": "test.xls"
             }, 
             "size": {
                 "type": "integer", 
+                "description": "File size", 
                 "format": "int64", 
                 "example": 14848
             }, 
             "is_link_only": {
+                "description": "True if file is hosted somewhere else", 
                 "type": "boolean", 
                 "example": false
             }, 
             "download_url": {
                 "type": "string", 
+                "description": "Url for file download", 
                 "format": "url", 
                 "example": "https://ndownloader.figshare.com/files/3000002"
+            }, 
+            "supplied_md5": {
+                "type": "string", 
+                "description": "File supplied md5", 
+                "example": "043a51806d646e88cafbf19e7b82846f"
+            }, 
+            "computed_md5": {
+                "type": "string", 
+                "description": "File computed md5", 
+                "example": "043a51806d646e88cafbf19e7b82846f"
             }
         }
     }, 
-    "PrivateFilePresenter": {
+    "PrivateFile": {
         "x-tag": "common", 
         "type": "object", 
         "allOf": [
             {
-                "$ref": "#PublicFilePresenter"
+                "$ref": "#PublicFile"
             }
         ], 
         "properties": {
@@ -171,39 +196,37 @@
                     "string", 
                     "null"
                 ], 
+                "description": "Status for file upload", 
                 "example": "created"
             }, 
             "viewer_type": {
+                "description": "File viewer type", 
                 "type": "string"
             }, 
             "preview_state": {
+                "description": "File preview state", 
                 "type": "string", 
                 "example": "preview not available"
             }, 
             "upload_url": {
+                "description": "Upload url for file", 
                 "type": "string", 
                 "format": "url", 
                 "example": "https://uploads.figshare.com"
             }, 
             "upload_token": {
                 "type": "string", 
+                "description": "Token for file upload", 
                 "example": "9dfc5fe3-d617-4d93-ac11-8afe7e984a4b"
-            }, 
-            "supplied_md5": {
-                "type": "string", 
-                "example": "043a51806d646e88cafbf19e7b82846f"
-            }, 
-            "computed_md5": {
-                "type": "string", 
-                "example": "043a51806d646e88cafbf19e7b82846f"
             }
         }
     }, 
-    "LocationPresenter": {
+    "Location": {
         "x-tag": "common", 
         "type": "object", 
         "properties": {
             "location": {
+                "description": "Url for item", 
                 "type": "string", 
                 "format": "url"
             }

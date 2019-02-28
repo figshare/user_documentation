@@ -4,7 +4,7 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "collections_Get", 
+            "operationId": "collections_list", 
             "summary": "Public Collections", 
             "description": "Returns a list of public collections", 
             "security": [], 
@@ -17,7 +17,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 1000
+                    "maximum": 5000
                 }, 
                 {
                     "name": "page_size", 
@@ -27,7 +27,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "default": 10
                 }, 
                 {
@@ -38,7 +38,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100
+                    "maximum": 1000
                 }, 
                 {
                     "name": "offset", 
@@ -47,8 +47,8 @@
                     "required": false, 
                     "type": "integer", 
                     "format": "int64", 
-                    "minimum": 1, 
-                    "maximum": 1000
+                    "minimum": 0, 
+                    "maximum": 5000
                 }, 
                 {
                     "name": "order", 
@@ -57,7 +57,11 @@
                     "type": "string", 
                     "enum": [
                         "published_date", 
-                        "modified_date"
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "downloads", 
+                        "cites"
                     ], 
                     "default": "published_date", 
                     "required": false
@@ -109,6 +113,20 @@
                     "description": "only return collections with this resource_doi", 
                     "type": "string", 
                     "required": false
+                }, 
+                {
+                    "name": "doi", 
+                    "in": "query", 
+                    "description": "only return collections with this doi", 
+                    "type": "string", 
+                    "required": false
+                }, 
+                {
+                    "name": "handle", 
+                    "in": "query", 
+                    "description": "only return collections with this handle", 
+                    "type": "string", 
+                    "required": false
                 }
             ], 
             "responses": {
@@ -117,7 +135,7 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/collections.json#CollectionPresenter"
+                            "$ref": "../models/collections.json#Collection"
                         }
                     }
                 }, 
@@ -138,7 +156,7 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "collections_search_Post", 
+            "operationId": "collections_search", 
             "summary": "Public Collections Search", 
             "description": "Returns a list of public collections", 
             "security": [], 
@@ -159,7 +177,7 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/collections.json#CollectionPresenter"
+                            "$ref": "../models/collections.json#Collection"
                         }
                     }
                 }, 
@@ -180,8 +198,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "collections_collection_Get", 
-            "summary": "Public Collection", 
+            "x-subcategory": "Public Collection", 
+            "operationId": "collection_details", 
+            "summary": "Collection details", 
             "description": "View a collection", 
             "security": [], 
             "parameters": [
@@ -199,90 +218,7 @@
                 "200": {
                     "description": "OK. Collection representation", 
                     "schema": {
-                        "$ref": "../models/collections.json#CollectionPresenter.L1"
-                    }
-                }, 
-                "400": {
-                    "description": "Bad request"
-                }, 
-                "404": {
-                    "description": "Not Found"
-                }, 
-                "500": {
-                    "description": "Internal Server Error"
-                }
-            }
-        }
-    }, 
-    "/collections/{collection_id}/articles": {
-        "get": {
-            "tags": [
-                "collections"
-            ], 
-            "operationId": "collections_collection_articles_Get", 
-            "summary": "Public Collection Articles", 
-            "description": "Returns a list of public collection articles", 
-            "security": [], 
-            "parameters": [
-                {
-                    "name": "collection_id", 
-                    "in": "path", 
-                    "description": "Collection Unique identifier", 
-                    "required": true, 
-                    "type": "integer", 
-                    "format": "int64", 
-                    "minimum": 1
-                }, 
-                {
-                    "name": "page", 
-                    "in": "query", 
-                    "description": "Page number. Used for pagination with page_size", 
-                    "required": false, 
-                    "type": "integer", 
-                    "format": "int64", 
-                    "minimum": 1, 
-                    "maximum": 1000
-                }, 
-                {
-                    "name": "page_size", 
-                    "in": "query", 
-                    "description": "The number of results included on a page. Used for pagination with page", 
-                    "required": false, 
-                    "type": "integer", 
-                    "format": "int64", 
-                    "minimum": 1, 
-                    "maximum": 100, 
-                    "default": 10
-                }, 
-                {
-                    "name": "limit", 
-                    "in": "query", 
-                    "description": "Number of results included on a page. Used for pagination with query", 
-                    "required": false, 
-                    "type": "integer", 
-                    "format": "int64", 
-                    "minimum": 1, 
-                    "maximum": 100
-                }, 
-                {
-                    "name": "offset", 
-                    "in": "query", 
-                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
-                    "required": false, 
-                    "type": "integer", 
-                    "format": "int64", 
-                    "minimum": 1, 
-                    "maximum": 1000
-                }
-            ], 
-            "responses": {
-                "200": {
-                    "description": "OK. An array of articles belonging to the collection", 
-                    "schema": {
-                        "type": "array", 
-                        "items": {
-                            "$ref": "../models/articles.json#ArticlePresenter"
-                        }
+                        "$ref": "../models/collections.json#CollectionComplete"
                     }
                 }, 
                 "400": {
@@ -290,9 +226,6 @@
                 }, 
                 "404": {
                     "description": "Not Found"
-                }, 
-                "422": {
-                    "description": "Bad Request"
                 }, 
                 "500": {
                     "description": "Internal Server Error"
@@ -305,8 +238,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "collections_collection_versions_Get", 
-            "summary": "Public Collection Versions", 
+            "x-subcategory": "Public Collection", 
+            "operationId": "collection_versions", 
+            "summary": "Collection Versions list", 
             "description": "Returns a list of public collection Versions", 
             "security": [], 
             "parameters": [
@@ -326,7 +260,7 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/articles.json#VersionPresenter"
+                            "$ref": "../models/collections.json#CollectionVersions"
                         }
                     }
                 }, 
@@ -347,8 +281,10 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "collections_collection_versions_version_Get", 
-            "summary": "Public Collection Version", 
+            "x-subcategory": "Public Collection", 
+            "operationId": "collection_version_details", 
+            "summary": "Collection Version details", 
+            "description": "View details for a certain version of a collection", 
             "security": [], 
             "parameters": [
                 {
@@ -372,9 +308,9 @@
             ], 
             "responses": {
                 "200": {
-                    "description": "OK. CollectionPresenter for that version", 
+                    "description": "OK. Collection for that version", 
                     "schema": {
-                        "$ref": "../models/collections.json#CollectionPresenter.L1"
+                        "$ref": "../models/collections.json#CollectionComplete"
                     }
                 }, 
                 "400": {
@@ -389,13 +325,100 @@
             }
         }
     }, 
+    "/collections/{collection_id}/articles": {
+        "get": {
+            "tags": [
+                "collections"
+            ], 
+            "operationId": "collection_articles", 
+            "summary": "Public Collection Articles", 
+            "description": "Returns a list of public collection articles", 
+            "security": [], 
+            "parameters": [
+                {
+                    "name": "collection_id", 
+                    "in": "path", 
+                    "description": "Collection Unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }, 
+                {
+                    "name": "page", 
+                    "in": "query", 
+                    "description": "Page number. Used for pagination with page_size", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 5000
+                }, 
+                {
+                    "name": "page_size", 
+                    "in": "query", 
+                    "description": "The number of results included on a page. Used for pagination with page", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 1000, 
+                    "default": 10
+                }, 
+                {
+                    "name": "limit", 
+                    "in": "query", 
+                    "description": "Number of results included on a page. Used for pagination with query", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 1000
+                }, 
+                {
+                    "name": "offset", 
+                    "in": "query", 
+                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
+                    "required": false, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 0, 
+                    "maximum": 5000
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of articles belonging to the collection", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/articles.json#Article"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "422": {
+                    "description": "Bad Request"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
     "/account/collections": {
         "get": {
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_Get", 
-            "summary": "Private Collections", 
+            "operationId": "private_collections_list", 
+            "summary": "Private Collections List", 
+            "description": "List private collections", 
             "security": [
                 {
                     "OAuth2": [
@@ -412,7 +435,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 1000
+                    "maximum": 5000
                 }, 
                 {
                     "name": "page_size", 
@@ -422,7 +445,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "default": 10
                 }, 
                 {
@@ -433,7 +456,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100
+                    "maximum": 1000
                 }, 
                 {
                     "name": "offset", 
@@ -442,8 +465,8 @@
                     "required": false, 
                     "type": "integer", 
                     "format": "int64", 
-                    "minimum": 1, 
-                    "maximum": 1000
+                    "minimum": 0, 
+                    "maximum": 5000
                 }, 
                 {
                     "name": "order", 
@@ -452,7 +475,11 @@
                     "type": "string", 
                     "enum": [
                         "published_date", 
-                        "modified_date"
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "downloads", 
+                        "cites"
                     ], 
                     "default": "published_date", 
                     "required": false
@@ -475,7 +502,7 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/collections.json#CollectionPresenter"
+                            "$ref": "../models/collections.json#Collection"
                         }
                     }
                 }, 
@@ -485,7 +512,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "500": {
@@ -497,8 +524,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_Post", 
-            "summary": "Private Collection Create", 
+            "x-subcategory": "Private Collection", 
+            "operationId": "private_collection_create", 
+            "summary": "Create collection", 
             "description": "Create a new Collection by sending collection information", 
             "security": [
                 {
@@ -522,7 +550,7 @@
                 "201": {
                     "description": "Created", 
                     "schema": {
-                        "$ref": "../models/collections.json#CollectionPresenter.L1"
+                        "$ref": "../models/collections.json#CollectionComplete"
                     }
                 }, 
                 "400": {
@@ -531,7 +559,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "500": {
@@ -556,9 +584,10 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_Get", 
-            "summary": "Private Collection", 
-            "description": "View an collection", 
+            "x-subcategory": "Private Collection", 
+            "operationId": "private_collection_details", 
+            "summary": "Collection details", 
+            "description": "View a collection", 
             "security": [
                 {
                     "OAuth2": [
@@ -570,11 +599,11 @@
                 "200": {
                     "description": "OK. Collection representation", 
                     "schema": {
-                        "$ref": "../models/collections.json#CollectionPresenter.L1"
+                        "$ref": "../models/collections.json#CollectionComplete"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "404": {
                     "description": "Not Found"
@@ -588,8 +617,10 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_Put", 
-            "summary": "Private Collection Update", 
+            "x-subcategory": "Private Collection", 
+            "operationId": "private_collection_update", 
+            "summary": "Update collection", 
+            "description": "Update collection details", 
             "security": [
                 {
                     "OAuth2": [
@@ -603,7 +634,7 @@
                     "name": "Collection", 
                     "description": "Collection description", 
                     "schema": {
-                        "$ref": "../models/collections.json#CollectionCreate"
+                        "$ref": "../models/collections.json#CollectionUpdate"
                     }, 
                     "required": true
                 }
@@ -625,7 +656,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -640,8 +671,10 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_Delete", 
-            "summary": "Private Collection Delete", 
+            "x-subcategory": "Private Collection", 
+            "operationId": "private_collection_delete", 
+            "summary": "Delete collection", 
+            "description": "Delete n collection", 
             "security": [
                 {
                     "OAuth2": [
@@ -659,7 +692,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -676,7 +709,7 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_search_Post", 
+            "operationId": "private_collections_search", 
             "summary": "Private Collections Search", 
             "description": "Returns a list of private Collections", 
             "security": [
@@ -703,7 +736,7 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/collections.json#CollectionPresenter"
+                            "$ref": "../models/collections.json#Collection"
                         }
                     }
                 }, 
@@ -713,7 +746,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "500": {
@@ -727,7 +760,7 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_reservedoi_Post", 
+            "operationId": "private_collection_reserve_doi", 
             "summary": "Private Collection Reserve DOI", 
             "description": "Reserve DOI for collection", 
             "security": [
@@ -752,7 +785,7 @@
                 "200": {
                     "description": "OK", 
                     "schema": {
-                        "$ref": "../models/articles.json#ArticleDOIPresenter"
+                        "$ref": "../models/collections.json#CollectionDOI"
                     }
                 }, 
                 "400": {
@@ -761,7 +794,55 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/collections/{collection_id}/reserve_handle": {
+        "post": {
+            "tags": [
+                "collections"
+            ], 
+            "operationId": "private_collection_reserve_handle", 
+            "summary": "Private Collection Reserve Handle", 
+            "description": "Reserve Handle for collection", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "collection_id", 
+                    "in": "path", 
+                    "description": "Collection Unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK", 
+                    "schema": {
+                        "$ref": "../models/collections.json#CollectionHandle"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "500": {
@@ -775,7 +856,7 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_publish_Post", 
+            "operationId": "private_collection_publish", 
             "summary": "Private Collection Publish", 
             "description": "When a collection is published, a new public version will be generated. Any further updates to the collection will affect the private collection data. In order to make these changes publicly visible, an explicit publish operation is needed.", 
             "security": [
@@ -807,7 +888,7 @@
                         }
                     }, 
                     "schema": {
-                        "$ref": "../models/common.json#LocationPresenter"
+                        "$ref": "../models/common.json#Location"
                     }
                 }, 
                 "400": {
@@ -816,7 +897,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "500": {
@@ -841,9 +922,10 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_authors_Get", 
-            "summary": "Private Collection Authors", 
-            "description": "List article authors", 
+            "x-subcategory": "Private Collection Authors", 
+            "operationId": "private_collection_authors_list", 
+            "summary": "List collection authors", 
+            "description": "List collection authors", 
             "security": [
                 {
                     "OAuth2": [
@@ -857,17 +939,17 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/articles.json#AuthorPresenter"
+                            "$ref": "../models/authors.json#Author"
                         }
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -882,8 +964,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_authors_Post", 
-            "summary": "Private Collection Authors Add", 
+            "x-subcategory": "Private Collection Authors", 
+            "operationId": "private_collection_authors_add", 
+            "summary": "Add collection authors", 
             "description": "Associate new authors with the collection. This will add new authors to the list of already associated authors", 
             "security": [
                 {
@@ -914,16 +997,16 @@
                         }
                     }, 
                     "schema": {
-                        "$ref": "../models/common.json#LocationPresenter"
+                        "$ref": "../models/common.json#Location"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -938,8 +1021,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_authors_Put", 
-            "summary": "Private Collection Authors Replace", 
+            "x-subcategory": "Private Collection Authors", 
+            "operationId": "private_collection_authors_replace", 
+            "summary": "Replace collection authors", 
             "description": "Associate new authors with the collection. This will remove all already associated authors and add these new ones", 
             "security": [
                 {
@@ -971,12 +1055,12 @@
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -993,8 +1077,10 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_authors_author_Delete", 
-            "summary": "Private Collection Author Remove", 
+            "x-subcategory": "Private Collection Authors", 
+            "operationId": "private_collection_author_delete", 
+            "summary": "Delete collection author", 
+            "description": "Delete collection author", 
             "security": [
                 {
                     "OAuth2": [
@@ -1029,7 +1115,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1057,9 +1143,10 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_categories_Get", 
-            "summary": "Private Collection Categories", 
-            "description": "List article categories", 
+            "x-subcategory": "Private Collection Categories", 
+            "operationId": "private_collection_categories_list", 
+            "summary": "List collection categories", 
+            "description": "List collection categories", 
             "security": [
                 {
                     "OAuth2": [
@@ -1073,17 +1160,17 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/common.json#CategoryPresenter"
+                            "$ref": "../models/common.json#Category"
                         }
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1098,8 +1185,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_categories_Post", 
-            "summary": "Private Collection Categories Add", 
+            "x-subcategory": "Private Collection Categories", 
+            "operationId": "private_collection_categories_add", 
+            "summary": "Add collection categories", 
             "description": "Associate new categories with the collection. This will add new categories to the list of already associated categories", 
             "security": [
                 {
@@ -1130,16 +1218,16 @@
                         }
                     }, 
                     "schema": {
-                        "$ref": "../models/common.json#LocationPresenter"
+                        "$ref": "../models/common.json#Location"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1154,8 +1242,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_categories_Put", 
-            "summary": "Private Collections Categories Replace", 
+            "x-subcategory": "Private Collection Categories", 
+            "operationId": "private_collection_categories_replace", 
+            "summary": "Replace collection categories", 
             "description": "Associate new categories with the collection. This will remove all already associated categories and add these new ones", 
             "security": [
                 {
@@ -1187,12 +1276,12 @@
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1209,8 +1298,10 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_categories_category_Delete", 
-            "summary": "Private Collection Category Remove", 
+            "x-subcategory": "Private Collection Categories", 
+            "operationId": "private_collection_category_delete", 
+            "summary": "Delete collection category", 
+            "description": "De-associate category from collection", 
             "security": [
                 {
                     "OAuth2": [
@@ -1245,7 +1336,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1273,9 +1364,10 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_articles_Get", 
-            "summary": "Private Collection Articles", 
-            "description": "List article articles", 
+            "x-subcategory": "Private Collection Articles", 
+            "operationId": "private_collection_articles_list", 
+            "summary": "List collection articles", 
+            "description": "List collection articles", 
             "security": [
                 {
                     "OAuth2": [
@@ -1289,17 +1381,17 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/articles.json#ArticlePresenter"
+                            "$ref": "../models/articles.json#Article"
                         }
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1314,8 +1406,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_articles_Post", 
-            "summary": "Private Collection Articles Add", 
+            "x-subcategory": "Private Collection Articles", 
+            "operationId": "private_collection_articles_add", 
+            "summary": "Add collection articles", 
             "description": "Associate new articles with the collection. This will add new articles to the list of already associated articles", 
             "security": [
                 {
@@ -1346,16 +1439,16 @@
                         }
                     }, 
                     "schema": {
-                        "$ref": "../models/common.json#LocationPresenter"
+                        "$ref": "../models/common.json#Location"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1370,8 +1463,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_articles_Put", 
-            "summary": "Private Collection Articles Replace", 
+            "x-subcategory": "Private Collection Articles", 
+            "operationId": "private_collection_articles_replace", 
+            "summary": "Replace collection articles", 
             "description": "Associate new articles with the collection. This will remove all already associated articles and add these new ones", 
             "security": [
                 {
@@ -1403,12 +1497,12 @@
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1425,8 +1519,10 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_articles_article_Delete", 
-            "summary": "Private Collection Article Remove", 
+            "x-subcategory": "Private Collection Articles", 
+            "operationId": "private_collection_article_delete", 
+            "summary": "Delete collection article", 
+            "description": "De-associate article from collection", 
             "security": [
                 {
                     "OAuth2": [
@@ -1461,7 +1557,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1489,8 +1585,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_privatelinks_Get", 
-            "summary": "Private Collection Private Links", 
+            "x-subcategory": "Private Collection Private Links", 
+            "operationId": "private_collection_private_links_list", 
+            "summary": "List collection private links", 
             "description": "List article private links", 
             "security": [
                 {
@@ -1505,17 +1602,17 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/articles.json#PrivateLinkPresenter"
+                            "$ref": "../models/articles.json#PrivateLink"
                         }
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1530,8 +1627,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_collection_privatelinks_Post", 
-            "summary": "Private Collection Private Link Create", 
+            "x-subcategory": "Private Collection Private Links", 
+            "operationId": "private_collection_private_link_create", 
+            "summary": "Create collection private link", 
             "description": "Create new private link", 
             "security": [
                 {
@@ -1561,16 +1659,16 @@
                         }
                     }, 
                     "schema": {
-                        "$ref": "../models/common.json#LocationPresenter"
+                        "$ref": "../models/common.json#Location"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1605,8 +1703,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_article_privatelinks_privatelink_Put", 
-            "summary": "Private Collection Private Link Update", 
+            "x-subcategory": "Private Collection Private Links", 
+            "operationId": "private_collection_private_link_update", 
+            "summary": "Update collection private link", 
             "description": "Update existing private link for this collection", 
             "security": [
                 {
@@ -1637,12 +1736,12 @@
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1660,8 +1759,9 @@
             "tags": [
                 "collections"
             ], 
-            "operationId": "account_collections_article_privatelinks_privatelink_Delete", 
-            "summary": "Private Collection Private Link Delete", 
+            "x-subcategory": "Private Collection Private Links", 
+            "operationId": "private_collection_private_link_delete", 
+            "summary": "Disable private link", 
             "description": "Disable/delete private link for this collection", 
             "security": [
                 {
@@ -1675,12 +1775,12 @@
                     "description": "No Content"
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {

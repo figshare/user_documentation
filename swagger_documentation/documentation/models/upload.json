@@ -49,6 +49,7 @@
             "partNo": {
                 "type": "integer", 
                 "format": "int64", 
+                "description": "File part id", 
                 "example": 1
             }, 
             "startOffset": {
