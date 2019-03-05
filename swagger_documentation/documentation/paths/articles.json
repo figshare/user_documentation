@@ -4,7 +4,7 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "articles_Get", 
+            "operationId": "articles_list", 
             "summary": "Public Articles", 
             "description": "Returns a list of public articles", 
             "security": [], 
@@ -17,7 +17,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 1000
+                    "maximum": 5000
                 }, 
                 {
                     "name": "page_size", 
@@ -27,7 +27,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "default": 10
                 }, 
                 {
@@ -38,7 +38,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100
+                    "maximum": 1000
                 }, 
                 {
                     "name": "offset", 
@@ -47,8 +47,8 @@
                     "required": false, 
                     "type": "integer", 
                     "format": "int64", 
-                    "minimum": 1, 
-                    "maximum": 1000
+                    "minimum": 0, 
+                    "maximum": 5000
                 }, 
                 {
                     "name": "order", 
@@ -57,7 +57,11 @@
                     "type": "string", 
                     "enum": [
                         "published_date", 
-                        "modified_date"
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "downloads", 
+                        "cites"
                     ], 
                     "default": "published_date", 
                     "required": false
@@ -76,7 +80,7 @@
                 {
                     "name": "institution", 
                     "in": "query", 
-                    "description": "only return collections from this institution", 
+                    "description": "only return articles from this institution", 
                     "required": false, 
                     "type": "integer", 
                     "format": "int64"
@@ -98,7 +102,7 @@
                 {
                     "name": "group", 
                     "in": "query", 
-                    "description": "only return collections from this group", 
+                    "description": "only return articles from this group", 
                     "type": "integer", 
                     "format": "int64", 
                     "required": false
@@ -106,14 +110,31 @@
                 {
                     "name": "resource_doi", 
                     "in": "query", 
-                    "description": "only return collections with this resource_doi", 
+                    "description": "only return articles with this resource_doi", 
                     "type": "string", 
                     "required": false
                 }, 
                 {
                     "name": "item_type", 
                     "in": "query", 
-                    "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint", 
+                    "description": "Only return articles with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 13, 
+                    "required": false
+                }, 
+                {
+                    "name": "doi", 
+                    "in": "query", 
+                    "description": "only return articles with this doi", 
+                    "type": "string", 
+                    "required": false
+                }, 
+                {
+                    "name": "handle", 
+                    "in": "query", 
+                    "description": "only return articles with this handle", 
                     "type": "string", 
                     "required": false
                 }
@@ -124,7 +145,7 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/articles.json#ArticlePresenter"
+                            "$ref": "../models/articles.json#Article"
                         }
                     }
                 }, 
@@ -145,7 +166,7 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "articles_search_Post", 
+            "operationId": "articles_search", 
             "summary": "Public Articles Search", 
             "description": "Returns a list of public articles, filtered by the search parameters", 
             "security": [], 
@@ -166,7 +187,7 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/articles.json#ArticlePresenter"
+                            "$ref": "../models/articles.json#Article"
                         }
                     }
                 }, 
@@ -187,8 +208,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "articles_article_Get", 
-            "summary": "Public Article View", 
+            "x-subcategory": "Public Article", 
+            "operationId": "article_details", 
+            "summary": "View article details", 
             "description": "View an article", 
             "security": [], 
             "parameters": [
@@ -206,11 +228,11 @@
                 "200": {
                     "description": "OK. Article representation", 
                     "schema": {
-                        "$ref": "../models/articles.json#ArticlePresenter.L2"
+                        "$ref": "../models/articles.json#ArticleComplete"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "404": {
                     "description": "Not Found"
@@ -226,8 +248,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "articles_article_versions_Get", 
-            "summary": "Public Article versions", 
+            "x-subcategory": "Public Article", 
+            "operationId": "article_versions", 
+            "summary": "List article versions", 
             "description": "List public article versions", 
             "security": [], 
             "parameters": [
@@ -247,12 +270,12 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/articles.json#VersionPresenter"
+                            "$ref": "../models/articles.json#ArticleVersions"
                         }
                     }
                 }, 
                 "400": {
-                    "description": "Bad request. Article ID must be an integer and bigger than 0."
+                    "description": "Bad Request. Article ID must be an integer and bigger than 0."
                 }, 
                 "404": {
                     "description": "Not Found"
@@ -268,8 +291,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "articles_article_versions_version_Get", 
-            "summary": "Public Article with specified version", 
+            "x-subcategory": "Public Article", 
+            "operationId": "article_version_details", 
+            "summary": "Article details for version", 
             "description": "Article with specified version", 
             "security": [], 
             "parameters": [
@@ -296,11 +320,11 @@
                 "200": {
                     "description": "OK. Article representation", 
                     "schema": {
-                        "$ref": "../models/articles.json#ArticlePresenter.L2"
+                        "$ref": "../models/articles.json#ArticleComplete"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "404": {
                     "description": "Not Found"
@@ -316,7 +340,7 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "articles_article_versions_version_embargo_Get", 
+            "operationId": "article_version_embargo", 
             "summary": "Public Article Embargo for article version", 
             "description": "Embargo for article version", 
             "security": [], 
@@ -344,11 +368,11 @@
                 "200": {
                     "description": "OK. Embargo representation", 
                     "schema": {
-                        "$ref": "../models/articles.json#ArticleEmbargoPresenter"
+                        "$ref": "../models/articles.json#ArticleEmbargo"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "404": {
                     "description": "Not Found"
@@ -364,7 +388,7 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "articles_article_versions_version_confidentiality_Get", 
+            "operationId": "article_version_confidentiality", 
             "summary": "Public Article Confidentiality for article version", 
             "description": "Confidentiality for article version", 
             "security": [], 
@@ -392,11 +416,11 @@
                 "200": {
                     "description": "OK. Confidentiality representation", 
                     "schema": {
-                        "$ref": "../models/articles.json#ArticleConfidentialityPresenter"
+                        "$ref": "../models/articles.json#ArticleConfidentiality"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "404": {
                     "description": "Not Found"
@@ -412,8 +436,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "articles_article_files_Get", 
-            "summary": "Public Article Files list", 
+            "x-subcategory": "Public Article files", 
+            "operationId": "article_files", 
+            "summary": "List article files", 
             "description": "Files list for article", 
             "security": [], 
             "parameters": [
@@ -433,12 +458,12 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/common.json#PublicFilePresenter"
+                            "$ref": "../models/common.json#PublicFile"
                         }
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "404": {
                     "description": "Not Found"
@@ -454,8 +479,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "articles_article_files_file_Get", 
-            "summary": "Public Article File", 
+            "x-subcategory": "Public Article files", 
+            "operationId": "article_file_details", 
+            "summary": "Article file details", 
             "description": "File by id", 
             "security": [], 
             "parameters": [
@@ -482,11 +508,11 @@
                 "200": {
                     "description": "OK. File representation", 
                     "schema": {
-                        "$ref": "../models/common.json#PublicFilePresenter"
+                        "$ref": "../models/common.json#PublicFile"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "404": {
                     "description": "Not Found"
@@ -502,7 +528,7 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_search_Post", 
+            "operationId": "private_articles_search", 
             "summary": "Private Articles search", 
             "description": "Returns a list of private articles filtered by the search parameters", 
             "security": [
@@ -529,7 +555,7 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/articles.json#ArticlePresenter"
+                            "$ref": "../models/articles.json#Article"
                         }
                     }
                 }, 
@@ -539,7 +565,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "500": {
@@ -553,7 +579,7 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_Get", 
+            "operationId": "private_articles_list", 
             "summary": "Private Articles", 
             "description": "Get Own Articles", 
             "security": [
@@ -572,7 +598,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100
+                    "maximum": 5000
                 }, 
                 {
                     "name": "page_size", 
@@ -582,7 +608,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100, 
+                    "maximum": 1000, 
                     "default": 10
                 }, 
                 {
@@ -593,7 +619,7 @@
                     "type": "integer", 
                     "format": "int64", 
                     "minimum": 1, 
-                    "maximum": 100
+                    "maximum": 1000
                 }, 
                 {
                     "name": "offset", 
@@ -602,8 +628,8 @@
                     "required": false, 
                     "type": "integer", 
                     "format": "int64", 
-                    "minimum": 1, 
-                    "maximum": 100
+                    "minimum": 0, 
+                    "maximum": 5000
                 }
             ], 
             "responses": {
@@ -612,7 +638,7 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/articles.json#ArticlePresenter"
+                            "$ref": "../models/articles.json#Article"
                         }
                     }
                 }, 
@@ -622,7 +648,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "500": {
@@ -634,8 +660,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_Post", 
-            "summary": "Private Article Create", 
+            "x-subcategory": "Private Article", 
+            "operationId": "private_article_create", 
+            "summary": "Create new Article", 
             "description": "Create a new Article by sending article information", 
             "security": [
                 {
@@ -659,7 +686,7 @@
                 "201": {
                     "description": "Created", 
                     "schema": {
-                        "$ref": "../models/common.json#LocationPresenter"
+                        "$ref": "../models/common.json#Location"
                     }
                 }, 
                 "400": {
@@ -668,7 +695,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "500": {
@@ -693,8 +720,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_Get", 
-            "summary": "Private Article View", 
+            "x-subcategory": "Private Article", 
+            "operationId": "private_article_details", 
+            "summary": "Article details", 
             "description": "View a private article", 
             "security": [
                 {
@@ -707,16 +735,16 @@
                 "200": {
                     "description": "OK. Article representation", 
                     "schema": {
-                        "$ref": "../models/articles.json#PrivateArticlePresenter.L2"
+                        "$ref": "../models/articles.json#ArticleCompletePrivate"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -731,8 +759,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_Put", 
-            "summary": "Private Article Update", 
+            "x-subcategory": "Private Article", 
+            "operationId": "private_article_update", 
+            "summary": "Update article", 
             "description": "Updating an article by passing body parameters", 
             "security": [
                 {
@@ -747,7 +776,7 @@
                     "name": "Article", 
                     "description": "Article description", 
                     "schema": {
-                        "$ref": "../models/articles.json#ArticleCreate"
+                        "$ref": "../models/articles.json#ArticleUpdate"
                     }, 
                     "required": true
                 }
@@ -766,7 +795,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -781,8 +810,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_Delete", 
-            "summary": "Private Article Delete", 
+            "x-subcategory": "Private Article", 
+            "operationId": "private_article_delete", 
+            "summary": "Delete article", 
             "description": "Delete an article", 
             "security": [
                 {
@@ -798,7 +828,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -826,8 +856,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_embargo_Get", 
-            "summary": "Private Article embargo", 
+            "x-subcategory": "Private Article Embargo", 
+            "operationId": "private_article_embargo_details", 
+            "summary": "Article Embargo Details", 
             "description": "View a private article embargo details", 
             "security": [
                 {
@@ -840,16 +871,16 @@
                 "200": {
                     "description": "OK. Embargo for article", 
                     "schema": {
-                        "$ref": "../models/articles.json#ArticleEmbargoPresenter"
+                        "$ref": "../models/articles.json#ArticleEmbargo"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -864,8 +895,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_embargo_Put", 
-            "summary": "Private Article Embargo Update", 
+            "x-subcategory": "Private Article Embargo", 
+            "operationId": "private_article_embargo_update", 
+            "summary": "Update Article Embargo", 
             "description": "Note: setting an article under whole embargo does not imply that the article will be published when the embargo will expire. You must explicitly call the publish endpoint to enable this functionality.", 
             "security": [
                 {
@@ -877,7 +909,7 @@
             "parameters": [
                 {
                     "in": "body", 
-                    "name": "EmbargoPresenter", 
+                    "name": "Embargo", 
                     "description": "Embargo description", 
                     "schema": {
                         "$ref": "../models/articles.json#ArticleEmbargoUpdater"
@@ -902,7 +934,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -917,8 +949,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_embargo_Delete", 
-            "summary": "Private Article Embargo Delete", 
+            "x-subcategory": "Private Article Embargo", 
+            "operationId": "private_article_embargo_delete", 
+            "summary": "Delete Article Embargo", 
             "description": "Will lift the embargo for the specified article", 
             "security": [
                 {
@@ -934,7 +967,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -951,7 +984,7 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_publish_Post", 
+            "operationId": "private_article_publish", 
             "summary": "Private Article Publish", 
             "description": "- If the whole article is under embargo, it will not be published immediatly, but when the embargo expires or is lifted.\n- When an article is published, a new public version will be generated. Any further updates to the article will affect the private article data. In order to make these changes publicly visible, an explicit publish operation is needed.", 
             "security": [
@@ -983,16 +1016,16 @@
                         }
                     }, 
                     "schema": {
-                        "$ref": "../models/common.json#LocationPresenter"
+                        "$ref": "../models/common.json#Location"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1009,7 +1042,7 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_reserve_doi_Post", 
+            "operationId": "private_article_reserve_doi", 
             "summary": "Private Article Reserve DOI", 
             "description": "Reserve DOI for article", 
             "security": [
@@ -1034,16 +1067,67 @@
                 "200": {
                     "description": "OK", 
                     "schema": {
-                        "$ref": "../models/articles.json#ArticleDOIPresenter"
+                        "$ref": "../models/articles.json#ArticleDOI"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
+                    }
+                }, 
+                "404": {
+                    "description": "Not Found"
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
+    "/account/articles/{article_id}/reserve_handle": {
+        "post": {
+            "tags": [
+                "articles"
+            ], 
+            "operationId": "private_article_reserve_handle", 
+            "summary": "Private Article Reserve Handle", 
+            "description": "Reserve Handle for article", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "name": "article_id", 
+                    "in": "path", 
+                    "description": "Article unique identifier", 
+                    "required": true, 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK", 
+                    "schema": {
+                        "$ref": "../models/articles.json#ArticleHandle"
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1071,8 +1155,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_authors_Get", 
-            "summary": "Private Article authors", 
+            "x-subcategory": "Private Article Authors", 
+            "operationId": "private_article_authors_list", 
+            "summary": "List article authors", 
             "description": "List article authors", 
             "security": [
                 {
@@ -1087,17 +1172,17 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/articles.json#AuthorPresenter"
+                            "$ref": "../models/authors.json#Author"
                         }
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1112,8 +1197,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_authors_Post", 
-            "summary": "Private Article authors add", 
+            "x-subcategory": "Private Article Authors", 
+            "operationId": "private_article_authors_add", 
+            "summary": "Add article authors", 
             "description": "Associate new authors with the article. This will add new authors to the list of already associated authors", 
             "security": [
                 {
@@ -1145,12 +1231,12 @@
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1165,8 +1251,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_authors_Put", 
-            "summary": "Private Article Authors replace", 
+            "x-subcategory": "Private Article Authors", 
+            "operationId": "private_article_authors_replace", 
+            "summary": "Replace article authors", 
             "description": "Associate new authors with the article. This will remove all already associated authors and add these new ones", 
             "security": [
                 {
@@ -1198,12 +1285,12 @@
                     }
                 }, 
                 "400": {
-                    "description": "Bad request. Article ID must be an integer and bigger than 0. Author with ID Not Found."
+                    "description": "Bad Request. Article ID must be an integer and bigger than 0. Author with ID Not Found."
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1220,8 +1307,10 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_authors_author_Delete", 
-            "summary": "Private Article author remove", 
+            "x-subcategory": "Private Article Authors", 
+            "operationId": "private_article_author_delete", 
+            "summary": "Delete article author", 
+            "description": "De-associate author from article", 
             "security": [
                 {
                     "OAuth2": [
@@ -1256,7 +1345,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1284,8 +1373,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_categories_Get", 
-            "summary": "Private Article Categories", 
+            "x-subcategory": "Private Article Categories", 
+            "operationId": "private_article_categories_list", 
+            "summary": "List article categories", 
             "description": "List article categories", 
             "security": [
                 {
@@ -1300,17 +1390,17 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/common.json#CategoryPresenter"
+                            "$ref": "../models/common.json#Category"
                         }
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1325,8 +1415,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_categories_Post", 
-            "summary": "Private Article Categories add", 
+            "x-subcategory": "Private Article Categories", 
+            "operationId": "private_article_categories_add", 
+            "summary": "Add article categories", 
             "description": "Associate new categories with the article. This will add new categories to the list of already associated categories", 
             "security": [
                 {
@@ -1350,12 +1441,12 @@
                     "description": "Reset Content"
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1370,8 +1461,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_categories_Put", 
-            "summary": "Private Article Categories replace", 
+            "x-subcategory": "Private Article Categories", 
+            "operationId": "private_article_categories_replace", 
+            "summary": "Replace article categories", 
             "description": "Associate new categories with the article. This will remove all already associated categories and add these new ones", 
             "security": [
                 {
@@ -1395,12 +1487,12 @@
                     "description": "Reset Content"
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1417,8 +1509,10 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_categories_category_Delete", 
-            "summary": "Private Article Category remove", 
+            "x-subcategory": "Private Article Categories", 
+            "operationId": "private_article_category_delete", 
+            "summary": "Delete article category", 
+            "description": "De-associate category from article", 
             "security": [
                 {
                     "OAuth2": [
@@ -1453,7 +1547,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1481,8 +1575,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_confidentiality_Get", 
-            "summary": "Private Article Confidentiality", 
+            "x-subcategory": "Private Article Confidentiality", 
+            "operationId": "private_article_confidentiality_details", 
+            "summary": "Article confidentiality details", 
             "description": "View confidentiality settings", 
             "security": [
                 {
@@ -1495,16 +1590,16 @@
                 "200": {
                     "description": "OK. Article categories", 
                     "schema": {
-                        "$ref": "../models/articles.json#ArticleConfidentialityPresenter"
+                        "$ref": "../models/articles.json#ArticleConfidentiality"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1519,8 +1614,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_confidentiality_Put", 
-            "summary": "Private Article Confidentiality Update", 
+            "x-subcategory": "Private Article Confidentiality", 
+            "operationId": "private_article_confidentiality_update", 
+            "summary": "Update article confidentiality", 
             "description": "Update confidentiality settings", 
             "security": [
                 {
@@ -1534,9 +1630,9 @@
                     "in": "body", 
                     "name": "reason", 
                     "schema": {
-                        "type": "string"
+                        "$ref": "../models/None#ConfidentialityCreator"
                     }, 
-                    "required": false
+                    "required": true
                 }
             ], 
             "responses": {
@@ -1544,12 +1640,12 @@
                     "description": "Reset Content"
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1564,8 +1660,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_confidentiality_Delete", 
-            "summary": "Private Article Confidentiality Delete", 
+            "x-subcategory": "Private Article Confidentiality", 
+            "operationId": "private_article_confidentiality_delete", 
+            "summary": "Delete article confidentiality", 
             "description": "Delete confidentiality settings", 
             "security": [
                 {
@@ -1579,12 +1676,12 @@
                     "description": "No Content"
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1612,8 +1709,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_privatelinks_Get", 
-            "summary": "Private Article Private Links", 
+            "x-subcategory": "Private Article Private Links", 
+            "operationId": "private_article_private_link", 
+            "summary": "List private links", 
             "description": "List private links", 
             "security": [
                 {
@@ -1628,17 +1726,17 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/articles.json#PrivateLinkPresenter"
+                            "$ref": "../models/articles.json#PrivateLink"
                         }
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1653,8 +1751,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_privatelinks_Post", 
-            "summary": "Private Article Private Links create", 
+            "x-subcategory": "Private Article Private Links", 
+            "operationId": "private_article_private_link_create", 
+            "summary": "Create private link", 
             "description": "Create new private link for this article", 
             "security": [
                 {
@@ -1684,16 +1783,16 @@
                         }
                     }, 
                     "schema": {
-                        "$ref": "../models/common.json#LocationPresenter"
+                        "$ref": "../models/common.json#Location"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1731,8 +1830,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_privatelinks_privatelink_Put", 
-            "summary": "Private Article Private Link update", 
+            "x-subcategory": "Private Article Private Links", 
+            "operationId": "private_article_private_link_update", 
+            "summary": "Update private link", 
             "description": "Update existing private link for this article", 
             "security": [
                 {
@@ -1763,12 +1863,12 @@
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1786,8 +1886,9 @@
             "tags": [
                 "articles"
             ], 
-            "operationId": "account_articles_article_privatelinks_privatelink_Delete", 
-            "summary": "Private Article Private Link disable", 
+            "x-subcategory": "Private Article Private Links", 
+            "operationId": "private_article_private_link_delete", 
+            "summary": "Disable private link", 
             "description": "Disable/delete private link for this article", 
             "security": [
                 {
@@ -1801,12 +1902,12 @@
                     "description": "No Content"
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1834,7 +1935,9 @@
             "tags": [
                 "articles"
             ], 
-            "summary": "Private Article Files", 
+            "operationId": "private_article_files_list", 
+            "x-subcategory": "Private Article Files", 
+            "summary": "List article files", 
             "description": "List private files", 
             "security": [
                 {
@@ -1849,17 +1952,17 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/common.json#PrivateFilePresenter"
+                            "$ref": "../models/common.json#PrivateFile"
                         }
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1874,7 +1977,9 @@
             "tags": [
                 "articles"
             ], 
-            "summary": "Private Article File Initiate Upload", 
+            "x-subcategory": "Private Article Files", 
+            "operationId": "private_article_upload_initiate", 
+            "summary": "Initiate Upload", 
             "description": "Initiate new file upload within the article. Either use link to provide only an existing file that will not be uploaded on figshare or use the other 3 parameters(md5, name, size)", 
             "security": [
                 {
@@ -1904,16 +2009,16 @@
                         }
                     }, 
                     "schema": {
-                        "$ref": "../models/common.json#LocationPresenter"
+                        "$ref": "../models/common.json#Location"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1950,7 +2055,10 @@
             "tags": [
                 "articles"
             ], 
-            "summary": "Private Article File", 
+            "x-subcategory": "Private Article Files", 
+            "operationId": "private_article_file", 
+            "summary": "Single File", 
+            "description": "View details of file for specified article", 
             "security": [
                 {
                     "OAuth2": [
@@ -1962,16 +2070,16 @@
                 "200": {
                     "description": "OK. Article private file", 
                     "schema": {
-                        "$ref": "../models/common.json#PrivateFilePresenter"
+                        "$ref": "../models/common.json#PrivateFile"
                     }
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -1986,7 +2094,9 @@
             "tags": [
                 "articles"
             ], 
-            "summary": "Private Article File Complete Upload", 
+            "x-subcategory": "Private Article Files", 
+            "operationId": "private_article_upload_complete", 
+            "summary": "Complete Upload", 
             "description": "Complete file upload", 
             "security": [
                 {
@@ -2000,12 +2110,12 @@
                     "description": "Accepted"
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
@@ -2020,7 +2130,9 @@
             "tags": [
                 "articles"
             ], 
-            "summary": "Private Article File Delete", 
+            "x-subcategory": "Private Article Files", 
+            "summary": "File Delete", 
+            "operationId": "private_article_file_delete", 
             "description": "Complete file upload", 
             "security": [
                 {
@@ -2034,184 +2146,16 @@
                     "description": "No Content"
                 }, 
                 "400": {
-                    "description": "Bad request"
+                    "description": "Bad Request"
                 }, 
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "404": {
                     "description": "Not Found"
-                }, 
-                "500": {
-                    "description": "Internal Server Error"
-                }
-            }
-        }
-    }, 
-    "/upload/{token}": {
-        "get": {
-            "tags": [
-                "articles"
-            ], 
-            "summary": "List private files", 
-            "description": "List private files", 
-            "security": [
-                {
-                    "OAuth2": [
-                        "all"
-                    ]
-                }
-            ], 
-            "parameters": [
-                {
-                    "name": "token", 
-                    "in": "path", 
-                    "description": "Token received after initializing an upload", 
-                    "required": true, 
-                    "type": "integer", 
-                    "format": "int64", 
-                    "minimum": 1
-                }
-            ], 
-            "responses": {
-                "200": {
-                    "description": "OK. Upload Info", 
-                    "schema": {
-                        "$ref": "../models/upload.json#UploadInfo"
-                    }
-                }, 
-                "400": {
-                    "description": "Bad request. Article ID must be an integer and bigger than 0."
-                }, 
-                "403": {
-                    "description": "Forbidden", 
-                    "schema": {
-                        "$ref": "../models/common.json#Error"
-                    }
-                }, 
-                "404": {
-                    "description": "Not Found"
-                }, 
-                "500": {
-                    "description": "Internal Server Error"
-                }
-            }
-        }
-    }, 
-    "/upload/{token}/{partNo}": {
-        "parameters": [
-            {
-                "name": "token", 
-                "in": "path", 
-                "description": "Token received after initializing an upload", 
-                "required": true, 
-                "type": "integer", 
-                "format": "int64", 
-                "minimum": 1
-            }, 
-            {
-                "name": "partNo", 
-                "in": "path", 
-                "description": "Part Number", 
-                "required": true, 
-                "type": "integer", 
-                "format": "int64", 
-                "minimum": 1
-            }
-        ], 
-        "get": {
-            "tags": [
-                "articles"
-            ], 
-            "summary": "File upload part information", 
-            "description": "File upload part information", 
-            "security": [
-                {
-                    "OAuth2": [
-                        "all"
-                    ]
-                }
-            ], 
-            "responses": {
-                "200": {
-                    "description": "OK. Upload Info", 
-                    "schema": {
-                        "$ref": "../models/upload.json#UploadFilePart"
-                    }
-                }, 
-                "404": {
-                    "description": "Not Found"
-                }, 
-                "500": {
-                    "description": "Internal Server Error"
-                }
-            }
-        }, 
-        "put": {
-            "tags": [
-                "articles"
-            ], 
-            "summary": "receives part data", 
-            "description": "The entire body of the request is piped as-is to S3. It is assumed that the body is the correct piece of the file, from startOffset to endOffset", 
-            "security": [
-                {
-                    "OAuth2": [
-                        "all"
-                    ]
-                }
-            ], 
-            "parameters": [
-                {
-                    "in": "body", 
-                    "name": "BinaryData", 
-                    "schema": {
-                        "type": "string", 
-                        "format": "byte", 
-                        "description": "The entire body of the request is piped as-is to S3. It is assumed that the body is the correct piece of the file, from startOffset to endOffset"
-                    }, 
-                    "required": true
-                }
-            ], 
-            "responses": {
-                "200": {
-                    "description": "OK", 
-                    "schema": {
-                        "$ref": "../models/upload.json#UploadFilePart"
-                    }
-                }, 
-                "404": {
-                    "description": "Not Found"
-                }, 
-                "500": {
-                    "description": "Internal Server Error"
-                }
-            }
-        }, 
-        "delete": {
-            "tags": [
-                "articles"
-            ], 
-            "summary": "reset part data", 
-            "description": "This will reset the part to it's PENDING state and remove any storage meta.", 
-            "security": [
-                {
-                    "OAuth2": [
-                        "all"
-                    ]
-                }
-            ], 
-            "responses": {
-                "200": {
-                    "description": "OK. Accepted"
-                }, 
-                "404": {
-                    "description": "Not Found"
-                }, 
-                "409": {
-                    "description": "Conflict. Upload completed or part locked"
                 }, 
                 "500": {
                     "description": "Internal Server Error"

@@ -1,10 +1,60 @@
 {
+    "/account/funding/search": {
+        "post": {
+            "tags": [
+                "other"
+            ], 
+            "operationId": "private_funding_search", 
+            "summary": "Search Funding", 
+            "description": "Search for fundings", 
+            "security": [
+                {
+                    "OAuth2": [
+                        "all"
+                    ]
+                }
+            ], 
+            "parameters": [
+                {
+                    "in": "body", 
+                    "name": "search", 
+                    "description": "Search Parameters", 
+                    "schema": {
+                        "$ref": "../models/funding.json#FundingSearch"
+                    }
+                }
+            ], 
+            "responses": {
+                "200": {
+                    "description": "OK. An array of funding information", 
+                    "schema": {
+                        "type": "array", 
+                        "items": {
+                            "$ref": "../models/funding.json#FundingInformation"
+                        }
+                    }
+                }, 
+                "400": {
+                    "description": "Bad Request"
+                }, 
+                "403": {
+                    "description": "Forbidden", 
+                    "schema": {
+                        "$ref": "../models/common.json#ErrorMessage"
+                    }
+                }, 
+                "500": {
+                    "description": "Internal Server Error"
+                }
+            }
+        }
+    }, 
     "/account": {
         "get": {
             "tags": [
                 "other"
             ], 
-            "operationId": "account_Get", 
+            "operationId": "private_account", 
             "summary": "Private Account information", 
             "description": "Account information for token/personal token", 
             "security": [
@@ -24,7 +74,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "500": {
@@ -38,7 +88,7 @@
             "tags": [
                 "other"
             ], 
-            "operationId": "categories_Get", 
+            "operationId": "categories_list", 
             "summary": "Public Categories", 
             "description": "Returns a list of public categories", 
             "security": [], 
@@ -48,7 +98,7 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/common.json#CategoryPresenter"
+                            "$ref": "../models/common.json#Category"
                         }
                     }
                 }, 
@@ -63,7 +113,7 @@
             "tags": [
                 "other"
             ], 
-            "operationId": "licenses_Get", 
+            "operationId": "licenses_list", 
             "summary": "Public Licenses", 
             "description": "Returns a list of public licenses", 
             "security": [], 
@@ -73,7 +123,7 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/institutions.json#LicensePresenter"
+                            "$ref": "../models/institutions.json#License"
                         }
                     }
                 }, 
@@ -88,8 +138,9 @@
             "tags": [
                 "other"
             ], 
-            "operationId": "account_licenses_Get", 
+            "operationId": "private_licenses_list", 
             "summary": "Private Account Licenses", 
+            "description": "This is a private endpoint that requires OAuth. It will return a list with figshare public licenses AND licenses defined for account's institution.", 
             "security": [
                 {
                     "OAuth2": [
@@ -103,7 +154,7 @@
                     "schema": {
                         "type": "array", 
                         "items": {
-                            "$ref": "../models/institutions.json#LicensePresenter"
+                            "$ref": "../models/institutions.json#License"
                         }
                     }
                 }, 
@@ -113,7 +164,7 @@
                 "403": {
                     "description": "Forbidden", 
                     "schema": {
-                        "$ref": "../models/common.json#Error"
+                        "$ref": "../models/common.json#ErrorMessage"
                     }
                 }, 
                 "500": {
@@ -127,7 +178,7 @@
             "tags": [
                 "other"
             ], 
-            "operationId": "file_download_Get", 
+            "operationId": "file_download", 
             "summary": "Public File Download", 
             "description": "Starts the download of a file", 
             "security": [], 
