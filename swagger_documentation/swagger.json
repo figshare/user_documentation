@@ -9048,7 +9048,7 @@
                 "institution_user_id": {
                     "type": "string", 
                     "description": "Account institution user id", 
-                    "example": 1
+                    "example": "djohn42"
                 }, 
                 "institution_id": {
                     "type": "integer", 
