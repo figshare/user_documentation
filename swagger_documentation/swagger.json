@@ -132,11 +132,9 @@
                     {
                         "name": "item_type", 
                         "in": "query", 
-                        "description": "Only return articles with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book", 
+                        "description": "Only return articles with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 5 - Poster, 6 - Journal contribution, 7 - Presentation, 8 - Thesis, 9 - Software, 11 - Online resource, 12 - Preprint, 13 - Book, 14 - Conference contribution, 15 - Chapter, 16 - Peer review, 17 - Educational resource, 18 - Report, 19 - Standard, 20 - Composition, 21 - Funding, 22 - Physical object, 23 - Data management plan, 24 - Workflow, 25 - Monograph, 26 - Performance, 27 - Event, 28 - Service, 29 - Model", 
                         "type": "integer", 
                         "format": "int64", 
-                        "minimum": 1, 
-                        "maximum": 13, 
                         "required": false
                     }, 
                     {
@@ -6038,11 +6036,9 @@
                     {
                         "name": "item_type", 
                         "in": "query", 
-                        "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book", 
+                        "description": "Only return articles with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 5 - Poster, 6 - Journal contribution, 7 - Presentation, 8 - Thesis, 9 - Software, 11 - Online resource, 12 - Preprint, 13 - Book, 14 - Conference contribution, 15 - Chapter, 16 - Peer review, 17 - Educational resource, 18 - Report, 19 - Standard, 20 - Composition, 21 - Funding, 22 - Physical object, 23 - Data management plan, 24 - Workflow, 25 - Monograph, 26 - Performance, 27 - Event, 28 - Service, 29 - Model", 
                         "type": "integer", 
                         "format": "int64", 
-                        "minimum": 1, 
-                        "maximum": 13, 
                         "required": false
                     }
                 ], 
@@ -7680,11 +7676,9 @@
                     "example": "10.6084/m9.figshare.1407024"
                 }, 
                 "item_type": {
-                    "description": "Only return articles with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 12 - Preprint, 13 - Book", 
+                    "description": "Only return articles with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 5 - Poster, 6 - Journal contribution, 7 - Presentation, 8 - Thesis, 9 - Software, 11 - Online resource, 12 - Preprint, 13 - Book, 14 - Conference contribution, 15 - Chapter, 16 - Peer review, 17 - Educational resource, 18 - Report, 19 - Standard, 20 - Composition, 21 - Funding, 22 - Physical object, 23 - Data management plan, 24 - Workflow, 25 - Monograph, 26 - Performance, 27 - Event, 28 - Service, 29 - Model", 
                     "type": "integer", 
                     "format": "int64", 
-                    "minimum": 1, 
-                    "maximum": 13, 
                     "example": 1
                 }, 
                 "doi": {
@@ -8144,21 +8138,7 @@
                 }, 
                 "defined_type": {
                     "type": "string", 
-                    "description": "Article type", 
-                    "enum": [
-                        "figure", 
-                        "media", 
-                        "dataset", 
-                        "fileset", 
-                        "poster", 
-                        "paper", 
-                        "presentation", 
-                        "thesis", 
-                        "code", 
-                        "metadata", 
-                        "preprint", 
-                        "book"
-                    ], 
+                    "description": "<b>One of:</b> <code>figure</code> <code>online resource</code> <code>preprint</code> <code>book</code> <code>conference contribution</code> <code>media</code> <code>dataset</code> <code>poster</code> <code>journal contribution</code> <code>presentation</code> <code>thesis</code> <code>software</code>", 
                     "example": "media"
                 }, 
                 "funding": {
@@ -8304,21 +8284,7 @@
                 }, 
                 "defined_type": {
                     "type": "string", 
-                    "description": "Article type", 
-                    "enum": [
-                        "figure", 
-                        "media", 
-                        "dataset", 
-                        "fileset", 
-                        "poster", 
-                        "paper", 
-                        "presentation", 
-                        "thesis", 
-                        "code", 
-                        "metadata", 
-                        "preprint", 
-                        "book"
-                    ], 
+                    "description": "<b>One of:</b> <code>figure</code> <code>online resource</code> <code>preprint</code> <code>book</code> <code>conference contribution</code> <code>media</code> <code>dataset</code> <code>poster</code> <code>journal contribution</code> <code>presentation</code> <code>thesis</code> <code>software</code>", 
                     "example": "media"
                 }, 
                 "funding": {
@@ -8449,6 +8415,11 @@
                     "format": "int64", 
                     "description": "Type of article identificator", 
                     "example": 3
+                }, 
+                "defined_type_name": {
+                    "type": "string", 
+                    "description": "Name of the article type identificator", 
+                    "example": "media"
                 }
             }
         }, 
