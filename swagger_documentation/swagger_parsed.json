@@ -10634,7 +10634,7 @@
             "x-tag": "articles", 
             "type": "object", 
             "properties": {
-                "id": {
+                "version": {
                     "type": "integer", 
                     "format": "int64", 
                     "description": "Version number", 
