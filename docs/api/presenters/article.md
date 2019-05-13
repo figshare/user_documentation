@@ -23,7 +23,9 @@ eventually commit to the new fields by documenting and guaranteeing them.
     "url_private_api": "https://api.figshare.com/account/articles/1434614",
     "published_date": "2015-12-31T23:59:59Z",
     "thumb": "https://ndownloader.figshare.com/files/123456789/preview/12345678/thumb.png",
-    "defined_type": 3
+    "defined_type": 3,
+    "resource_title": "Resource title",
+    "resource_doi": "10.1000/xyz123"
 }
 ```
 
@@ -81,9 +83,7 @@ Note:
     "figshare_url": "https://figshare.com/articles/article_title/123456789",
     "files": [PublicFilePresenter],
     "authors": [AuthorPresenter],
-    "custom_fields": [CustomArticleFieldPresenter],
-    "resource_title": "Resource title",
-    "resource_doi": "10.1000/xyz123"
+    "custom_fields": [CustomArticleFieldPresenter]
 }
 ```
 

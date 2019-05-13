@@ -8420,6 +8420,22 @@
                     "type": "string", 
                     "description": "Name of the article type identificator", 
                     "example": "media"
+                }, 
+                "resource_title": {
+                    "type": [
+                        "string", 
+                        "null"
+                    ], 
+                    "description": "Article resource title", 
+                    "example": "first article"
+                }, 
+                "resource_doi": {
+                    "type": [
+                        "string", 
+                        "null"
+                    ], 
+                    "description": "Article DOI", 
+                    "example": "10.5072/FK2.developmentfigshare.2000005"
                 }
             }
         }, 
@@ -8595,22 +8611,6 @@
                     "format": "url", 
                     "description": "Article public url", 
                     "example": "http://figshare.com/articles/article_name/2000005"
-                }, 
-                "resource_title": {
-                    "type": [
-                        "string", 
-                        "null"
-                    ], 
-                    "description": "Article resource title", 
-                    "example": "first article"
-                }, 
-                "resource_doi": {
-                    "type": [
-                        "string", 
-                        "null"
-                    ], 
-                    "description": "Article DOI", 
-                    "example": "10.5072/FK2.developmentfigshare.2000005"
                 }, 
                 "files": {
                     "type": "array", 

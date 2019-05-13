@@ -692,6 +692,20 @@
                 "format": "int64", 
                 "description": "Integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint",
                 "example": 3
+            },
+            "resource_title": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "example": "first article"
+            },
+            "resource_doi": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "example": "10.5072/FK2.developmentfigshare.2000005"
             }
         }
     }, 
@@ -835,21 +849,7 @@
                 "type": "string", 
                 "format": "url", 
                 "example": "http://figshare.com/articles/article_name/2000005"
-            }, 
-            "resource_title": {
-                "type": [
-                    "string", 
-                    "null"
-                ], 
-                "example": "first article"
-            }, 
-            "resource_doi": {
-                "type": [
-                    "string", 
-                    "null"
-                ], 
-                "example": "10.5072/FK2.developmentfigshare.2000005"
-            }, 
+            },
             "files": {
                 "type": "array", 
                 "items": {
