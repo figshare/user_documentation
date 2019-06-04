@@ -951,6 +951,10 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "media",
       "description" : "Name of the article type identificator"
+    },
+    "timeline" : {
+      "description" : "Various timeline dates",
+      "$ref" : "#/definitions/TimelineUpdate"
     }
   },
   "x-tag" : "articles"
@@ -1092,6 +1096,10 @@ margin-bottom: 20px;
       "type" : "integer",
       "format" : "int64",
       "description" : "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
+    },
+    "timeline" : {
+      "description" : "Various timeline dates",
+      "$ref" : "#/definitions/TimelineUpdate"
     }
   },
   "x-tag" : "articles"
@@ -1281,6 +1289,10 @@ margin-bottom: 20px;
       "type" : "integer",
       "format" : "int64",
       "description" : "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
+    },
+    "timeline" : {
+      "description" : "Various timeline dates",
+      "$ref" : "#/definitions/TimelineUpdate"
     }
   },
   "x-tag" : "articles"
@@ -1833,15 +1845,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution" : {
       "type" : "integer",
@@ -2277,15 +2289,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution_id" : {
       "type" : "integer",
@@ -2667,6 +2679,27 @@ margin-bottom: 20px;
   },
   "x-tag" : "other"
 };
+            defs.TimelineUpdate = {
+  "type" : "object",
+  "properties" : {
+    "firstOnline" : {
+      "type" : "string",
+      "example" : "2015-12-31",
+      "description" : "Online posted date"
+    },
+    "publisherPublication" : {
+      "type" : "string",
+      "example" : "2015-12-31",
+      "description" : "Publish date"
+    },
+    "publisherAcceptance" : {
+      "type" : "string",
+      "example" : "2015-12-31",
+      "description" : "Date when the item was accepted for publication"
+    }
+  },
+  "x-tag" : "timeline_update"
+};
             defs.UploadFilePart = {
   "type" : "object",
   "properties" : {
@@ -2850,6 +2883,12 @@ margin-bottom: 20px;
     "$ref" : "#/definitions/Project"
   } ],
   "x-tag" : "projects"
+};
+            defs.Timeline = {
+  "allOf" : [ {
+    "$ref" : "#/definitions/TimelineUpdate"
+  } ],
+  "x-tag" : "timeline"
 };
             defs.ArticleComplete = {
   "allOf" : [ {
@@ -53718,7 +53757,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2019-05-20T10:28:09.233+03:00
+              Generated 2019-06-04T13:58:08.336Z
             </div>
           </div>
       </div>
