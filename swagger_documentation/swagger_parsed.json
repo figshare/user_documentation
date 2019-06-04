@@ -9525,6 +9525,11 @@
                     "type": "integer", 
                     "format": "int64", 
                     "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
+                }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/TimelineUpdate"
                 }
             }
         }, 
@@ -9671,6 +9676,11 @@
                     "type": "integer", 
                     "format": "int64", 
                     "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
+                }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/TimelineUpdate"
                 }
             }
         }, 
@@ -9777,6 +9787,82 @@
                     ], 
                     "description": "Article DOI", 
                     "example": "10.5072/FK2.developmentfigshare.2000005"
+                }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/TimelineUpdate"
+                }
+            }
+        }, 
+        "TimelineUpdate": {
+            "x-tag": "timeline_update", 
+            "type": "object", 
+            "properties": {
+                "firstOnline": {
+                    "type": "string", 
+                    "description": "Online posted date", 
+                    "example": "2015-12-31"
+                }, 
+                "publisherPublication": {
+                    "type": "string", 
+                    "description": "Publish date", 
+                    "example": "2015-12-31"
+                }, 
+                "publisherAcceptance": {
+                    "type": "string", 
+                    "description": "Date when the item was accepted for publication", 
+                    "example": "2015-12-31"
+                }
+            }
+        }, 
+        "Timeline": {
+            "x-tag": "timeline", 
+            "type": "object", 
+            "allOf": [
+                {
+                    "$ref": "#/definitions/TimelineUpdate"
+                }
+            ], 
+            "properties": {
+                "posted": {
+                    "type": [
+                        "string", 
+                        "null"
+                    ], 
+                    "description": "Posted date", 
+                    "example": "2015-12-31"
+                }, 
+                "submission": {
+                    "type": [
+                        "string", 
+                        "null"
+                    ], 
+                    "description": "Submission date in curation (if curated)", 
+                    "example": "2015-12-31"
+                }, 
+                "revision": {
+                    "type": [
+                        "string", 
+                        "null"
+                    ], 
+                    "description": "Revision date from curation (if curated)", 
+                    "example": "2015-12-31"
+                }, 
+                "firstOnline": {
+                    "type": "string", 
+                    "description": "Online posted date", 
+                    "example": "2015-12-31"
+                }, 
+                "publisherPublication": {
+                    "type": "string", 
+                    "description": "Publish date", 
+                    "example": "2015-12-31"
+                }, 
+                "publisherAcceptance": {
+                    "type": "string", 
+                    "description": "Date when the item was accepted for publication", 
+                    "example": "2015-12-31"
                 }
             }
         }, 
@@ -10035,6 +10121,11 @@
                     ], 
                     "description": "Article DOI", 
                     "example": "10.5072/FK2.developmentfigshare.2000005"
+                }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/TimelineUpdate"
                 }
             }
         }, 
@@ -10320,6 +10411,11 @@
                     ], 
                     "description": "Article DOI", 
                     "example": "10.5072/FK2.developmentfigshare.2000005"
+                }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/TimelineUpdate"
                 }
             }
         }, 
@@ -10613,6 +10709,11 @@
                     ], 
                     "description": "Article DOI", 
                     "example": "10.5072/FK2.developmentfigshare.2000005"
+                }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/TimelineUpdate"
                 }
             }
         }, 
