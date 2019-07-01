@@ -9891,7 +9891,7 @@
                         "string", 
                         "null"
                     ], 
-                    "example": null
+                    "example": "article"
                 }, 
                 "is_confidential": {
                     "description": "Article Confidentiality", 
@@ -10181,7 +10181,7 @@
                         "string", 
                         "null"
                     ], 
-                    "example": null
+                    "example": "article"
                 }, 
                 "is_confidential": {
                     "description": "Article Confidentiality", 
@@ -10479,7 +10479,7 @@
                         "string", 
                         "null"
                     ], 
-                    "example": null
+                    "example": "article"
                 }, 
                 "is_confidential": {
                     "description": "Article Confidentiality", 
