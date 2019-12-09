@@ -10861,7 +10861,7 @@
             "properties": {
                 "is_embargoed": {
                     "type": "boolean", 
-                    "description": "Confidentiality status", 
+                    "description": "Embargo status", 
                     "example": true
                 }, 
                 "embargo_date": {
