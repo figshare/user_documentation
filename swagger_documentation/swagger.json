@@ -2176,6 +2176,70 @@
                 }
             }
         }, 
+        "/account/articles/export": {
+            "get": {
+                "operationId": "account_article_report", 
+                "summary": "Account Article Report", 
+                "description": "Return status on all reports generated for the account from the oauth credentials", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "group_id", 
+                        "in": "query", 
+                        "description": "A group ID to filter by", 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "required": false
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of account report entries", 
+                        "schema": {
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/AccountReport"
+                            }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }, 
+            "post": {
+                "operationId": "account_article_report_generate", 
+                "summary": "Initiate a new Report", 
+                "description": "Initiate a new Article Report for this Account", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. AccountReport created.", 
+                        "schema": {
+                            "$ref": "#/definitions/AccountReport"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
         "/collections": {
             "get": {
                 "tags": [
@@ -8172,15 +8236,15 @@
                     "description": "Not applicable to regular users. In a publisher case, this is the publisher article title.", 
                     "default": ""
                 }, 
-                "group_id": {
-                    "type": "integer", 
-                    "format": "int64", 
-                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
-                }, 
                 "timeline": {
                     "type": "object", 
                     "description": "Various timeline dates", 
                     "$ref": "#/definitions/TimelineUpdate"
+                }, 
+                "group_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
                 }
             }
         }, 
@@ -8323,15 +8387,15 @@
                     "description": "Not applicable to regular users. In a publisher case, this is the publisher article title.", 
                     "default": ""
                 }, 
-                "group_id": {
-                    "type": "integer", 
-                    "format": "int64", 
-                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
-                }, 
                 "timeline": {
                     "type": "object", 
                     "description": "Various timeline dates", 
                     "$ref": "#/definitions/TimelineUpdate"
+                }, 
+                "group_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
                 }
             }
         }, 
@@ -8403,8 +8467,13 @@
                         "string", 
                         "null"
                     ], 
-                    "description": "Publishing date", 
+                    "description": "Posted date", 
                     "example": "2015-12-31T23:59:59.000Z"
+                }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/Timeline"
                 }, 
                 "thumb": {
                     "type": "string", 
@@ -8422,27 +8491,6 @@
                     "type": "string", 
                     "description": "Name of the article type identificator", 
                     "example": "media"
-                }, 
-                "resource_title": {
-                    "type": [
-                        "string", 
-                        "null"
-                    ], 
-                    "description": "Article resource title", 
-                    "example": "first article"
-                }, 
-                "resource_doi": {
-                    "type": [
-                        "string", 
-                        "null"
-                    ], 
-                    "description": "Article DOI", 
-                    "example": "10.5072/FK2.developmentfigshare.2000005"
-                }, 
-                "timeline": {
-                    "type": "object", 
-                    "description": "Various timeline dates", 
-                    "$ref": "#/definitions/TimelineUpdate"
                 }
             }
         }, 
@@ -8674,6 +8722,22 @@
                     "format": "url", 
                     "description": "Article public url", 
                     "example": "http://figshare.com/articles/article_name/2000005"
+                }, 
+                "resource_title": {
+                    "type": [
+                        "string", 
+                        "null"
+                    ], 
+                    "description": "Article resource title", 
+                    "example": "first article"
+                }, 
+                "resource_doi": {
+                    "type": [
+                        "string", 
+                        "null"
+                    ], 
+                    "description": "Article DOI", 
+                    "example": "10.5072/FK2.developmentfigshare.2000005"
                 }, 
                 "files": {
                     "type": "array", 
@@ -9694,6 +9758,11 @@
                     "type": "string", 
                     "description": "Date when collection was created", 
                     "example": "2017-05-15T15:12:26Z"
+                }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/Timeline"
                 }
             }
         }, 
@@ -9851,6 +9920,11 @@
                     "type": "integer", 
                     "format": "int64", 
                     "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
+                }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/TimelineUpdate"
                 }
             }
         }, 
@@ -10005,6 +10079,11 @@
                     "type": "integer", 
                     "format": "int64", 
                     "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
+                }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/TimelineUpdate"
                 }
             }
         }, 
@@ -10085,6 +10164,46 @@
                 "title": {
                     "type": "string", 
                     "description": "The title of the new user created funding"
+                }
+            }
+        }, 
+        "AccountReport": {
+            "type": "object", 
+            "properties": {
+                "id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "A unique ID for the AccountRecord"
+                }, 
+                "account_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "The ID of the account which generated this report."
+                }, 
+                "created_date": {
+                    "type": "string", 
+                    "description": "Date when the AccountReport was requested", 
+                    "example": "2017-05-15T15:12:26Z"
+                }, 
+                "status": {
+                    "type": "string", 
+                    "description": "Status of the report", 
+                    "enum": [
+                        "missing", 
+                        "pending", 
+                        "done"
+                    ]
+                }, 
+                "download_url": {
+                    "type": "string", 
+                    "format": "url", 
+                    "description": "The download link for the generated XLSX", 
+                    "example": "https://some.com/storage/path/123/report-456.xlsx"
+                }, 
+                "group_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "The group ID that was used to filter the report, if any."
                 }
             }
         }
