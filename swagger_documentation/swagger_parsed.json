@@ -2522,7 +2522,6 @@
                             "modified_date", 
                             "views", 
                             "shares", 
-                            "downloads", 
                             "cites"
                         ], 
                         "default": "published_date", 
@@ -2940,7 +2939,6 @@
                             "modified_date", 
                             "views", 
                             "shares", 
-                            "downloads", 
                             "cites"
                         ], 
                         "default": "published_date", 
@@ -4485,10 +4483,7 @@
                         "enum": [
                             "published_date", 
                             "modified_date", 
-                            "views", 
-                            "shares", 
-                            "downloads", 
-                            "cites"
+                            "views"
                         ], 
                         "default": "published_date", 
                         "required": false
@@ -4780,10 +4775,7 @@
                         "enum": [
                             "published_date", 
                             "modified_date", 
-                            "views", 
-                            "shares", 
-                            "downloads", 
-                            "cites"
+                            "views"
                         ], 
                         "default": "published_date", 
                         "required": false
