@@ -12301,6 +12301,10 @@
                 {
                     "title": "Output of Script", 
                     "content": "description_upload_output"
+                }, 
+                {
+                    "title": "Upload Bash Script", 
+                    "content": "description_upload_bash"
                 }
             ]
         }, 
