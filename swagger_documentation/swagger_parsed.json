@@ -4624,7 +4624,7 @@
                         "name": "search", 
                         "description": "Search Parameters", 
                         "schema": {
-                            "$ref": "#/definitions/CommonSearch"
+                            "$ref": "#/definitions/ProjectsSearch"
                         }, 
                         "required": false
                     }
@@ -4747,7 +4747,7 @@
                         "name": "search", 
                         "description": "Search Parameters", 
                         "schema": {
-                            "$ref": "#/definitions/CommonSearch"
+                            "$ref": "#/definitions/ProjectsSearch"
                         }, 
                         "required": false
                     }
@@ -4834,7 +4834,7 @@
                     {
                         "name": "order", 
                         "in": "query", 
-                        "description": "The field by which to order. Default varies by endpoint/resource.", 
+                        "description": "The field by which to order.", 
                         "type": "string", 
                         "enum": [
                             "published_date", 
@@ -8578,19 +8578,97 @@
                     "maximum": 5000, 
                     "example": 0
                 }, 
+                "order_direction": {
+                    "type": "string", 
+                    "description": "Direction of ordering", 
+                    "enum": [
+                        "asc", 
+                        "desc"
+                    ], 
+                    "default": "desc", 
+                    "example": "desc"
+                }, 
+                "institution": {
+                    "description": "only return collections from this institution", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "example": 2000013
+                }, 
+                "published_since": {
+                    "description": "Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD", 
+                    "type": "string", 
+                    "example": "2017-12-22"
+                }, 
+                "modified_since": {
+                    "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD", 
+                    "type": "string", 
+                    "example": "2017-12-22"
+                }, 
+                "group": {
+                    "description": "only return collections from this group", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "example": 2000013
+                }
+            }
+        }, 
+        "ProjectsSearch": {
+            "x-tag": "projects", 
+            "type": "object", 
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonSearch"
+                }
+            ], 
+            "properties": {
                 "order": {
-                    "description": "The field by which to order. Default varies by endpoint/resource.", 
+                    "description": "The field by which to order.", 
                     "type": "string", 
                     "enum": [
                         "published_date", 
                         "modified_date", 
-                        "views", 
-                        "shares", 
-                        "downloads", 
-                        "cites"
+                        "views"
                     ], 
                     "default": "published_date", 
                     "example": "published_date"
+                }, 
+                "search_for": {
+                    "type": "string", 
+                    "description": "Search term", 
+                    "example": "figshare"
+                }, 
+                "page": {
+                    "description": "Page number. Used for pagination with page_size", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 5000, 
+                    "example": 1
+                }, 
+                "page_size": {
+                    "description": "The number of results included on a page. Used for pagination with page", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 1000, 
+                    "default": 10, 
+                    "example": 10
+                }, 
+                "limit": {
+                    "description": "Number of results included on a page. Used for pagination with query", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 1, 
+                    "maximum": 1000, 
+                    "example": 10
+                }, 
+                "offset": {
+                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit", 
+                    "type": "integer", 
+                    "format": "int64", 
+                    "minimum": 0, 
+                    "maximum": 5000, 
+                    "example": 0
                 }, 
                 "order_direction": {
                     "type": "string", 
@@ -8656,6 +8734,20 @@
                     "type": "string", 
                     "example": "111084/m9.figshare.14074"
                 }, 
+                "order": {
+                    "description": "The field by which to order", 
+                    "type": "string", 
+                    "enum": [
+                        "published_date", 
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "downloads", 
+                        "cites"
+                    ], 
+                    "default": "created_date", 
+                    "example": "published_date"
+                }, 
                 "search_for": {
                     "type": "string", 
                     "description": "Search term", 
@@ -8693,20 +8785,6 @@
                     "minimum": 0, 
                     "maximum": 5000, 
                     "example": 0
-                }, 
-                "order": {
-                    "description": "The field by which to order. Default varies by endpoint/resource.", 
-                    "type": "string", 
-                    "enum": [
-                        "published_date", 
-                        "modified_date", 
-                        "views", 
-                        "shares", 
-                        "downloads", 
-                        "cites"
-                    ], 
-                    "default": "published_date", 
-                    "example": "published_date"
                 }, 
                 "order_direction": {
                     "type": "string", 
@@ -8777,6 +8855,20 @@
                     "type": "string", 
                     "example": "111084/m9.figshare.14074"
                 }, 
+                "order": {
+                    "description": "The field by which to order", 
+                    "type": "string", 
+                    "enum": [
+                        "published_date", 
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "downloads", 
+                        "cites"
+                    ], 
+                    "default": "created_date", 
+                    "example": "published_date"
+                }, 
                 "search_for": {
                     "type": "string", 
                     "description": "Search term", 
@@ -8814,20 +8906,6 @@
                     "minimum": 0, 
                     "maximum": 5000, 
                     "example": 0
-                }, 
-                "order": {
-                    "description": "The field by which to order. Default varies by endpoint/resource.", 
-                    "type": "string", 
-                    "enum": [
-                        "published_date", 
-                        "modified_date", 
-                        "views", 
-                        "shares", 
-                        "downloads", 
-                        "cites"
-                    ], 
-                    "default": "published_date", 
-                    "example": "published_date"
                 }, 
                 "order_direction": {
                     "type": "string", 
@@ -8887,6 +8965,19 @@
                     "type": "string", 
                     "example": "10084/figshare.1407024"
                 }, 
+                "order": {
+                    "description": "The field by which to order.", 
+                    "type": "string", 
+                    "enum": [
+                        "published_date", 
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "cites"
+                    ], 
+                    "default": "created_date", 
+                    "example": "published_date"
+                }, 
                 "search_for": {
                     "type": "string", 
                     "description": "Search term", 
@@ -8924,20 +9015,6 @@
                     "minimum": 0, 
                     "maximum": 5000, 
                     "example": 0
-                }, 
-                "order": {
-                    "description": "The field by which to order. Default varies by endpoint/resource.", 
-                    "type": "string", 
-                    "enum": [
-                        "published_date", 
-                        "modified_date", 
-                        "views", 
-                        "shares", 
-                        "downloads", 
-                        "cites"
-                    ], 
-                    "default": "published_date", 
-                    "example": "published_date"
                 }, 
                 "order_direction": {
                     "type": "string", 
@@ -9093,6 +9170,19 @@
                     "type": "string", 
                     "example": "10084/figshare.1407024"
                 }, 
+                "order": {
+                    "description": "The field by which to order.", 
+                    "type": "string", 
+                    "enum": [
+                        "published_date", 
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "cites"
+                    ], 
+                    "default": "created_date", 
+                    "example": "published_date"
+                }, 
                 "search_for": {
                     "type": "string", 
                     "description": "Search term", 
@@ -9130,20 +9220,6 @@
                     "minimum": 0, 
                     "maximum": 5000, 
                     "example": 0
-                }, 
-                "order": {
-                    "description": "The field by which to order. Default varies by endpoint/resource.", 
-                    "type": "string", 
-                    "enum": [
-                        "published_date", 
-                        "modified_date", 
-                        "views", 
-                        "shares", 
-                        "downloads", 
-                        "cites"
-                    ], 
-                    "default": "published_date", 
-                    "example": "published_date"
                 }, 
                 "order_direction": {
                     "type": "string", 

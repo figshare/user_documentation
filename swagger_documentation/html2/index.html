@@ -1885,13 +1885,6 @@ margin-bottom: 20px;
       "minimum" : 0,
       "maximum" : 5000
     },
-    "order" : {
-      "type" : "string",
-      "example" : "published_date",
-      "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
-      "default" : "published_date"
-    },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
@@ -2925,6 +2918,12 @@ margin-bottom: 20px;
             defs.ProjectPrivate = {
   "allOf" : [ {
     "$ref" : "#/definitions/Project"
+  } ],
+  "x-tag" : "projects"
+};
+            defs.ProjectsSearch = {
+  "allOf" : [ {
+    "$ref" : "#/definitions/CommonSearch"
   } ],
   "x-tag" : "projects"
 };
@@ -52020,7 +52019,7 @@ public class ProjectsApiExample {
         Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
         Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
-        String order = order_example; // String | The field by which to order. Default varies by endpoint/resource.
+        String order = order_example; // String | The field by which to order.
         String orderDirection = orderDirection_example; // String | 
         String storage = storage_example; // String | only return collections from this institution
         String roles = roles_example; // String | Any combination of owner, collaborator, viewer separated by comma. Examples: "owner" or "owner,collaborator".
@@ -52046,7 +52045,7 @@ public class ProjectsApiExample {
         Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
         Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
-        String order = order_example; // String | The field by which to order. Default varies by endpoint/resource.
+        String order = order_example; // String | The field by which to order.
         String orderDirection = orderDirection_example; // String | 
         String storage = storage_example; // String | only return collections from this institution
         String roles = roles_example; // String | Any combination of owner, collaborator, viewer separated by comma. Examples: "owner" or "owner,collaborator".
@@ -52074,7 +52073,7 @@ Long *page = 789; // Page number. Used for pagination with page_size (optional)
 Long *pageSize = 789; // The number of results included on a page. Used for pagination with page (optional) (default to 10)
 Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
 Long *offset = 789; // Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
-String *order = order_example; // The field by which to order. Default varies by endpoint/resource. (optional) (default to published_date)
+String *order = order_example; // The field by which to order. (optional) (default to published_date)
 String *orderDirection = orderDirection_example; //  (optional) (default to desc)
 String *storage = storage_example; // only return collections from this institution (optional)
 String *roles = roles_example; // Any combination of owner, collaborator, viewer separated by comma. Examples: "owner" or "owner,collaborator". (optional)
@@ -52116,7 +52115,7 @@ var opts = {
   'pageSize': 789, // {Long} The number of results included on a page. Used for pagination with page
   'limit': 789, // {Long} Number of results included on a page. Used for pagination with query
   'offset': 789, // {Long} Where to start the listing(the offset of the first result). Used for pagination with limit
-  'order': order_example, // {String} The field by which to order. Default varies by endpoint/resource.
+  'order': order_example, // {String} The field by which to order.
   'orderDirection': orderDirection_example, // {String} 
   'storage': storage_example, // {String} only return collections from this institution
   'roles': roles_example // {String} Any combination of owner, collaborator, viewer separated by comma. Examples: "owner" or "owner,collaborator".
@@ -52158,7 +52157,7 @@ namespace Example
             var pageSize = 789;  // Long | The number of results included on a page. Used for pagination with page (optional)  (default to 10)
             var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
             var offset = 789;  // Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional) 
-            var order = order_example;  // String | The field by which to order. Default varies by endpoint/resource. (optional)  (default to published_date)
+            var order = order_example;  // String | The field by which to order. (optional)  (default to published_date)
             var orderDirection = orderDirection_example;  // String |  (optional)  (default to desc)
             var storage = storage_example;  // String | only return collections from this institution (optional) 
             var roles = roles_example;  // String | Any combination of owner, collaborator, viewer separated by comma. Examples: "owner" or "owner,collaborator". (optional) 
@@ -52191,7 +52190,7 @@ $page = 789; // Long | Page number. Used for pagination with page_size
 $pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
 $limit = 789; // Long | Number of results included on a page. Used for pagination with query
 $offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
-$order = order_example; // String | The field by which to order. Default varies by endpoint/resource.
+$order = order_example; // String | The field by which to order.
 $orderDirection = orderDirection_example; // String | 
 $storage = storage_example; // String | only return collections from this institution
 $roles = roles_example; // String | Any combination of owner, collaborator, viewer separated by comma. Examples: "owner" or "owner,collaborator".
@@ -52218,7 +52217,7 @@ my $page = 789; # Long | Page number. Used for pagination with page_size
 my $pageSize = 789; # Long | The number of results included on a page. Used for pagination with page
 my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
 my $offset = 789; # Long | Where to start the listing(the offset of the first result). Used for pagination with limit
-my $order = order_example; # String | The field by which to order. Default varies by endpoint/resource.
+my $order = order_example; # String | The field by which to order.
 my $orderDirection = orderDirection_example; # String | 
 my $storage = storage_example; # String | only return collections from this institution
 my $roles = roles_example; # String | Any combination of owner, collaborator, viewer separated by comma. Examples: "owner" or "owner,collaborator".
@@ -52248,7 +52247,7 @@ page = 789 # Long | Page number. Used for pagination with page_size (optional)
 pageSize = 789 # Long | The number of results included on a page. Used for pagination with page (optional) (default to 10)
 limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
 offset = 789 # Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
-order = order_example # String | The field by which to order. Default varies by endpoint/resource. (optional) (default to published_date)
+order = order_example # String | The field by which to order. (optional) (default to published_date)
 orderDirection = orderDirection_example # String |  (optional) (default to desc)
 storage = storage_example # String | only return collections from this institution (optional)
 roles = roles_example # String | Any combination of owner, collaborator, viewer separated by comma. Examples: "owner" or "owner,collaborator". (optional)
@@ -52378,7 +52377,7 @@ except ApiException as e:
                 </span>
 
                     <div class="inner description">
-                        The field by which to order. Default varies by endpoint/resource.
+                        The field by which to order.
                     </div>
             </div>
         </div>
@@ -52602,7 +52601,7 @@ public class ProjectsApiExample {
     public static void main(String[] args) {
         
         ProjectsApi apiInstance = new ProjectsApi();
-        CommonSearch search = ; // CommonSearch | Search Parameters
+        ProjectsSearch search = ; // ProjectsSearch | Search Parameters
         try {
             array[ProjectPrivate] result = apiInstance.privateProjectsSearch(search);
             System.out.println(result);
@@ -52621,7 +52620,7 @@ public class ProjectsApiExample {
 
     public static void main(String[] args) {
         ProjectsApi apiInstance = new ProjectsApi();
-        CommonSearch search = ; // CommonSearch | Search Parameters
+        ProjectsSearch search = ; // ProjectsSearch | Search Parameters
         try {
             array[ProjectPrivate] result = apiInstance.privateProjectsSearch(search);
             System.out.println(result);
@@ -52637,7 +52636,7 @@ public class ProjectsApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Projects-privateProjectsSearch-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">CommonSearch *search = ; // Search Parameters (optional)
+                              <pre class="prettyprint"><code class="language-cpp">ProjectsSearch *search = ; // Search Parameters (optional)
 
 ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
 
@@ -52660,7 +52659,7 @@ ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
 var api = new FigshareApi.ProjectsApi()
 
 var opts = { 
-  'search':  // {CommonSearch} Search Parameters
+  'search':  // {ProjectsSearch} Search Parameters
 };
 
 var callback = function(error, data, response) {
@@ -52692,7 +52691,7 @@ namespace Example
         {
             
             var apiInstance = new ProjectsApi();
-            var search = new CommonSearch(); // CommonSearch | Search Parameters (optional) 
+            var search = new ProjectsSearch(); // ProjectsSearch | Search Parameters (optional) 
 
             try
             {
@@ -52715,7 +52714,7 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\ProjectsApi();
-$search = ; // CommonSearch | Search Parameters
+$search = ; // ProjectsSearch | Search Parameters
 
 try {
     $result = $api_instance->privateProjectsSearch($search);
@@ -52732,7 +52731,7 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::ProjectsApi;
 
 my $api_instance = WWW::SwaggerClient::ProjectsApi->new();
-my $search = WWW::SwaggerClient::Object::CommonSearch->new(); # CommonSearch | Search Parameters
+my $search = WWW::SwaggerClient::Object::ProjectsSearch->new(); # ProjectsSearch | Search Parameters
 
 eval { 
     my $result = $api_instance->privateProjectsSearch(search => $search);
@@ -52752,7 +52751,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProjectsApi()
-search =  # CommonSearch | Search Parameters (optional)
+search =  # ProjectsSearch | Search Parameters (optional)
 
 try: 
     # Private Projects search
@@ -52785,7 +52784,7 @@ $(document).ready(function() {
   "description" : "Search Parameters",
   "required" : false,
   "schema" : {
-    "$ref" : "#/definitions/CommonSearch"
+    "$ref" : "#/definitions/ProjectsSearch"
   }
 };
   var schema = schemaWrapper.schema;
@@ -54139,7 +54138,7 @@ public class ProjectsApiExample {
     public static void main(String[] args) {
         
         ProjectsApi apiInstance = new ProjectsApi();
-        CommonSearch search = ; // CommonSearch | Search Parameters
+        ProjectsSearch search = ; // ProjectsSearch | Search Parameters
         try {
             array[Project] result = apiInstance.projectsSearch(search);
             System.out.println(result);
@@ -54158,7 +54157,7 @@ public class ProjectsApiExample {
 
     public static void main(String[] args) {
         ProjectsApi apiInstance = new ProjectsApi();
-        CommonSearch search = ; // CommonSearch | Search Parameters
+        ProjectsSearch search = ; // ProjectsSearch | Search Parameters
         try {
             array[Project] result = apiInstance.projectsSearch(search);
             System.out.println(result);
@@ -54174,7 +54173,7 @@ public class ProjectsApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Projects-projectsSearch-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">CommonSearch *search = ; // Search Parameters (optional)
+                              <pre class="prettyprint"><code class="language-cpp">ProjectsSearch *search = ; // Search Parameters (optional)
 
 ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
 
@@ -54197,7 +54196,7 @@ ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
 var api = new FigshareApi.ProjectsApi()
 
 var opts = { 
-  'search':  // {CommonSearch} Search Parameters
+  'search':  // {ProjectsSearch} Search Parameters
 };
 
 var callback = function(error, data, response) {
@@ -54229,7 +54228,7 @@ namespace Example
         {
             
             var apiInstance = new ProjectsApi();
-            var search = new CommonSearch(); // CommonSearch | Search Parameters (optional) 
+            var search = new ProjectsSearch(); // ProjectsSearch | Search Parameters (optional) 
 
             try
             {
@@ -54252,7 +54251,7 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\ProjectsApi();
-$search = ; // CommonSearch | Search Parameters
+$search = ; // ProjectsSearch | Search Parameters
 
 try {
     $result = $api_instance->projectsSearch($search);
@@ -54269,7 +54268,7 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::ProjectsApi;
 
 my $api_instance = WWW::SwaggerClient::ProjectsApi->new();
-my $search = WWW::SwaggerClient::Object::CommonSearch->new(); # CommonSearch | Search Parameters
+my $search = WWW::SwaggerClient::Object::ProjectsSearch->new(); # ProjectsSearch | Search Parameters
 
 eval { 
     my $result = $api_instance->projectsSearch(search => $search);
@@ -54289,7 +54288,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProjectsApi()
-search =  # CommonSearch | Search Parameters (optional)
+search =  # ProjectsSearch | Search Parameters (optional)
 
 try: 
     # Public Projects Search
@@ -54322,7 +54321,7 @@ $(document).ready(function() {
   "description" : "Search Parameters",
   "required" : false,
   "schema" : {
-    "$ref" : "#/definitions/CommonSearch"
+    "$ref" : "#/definitions/ProjectsSearch"
   }
 };
   var schema = schemaWrapper.schema;
@@ -54437,7 +54436,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2019-12-16T11:18:21.725+02:00
+              Generated 2019-12-16T12:39:11.528+02:00
             </div>
           </div>
       </div>

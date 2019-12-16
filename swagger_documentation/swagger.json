@@ -4167,7 +4167,7 @@
                         "name": "search", 
                         "description": "Search Parameters", 
                         "schema": {
-                            "$ref": "#/definitions/CommonSearch"
+                            "$ref": "#/definitions/ProjectsSearch"
                         }, 
                         "required": false
                     }
@@ -4290,7 +4290,7 @@
                         "name": "search", 
                         "description": "Search Parameters", 
                         "schema": {
-                            "$ref": "#/definitions/CommonSearch"
+                            "$ref": "#/definitions/ProjectsSearch"
                         }, 
                         "required": false
                     }
@@ -4377,7 +4377,7 @@
                     {
                         "name": "order", 
                         "in": "query", 
-                        "description": "The field by which to order. Default varies by endpoint/resource.", 
+                        "description": "The field by which to order.", 
                         "type": "string", 
                         "enum": [
                             "published_date", 
@@ -7669,20 +7669,6 @@
                     "maximum": 5000, 
                     "example": 0
                 }, 
-                "order": {
-                    "description": "The field by which to order. Default varies by endpoint/resource.", 
-                    "type": "string", 
-                    "enum": [
-                        "published_date", 
-                        "modified_date", 
-                        "views", 
-                        "shares", 
-                        "downloads", 
-                        "cites"
-                    ], 
-                    "default": "published_date", 
-                    "example": "published_date"
-                }, 
                 "order_direction": {
                     "type": "string", 
                     "description": "Direction of ordering", 
@@ -7717,6 +7703,28 @@
                 }
             }
         }, 
+        "ProjectsSearch": {
+            "x-tag": "projects", 
+            "type": "object", 
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonSearch"
+                }
+            ], 
+            "properties": {
+                "order": {
+                    "description": "The field by which to order.", 
+                    "type": "string", 
+                    "enum": [
+                        "published_date", 
+                        "modified_date", 
+                        "views"
+                    ], 
+                    "default": "published_date", 
+                    "example": "published_date"
+                }
+            }
+        }, 
         "ArticleSearch": {
             "x-tag": "articles", 
             "type": "object", 
@@ -7746,6 +7754,20 @@
                     "description": "Only return articles with this handle", 
                     "type": "string", 
                     "example": "111084/m9.figshare.14074"
+                }, 
+                "order": {
+                    "description": "The field by which to order", 
+                    "type": "string", 
+                    "enum": [
+                        "published_date", 
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "downloads", 
+                        "cites"
+                    ], 
+                    "default": "created_date", 
+                    "example": "published_date"
                 }
             }
         }, 
@@ -7788,6 +7810,19 @@
                     "description": "Only return collections with this handle", 
                     "type": "string", 
                     "example": "10084/figshare.1407024"
+                }, 
+                "order": {
+                    "description": "The field by which to order.", 
+                    "type": "string", 
+                    "enum": [
+                        "published_date", 
+                        "modified_date", 
+                        "views", 
+                        "shares", 
+                        "cites"
+                    ], 
+                    "default": "created_date", 
+                    "example": "published_date"
                 }
             }
         }, 
