@@ -2178,6 +2178,9 @@
         }, 
         "/account/articles/export": {
             "get": {
+                "tags": [
+                    "articles"
+                ], 
                 "operationId": "account_article_report", 
                 "summary": "Account Article Report", 
                 "description": "Return status on all reports generated for the account from the oauth credentials", 
@@ -2217,6 +2220,9 @@
                 }
             }, 
             "post": {
+                "tags": [
+                    "articles"
+                ], 
                 "operationId": "account_article_report_generate", 
                 "summary": "Initiate a new Report", 
                 "description": "Initiate a new Article Report for this Account", 

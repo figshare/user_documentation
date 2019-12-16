@@ -2980,6 +2980,12 @@ margin-bottom: 20px;
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                   <li class="nav-header" data-group="Articles"><a href="#api-Articles">API Methods - Articles</a></li>
+                    <li data-group="Articles" data-name="accountArticleReport" class="">
+                      <a href="#api-Articles-accountArticleReport">accountArticleReport</a>
+                    </li>
+                    <li data-group="Articles" data-name="accountArticleReportGenerate" class="">
+                      <a href="#api-Articles-accountArticleReportGenerate">accountArticleReportGenerate</a>
+                    </li>
                     <li data-group="Articles" data-name="articleDetails" class="">
                       <a href="#api-Articles-articleDetails">articleDetails</a>
                     </li>
@@ -3204,13 +3210,6 @@ margin-bottom: 20px;
                     <li data-group="Collections" data-name="privateCollectionsSearch" class="">
                       <a href="#api-Collections-privateCollectionsSearch">privateCollectionsSearch</a>
                     </li>
-                  <li class="nav-header" data-group="Default"><a href="#api-Default">API Methods - Default</a></li>
-                    <li data-group="Default" data-name="accountArticleReport" class="">
-                      <a href="#api-Default-accountArticleReport">accountArticleReport</a>
-                    </li>
-                    <li data-group="Default" data-name="accountArticleReportGenerate" class="">
-                      <a href="#api-Default-accountArticleReportGenerate">accountArticleReportGenerate</a>
-                    </li>
                   <li class="nav-header" data-group="Institutions"><a href="#api-Institutions">API Methods - Institutions</a></li>
                     <li data-group="Institutions" data-name="accountInstitutionCuration" class="">
                       <a href="#api-Institutions-accountInstitutionCuration">accountInstitutionCuration</a>
@@ -3388,6 +3387,632 @@ margin-bottom: 20px;
         <div id="sections">
                 <section id="api-Articles">
                   <h1>Articles</h1>
+                    <div id="api-Articles-accountArticleReport">
+                      <article id="api-Articles-accountArticleReport-0" data-group="User" data-name="accountArticleReport" data-version="0">
+                        <div class="pull-left">
+                          <h1>accountArticleReport</h1>
+                          <p>Account Article Report</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Return status on all reports generated for the account from the oauth credentials</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/account/articles/export</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Articles-accountArticleReport-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleReport-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleReport-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Articles-accountArticleReport-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Articles-accountArticleReport-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleReport-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Articles-accountArticleReport-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Articles-accountArticleReport-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleReport-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleReport-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleReport-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Articles-accountArticleReport-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/account/articles/export?group_id="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Articles-accountArticleReport-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ArticlesApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long groupId = 789; // Long | A group ID to filter by
+        try {
+            array[AccountReport] result = apiInstance.accountArticleReport(groupId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#accountArticleReport");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Articles-accountArticleReport-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ArticlesApi;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long groupId = 789; // Long | A group ID to filter by
+        try {
+            array[AccountReport] result = apiInstance.accountArticleReport(groupId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#accountArticleReport");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Articles-accountArticleReport-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Articles-accountArticleReport-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *groupId = 789; // A group ID to filter by (optional)
+
+ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
+
+// Account Article Report
+[apiInstance accountArticleReportWith:groupId
+              completionHandler: ^(array[AccountReport] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticleReport-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.ArticlesApi()
+
+var opts = { 
+  'groupId': 789 // {Long} A group ID to filter by
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.accountArticleReport(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Articles-accountArticleReport-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Articles-accountArticleReport-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class accountArticleReportExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ArticlesApi();
+            var groupId = 789;  // Long | A group ID to filter by (optional) 
+
+            try
+            {
+                // Account Article Report
+                array[AccountReport] result = apiInstance.accountArticleReport(groupId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ArticlesApi.accountArticleReport: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticleReport-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\ArticlesApi();
+$groupId = 789; // Long | A group ID to filter by
+
+try {
+    $result = $api_instance->accountArticleReport($groupId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ArticlesApi->accountArticleReport: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticleReport-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ArticlesApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
+my $groupId = 789; # Long | A group ID to filter by
+
+eval { 
+    my $result = $api_instance->accountArticleReport(groupId => $groupId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ArticlesApi->accountArticleReport: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticleReport-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.ArticlesApi()
+groupId = 789 # Long | A group ID to filter by (optional)
+
+try: 
+    # Account Article Report
+    api_response = api_instance.account_article_report(groupId=groupId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ArticlesApi->accountArticleReport: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">group_id</td>
+<td>
+
+
+    <div id="d2e199_accountArticleReport_groupId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        A group ID to filter by
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK. An array of account report entries </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-accountArticleReport-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-accountArticleReport-200-schema">
+                                  <div id='responses-accountArticleReport-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK. An array of account report entries",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/AccountReport"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-accountArticleReport-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-accountArticleReport-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-accountArticleReport-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Articles-accountArticleReportGenerate">
+                      <article id="api-Articles-accountArticleReportGenerate-0" data-group="User" data-name="accountArticleReportGenerate" data-version="0">
+                        <div class="pull-left">
+                          <h1>accountArticleReportGenerate</h1>
+                          <p>Initiate a new Report</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Initiate a new Article Report for this Account</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/articles/export</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Articles-accountArticleReportGenerate-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleReportGenerate-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleReportGenerate-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Articles-accountArticleReportGenerate-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Articles-accountArticleReportGenerate-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleReportGenerate-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Articles-accountArticleReportGenerate-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Articles-accountArticleReportGenerate-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleReportGenerate-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleReportGenerate-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleReportGenerate-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Articles-accountArticleReportGenerate-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/articles/export"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Articles-accountArticleReportGenerate-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ArticlesApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ArticlesApi apiInstance = new ArticlesApi();
+        try {
+            AccountReport result = apiInstance.accountArticleReportGenerate();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#accountArticleReportGenerate");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Articles-accountArticleReportGenerate-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ArticlesApi;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ArticlesApi apiInstance = new ArticlesApi();
+        try {
+            AccountReport result = apiInstance.accountArticleReportGenerate();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#accountArticleReportGenerate");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Articles-accountArticleReportGenerate-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Articles-accountArticleReportGenerate-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
+
+// Initiate a new Report
+[apiInstance accountArticleReportGenerateWithCompletionHandler: 
+              ^(AccountReport output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticleReportGenerate-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.ArticlesApi()
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.accountArticleReportGenerate(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Articles-accountArticleReportGenerate-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Articles-accountArticleReportGenerate-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class accountArticleReportGenerateExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ArticlesApi();
+
+            try
+            {
+                // Initiate a new Report
+                AccountReport result = apiInstance.accountArticleReportGenerate();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ArticlesApi.accountArticleReportGenerate: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticleReportGenerate-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\ArticlesApi();
+
+try {
+    $result = $api_instance->accountArticleReportGenerate();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ArticlesApi->accountArticleReportGenerate: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticleReportGenerate-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ArticlesApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
+
+eval { 
+    my $result = $api_instance->accountArticleReportGenerate();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ArticlesApi->accountArticleReportGenerate: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticleReportGenerate-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.ArticlesApi()
+
+try: 
+    # Initiate a new Report
+    api_response = api_instance.account_article_report_generate()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ArticlesApi->accountArticleReportGenerate: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK. AccountReport created. </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-accountArticleReportGenerate-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-accountArticleReportGenerate-200-schema">
+                                  <div id='responses-accountArticleReportGenerate-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK. AccountReport created.",
+  "schema" : {
+    "$ref" : "#/definitions/AccountReport"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-accountArticleReportGenerate-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-accountArticleReportGenerate-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-accountArticleReportGenerate-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Articles-articleDetails">
                       <article id="api-Articles-articleDetails-0" data-group="User" data-name="articleDetails" data-version="0">
                         <div class="pull-left">
@@ -33072,635 +33697,6 @@ $(document).ready(function() {
                       </div>
                       <hr>
                   </section>
-                <section id="api-Default">
-                  <h1>Default</h1>
-                    <div id="api-Default-accountArticleReport">
-                      <article id="api-Default-accountArticleReport-0" data-group="User" data-name="accountArticleReport" data-version="0">
-                        <div class="pull-left">
-                          <h1>accountArticleReport</h1>
-                          <p>Account Article Report</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">Return status on all reports generated for the account from the oauth credentials</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/account/articles/export</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-accountArticleReport-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-accountArticleReport-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-accountArticleReport-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-accountArticleReport-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-accountArticleReport-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-accountArticleReport-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-accountArticleReport-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-accountArticleReport-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-accountArticleReport-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-accountArticleReport-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-accountArticleReport-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-accountArticleReport-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/account/articles/export?group_id="</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-accountArticleReport-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure OAuth2 access token for authorization: OAuth2
-        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
-        DefaultApi apiInstance = new DefaultApi();
-        Long groupId = 789; // Long | A group ID to filter by
-        try {
-            array[AccountReport] result = apiInstance.accountArticleReport(groupId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#accountArticleReport");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-accountArticleReport-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        Long groupId = 789; // Long | A group ID to filter by
-        try {
-            array[AccountReport] result = apiInstance.accountArticleReport(groupId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#accountArticleReport");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-accountArticleReport-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-accountArticleReport-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-Long *groupId = 789; // A group ID to filter by (optional)
-
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-
-// Account Article Report
-[apiInstance accountArticleReportWith:groupId
-              completionHandler: ^(array[AccountReport] output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-accountArticleReport-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
-var defaultClient = FigshareApi.ApiClient.instance;
-
-// Configure OAuth2 access token for authorization: OAuth2
-var OAuth2 = defaultClient.authentications['OAuth2'];
-OAuth2.accessToken = "YOUR ACCESS TOKEN"
-
-var api = new FigshareApi.DefaultApi()
-
-var opts = { 
-  'groupId': 789 // {Long} A group ID to filter by
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.accountArticleReport(opts, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-accountArticleReport-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-accountArticleReport-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class accountArticleReportExample
-    {
-        public void main()
-        {
-            
-            // Configure OAuth2 access token for authorization: OAuth2
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new DefaultApi();
-            var groupId = 789;  // Long | A group ID to filter by (optional) 
-
-            try
-            {
-                // Account Article Report
-                array[AccountReport] result = apiInstance.accountArticleReport(groupId);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.accountArticleReport: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-accountArticleReport-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: OAuth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new Swagger\Client\Api\DefaultApi();
-$groupId = 789; // Long | A group ID to filter by
-
-try {
-    $result = $api_instance->accountArticleReport($groupId);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->accountArticleReport: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-accountArticleReport-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::DefaultApi;
-
-# Configure OAuth2 access token for authorization: OAuth2
-$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $groupId = 789; # Long | A group ID to filter by
-
-eval { 
-    my $result = $api_instance->accountArticleReport(groupId => $groupId);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->accountArticleReport: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-accountArticleReport-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: OAuth2
-swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-groupId = 789 # Long | A group ID to filter by (optional)
-
-try: 
-    # Account Article Report
-    api_response = api_instance.account_article_report(groupId=groupId)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->accountArticleReport: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-
-
-
-
-                            <div class="methodsubtabletitle">Query parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">group_id</td>
-<td>
-
-
-    <div id="d2e199_accountArticleReport_groupId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        A group ID to filter by
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - OK. An array of account report entries </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-accountArticleReport-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-accountArticleReport-200-schema">
-                                  <div id='responses-accountArticleReport-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "OK. An array of account report entries",
-  "schema" : {
-    "type" : "array",
-    "items" : {
-      "$ref" : "#/definitions/AccountReport"
-    }
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-accountArticleReport-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-accountArticleReport-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-accountArticleReport-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 400 - Bad Request </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 500 - Internal Server Error </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Default-accountArticleReportGenerate">
-                      <article id="api-Default-accountArticleReportGenerate-0" data-group="User" data-name="accountArticleReportGenerate" data-version="0">
-                        <div class="pull-left">
-                          <h1>accountArticleReportGenerate</h1>
-                          <p>Initiate a new Report</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">Initiate a new Article Report for this Account</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/articles/export</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-accountArticleReportGenerate-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-accountArticleReportGenerate-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-accountArticleReportGenerate-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-accountArticleReportGenerate-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-accountArticleReportGenerate-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-accountArticleReportGenerate-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-accountArticleReportGenerate-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-accountArticleReportGenerate-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-accountArticleReportGenerate-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-accountArticleReportGenerate-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-accountArticleReportGenerate-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-accountArticleReportGenerate-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/articles/export"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-accountArticleReportGenerate-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure OAuth2 access token for authorization: OAuth2
-        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
-        DefaultApi apiInstance = new DefaultApi();
-        try {
-            AccountReport result = apiInstance.accountArticleReportGenerate();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#accountArticleReportGenerate");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-accountArticleReportGenerate-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        try {
-            AccountReport result = apiInstance.accountArticleReportGenerate();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#accountArticleReportGenerate");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-accountArticleReportGenerate-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-accountArticleReportGenerate-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-
-// Initiate a new Report
-[apiInstance accountArticleReportGenerateWithCompletionHandler: 
-              ^(AccountReport output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-accountArticleReportGenerate-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
-var defaultClient = FigshareApi.ApiClient.instance;
-
-// Configure OAuth2 access token for authorization: OAuth2
-var OAuth2 = defaultClient.authentications['OAuth2'];
-OAuth2.accessToken = "YOUR ACCESS TOKEN"
-
-var api = new FigshareApi.DefaultApi()
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.accountArticleReportGenerate(callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-accountArticleReportGenerate-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-accountArticleReportGenerate-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class accountArticleReportGenerateExample
-    {
-        public void main()
-        {
-            
-            // Configure OAuth2 access token for authorization: OAuth2
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new DefaultApi();
-
-            try
-            {
-                // Initiate a new Report
-                AccountReport result = apiInstance.accountArticleReportGenerate();
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.accountArticleReportGenerate: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-accountArticleReportGenerate-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: OAuth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new Swagger\Client\Api\DefaultApi();
-
-try {
-    $result = $api_instance->accountArticleReportGenerate();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->accountArticleReportGenerate: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-accountArticleReportGenerate-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::DefaultApi;
-
-# Configure OAuth2 access token for authorization: OAuth2
-$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-
-eval { 
-    my $result = $api_instance->accountArticleReportGenerate();
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->accountArticleReportGenerate: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-accountArticleReportGenerate-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: OAuth2
-swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-
-try: 
-    # Initiate a new Report
-    api_response = api_instance.account_article_report_generate()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->accountArticleReportGenerate: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - OK. AccountReport created. </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-accountArticleReportGenerate-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-accountArticleReportGenerate-200-schema">
-                                  <div id='responses-accountArticleReportGenerate-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "OK. AccountReport created.",
-  "schema" : {
-    "$ref" : "#/definitions/AccountReport"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-accountArticleReportGenerate-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-accountArticleReportGenerate-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-accountArticleReportGenerate-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 500 - Internal Server Error </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
-                  </section>
                 <section id="api-Institutions">
                   <h1>Institutions</h1>
                     <div id="api-Institutions-accountInstitutionCuration">
@@ -54436,7 +54432,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2019-12-16T12:39:11.528+02:00
+              Generated 2019-12-16T14:42:20.344+02:00
             </div>
           </div>
       </div>
