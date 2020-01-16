@@ -2131,6 +2131,181 @@ echo ''
 </code></pre>
 
       </div>
+      <div id="description_upload_from_s3">
+        <h2 id="upload-from-s3-script">Upload S3 File to fig<b>share</b></h2>
+        <p>This is a python script for uploading files. You'll have to replace certain strings inside it with your keys.</p>
+        <pre><code class="nohighlight">
+import hashlib
+import json
+import requests
+
+from requests.exceptions import HTTPError
+from boto.s3.connection import S3Connection
+
+BASE_URL = "https://api.figshare.com/v2/{endpoint}"
+CHUNK_SIZE = 1048576  # bytes
+TOKEN = "&lt;insert access token here&gt;"
+BUCKET_NAME = "&lt;insert bucket name here&gt;"
+FILE_KEY = "&lt;insert file key here&gt;"
+AWS_KEY = "&lt;insert AWS key here&gt;"
+AWS_SECRET = "&lt;insert AWS secret here&gt;"
+
+RECORD_TITLE = "&lt;insert Figshare record title here&gt;"
+
+
+def retrieve_key():
+    conn = S3Connection(AWS_KEY, AWS_SECRET, is_secure=False)
+    bucket = conn.get_bucket(BUCKET_NAME)
+    key = bucket.lookup(FILE_KEY)
+
+    return key
+
+
+def raw_issue_request(method, url, data=None, binary=False):
+    headers = {"Authorization": "token " + TOKEN}
+    if data is not None and not binary:
+        data = json.dumps(data)
+    response = requests.request(method, url, headers=headers, data=data)
+    try:
+        response.raise_for_status()
+        try:
+            data = json.loads(response.content)
+        except ValueError:
+            data = response.content
+    except HTTPError as error:
+        print "Caught an HTTPError: {}".format(error.message)
+        print "Body:\n", response.content
+        raise
+
+    return data
+
+
+def issue_request(method, endpoint, *args, **kwargs):
+    return raw_issue_request(method, BASE_URL.format(endpoint=endpoint), *args, **kwargs)
+
+
+def list_articles():
+    result = issue_request("GET", "account/articles")
+    print "Listing current articles:"
+    if result:
+        for item in result:
+            print u"  {url} - {title}".format(**item)
+    else:
+        print "  No articles."
+
+
+def create_article(title):
+    data = {"title": title}  # You may add any other information about the article here as you wish.
+    result = issue_request("POST", "account/articles", data=data)
+    print "Created article:", result["location"], "\n"
+
+    result = raw_issue_request("GET", result["location"])
+
+    return result["id"]
+
+
+def list_files_of_article(article_id):
+    result = issue_request("GET", "account/articles/{}/files".format(article_id))
+    print "Listing files for article {}:".format(article_id)
+    if result:
+        for item in result:
+            print "  {id} - {name}".format(**item)
+    else:
+        print "  No files."
+
+
+def get_file_check_data(key):
+    md5 = hashlib.md5()
+    start_byte = 0
+    stop_byte = min(CHUNK_SIZE, key.size) - 1
+    headers = {"Range": "bytes={}-{}".format(start_byte, stop_byte)}
+    data = key.get_contents_as_string(headers=headers)
+    size = len(data)
+    while size &lt; key.size:
+        md5.update(data)
+        start_byte = size
+        stop_byte = min(size + CHUNK_SIZE, key.size) - 1
+        headers = {"Range": "bytes={}-{}".format(start_byte, stop_byte)}
+        data = key.get_contents_as_string(headers=headers)
+        size += len(data)
+    md5.update(data)
+
+    file_name = key.name.rsplit("/", 1)[1] if "/" in key.name else key.name
+
+    return md5.hexdigest(), key.size, file_name
+
+
+def initiate_new_upload(article_id, key):
+    endpoint = "account/articles/{}/files"
+    endpoint = endpoint.format(article_id)
+
+    md5, size, name = get_file_check_data(key)
+
+    data = {"md5": md5, "size": size, "name": name}
+
+    print data
+
+    result = issue_request("POST", endpoint, data=data)
+    print "Initiated file upload:", result["location"], "\n"
+
+    result = raw_issue_request("GET", result["location"])
+
+    return result
+
+
+def complete_upload(article_id, file_id):
+    issue_request("POST", "account/articles/{}/files/{}".format(article_id, file_id))
+
+
+def upload_parts(file_info, key):
+    url = "{upload_url}".format(**file_info)
+    result = raw_issue_request("GET", url)
+
+    print result
+
+    print "Uploading parts:"
+
+    for part in result["parts"]:
+        upload_part(file_info, part, key)
+
+    print
+
+
+def upload_part(file_info, part, key):
+    udata = file_info.copy()
+    udata.update(part)
+    url = "{upload_url}/{partNo}".format(**udata)
+
+    your_bytes = key.get_contents_as_string(
+        headers={"Range": "bytes=" + str(part["startOffset"]) + "-" + str(part["endOffset"])}
+    )
+
+    raw_issue_request("PUT", url, data=your_bytes, binary=True)
+    print "  Uploaded part {partNo} from {startOffset} to {endOffset}".format(**part)
+
+
+def main():
+    # We first create the article
+    list_articles()
+    article_id = create_article(RECORD_TITLE)
+    list_files_of_article(article_id)
+
+    # Then we retrieve the file
+    file_key = retrieve_key()
+
+    # Then we upload the file.
+    file_info = initiate_new_upload(article_id, file_key)
+    # Until here we used the figshare API; following lines use the figshare upload service API.
+    upload_parts(file_info, file_key)
+    # We return to the figshare API to complete the file upload process.
+    complete_upload(article_id, file_info["id"])
+    list_files_of_article(article_id)
+
+
+if __name__ == "__main__":
+    main()
+        </code></pre>
+      </div>
       <div id="description_oai_pmh">
         <h1 id="oai-pmh">OAI-PMH</h1>
         <p>fig<strong>share</strong> supports the Open Archives Initiative (OAI) and implements the

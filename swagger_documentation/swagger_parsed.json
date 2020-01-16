@@ -12387,6 +12387,10 @@
                 {
                     "title": "Upload Bash Script", 
                     "content": "description_upload_bash"
+                }, 
+                {
+                    "title": "Upload S3 File to Figshare", 
+                    "content": "description_upload_from_s3"
                 }
             ]
         }, 
