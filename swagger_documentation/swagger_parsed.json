@@ -9865,7 +9865,7 @@
                     "type": "string", 
                     "description": "Public site endpoint for article", 
                     "format": "url", 
-                    "example": "https://figshare.com/articles/Test_article_title/1434614"
+                    "example": "https://figshare.com/articles/media/Test_article_title/1434614"
                 }, 
                 "url_public_api": {
                     "type": "string", 
@@ -10183,7 +10183,7 @@
                     "type": "string", 
                     "description": "Public site endpoint for article", 
                     "format": "url", 
-                    "example": "https://figshare.com/articles/Test_article_title/1434614"
+                    "example": "https://figshare.com/articles/media/Test_article_title/1434614"
                 }, 
                 "url_public_api": {
                     "type": "string", 
@@ -10248,7 +10248,7 @@
                     "type": "string", 
                     "format": "url", 
                     "description": "Article public url", 
-                    "example": "http://figshare.com/articles/article_name/2000005"
+                    "example": "http://figshare.com/articles/media/article_name/2000005"
                 }, 
                 "resource_title": {
                     "type": [
@@ -10473,7 +10473,7 @@
                     "type": "string", 
                     "description": "Public site endpoint for article", 
                     "format": "url", 
-                    "example": "https://figshare.com/articles/Test_article_title/1434614"
+                    "example": "https://figshare.com/articles/media/Test_article_title/1434614"
                 }, 
                 "url_public_api": {
                     "type": "string", 
@@ -10546,7 +10546,7 @@
                     "type": "string", 
                     "format": "url", 
                     "description": "Article public url", 
-                    "example": "http://figshare.com/articles/article_name/2000005"
+                    "example": "http://figshare.com/articles/media/article_name/2000005"
                 }, 
                 "resource_title": {
                     "type": [
@@ -10771,7 +10771,7 @@
                     "type": "string", 
                     "description": "Public site endpoint for article", 
                     "format": "url", 
-                    "example": "https://figshare.com/articles/Test_article_title/1434614"
+                    "example": "https://figshare.com/articles/media/Test_article_title/1434614"
                 }, 
                 "url_public_api": {
                     "type": "string", 
