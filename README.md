@@ -1,22 +1,68 @@
-# figshare User Documentation
+# figshare API User Documentation
 
-The home of figshare's user documentation.
+The home of figshare's API user documentation.
 
-## Development
+During the evolution of the API documentation there have been various iterations
+and in this latest form we use Swagger to generate the pages and examples.
 
-To build the docs for publishing you need to use [mkdocs](http://www.mkdocs.org/) which is a python tool.
+This system requires the `swagger.json` file (which can be found in the _swagger_documentation_ 
+directory to be in sync with the one found in the [Rest API](https://github.com/figshare/apiv1) 
+repository at `figshare_api2/api_docs/`.
 
-`make configure` will install everything you need to build and publish
-
-`make server` will start up a local server with autoreload and everything needed for development.
 
 ## Contributing
 
 In order to contribute you need to send a [pull request](https://help.github.com/articles/using-pull-requests/).
 
-* fork the repo
-* create a branch
-* make your changes
-* push the branch
-* open a pull request for your branch
-* feel proud
+### Git workflow
+
+Any development will be done on the developer branch which should follow 
+the `developer/feature` naming format. Feature identifier should contain only
+words split with `'-'` (ex. `greatest-feature-ever-whatever`).
+
+Code will be sent to be reviewed before merging it to `master` by other
+colleagues and _Approved_ by at least two.
+
+The description of a git commit should look like the following:
+
+    FIG-12345(feature): Commit message
+
+This is the **FIG-12345** part is the JIRA FIG number. This should generally
+not be missing.  
+**(feature)** is the feature you're working on.
+
+
+#### Merging into master
+
+To merge into master you need to keep the following in mind:
+
+* code review needs to be done with two _Approves_ at least
+* code needs to be _blackened_
+* tests need to pass
+* commits need to be rebased on the latest master
+
+Merging into master has to be done with `--ff-only`:
+
+    git merge --ff-only <branch>
+
+:warning: **Attention**
+
+> **Don't use** merge pull-request feature of github.
+
+
+## Development
+
+To be able to build the documentation one needs to install the necessary
+dependencies:
+
+    $ make swagger_configure
+
+To build the documentation:
+
+    $ make swagger_build
+
+Finally when the documentation needs to be deployed to various instances we have
+various Jenkins jobs to do that.
+
+:warning: Before creating the pull request make sure you have built
+the documentation.
