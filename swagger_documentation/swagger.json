@@ -403,7 +403,7 @@
                 ], 
                 "operationId": "article_version_confidentiality", 
                 "summary": "Public Article Confidentiality for article version", 
-                "description": "Confidentiality for article version", 
+                "description": "Confidentiality for article version. The confidentiality feature is now deprecated. This has been replaced by the new extended embargo functionality and all items that used to be confidential have now been migrated to items with a permanent embargo on files. All API endpoints related to this functionality will remain for backwards compatibility, but will now be attached to the new extended embargo workflows.", 
                 "security": [], 
                 "parameters": [
                     {
@@ -1588,10 +1588,10 @@
                 "tags": [
                     "articles"
                 ], 
-                "x-subcategory": "Private Article Confidentiality", 
+                "x-subcategory": "Private Article Confidentiality - DEPRECATED", 
                 "operationId": "private_article_confidentiality_details", 
                 "summary": "Article confidentiality details", 
-                "description": "View confidentiality settings", 
+                "description": "View confidentiality settings. The confidentiality feature is now deprecated. This has been replaced by the new extended embargo functionality and all items that used to be confidential have now been migrated to items with a permanent embargo on files. All API endpoints related to this functionality will remain for backwards compatibility, but will now be attached to the new extended embargo workflows.", 
                 "security": [
                     {
                         "OAuth2": [
@@ -1627,10 +1627,10 @@
                 "tags": [
                     "articles"
                 ], 
-                "x-subcategory": "Private Article Confidentiality", 
+                "x-subcategory": "Private Article Confidentiality - DEPRECATED", 
                 "operationId": "private_article_confidentiality_update", 
                 "summary": "Update article confidentiality", 
-                "description": "Update confidentiality settings", 
+                "description": "Update confidentiality settings. The confidentiality feature is now deprecated. This has been replaced by the new extended embargo functionality and all items that used to be confidential have now been migrated to items with a permanent embargo on files. All API endpoints related to this functionality will remain for backwards compatibility, but will now be attached to the new extended embargo workflows.", 
                 "security": [
                     {
                         "OAuth2": [
@@ -1673,10 +1673,10 @@
                 "tags": [
                     "articles"
                 ], 
-                "x-subcategory": "Private Article Confidentiality", 
+                "x-subcategory": "Private Article Confidentiality - DEPRECATED", 
                 "operationId": "private_article_confidentiality_delete", 
                 "summary": "Delete article confidentiality", 
-                "description": "Delete confidentiality settings", 
+                "description": "Delete confidentiality settings. The confidentiality feature is now deprecated. This has been replaced by the new extended embargo functionality and all items that used to be confidential have now been migrated to items with a permanent embargo on files. All API endpoints related to this functionality will remain for backwards compatibility, but will now be attached to the new extended embargo workflows.", 
                 "security": [
                     {
                         "OAuth2": [
@@ -7275,9 +7275,9 @@
             "properties": {
                 "title": {
                     "type": "string", 
-                    "description": "The title for this project - mandatory. 3 - 500 characters.", 
+                    "description": "The title for this project - mandatory. 3 - 1000 characters.", 
                     "example": "project title", 
-                    "maxLength": 500, 
+                    "maxLength": 1000, 
                     "minLength": 3
                 }, 
                 "description": {
@@ -7312,9 +7312,9 @@
             "properties": {
                 "title": {
                     "type": "string", 
-                    "description": "The title for this project - mandatory. 3 - 500 characters.", 
+                    "description": "The title for this project - mandatory. 3 - 1000 characters.", 
                     "example": "project title", 
-                    "maxLength": 500, 
+                    "maxLength": 1000, 
                     "minLength": 3
                 }, 
                 "description": {
@@ -8148,7 +8148,7 @@
                 "title": {
                     "type": "string", 
                     "description": "Title of article", 
-                    "maxLength": 500, 
+                    "maxLength": 1000, 
                     "minLength": 3, 
                     "example": "Test article title"
                 }, 
@@ -8299,7 +8299,7 @@
                 "title": {
                     "type": "string", 
                     "description": "Title of article", 
-                    "maxLength": 500, 
+                    "maxLength": 1000, 
                     "minLength": 3, 
                     "example": "Test article title"
                 }, 
@@ -9829,7 +9829,7 @@
                 "title": {
                     "type": "string", 
                     "description": "Title of article", 
-                    "maxLength": 500, 
+                    "maxLength": 1000, 
                     "minLength": 3, 
                     "example": "Test article title"
                 }, 
@@ -9988,7 +9988,7 @@
                 "title": {
                     "type": "string", 
                     "description": "Title of article", 
-                    "maxLength": 500, 
+                    "maxLength": 1000, 
                     "minLength": 3, 
                     "example": "Test article title"
                 }, 

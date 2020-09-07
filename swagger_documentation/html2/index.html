@@ -1020,7 +1020,7 @@ margin-bottom: 20px;
       "example" : "Test article title",
       "description" : "Title of article",
       "minLength" : 3,
-      "maxLength" : 500
+      "maxLength" : 1000
     },
     "description" : {
       "type" : "string",
@@ -1213,7 +1213,7 @@ margin-bottom: 20px;
       "example" : "Test article title",
       "description" : "Title of article",
       "minLength" : 3,
-      "maxLength" : 500
+      "maxLength" : 1000
     },
     "description" : {
       "type" : "string",
@@ -1536,7 +1536,7 @@ margin-bottom: 20px;
       "example" : "Test article title",
       "description" : "Title of article",
       "minLength" : 3,
-      "maxLength" : 500
+      "maxLength" : 1000
     },
     "description" : {
       "type" : "string",
@@ -1710,7 +1710,7 @@ margin-bottom: 20px;
       "example" : "Test article title",
       "description" : "Title of article",
       "minLength" : 3,
-      "maxLength" : 500
+      "maxLength" : 1000
     },
     "description" : {
       "type" : "string",
@@ -2478,9 +2478,9 @@ margin-bottom: 20px;
     "title" : {
       "type" : "string",
       "example" : "project title",
-      "description" : "The title for this project - mandatory. 3 - 500 characters.",
+      "description" : "The title for this project - mandatory. 3 - 1000 characters.",
       "minLength" : 3,
-      "maxLength" : 500
+      "maxLength" : 1000
     },
     "description" : {
       "type" : "string",
@@ -2566,9 +2566,9 @@ margin-bottom: 20px;
     "title" : {
       "type" : "string",
       "example" : "project title",
-      "description" : "The title for this project - mandatory. 3 - 500 characters.",
+      "description" : "The title for this project - mandatory. 3 - 1000 characters.",
       "minLength" : 3,
-      "maxLength" : 500
+      "maxLength" : 1000
     },
     "description" : {
       "type" : "string",
@@ -5018,7 +5018,7 @@ except ApiException as e:
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Confidentiality for article version</p>
+                        <p class="marked">Confidentiality for article version. The confidentiality feature is now deprecated. This has been replaced by the new extended embargo functionality and all items that used to be confidential have now been migrated to items with a permanent embargo on files. All API endpoints related to this functionality will remain for backwards compatibility, but will now be attached to the new extended embargo workflows.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/articles/{article_id}/versions/{v_number}/confidentiality</span></code></pre>
@@ -10603,7 +10603,7 @@ except ApiException as e:
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Delete confidentiality settings</p>
+                        <p class="marked">Delete confidentiality settings. The confidentiality feature is now deprecated. This has been replaced by the new extended embargo functionality and all items that used to be confidential have now been migrated to items with a permanent embargo on files. All API endpoints related to this functionality will remain for backwards compatibility, but will now be attached to the new extended embargo workflows.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/account/articles/{article_id}/confidentiality</span></code></pre>
@@ -10948,7 +10948,7 @@ except ApiException as e:
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">View confidentiality settings</p>
+                        <p class="marked">View confidentiality settings. The confidentiality feature is now deprecated. This has been replaced by the new extended embargo functionality and all items that used to be confidential have now been migrated to items with a permanent embargo on files. All API endpoints related to this functionality will remain for backwards compatibility, but will now be attached to the new extended embargo workflows.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/account/articles/{article_id}/confidentiality</span></code></pre>
@@ -11337,7 +11337,7 @@ except ApiException as e:
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Update confidentiality settings</p>
+                        <p class="marked">Update confidentiality settings. The confidentiality feature is now deprecated. This has been replaced by the new extended embargo functionality and all items that used to be confidential have now been migrated to items with a permanent embargo on files. All API endpoints related to this functionality will remain for backwards compatibility, but will now be attached to the new extended embargo workflows.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/account/articles/{article_id}/confidentiality</span></code></pre>
@@ -54432,7 +54432,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2020-08-05T10:41:44.230+03:00
+              Generated 2020-09-07T06:42:19.025Z
             </div>
           </div>
       </div>
