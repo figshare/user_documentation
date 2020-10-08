@@ -6719,6 +6719,43 @@
                 }
             }
         }, 
+        "/account/institution/embargo_options": {
+            "get": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "private_institution_embargo_options_details", 
+                "summary": "Private Account Institution embargo options", 
+                "description": "Account institution embargo options details", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of embargo options", 
+                        "schema": {
+                            "$ref": "#/definitions/GroupEmbargoOptions"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
         "/account/institution/articles": {
             "get": {
                 "tags": [
@@ -6929,6 +6966,54 @@
                             "items": {
                                 "$ref": "#/definitions/Group"
                             }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/account/institution/groups/{group_id}/embargo_options": {
+            "get": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "private_group_embargo_options_details", 
+                "summary": "Private Account Institution Group Embargo Options", 
+                "description": "Account institution group embargo options details", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "group_id", 
+                        "in": "path", 
+                        "description": "Group identifier", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of embargo options", 
+                        "schema": {
+                            "$ref": "#/definitions/GroupEmbargoOptions"
                         }
                     }, 
                     "400": {
@@ -7895,6 +7980,33 @@
                 "description": {
                     "type": "string", 
                     "description": "Role description"
+                }
+            }
+        }, 
+        "GroupEmbargoOptions": {
+            "x-tag": "institutions", 
+            "type": "object", 
+            "properties": {
+                "id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Embargo option id", 
+                    "example": 364
+                }, 
+                "type": {
+                    "type": "string", 
+                    "description": "Embargo permission type", 
+                    "example": "ip_range", 
+                    "enum": [
+                        "logged_in", 
+                        "ip_range", 
+                        "administrator"
+                    ]
+                }, 
+                "ip_name": {
+                    "description": "IP range name; value appears if type is ip_range", 
+                    "type": "string", 
+                    "example": "Figshare IP range"
                 }
             }
         }, 
@@ -10934,12 +11046,41 @@
                     "description": "Reason for embargo", 
                     "type": "string", 
                     "example": ""
+                }, 
+                "embargo_options": {
+                    "type": "array", 
+                    "items": {
+                        "type": "object"
+                    }, 
+                    "description": "List of embargo permissions that are associated with the article. If the type is logged_in and the group_ids list is empty, then the whole institution can see the article; if there are multiple group_ids, then only users that are under those groups can see the article.", 
+                    "example": [
+                        {
+                            "id": 13, 
+                            "type": "ip_range", 
+                            "group_ids": [], 
+                            "ip_name": "bacau"
+                        }, 
+                        {
+                            "id": 12, 
+                            "type": "logged_in", 
+                            "ip_name": "", 
+                            "group_ids": [
+                                550, 
+                                9448
+                            ]
+                        }
+                    ]
                 }
             }
         }, 
         "ArticleEmbargoUpdater": {
             "x-tag": "articles", 
             "type": "object", 
+            "required": [
+                "is_embargoed", 
+                "embargo_type", 
+                "embargo_date"
+            ], 
             "properties": {
                 "is_embargoed": {
                     "type": "boolean", 
@@ -10948,7 +11089,7 @@
                 }, 
                 "embargo_date": {
                     "type": "string", 
-                    "description": "Date when the embargo expires and the article gets published", 
+                    "description": "Date when the embargo expires and the article gets published, '0' value will set up permanent embargo", 
                     "example": "2018-05-22T04:04:04"
                 }, 
                 "embargo_type": {
@@ -10964,6 +11105,29 @@
                     "type": "string", 
                     "description": "Reason for setting embargo", 
                     "example": ""
+                }, 
+                "embargo_options": {
+                    "type": "array", 
+                    "items": {
+                        "type": "object"
+                    }, 
+                    "description": "List of embargo permissions to be associated with the article. The list must contain `id` and can also contain `group_ids`(a field that only applies to 'logged_in' permissions). The new list replaces old options in the database, and an empty list removes all permissions for this article. Administration permission has to be set up alone but logged in and IP range permissions can be set up together.", 
+                    "example": [
+                        {
+                            "id": 1321
+                        }, 
+                        {
+                            "id": 3345
+                        }, 
+                        {
+                            "id": 54621, 
+                            "group_ids": [
+                                4332, 
+                                5433, 
+                                678
+                            ]
+                        }
+                    ]
                 }
             }
         }, 
