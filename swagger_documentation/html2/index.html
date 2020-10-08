@@ -1163,12 +1163,32 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "",
       "description" : "Reason for embargo"
+    },
+    "embargo_options" : {
+      "type" : "array",
+      "example" : [ {
+        "id" : 13,
+        "type" : "ip_range",
+        "group_ids" : [ ],
+        "ip_name" : "bacau"
+      }, {
+        "id" : 12,
+        "type" : "logged_in",
+        "ip_name" : "",
+        "group_ids" : [ 550, 9448 ]
+      } ],
+      "description" : "List of embargo permissions that are associated with the article. If the type is logged_in and the group_ids list is empty, then the whole institution can see the article; if there are multiple group_ids, then only users that are under those groups can see the article.",
+      "items" : {
+        "type" : "object",
+        "properties" : { }
+      }
     }
   },
   "x-tag" : "articles"
 };
             defs.ArticleEmbargoUpdater = {
   "type" : "object",
+  "required" : [ "embargo_date", "embargo_type", "is_embargoed" ],
   "properties" : {
     "is_embargoed" : {
       "type" : "boolean",
@@ -1178,7 +1198,7 @@ margin-bottom: 20px;
     "embargo_date" : {
       "type" : "string",
       "example" : "2018-05-22T04:04:04",
-      "description" : "Date when the embargo expires and the article gets published"
+      "description" : "Date when the embargo expires and the article gets published, '0' value will set up permanent embargo"
     },
     "embargo_type" : {
       "type" : "string",
@@ -1190,6 +1210,22 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "",
       "description" : "Reason for setting embargo"
+    },
+    "embargo_options" : {
+      "type" : "array",
+      "example" : [ {
+        "id" : 1321
+      }, {
+        "id" : 3345
+      }, {
+        "id" : 54621,
+        "group_ids" : [ 4332, 5433, 678 ]
+      } ],
+      "description" : "List of embargo permissions to be associated with the article. The list must contain `id` and can also contain `group_ids`(a field that only applies to 'logged_in' permissions). The new list replaces old options in the database, and an empty list removes all permissions for this article. Administration permission has to be set up alone but logged in and IP range permissions can be set up together.",
+      "items" : {
+        "type" : "object",
+        "properties" : { }
+      }
     }
   },
   "x-tag" : "articles"
@@ -1889,8 +1925,8 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "enum" : [ "asc", "desc" ],
-      "default" : "desc"
+      "default" : "desc",
+      "enum" : [ "asc", "desc" ]
     },
     "institution" : {
       "type" : "integer",
@@ -2169,6 +2205,29 @@ margin-bottom: 20px;
   },
   "x-tag" : "institutions"
 };
+            defs.GroupEmbargoOptions = {
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "integer",
+      "format" : "int64",
+      "example" : 364,
+      "description" : "Embargo option id"
+    },
+    "type" : {
+      "type" : "string",
+      "example" : "ip_range",
+      "description" : "Embargo permission type",
+      "enum" : [ "logged_in", "ip_range", "administrator" ]
+    },
+    "ip_name" : {
+      "type" : "string",
+      "example" : "Figshare IP range",
+      "description" : "IP range name; value appears if type is ip_range"
+    }
+  },
+  "x-tag" : "institutions"
+};
             defs.Institution = {
   "type" : "object",
   "properties" : {
@@ -2326,15 +2385,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
-      "default" : "published_date"
+      "default" : "published_date",
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "enum" : [ "asc", "desc" ],
-      "default" : "desc"
+      "default" : "desc",
+      "enum" : [ "asc", "desc" ]
     },
     "institution_id" : {
       "type" : "integer",
@@ -3235,6 +3294,9 @@ margin-bottom: 20px;
                     <li data-group="Institutions" data-name="privateCategoriesList" class="">
                       <a href="#api-Institutions-privateCategoriesList">privateCategoriesList</a>
                     </li>
+                    <li data-group="Institutions" data-name="privateGroupEmbargoOptionsDetails" class="">
+                      <a href="#api-Institutions-privateGroupEmbargoOptionsDetails">privateGroupEmbargoOptionsDetails</a>
+                    </li>
                     <li data-group="Institutions" data-name="privateInstitutionAccountGroupRoleDelete" class="">
                       <a href="#api-Institutions-privateInstitutionAccountGroupRoleDelete">privateInstitutionAccountGroupRoleDelete</a>
                     </li>
@@ -3261,6 +3323,9 @@ margin-bottom: 20px;
                     </li>
                     <li data-group="Institutions" data-name="privateInstitutionDetails" class="">
                       <a href="#api-Institutions-privateInstitutionDetails">privateInstitutionDetails</a>
+                    </li>
+                    <li data-group="Institutions" data-name="privateInstitutionEmbargoOptionsDetails" class="">
+                      <a href="#api-Institutions-privateInstitutionEmbargoOptionsDetails">privateInstitutionEmbargoOptionsDetails</a>
                     </li>
                     <li data-group="Institutions" data-name="privateInstitutionGroupsList" class="">
                       <a href="#api-Institutions-privateInstitutionGroupsList">privateInstitutionGroupsList</a>
@@ -36932,6 +36997,387 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
+                    <div id="api-Institutions-privateGroupEmbargoOptionsDetails">
+                      <article id="api-Institutions-privateGroupEmbargoOptionsDetails-0" data-group="User" data-name="privateGroupEmbargoOptionsDetails" data-version="0">
+                        <div class="pull-left">
+                          <h1>privateGroupEmbargoOptionsDetails</h1>
+                          <p>Private Account Institution Group Embargo Options</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Account institution group embargo options details</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/account/institution/groups/{group_id}/embargo_options</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Institutions-privateGroupEmbargoOptionsDetails-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Institutions-privateGroupEmbargoOptionsDetails-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Institutions-privateGroupEmbargoOptionsDetails-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Institutions-privateGroupEmbargoOptionsDetails-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Institutions-privateGroupEmbargoOptionsDetails-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Institutions-privateGroupEmbargoOptionsDetails-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Institutions-privateGroupEmbargoOptionsDetails-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Institutions-privateGroupEmbargoOptionsDetails-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Institutions-privateGroupEmbargoOptionsDetails-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Institutions-privateGroupEmbargoOptionsDetails-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Institutions-privateGroupEmbargoOptionsDetails-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Institutions-privateGroupEmbargoOptionsDetails-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/account/institution/groups/{group_id}/embargo_options"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Institutions-privateGroupEmbargoOptionsDetails-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.InstitutionsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class InstitutionsApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        InstitutionsApi apiInstance = new InstitutionsApi();
+        Long groupId = 789; // Long | Group identifier
+        try {
+            GroupEmbargoOptions result = apiInstance.privateGroupEmbargoOptionsDetails(groupId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#privateGroupEmbargoOptionsDetails");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Institutions-privateGroupEmbargoOptionsDetails-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.InstitutionsApi;
+
+public class InstitutionsApiExample {
+
+    public static void main(String[] args) {
+        InstitutionsApi apiInstance = new InstitutionsApi();
+        Long groupId = 789; // Long | Group identifier
+        try {
+            GroupEmbargoOptions result = apiInstance.privateGroupEmbargoOptionsDetails(groupId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#privateGroupEmbargoOptionsDetails");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Institutions-privateGroupEmbargoOptionsDetails-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Institutions-privateGroupEmbargoOptionsDetails-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *groupId = 789; // Group identifier
+
+InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
+
+// Private Account Institution Group Embargo Options
+[apiInstance privateGroupEmbargoOptionsDetailsWith:groupId
+              completionHandler: ^(GroupEmbargoOptions output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-privateGroupEmbargoOptionsDetails-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.InstitutionsApi()
+
+var groupId = 789; // {Long} Group identifier
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.privateGroupEmbargoOptionsDetails(groupId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Institutions-privateGroupEmbargoOptionsDetails-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Institutions-privateGroupEmbargoOptionsDetails-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class privateGroupEmbargoOptionsDetailsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new InstitutionsApi();
+            var groupId = 789;  // Long | Group identifier
+
+            try
+            {
+                // Private Account Institution Group Embargo Options
+                GroupEmbargoOptions result = apiInstance.privateGroupEmbargoOptionsDetails(groupId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling InstitutionsApi.privateGroupEmbargoOptionsDetails: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-privateGroupEmbargoOptionsDetails-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\InstitutionsApi();
+$groupId = 789; // Long | Group identifier
+
+try {
+    $result = $api_instance->privateGroupEmbargoOptionsDetails($groupId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InstitutionsApi->privateGroupEmbargoOptionsDetails: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-privateGroupEmbargoOptionsDetails-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::InstitutionsApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::InstitutionsApi->new();
+my $groupId = 789; # Long | Group identifier
+
+eval { 
+    my $result = $api_instance->privateGroupEmbargoOptionsDetails(groupId => $groupId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling InstitutionsApi->privateGroupEmbargoOptionsDetails: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-privateGroupEmbargoOptionsDetails-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.InstitutionsApi()
+groupId = 789 # Long | Group identifier
+
+try: 
+    # Private Account Institution Group Embargo Options
+    api_response = api_instance.private_group_embargo_options_details(groupId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling InstitutionsApi->privateGroupEmbargoOptionsDetails: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">group_id*</td>
+<td>
+
+
+    <div id="d2e199_privateGroupEmbargoOptionsDetails_groupId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Group identifier
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK. An array of embargo options </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateGroupEmbargoOptionsDetails-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateGroupEmbargoOptionsDetails-200-schema">
+                                  <div id='responses-privateGroupEmbargoOptionsDetails-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK. An array of embargo options",
+  "schema" : {
+    "$ref" : "#/definitions/GroupEmbargoOptions"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateGroupEmbargoOptionsDetails-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateGroupEmbargoOptionsDetails-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateGroupEmbargoOptionsDetails-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateGroupEmbargoOptionsDetails-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateGroupEmbargoOptionsDetails-403-schema">
+                                  <div id='responses-privateGroupEmbargoOptionsDetails-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateGroupEmbargoOptionsDetails-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateGroupEmbargoOptionsDetails-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateGroupEmbargoOptionsDetails-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Institutions-privateInstitutionAccountGroupRoleDelete">
                       <article id="api-Institutions-privateInstitutionAccountGroupRoleDelete-0" data-group="User" data-name="privateInstitutionAccountGroupRoleDelete" data-version="0">
                         <div class="pull-left">
@@ -40858,6 +41304,344 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-privateInstitutionDetails-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Institutions-privateInstitutionEmbargoOptionsDetails">
+                      <article id="api-Institutions-privateInstitutionEmbargoOptionsDetails-0" data-group="User" data-name="privateInstitutionEmbargoOptionsDetails" data-version="0">
+                        <div class="pull-left">
+                          <h1>privateInstitutionEmbargoOptionsDetails</h1>
+                          <p>Private Account Institution embargo options</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Account institution embargo options details</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/account/institution/embargo_options</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/account/institution/embargo_options"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.InstitutionsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class InstitutionsApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        InstitutionsApi apiInstance = new InstitutionsApi();
+        try {
+            GroupEmbargoOptions result = apiInstance.privateInstitutionEmbargoOptionsDetails();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#privateInstitutionEmbargoOptionsDetails");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.InstitutionsApi;
+
+public class InstitutionsApiExample {
+
+    public static void main(String[] args) {
+        InstitutionsApi apiInstance = new InstitutionsApi();
+        try {
+            GroupEmbargoOptions result = apiInstance.privateInstitutionEmbargoOptionsDetails();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#privateInstitutionEmbargoOptionsDetails");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
+
+// Private Account Institution embargo options
+[apiInstance privateInstitutionEmbargoOptionsDetailsWithCompletionHandler: 
+              ^(GroupEmbargoOptions output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.InstitutionsApi()
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.privateInstitutionEmbargoOptionsDetails(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class privateInstitutionEmbargoOptionsDetailsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new InstitutionsApi();
+
+            try
+            {
+                // Private Account Institution embargo options
+                GroupEmbargoOptions result = apiInstance.privateInstitutionEmbargoOptionsDetails();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling InstitutionsApi.privateInstitutionEmbargoOptionsDetails: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\InstitutionsApi();
+
+try {
+    $result = $api_instance->privateInstitutionEmbargoOptionsDetails();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InstitutionsApi->privateInstitutionEmbargoOptionsDetails: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::InstitutionsApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::InstitutionsApi->new();
+
+eval { 
+    my $result = $api_instance->privateInstitutionEmbargoOptionsDetails();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling InstitutionsApi->privateInstitutionEmbargoOptionsDetails: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-privateInstitutionEmbargoOptionsDetails-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.InstitutionsApi()
+
+try: 
+    # Private Account Institution embargo options
+    api_response = api_instance.private_institution_embargo_options_details()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling InstitutionsApi->privateInstitutionEmbargoOptionsDetails: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK. An array of embargo options </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateInstitutionEmbargoOptionsDetails-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateInstitutionEmbargoOptionsDetails-200-schema">
+                                  <div id='responses-privateInstitutionEmbargoOptionsDetails-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK. An array of embargo options",
+  "schema" : {
+    "$ref" : "#/definitions/GroupEmbargoOptions"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateInstitutionEmbargoOptionsDetails-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateInstitutionEmbargoOptionsDetails-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateInstitutionEmbargoOptionsDetails-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateInstitutionEmbargoOptionsDetails-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateInstitutionEmbargoOptionsDetails-403-schema">
+                                  <div id='responses-privateInstitutionEmbargoOptionsDetails-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateInstitutionEmbargoOptionsDetails-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateInstitutionEmbargoOptionsDetails-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateInstitutionEmbargoOptionsDetails-403-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -54432,7 +55216,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2020-09-07T06:42:19.025Z
+              Generated 2020-10-08T14:27:45.137+03:00
             </div>
           </div>
       </div>
