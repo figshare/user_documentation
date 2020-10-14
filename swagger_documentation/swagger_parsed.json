@@ -6738,7 +6738,10 @@
                     "200": {
                         "description": "OK. An array of embargo options", 
                         "schema": {
-                            "$ref": "#/definitions/GroupEmbargoOptions"
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/GroupEmbargoOptions"
+                            }
                         }
                     }, 
                     "400": {
@@ -7013,7 +7016,10 @@
                     "200": {
                         "description": "OK. An array of embargo options", 
                         "schema": {
-                            "$ref": "#/definitions/GroupEmbargoOptions"
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/GroupEmbargoOptions"
+                            }
                         }
                     }, 
                     "400": {
@@ -10399,6 +10405,13 @@
                         "$ref": "#/definitions/CustomArticleField"
                     }
                 }, 
+                "embargo_options": {
+                    "type": "array", 
+                    "description": "List of embargo options", 
+                    "items": {
+                        "$ref": "#/definitions/GroupEmbargoOptions"
+                    }
+                }, 
                 "citation": {
                     "type": "string", 
                     "description": "Article citation", 
@@ -10695,6 +10708,13 @@
                     "description": "List of custom fields values", 
                     "items": {
                         "$ref": "#/definitions/CustomArticleField"
+                    }
+                }, 
+                "embargo_options": {
+                    "type": "array", 
+                    "description": "List of embargo options", 
+                    "items": {
+                        "$ref": "#/definitions/GroupEmbargoOptions"
                     }
                 }, 
                 "citation": {

@@ -37052,7 +37052,7 @@ public class InstitutionsApiExample {
         InstitutionsApi apiInstance = new InstitutionsApi();
         Long groupId = 789; // Long | Group identifier
         try {
-            GroupEmbargoOptions result = apiInstance.privateGroupEmbargoOptionsDetails(groupId);
+            array[GroupEmbargoOptions] result = apiInstance.privateGroupEmbargoOptionsDetails(groupId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InstitutionsApi#privateGroupEmbargoOptionsDetails");
@@ -37071,7 +37071,7 @@ public class InstitutionsApiExample {
         InstitutionsApi apiInstance = new InstitutionsApi();
         Long groupId = 789; // Long | Group identifier
         try {
-            GroupEmbargoOptions result = apiInstance.privateGroupEmbargoOptionsDetails(groupId);
+            array[GroupEmbargoOptions] result = apiInstance.privateGroupEmbargoOptionsDetails(groupId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InstitutionsApi#privateGroupEmbargoOptionsDetails");
@@ -37096,7 +37096,7 @@ InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
 
 // Private Account Institution Group Embargo Options
 [apiInstance privateGroupEmbargoOptionsDetailsWith:groupId
-              completionHandler: ^(GroupEmbargoOptions output, NSError* error) {
+              completionHandler: ^(array[GroupEmbargoOptions] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -37157,7 +37157,7 @@ namespace Example
             try
             {
                 // Private Account Institution Group Embargo Options
-                GroupEmbargoOptions result = apiInstance.privateGroupEmbargoOptionsDetails(groupId);
+                array[GroupEmbargoOptions] result = apiInstance.privateGroupEmbargoOptionsDetails(groupId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -37290,7 +37290,10 @@ except ApiException as e:
                                         var schemaWrapper = {
   "description" : "OK. An array of embargo options",
   "schema" : {
-    "$ref" : "#/definitions/GroupEmbargoOptions"
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/GroupEmbargoOptions"
+    }
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -41372,7 +41375,7 @@ public class InstitutionsApiExample {
 
         InstitutionsApi apiInstance = new InstitutionsApi();
         try {
-            GroupEmbargoOptions result = apiInstance.privateInstitutionEmbargoOptionsDetails();
+            array[GroupEmbargoOptions] result = apiInstance.privateInstitutionEmbargoOptionsDetails();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InstitutionsApi#privateInstitutionEmbargoOptionsDetails");
@@ -41390,7 +41393,7 @@ public class InstitutionsApiExample {
     public static void main(String[] args) {
         InstitutionsApi apiInstance = new InstitutionsApi();
         try {
-            GroupEmbargoOptions result = apiInstance.privateInstitutionEmbargoOptionsDetails();
+            array[GroupEmbargoOptions] result = apiInstance.privateInstitutionEmbargoOptionsDetails();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InstitutionsApi#privateInstitutionEmbargoOptionsDetails");
@@ -41414,7 +41417,7 @@ InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
 
 // Private Account Institution embargo options
 [apiInstance privateInstitutionEmbargoOptionsDetailsWithCompletionHandler: 
-              ^(GroupEmbargoOptions output, NSError* error) {
+              ^(array[GroupEmbargoOptions] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -41471,7 +41474,7 @@ namespace Example
             try
             {
                 // Private Account Institution embargo options
-                GroupEmbargoOptions result = apiInstance.privateInstitutionEmbargoOptionsDetails();
+                array[GroupEmbargoOptions] result = apiInstance.privateInstitutionEmbargoOptionsDetails();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -41568,7 +41571,10 @@ except ApiException as e:
                                         var schemaWrapper = {
   "description" : "OK. An array of embargo options",
   "schema" : {
-    "$ref" : "#/definitions/GroupEmbargoOptions"
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/GroupEmbargoOptions"
+    }
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -55216,7 +55222,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2020-10-08T14:27:45.137+03:00
+              Generated 2020-10-14T14:15:28.004+03:00
             </div>
           </div>
       </div>
