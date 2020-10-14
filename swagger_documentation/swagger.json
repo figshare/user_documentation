@@ -8914,6 +8914,13 @@
                 }, 
                 "custom_fields": {
                     "type": "array", 
+                    "description": "List of custom fields values", 
+                    "items": {
+                        "$ref": "#/definitions/CustomArticleField"
+                    }
+                }, 
+                "embargo_options": {
+                    "type": "array", 
                     "description": "List of embargo options", 
                     "items": {
                         "$ref": "#/definitions/GroupEmbargoOptions"
