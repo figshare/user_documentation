@@ -6001,7 +6001,10 @@
                     "200": {
                         "description": "OK. An array of embargo options", 
                         "schema": {
-                            "$ref": "#/definitions/GroupEmbargoOptions"
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/GroupEmbargoOptions"
+                            }
                         }
                     }, 
                     "400": {
@@ -6276,7 +6279,10 @@
                     "200": {
                         "description": "OK. An array of embargo options", 
                         "schema": {
-                            "$ref": "#/definitions/GroupEmbargoOptions"
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/GroupEmbargoOptions"
+                            }
                         }
                     }, 
                     "400": {
@@ -8908,9 +8914,9 @@
                 }, 
                 "custom_fields": {
                     "type": "array", 
-                    "description": "List of custom fields values", 
+                    "description": "List of embargo options", 
                     "items": {
-                        "$ref": "#/definitions/CustomArticleField"
+                        "$ref": "#/definitions/GroupEmbargoOptions"
                     }
                 }
             }
