@@ -1159,6 +1159,11 @@ margin-bottom: 20px;
       "example" : true,
       "description" : "True if embargoed"
     },
+    "embargo_title" : {
+      "type" : "string",
+      "example" : "File(s) under embargo",
+      "description" : "Title for embargo"
+    },
     "embargo_reason" : {
       "type" : "string",
       "example" : "",
@@ -1205,6 +1210,11 @@ margin-bottom: 20px;
       "example" : "file",
       "description" : "Embargo can be enabled at the article or the file level. Possible values: article, file",
       "enum" : [ "article", "file" ]
+    },
+    "embargo_title" : {
+      "type" : "string",
+      "example" : "File(s) under embargo",
+      "description" : "Title for embargo"
     },
     "embargo_reason" : {
       "type" : "string",
@@ -1925,8 +1935,8 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution" : {
       "type" : "integer",
@@ -2385,15 +2395,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution_id" : {
       "type" : "integer",
@@ -55222,7 +55232,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2020-10-14T14:20:54.953+03:00
+              Generated 2021-03-04T10:42:08.881+02:00
             </div>
           </div>
       </div>
