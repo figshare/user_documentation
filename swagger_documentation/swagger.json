@@ -8848,6 +8848,11 @@
                     "description": "Article selected license", 
                     "$ref": "#/definitions/License"
                 }, 
+                "embargo_title": {
+                    "type": "string", 
+                    "description": "Title for embargo", 
+                    "example": "File(s) under embargo"
+                }, 
                 "embargo_reason": {
                     "type": "string", 
                     "description": "Reason for embargo", 
@@ -9054,6 +9059,11 @@
                     "description": "Embargo type", 
                     "example": ""
                 }, 
+                "embargo_title": {
+                    "type": "string", 
+                    "description": "Title for embargo", 
+                    "example": "File(s) under embargo"
+                }, 
                 "embargo_reason": {
                     "description": "Reason for embargo", 
                     "type": "string", 
@@ -9112,6 +9122,11 @@
                     ], 
                     "description": "Embargo can be enabled at the article or the file level. Possible values: article, file", 
                     "example": "file"
+                }, 
+                "embargo_title": {
+                    "type": "string", 
+                    "description": "Title for embargo", 
+                    "example": "File(s) under embargo"
                 }, 
                 "embargo_reason": {
                     "type": "string", 
