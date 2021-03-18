@@ -61,6 +61,13 @@ To build the documentation:
 
     $ make swagger_build
 
+To check the generated documentation:
+
+    $ cd swagger_documentation/
+    $ python -m SimpleHTTPServer 8000
+
+and open http://localhost:8000/ in your browser.
+
 Finally when the documentation needs to be deployed to various instances we have
 various Jenkins jobs to do that.
 

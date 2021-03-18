@@ -11791,6 +11791,10 @@
         "FileCreator": {
             "x-tag": "articles", 
             "type": "object", 
+            "required": [
+                "name", 
+                "size"
+            ], 
             "properties": {
                 "link": {
                     "type": "string", 
