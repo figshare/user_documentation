@@ -2037,6 +2037,9 @@
                     "404": {
                         "description": "Not Found"
                     }, 
+                    "422": {
+                        "description": "Unprocessable Entity. Parameters missing or incorrect"
+                    }, 
                     "500": {
                         "description": "Internal Server Error"
                     }
@@ -9722,13 +9725,13 @@
                 }, 
                 "name": {
                     "type": "string", 
-                    "description": "File name including the extension", 
+                    "description": "File name including the extension; can be omitted only for linked files.", 
                     "example": "test.py"
                 }, 
                 "size": {
                     "type": "integer", 
                     "format": "int64", 
-                    "description": "File size in bytes", 
+                    "description": "File size in bytes; can be omitted only for linked files.", 
                     "example": 70
                 }
             }
