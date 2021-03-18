@@ -1935,8 +1935,8 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "enum" : [ "asc", "desc" ],
-      "default" : "desc"
+      "default" : "desc",
+      "enum" : [ "asc", "desc" ]
     },
     "institution" : {
       "type" : "integer",
@@ -2111,13 +2111,13 @@ margin-bottom: 20px;
     "name" : {
       "type" : "string",
       "example" : "test.py",
-      "description" : "File name including the extension"
+      "description" : "File name including the extension; can be omitted only for linked files."
     },
     "size" : {
       "type" : "integer",
       "format" : "int64",
       "example" : 70,
-      "description" : "File size in bytes"
+      "description" : "File size in bytes; can be omitted only for linked files."
     }
   },
   "x-tag" : "articles"
@@ -2395,15 +2395,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
-      "default" : "published_date"
+      "default" : "published_date",
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "enum" : [ "asc", "desc" ],
-      "default" : "desc"
+      "default" : "desc",
+      "enum" : [ "asc", "desc" ]
     },
     "institution_id" : {
       "type" : "integer",
@@ -19388,6 +19388,14 @@ $(document).ready(function() {
                             </div>
 
                             <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 422 - Unprocessable Entity. Parameters missing or incorrect </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
@@ -55232,7 +55240,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2021-03-04T10:42:08.881+02:00
+              Generated 2021-03-18T14:11:04.197+02:00
             </div>
           </div>
       </div>
