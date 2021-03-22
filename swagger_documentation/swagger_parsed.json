@@ -1214,6 +1214,76 @@
                 }
             }
         }, 
+        "/account/articles/{article_id}/versions/{version_id}/update_thumb": {
+            "put": {
+                "tags": [
+                    "articles"
+                ], 
+                "operationId": "article_version_update_thumb", 
+                "summary": "Article Version Update Thumb", 
+                "description": "For a given public article version update the article thumb by choosing one of the associated files", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "article_id", 
+                        "in": "path", 
+                        "description": "Article unique identifier", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }, 
+                    {
+                        "name": "version_id", 
+                        "in": "path", 
+                        "description": "Article version identifier", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }, 
+                    {
+                        "name": "FileId", 
+                        "in": "body", 
+                        "description": "File ID", 
+                        "required": true, 
+                        "schema": {
+                            "$ref": "#/definitions/FileId"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "205": {
+                        "description": "Reset Content", 
+                        "headers": {
+                            "Location": {
+                                "type": "string", 
+                                "format": "link", 
+                                "description": "Location for article version details"
+                            }
+                        }
+                    }, 
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }, 
         "/account/articles/{article_id}/authors": {
             "parameters": [
                 {
@@ -11815,6 +11885,18 @@
                     "format": "int64", 
                     "description": "File size in bytes; can be omitted only for linked files.", 
                     "example": 70
+                }
+            }
+        }, 
+        "FileId": {
+            "x-tag": "articles", 
+            "type": "object", 
+            "properties": {
+                "file_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "File ID", 
+                    "example": 123
                 }
             }
         }, 
