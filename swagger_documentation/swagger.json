@@ -9927,6 +9927,11 @@
                     "description": "Api endpoint", 
                     "example": "https://api.figshare.com/v2/collections/123"
                 }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/Timeline"
+                }, 
                 "published_date": {
                     "type": [
                         "string", 
