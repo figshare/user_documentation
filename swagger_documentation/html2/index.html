@@ -1557,6 +1557,10 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "https://api.figshare.com/v2/collections/123",
       "description" : "Api endpoint"
+    },
+    "timeline" : {
+      "description" : "Various timeline dates",
+      "$ref" : "#/definitions/Timeline"
     }
   },
   "x-tag" : "collections"
@@ -1935,8 +1939,8 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution" : {
       "type" : "integer",
@@ -2407,15 +2411,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution_id" : {
       "type" : "integer",
@@ -55699,7 +55703,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2021-03-22T10:47:20.907+02:00
+              Generated 2021-04-01T11:19:09.567+03:00
             </div>
           </div>
       </div>
