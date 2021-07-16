@@ -1980,7 +1980,7 @@
             "x-subcategory": "Private Article Files", 
             "operationId": "private_article_upload_initiate", 
             "summary": "Initiate Upload", 
-            "description": "Initiate new file upload within the article. Either use link to provide only an existing file that will not be uploaded on figshare or use the other 3 parameters(md5, name, size)", 
+            "description": "Initiate new file upload within the article. Either use the link property to point to file that resides elsewhere and will not be uploaded to Figshare or use the other 3 properties (md5, name, size)", 
             "security": [
                 {
                     "OAuth2": [

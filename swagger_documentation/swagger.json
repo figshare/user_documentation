@@ -2063,7 +2063,7 @@
                 "x-subcategory": "Private Article Files", 
                 "operationId": "private_article_upload_initiate", 
                 "summary": "Initiate Upload", 
-                "description": "Initiate new file upload within the article. Either use link to provide only an existing file that will not be uploaded on figshare or use the other 3 parameters(md5, name, size)", 
+                "description": "Initiate a new file upload within the article. Either use the link property to point to an existing file that resides elsewhere and will not be uploaded to Figshare or use the other 3 parameters (md5, name, size).", 
                 "security": [
                     {
                         "OAuth2": [
@@ -7879,7 +7879,7 @@
                 "institution": {
                     "description": "only return collections from this institution", 
                     "type": "integer", 
-                    "format": "int64", 
+                    "format": "int32", 
                     "example": 2000013
                 }, 
                 "published_since": {
@@ -7895,7 +7895,7 @@
                 "group": {
                     "description": "only return collections from this group", 
                     "type": "integer", 
-                    "format": "int64", 
+                    "format": "int32", 
                     "example": 2000013
                 }
             }
@@ -9785,12 +9785,12 @@
             "properties": {
                 "link": {
                     "type": "string", 
-                    "description": "Url for an existing file that will not be uploaded on figshare", 
+                    "description": "Url for an existing file that will not be uploaded to Figshare", 
                     "example": "http://figshare.com/file.txt"
                 }, 
                 "md5": {
                     "type": "string", 
-                    "description": "MD5 sum pre computed on the client side", 
+                    "description": "MD5 sum pre-computed on client side; can be omitted only for linked files.", 
                     "example": "6c16e6e7d7587bd078e5117dda01d565"
                 }, 
                 "name": {

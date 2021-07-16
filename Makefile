@@ -8,7 +8,7 @@ publish:
 	mkdocs gh-deploy
 
 server:
-	mkdocs serve
+	cd swagger_documentation && python -m SimpleHTTPServer 8000
 
 configure:
 	pip install mkdocs

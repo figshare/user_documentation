@@ -45,11 +45,6 @@ Merging into master has to be done with `--ff-only`:
 
     git merge --ff-only <branch>
 
-:warning: **Attention**
-
-> **Don't use** merge pull-request feature of github.
-
-
 ## Development
 
 To be able to build the documentation one needs to install the necessary
@@ -63,8 +58,7 @@ To build the documentation:
 
 To check the generated documentation:
 
-    $ cd swagger_documentation/
-    $ python -m SimpleHTTPServer 8000
+    $ make server
 
 and open http://localhost:8000/ in your browser.
 
