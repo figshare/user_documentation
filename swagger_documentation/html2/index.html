@@ -1939,12 +1939,12 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "enum" : [ "asc", "desc" ],
-      "default" : "desc"
+      "default" : "desc",
+      "enum" : [ "asc", "desc" ]
     },
     "institution" : {
       "type" : "integer",
-      "format" : "int64",
+      "format" : "int32",
       "example" : 2000013,
       "description" : "only return collections from this institution"
     },
@@ -1960,7 +1960,7 @@ margin-bottom: 20px;
     },
     "group" : {
       "type" : "integer",
-      "format" : "int64",
+      "format" : "int32",
       "example" : 2000013,
       "description" : "only return collections from this group"
     }
@@ -2105,12 +2105,12 @@ margin-bottom: 20px;
     "link" : {
       "type" : "string",
       "example" : "http://figshare.com/file.txt",
-      "description" : "Url for an existing file that will not be uploaded on figshare"
+      "description" : "Url for an existing file that will not be uploaded to Figshare"
     },
     "md5" : {
       "type" : "string",
       "example" : "6c16e6e7d7587bd078e5117dda01d565",
-      "description" : "MD5 sum pre computed on the client side"
+      "description" : "MD5 sum pre-computed on client side; can be omitted only for linked files."
     },
     "name" : {
       "type" : "string",
@@ -2411,15 +2411,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
-      "default" : "published_date"
+      "default" : "published_date",
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "enum" : [ "asc", "desc" ],
-      "default" : "desc"
+      "default" : "desc",
+      "enum" : [ "asc", "desc" ]
     },
     "institution_id" : {
       "type" : "integer",
@@ -19412,7 +19412,7 @@ except ApiException as e:
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Initiate new file upload within the article. Either use link to provide only an existing file that will not be uploaded on figshare or use the other 3 parameters(md5, name, size)</p>
+                        <p class="marked">Initiate a new file upload within the article. Either use the link property to point to an existing file that resides elsewhere and will not be uploaded to Figshare or use the other 3 parameters (md5, name, size).</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/articles/{article_id}/files</span></code></pre>
@@ -55703,7 +55703,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2021-04-01T11:19:09.567+03:00
+              Generated 2021-07-16T15:11:03.455+03:00
             </div>
           </div>
       </div>
