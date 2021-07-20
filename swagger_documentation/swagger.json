@@ -9790,7 +9790,7 @@
                 }, 
                 "md5": {
                     "type": "string", 
-                    "description": "MD5 sum pre-computed on client side; can be omitted only for linked files.", 
+                    "description": "MD5 sum pre-computed on client side.", 
                     "example": "6c16e6e7d7587bd078e5117dda01d565"
                 }, 
                 "name": {
