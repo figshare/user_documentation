@@ -1251,6 +1251,130 @@ margin-bottom: 20px;
   },
   "x-tag" : "articles"
 };
+            defs.ArticleProjectCreate = {
+  "type" : "object",
+  "required" : [ "title" ],
+  "properties" : {
+    "title" : {
+      "type" : "string",
+      "example" : "Test article title",
+      "description" : "Title of article",
+      "minLength" : 3,
+      "maxLength" : 1000
+    },
+    "description" : {
+      "type" : "string",
+      "example" : "Test description of article",
+      "description" : "The article description. In a publisher case, usually this is the remote article description",
+      "maxLength" : 10000,
+      "default" : ""
+    },
+    "tags" : {
+      "type" : "array",
+      "example" : [ "tag1", "tag2" ],
+      "description" : "List of tags to be associated with the article. Keywords can be used instead",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "keywords" : {
+      "type" : "array",
+      "example" : [ "tag1", "tag2" ],
+      "description" : "List of tags to be associated with the article. Tags can be used instead",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "references" : {
+      "type" : "array",
+      "example" : [ "http://figshare.com", "http://api.figshare.com" ],
+      "description" : "List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])",
+      "items" : {
+        "type" : "string",
+        "format" : "link"
+      }
+    },
+    "categories" : {
+      "type" : "array",
+      "example" : [ 1, 10, 11 ],
+      "description" : "List of category ids to be associated with the article(e.g [1, 23, 33, 66])",
+      "items" : {
+        "type" : "integer",
+        "format" : "int64"
+      }
+    },
+    "authors" : {
+      "type" : "array",
+      "example" : [ {
+        "name" : "John Doe"
+      }, {
+        "id" : 1000008
+      } ],
+      "description" : "List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.",
+      "items" : {
+        "type" : "object",
+        "properties" : { }
+      }
+    },
+    "custom_fields" : {
+      "type" : "object",
+      "example" : {
+        "defined_key" : "value for it"
+      },
+      "description" : "List of key, values pairs to be associated with the article",
+      "properties" : { }
+    },
+    "defined_type" : {
+      "type" : "string",
+      "example" : "media",
+      "description" : "<b>One of:</b> <code>figure</code> <code>online resource</code> <code>preprint</code> <code>book</code> <code>conference contribution</code> <code>media</code> <code>dataset</code> <code>poster</code> <code>journal contribution</code> <code>presentation</code> <code>thesis</code> <code>software</code>"
+    },
+    "funding" : {
+      "type" : "string",
+      "description" : "Grant number or funding authority",
+      "default" : ""
+    },
+    "funding_list" : {
+      "type" : "array",
+      "description" : "Funding creation / update items",
+      "items" : {
+        "$ref" : "#/definitions/FundingCreate"
+      }
+    },
+    "license" : {
+      "type" : "integer",
+      "format" : "int64",
+      "example" : 1,
+      "description" : "License id for this article.",
+      "default" : 0
+    },
+    "doi" : {
+      "type" : "string",
+      "description" : "Not applicable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
+      "default" : ""
+    },
+    "handle" : {
+      "type" : "string",
+      "description" : "Not applicable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
+      "default" : ""
+    },
+    "resource_doi" : {
+      "type" : "string",
+      "description" : "Not applicable to regular users. In a publisher case, this is the publisher article DOI.",
+      "default" : ""
+    },
+    "resource_title" : {
+      "type" : "string",
+      "description" : "Not applicable to regular users. In a publisher case, this is the publisher article title.",
+      "default" : ""
+    },
+    "timeline" : {
+      "description" : "Various timeline dates",
+      "$ref" : "#/definitions/TimelineUpdate"
+    }
+  },
+  "x-tag" : "articles"
+};
             defs.ArticleUpdate = {
   "type" : "object",
   "properties" : {
@@ -46427,7 +46551,7 @@ public class ProjectsApiExample {
 
         ProjectsApi apiInstance = new ProjectsApi();
         Long projectId = 789; // Long | Project unique identifier
-        ArticleCreate article = ; // ArticleCreate | Article description
+        ArticleProjectCreate article = ; // ArticleProjectCreate | Article description
         Long page = 789; // Long | Page number. Used for pagination with page_size
         Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
@@ -46451,7 +46575,7 @@ public class ProjectsApiExample {
     public static void main(String[] args) {
         ProjectsApi apiInstance = new ProjectsApi();
         Long projectId = 789; // Long | Project unique identifier
-        ArticleCreate article = ; // ArticleCreate | Article description
+        ArticleProjectCreate article = ; // ArticleProjectCreate | Article description
         Long page = 789; // Long | Page number. Used for pagination with page_size
         Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
@@ -46477,7 +46601,7 @@ public class ProjectsApiExample {
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 Long *projectId = 789; // Project unique identifier
-ArticleCreate *article = ; // Article description
+ArticleProjectCreate *article = ; // Article description
 Long *page = 789; // Page number. Used for pagination with page_size (optional)
 Long *pageSize = 789; // The number of results included on a page. Used for pagination with page (optional) (default to 10)
 Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
@@ -46515,7 +46639,7 @@ var api = new FigshareApi.ProjectsApi()
 
 var projectId = 789; // {Long} Project unique identifier
 
-var article = ; // {ArticleCreate} Article description
+var article = ; // {ArticleProjectCreate} Article description
 
 var opts = { 
   'page': 789, // {Long} Page number. Used for pagination with page_size
@@ -46557,7 +46681,7 @@ namespace Example
 
             var apiInstance = new ProjectsApi();
             var projectId = 789;  // Long | Project unique identifier
-            var article = new ArticleCreate(); // ArticleCreate | Article description
+            var article = new ArticleProjectCreate(); // ArticleProjectCreate | Article description
             var page = 789;  // Long | Page number. Used for pagination with page_size (optional) 
             var pageSize = 789;  // Long | The number of results included on a page. Used for pagination with page (optional)  (default to 10)
             var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
@@ -46588,7 +46712,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_AC
 
 $api_instance = new Swagger\Client\Api\ProjectsApi();
 $projectId = 789; // Long | Project unique identifier
-$article = ; // ArticleCreate | Article description
+$article = ; // ArticleProjectCreate | Article description
 $page = 789; // Long | Page number. Used for pagination with page_size
 $pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
 $limit = 789; // Long | Number of results included on a page. Used for pagination with query
@@ -46613,7 +46737,7 @@ $WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::ProjectsApi->new();
 my $projectId = 789; # Long | Project unique identifier
-my $article = WWW::SwaggerClient::Object::ArticleCreate->new(); # ArticleCreate | Article description
+my $article = WWW::SwaggerClient::Object::ArticleProjectCreate->new(); # ArticleProjectCreate | Article description
 my $page = 789; # Long | Page number. Used for pagination with page_size
 my $pageSize = 789; # Long | The number of results included on a page. Used for pagination with page
 my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
@@ -46641,7 +46765,7 @@ swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = swagger_client.ProjectsApi()
 projectId = 789 # Long | Project unique identifier
-article =  # ArticleCreate | Article description
+article =  # ArticleProjectCreate | Article description
 page = 789 # Long | Page number. Used for pagination with page_size (optional)
 pageSize = 789 # Long | The number of results included on a page. Used for pagination with page (optional) (default to 10)
 limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
@@ -46711,7 +46835,7 @@ $(document).ready(function() {
   "description" : "Article description",
   "required" : true,
   "schema" : {
-    "$ref" : "#/definitions/ArticleCreate"
+    "$ref" : "#/definitions/ArticleProjectCreate"
   }
 };
   var schema = schemaWrapper.schema;
@@ -55703,7 +55827,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2021-07-20T11:36:44.656+03:00
+              Generated 2021-07-26T13:56:17.430+03:00
             </div>
           </div>
       </div>
