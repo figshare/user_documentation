@@ -5383,7 +5383,7 @@
                         "name": "Article", 
                         "description": "Article description", 
                         "schema": {
-                            "$ref": "#/definitions/ArticleCreate"
+                            "$ref": "#/definitions/ArticleProjectCreate"
                         }, 
                         "required": true
                     }
@@ -8628,6 +8628,152 @@
                     "type": "integer", 
                     "format": "int64", 
                     "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
+                }
+            }
+        }, 
+        "ArticleProjectCreate": {
+            "x-tag": "articles", 
+            "type": "object", 
+            "required": [
+                "title"
+            ], 
+            "properties": {
+                "title": {
+                    "type": "string", 
+                    "description": "Title of article", 
+                    "maxLength": 1000, 
+                    "minLength": 3, 
+                    "example": "Test article title"
+                }, 
+                "description": {
+                    "type": "string", 
+                    "description": "The article description. In a publisher case, usually this is the remote article description", 
+                    "default": "", 
+                    "example": "Test description of article", 
+                    "maxLength": 10000
+                }, 
+                "tags": {
+                    "type": "array", 
+                    "description": "List of tags to be associated with the article. Keywords can be used instead", 
+                    "items": {
+                        "type": "string"
+                    }, 
+                    "default": [], 
+                    "example": [
+                        "tag1", 
+                        "tag2"
+                    ]
+                }, 
+                "keywords": {
+                    "type": "array", 
+                    "description": "List of tags to be associated with the article. Tags can be used instead", 
+                    "items": {
+                        "type": "string"
+                    }, 
+                    "default": [], 
+                    "example": [
+                        "tag1", 
+                        "tag2"
+                    ]
+                }, 
+                "references": {
+                    "type": "array", 
+                    "items": {
+                        "type": "string", 
+                        "format": "link"
+                    }, 
+                    "description": "List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])", 
+                    "default": [], 
+                    "example": [
+                        "http://figshare.com", 
+                        "http://api.figshare.com"
+                    ]
+                }, 
+                "categories": {
+                    "type": "array", 
+                    "items": {
+                        "type": "integer", 
+                        "format": "int64"
+                    }, 
+                    "description": "List of category ids to be associated with the article(e.g [1, 23, 33, 66])", 
+                    "default": [], 
+                    "example": [
+                        1, 
+                        10, 
+                        11
+                    ]
+                }, 
+                "authors": {
+                    "type": "array", 
+                    "items": {
+                        "type": "object"
+                    }, 
+                    "description": "List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.", 
+                    "default": [], 
+                    "example": [
+                        {
+                            "name": "John Doe"
+                        }, 
+                        {
+                            "id": 1000008
+                        }
+                    ]
+                }, 
+                "custom_fields": {
+                    "type": "object", 
+                    "description": "List of key, values pairs to be associated with the article", 
+                    "example": {
+                        "defined_key": "value for it"
+                    }
+                }, 
+                "defined_type": {
+                    "type": "string", 
+                    "description": "<b>One of:</b> <code>figure</code> <code>online resource</code> <code>preprint</code> <code>book</code> <code>conference contribution</code> <code>media</code> <code>dataset</code> <code>poster</code> <code>journal contribution</code> <code>presentation</code> <code>thesis</code> <code>software</code>", 
+                    "example": "media"
+                }, 
+                "funding": {
+                    "type": "string", 
+                    "description": "Grant number or funding authority", 
+                    "default": ""
+                }, 
+                "funding_list": {
+                    "type": "array", 
+                    "description": "Funding creation / update items", 
+                    "items": {
+                        "$ref": "#/definitions/FundingCreate"
+                    }
+                }, 
+                "license": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "License id for this article.", 
+                    "default": 0, 
+                    "example": 1
+                }, 
+                "doi": {
+                    "type": "string", 
+                    "description": "Not applicable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.", 
+                    "default": ""
+                }, 
+                "handle": {
+                    "type": "string", 
+                    "description": "Not applicable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.", 
+                    "default": ""
+                }, 
+                "resource_doi": {
+                    "type": "string", 
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article DOI.", 
+                    "default": ""
+                }, 
+                "resource_title": {
+                    "type": "string", 
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article title.", 
+                    "default": ""
+                }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/TimelineUpdate"
                 }
             }
         }, 
