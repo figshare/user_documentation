@@ -2910,6 +2910,246 @@ json
 
     </div>
 
+            </div>
+    <div id="description_custom_fields_endpoint">
+        <h3 id="upload-custom-fields-file">Upload Custom Fields File</h3>
+        <h4 id="request">Request</h4>
+        <pre><code class="http">POST /v2/institution/custom_fields/{custom_field_id}/items/upload
+        </code></pre>
+
+        <p>The request needs to be of type <code>multipart/form-data</code> and have its <strong>Content-Type</strong> header set to the same value; the body of the file is sent as the form data.
+        A typical request looks like this:</p>
+<pre><code class="http">POST institution/custom_fields/{custom_field_id}/items/upload HTTP/1.1
+Host: api.figshare.com
+Content-Length: 975
+Accept-Encoding: gzip, deflate
+Accept: */*
+User-Agent: python-requests/2.5.3 CPython/2.7.10 Linux/4.1.4-1-ARCH
+Connection: keep-alive
+Content-Type: multipart/form-data; boundary=529448d158064de596afd8f892c84e15
+Authorization: token 86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df
+
+--529448d158064de596afd8f892c84e15
+Content-Disposition: form-data; name="external_file"; filename="example_file.csv"
+
+[file content goes there]
+
+--529448d158064de596afd8f892c84e15--
+
+
+</code></pre>
+
+    </div>
+    <div id="description_custom_fields_examples_python">
+        <h2 id="python">Python</h2>
+        <p>One of the simpler examples is in <em>python</em>. For this to work one would need to install the <em>requests</em> python package.</p>
+<pre><code class="python">#!/usr/bin/env python
+
+import requests
+
+
+FILE_NAME = 'example_file.csv'
+API_URL = 'https://api.figshare.com/v2/account/institution/custom_fields/{custom_field_id}/items/upload'.format(custom_field_id=1)
+TOKEN = '86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df'
+
+
+def main():
+    headers = {"Authorization": "token " + TOKEN}
+    with open(FILE_NAME, 'rb') as fin:
+        files = {'external_file': (FILE_NAME, fin)}
+        resp = requests.post(API_URL, files=files, headers=headers)
+
+        print(resp.content)
+
+        resp.raise_for_status()
+
+</code></pre>
+    </div>
+    <div id="description_custom_fields_examples_java">
+        <h2 id="java">Java</h2>
+        <p>For java one can use apache <em>httpcomponents</em>:</p>
+<pre><code class="java">import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.Throwable;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+
+public class CSVUploaderExample {
+    public static void main(String[] args) {
+        try {
+            CSVUploaderExample ex = new CSVUploaderExample(args[0]);
+            ex.upload();
+        } catch (Throwable t) {
+            t.printStackTrace(System.err);
+        }
+    }
+
+    private static final String API_URL = "https://api.figshare.com/v2/account/institution/custom_fields/1/items/upload";
+    private static final String TOKEN = "86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df";
+
+    private String fileName = null;
+
+    CSVUploaderExample(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void upload() throws IOException {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        HttpPost uploadFile = new HttpPost(API_URL);
+
+        uploadFile.addHeader("Authorization", "token " + TOKEN);
+
+        MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+        File file = new File(fileName);
+
+        builder.addBinaryBody("external_file", new FileInputStream(file), ContentType.TEXT_PLAIN, file.getName());
+
+        HttpEntity multipart = builder.build();
+        uploadFile.setEntity(multipart);
+
+        CloseableHttpResponse response = httpClient.execute(uploadFile);
+        int status = response.getStatusLine().getStatusCode();
+
+        System.out.println("Status code was: " + status);
+    }
+}
+
+</code></pre>
+    </div>
+    <div id="description_custom_fields_examples_csharp">
+        <h2 id="c">C#</h2>
+        <p>For the <strong>.NET / mono</strong> users there's this snippet of code:</p>
+<pre><code class="Csharp">
+using System;
+using System.Net.Http;
+using System.IO;
+using System.Threading.Tasks;
+
+namespace CSVUploaderExample
+{
+  class MainClass
+  {
+    private const String API_URL = "https://api.figshare.com/v2/account/institution/custom_fields/1/items/upload";
+    private const String TOKEN = "86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df";
+    private String fileName = null;
+
+    public static void Main (string[] args)
+    {
+      MainClass app = new MainClass (args [0]);
+      app.Upload ();
+    }
+
+    MainClass(String fileName) {
+      this.fileName = fileName;
+    }
+
+    public void Upload() {
+      HttpClient httpClient = new HttpClient ();
+      httpClient.DefaultRequestHeaders.Add ("Authorization", "token " + MainClass.TOKEN);
+
+      MultipartFormDataContent form = new MultipartFormDataContent ();
+      using (StreamReader sr = new StreamReader (this.fileName)) {
+        String content = sr.ReadToEnd ();
+        byte[] data = System.Text.Encoding.UTF8.GetBytes (content);
+
+        form.Add (new ByteArrayContent (data, 0, data.Length), "external_file", this.fileName);
+      }
+
+      Task<HttpResponseMessage> task = httpClient.PostAsync (MainClass.API_URL, form);
+      task.Wait();
+      HttpResponseMessage response = task.Result;
+      response.EnsureSuccessStatusCode();
+
+      Console.WriteLine ("Status code was: " + response.StatusCode);
+
+      httpClient.Dispose();
+    }
+  }
+}
+</code></pre>
+    </div>
+    <div id="description_custom_fields_examples_curl">
+        <h2 id="curl">CURL</h2>
+        <p>Probably one of the most versatile ways of uploading an HRFeed is through <strong>curl</strong> given the possibility
+        of integrating it into any other command line utility on linux/unix.</p>
+<pre><code class="curl">curl -XPOST\
+    -H"Authorization: token 86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df"\
+    -F"external_file=@my_file.csv"\
+    https://api.figshare.com/v2/account/institution/custom_fields/1/items/upload
+</code></pre>
+
+
+    </div>
+    <div id="description_custom_fields_response">
+        <h2 id="response">Response</h2>
+<pre><code class="json">{
+    &quot;message&quot;: &quot;OK&quot;,
+    "code": "200"
+}
+</code></pre>
+    </div>
+    <div id="description_custom_fields_errors">
+        <h2 id="errors">Errors</h2>
+        <p>Standard <a href="../#errors">error responses</a><p>
+        <p>Other specific errors:</p>
+<pre><code class="json">{
+    &quot;message&quot;: &quot;Previous import still in progress!&quot;,
+    "code": "PreviousCustomFieldUploadNotComplete"
+}
+</code></pre>
+
+        <p>when the feed has already been submitted within a 60 minutes span.</p>
+
+<pre><code class="json">{
+    &quot;message&quot;: &quot;You are not allowed to upload values for this custom field&quot;,
+    "code": "DropdownLargeListFieldUpdateUnauthorizedError"
+}
+</code></pre>
+
+    <p>when the user is not authorized to make the upload</p>
+
+        <pre><code class="json">{
+    &quot;message&quot;: &quot;This custom field cannot be updated via this method&quot;,
+    "code": "BadRequest"
+}
+</code></pre>
+
+    <p>when trying to upload a file for a custom field of a different type besides dropdown_large_list.</p>
+
+    </div>
+    <div id="description_custom_fields_notes">
+        <h2 id="notes">Notes</h2>
+        <p>The <em>success</em> response only indicates the fact that the system has
+        understood the request, has received the file and has initiated the necessary tasks. It is not a confirmation that the file processing is complete.
+        <p>The <em>token</em> given in the upper examples is a general Fig<strong>share</strong> API personal belonging to an admin/owner
+        of the group the custom field has been created in (either institutional admin or group admin/owner). No other users
+        should be able to use this endpoint (otherwise an <strong>Unauthorised</strong> error will be returned).
+        </p>
+        <p>By default, only one file upload can be initiated every 60 minutes per portal. The enforced delay will not be automatically lifted
+            if the custom field is deleted in the meantime. The length of this enforced delay can be customized by submitting a request to Figshare support.</p>
+        <p>The only supported file format at the moment is CSV. The first line of the file will be ignored, as it is assumed to be a header row.
+            For all further rows, the values in all columns will be concatenated, with a single space inserted between each pair of values,
+            and the result will be added as an item for the custom metadata field.
+        For example, the following file content:</p>
+<pre><code class="csv">
+    header1,header2,header 3
+    123,My awesome field value,456
+</code></pre>
+
+        <p>will generate a single custom field value <strong>123 My awesome field value 456.</strong></p>
+        <p>Values must have a minimum of 3 characters and a maximum of 255 characters. All values outside of this interval will simply be ignored.</p>
+
+
+    </div>
+
     <div id="description_api_features">
       <h1 id="api-feature-list">API feature list</h1>
       <p>The figshare api v2 is accessible at https://api.figshare.com/v2. All

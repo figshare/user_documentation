@@ -6242,6 +6242,120 @@
                 }
             }
         }, 
+        "/account/institution/custom_fields": {
+            "get": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "custom_fields_list", 
+                "summary": "Private account institution group custom fields", 
+                "description": "Returns the custom fields in the group the user belongs to, or the ones in the group specified, if the user has access.", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "group_id", 
+                        "in": "query", 
+                        "description": "Group_id", 
+                        "required": false, 
+                        "type": "integer", 
+                        "format": "int64"
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of custom fields", 
+                        "schema": {
+                            "type": "array", 
+                            "items": {
+                                "$ref": "#/definitions/ShortCustomField"
+                            }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/account/institution/custom_fields/{custom_field_id}/items/upload": {
+            "post": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "custom_fields_upload", 
+                "summary": "Custom fields values files upload", 
+                "description": "Uploads a CSV containing values for a specific custom field of type <b>dropdown_large_list</b>. More details in the <a href=\"#custom_fields\">Custom Fields section</a>", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "consumes": [
+                    "multipart/form-data"
+                ], 
+                "parameters": [
+                    {
+                        "name": "custom_field_id", 
+                        "in": "path", 
+                        "description": "Custom field identifier", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }, 
+                    {
+                        "in": "formData", 
+                        "name": "external_file", 
+                        "type": "file", 
+                        "description": "CSV file to be uploaded"
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK", 
+                        "schema": {
+                            "type": "object", 
+                            "example": {
+                                "code": 200, 
+                                "message": "OK"
+                            }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict"
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
         "/account/categories": {
             "get": {
                 "tags": [
@@ -7325,6 +7439,37 @@
                         "null"
                     ], 
                     "example": null
+                }
+            }
+        }, 
+        "ShortCustomField": {
+            "x-tag": "institutions", 
+            "type": "object", 
+            "properties": {
+                "id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Custom field id", 
+                    "example": 365
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "Custom field name", 
+                    "example": "my custom field"
+                }, 
+                "field_type": {
+                    "description": "Custom field type", 
+                    "type": "string", 
+                    "example": "textarea", 
+                    "enum": [
+                        "text", 
+                        "textarea", 
+                        "dropdown", 
+                        "url", 
+                        "email", 
+                        "date", 
+                        "dropdown_large_list"
+                    ]
                 }
             }
         }, 
@@ -10991,6 +11136,49 @@
                 {
                     "title": "Notes", 
                     "content": "description_hrfeed_notes"
+                }
+            ]
+        }, 
+        {
+            "title": "Custom Fields", 
+            "position": "bottom", 
+            "subsections": [
+                {
+                    "title": "Custom Fields Private Endpoints", 
+                    "content": "description_custom_fields_endpoint"
+                }, 
+                {
+                    "title": "Custom Fields examples", 
+                    "subsections": [
+                        {
+                            "title": "Python", 
+                            "content": "description_custom_fields_examples_python"
+                        }, 
+                        {
+                            "title": "Java", 
+                            "content": "description_custom_fields_examples_java"
+                        }, 
+                        {
+                            "title": "C Sharp", 
+                            "content": "description_custom_fields_examples_csharp"
+                        }, 
+                        {
+                            "title": "Curl", 
+                            "content": "description_custom_fields_examples_curl"
+                        }
+                    ]
+                }, 
+                {
+                    "title": "Response", 
+                    "content": "description_custom_fields_response"
+                }, 
+                {
+                    "title": "Errors", 
+                    "content": "description_custom_fields_errors"
+                }, 
+                {
+                    "title": "Notes", 
+                    "content": "description_custom_fields_notes"
                 }
             ]
         }, 

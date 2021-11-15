@@ -2063,8 +2063,8 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution" : {
       "type" : "integer",
@@ -2535,15 +2535,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution_id" : {
       "type" : "integer",
@@ -2924,6 +2924,29 @@ margin-bottom: 20px;
     }
   },
   "x-tag" : "other"
+};
+            defs.ShortCustomField = {
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "integer",
+      "format" : "int64",
+      "example" : 365,
+      "description" : "Custom field id"
+    },
+    "name" : {
+      "type" : "string",
+      "example" : "my custom field",
+      "description" : "Custom field name"
+    },
+    "field_type" : {
+      "type" : "string",
+      "example" : "textarea",
+      "description" : "Custom field type",
+      "enum" : [ "text", "textarea", "dropdown", "url", "email", "date", "dropdown_large_list" ]
+    }
+  },
+  "x-tag" : "institutions"
 };
             defs.TimelineUpdate = {
   "type" : "object",
@@ -3434,6 +3457,12 @@ margin-bottom: 20px;
                     </li>
                     <li data-group="Institutions" data-name="accountInstitutionCurations" class="">
                       <a href="#api-Institutions-accountInstitutionCurations">accountInstitutionCurations</a>
+                    </li>
+                    <li data-group="Institutions" data-name="customFieldsList" class="">
+                      <a href="#api-Institutions-customFieldsList">customFieldsList</a>
+                    </li>
+                    <li data-group="Institutions" data-name="customFieldsUpload" class="">
+                      <a href="#api-Institutions-customFieldsUpload">customFieldsUpload</a>
                     </li>
                     <li data-group="Institutions" data-name="institutionArticles" class="">
                       <a href="#api-Institutions-institutionArticles">institutionArticles</a>
@@ -36129,6 +36158,820 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
+                    <div id="api-Institutions-customFieldsList">
+                      <article id="api-Institutions-customFieldsList-0" data-group="User" data-name="customFieldsList" data-version="0">
+                        <div class="pull-left">
+                          <h1>customFieldsList</h1>
+                          <p>Private account institution group custom fields</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Returns the custom fields in the group the user belongs to, or the ones in the group specified, if the user has access.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/account/institution/custom_fields</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Institutions-customFieldsList-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Institutions-customFieldsList-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Institutions-customFieldsList-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Institutions-customFieldsList-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Institutions-customFieldsList-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Institutions-customFieldsList-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Institutions-customFieldsList-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Institutions-customFieldsList-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Institutions-customFieldsList-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Institutions-customFieldsList-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Institutions-customFieldsList-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Institutions-customFieldsList-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/account/institution/custom_fields?group_id="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Institutions-customFieldsList-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.InstitutionsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class InstitutionsApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        InstitutionsApi apiInstance = new InstitutionsApi();
+        Long groupId = 789; // Long | Group_id
+        try {
+            array[ShortCustomField] result = apiInstance.customFieldsList(groupId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#customFieldsList");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Institutions-customFieldsList-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.InstitutionsApi;
+
+public class InstitutionsApiExample {
+
+    public static void main(String[] args) {
+        InstitutionsApi apiInstance = new InstitutionsApi();
+        Long groupId = 789; // Long | Group_id
+        try {
+            array[ShortCustomField] result = apiInstance.customFieldsList(groupId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#customFieldsList");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Institutions-customFieldsList-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Institutions-customFieldsList-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *groupId = 789; // Group_id (optional)
+
+InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
+
+// Private account institution group custom fields
+[apiInstance customFieldsListWith:groupId
+              completionHandler: ^(array[ShortCustomField] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-customFieldsList-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.InstitutionsApi()
+
+var opts = { 
+  'groupId': 789 // {Long} Group_id
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.customFieldsList(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Institutions-customFieldsList-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Institutions-customFieldsList-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class customFieldsListExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new InstitutionsApi();
+            var groupId = 789;  // Long | Group_id (optional) 
+
+            try
+            {
+                // Private account institution group custom fields
+                array[ShortCustomField] result = apiInstance.customFieldsList(groupId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling InstitutionsApi.customFieldsList: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-customFieldsList-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\InstitutionsApi();
+$groupId = 789; // Long | Group_id
+
+try {
+    $result = $api_instance->customFieldsList($groupId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InstitutionsApi->customFieldsList: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-customFieldsList-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::InstitutionsApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::InstitutionsApi->new();
+my $groupId = 789; # Long | Group_id
+
+eval { 
+    my $result = $api_instance->customFieldsList(groupId => $groupId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling InstitutionsApi->customFieldsList: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-customFieldsList-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.InstitutionsApi()
+groupId = 789 # Long | Group_id (optional)
+
+try: 
+    # Private account institution group custom fields
+    api_response = api_instance.custom_fields_list(groupId=groupId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling InstitutionsApi->customFieldsList: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">group_id</td>
+<td>
+
+
+    <div id="d2e199_customFieldsList_groupId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Group_id
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK. An array of custom fields </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-customFieldsList-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-customFieldsList-200-schema">
+                                  <div id='responses-customFieldsList-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK. An array of custom fields",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/ShortCustomField"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-customFieldsList-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-customFieldsList-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-customFieldsList-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-customFieldsList-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-customFieldsList-403-schema">
+                                  <div id='responses-customFieldsList-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-customFieldsList-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-customFieldsList-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-customFieldsList-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Institutions-customFieldsUpload">
+                      <article id="api-Institutions-customFieldsUpload-0" data-group="User" data-name="customFieldsUpload" data-version="0">
+                        <div class="pull-left">
+                          <h1>customFieldsUpload</h1>
+                          <p>Custom fields values files upload</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Uploads a CSV containing values for a specific custom field of type &lt;b&gt;dropdown_large_list&lt;/b&gt;. More details in the &lt;a href&#x3D;&quot;#custom_fields&quot;&gt;Custom Fields section&lt;/a&gt;</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/institution/custom_fields/{custom_field_id}/items/upload</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Institutions-customFieldsUpload-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Institutions-customFieldsUpload-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Institutions-customFieldsUpload-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Institutions-customFieldsUpload-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Institutions-customFieldsUpload-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Institutions-customFieldsUpload-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Institutions-customFieldsUpload-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Institutions-customFieldsUpload-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Institutions-customFieldsUpload-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Institutions-customFieldsUpload-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Institutions-customFieldsUpload-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Institutions-customFieldsUpload-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/institution/custom_fields/{custom_field_id}/items/upload"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Institutions-customFieldsUpload-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.InstitutionsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class InstitutionsApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        InstitutionsApi apiInstance = new InstitutionsApi();
+        Long customFieldId = 789; // Long | Custom field identifier
+        File externalFile = /path/to/file.txt; // File | CSV file to be uploaded
+        try {
+            Object result = apiInstance.customFieldsUpload(customFieldId, externalFile);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#customFieldsUpload");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Institutions-customFieldsUpload-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.InstitutionsApi;
+
+public class InstitutionsApiExample {
+
+    public static void main(String[] args) {
+        InstitutionsApi apiInstance = new InstitutionsApi();
+        Long customFieldId = 789; // Long | Custom field identifier
+        File externalFile = /path/to/file.txt; // File | CSV file to be uploaded
+        try {
+            Object result = apiInstance.customFieldsUpload(customFieldId, externalFile);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#customFieldsUpload");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Institutions-customFieldsUpload-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Institutions-customFieldsUpload-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *customFieldId = 789; // Custom field identifier
+File *externalFile = /path/to/file.txt; // CSV file to be uploaded (optional)
+
+InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
+
+// Custom fields values files upload
+[apiInstance customFieldsUploadWith:customFieldId
+    externalFile:externalFile
+              completionHandler: ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-customFieldsUpload-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.InstitutionsApi()
+
+var customFieldId = 789; // {Long} Custom field identifier
+
+var opts = { 
+  'externalFile': /path/to/file.txt // {File} CSV file to be uploaded
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.customFieldsUpload(customFieldId, opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Institutions-customFieldsUpload-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Institutions-customFieldsUpload-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class customFieldsUploadExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new InstitutionsApi();
+            var customFieldId = 789;  // Long | Custom field identifier
+            var externalFile = new File(); // File | CSV file to be uploaded (optional) 
+
+            try
+            {
+                // Custom fields values files upload
+                Object result = apiInstance.customFieldsUpload(customFieldId, externalFile);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling InstitutionsApi.customFieldsUpload: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-customFieldsUpload-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\InstitutionsApi();
+$customFieldId = 789; // Long | Custom field identifier
+$externalFile = /path/to/file.txt; // File | CSV file to be uploaded
+
+try {
+    $result = $api_instance->customFieldsUpload($customFieldId, $externalFile);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InstitutionsApi->customFieldsUpload: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-customFieldsUpload-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::InstitutionsApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::InstitutionsApi->new();
+my $customFieldId = 789; # Long | Custom field identifier
+my $externalFile = /path/to/file.txt; # File | CSV file to be uploaded
+
+eval { 
+    my $result = $api_instance->customFieldsUpload(customFieldId => $customFieldId, externalFile => $externalFile);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling InstitutionsApi->customFieldsUpload: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-customFieldsUpload-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.InstitutionsApi()
+customFieldId = 789 # Long | Custom field identifier
+externalFile = /path/to/file.txt # File | CSV file to be uploaded (optional)
+
+try: 
+    # Custom fields values files upload
+    api_response = api_instance.custom_fields_upload(customFieldId, externalFile=externalFile)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling InstitutionsApi->customFieldsUpload: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">custom_field_id*</td>
+<td>
+
+
+    <div id="d2e199_customFieldsUpload_customFieldId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Custom field identifier
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                            <div class="methodsubtabletitle">Form parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">external_file</td>
+<td>
+
+
+    <div id="d2e199_customFieldsUpload_externalFile">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    File
+                </span>
+
+                    <div class="inner description">
+                        CSV file to be uploaded
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-customFieldsUpload-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-customFieldsUpload-200-schema">
+                                  <div id='responses-customFieldsUpload-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "schema" : {
+    "type" : "object",
+    "example" : {
+      "code" : 200,
+      "message" : "OK"
+    },
+    "properties" : { }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-customFieldsUpload-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-customFieldsUpload-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-customFieldsUpload-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-customFieldsUpload-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-customFieldsUpload-403-schema">
+                                  <div id='responses-customFieldsUpload-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-customFieldsUpload-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-customFieldsUpload-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-customFieldsUpload-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 409 - Conflict </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Institutions-institutionArticles">
                       <article id="api-Institutions-institutionArticles-0" data-group="User" data-name="institutionArticles" data-version="0">
                         <div class="pull-left">
@@ -55827,7 +56670,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2021-07-26T13:56:17.430+03:00
+              Generated 2021-11-17T10:50:04.553+02:00
             </div>
           </div>
       </div>

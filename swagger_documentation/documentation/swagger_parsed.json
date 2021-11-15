@@ -370,7 +370,50 @@
                     "content": "description_hrfeed_notes"
                 }
             ]
-        }, 
+        },
+        {
+            "title": "Custom Fields",
+            "position": "bottom",
+            "subsections": [
+                {
+                    "title": "Custom Fields Private Endpoints",
+                    "content": "description_custom_fields_endpoint"
+                },
+                {
+                    "title": "Custom Fields examples",
+                    "subsections": [
+                        {
+                            "title": "Python",
+                            "content": "description_custom_fields_examples_python"
+                        },
+                        {
+                            "title": "Java",
+                            "content": "description_custom_fields_examples_java"
+                        },
+                        {
+                            "title": "C Sharp",
+                            "content": "description_custom_fields_examples_csharp"
+                        },
+                        {
+                            "title": "Curl",
+                            "content": "description_custom_fields_examples_curl"
+                        }
+                    ]
+                },
+                {
+                    "title": "Response",
+                    "content": "description_custom_fields_response"
+                },
+                {
+                    "title": "Errors",
+                    "content": "description_custom_fields_errors"
+                },
+                {
+                    "title": "Notes",
+                    "content": "description_custom_fields_notes"
+                }
+            ]
+        },
         {
             "title": "figshare Documentation", 
             "position": "top", 
