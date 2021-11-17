@@ -992,6 +992,70 @@
                 }
             }
         }, 
+        "/account/articles/{article_id}/resource": {
+            "post": {
+                "tags": [
+                    "articles"
+                ], 
+                "operationId": "private_article_resource", 
+                "summary": "Private Article Resource", 
+                "description": "Edit article resource data.", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "article_id", 
+                        "in": "path", 
+                        "description": "Article unique identifier", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }, 
+                    {
+                        "in": "body", 
+                        "name": "Resource", 
+                        "description": "Resource data", 
+                        "schema": {
+                            "$ref": "#/definitions/Resource"
+                        }, 
+                        "required": true
+                    }
+                ], 
+                "responses": {
+                    "205": {
+                        "description": "Reset Content", 
+                        "headers": {
+                            "Location": {
+                                "type": "string", 
+                                "format": "link", 
+                                "description": "Location for account article details"
+                            }
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }, 
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        }, 
         "/account/articles/{article_id}/publish": {
             "post": {
                 "tags": [
@@ -3165,6 +3229,67 @@
                     }, 
                     "500": {
                         "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/account/collections/{collection_id}/resource": {
+            "post": {
+                "tags": [
+                    "collections"
+                ], 
+                "operationId": "private_collection_resource", 
+                "summary": "Private Collection Resource", 
+                "description": "Edit collection resource data.", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "collection_id", 
+                        "in": "path", 
+                        "description": "Collection unique identifier", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }, 
+                    {
+                        "in": "body", 
+                        "name": "Resource", 
+                        "description": "Resource data", 
+                        "schema": {
+                            "$ref": "#/definitions/Resource"
+                        }, 
+                        "required": true
+                    }
+                ], 
+                "responses": {
+                    "205": {
+                        "description": "Reset Content", 
+                        "headers": {
+                            "Location": {
+                                "type": "string", 
+                                "format": "link", 
+                                "description": "Location for account collection details"
+                            }
+                        }
+                    }, 
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found"
                     }
                 }
             }
@@ -8477,6 +8602,47 @@
                 }
             }
         }, 
+        "Resource": {
+            "x-tag": "resource", 
+            "type": "object", 
+            "properties": {
+                "id": {
+                    "type": "string", 
+                    "description": "ID of resource item", 
+                    "default": "", 
+                    "maxLength": 255, 
+                    "example": "aaaa23512"
+                }, 
+                "title": {
+                    "type": "string", 
+                    "description": "Title of resource item", 
+                    "default": "", 
+                    "maxLength": 1000, 
+                    "example": "Test title"
+                }, 
+                "link": {
+                    "type": "string", 
+                    "description": "Link of resource item", 
+                    "default": "", 
+                    "maxLength": 255, 
+                    "example": "https://docs.figshare.com"
+                }, 
+                "status": {
+                    "type": "string", 
+                    "description": "Status of resource item", 
+                    "default": "", 
+                    "maxLength": 100, 
+                    "example": "frozen"
+                }, 
+                "version": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Version of resource item", 
+                    "default": 0, 
+                    "example": 1
+                }
+            }
+        }, 
         "ArticleUpdate": {
             "x-tag": "articles", 
             "type": "object", 
@@ -10030,6 +10196,11 @@
                     "type": "string", 
                     "description": "Date when this private link should expire - optional. By default private links expire in 365 days.", 
                     "example": "2018-02-22 22:22:22"
+                }, 
+                "read_only": {
+                    "type": "boolean", 
+                    "description": "Optional, default true. Set to false to give private link users editing rights for this collection.", 
+                    "example": true
                 }
             }
         }, 

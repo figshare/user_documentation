@@ -2063,8 +2063,8 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "enum" : [ "asc", "desc" ],
-      "default" : "desc"
+      "default" : "desc",
+      "enum" : [ "asc", "desc" ]
     },
     "institution" : {
       "type" : "integer",
@@ -2535,15 +2535,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
-      "default" : "published_date"
+      "default" : "published_date",
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "enum" : [ "asc", "desc" ],
-      "default" : "desc"
+      "default" : "desc",
+      "enum" : [ "asc", "desc" ]
     },
     "institution_id" : {
       "type" : "integer",
@@ -2599,6 +2599,11 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "2018-02-22 22:22:22",
       "description" : "Date when this private link should expire - optional. By default private links expire in 365 days."
+    },
+    "read_only" : {
+      "type" : "boolean",
+      "example" : true,
+      "description" : "Optional, default true. Set to false to give private link users editing rights for this collection."
     }
   },
   "x-tag" : "articles"
@@ -2843,6 +2848,47 @@ margin-bottom: 20px;
     }
   },
   "x-tag" : "common"
+};
+            defs.Resource = {
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "example" : "aaaa23512",
+      "description" : "ID of resource item",
+      "maxLength" : 255,
+      "default" : ""
+    },
+    "title" : {
+      "type" : "string",
+      "example" : "Test title",
+      "description" : "Title of resource item",
+      "maxLength" : 1000,
+      "default" : ""
+    },
+    "link" : {
+      "type" : "string",
+      "example" : "https://docs.figshare.com",
+      "description" : "Link of resource item",
+      "maxLength" : 255,
+      "default" : ""
+    },
+    "status" : {
+      "type" : "string",
+      "example" : "frozen",
+      "description" : "Status of resource item",
+      "maxLength" : 100,
+      "default" : ""
+    },
+    "version" : {
+      "type" : "integer",
+      "format" : "int64",
+      "example" : 1,
+      "description" : "Version of resource item",
+      "default" : 0
+    }
+  },
+  "x-tag" : "resource"
 };
             defs.ResponseMessage = {
   "type" : "object",
@@ -3329,6 +3375,9 @@ margin-bottom: 20px;
                     <li data-group="Articles" data-name="privateArticleReserveHandle" class="">
                       <a href="#api-Articles-privateArticleReserveHandle">privateArticleReserveHandle</a>
                     </li>
+                    <li data-group="Articles" data-name="privateArticleResource" class="">
+                      <a href="#api-Articles-privateArticleResource">privateArticleResource</a>
+                    </li>
                     <li data-group="Articles" data-name="privateArticleUpdate" class="">
                       <a href="#api-Articles-privateArticleUpdate">privateArticleUpdate</a>
                     </li>
@@ -3435,6 +3484,9 @@ margin-bottom: 20px;
                     </li>
                     <li data-group="Collections" data-name="privateCollectionReserveHandle" class="">
                       <a href="#api-Collections-privateCollectionReserveHandle">privateCollectionReserveHandle</a>
+                    </li>
+                    <li data-group="Collections" data-name="privateCollectionResource" class="">
+                      <a href="#api-Collections-privateCollectionResource">privateCollectionResource</a>
                     </li>
                     <li data-group="Collections" data-name="privateCollectionUpdate" class="">
                       <a href="#api-Collections-privateCollectionUpdate">privateCollectionUpdate</a>
@@ -18767,6 +18819,422 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
+                    <div id="api-Articles-privateArticleResource">
+                      <article id="api-Articles-privateArticleResource-0" data-group="User" data-name="privateArticleResource" data-version="0">
+                        <div class="pull-left">
+                          <h1>privateArticleResource</h1>
+                          <p>Private Article Resource</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Edit article resource data.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/articles/{article_id}/resource</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Articles-privateArticleResource-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleResource-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleResource-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Articles-privateArticleResource-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Articles-privateArticleResource-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleResource-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Articles-privateArticleResource-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Articles-privateArticleResource-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleResource-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleResource-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleResource-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Articles-privateArticleResource-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/articles/{article_id}/resource"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Articles-privateArticleResource-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ArticlesApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long articleId = 789; // Long | Article unique identifier
+        Resource resource = ; // Resource | Resource data
+        try {
+            apiInstance.privateArticleResource(articleId, resource);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#privateArticleResource");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Articles-privateArticleResource-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ArticlesApi;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long articleId = 789; // Long | Article unique identifier
+        Resource resource = ; // Resource | Resource data
+        try {
+            apiInstance.privateArticleResource(articleId, resource);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#privateArticleResource");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Articles-privateArticleResource-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Articles-privateArticleResource-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *articleId = 789; // Article unique identifier
+Resource *resource = ; // Resource data
+
+ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
+
+// Private Article Resource
+[apiInstance privateArticleResourceWith:articleId
+    resource:resource
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-privateArticleResource-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.ArticlesApi()
+
+var articleId = 789; // {Long} Article unique identifier
+
+var resource = ; // {Resource} Resource data
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.privateArticleResource(articleId, resource, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Articles-privateArticleResource-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Articles-privateArticleResource-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class privateArticleResourceExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ArticlesApi();
+            var articleId = 789;  // Long | Article unique identifier
+            var resource = new Resource(); // Resource | Resource data
+
+            try
+            {
+                // Private Article Resource
+                apiInstance.privateArticleResource(articleId, resource);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ArticlesApi.privateArticleResource: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-privateArticleResource-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\ArticlesApi();
+$articleId = 789; // Long | Article unique identifier
+$resource = ; // Resource | Resource data
+
+try {
+    $api_instance->privateArticleResource($articleId, $resource);
+} catch (Exception $e) {
+    echo 'Exception when calling ArticlesApi->privateArticleResource: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-privateArticleResource-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ArticlesApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
+my $articleId = 789; # Long | Article unique identifier
+my $resource = WWW::SwaggerClient::Object::Resource->new(); # Resource | Resource data
+
+eval { 
+    $api_instance->privateArticleResource(articleId => $articleId, resource => $resource);
+};
+if ($@) {
+    warn "Exception when calling ArticlesApi->privateArticleResource: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-privateArticleResource-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.ArticlesApi()
+articleId = 789 # Long | Article unique identifier
+resource =  # Resource | Resource data
+
+try: 
+    # Private Article Resource
+    api_instance.private_article_resource(articleId, resource)
+except ApiException as e:
+    print("Exception when calling ArticlesApi->privateArticleResource: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">article_id*</td>
+<td>
+
+
+    <div id="d2e199_privateArticleResource_articleId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Article unique identifier
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">resource <span style="color:red;">*</span></td>
+<td>
+
+
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "in" : "body",
+  "name" : "Resource",
+  "description" : "Resource data",
+  "required" : true,
+  "schema" : {
+    "$ref" : "#/definitions/Resource"
+  }
+};
+  var schema = schemaWrapper.schema;
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_privateArticleResource_resource');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_privateArticleResource_resource"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 205 - Reset Content </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-privateArticleResource-205-headers">Headers</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane" id="responses-privateArticleResource-205-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Location</td>
+                                            <td>String</td>
+                                            <td>link</td>
+                                            <td>Location for account article details</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateArticleResource-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateArticleResource-403-schema">
+                                  <div id='responses-privateArticleResource-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateArticleResource-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateArticleResource-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateArticleResource-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 422 - Unprocessable Entity </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Articles-privateArticleUpdate">
                       <article id="api-Articles-privateArticleUpdate-0" data-group="User" data-name="privateArticleUpdate" data-version="0">
                         <div class="pull-left">
@@ -33043,6 +33511,414 @@ except ApiException as e:
                             </div>
 
                             <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Collections-privateCollectionResource">
+                      <article id="api-Collections-privateCollectionResource-0" data-group="User" data-name="privateCollectionResource" data-version="0">
+                        <div class="pull-left">
+                          <h1>privateCollectionResource</h1>
+                          <p>Private Collection Resource</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Edit collection resource data.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/collections/{collection_id}/resource</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Collections-privateCollectionResource-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Collections-privateCollectionResource-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Collections-privateCollectionResource-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Collections-privateCollectionResource-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Collections-privateCollectionResource-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Collections-privateCollectionResource-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Collections-privateCollectionResource-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Collections-privateCollectionResource-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Collections-privateCollectionResource-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Collections-privateCollectionResource-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Collections-privateCollectionResource-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Collections-privateCollectionResource-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/collections/{collection_id}/resource"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Collections-privateCollectionResource-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.CollectionsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class CollectionsApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        CollectionsApi apiInstance = new CollectionsApi();
+        Long collectionId = 789; // Long | Collection unique identifier
+        Resource resource = ; // Resource | Resource data
+        try {
+            apiInstance.privateCollectionResource(collectionId, resource);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CollectionsApi#privateCollectionResource");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Collections-privateCollectionResource-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.CollectionsApi;
+
+public class CollectionsApiExample {
+
+    public static void main(String[] args) {
+        CollectionsApi apiInstance = new CollectionsApi();
+        Long collectionId = 789; // Long | Collection unique identifier
+        Resource resource = ; // Resource | Resource data
+        try {
+            apiInstance.privateCollectionResource(collectionId, resource);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CollectionsApi#privateCollectionResource");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Collections-privateCollectionResource-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Collections-privateCollectionResource-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *collectionId = 789; // Collection unique identifier
+Resource *resource = ; // Resource data
+
+CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
+
+// Private Collection Resource
+[apiInstance privateCollectionResourceWith:collectionId
+    resource:resource
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Collections-privateCollectionResource-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.CollectionsApi()
+
+var collectionId = 789; // {Long} Collection unique identifier
+
+var resource = ; // {Resource} Resource data
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.privateCollectionResource(collectionId, resource, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Collections-privateCollectionResource-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Collections-privateCollectionResource-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class privateCollectionResourceExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new CollectionsApi();
+            var collectionId = 789;  // Long | Collection unique identifier
+            var resource = new Resource(); // Resource | Resource data
+
+            try
+            {
+                // Private Collection Resource
+                apiInstance.privateCollectionResource(collectionId, resource);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling CollectionsApi.privateCollectionResource: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Collections-privateCollectionResource-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\CollectionsApi();
+$collectionId = 789; // Long | Collection unique identifier
+$resource = ; // Resource | Resource data
+
+try {
+    $api_instance->privateCollectionResource($collectionId, $resource);
+} catch (Exception $e) {
+    echo 'Exception when calling CollectionsApi->privateCollectionResource: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Collections-privateCollectionResource-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::CollectionsApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::CollectionsApi->new();
+my $collectionId = 789; # Long | Collection unique identifier
+my $resource = WWW::SwaggerClient::Object::Resource->new(); # Resource | Resource data
+
+eval { 
+    $api_instance->privateCollectionResource(collectionId => $collectionId, resource => $resource);
+};
+if ($@) {
+    warn "Exception when calling CollectionsApi->privateCollectionResource: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Collections-privateCollectionResource-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.CollectionsApi()
+collectionId = 789 # Long | Collection unique identifier
+resource =  # Resource | Resource data
+
+try: 
+    # Private Collection Resource
+    api_instance.private_collection_resource(collectionId, resource)
+except ApiException as e:
+    print("Exception when calling CollectionsApi->privateCollectionResource: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">collection_id*</td>
+<td>
+
+
+    <div id="d2e199_privateCollectionResource_collectionId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Collection unique identifier
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">resource <span style="color:red;">*</span></td>
+<td>
+
+
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "in" : "body",
+  "name" : "Resource",
+  "description" : "Resource data",
+  "required" : true,
+  "schema" : {
+    "$ref" : "#/definitions/Resource"
+  }
+};
+  var schema = schemaWrapper.schema;
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_privateCollectionResource_resource');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_privateCollectionResource_resource"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 205 - Reset Content </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-privateCollectionResource-205-headers">Headers</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane" id="responses-privateCollectionResource-205-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Location</td>
+                                            <td>String</td>
+                                            <td>link</td>
+                                            <td>Location for account collection details</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateCollectionResource-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateCollectionResource-403-schema">
+                                  <div id='responses-privateCollectionResource-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateCollectionResource-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateCollectionResource-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateCollectionResource-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 422 - Unprocessable Entity </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
@@ -56670,7 +57546,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2021-11-17T10:50:04.553+02:00
+              Generated 2021-11-17T12:11:48.407+02:00
             </div>
           </div>
       </div>
