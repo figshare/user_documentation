@@ -1063,6 +1063,14 @@ margin-bottom: 20px;
         "format" : "int64"
       }
     },
+    "categories_by_source_id" : {
+      "type" : "array",
+      "example" : [ "300204", "400207" ],
+      "description" : "List of category source ids to be associated with the article, supersedes the categories property",
+      "items" : {
+        "type" : "string"
+      }
+    },
     "authors" : {
       "type" : "array",
       "example" : [ {
@@ -1083,6 +1091,13 @@ margin-bottom: 20px;
       },
       "description" : "List of key, values pairs to be associated with the article",
       "properties" : { }
+    },
+    "custom_fields_list" : {
+      "type" : "array",
+      "description" : "List of custom fields values, supersedes custom_fields parameter",
+      "items" : {
+        "$ref" : "#/definitions/CustomArticleField"
+      }
     },
     "defined_type" : {
       "type" : "string",
@@ -1303,6 +1318,14 @@ margin-bottom: 20px;
         "format" : "int64"
       }
     },
+    "categories_by_source_id" : {
+      "type" : "array",
+      "example" : [ "300204", "400207" ],
+      "description" : "List of category source ids to be associated with the article, supersedes the categories property",
+      "items" : {
+        "type" : "string"
+      }
+    },
     "authors" : {
       "type" : "array",
       "example" : [ {
@@ -1323,6 +1346,13 @@ margin-bottom: 20px;
       },
       "description" : "List of key, values pairs to be associated with the article",
       "properties" : { }
+    },
+    "custom_fields_list" : {
+      "type" : "array",
+      "description" : "List of custom fields values, supersedes custom_fields parameter",
+      "items" : {
+        "$ref" : "#/definitions/CustomArticleField"
+      }
     },
     "defined_type" : {
       "type" : "string",
@@ -1426,6 +1456,14 @@ margin-bottom: 20px;
         "format" : "int64"
       }
     },
+    "categories_by_source_id" : {
+      "type" : "array",
+      "example" : [ "300204", "400207" ],
+      "description" : "List of category source ids to be associated with the article, supersedes the categories property",
+      "items" : {
+        "type" : "string"
+      }
+    },
     "authors" : {
       "type" : "array",
       "example" : [ {
@@ -1446,6 +1484,13 @@ margin-bottom: 20px;
       },
       "description" : "List of key, values pairs to be associated with the article",
       "properties" : { }
+    },
+    "custom_fields_list" : {
+      "type" : "array",
+      "description" : "List of custom fields values, supersedes custom_fields parameter",
+      "items" : {
+        "$ref" : "#/definitions/CustomArticleField"
+      }
     },
     "defined_type" : {
       "type" : "string",
@@ -1628,6 +1673,22 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "Anatomy",
       "description" : "Category title"
+    },
+    "path" : {
+      "type" : "string",
+      "example" : "/450/1024/6532",
+      "description" : "Path to all ancestor ids"
+    },
+    "source_id" : {
+      "type" : "string",
+      "example" : "300204",
+      "description" : "ID in original standard taxonomy"
+    },
+    "taxonomy_id" : {
+      "type" : "integer",
+      "format" : "int64",
+      "example" : 4,
+      "description" : "Internal id of taxonomy the category is part of"
     }
   },
   "x-tag" : "common"
@@ -1707,15 +1768,15 @@ margin-bottom: 20px;
     },
     "title" : {
       "type" : "string",
-      "example" : "Test article title",
-      "description" : "Title of article",
+      "example" : "Test collection title",
+      "description" : "Title of collection",
       "minLength" : 3,
       "maxLength" : 1000
     },
     "description" : {
       "type" : "string",
       "example" : "Test description of article",
-      "description" : "The article description. In a publisher case, usually this is the remote article description",
+      "description" : "The collection description. In a publisher case, usually this is the remote collection description",
       "maxLength" : 10000,
       "default" : ""
     },
@@ -1734,7 +1795,7 @@ margin-bottom: 20px;
       }, {
         "id" : 20005
       } ],
-      "description" : "List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.",
+      "description" : "List of authors to be associated with the collection. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.",
       "items" : {
         "type" : "object",
         "properties" : { }
@@ -1743,16 +1804,24 @@ margin-bottom: 20px;
     "categories" : {
       "type" : "array",
       "example" : [ 1, 10, 11 ],
-      "description" : "List of category ids to be associated with the article(e.g [1, 23, 33, 66])",
+      "description" : "List of category ids to be associated with the collection(e.g [1, 23, 33, 66])",
       "items" : {
         "type" : "integer",
         "format" : "int64"
       }
     },
+    "categories_by_source_id" : {
+      "type" : "array",
+      "example" : [ "300204", "400207" ],
+      "description" : "List of category source ids to be associated with the collection, supersedes the categories property",
+      "items" : {
+        "type" : "string"
+      }
+    },
     "tags" : {
       "type" : "array",
       "example" : [ "tag1", "tag2" ],
-      "description" : "List of tags to be associated with the article. Keywords can be used instead",
+      "description" : "List of tags to be associated with the collection. Keywords can be used instead",
       "items" : {
         "type" : "string"
       }
@@ -1760,7 +1829,7 @@ margin-bottom: 20px;
     "keywords" : {
       "type" : "array",
       "example" : [ "tag1", "tag2" ],
-      "description" : "List of tags to be associated with the article. Tags can be used instead",
+      "description" : "List of tags to be associated with the collection. Tags can be used instead",
       "items" : {
         "type" : "string"
       }
@@ -1768,7 +1837,7 @@ margin-bottom: 20px;
     "references" : {
       "type" : "array",
       "example" : [ "http://figshare.com", "http://api.figshare.com" ],
-      "description" : "List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])",
+      "description" : "List of links to be associated with the collection (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])",
       "items" : {
         "type" : "string",
         "format" : "link"
@@ -1779,8 +1848,15 @@ margin-bottom: 20px;
       "example" : {
         "defined_key" : "value for it"
       },
-      "description" : "List of key, values pairs to be associated with the article",
+      "description" : "List of key, values pairs to be associated with the collection",
       "properties" : { }
+    },
+    "custom_fields_list" : {
+      "type" : "array",
+      "description" : "List of custom fields values, supersedes custom_fields parameter",
+      "items" : {
+        "$ref" : "#/definitions/CustomArticleField"
+      }
     },
     "doi" : {
       "type" : "string",
@@ -1881,15 +1957,15 @@ margin-bottom: 20px;
     },
     "title" : {
       "type" : "string",
-      "example" : "Test article title",
-      "description" : "Title of article",
+      "example" : "Test collection title",
+      "description" : "Title of collection",
       "minLength" : 3,
       "maxLength" : 1000
     },
     "description" : {
       "type" : "string",
-      "example" : "Test description of article",
-      "description" : "The article description. In a publisher case, usually this is the remote article description",
+      "example" : "Test description of collection",
+      "description" : "The collection description. In a publisher case, usually this is the remote collection description",
       "maxLength" : 10000,
       "default" : ""
     },
@@ -1908,7 +1984,7 @@ margin-bottom: 20px;
       }, {
         "id" : 20005
       } ],
-      "description" : "List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.",
+      "description" : "List of authors to be associated with the collection. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.",
       "items" : {
         "type" : "object",
         "properties" : { }
@@ -1917,16 +1993,24 @@ margin-bottom: 20px;
     "categories" : {
       "type" : "array",
       "example" : [ 1, 10, 11 ],
-      "description" : "List of category ids to be associated with the article(e.g [1, 23, 33, 66])",
+      "description" : "List of category ids to be associated with the collection (e.g [1, 23, 33, 66])",
       "items" : {
         "type" : "integer",
         "format" : "int64"
       }
     },
+    "categories_by_source_id" : {
+      "type" : "array",
+      "example" : [ "300204", "400207" ],
+      "description" : "List of category source ids to be associated with the article, supersedes the categories property",
+      "items" : {
+        "type" : "string"
+      }
+    },
     "tags" : {
       "type" : "array",
       "example" : [ "tag1", "tag2" ],
-      "description" : "List of tags to be associated with the article. Keywords can be used instead",
+      "description" : "List of tags to be associated with the collection. Keywords can be used instead",
       "items" : {
         "type" : "string"
       }
@@ -1934,7 +2018,7 @@ margin-bottom: 20px;
     "keywords" : {
       "type" : "array",
       "example" : [ "tag1", "tag2" ],
-      "description" : "List of tags to be associated with the article. Tags can be used instead",
+      "description" : "List of tags to be associated with the collection. Tags can be used instead",
       "items" : {
         "type" : "string"
       }
@@ -1942,7 +2026,7 @@ margin-bottom: 20px;
     "references" : {
       "type" : "array",
       "example" : [ "http://figshare.com", "http://api.figshare.com" ],
-      "description" : "List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])",
+      "description" : "List of links to be associated with the collection (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])",
       "items" : {
         "type" : "string",
         "format" : "link"
@@ -1953,8 +2037,15 @@ margin-bottom: 20px;
       "example" : {
         "defined_key" : "value for it"
       },
-      "description" : "List of key, values pairs to be associated with the article",
+      "description" : "List of key, values pairs to be associated with the collection",
       "properties" : { }
+    },
+    "custom_fields_list" : {
+      "type" : "array",
+      "description" : "List of custom fields values, supersedes custom_fields parameter",
+      "items" : {
+        "$ref" : "#/definitions/CustomArticleField"
+      }
     },
     "doi" : {
       "type" : "string",
@@ -2490,6 +2581,24 @@ margin-bottom: 20px;
   },
   "x-tag" : "common"
 };
+            defs.LocationWarnings = {
+  "type" : "object",
+  "properties" : {
+    "location" : {
+      "type" : "string",
+      "format" : "url",
+      "description" : "Url for entity"
+    },
+    "warnings" : {
+      "type" : "array",
+      "description" : "Issues encountered during the operation",
+      "items" : {
+        "type" : "string"
+      }
+    }
+  },
+  "x-tag" : "common"
+};
             defs.PrivateAuthorsSearch = {
   "type" : "object",
   "properties" : {
@@ -2719,6 +2828,21 @@ margin-bottom: 20px;
       "format" : "int64",
       "example" : 0,
       "description" : "Only if project type is group."
+    },
+    "custom_fields" : {
+      "type" : "object",
+      "example" : {
+        "defined_key" : "value for it"
+      },
+      "description" : "List of key, values pairs to be associated with the project",
+      "properties" : { }
+    },
+    "custom_fields_list" : {
+      "type" : "array",
+      "description" : "List of custom fields values, supersedes custom_fields parameter",
+      "items" : {
+        "$ref" : "#/definitions/CustomArticleField"
+      }
     }
   },
   "x-tag" : "projects"
@@ -2800,6 +2924,21 @@ margin-bottom: 20px;
       "description" : "Funding creation / update items",
       "items" : {
         "$ref" : "#/definitions/FundingCreate"
+      }
+    },
+    "custom_fields" : {
+      "type" : "object",
+      "example" : {
+        "defined_key" : "value for it"
+      },
+      "description" : "List of key, values pairs to be associated with the project",
+      "properties" : { }
+    },
+    "custom_fields_list" : {
+      "type" : "array",
+      "description" : "List of custom fields values, supersedes custom_fields parameter",
+      "items" : {
+        "$ref" : "#/definitions/CustomArticleField"
       }
     }
   },
@@ -2967,6 +3106,29 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "1",
       "description" : "Account institution user id"
+    },
+    "quota" : {
+      "type" : "integer",
+      "format" : "int64",
+      "example" : 1074000000,
+      "description" : "Total storage available to account, in bytes"
+    },
+    "used_quota" : {
+      "type" : "integer",
+      "format" : "int64",
+      "example" : 1074000000,
+      "description" : "Storage used by the account, in bytes"
+    },
+    "user_id" : {
+      "type" : "integer",
+      "format" : "int64",
+      "example" : 1000001,
+      "description" : "User id associated with account, useful for example for adding the account as an author to an item"
+    },
+    "orcid_id" : {
+      "type" : "string",
+      "example" : "0000-0001-2345-6789",
+      "description" : "ORCID iD associated to account"
     }
   },
   "x-tag" : "other"
@@ -3217,6 +3379,12 @@ margin-bottom: 20px;
   } ],
   "x-tag" : "articles"
 };
+            defs.CollectionCompletePrivate = {
+  "allOf" : [ {
+    "$ref" : "#/definitions/CollectionComplete"
+  } ],
+  "x-tag" : "collections"
+};
             defs.PrivateArticleSearch = {
   "allOf" : [ {
     "$ref" : "#/definitions/ArticleSearch"
@@ -3281,6 +3449,9 @@ margin-bottom: 20px;
                     </li>
                     <li data-group="Articles" data-name="articleVersionEmbargo" class="">
                       <a href="#api-Articles-articleVersionEmbargo">articleVersionEmbargo</a>
+                    </li>
+                    <li data-group="Articles" data-name="articleVersionUpdate" class="">
+                      <a href="#api-Articles-articleVersionUpdate">articleVersionUpdate</a>
                     </li>
                     <li data-group="Articles" data-name="articleVersionUpdateThumb" class="">
                       <a href="#api-Articles-articleVersionUpdateThumb">articleVersionUpdateThumb</a>
@@ -6373,16 +6544,511 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
-                    <div id="api-Articles-articleVersionUpdateThumb">
-                      <article id="api-Articles-articleVersionUpdateThumb-0" data-group="User" data-name="articleVersionUpdateThumb" data-version="0">
+                    <div id="api-Articles-articleVersionUpdate">
+                      <article id="api-Articles-articleVersionUpdate-0" data-group="User" data-name="articleVersionUpdate" data-version="0">
                         <div class="pull-left">
-                          <h1>articleVersionUpdateThumb</h1>
-                          <p>Article Version Update Thumb</p>
+                          <h1>articleVersionUpdate</h1>
+                          <p>Update article version</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">For a given public article version update the article thumb by choosing one of the associated files</p>
+                        <p class="marked">Updating an article version by passing body parameters; request can also be made with the PATCH method.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/account/articles/{article_id}/versions/{version_id}/</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Articles-articleVersionUpdate-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Articles-articleVersionUpdate-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Articles-articleVersionUpdate-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Articles-articleVersionUpdate-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Articles-articleVersionUpdate-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Articles-articleVersionUpdate-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Articles-articleVersionUpdate-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Articles-articleVersionUpdate-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Articles-articleVersionUpdate-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Articles-articleVersionUpdate-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Articles-articleVersionUpdate-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Articles-articleVersionUpdate-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT "https://api.figinternal.dev/v2/account/articles/{article_id}/versions/{version_id}/"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Articles-articleVersionUpdate-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ArticlesApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long articleId = 789; // Long | Article unique identifier
+        Long versionId = 789; // Long | Article version identifier
+        ArticleUpdate article = ; // ArticleUpdate | Article description
+        try {
+            LocationWarnings result = apiInstance.articleVersionUpdate(articleId, versionId, article);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#articleVersionUpdate");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Articles-articleVersionUpdate-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ArticlesApi;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long articleId = 789; // Long | Article unique identifier
+        Long versionId = 789; // Long | Article version identifier
+        ArticleUpdate article = ; // ArticleUpdate | Article description
+        try {
+            LocationWarnings result = apiInstance.articleVersionUpdate(articleId, versionId, article);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#articleVersionUpdate");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Articles-articleVersionUpdate-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Articles-articleVersionUpdate-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *articleId = 789; // Article unique identifier
+Long *versionId = 789; // Article version identifier
+ArticleUpdate *article = ; // Article description
+
+ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
+
+// Update article version
+[apiInstance articleVersionUpdateWith:articleId
+    versionId:versionId
+    article:article
+              completionHandler: ^(LocationWarnings output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-articleVersionUpdate-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.ArticlesApi()
+
+var articleId = 789; // {Long} Article unique identifier
+
+var versionId = 789; // {Long} Article version identifier
+
+var article = ; // {ArticleUpdate} Article description
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.articleVersionUpdate(articleId, versionId, article, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Articles-articleVersionUpdate-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Articles-articleVersionUpdate-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class articleVersionUpdateExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ArticlesApi();
+            var articleId = 789;  // Long | Article unique identifier
+            var versionId = 789;  // Long | Article version identifier
+            var article = new ArticleUpdate(); // ArticleUpdate | Article description
+
+            try
+            {
+                // Update article version
+                LocationWarnings result = apiInstance.articleVersionUpdate(articleId, versionId, article);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ArticlesApi.articleVersionUpdate: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-articleVersionUpdate-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\ArticlesApi();
+$articleId = 789; // Long | Article unique identifier
+$versionId = 789; // Long | Article version identifier
+$article = ; // ArticleUpdate | Article description
+
+try {
+    $result = $api_instance->articleVersionUpdate($articleId, $versionId, $article);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ArticlesApi->articleVersionUpdate: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-articleVersionUpdate-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ArticlesApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
+my $articleId = 789; # Long | Article unique identifier
+my $versionId = 789; # Long | Article version identifier
+my $article = WWW::SwaggerClient::Object::ArticleUpdate->new(); # ArticleUpdate | Article description
+
+eval { 
+    my $result = $api_instance->articleVersionUpdate(articleId => $articleId, versionId => $versionId, article => $article);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ArticlesApi->articleVersionUpdate: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-articleVersionUpdate-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.ArticlesApi()
+articleId = 789 # Long | Article unique identifier
+versionId = 789 # Long | Article version identifier
+article =  # ArticleUpdate | Article description
+
+try: 
+    # Update article version
+    api_response = api_instance.article_version_update(articleId, versionId, article)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ArticlesApi->articleVersionUpdate: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">article_id*</td>
+<td>
+
+
+    <div id="d2e199_articleVersionUpdate_articleId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Article unique identifier
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">version_id*</td>
+<td>
+
+
+    <div id="d2e199_articleVersionUpdate_versionId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Article version identifier
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">article <span style="color:red;">*</span></td>
+<td>
+
+
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "in" : "body",
+  "name" : "Article",
+  "description" : "Article description",
+  "required" : true,
+  "schema" : {
+    "$ref" : "#/definitions/ArticleUpdate"
+  }
+};
+  var schema = schemaWrapper.schema;
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_articleVersionUpdate_article');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_articleVersionUpdate_article"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 205 - Reset Content </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-articleVersionUpdate-205-schema">Schema</a>
+                                </li>
+
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-articleVersionUpdate-205-headers">Headers</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-articleVersionUpdate-205-schema">
+                                  <div id='responses-articleVersionUpdate-205-schema-205' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Reset Content",
+  "schema" : {
+    "$ref" : "#/definitions/LocationWarnings"
+  },
+  "headers" : {
+    "Location" : {
+      "type" : "string",
+      "format" : "link",
+      "description" : "Location of newly created article"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-articleVersionUpdate-205-schema-data').val(stringify(schema));
+                                        var result = $('#responses-articleVersionUpdate-205-schema-205');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-articleVersionUpdate-205-schema-data' type='hidden' value=''></input>
+                                </div>
+                                <div class="tab-pane" id="responses-articleVersionUpdate-205-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Location</td>
+                                            <td>String</td>
+                                            <td>link</td>
+                                            <td>Location of newly created article</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-articleVersionUpdate-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-articleVersionUpdate-403-schema">
+                                  <div id='responses-articleVersionUpdate-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-articleVersionUpdate-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-articleVersionUpdate-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-articleVersionUpdate-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Articles-articleVersionUpdateThumb">
+                      <article id="api-Articles-articleVersionUpdateThumb-0" data-group="User" data-name="articleVersionUpdateThumb" data-version="0">
+                        <div class="pull-left">
+                          <h1>articleVersionUpdateThumb</h1>
+                          <p>Update article version thumbnail</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">For a given public article version update the article thumbnail by choosing one of the associated files</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/account/articles/{article_id}/versions/{version_id}/update_thumb</span></code></pre>
@@ -6474,7 +7140,7 @@ FileId *fileId = ; // File ID
 
 ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 
-// Article Version Update Thumb
+// Update article version thumbnail
 [apiInstance articleVersionUpdateThumbWith:articleId
     versionId:versionId
     fileId:fileId
@@ -6541,7 +7207,7 @@ namespace Example
 
             try
             {
-                // Article Version Update Thumb
+                // Update article version thumbnail
                 apiInstance.articleVersionUpdateThumb(articleId, versionId, fileId);
             }
             catch (Exception e)
@@ -6612,7 +7278,7 @@ versionId = 789 # Long | Article version identifier
 fileId =  # FileId | File ID
 
 try: 
-    # Article Version Update Thumb
+    # Update article version thumbnail
     api_instance.article_version_update_thumb(articleId, versionId, fileId)
 except ApiException as e:
     print("Exception when calling ArticlesApi->articleVersionUpdateThumb: %s\n" % e)</code></pre>
@@ -12522,7 +13188,7 @@ public class ArticlesApiExample {
         ArticlesApi apiInstance = new ArticlesApi();
         ArticleCreate article = ; // ArticleCreate | Article description
         try {
-            Location result = apiInstance.privateArticleCreate(article);
+            LocationWarnings result = apiInstance.privateArticleCreate(article);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticleCreate");
@@ -12541,7 +13207,7 @@ public class ArticlesApiExample {
         ArticlesApi apiInstance = new ArticlesApi();
         ArticleCreate article = ; // ArticleCreate | Article description
         try {
-            Location result = apiInstance.privateArticleCreate(article);
+            LocationWarnings result = apiInstance.privateArticleCreate(article);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticleCreate");
@@ -12566,7 +13232,7 @@ ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 
 // Create new Article
 [apiInstance privateArticleCreateWith:article
-              completionHandler: ^(Location output, NSError* error) {
+              completionHandler: ^(LocationWarnings output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -12627,7 +13293,7 @@ namespace Example
             try
             {
                 // Create new Article
-                Location result = apiInstance.privateArticleCreate(article);
+                LocationWarnings result = apiInstance.privateArticleCreate(article);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -12769,7 +13435,7 @@ $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "Created",
   "schema" : {
-    "$ref" : "#/definitions/Location"
+    "$ref" : "#/definitions/LocationWarnings"
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -19244,7 +19910,7 @@ $(document).ready(function() {
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Updating an article by passing body parameters</p>
+                        <p class="marked">Updating an article by passing body parameters; request can also be made with the PATCH method.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/account/articles/{article_id}</span></code></pre>
@@ -19291,7 +19957,8 @@ public class ArticlesApiExample {
         Long articleId = 789; // Long | Article unique identifier
         ArticleUpdate article = ; // ArticleUpdate | Article description
         try {
-            apiInstance.privateArticleUpdate(articleId, article);
+            LocationWarnings result = apiInstance.privateArticleUpdate(articleId, article);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticleUpdate");
             e.printStackTrace();
@@ -19310,7 +19977,8 @@ public class ArticlesApiExample {
         Long articleId = 789; // Long | Article unique identifier
         ArticleUpdate article = ; // ArticleUpdate | Article description
         try {
-            apiInstance.privateArticleUpdate(articleId, article);
+            LocationWarnings result = apiInstance.privateArticleUpdate(articleId, article);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticleUpdate");
             e.printStackTrace();
@@ -19336,7 +20004,10 @@ ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 // Update article
 [apiInstance privateArticleUpdateWith:articleId
     article:article
-              completionHandler: ^(NSError* error) {
+              completionHandler: ^(LocationWarnings output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -19363,7 +20034,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.privateArticleUpdate(articleIdarticle, callback);
@@ -19397,7 +20068,8 @@ namespace Example
             try
             {
                 // Update article
-                apiInstance.privateArticleUpdate(articleId, article);
+                LocationWarnings result = apiInstance.privateArticleUpdate(articleId, article);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -19421,7 +20093,8 @@ $articleId = 789; // Long | Article unique identifier
 $article = ; // ArticleUpdate | Article description
 
 try {
-    $api_instance->privateArticleUpdate($articleId, $article);
+    $result = $api_instance->privateArticleUpdate($articleId, $article);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ArticlesApi->privateArticleUpdate: ', $e->getMessage(), PHP_EOL;
 }
@@ -19441,7 +20114,8 @@ my $articleId = 789; # Long | Article unique identifier
 my $article = WWW::SwaggerClient::Object::ArticleUpdate->new(); # ArticleUpdate | Article description
 
 eval { 
-    $api_instance->privateArticleUpdate(articleId => $articleId, article => $article);
+    my $result = $api_instance->privateArticleUpdate(articleId => $articleId, article => $article);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ArticlesApi->privateArticleUpdate: $@\n";
@@ -19465,7 +20139,8 @@ article =  # ArticleUpdate | Article description
 
 try: 
     # Update article
-    api_instance.private_article_update(articleId, article)
+    api_response = api_instance.private_article_update(articleId, article)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ArticlesApi->privateArticleUpdate: %s\n" % e)</code></pre>
                             </div>
@@ -19557,12 +20232,54 @@ $(document).ready(function() {
                             <h3> Status: 205 - Reset Content </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateArticleUpdate-205-schema">Schema</a>
+                                </li>
+
                                 <li class="">
                                   <a data-toggle="tab" href="#responses-privateArticleUpdate-205-headers">Headers</a>
                                 </li>
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateArticleUpdate-205-schema">
+                                  <div id='responses-privateArticleUpdate-205-schema-205' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Reset Content",
+  "schema" : {
+    "$ref" : "#/definitions/LocationWarnings"
+  },
+  "headers" : {
+    "Location" : {
+      "type" : "string",
+      "format" : "link",
+      "description" : "Location of newly created article"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateArticleUpdate-205-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateArticleUpdate-205-schema-205');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateArticleUpdate-205-schema-data' type='hidden' value=''></input>
+                                </div>
                                 <div class="tab-pane" id="responses-privateArticleUpdate-205-headers">
                                     <table>
                                         <tr>
@@ -29632,7 +30349,7 @@ public class CollectionsApiExample {
         CollectionsApi apiInstance = new CollectionsApi();
         CollectionCreate collection = ; // CollectionCreate | Collection description
         try {
-            CollectionComplete result = apiInstance.privateCollectionCreate(collection);
+            LocationWarnings result = apiInstance.privateCollectionCreate(collection);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionCreate");
@@ -29651,7 +30368,7 @@ public class CollectionsApiExample {
         CollectionsApi apiInstance = new CollectionsApi();
         CollectionCreate collection = ; // CollectionCreate | Collection description
         try {
-            CollectionComplete result = apiInstance.privateCollectionCreate(collection);
+            LocationWarnings result = apiInstance.privateCollectionCreate(collection);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionCreate");
@@ -29676,7 +30393,7 @@ CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 
 // Create collection
 [apiInstance privateCollectionCreateWith:collection
-              completionHandler: ^(CollectionComplete output, NSError* error) {
+              completionHandler: ^(LocationWarnings output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -29737,7 +30454,7 @@ namespace Example
             try
             {
                 // Create collection
-                CollectionComplete result = apiInstance.privateCollectionCreate(collection);
+                LocationWarnings result = apiInstance.privateCollectionCreate(collection);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -29879,7 +30596,7 @@ $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "Created",
   "schema" : {
-    "$ref" : "#/definitions/CollectionComplete"
+    "$ref" : "#/definitions/LocationWarnings"
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -30367,7 +31084,7 @@ public class CollectionsApiExample {
         CollectionsApi apiInstance = new CollectionsApi();
         Long collectionId = 789; // Long | Collection Unique identifier
         try {
-            CollectionComplete result = apiInstance.privateCollectionDetails(collectionId);
+            CollectionCompletePrivate result = apiInstance.privateCollectionDetails(collectionId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionDetails");
@@ -30386,7 +31103,7 @@ public class CollectionsApiExample {
         CollectionsApi apiInstance = new CollectionsApi();
         Long collectionId = 789; // Long | Collection Unique identifier
         try {
-            CollectionComplete result = apiInstance.privateCollectionDetails(collectionId);
+            CollectionCompletePrivate result = apiInstance.privateCollectionDetails(collectionId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionDetails");
@@ -30411,7 +31128,7 @@ CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 
 // Collection details
 [apiInstance privateCollectionDetailsWith:collectionId
-              completionHandler: ^(CollectionComplete output, NSError* error) {
+              completionHandler: ^(CollectionCompletePrivate output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -30472,7 +31189,7 @@ namespace Example
             try
             {
                 // Collection details
-                CollectionComplete result = apiInstance.privateCollectionDetails(collectionId);
+                CollectionCompletePrivate result = apiInstance.privateCollectionDetails(collectionId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -30605,7 +31322,7 @@ except ApiException as e:
                                         var schemaWrapper = {
   "description" : "OK. Collection representation",
   "schema" : {
-    "$ref" : "#/definitions/CollectionComplete"
+    "$ref" : "#/definitions/CollectionCompletePrivate"
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -33938,7 +34655,7 @@ $(document).ready(function() {
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Update collection details</p>
+                        <p class="marked">Update collection details; request can also be made with the PATCH method.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/account/collections/{collection_id}</span></code></pre>
@@ -33985,7 +34702,8 @@ public class CollectionsApiExample {
         Long collectionId = 789; // Long | Collection Unique identifier
         CollectionUpdate collection = ; // CollectionUpdate | Collection description
         try {
-            apiInstance.privateCollectionUpdate(collectionId, collection);
+            LocationWarnings result = apiInstance.privateCollectionUpdate(collectionId, collection);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionUpdate");
             e.printStackTrace();
@@ -34004,7 +34722,8 @@ public class CollectionsApiExample {
         Long collectionId = 789; // Long | Collection Unique identifier
         CollectionUpdate collection = ; // CollectionUpdate | Collection description
         try {
-            apiInstance.privateCollectionUpdate(collectionId, collection);
+            LocationWarnings result = apiInstance.privateCollectionUpdate(collectionId, collection);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionUpdate");
             e.printStackTrace();
@@ -34030,7 +34749,10 @@ CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 // Update collection
 [apiInstance privateCollectionUpdateWith:collectionId
     collection:collection
-              completionHandler: ^(NSError* error) {
+              completionHandler: ^(LocationWarnings output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -34057,7 +34779,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.privateCollectionUpdate(collectionIdcollection, callback);
@@ -34091,7 +34813,8 @@ namespace Example
             try
             {
                 // Update collection
-                apiInstance.privateCollectionUpdate(collectionId, collection);
+                LocationWarnings result = apiInstance.privateCollectionUpdate(collectionId, collection);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -34115,7 +34838,8 @@ $collectionId = 789; // Long | Collection Unique identifier
 $collection = ; // CollectionUpdate | Collection description
 
 try {
-    $api_instance->privateCollectionUpdate($collectionId, $collection);
+    $result = $api_instance->privateCollectionUpdate($collectionId, $collection);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->privateCollectionUpdate: ', $e->getMessage(), PHP_EOL;
 }
@@ -34135,7 +34859,8 @@ my $collectionId = 789; # Long | Collection Unique identifier
 my $collection = WWW::SwaggerClient::Object::CollectionUpdate->new(); # CollectionUpdate | Collection description
 
 eval { 
-    $api_instance->privateCollectionUpdate(collectionId => $collectionId, collection => $collection);
+    my $result = $api_instance->privateCollectionUpdate(collectionId => $collectionId, collection => $collection);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling CollectionsApi->privateCollectionUpdate: $@\n";
@@ -34159,7 +34884,8 @@ collection =  # CollectionUpdate | Collection description
 
 try: 
     # Update collection
-    api_instance.private_collection_update(collectionId, collection)
+    api_response = api_instance.private_collection_update(collectionId, collection)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->privateCollectionUpdate: %s\n" % e)</code></pre>
                             </div>
@@ -34251,12 +34977,54 @@ $(document).ready(function() {
                             <h3> Status: 205 - Reset Content </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateCollectionUpdate-205-schema">Schema</a>
+                                </li>
+
                                 <li class="">
                                   <a data-toggle="tab" href="#responses-privateCollectionUpdate-205-headers">Headers</a>
                                 </li>
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateCollectionUpdate-205-schema">
+                                  <div id='responses-privateCollectionUpdate-205-schema-205' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Reset Content",
+  "schema" : {
+    "$ref" : "#/definitions/LocationWarnings"
+  },
+  "headers" : {
+    "Location" : {
+      "type" : "string",
+      "format" : "link",
+      "description" : "Location of collection"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateCollectionUpdate-205-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateCollectionUpdate-205-schema-205');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateCollectionUpdate-205-schema-data' type='hidden' value=''></input>
+                                </div>
                                 <div class="tab-pane" id="responses-privateCollectionUpdate-205-headers">
                                     <table>
                                         <tr>
@@ -48276,7 +49044,7 @@ public class ProjectsApiExample {
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
         Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            Location result = apiInstance.privateProjectArticlesCreate(projectId, article, page, pageSize, limit, offset);
+            LocationWarnings result = apiInstance.privateProjectArticlesCreate(projectId, article, page, pageSize, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProjectsApi#privateProjectArticlesCreate");
@@ -48300,7 +49068,7 @@ public class ProjectsApiExample {
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
         Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            Location result = apiInstance.privateProjectArticlesCreate(projectId, article, page, pageSize, limit, offset);
+            LocationWarnings result = apiInstance.privateProjectArticlesCreate(projectId, article, page, pageSize, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProjectsApi#privateProjectArticlesCreate");
@@ -48335,7 +49103,7 @@ ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
     pageSize:pageSize
     limit:limit
     offset:offset
-              completionHandler: ^(Location output, NSError* error) {
+              completionHandler: ^(LocationWarnings output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -48409,7 +49177,7 @@ namespace Example
             try
             {
                 // Create project article
-                Location result = apiInstance.privateProjectArticlesCreate(projectId, article, page, pageSize, limit, offset);
+                LocationWarnings result = apiInstance.privateProjectArticlesCreate(projectId, article, page, pageSize, limit, offset);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -48701,7 +49469,7 @@ $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "Created",
   "schema" : {
-    "$ref" : "#/definitions/Location"
+    "$ref" : "#/definitions/LocationWarnings"
   },
   "headers" : {
     "Location" : {
@@ -54673,7 +55441,7 @@ except ApiException as e:
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Updating an project by passing body parameters</p>
+                        <p class="marked">Updating an project by passing body parameters; request can also be made with the PATCH method.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/account/projects/{project_id}</span></code></pre>
@@ -57546,7 +58314,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2021-11-17T12:11:48.407+02:00
+              Generated 2021-11-24T18:15:18.271+02:00
             </div>
           </div>
       </div>

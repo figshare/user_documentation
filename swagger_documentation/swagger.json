@@ -699,7 +699,7 @@
                     "201": {
                         "description": "Created", 
                         "schema": {
-                            "$ref": "#/definitions/Location"
+                            "$ref": "#/definitions/LocationWarnings"
                         }
                     }, 
                     "400": {
@@ -775,7 +775,7 @@
                 "x-subcategory": "Private Article", 
                 "operationId": "private_article_update", 
                 "summary": "Update article", 
-                "description": "Updating an article by passing body parameters", 
+                "description": "Updating an article by passing body parameters; request can also be made with the PATCH method.", 
                 "security": [
                     {
                         "OAuth2": [
@@ -797,6 +797,9 @@
                 "responses": {
                     "205": {
                         "description": "Reset Content", 
+                        "schema": {
+                            "$ref": "#/definitions/LocationWarnings"
+                        }, 
                         "headers": {
                             "Location": {
                                 "type": "string", 
@@ -1216,14 +1219,89 @@
                 }
             }
         }, 
+        "/account/articles/{article_id}/versions/{version_id}/": {
+            "put": {
+                "tags": [
+                    "articles"
+                ], 
+                "x-subcategory": "Article version private updates", 
+                "operationId": "article_version_update", 
+                "summary": "Update article version", 
+                "description": "Updating an article version by passing body parameters; request can also be made with the PATCH method.", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "parameters": [
+                    {
+                        "name": "article_id", 
+                        "in": "path", 
+                        "description": "Article unique identifier", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }, 
+                    {
+                        "name": "version_id", 
+                        "in": "path", 
+                        "description": "Article version identifier", 
+                        "required": true, 
+                        "type": "integer", 
+                        "format": "int64", 
+                        "minimum": 1
+                    }, 
+                    {
+                        "in": "body", 
+                        "name": "Article", 
+                        "description": "Article description", 
+                        "schema": {
+                            "$ref": "#/definitions/ArticleUpdate"
+                        }, 
+                        "required": true
+                    }
+                ], 
+                "responses": {
+                    "205": {
+                        "description": "Reset Content", 
+                        "schema": {
+                            "$ref": "#/definitions/LocationWarnings"
+                        }, 
+                        "headers": {
+                            "Location": {
+                                "type": "string", 
+                                "format": "link", 
+                                "description": "Location of newly created article"
+                            }
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
         "/account/articles/{article_id}/versions/{version_id}/update_thumb": {
             "put": {
                 "tags": [
                     "articles"
                 ], 
+                "x-subcategory": "Article version private updates", 
                 "operationId": "article_version_update_thumb", 
-                "summary": "Article Version Update Thumb", 
-                "description": "For a given public article version update the article thumb by choosing one of the associated files", 
+                "summary": "Update article version thumbnail", 
+                "description": "For a given public article version update the article thumbnail by choosing one of the associated files", 
                 "security": [
                     {
                         "OAuth2": [
@@ -2932,7 +3010,7 @@
                     "201": {
                         "description": "Created", 
                         "schema": {
-                            "$ref": "#/definitions/CollectionComplete"
+                            "$ref": "#/definitions/LocationWarnings"
                         }
                     }, 
                     "400": {
@@ -2981,7 +3059,7 @@
                     "200": {
                         "description": "OK. Collection representation", 
                         "schema": {
-                            "$ref": "#/definitions/CollectionComplete"
+                            "$ref": "#/definitions/CollectionCompletePrivate"
                         }
                     }, 
                     "400": {
@@ -3002,7 +3080,7 @@
                 "x-subcategory": "Private Collection", 
                 "operationId": "private_collection_update", 
                 "summary": "Update collection", 
-                "description": "Update collection details", 
+                "description": "Update collection details; request can also be made with the PATCH method.", 
                 "security": [
                     {
                         "OAuth2": [
@@ -3024,6 +3102,9 @@
                 "responses": {
                     "205": {
                         "description": "Reset Content", 
+                        "schema": {
+                            "$ref": "#/definitions/LocationWarnings"
+                        }, 
                         "headers": {
                             "Location": {
                                 "type": "string", 
@@ -4751,7 +4832,7 @@
                 "x-subcategory": "Private Project", 
                 "operationId": "private_project_update", 
                 "summary": "Update project", 
-                "description": "Updating an project by passing body parameters", 
+                "description": "Updating an project by passing body parameters; request can also be made with the PATCH method.", 
                 "security": [
                     {
                         "OAuth2": [
@@ -5516,15 +5597,15 @@
                 "responses": {
                     "201": {
                         "description": "Created", 
+                        "schema": {
+                            "$ref": "#/definitions/LocationWarnings"
+                        }, 
                         "headers": {
                             "Location": {
                                 "type": "string", 
                                 "format": "url", 
                                 "description": "Location of article"
                             }
-                        }, 
-                        "schema": {
-                            "$ref": "#/definitions/Location"
                         }
                     }, 
                     "400": {
@@ -7764,6 +7845,20 @@
                     "format": "int64", 
                     "description": "Only if project type is group.", 
                     "example": 0
+                }, 
+                "custom_fields": {
+                    "type": "object", 
+                    "description": "List of key, values pairs to be associated with the project", 
+                    "example": {
+                        "defined_key": "value for it"
+                    }
+                }, 
+                "custom_fields_list": {
+                    "type": "array", 
+                    "description": "List of custom fields values, supersedes custom_fields parameter", 
+                    "items": {
+                        "$ref": "#/definitions/CustomArticleField"
+                    }
                 }
             }
         }, 
@@ -7794,6 +7889,20 @@
                     "description": "Funding creation / update items", 
                     "items": {
                         "$ref": "#/definitions/FundingCreate"
+                    }
+                }, 
+                "custom_fields": {
+                    "type": "object", 
+                    "description": "List of key, values pairs to be associated with the project", 
+                    "example": {
+                        "defined_key": "value for it"
+                    }
+                }, 
+                "custom_fields_list": {
+                    "type": "array", 
+                    "description": "List of custom fields values, supersedes custom_fields parameter", 
+                    "items": {
+                        "$ref": "#/definitions/CustomArticleField"
                     }
                 }
             }
@@ -7983,6 +8092,12 @@
                     "type": "integer", 
                     "format": "int64", 
                     "example": 0
+                }, 
+                "account_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "ID of the account owning the project", 
+                    "example": 1000001
                 }
             }
         }, 
@@ -8712,6 +8827,18 @@
                         11
                     ]
                 }, 
+                "categories_by_source_id": {
+                    "type": "array", 
+                    "items": {
+                        "type": "string"
+                    }, 
+                    "description": "List of category source ids to be associated with the article, supersedes the categories property", 
+                    "default": [], 
+                    "example": [
+                        "300204", 
+                        "400207"
+                    ]
+                }, 
                 "authors": {
                     "type": "array", 
                     "items": {
@@ -8733,6 +8860,13 @@
                     "description": "List of key, values pairs to be associated with the article", 
                     "example": {
                         "defined_key": "value for it"
+                    }
+                }, 
+                "custom_fields_list": {
+                    "type": "array", 
+                    "description": "List of custom fields values, supersedes custom_fields parameter", 
+                    "items": {
+                        "$ref": "#/definitions/CustomArticleField"
                     }
                 }, 
                 "defined_type": {
@@ -8863,6 +8997,18 @@
                         11
                     ]
                 }, 
+                "categories_by_source_id": {
+                    "type": "array", 
+                    "items": {
+                        "type": "string"
+                    }, 
+                    "description": "List of category source ids to be associated with the article, supersedes the categories property", 
+                    "default": [], 
+                    "example": [
+                        "300204", 
+                        "400207"
+                    ]
+                }, 
                 "authors": {
                     "type": "array", 
                     "items": {
@@ -8884,6 +9030,13 @@
                     "description": "List of key, values pairs to be associated with the article", 
                     "example": {
                         "defined_key": "value for it"
+                    }
+                }, 
+                "custom_fields_list": {
+                    "type": "array", 
+                    "description": "List of custom fields values, supersedes custom_fields parameter", 
+                    "items": {
+                        "$ref": "#/definitions/CustomArticleField"
                     }
                 }, 
                 "defined_type": {
@@ -9014,6 +9167,18 @@
                         11
                     ]
                 }, 
+                "categories_by_source_id": {
+                    "type": "array", 
+                    "items": {
+                        "type": "string"
+                    }, 
+                    "description": "List of category source ids to be associated with the article, supersedes the categories property", 
+                    "default": [], 
+                    "example": [
+                        "300204", 
+                        "400207"
+                    ]
+                }, 
                 "authors": {
                     "type": "array", 
                     "items": {
@@ -9035,6 +9200,13 @@
                     "description": "List of key, values pairs to be associated with the article", 
                     "example": {
                         "defined_key": "value for it"
+                    }
+                }, 
+                "custom_fields_list": {
+                    "type": "array", 
+                    "description": "List of custom fields values, supersedes custom_fields parameter", 
+                    "items": {
+                        "$ref": "#/definitions/CustomArticleField"
                     }
                 }, 
                 "defined_type": {
@@ -9479,6 +9651,29 @@
                     ], 
                     "description": "Group resource id", 
                     "example": null
+                }, 
+                "account_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "ID of the account owning the article", 
+                    "example": 1000001
+                }
+            }
+        }, 
+        "CollectionCompletePrivate": {
+            "x-tag": "collections", 
+            "type": "object", 
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CollectionComplete"
+                }
+            ], 
+            "properties": {
+                "account_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "ID of the account owning the collection", 
+                    "example": 1000001
                 }
             }
         }, 
@@ -9502,6 +9697,22 @@
                     "type": "string", 
                     "description": "Category title", 
                     "example": "Anatomy"
+                }, 
+                "path": {
+                    "type": "string", 
+                    "description": "Path to all ancestor ids", 
+                    "example": "/450/1024/6532"
+                }, 
+                "source_id": {
+                    "type": "string", 
+                    "description": "ID in original standard taxonomy", 
+                    "example": "300204"
+                }, 
+                "taxonomy_id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Internal id of taxonomy the category is part of", 
+                    "example": 4
                 }
             }
         }, 
@@ -10017,6 +10228,29 @@
                     "type": "string", 
                     "description": "Account institution user id", 
                     "example": 1
+                }, 
+                "quota": {
+                    "type": "integer", 
+                    "description": "Total storage available to account, in bytes", 
+                    "format": "int64", 
+                    "example": 1074000000
+                }, 
+                "used_quota": {
+                    "type": "integer", 
+                    "description": "Storage used by the account, in bytes", 
+                    "format": "int64", 
+                    "example": 1074000000
+                }, 
+                "user_id": {
+                    "type": "integer", 
+                    "description": "User id associated with account, useful for example for adding the account as an author to an item", 
+                    "format": "int64", 
+                    "example": 1000001
+                }, 
+                "orcid_id": {
+                    "type": "string", 
+                    "description": "ORCID iD associated to account", 
+                    "example": "0000-0001-2345-6789"
                 }
             }
         }, 
@@ -10572,14 +10806,14 @@
                 }, 
                 "title": {
                     "type": "string", 
-                    "description": "Title of article", 
+                    "description": "Title of collection", 
                     "maxLength": 1000, 
                     "minLength": 3, 
-                    "example": "Test article title"
+                    "example": "Test collection title"
                 }, 
                 "description": {
                     "type": "string", 
-                    "description": "The article description. In a publisher case, usually this is the remote article description", 
+                    "description": "The collection description. In a publisher case, usually this is the remote collection description", 
                     "default": "", 
                     "example": "Test description of article", 
                     "maxLength": 10000
@@ -10600,7 +10834,7 @@
                     "items": {
                         "type": "object"
                     }, 
-                    "description": "List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.", 
+                    "description": "List of authors to be associated with the collection. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.", 
                     "default": [], 
                     "example": [
                         {
@@ -10617,7 +10851,7 @@
                         "type": "integer", 
                         "format": "int64"
                     }, 
-                    "description": "List of category ids to be associated with the article(e.g [1, 23, 33, 66])", 
+                    "description": "List of category ids to be associated with the collection(e.g [1, 23, 33, 66])", 
                     "default": [], 
                     "example": [
                         1, 
@@ -10625,9 +10859,21 @@
                         11
                     ]
                 }, 
+                "categories_by_source_id": {
+                    "type": "array", 
+                    "items": {
+                        "type": "string"
+                    }, 
+                    "description": "List of category source ids to be associated with the collection, supersedes the categories property", 
+                    "default": [], 
+                    "example": [
+                        "300204", 
+                        "400207"
+                    ]
+                }, 
                 "tags": {
                     "type": "array", 
-                    "description": "List of tags to be associated with the article. Keywords can be used instead", 
+                    "description": "List of tags to be associated with the collection. Keywords can be used instead", 
                     "items": {
                         "type": "string"
                     }, 
@@ -10639,7 +10885,7 @@
                 }, 
                 "keywords": {
                     "type": "array", 
-                    "description": "List of tags to be associated with the article. Tags can be used instead", 
+                    "description": "List of tags to be associated with the collection. Tags can be used instead", 
                     "items": {
                         "type": "string"
                     }, 
@@ -10655,7 +10901,7 @@
                         "type": "string", 
                         "format": "link"
                     }, 
-                    "description": "List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])", 
+                    "description": "List of links to be associated with the collection (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])", 
                     "default": [], 
                     "example": [
                         "http://figshare.com", 
@@ -10664,9 +10910,16 @@
                 }, 
                 "custom_fields": {
                     "type": "object", 
-                    "description": "List of key, values pairs to be associated with the article", 
+                    "description": "List of key, values pairs to be associated with the collection", 
                     "example": {
                         "defined_key": "value for it"
+                    }
+                }, 
+                "custom_fields_list": {
+                    "type": "array", 
+                    "description": "List of custom fields values, supersedes custom_fields parameter", 
+                    "items": {
+                        "$ref": "#/definitions/CustomArticleField"
                     }
                 }, 
                 "doi": {
@@ -10731,16 +10984,16 @@
                 }, 
                 "title": {
                     "type": "string", 
-                    "description": "Title of article", 
+                    "description": "Title of collection", 
                     "maxLength": 1000, 
                     "minLength": 3, 
-                    "example": "Test article title"
+                    "example": "Test collection title"
                 }, 
                 "description": {
                     "type": "string", 
-                    "description": "The article description. In a publisher case, usually this is the remote article description", 
+                    "description": "The collection description. In a publisher case, usually this is the remote collection description", 
                     "default": "", 
-                    "example": "Test description of article", 
+                    "example": "Test description of collection", 
                     "maxLength": 10000
                 }, 
                 "articles": {
@@ -10759,7 +11012,7 @@
                     "items": {
                         "type": "object"
                     }, 
-                    "description": "List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.", 
+                    "description": "List of authors to be associated with the collection. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. No more than 10 authors. For adding more authors use the specific authors endpoint.", 
                     "default": [], 
                     "example": [
                         {
@@ -10776,7 +11029,7 @@
                         "type": "integer", 
                         "format": "int64"
                     }, 
-                    "description": "List of category ids to be associated with the article(e.g [1, 23, 33, 66])", 
+                    "description": "List of category ids to be associated with the collection (e.g [1, 23, 33, 66])", 
                     "default": [], 
                     "example": [
                         1, 
@@ -10784,9 +11037,21 @@
                         11
                     ]
                 }, 
+                "categories_by_source_id": {
+                    "type": "array", 
+                    "items": {
+                        "type": "string"
+                    }, 
+                    "description": "List of category source ids to be associated with the article, supersedes the categories property", 
+                    "default": [], 
+                    "example": [
+                        "300204", 
+                        "400207"
+                    ]
+                }, 
                 "tags": {
                     "type": "array", 
-                    "description": "List of tags to be associated with the article. Keywords can be used instead", 
+                    "description": "List of tags to be associated with the collection. Keywords can be used instead", 
                     "items": {
                         "type": "string"
                     }, 
@@ -10798,7 +11063,7 @@
                 }, 
                 "keywords": {
                     "type": "array", 
-                    "description": "List of tags to be associated with the article. Tags can be used instead", 
+                    "description": "List of tags to be associated with the collection. Tags can be used instead", 
                     "items": {
                         "type": "string"
                     }, 
@@ -10814,7 +11079,7 @@
                         "type": "string", 
                         "format": "link"
                     }, 
-                    "description": "List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])", 
+                    "description": "List of links to be associated with the collection (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])", 
                     "default": [], 
                     "example": [
                         "http://figshare.com", 
@@ -10823,9 +11088,16 @@
                 }, 
                 "custom_fields": {
                     "type": "object", 
-                    "description": "List of key, values pairs to be associated with the article", 
+                    "description": "List of key, values pairs to be associated with the collection", 
                     "example": {
                         "defined_key": "value for it"
+                    }
+                }, 
+                "custom_fields_list": {
+                    "type": "array", 
+                    "description": "List of custom fields values, supersedes custom_fields parameter", 
+                    "items": {
+                        "$ref": "#/definitions/CustomArticleField"
                     }
                 }, 
                 "doi": {
@@ -10889,6 +11161,24 @@
                     "description": "Url for item", 
                     "type": "string", 
                     "format": "url"
+                }
+            }
+        }, 
+        "LocationWarnings": {
+            "x-tag": "common", 
+            "type": "object", 
+            "properties": {
+                "location": {
+                    "description": "Url for entity", 
+                    "type": "string", 
+                    "format": "url"
+                }, 
+                "warnings": {
+                    "description": "Issues encountered during the operation", 
+                    "type": "array", 
+                    "items": {
+                        "type": "string"
+                    }
                 }
             }
         }, 
