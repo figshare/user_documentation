@@ -6627,54 +6627,6 @@
                 }
             }
         }, 
-        "/institution/hrfeed/upload": {
-            "post": {
-                "tags": [
-                    "institutions"
-                ], 
-                "operationId": "institution_hrfeed_upload", 
-                "summary": "Private Institution HRfeed Upload", 
-                "description": "More info in the <a href=\"#hr_feed\">HR Feed section</a>", 
-                "security": [
-                    {
-                        "OAuth2": [
-                            "all"
-                        ]
-                    }
-                ], 
-                "consumes": [
-                    "multipart/form-data"
-                ], 
-                "parameters": [
-                    {
-                        "in": "formData", 
-                        "name": "hrfeed", 
-                        "type": "file", 
-                        "description": "You can find an example in the Hr Feed section"
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "OK", 
-                        "schema": {
-                            "$ref": "#/definitions/ResponseMessage"
-                        }
-                    }, 
-                    "400": {
-                        "description": "Bad Request"
-                    }, 
-                    "403": {
-                        "description": "Forbidden", 
-                        "schema": {
-                            "$ref": "#/definitions/ErrorMessage"
-                        }
-                    }, 
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            }
-        }, 
         "/account/authors/search": {
             "post": {
                 "tags": [
@@ -8253,6 +8205,54 @@
                     }, 
                     "404": {
                         "description": "Not Found"
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }, 
+        "/institution/hrfeed/upload": {
+            "post": {
+                "tags": [
+                    "institutions"
+                ], 
+                "operationId": "institution_hrfeed_upload", 
+                "summary": "Private Institution HRfeed Upload", 
+                "description": "More info in the <a href=\"#hr_feed\">HR Feed section</a>", 
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ], 
+                "consumes": [
+                    "multipart/form-data"
+                ], 
+                "parameters": [
+                    {
+                        "in": "formData", 
+                        "name": "hrfeed", 
+                        "type": "file", 
+                        "description": "You can find an example in the Hr Feed section"
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "OK", 
+                        "schema": {
+                            "$ref": "#/definitions/ResponseMessage"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request"
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
                     }, 
                     "500": {
                         "description": "Internal Server Error"
