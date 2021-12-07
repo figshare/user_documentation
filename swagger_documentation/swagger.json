@@ -7641,10 +7641,8 @@
                 "domain": {
                     "description": "Institution domain", 
                     "type": [
-                        "string", 
-                        "null"
-                    ], 
-                    "example": null
+                        "string"
+                    ]
                 }
             }
         }, 
@@ -7918,8 +7916,7 @@
                 }, 
                 "published_date": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Date when project was published", 
                     "example": "2017-05-16T14:55:08Z"
@@ -7996,8 +7993,7 @@
                 }, 
                 "figshare_url": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Project public url", 
                     "example": "https://figshare.com/projects/project/1"
@@ -8040,8 +8036,7 @@
                 }, 
                 "figshare_url": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Project public url", 
                     "example": "https://figshare.com/projects/project/1"
@@ -8649,8 +8644,7 @@
                 }, 
                 "review_date": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "The last time a comment has been added to the review."
                 }
@@ -9287,8 +9281,7 @@
                 }, 
                 "group_id": {
                     "type": [
-                        "number", 
-                        "null"
+                        "number"
                     ], 
                     "description": "Group ID", 
                     "example": 1234
@@ -9325,8 +9318,7 @@
                 }, 
                 "published_date": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Posted date", 
                     "example": "2015-12-31T23:59:59.000Z"
@@ -9387,24 +9379,21 @@
             "properties": {
                 "posted": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Posted date", 
                     "example": "2015-12-31"
                 }, 
                 "submission": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Submission date in curation (if curated)", 
                     "example": "2015-12-31"
                 }, 
                 "revision": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Revision date from curation (if curated)", 
                     "example": "2015-12-31"
@@ -9433,8 +9422,7 @@
                 "embargo_type": {
                     "description": "Article embargo", 
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "example": "article"
                 }, 
@@ -9511,8 +9499,7 @@
                 "embargo_date": {
                     "description": "Date when embargo lifts", 
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "example": "2017-05-18T11:49:03Z"
                 }, 
@@ -9524,8 +9511,7 @@
                 "modified_date": {
                     "description": "Date when article was last modified", 
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "example": "2017-05-18T11:49:03Z"
                 }, 
@@ -9591,16 +9577,14 @@
                 }, 
                 "resource_title": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Article resource title", 
                     "example": "first article"
                 }, 
                 "resource_doi": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Article DOI", 
                     "example": "10.5072/FK2.developmentfigshare.2000005"
@@ -9646,11 +9630,9 @@
             "properties": {
                 "group_resource_id": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
-                    "description": "Group resource id", 
-                    "example": null
+                    "description": "Group resource id"
                 }, 
                 "account_id": {
                     "type": "integer", 
@@ -9786,16 +9768,14 @@
                 }, 
                 "embargo_date": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Date when embargo lifts", 
                     "example": "2018-05-22T04:04:04"
                 }, 
                 "embargo_type": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Embargo type", 
                     "example": ""
@@ -9932,8 +9912,7 @@
                 "is_mandatory": {
                     "description": "True if field completion is mandatory", 
                     "type": [
-                        "boolean", 
-                        "null"
+                        "boolean"
                     ], 
                     "example": false
                 }
@@ -9994,8 +9973,7 @@
             "properties": {
                 "status": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Status for file upload", 
                     "example": "created"
@@ -10630,8 +10608,7 @@
                 }, 
                 "published_date": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Date when collection was published ", 
                     "example": "2015-08-12T00:39:55"
@@ -10755,8 +10732,7 @@
                 }, 
                 "group_resource_id": {
                     "type": [
-                        "string", 
-                        "null"
+                        "string"
                     ], 
                     "description": "Collection group resource id", 
                     "example": 1
