@@ -3330,6 +3330,12 @@ margin-bottom: 20px;
   } ],
   "x-tag" : "collections"
 };
+            defs.CollectionCompletePrivate = {
+  "allOf" : [ {
+    "$ref" : "#/definitions/Collection"
+  } ],
+  "x-tag" : "collections"
+};
             defs.CollectionSearch = {
   "allOf" : [ {
     "$ref" : "#/definitions/CommonSearch"
@@ -3389,12 +3395,6 @@ margin-bottom: 20px;
     "$ref" : "#/definitions/ProjectArticle"
   } ],
   "x-tag" : "articles"
-};
-            defs.CollectionCompletePrivate = {
-  "allOf" : [ {
-    "$ref" : "#/definitions/CollectionComplete"
-  } ],
-  "x-tag" : "collections"
 };
             defs.PrivateArticleSearch = {
   "allOf" : [ {
@@ -58325,7 +58325,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2021-12-08T11:46:54.641+02:00
+              Generated 2021-12-08T14:26:44.047+02:00
             </div>
           </div>
       </div>
