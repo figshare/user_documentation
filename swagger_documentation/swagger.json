@@ -7857,7 +7857,7 @@
                     "type": "array", 
                     "description": "List of custom fields values, supersedes custom_fields parameter", 
                     "items": {
-                        "$ref": "#/definitions/CustomArticleField"
+                        "$ref": "#/definitions/CustomArticleFieldAdd"
                     }
                 }
             }
@@ -7902,7 +7902,7 @@
                     "type": "array", 
                     "description": "List of custom fields values, supersedes custom_fields parameter", 
                     "items": {
-                        "$ref": "#/definitions/CustomArticleField"
+                        "$ref": "#/definitions/CustomArticleFieldAdd"
                     }
                 }
             }
@@ -8866,7 +8866,7 @@
                     "type": "array", 
                     "description": "List of custom fields values, supersedes custom_fields parameter", 
                     "items": {
-                        "$ref": "#/definitions/CustomArticleField"
+                        "$ref": "#/definitions/CustomArticleFieldAdd"
                     }
                 }, 
                 "defined_type": {
@@ -9036,7 +9036,7 @@
                     "type": "array", 
                     "description": "List of custom fields values, supersedes custom_fields parameter", 
                     "items": {
-                        "$ref": "#/definitions/CustomArticleField"
+                        "$ref": "#/definitions/CustomArticleFieldAdd"
                     }
                 }, 
                 "defined_type": {
@@ -9206,7 +9206,7 @@
                     "type": "array", 
                     "description": "List of custom fields values, supersedes custom_fields parameter", 
                     "items": {
-                        "$ref": "#/definitions/CustomArticleField"
+                        "$ref": "#/definitions/CustomArticleFieldAdd"
                     }
                 }, 
                 "defined_type": {
@@ -9912,6 +9912,21 @@
                     "description": "Reason for confidentiality", 
                     "type": "string", 
                     "example": "need to"
+                }
+            }
+        }, 
+        "CustomArticleFieldAdd": {
+            "x-tag": "articles", 
+            "type": "object", 
+            "properties": {
+                "name": {
+                    "description": "Custom  metadata name", 
+                    "type": "string", 
+                    "example": "key"
+                }, 
+                "value": {
+                    "description": "Custom metadata value", 
+                    "example": "value"
                 }
             }
         }, 
@@ -10919,7 +10934,7 @@
                     "type": "array", 
                     "description": "List of custom fields values, supersedes custom_fields parameter", 
                     "items": {
-                        "$ref": "#/definitions/CustomArticleField"
+                        "$ref": "#/definitions/CustomArticleFieldAdd"
                     }
                 }, 
                 "doi": {
@@ -11097,7 +11112,7 @@
                     "type": "array", 
                     "description": "List of custom fields values, supersedes custom_fields parameter", 
                     "items": {
-                        "$ref": "#/definitions/CustomArticleField"
+                        "$ref": "#/definitions/CustomArticleFieldAdd"
                     }
                 }, 
                 "doi": {
