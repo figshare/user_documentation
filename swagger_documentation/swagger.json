@@ -9929,7 +9929,7 @@
                     "example": "value"
                 }
             }
-        },
+        }, 
         "CustomArticleField": {
             "x-tag": "articles", 
             "type": "object", 

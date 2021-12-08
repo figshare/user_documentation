@@ -1096,7 +1096,7 @@ margin-bottom: 20px;
       "type" : "array",
       "description" : "List of custom fields values, supersedes custom_fields parameter",
       "items" : {
-        "$ref" : "#/definitions/CustomArticleField"
+        "$ref" : "#/definitions/CustomArticleFieldAdd"
       }
     },
     "defined_type" : {
@@ -1351,7 +1351,7 @@ margin-bottom: 20px;
       "type" : "array",
       "description" : "List of custom fields values, supersedes custom_fields parameter",
       "items" : {
-        "$ref" : "#/definitions/CustomArticleField"
+        "$ref" : "#/definitions/CustomArticleFieldAdd"
       }
     },
     "defined_type" : {
@@ -1489,7 +1489,7 @@ margin-bottom: 20px;
       "type" : "array",
       "description" : "List of custom fields values, supersedes custom_fields parameter",
       "items" : {
-        "$ref" : "#/definitions/CustomArticleField"
+        "$ref" : "#/definitions/CustomArticleFieldAdd"
       }
     },
     "defined_type" : {
@@ -1855,7 +1855,7 @@ margin-bottom: 20px;
       "type" : "array",
       "description" : "List of custom fields values, supersedes custom_fields parameter",
       "items" : {
-        "$ref" : "#/definitions/CustomArticleField"
+        "$ref" : "#/definitions/CustomArticleFieldAdd"
       }
     },
     "doi" : {
@@ -2044,7 +2044,7 @@ margin-bottom: 20px;
       "type" : "array",
       "description" : "List of custom fields values, supersedes custom_fields parameter",
       "items" : {
-        "$ref" : "#/definitions/CustomArticleField"
+        "$ref" : "#/definitions/CustomArticleFieldAdd"
       }
     },
     "doi" : {
@@ -2295,6 +2295,17 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "value",
       "description" : "Custom metadata value"
+    }
+  },
+  "x-tag" : "articles"
+};
+            defs.CustomArticleFieldAdd = {
+  "type" : "object",
+  "properties" : {
+    "name" : {
+      "type" : "string",
+      "example" : "key",
+      "description" : "Custom  metadata name"
     }
   },
   "x-tag" : "articles"
@@ -2841,7 +2852,7 @@ margin-bottom: 20px;
       "type" : "array",
       "description" : "List of custom fields values, supersedes custom_fields parameter",
       "items" : {
-        "$ref" : "#/definitions/CustomArticleField"
+        "$ref" : "#/definitions/CustomArticleFieldAdd"
       }
     }
   },
@@ -2938,7 +2949,7 @@ margin-bottom: 20px;
       "type" : "array",
       "description" : "List of custom fields values, supersedes custom_fields parameter",
       "items" : {
-        "$ref" : "#/definitions/CustomArticleField"
+        "$ref" : "#/definitions/CustomArticleFieldAdd"
       }
     }
   },
@@ -58314,7 +58325,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2021-12-07T16:47:33.368+02:00
+              Generated 2021-12-08T11:46:54.641+02:00
             </div>
           </div>
       </div>
