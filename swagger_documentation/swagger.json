@@ -8098,6 +8098,13 @@
                     "format": "int64", 
                     "description": "ID of the account owning the project", 
                     "example": 1000001
+                }, 
+                "custom_fields": {
+                    "type": "array", 
+                    "description": "Collection custom fields", 
+                    "items": {
+                        "$ref": "#/definitions/CustomArticleField"
+                    }
                 }
             }
         }, 
@@ -9665,7 +9672,7 @@
             "type": "object", 
             "allOf": [
                 {
-                    "$ref": "#/definitions/CollectionComplete"
+                    "$ref": "#/definitions/Collection"
                 }
             ], 
             "properties": {
@@ -9674,6 +9681,142 @@
                     "format": "int64", 
                     "description": "ID of the account owning the collection", 
                     "example": 1000001
+                }, 
+                "funding": {
+                    "type": "array", 
+                    "description": "Full Collection funding information", 
+                    "items": {
+                        "type": "object", 
+                        "$ref": "#/definitions/FundingInformation"
+                    }
+                }, 
+                "resource_id": {
+                    "type": "string", 
+                    "description": "Collection resource id", 
+                    "example": ""
+                }, 
+                "resource_doi": {
+                    "type": "string", 
+                    "description": "Collection resource doi", 
+                    "example": "10.6084/m9.figshare.123"
+                }, 
+                "resource_title": {
+                    "type": "string", 
+                    "description": "Collection resource title", 
+                    "example": "test"
+                }, 
+                "resource_link": {
+                    "type": "string", 
+                    "description": "Collection resource link", 
+                    "example": "http://figshare.com"
+                }, 
+                "resource_version": {
+                    "type": "integer", 
+                    "description": "Collection resource version", 
+                    "format": "int64", 
+                    "example": 0
+                }, 
+                "version": {
+                    "type": "integer", 
+                    "description": "Collection version", 
+                    "format": "int64", 
+                    "example": 1
+                }, 
+                "description": {
+                    "type": "string", 
+                    "description": "Collection description", 
+                    "example": "description"
+                }, 
+                "categories": {
+                    "type": "array", 
+                    "description": "List of collection categories", 
+                    "items": {
+                        "$ref": "#/definitions/Category"
+                    }
+                }, 
+                "references": {
+                    "type": "array", 
+                    "description": "List of collection references", 
+                    "items": {
+                        "type": "string", 
+                        "format": "url"
+                    }
+                }, 
+                "tags": {
+                    "type": "array", 
+                    "description": "List of collection tags", 
+                    "items": {
+                        "type": "string"
+                    }, 
+                    "example": [
+                        "t1", 
+                        "t2"
+                    ]
+                }, 
+                "authors": {
+                    "type": "array", 
+                    "description": "List of collection authors", 
+                    "items": {
+                        "$ref": "#/definitions/Author"
+                    }
+                }, 
+                "institution_id": {
+                    "type": "integer", 
+                    "description": "Collection institution", 
+                    "format": "int64", 
+                    "example": 1
+                }, 
+                "group_id": {
+                    "type": "integer", 
+                    "description": "Collection group", 
+                    "format": "int64", 
+                    "example": 1
+                }, 
+                "articles_count": {
+                    "type": "integer", 
+                    "description": "Number of articles in collection", 
+                    "format": "int64", 
+                    "example": 1
+                }, 
+                "public": {
+                    "type": "boolean", 
+                    "description": "True if collection is published", 
+                    "example": true
+                }, 
+                "citation": {
+                    "type": "string", 
+                    "description": "Collection citation", 
+                    "example": "citation"
+                }, 
+                "group_resource_id": {
+                    "type": [
+                        "string", 
+                        "null"
+                    ], 
+                    "description": "Collection group resource id", 
+                    "example": 1
+                }, 
+                "custom_fields": {
+                    "type": "array", 
+                    "description": "Collection custom fields", 
+                    "items": {
+                        "$ref": "#/definitions/CustomArticleField"
+                    }
+                }, 
+                "modified_date": {
+                    "type": "string", 
+                    "description": "Date when collection was last modified", 
+                    "example": "2017-05-15T15:12:26Z"
+                }, 
+                "created_date": {
+                    "type": "string", 
+                    "description": "Date when collection was created", 
+                    "example": "2017-05-15T15:12:26Z"
+                }, 
+                "timeline": {
+                    "type": "object", 
+                    "description": "Various timeline dates", 
+                    "$ref": "#/definitions/Timeline"
                 }
             }
         }, 
