@@ -8965,6 +8965,13 @@
                     "description": "ID of the account owning the project", 
                     "example": 1000001
                 }, 
+                "custom_fields": {
+                    "type": "array", 
+                    "description": "Collection custom fields", 
+                    "items": {
+                        "$ref": "#/definitions/CustomArticleField"
+                    }
+                }, 
                 "role": {
                     "type": "string", 
                     "enum": [
@@ -11683,7 +11690,7 @@
             "type": "object", 
             "allOf": [
                 {
-                    "$ref": "#/definitions/CollectionComplete"
+                    "$ref": "#/definitions/Collection"
                 }
             ], 
             "properties": {
@@ -11828,6 +11835,40 @@
                     "type": "object", 
                     "description": "Various timeline dates", 
                     "$ref": "#/definitions/Timeline"
+                }, 
+                "id": {
+                    "type": "integer", 
+                    "format": "int64", 
+                    "description": "Collection id", 
+                    "example": 123
+                }, 
+                "title": {
+                    "type": "string", 
+                    "description": "Collection title", 
+                    "example": "Sample collection"
+                }, 
+                "doi": {
+                    "type": "string", 
+                    "description": "Collection DOI", 
+                    "example": "10.6084/m9.figshare.123"
+                }, 
+                "handle": {
+                    "type": "string", 
+                    "description": "Collection Handle", 
+                    "example": "111184/figshare.1234"
+                }, 
+                "url": {
+                    "type": "string", 
+                    "description": "Api endpoint", 
+                    "example": "https://api.figshare.com/v2/collections/123"
+                }, 
+                "published_date": {
+                    "type": [
+                        "string", 
+                        "null"
+                    ], 
+                    "description": "Date when collection was published ", 
+                    "example": "2015-08-12T00:39:55"
                 }
             }
         }, 
