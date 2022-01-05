@@ -1,7 +1,7 @@
 API_URL=api.figinternal.dev
 API_SCHEME=https
 
-configure:
+install:
 	pip install -r requirements.txt
 
 swagger:
