@@ -985,12 +985,12 @@ margin-bottom: 20px;
       "type" : "integer",
       "format" : "int64",
       "example" : 3,
-      "description" : "Type of article identificator"
+      "description" : "Type of article identifier"
     },
     "defined_type_name" : {
       "type" : "string",
       "example" : "media",
-      "description" : "Name of the article type identificator"
+      "description" : "Name of the article type identifier"
     }
   },
   "x-tag" : "articles"
@@ -1518,12 +1518,12 @@ margin-bottom: 20px;
     },
     "doi" : {
       "type" : "string",
-      "description" : "Not appliable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
+      "description" : "Not applicable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
       "default" : ""
     },
     "handle" : {
       "type" : "string",
-      "description" : "Not appliable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
+      "description" : "Not applicable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
       "default" : ""
     },
     "resource_doi" : {
@@ -2557,6 +2557,49 @@ margin-bottom: 20px;
     }
   },
   "x-tag" : "institutions"
+};
+            defs.ItemType = {
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "integer",
+      "format" : "int64",
+      "description" : "The ID of the item type.",
+      "minimum" : 1
+    },
+    "name" : {
+      "type" : "string",
+      "example" : "journal contribution",
+      "description" : "The name of the item type"
+    },
+    "string_id" : {
+      "type" : "string",
+      "example" : "journal_contribution",
+      "description" : "The string identifier of the item type."
+    },
+    "icon" : {
+      "type" : "string",
+      "example" : "paper",
+      "description" : "The string identifying the icon of the item type."
+    },
+    "public_description" : {
+      "type" : "string",
+      "example" : "This is the description of an item type",
+      "description" : "The description of the item type."
+    },
+    "is_selectable" : {
+      "type" : "integer",
+      "format" : "int64",
+      "description" : "Filter by the selectable status",
+      "minimum" : 0,
+      "maximum" : 1
+    },
+    "url_name" : {
+      "type" : "string",
+      "example" : "journal_contribution",
+      "description" : "The URL name of the item type."
+    }
+  }
 };
             defs.License = {
   "type" : "object",
@@ -3755,6 +3798,9 @@ margin-bottom: 20px;
                     </li>
                     <li data-group="Other" data-name="fileDownload" class="">
                       <a href="#api-Other-fileDownload">fileDownload</a>
+                    </li>
+                    <li data-group="Other" data-name="itemTypesList" class="">
+                      <a href="#api-Other-itemTypesList">itemTypesList</a>
                     </li>
                     <li data-group="Other" data-name="licensesList" class="">
                       <a href="#api-Other-licensesList">licensesList</a>
@@ -18311,7 +18357,7 @@ $(document).ready(function() {
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">- If the whole article is under embargo, it will not be published immediatly, but when the embargo expires or is lifted.
+                        <p class="marked">- If the whole article is under embargo, it will not be published immediately, but when the embargo expires or is lifted.
 - When an article is published, a new public version will be generated. Any further updates to the article will affect the private article data. In order to make these changes publicly visible, an explicit publish operation is needed.</p>
                         <p></p>
                         <br />
@@ -45969,6 +46015,369 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
+                    <div id="api-Other-itemTypesList">
+                      <article id="api-Other-itemTypesList-0" data-group="User" data-name="itemTypesList" data-version="0">
+                        <div class="pull-left">
+                          <h1>itemTypesList</h1>
+                          <p>Item Types</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Returns a list of Item Types available to the authenticated user. If no user is authenticated, returns the item types available for Figshare.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/item_types</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Other-itemTypesList-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Other-itemTypesList-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Other-itemTypesList-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Other-itemTypesList-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Other-itemTypesList-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Other-itemTypesList-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Other-itemTypesList-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Other-itemTypesList-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Other-itemTypesList-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Other-itemTypesList-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Other-itemTypesList-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Other-itemTypesList-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/item_types?group_id="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Other-itemTypesList-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.OtherApi;
+
+import java.io.File;
+import java.util.*;
+
+public class OtherApiExample {
+
+    public static void main(String[] args) {
+        
+        OtherApi apiInstance = new OtherApi();
+        Long groupId = 789; // Long | Identifier of the group for which the item types are requested
+        try {
+            array[ItemType] result = apiInstance.itemTypesList(groupId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OtherApi#itemTypesList");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Other-itemTypesList-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.OtherApi;
+
+public class OtherApiExample {
+
+    public static void main(String[] args) {
+        OtherApi apiInstance = new OtherApi();
+        Long groupId = 789; // Long | Identifier of the group for which the item types are requested
+        try {
+            array[ItemType] result = apiInstance.itemTypesList(groupId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OtherApi#itemTypesList");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Other-itemTypesList-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Other-itemTypesList-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Long *groupId = 789; // Identifier of the group for which the item types are requested (optional) (default to 0)
+
+OtherApi *apiInstance = [[OtherApi alloc] init];
+
+// Item Types
+[apiInstance itemTypesListWith:groupId
+              completionHandler: ^(array[ItemType] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Other-itemTypesList-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+
+var api = new FigshareApi.OtherApi()
+
+var opts = { 
+  'groupId': 789 // {Long} Identifier of the group for which the item types are requested
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.itemTypesList(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Other-itemTypesList-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Other-itemTypesList-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class itemTypesListExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new OtherApi();
+            var groupId = 789;  // Long | Identifier of the group for which the item types are requested (optional)  (default to 0)
+
+            try
+            {
+                // Item Types
+                array[ItemType] result = apiInstance.itemTypesList(groupId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling OtherApi.itemTypesList: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Other-itemTypesList-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\OtherApi();
+$groupId = 789; // Long | Identifier of the group for which the item types are requested
+
+try {
+    $result = $api_instance->itemTypesList($groupId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OtherApi->itemTypesList: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Other-itemTypesList-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::OtherApi;
+
+my $api_instance = WWW::SwaggerClient::OtherApi->new();
+my $groupId = 789; # Long | Identifier of the group for which the item types are requested
+
+eval { 
+    my $result = $api_instance->itemTypesList(groupId => $groupId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling OtherApi->itemTypesList: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Other-itemTypesList-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.OtherApi()
+groupId = 789 # Long | Identifier of the group for which the item types are requested (optional) (default to 0)
+
+try: 
+    # Item Types
+    api_response = api_instance.item_types_list(groupId=groupId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling OtherApi->itemTypesList: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">group_id</td>
+<td>
+
+
+    <div id="d2e199_itemTypesList_groupId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Identifier of the group for which the item types are requested
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK. An array of item types </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-itemTypesList-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-itemTypesList-200-schema">
+                                  <div id='responses-itemTypesList-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK. An array of item types",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/ItemType"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-itemTypesList-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-itemTypesList-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-itemTypesList-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-itemTypesList-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-itemTypesList-403-schema">
+                                  <div id='responses-itemTypesList-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-itemTypesList-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-itemTypesList-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-itemTypesList-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Other-licensesList">
                       <article id="api-Other-licensesList-0" data-group="User" data-name="licensesList" data-version="0">
                         <div class="pull-left">
@@ -58325,7 +58734,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-01-05T09:42:46.268+02:00
+              Generated 2022-01-05T13:31:33.409+02:00
             </div>
           </div>
       </div>

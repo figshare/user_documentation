@@ -1128,7 +1128,7 @@
                 ],
                 "operationId": "private_article_publish",
                 "summary": "Private Article Publish",
-                "description": "- If the whole article is under embargo, it will not be published immediatly, but when the embargo expires or is lifted.\n- When an article is published, a new public version will be generated. Any further updates to the article will affect the private article data. In order to make these changes publicly visible, an explicit publish operation is needed.",
+                "description": "- If the whole article is under embargo, it will not be published immediately, but when the embargo expires or is lifted.\n- When an article is published, a new public version will be generated. Any further updates to the article will affect the private article data. In order to make these changes publicly visible, an explicit publish operation is needed.",
                 "security": [
                     {
                         "OAuth2": [
@@ -4771,6 +4771,55 @@
                         "type": "string"
                     }
                 ]
+            }
+        },
+        "/item_types": {
+            "get": {
+                "tags": [
+                    "other"
+                ],
+                "operationId": "item_types_list",
+                "summary": "Item Types",
+                "description": "Returns a list of Item Types available to the authenticated user. If no user is authenticated, returns the item types available for Figshare.",
+                "security": [],
+                "parameters": [
+                    {
+                        "name": "group_id",
+                        "in": "query",
+                        "description": "Identifier of the group for which the item types are requested",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 0,
+                        "default": 0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK. An array of item types",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ItemType"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
             }
         },
         "/projects": {
@@ -10284,12 +10333,12 @@
                 },
                 "doi": {
                     "type": "string",
-                    "description": "Not appliable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
+                    "description": "Not applicable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
                     "default": ""
                 },
                 "handle": {
                     "type": "string",
-                    "description": "Not appliable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
+                    "description": "Not applicable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
                     "default": ""
                 },
                 "resource_doi": {
@@ -10734,12 +10783,12 @@
                 "defined_type": {
                     "type": "integer",
                     "format": "int64",
-                    "description": "Type of article identificator",
+                    "description": "Type of article identifier",
                     "example": 3
                 },
                 "defined_type_name": {
                     "type": "string",
-                    "description": "Name of the article type identificator",
+                    "description": "Name of the article type identifier",
                     "example": "media"
                 }
             }
@@ -11057,12 +11106,12 @@
                 "defined_type": {
                     "type": "integer",
                     "format": "int64",
-                    "description": "Type of article identificator",
+                    "description": "Type of article identifier",
                     "example": 3
                 },
                 "defined_type_name": {
                     "type": "string",
-                    "description": "Name of the article type identificator",
+                    "description": "Name of the article type identifier",
                     "example": "media"
                 }
             }
@@ -11359,12 +11408,12 @@
                 "defined_type": {
                     "type": "integer",
                     "format": "int64",
-                    "description": "Type of article identificator",
+                    "description": "Type of article identifier",
                     "example": 3
                 },
                 "defined_type_name": {
                     "type": "string",
-                    "description": "Name of the article type identificator",
+                    "description": "Name of the article type identifier",
                     "example": "media"
                 }
             }
@@ -11675,12 +11724,12 @@
                 "defined_type": {
                     "type": "integer",
                     "format": "int64",
-                    "description": "Type of article identificator",
+                    "description": "Type of article identifier",
                     "example": 3
                 },
                 "defined_type_name": {
                     "type": "string",
-                    "description": "Name of the article type identificator",
+                    "description": "Name of the article type identifier",
                     "example": "media"
                 }
             }
@@ -13587,6 +13636,49 @@
                     "type": "integer",
                     "format": "int64",
                     "description": "The group ID that was used to filter the report, if any."
+                }
+            }
+        },
+        "ItemType": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The ID of the item type.",
+                    "minimum": 1
+                },
+                "name": {
+                    "type": "string",
+                    "example": "journal contribution",
+                    "description": "The name of the item type"
+                },
+                "string_id": {
+                    "type": "string",
+                    "example": "journal_contribution",
+                    "description": "The string identifier of the item type."
+                },
+                "icon": {
+                    "type": "string",
+                    "example": "paper",
+                    "description": "The string identifying the icon of the item type."
+                },
+                "public_description": {
+                    "type": "string",
+                    "example": "This is the description of an item type",
+                    "description": "The description of the item type."
+                },
+                "is_selectable": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Filter by the selectable status",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "url_name": {
+                    "type": "string",
+                    "example": "journal_contribution",
+                    "description": "The URL name of the item type."
                 }
             }
         }
