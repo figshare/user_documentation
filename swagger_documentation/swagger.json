@@ -4323,8 +4323,14 @@
                 ],
                 "operationId": "item_types_list",
                 "summary": "Item Types",
-                "description": "Returns a list of Item Types available to the authenticated user. If no user is authenticated, returns the item types available for Figshare.",
-                "security": [],
+                "description": "Returns the list of Item Types of the requested group. If no user is authenticated, returns the item types available for Figshare.",
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ],
                 "parameters": [
                     {
                         "name": "group_id",
@@ -4333,7 +4339,7 @@
                         "required": false,
                         "type": "integer",
                         "format": "int64",
-                        "minimum": 0,
+                        "minimum": 1,
                         "default": 0
                     }
                 ],
@@ -11519,11 +11525,9 @@
                     "description": "The description of the item type."
                 },
                 "is_selectable": {
-                    "type": "integer",
-                    "format": "int64",
-                    "description": "Filter by the selectable status",
-                    "minimum": 0,
-                    "maximum": 1
+                    "type": "boolean",
+                    "example": true,
+                    "description": "The selectable status"
                 },
                 "url_name": {
                     "type": "string",

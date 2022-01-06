@@ -2588,11 +2588,9 @@ margin-bottom: 20px;
       "description" : "The description of the item type."
     },
     "is_selectable" : {
-      "type" : "integer",
-      "format" : "int64",
-      "description" : "Filter by the selectable status",
-      "minimum" : 0,
-      "maximum" : 1
+      "type" : "boolean",
+      "example" : true,
+      "description" : "The selectable status"
     },
     "url_name" : {
       "type" : "string",
@@ -46024,7 +46022,7 @@ except ApiException as e:
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Returns a list of Item Types available to the authenticated user. If no user is authenticated, returns the item types available for Figshare.</p>
+                        <p class="marked">Returns the list of Item Types of the requested group. If no user is authenticated, returns the item types available for Figshare.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/item_types</span></code></pre>
@@ -46061,7 +46059,12 @@ import java.util.*;
 public class OtherApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
         OtherApi apiInstance = new OtherApi();
         Long groupId = 789; // Long | Identifier of the group for which the item types are requested
         try {
@@ -46098,7 +46101,12 @@ public class OtherApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Other-itemTypesList-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Long *groupId = 789; // Identifier of the group for which the item types are requested (optional) (default to 0)
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *groupId = 789; // Identifier of the group for which the item types are requested (optional) (default to 0)
 
 OtherApi *apiInstance = [[OtherApi alloc] init];
 
@@ -46117,6 +46125,11 @@ OtherApi *apiInstance = [[OtherApi alloc] init];
 
                             <div class="tab-pane" id="examples-Other-itemTypesList-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new FigshareApi.OtherApi()
 
@@ -46152,6 +46165,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OtherApi();
             var groupId = 789;  // Long | Identifier of the group for which the item types are requested (optional)  (default to 0)
 
@@ -46175,6 +46191,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $api_instance = new Swagger\Client\Api\OtherApi();
 $groupId = 789; // Long | Identifier of the group for which the item types are requested
 
@@ -46191,6 +46210,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::OtherApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::OtherApi->new();
 my $groupId = 789; # Long | Identifier of the group for which the item types are requested
@@ -46210,6 +46232,9 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = swagger_client.OtherApi()
@@ -58734,7 +58759,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-01-05T13:31:33.409+02:00
+              Generated 2022-01-06T17:49:46.225+02:00
             </div>
           </div>
       </div>
