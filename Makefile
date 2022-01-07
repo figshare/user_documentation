@@ -19,4 +19,10 @@ swagger_build:
 swagger_install:
 	cd swagger_documentation && make install
 
+openapi_build:
+	cd openapi && make documentation
+
+openapi-server: openapi_build
+	cd openapi && python -m http.server 8001
+
 .PHONY: swagger_build swagger_install
