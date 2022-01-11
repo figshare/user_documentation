@@ -13531,6 +13531,12 @@
             "x-tag": "common",
             "type": "object",
             "properties": {
+                "entity_id": {
+                    "description": "Figshare ID of the entity",
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 123456
+                },
                 "location": {
                     "description": "Url for entity",
                     "type": "string",
