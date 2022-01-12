@@ -2639,9 +2639,27 @@ margin-bottom: 20px;
     "entity_id" : {
       "type" : "integer",
       "format" : "int64",
-      "example" : 123456,
+      "example" : 33334444,
       "description" : "Figshare ID of the entity"
     },
+    "location" : {
+      "type" : "string",
+      "format" : "url",
+      "description" : "Url for entity"
+    },
+    "warnings" : {
+      "type" : "array",
+      "description" : "Issues encountered during the operation",
+      "items" : {
+        "type" : "string"
+      }
+    }
+  },
+  "x-tag" : "common"
+};
+            defs.LocationWarningsUpdate = {
+  "type" : "object",
+  "properties" : {
     "location" : {
       "type" : "string",
       "format" : "url",
@@ -6662,7 +6680,7 @@ public class ArticlesApiExample {
         Long versionId = 789; // Long | Article version identifier
         ArticleUpdate article = ; // ArticleUpdate | Article description
         try {
-            LocationWarnings result = apiInstance.articleVersionUpdate(articleId, versionId, article);
+            LocationWarningsUpdate result = apiInstance.articleVersionUpdate(articleId, versionId, article);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#articleVersionUpdate");
@@ -6683,7 +6701,7 @@ public class ArticlesApiExample {
         Long versionId = 789; // Long | Article version identifier
         ArticleUpdate article = ; // ArticleUpdate | Article description
         try {
-            LocationWarnings result = apiInstance.articleVersionUpdate(articleId, versionId, article);
+            LocationWarningsUpdate result = apiInstance.articleVersionUpdate(articleId, versionId, article);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#articleVersionUpdate");
@@ -6712,7 +6730,7 @@ ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 [apiInstance articleVersionUpdateWith:articleId
     versionId:versionId
     article:article
-              completionHandler: ^(LocationWarnings output, NSError* error) {
+              completionHandler: ^(LocationWarningsUpdate output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -6779,7 +6797,7 @@ namespace Example
             try
             {
                 // Update article version
-                LocationWarnings result = apiInstance.articleVersionUpdate(articleId, versionId, article);
+                LocationWarningsUpdate result = apiInstance.articleVersionUpdate(articleId, versionId, article);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -6989,7 +7007,7 @@ $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "Reset Content",
   "schema" : {
-    "$ref" : "#/definitions/LocationWarnings"
+    "$ref" : "#/definitions/LocationWarningsUpdate"
   },
   "headers" : {
     "Location" : {
@@ -20018,7 +20036,7 @@ public class ArticlesApiExample {
         Long articleId = 789; // Long | Article unique identifier
         ArticleUpdate article = ; // ArticleUpdate | Article description
         try {
-            LocationWarnings result = apiInstance.privateArticleUpdate(articleId, article);
+            LocationWarningsUpdate result = apiInstance.privateArticleUpdate(articleId, article);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticleUpdate");
@@ -20038,7 +20056,7 @@ public class ArticlesApiExample {
         Long articleId = 789; // Long | Article unique identifier
         ArticleUpdate article = ; // ArticleUpdate | Article description
         try {
-            LocationWarnings result = apiInstance.privateArticleUpdate(articleId, article);
+            LocationWarningsUpdate result = apiInstance.privateArticleUpdate(articleId, article);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticleUpdate");
@@ -20065,7 +20083,7 @@ ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 // Update article
 [apiInstance privateArticleUpdateWith:articleId
     article:article
-              completionHandler: ^(LocationWarnings output, NSError* error) {
+              completionHandler: ^(LocationWarningsUpdate output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -20129,7 +20147,7 @@ namespace Example
             try
             {
                 // Update article
-                LocationWarnings result = apiInstance.privateArticleUpdate(articleId, article);
+                LocationWarningsUpdate result = apiInstance.privateArticleUpdate(articleId, article);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -20310,7 +20328,7 @@ $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "Reset Content",
   "schema" : {
-    "$ref" : "#/definitions/LocationWarnings"
+    "$ref" : "#/definitions/LocationWarningsUpdate"
   },
   "headers" : {
     "Location" : {
@@ -34763,7 +34781,7 @@ public class CollectionsApiExample {
         Long collectionId = 789; // Long | Collection Unique identifier
         CollectionUpdate collection = ; // CollectionUpdate | Collection description
         try {
-            LocationWarnings result = apiInstance.privateCollectionUpdate(collectionId, collection);
+            LocationWarningsUpdate result = apiInstance.privateCollectionUpdate(collectionId, collection);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionUpdate");
@@ -34783,7 +34801,7 @@ public class CollectionsApiExample {
         Long collectionId = 789; // Long | Collection Unique identifier
         CollectionUpdate collection = ; // CollectionUpdate | Collection description
         try {
-            LocationWarnings result = apiInstance.privateCollectionUpdate(collectionId, collection);
+            LocationWarningsUpdate result = apiInstance.privateCollectionUpdate(collectionId, collection);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionUpdate");
@@ -34810,7 +34828,7 @@ CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 // Update collection
 [apiInstance privateCollectionUpdateWith:collectionId
     collection:collection
-              completionHandler: ^(LocationWarnings output, NSError* error) {
+              completionHandler: ^(LocationWarningsUpdate output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -34874,7 +34892,7 @@ namespace Example
             try
             {
                 // Update collection
-                LocationWarnings result = apiInstance.privateCollectionUpdate(collectionId, collection);
+                LocationWarningsUpdate result = apiInstance.privateCollectionUpdate(collectionId, collection);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -35055,7 +35073,7 @@ $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "Reset Content",
   "schema" : {
-    "$ref" : "#/definitions/LocationWarnings"
+    "$ref" : "#/definitions/LocationWarningsUpdate"
   },
   "headers" : {
     "Location" : {
@@ -58765,7 +58783,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-01-11T10:42:53.521+02:00
+              Generated 2022-01-12T10:49:10.939+02:00
             </div>
           </div>
       </div>

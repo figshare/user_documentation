@@ -798,7 +798,7 @@
                     "205": {
                         "description": "Reset Content",
                         "schema": {
-                            "$ref": "#/definitions/LocationWarnings"
+                            "$ref": "#/definitions/LocationWarningsUpdate"
                         },
                         "headers": {
                             "Location": {
@@ -1268,7 +1268,7 @@
                     "205": {
                         "description": "Reset Content",
                         "schema": {
-                            "$ref": "#/definitions/LocationWarnings"
+                            "$ref": "#/definitions/LocationWarningsUpdate"
                         },
                         "headers": {
                             "Location": {
@@ -3103,7 +3103,7 @@
                     "205": {
                         "description": "Reset Content",
                         "schema": {
-                            "$ref": "#/definitions/LocationWarnings"
+                            "$ref": "#/definitions/LocationWarningsUpdate"
                         },
                         "headers": {
                             "Location": {
@@ -11385,8 +11385,26 @@
                     "description": "Figshare ID of the entity",
                     "type": "integer",
                     "format": "int64",
-                    "example": 123456
+                    "example": 33334444
                 },
+                "location": {
+                    "description": "Url for entity",
+                    "type": "string",
+                    "format": "url"
+                },
+                "warnings": {
+                    "description": "Issues encountered during the operation",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "LocationWarningsUpdate": {
+            "x-tag": "common",
+            "type": "object",
+            "properties": {
                 "location": {
                     "description": "Url for entity",
                     "type": "string",
