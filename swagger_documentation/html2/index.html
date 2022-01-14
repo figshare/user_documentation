@@ -2191,6 +2191,23 @@ margin-bottom: 20px;
     }
   }
 };
+            defs.CreateProjectResponse = {
+  "type" : "object",
+  "properties" : {
+    "entity_id" : {
+      "type" : "integer",
+      "format" : "int64",
+      "example" : 33334444,
+      "description" : "Figshare ID of the entity"
+    },
+    "location" : {
+      "type" : "string",
+      "format" : "url",
+      "description" : "Url for entity"
+    }
+  },
+  "x-tag" : "common"
+};
             defs.Curation = {
   "type" : "object",
   "properties" : {
@@ -2792,6 +2809,22 @@ margin-bottom: 20px;
     }
   },
   "x-tag" : "articles"
+};
+            defs.PrivateLinkResponse = {
+  "type" : "object",
+  "properties" : {
+    "location" : {
+      "type" : "string",
+      "format" : "url",
+      "description" : "Url for private link"
+    },
+    "token" : {
+      "type" : "string",
+      "example" : "d5ec7a85bcd6dbe9d9b2",
+      "description" : "Token for private link"
+    }
+  },
+  "x-tag" : "common"
 };
             defs.Project = {
   "type" : "object",
@@ -17116,7 +17149,7 @@ public class ArticlesApiExample {
         Long articleId = 789; // Long | Article unique identifier
         PrivateLinkCreator privateLink = ; // PrivateLinkCreator | 
         try {
-            Location result = apiInstance.privateArticlePrivateLinkCreate(articleId, privateLink);
+            PrivateLinkResponse result = apiInstance.privateArticlePrivateLinkCreate(articleId, privateLink);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticlePrivateLinkCreate");
@@ -17136,7 +17169,7 @@ public class ArticlesApiExample {
         Long articleId = 789; // Long | Article unique identifier
         PrivateLinkCreator privateLink = ; // PrivateLinkCreator | 
         try {
-            Location result = apiInstance.privateArticlePrivateLinkCreate(articleId, privateLink);
+            PrivateLinkResponse result = apiInstance.privateArticlePrivateLinkCreate(articleId, privateLink);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticlePrivateLinkCreate");
@@ -17163,7 +17196,7 @@ ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 // Create private link
 [apiInstance privateArticlePrivateLinkCreateWith:articleId
     privateLink:privateLink
-              completionHandler: ^(Location output, NSError* error) {
+              completionHandler: ^(PrivateLinkResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -17228,7 +17261,7 @@ namespace Example
             try
             {
                 // Create private link
-                Location result = apiInstance.privateArticlePrivateLinkCreate(articleId, privateLink);
+                PrivateLinkResponse result = apiInstance.privateArticlePrivateLinkCreate(articleId, privateLink);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -17408,7 +17441,7 @@ $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "Created",
   "schema" : {
-    "$ref" : "#/definitions/Location"
+    "$ref" : "#/definitions/PrivateLinkResponse"
   },
   "headers" : {
     "Location" : {
@@ -31510,7 +31543,7 @@ public class CollectionsApiExample {
         Long collectionId = 789; // Long | Collection unique identifier
         CollectionPrivateLinkCreator privateLink = ; // CollectionPrivateLinkCreator | 
         try {
-            Location result = apiInstance.privateCollectionPrivateLinkCreate(collectionId, privateLink);
+            PrivateLinkResponse result = apiInstance.privateCollectionPrivateLinkCreate(collectionId, privateLink);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionPrivateLinkCreate");
@@ -31530,7 +31563,7 @@ public class CollectionsApiExample {
         Long collectionId = 789; // Long | Collection unique identifier
         CollectionPrivateLinkCreator privateLink = ; // CollectionPrivateLinkCreator | 
         try {
-            Location result = apiInstance.privateCollectionPrivateLinkCreate(collectionId, privateLink);
+            PrivateLinkResponse result = apiInstance.privateCollectionPrivateLinkCreate(collectionId, privateLink);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionPrivateLinkCreate");
@@ -31557,7 +31590,7 @@ CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 // Create collection private link
 [apiInstance privateCollectionPrivateLinkCreateWith:collectionId
     privateLink:privateLink
-              completionHandler: ^(Location output, NSError* error) {
+              completionHandler: ^(PrivateLinkResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -31622,7 +31655,7 @@ namespace Example
             try
             {
                 // Create collection private link
-                Location result = apiInstance.privateCollectionPrivateLinkCreate(collectionId, privateLink);
+                PrivateLinkResponse result = apiInstance.privateCollectionPrivateLinkCreate(collectionId, privateLink);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -31802,7 +31835,7 @@ $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "Created",
   "schema" : {
-    "$ref" : "#/definitions/Location"
+    "$ref" : "#/definitions/PrivateLinkResponse"
   },
   "headers" : {
     "Location" : {
@@ -51855,7 +51888,7 @@ public class ProjectsApiExample {
         ProjectsApi apiInstance = new ProjectsApi();
         ProjectCreate project = ; // ProjectCreate | Project  description
         try {
-            Location result = apiInstance.privateProjectCreate(project);
+            CreateProjectResponse result = apiInstance.privateProjectCreate(project);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProjectsApi#privateProjectCreate");
@@ -51874,7 +51907,7 @@ public class ProjectsApiExample {
         ProjectsApi apiInstance = new ProjectsApi();
         ProjectCreate project = ; // ProjectCreate | Project  description
         try {
-            Location result = apiInstance.privateProjectCreate(project);
+            CreateProjectResponse result = apiInstance.privateProjectCreate(project);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProjectsApi#privateProjectCreate");
@@ -51899,7 +51932,7 @@ ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
 
 // Create project
 [apiInstance privateProjectCreateWith:project
-              completionHandler: ^(Location output, NSError* error) {
+              completionHandler: ^(CreateProjectResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -51960,7 +51993,7 @@ namespace Example
             try
             {
                 // Create project
-                Location result = apiInstance.privateProjectCreate(project);
+                CreateProjectResponse result = apiInstance.privateProjectCreate(project);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -52102,7 +52135,7 @@ $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "Created",
   "schema" : {
-    "$ref" : "#/definitions/Location"
+    "$ref" : "#/definitions/CreateProjectResponse"
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -58783,7 +58816,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-01-12T10:49:10.939+02:00
+              Generated 2022-01-17T10:09:28.311+02:00
             </div>
           </div>
       </div>
