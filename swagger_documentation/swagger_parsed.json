@@ -2179,7 +2179,7 @@
                             }
                         },
                         "schema": {
-                            "$ref": "#/definitions/Location"
+                            "$ref": "#/definitions/PrivateLinkResponse"
                         }
                     },
                     "400": {
@@ -4606,7 +4606,7 @@
                             }
                         },
                         "schema": {
-                            "$ref": "#/definitions/Location"
+                            "$ref": "#/definitions/PrivateLinkResponse"
                         }
                     },
                     "400": {
@@ -5268,7 +5268,7 @@
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "$ref": "#/definitions/Location"
+                            "$ref": "#/definitions/CreateProjectResponse"
                         }
                     },
                     "400": {
@@ -13527,6 +13527,22 @@
                 }
             }
         },
+        "PrivateLinkResponse": {
+            "x-tag": "common",
+            "type": "object",
+            "properties": {
+                "location": {
+                    "description": "Url for private link",
+                    "format": "url",
+                    "type": "string"
+                },
+                "token": {
+                    "description": "Token for private link",
+                    "type": "string",
+                    "example": "d5ec7a85bcd6dbe9d9b2"
+                }
+            }
+        },
         "LocationWarnings": {
             "x-tag": "common",
             "type": "object",
@@ -13548,6 +13564,23 @@
                     "items": {
                         "type": "string"
                     }
+                }
+            }
+        },
+        "CreateProjectResponse": {
+            "x-tag": "common",
+            "type": "object",
+            "properties": {
+                "entity_id": {
+                    "description": "Figshare ID of the entity",
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 33334444
+                },
+                "location": {
+                    "description": "Url for entity",
+                    "type": "string",
+                    "format": "url"
                 }
             }
         },
