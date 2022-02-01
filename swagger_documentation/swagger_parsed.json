@@ -7557,6 +7557,24 @@
                         "description": "Filter by email",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "id_lte",
+                        "in": "query",
+                        "description": "Retrieve accounts with an ID lower or equal to the specified value",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 0
+                    },
+                    {
+                        "name": "id_gte",
+                        "in": "query",
+                        "description": "Retrieve accounts with an ID greater or equal to the specified value",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 0
                     }
                 ],
                 "responses": {

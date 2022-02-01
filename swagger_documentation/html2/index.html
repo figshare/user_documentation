@@ -2154,8 +2154,8 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution" : {
       "type" : "integer",
@@ -2737,15 +2737,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution_id" : {
       "type" : "integer",
@@ -42158,7 +42158,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Institutions-privateInstitutionAccountsList-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/account/institution/accounts?page=&page_size=&limit=&offset=&is_active=&institution_user_id=&email="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/account/institution/accounts?page=&page_size=&limit=&offset=&is_active=&institution_user_id=&email=&id_lte=&id_gte="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Institutions-privateInstitutionAccountsList-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -42186,8 +42186,10 @@ public class InstitutionsApiExample {
         Long isActive = 789; // Long | Filter by active status
         String institutionUserId = institutionUserId_example; // String | Filter by institution_user_id
         String email = email_example; // String | Filter by email
+        Long idLte = 789; // Long | Retrieve accounts with an ID lower or equal to the specified value
+        Long idGte = 789; // Long | Retrieve accounts with an ID greater or equal to the specified value
         try {
-            array[ShortAccount] result = apiInstance.privateInstitutionAccountsList(page, pageSize, limit, offset, isActive, institutionUserId, email);
+            array[ShortAccount] result = apiInstance.privateInstitutionAccountsList(page, pageSize, limit, offset, isActive, institutionUserId, email, idLte, idGte);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InstitutionsApi#privateInstitutionAccountsList");
@@ -42211,8 +42213,10 @@ public class InstitutionsApiExample {
         Long isActive = 789; // Long | Filter by active status
         String institutionUserId = institutionUserId_example; // String | Filter by institution_user_id
         String email = email_example; // String | Filter by email
+        Long idLte = 789; // Long | Retrieve accounts with an ID lower or equal to the specified value
+        Long idGte = 789; // Long | Retrieve accounts with an ID greater or equal to the specified value
         try {
-            array[ShortAccount] result = apiInstance.privateInstitutionAccountsList(page, pageSize, limit, offset, isActive, institutionUserId, email);
+            array[ShortAccount] result = apiInstance.privateInstitutionAccountsList(page, pageSize, limit, offset, isActive, institutionUserId, email, idLte, idGte);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InstitutionsApi#privateInstitutionAccountsList");
@@ -42238,6 +42242,8 @@ Long *offset = 789; // Where to start the listing(the offset of the first result
 Long *isActive = 789; // Filter by active status (optional)
 String *institutionUserId = institutionUserId_example; // Filter by institution_user_id (optional)
 String *email = email_example; // Filter by email (optional)
+Long *idLte = 789; // Retrieve accounts with an ID lower or equal to the specified value (optional)
+Long *idGte = 789; // Retrieve accounts with an ID greater or equal to the specified value (optional)
 
 InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
 
@@ -42249,6 +42255,8 @@ InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
     isActive:isActive
     institutionUserId:institutionUserId
     email:email
+    idLte:idLte
+    idGte:idGte
               completionHandler: ^(array[ShortAccount] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -42277,7 +42285,9 @@ var opts = {
   'offset': 789, // {Long} Where to start the listing(the offset of the first result). Used for pagination with limit
   'isActive': 789, // {Long} Filter by active status
   'institutionUserId': institutionUserId_example, // {String} Filter by institution_user_id
-  'email': email_example // {String} Filter by email
+  'email': email_example, // {String} Filter by email
+  'idLte': 789, // {Long} Retrieve accounts with an ID lower or equal to the specified value
+  'idGte': 789 // {Long} Retrieve accounts with an ID greater or equal to the specified value
 };
 
 var callback = function(error, data, response) {
@@ -42319,11 +42329,13 @@ namespace Example
             var isActive = 789;  // Long | Filter by active status (optional) 
             var institutionUserId = institutionUserId_example;  // String | Filter by institution_user_id (optional) 
             var email = email_example;  // String | Filter by email (optional) 
+            var idLte = 789;  // Long | Retrieve accounts with an ID lower or equal to the specified value (optional) 
+            var idGte = 789;  // Long | Retrieve accounts with an ID greater or equal to the specified value (optional) 
 
             try
             {
                 // Private Account Institution Accounts
-                array[ShortAccount] result = apiInstance.privateInstitutionAccountsList(page, pageSize, limit, offset, isActive, institutionUserId, email);
+                array[ShortAccount] result = apiInstance.privateInstitutionAccountsList(page, pageSize, limit, offset, isActive, institutionUserId, email, idLte, idGte);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -42351,9 +42363,11 @@ $offset = 789; // Long | Where to start the listing(the offset of the first resu
 $isActive = 789; // Long | Filter by active status
 $institutionUserId = institutionUserId_example; // String | Filter by institution_user_id
 $email = email_example; // String | Filter by email
+$idLte = 789; // Long | Retrieve accounts with an ID lower or equal to the specified value
+$idGte = 789; // Long | Retrieve accounts with an ID greater or equal to the specified value
 
 try {
-    $result = $api_instance->privateInstitutionAccountsList($page, $pageSize, $limit, $offset, $isActive, $institutionUserId, $email);
+    $result = $api_instance->privateInstitutionAccountsList($page, $pageSize, $limit, $offset, $isActive, $institutionUserId, $email, $idLte, $idGte);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InstitutionsApi->privateInstitutionAccountsList: ', $e->getMessage(), PHP_EOL;
@@ -42377,9 +42391,11 @@ my $offset = 789; # Long | Where to start the listing(the offset of the first re
 my $isActive = 789; # Long | Filter by active status
 my $institutionUserId = institutionUserId_example; # String | Filter by institution_user_id
 my $email = email_example; # String | Filter by email
+my $idLte = 789; # Long | Retrieve accounts with an ID lower or equal to the specified value
+my $idGte = 789; # Long | Retrieve accounts with an ID greater or equal to the specified value
 
 eval { 
-    my $result = $api_instance->privateInstitutionAccountsList(page => $page, pageSize => $pageSize, limit => $limit, offset => $offset, isActive => $isActive, institutionUserId => $institutionUserId, email => $email);
+    my $result = $api_instance->privateInstitutionAccountsList(page => $page, pageSize => $pageSize, limit => $limit, offset => $offset, isActive => $isActive, institutionUserId => $institutionUserId, email => $email, idLte => $idLte, idGte => $idGte);
     print Dumper($result);
 };
 if ($@) {
@@ -42406,10 +42422,12 @@ offset = 789 # Long | Where to start the listing(the offset of the first result)
 isActive = 789 # Long | Filter by active status (optional)
 institutionUserId = institutionUserId_example # String | Filter by institution_user_id (optional)
 email = email_example # String | Filter by email (optional)
+idLte = 789 # Long | Retrieve accounts with an ID lower or equal to the specified value (optional)
+idGte = 789 # Long | Retrieve accounts with an ID greater or equal to the specified value (optional)
 
 try: 
     # Private Account Institution Accounts
-    api_response = api_instance.private_institution_accounts_list(page=page, pageSize=pageSize, limit=limit, offset=offset, isActive=isActive, institutionUserId=institutionUserId, email=email)
+    api_response = api_instance.private_institution_accounts_list(page=page, pageSize=pageSize, limit=limit, offset=offset, isActive=isActive, institutionUserId=institutionUserId, email=email, idLte=idLte, idGte=idGte)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling InstitutionsApi->privateInstitutionAccountsList: %s\n" % e)</code></pre>
@@ -42576,6 +42594,52 @@ except ApiException as e:
 
                     <div class="inner description">
                         Filter by email
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">id_lte</td>
+<td>
+
+
+    <div id="d2e199_privateInstitutionAccountsList_idLte">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Retrieve accounts with an ID lower or equal to the specified value
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">id_gte</td>
+<td>
+
+
+    <div id="d2e199_privateInstitutionAccountsList_idGte">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Retrieve accounts with an ID greater or equal to the specified value
                     </div>
             </div>
         </div>
@@ -58816,7 +58880,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-01-17T10:09:28.311+02:00
+              Generated 2022-02-01T09:52:34.284+02:00
             </div>
           </div>
       </div>
