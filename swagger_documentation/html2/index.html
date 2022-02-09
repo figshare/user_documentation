@@ -2154,8 +2154,8 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "enum" : [ "asc", "desc" ],
-      "default" : "desc"
+      "default" : "desc",
+      "enum" : [ "asc", "desc" ]
     },
     "institution" : {
       "type" : "integer",
@@ -2737,15 +2737,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
-      "default" : "published_date"
+      "default" : "published_date",
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "enum" : [ "asc", "desc" ],
-      "default" : "desc"
+      "default" : "desc",
+      "enum" : [ "asc", "desc" ]
     },
     "institution_id" : {
       "type" : "integer",
@@ -3112,6 +3112,11 @@ margin-bottom: 20px;
       "example" : "Test title",
       "description" : "Title of resource item",
       "maxLength" : 1000,
+      "default" : ""
+    },
+    "doi" : {
+      "type" : "string",
+      "description" : "DOI of resource item",
       "default" : ""
     },
     "link" : {
@@ -19653,7 +19658,8 @@ public class ArticlesApiExample {
         Long articleId = 789; // Long | Article unique identifier
         Resource resource = ; // Resource | Resource data
         try {
-            apiInstance.privateArticleResource(articleId, resource);
+            Location result = apiInstance.privateArticleResource(articleId, resource);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticleResource");
             e.printStackTrace();
@@ -19672,7 +19678,8 @@ public class ArticlesApiExample {
         Long articleId = 789; // Long | Article unique identifier
         Resource resource = ; // Resource | Resource data
         try {
-            apiInstance.privateArticleResource(articleId, resource);
+            Location result = apiInstance.privateArticleResource(articleId, resource);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticleResource");
             e.printStackTrace();
@@ -19698,7 +19705,10 @@ ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 // Private Article Resource
 [apiInstance privateArticleResourceWith:articleId
     resource:resource
-              completionHandler: ^(NSError* error) {
+              completionHandler: ^(Location output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -19725,7 +19735,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.privateArticleResource(articleId, resource, callback);
@@ -19759,7 +19769,8 @@ namespace Example
             try
             {
                 // Private Article Resource
-                apiInstance.privateArticleResource(articleId, resource);
+                Location result = apiInstance.privateArticleResource(articleId, resource);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -19783,7 +19794,8 @@ $articleId = 789; // Long | Article unique identifier
 $resource = ; // Resource | Resource data
 
 try {
-    $api_instance->privateArticleResource($articleId, $resource);
+    $result = $api_instance->privateArticleResource($articleId, $resource);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ArticlesApi->privateArticleResource: ', $e->getMessage(), PHP_EOL;
 }
@@ -19803,7 +19815,8 @@ my $articleId = 789; # Long | Article unique identifier
 my $resource = WWW::SwaggerClient::Object::Resource->new(); # Resource | Resource data
 
 eval { 
-    $api_instance->privateArticleResource(articleId => $articleId, resource => $resource);
+    my $result = $api_instance->privateArticleResource(articleId => $articleId, resource => $resource);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ArticlesApi->privateArticleResource: $@\n";
@@ -19827,7 +19840,8 @@ resource =  # Resource | Resource data
 
 try: 
     # Private Article Resource
-    api_instance.private_article_resource(articleId, resource)
+    api_response = api_instance.private_article_resource(articleId, resource)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ArticlesApi->privateArticleResource: %s\n" % e)</code></pre>
                             </div>
@@ -19919,12 +19933,54 @@ $(document).ready(function() {
                             <h3> Status: 205 - Reset Content </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateArticleResource-205-schema">Schema</a>
+                                </li>
+
                                 <li class="">
                                   <a data-toggle="tab" href="#responses-privateArticleResource-205-headers">Headers</a>
                                 </li>
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateArticleResource-205-schema">
+                                  <div id='responses-privateArticleResource-205-schema-205' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Reset Content",
+  "schema" : {
+    "$ref" : "#/definitions/Location"
+  },
+  "headers" : {
+    "Location" : {
+      "type" : "string",
+      "format" : "link",
+      "description" : "Location for account article details"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateArticleResource-205-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateArticleResource-205-schema-205');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateArticleResource-205-schema-data' type='hidden' value=''></input>
+                                </div>
                                 <div class="tab-pane" id="responses-privateArticleResource-205-headers">
                                     <table>
                                         <tr>
@@ -34406,7 +34462,8 @@ public class CollectionsApiExample {
         Long collectionId = 789; // Long | Collection unique identifier
         Resource resource = ; // Resource | Resource data
         try {
-            apiInstance.privateCollectionResource(collectionId, resource);
+            Location result = apiInstance.privateCollectionResource(collectionId, resource);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionResource");
             e.printStackTrace();
@@ -34425,7 +34482,8 @@ public class CollectionsApiExample {
         Long collectionId = 789; // Long | Collection unique identifier
         Resource resource = ; // Resource | Resource data
         try {
-            apiInstance.privateCollectionResource(collectionId, resource);
+            Location result = apiInstance.privateCollectionResource(collectionId, resource);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionResource");
             e.printStackTrace();
@@ -34451,7 +34509,10 @@ CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 // Private Collection Resource
 [apiInstance privateCollectionResourceWith:collectionId
     resource:resource
-              completionHandler: ^(NSError* error) {
+              completionHandler: ^(Location output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -34478,7 +34539,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.privateCollectionResource(collectionId, resource, callback);
@@ -34512,7 +34573,8 @@ namespace Example
             try
             {
                 // Private Collection Resource
-                apiInstance.privateCollectionResource(collectionId, resource);
+                Location result = apiInstance.privateCollectionResource(collectionId, resource);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -34536,7 +34598,8 @@ $collectionId = 789; // Long | Collection unique identifier
 $resource = ; // Resource | Resource data
 
 try {
-    $api_instance->privateCollectionResource($collectionId, $resource);
+    $result = $api_instance->privateCollectionResource($collectionId, $resource);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->privateCollectionResource: ', $e->getMessage(), PHP_EOL;
 }
@@ -34556,7 +34619,8 @@ my $collectionId = 789; # Long | Collection unique identifier
 my $resource = WWW::SwaggerClient::Object::Resource->new(); # Resource | Resource data
 
 eval { 
-    $api_instance->privateCollectionResource(collectionId => $collectionId, resource => $resource);
+    my $result = $api_instance->privateCollectionResource(collectionId => $collectionId, resource => $resource);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling CollectionsApi->privateCollectionResource: $@\n";
@@ -34580,7 +34644,8 @@ resource =  # Resource | Resource data
 
 try: 
     # Private Collection Resource
-    api_instance.private_collection_resource(collectionId, resource)
+    api_response = api_instance.private_collection_resource(collectionId, resource)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->privateCollectionResource: %s\n" % e)</code></pre>
                             </div>
@@ -34672,12 +34737,54 @@ $(document).ready(function() {
                             <h3> Status: 205 - Reset Content </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateCollectionResource-205-schema">Schema</a>
+                                </li>
+
                                 <li class="">
                                   <a data-toggle="tab" href="#responses-privateCollectionResource-205-headers">Headers</a>
                                 </li>
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateCollectionResource-205-schema">
+                                  <div id='responses-privateCollectionResource-205-schema-205' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Reset Content",
+  "schema" : {
+    "$ref" : "#/definitions/Location"
+  },
+  "headers" : {
+    "Location" : {
+      "type" : "string",
+      "format" : "link",
+      "description" : "Location for account collection details"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateCollectionResource-205-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateCollectionResource-205-schema-205');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateCollectionResource-205-schema-data' type='hidden' value=''></input>
+                                </div>
                                 <div class="tab-pane" id="responses-privateCollectionResource-205-headers">
                                     <table>
                                         <tr>
@@ -58880,7 +58987,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-02-01T09:52:34.284+02:00
+              Generated 2022-02-09T15:28:33.523+02:00
             </div>
           </div>
       </div>

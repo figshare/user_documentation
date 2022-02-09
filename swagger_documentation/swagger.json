@@ -1033,6 +1033,9 @@
                 "responses": {
                     "205": {
                         "description": "Reset Content",
+                        "schema": {
+                            "$ref": "#/definitions/Location"
+                        },
                         "headers": {
                             "Location": {
                                 "type": "string",
@@ -3352,6 +3355,9 @@
                 "responses": {
                     "205": {
                         "description": "Reset Content",
+                        "schema": {
+                            "$ref": "#/definitions/Location"
+                        },
                         "headers": {
                             "Location": {
                                 "type": "string",
@@ -8814,6 +8820,11 @@
                     "default": "",
                     "maxLength": 1000,
                     "example": "Test title"
+                },
+                "doi": {
+                    "type": "string",
+                    "description": "DOI of resource item",
+                    "default": ""
                 },
                 "link": {
                     "type": "string",
