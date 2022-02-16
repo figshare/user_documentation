@@ -10714,6 +10714,12 @@
                     "type": "string",
                     "description": "Date when link will expire",
                     "example": "2015-07-03T00:00:00"
+                },
+                "html_location": {
+                    "description": "HTML url for private link",
+                    "format": "url",
+                    "type": "string",
+                    "example": "https://figshare.com/s/d5ec7a85bcd6dbe9d9b2"
                 }
             }
         },
@@ -11414,6 +11420,12 @@
                     "description": "Url for private link",
                     "format": "url",
                     "type": "string"
+                },
+                "html_location": {
+                    "description": "HTML url for private link",
+                    "format": "url",
+                    "type": "string",
+                    "example": "https://figshare.com/s/d5ec7a85bcd6dbe9d9b2"
                 },
                 "token": {
                     "description": "Token for private link",
