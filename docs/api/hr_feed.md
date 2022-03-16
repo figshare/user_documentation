@@ -35,6 +35,7 @@ Content-Disposition: form-data; name="hrfeed"; filename="feed.xml"
 <HRFeed>
     <Record>
         <UniqueID>1234567</UniqueID>
+        <Orcid>1122-1299-6202-273X</Orcid>
         <FirstName>Jane</FirstName>
         <LastName>Doe</LastName>
         <Title>Mrs</Title>
@@ -47,6 +48,7 @@ Content-Disposition: form-data; name="hrfeed"; filename="feed.xml"
     </Record>
     <Record>
         <UniqueID>1234568</UniqueID>
+        <Orcid>0000-0002-3109-4308</Orcid>
         <FirstName>John</FirstName>
         <LastName>Smith</LastName>
         <Title>Mr</Title>
