@@ -3433,6 +3433,12 @@ margin-bottom: 20px;
   } ],
   "x-tag" : "articles"
 };
+            defs.ArticleWithProject = {
+  "allOf" : [ {
+    "$ref" : "#/definitions/Article"
+  } ],
+  "x-tag" : "articles_with_project"
+};
             defs.AuthorComplete = {
   "allOf" : [ {
     "$ref" : "#/definitions/Author"
@@ -8696,7 +8702,7 @@ public class ArticlesApiExample {
         ArticlesApi apiInstance = new ArticlesApi();
         ArticleSearch search = ; // ArticleSearch | Search Parameters
         try {
-            array[Article] result = apiInstance.articlesSearch(search);
+            array[ArticleWithProject] result = apiInstance.articlesSearch(search);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#articlesSearch");
@@ -8715,7 +8721,7 @@ public class ArticlesApiExample {
         ArticlesApi apiInstance = new ArticlesApi();
         ArticleSearch search = ; // ArticleSearch | Search Parameters
         try {
-            array[Article] result = apiInstance.articlesSearch(search);
+            array[ArticleWithProject] result = apiInstance.articlesSearch(search);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#articlesSearch");
@@ -8735,7 +8741,7 @@ ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 
 // Public Articles Search
 [apiInstance articlesSearchWith:search
-              completionHandler: ^(array[Article] output, NSError* error) {
+              completionHandler: ^(array[ArticleWithProject] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -8789,7 +8795,7 @@ namespace Example
             try
             {
                 // Public Articles Search
-                array[Article] result = apiInstance.articlesSearch(search);
+                array[ArticleWithProject] result = apiInstance.articlesSearch(search);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8924,7 +8930,7 @@ $(document).ready(function() {
   "schema" : {
     "type" : "array",
     "items" : {
-      "$ref" : "#/definitions/Article"
+      "$ref" : "#/definitions/ArticleWithProject"
     }
   }
 };
@@ -21928,7 +21934,7 @@ public class ArticlesApiExample {
         ArticlesApi apiInstance = new ArticlesApi();
         PrivateArticleSearch search = ; // PrivateArticleSearch | Search Parameters
         try {
-            array[Article] result = apiInstance.privateArticlesSearch(search);
+            array[ArticleWithProject] result = apiInstance.privateArticlesSearch(search);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticlesSearch");
@@ -21947,7 +21953,7 @@ public class ArticlesApiExample {
         ArticlesApi apiInstance = new ArticlesApi();
         PrivateArticleSearch search = ; // PrivateArticleSearch | Search Parameters
         try {
-            array[Article] result = apiInstance.privateArticlesSearch(search);
+            array[ArticleWithProject] result = apiInstance.privateArticlesSearch(search);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticlesSearch");
@@ -21972,7 +21978,7 @@ ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 
 // Private Articles search
 [apiInstance privateArticlesSearchWith:search
-              completionHandler: ^(array[Article] output, NSError* error) {
+              completionHandler: ^(array[ArticleWithProject] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -22033,7 +22039,7 @@ namespace Example
             try
             {
                 // Private Articles search
-                array[Article] result = apiInstance.privateArticlesSearch(search);
+                array[ArticleWithProject] result = apiInstance.privateArticlesSearch(search);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -22177,7 +22183,7 @@ $(document).ready(function() {
   "schema" : {
     "type" : "array",
     "items" : {
-      "$ref" : "#/definitions/Article"
+      "$ref" : "#/definitions/ArticleWithProject"
     }
   }
 };
@@ -58999,7 +59005,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-02-16T08:59:08.824+02:00
+              Generated 2022-04-21T11:44:26.755+03:00
             </div>
           </div>
       </div>

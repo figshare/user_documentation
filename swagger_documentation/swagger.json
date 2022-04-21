@@ -200,7 +200,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Article"
+                                "$ref": "#/definitions/ArticleWithProject"
                             }
                         }
                     },
@@ -568,7 +568,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Article"
+                                "$ref": "#/definitions/ArticleWithProject"
                             }
                         }
                     },
@@ -8423,6 +8423,12 @@
                     "type": "string",
                     "example": "111084/m9.figshare.14074"
                 },
+                "project_id": {
+                    "description": "Only return articles in this project",
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1
+                },
                 "order": {
                     "description": "The field by which to order",
                     "type": "string",
@@ -9443,6 +9449,24 @@
                     "type": "string",
                     "description": "Name of the article type identifier",
                     "example": "media"
+                }
+            }
+        },
+        "ArticleWithProject": {
+            "x-tag": "articles_with_project",
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Article"
+                }
+            ],
+            "properties": {
+                "project_id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Project id for this article.",
+                    "default": 0,
+                    "example": 1
                 }
             }
         },

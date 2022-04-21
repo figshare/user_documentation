@@ -200,7 +200,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Article"
+                                "$ref": "#/definitions/ArticleWithProject"
                             }
                         }
                     },
@@ -568,7 +568,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Article"
+                                "$ref": "#/definitions/ArticleWithProject"
                             }
                         }
                     },
@@ -9402,6 +9402,12 @@
                     "type": "string",
                     "example": "111084/m9.figshare.14074"
                 },
+                "project_id": {
+                    "description": "Only return articles in this project",
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1
+                },
                 "order": {
                     "description": "The field by which to order",
                     "type": "string",
@@ -9522,6 +9528,12 @@
                     "description": "Only return articles with this handle",
                     "type": "string",
                     "example": "111084/m9.figshare.14074"
+                },
+                "project_id": {
+                    "description": "Only return articles in this project",
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1
                 },
                 "order": {
                     "description": "The field by which to order",
@@ -10737,6 +10749,113 @@
             "x-tag": "articles",
             "type": "object",
             "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Unique identifier for article",
+                    "example": 1434614
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Title of article",
+                    "example": "Test article title"
+                },
+                "doi": {
+                    "type": "string",
+                    "description": "DOI",
+                    "example": "10.6084/m9.figshare.1434614"
+                },
+                "handle": {
+                    "type": "string",
+                    "description": "Handle",
+                    "example": "111184/figshare.1234"
+                },
+                "group_id": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Group ID",
+                    "example": 1234
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Api endpoint for article",
+                    "format": "url",
+                    "example": "http://api.figshare.com/articles/1434614"
+                },
+                "url_public_html": {
+                    "type": "string",
+                    "description": "Public site endpoint for article",
+                    "format": "url",
+                    "example": "https://figshare.com/articles/media/Test_article_title/1434614"
+                },
+                "url_public_api": {
+                    "type": "string",
+                    "description": "Public Api endpoint for article",
+                    "format": "url",
+                    "example": "https://api.figshare.com/articles/1434614"
+                },
+                "url_private_html": {
+                    "type": "string",
+                    "description": "Private site endpoint for article",
+                    "format": "url",
+                    "example": "https://figshare.com/account/articles/1434614"
+                },
+                "url_private_api": {
+                    "type": "string",
+                    "description": "Private Api endpoint for article",
+                    "format": "url",
+                    "example": "https://api.figshare.com/account/articles/1434614"
+                },
+                "published_date": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Posted date",
+                    "example": "2015-12-31T23:59:59.000Z"
+                },
+                "timeline": {
+                    "type": "object",
+                    "description": "Various timeline dates",
+                    "$ref": "#/definitions/Timeline"
+                },
+                "thumb": {
+                    "type": "string",
+                    "description": "Thumbnail image",
+                    "format": "url",
+                    "example": "https://ndownloader.figshare.com/files/123456789/preview/12345678/thumb.png"
+                },
+                "defined_type": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Type of article identifier",
+                    "example": 3
+                },
+                "defined_type_name": {
+                    "type": "string",
+                    "description": "Name of the article type identifier",
+                    "example": "media"
+                }
+            }
+        },
+        "ArticleWithProject": {
+            "x-tag": "articles_with_project",
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Article"
+                }
+            ],
+            "properties": {
+                "project_id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Project id for this article.",
+                    "default": 0,
+                    "example": 1
+                },
                 "id": {
                     "type": "integer",
                     "format": "int64",
