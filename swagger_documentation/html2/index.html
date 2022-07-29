@@ -1266,6 +1266,29 @@ margin-bottom: 20px;
   },
   "x-tag" : "articles"
 };
+            defs.ArticleMetadataReason = {
+  "type" : "object",
+  "properties" : {
+    "is_metadata_record" : {
+      "type" : "boolean",
+      "example" : true,
+      "description" : "True if the article is metadata record"
+    }
+  },
+  "x-tag" : "articles"
+};
+            defs.ArticleMetadataReasonUpdater = {
+  "type" : "object",
+  "required" : [ "metadata_reason" ],
+  "properties" : {
+    "metadata_reason" : {
+      "type" : "string",
+      "example" : "",
+      "description" : "Reason for defining the article as metadata record"
+    }
+  },
+  "x-tag" : "articles"
+};
             defs.ArticleProjectCreate = {
   "type" : "object",
   "required" : [ "title" ],
@@ -2154,8 +2177,8 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution" : {
       "type" : "integer",
@@ -2737,15 +2760,15 @@ margin-bottom: 20px;
       "type" : "string",
       "example" : "published_date",
       "description" : "The field by which to order. Default varies by endpoint/resource.",
-      "default" : "published_date",
-      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ]
+      "enum" : [ "published_date", "modified_date", "views", "shares", "downloads", "cites" ],
+      "default" : "published_date"
     },
     "order_direction" : {
       "type" : "string",
       "example" : "desc",
       "description" : "Direction of ordering",
-      "default" : "desc",
-      "enum" : [ "asc", "desc" ]
+      "enum" : [ "asc", "desc" ],
+      "default" : "desc"
     },
     "institution_id" : {
       "type" : "integer",
@@ -3656,6 +3679,12 @@ margin-bottom: 20px;
                     </li>
                     <li data-group="Articles" data-name="privateArticleFilesList" class="">
                       <a href="#api-Articles-privateArticleFilesList">privateArticleFilesList</a>
+                    </li>
+                    <li data-group="Articles" data-name="privateArticleMetadataReasonDetails" class="">
+                      <a href="#api-Articles-privateArticleMetadataReasonDetails">privateArticleMetadataReasonDetails</a>
+                    </li>
+                    <li data-group="Articles" data-name="privateArticleMetadataReasonUpdate" class="">
+                      <a href="#api-Articles-privateArticleMetadataReasonUpdate">privateArticleMetadataReasonUpdate</a>
                     </li>
                     <li data-group="Articles" data-name="privateArticlePrivateLink" class="">
                       <a href="#api-Articles-privateArticlePrivateLink">privateArticlePrivateLink</a>
@@ -16702,6 +16731,811 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-privateArticleFilesList-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Articles-privateArticleMetadataReasonDetails">
+                      <article id="api-Articles-privateArticleMetadataReasonDetails-0" data-group="User" data-name="privateArticleMetadataReasonDetails" data-version="0">
+                        <div class="pull-left">
+                          <h1>privateArticleMetadataReasonDetails</h1>
+                          <p>Article Metadata Reason Details</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">View a private article&#39;s metadata reason</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/account/articles/{article_id}/metadata_reason</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Articles-privateArticleMetadataReasonDetails-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonDetails-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonDetails-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Articles-privateArticleMetadataReasonDetails-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonDetails-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonDetails-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Articles-privateArticleMetadataReasonDetails-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonDetails-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonDetails-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonDetails-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonDetails-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Articles-privateArticleMetadataReasonDetails-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/account/articles/{article_id}/metadata_reason"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonDetails-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ArticlesApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long articleId = 789; // Long | Article unique identifier
+        try {
+            ArticleMetadataReason result = apiInstance.privateArticleMetadataReasonDetails(articleId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#privateArticleMetadataReasonDetails");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonDetails-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ArticlesApi;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long articleId = 789; // Long | Article unique identifier
+        try {
+            ArticleMetadataReason result = apiInstance.privateArticleMetadataReasonDetails(articleId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#privateArticleMetadataReasonDetails");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonDetails-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonDetails-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *articleId = 789; // Article unique identifier
+
+ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
+
+// Article Metadata Reason Details
+[apiInstance privateArticleMetadataReasonDetailsWith:articleId
+              completionHandler: ^(ArticleMetadataReason output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonDetails-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.ArticlesApi()
+
+var articleId = 789; // {Long} Article unique identifier
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.privateArticleMetadataReasonDetails(articleId, , callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonDetails-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonDetails-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class privateArticleMetadataReasonDetailsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ArticlesApi();
+            var articleId = 789;  // Long | Article unique identifier
+
+            try
+            {
+                // Article Metadata Reason Details
+                ArticleMetadataReason result = apiInstance.privateArticleMetadataReasonDetails(articleId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ArticlesApi.privateArticleMetadataReasonDetails: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonDetails-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\ArticlesApi();
+$articleId = 789; // Long | Article unique identifier
+
+try {
+    $result = $api_instance->privateArticleMetadataReasonDetails($articleId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ArticlesApi->privateArticleMetadataReasonDetails: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonDetails-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ArticlesApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
+my $articleId = 789; # Long | Article unique identifier
+
+eval { 
+    my $result = $api_instance->privateArticleMetadataReasonDetails(articleId => $articleId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ArticlesApi->privateArticleMetadataReasonDetails: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonDetails-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.ArticlesApi()
+articleId = 789 # Long | Article unique identifier
+
+try: 
+    # Article Metadata Reason Details
+    api_response = api_instance.private_article_metadata_reason_details(articleId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ArticlesApi->privateArticleMetadataReasonDetails: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">article_id*</td>
+<td>
+
+
+    <div id="d2e199_privateArticleMetadataReasonDetails_articleId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Article unique identifier
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK. Metadata reason for article </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateArticleMetadataReasonDetails-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateArticleMetadataReasonDetails-200-schema">
+                                  <div id='responses-privateArticleMetadataReasonDetails-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK. Metadata reason for article",
+  "schema" : {
+    "$ref" : "#/definitions/ArticleMetadataReason"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateArticleMetadataReasonDetails-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateArticleMetadataReasonDetails-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateArticleMetadataReasonDetails-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateArticleMetadataReasonDetails-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateArticleMetadataReasonDetails-403-schema">
+                                  <div id='responses-privateArticleMetadataReasonDetails-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateArticleMetadataReasonDetails-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateArticleMetadataReasonDetails-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateArticleMetadataReasonDetails-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Articles-privateArticleMetadataReasonUpdate">
+                      <article id="api-Articles-privateArticleMetadataReasonUpdate-0" data-group="User" data-name="privateArticleMetadataReasonUpdate" data-version="0">
+                        <div class="pull-left">
+                          <h1>privateArticleMetadataReasonUpdate</h1>
+                          <p>Update Article Metadata Reason</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Set the metadata reason for the specified article</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/account/articles/{article_id}/metadata_reason</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Articles-privateArticleMetadataReasonUpdate-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonUpdate-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonUpdate-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Articles-privateArticleMetadataReasonUpdate-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonUpdate-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonUpdate-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Articles-privateArticleMetadataReasonUpdate-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonUpdate-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonUpdate-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonUpdate-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Articles-privateArticleMetadataReasonUpdate-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Articles-privateArticleMetadataReasonUpdate-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT "https://api.figinternal.dev/v2/account/articles/{article_id}/metadata_reason"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonUpdate-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ArticlesApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long articleId = 789; // Long | Article unique identifier
+        ArticleMetadataReasonUpdater metadata Reason = ; // ArticleMetadataReasonUpdater | Metadata Reason
+        try {
+            apiInstance.privateArticleMetadataReasonUpdate(articleId, metadata Reason);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#privateArticleMetadataReasonUpdate");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonUpdate-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ArticlesApi;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long articleId = 789; // Long | Article unique identifier
+        ArticleMetadataReasonUpdater metadata Reason = ; // ArticleMetadataReasonUpdater | Metadata Reason
+        try {
+            apiInstance.privateArticleMetadataReasonUpdate(articleId, metadata Reason);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#privateArticleMetadataReasonUpdate");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonUpdate-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonUpdate-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *articleId = 789; // Article unique identifier
+ArticleMetadataReasonUpdater *metadata Reason = ; // Metadata Reason
+
+ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
+
+// Update Article Metadata Reason
+[apiInstance privateArticleMetadataReasonUpdateWith:articleId
+    metadata Reason:metadata Reason
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonUpdate-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.ArticlesApi()
+
+var articleId = 789; // {Long} Article unique identifier
+
+var metadata Reason = ; // {ArticleMetadataReasonUpdater} Metadata Reason
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.privateArticleMetadataReasonUpdate(articleId, metadata Reason, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonUpdate-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonUpdate-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class privateArticleMetadataReasonUpdateExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ArticlesApi();
+            var articleId = 789;  // Long | Article unique identifier
+            var metadata Reason = new ArticleMetadataReasonUpdater(); // ArticleMetadataReasonUpdater | Metadata Reason
+
+            try
+            {
+                // Update Article Metadata Reason
+                apiInstance.privateArticleMetadataReasonUpdate(articleId, metadata Reason);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ArticlesApi.privateArticleMetadataReasonUpdate: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonUpdate-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\ArticlesApi();
+$articleId = 789; // Long | Article unique identifier
+$metadata Reason = ; // ArticleMetadataReasonUpdater | Metadata Reason
+
+try {
+    $api_instance->privateArticleMetadataReasonUpdate($articleId, $metadata Reason);
+} catch (Exception $e) {
+    echo 'Exception when calling ArticlesApi->privateArticleMetadataReasonUpdate: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonUpdate-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ArticlesApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
+my $articleId = 789; # Long | Article unique identifier
+my $metadata Reason = WWW::SwaggerClient::Object::ArticleMetadataReasonUpdater->new(); # ArticleMetadataReasonUpdater | Metadata Reason
+
+eval { 
+    $api_instance->privateArticleMetadataReasonUpdate(articleId => $articleId, metadata Reason => $metadata Reason);
+};
+if ($@) {
+    warn "Exception when calling ArticlesApi->privateArticleMetadataReasonUpdate: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-privateArticleMetadataReasonUpdate-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.ArticlesApi()
+articleId = 789 # Long | Article unique identifier
+metadata Reason =  # ArticleMetadataReasonUpdater | Metadata Reason
+
+try: 
+    # Update Article Metadata Reason
+    api_instance.private_article_metadata_reason_update(articleId, metadata Reason)
+except ApiException as e:
+    print("Exception when calling ArticlesApi->privateArticleMetadataReasonUpdate: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">article_id*</td>
+<td>
+
+
+    <div id="d2e199_privateArticleMetadataReasonUpdate_articleId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Article unique identifier
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">metadata Reason <span style="color:red;">*</span></td>
+<td>
+
+
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "in" : "body",
+  "name" : "Metadata Reason",
+  "description" : "Metadata Reason",
+  "required" : true,
+  "schema" : {
+    "$ref" : "#/definitions/ArticleMetadataReasonUpdater"
+  }
+};
+  var schema = schemaWrapper.schema;
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_privateArticleMetadataReasonUpdate_metadata Reason');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_privateArticleMetadataReasonUpdate_metadata Reason"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 205 - Reset Content </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-privateArticleMetadataReasonUpdate-205-headers">Headers</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane" id="responses-privateArticleMetadataReasonUpdate-205-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Location</td>
+                                            <td>String</td>
+                                            <td>link</td>
+                                            <td>Metadata reason</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-privateArticleMetadataReasonUpdate-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-privateArticleMetadataReasonUpdate-403-schema">
+                                  <div id='responses-privateArticleMetadataReasonUpdate-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-privateArticleMetadataReasonUpdate-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-privateArticleMetadataReasonUpdate-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-privateArticleMetadataReasonUpdate-403-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -59005,7 +59839,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-04-21T11:44:26.755+03:00
+              Generated 2022-07-29T15:33:24.876+03:00
             </div>
           </div>
       </div>

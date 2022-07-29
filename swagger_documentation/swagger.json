@@ -995,6 +995,112 @@
                 }
             }
         },
+        "/account/articles/{article_id}/metadata_reason": {
+            "parameters": [
+                {
+                    "name": "article_id",
+                    "in": "path",
+                    "description": "Article unique identifier",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1
+                }
+            ],
+            "get": {
+                "tags": [
+                    "articles"
+                ],
+                "x-subcategory": "Private Article Metadata Reason",
+                "operationId": "private_article_metadata_reason_details",
+                "summary": "Article Metadata Reason Details",
+                "description": "View a private article's metadata reason",
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK. Metadata reason for article",
+                        "schema": {
+                            "$ref": "#/definitions/ArticleMetadataReason"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "articles"
+                ],
+                "x-subcategory": "Private Article Metadata Reason",
+                "operationId": "private_article_metadata_reason_update",
+                "summary": "Update Article Metadata Reason",
+                "description": "Set the metadata reason for the specified article",
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Metadata Reason",
+                        "description": "Metadata Reason",
+                        "schema": {
+                            "$ref": "#/definitions/ArticleMetadataReasonUpdater"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "205": {
+                        "description": "Reset Content",
+                        "headers": {
+                            "Location": {
+                                "type": "string",
+                                "format": "link",
+                                "description": "Metadata reason"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
         "/account/articles/{article_id}/resource": {
             "post": {
                 "tags": [
@@ -10147,6 +10253,39 @@
                             ]
                         }
                     ]
+                }
+            }
+        },
+        "ArticleMetadataReason": {
+            "x-tag": "articles",
+            "type": "object",
+            "properties": {
+                "is_metadata_record": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "True if the article is metadata record"
+                },
+                "metadata_reason": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Reason for defining the article as metadata record",
+                    "example": ""
+                }
+            }
+        },
+        "ArticleMetadataReasonUpdater": {
+            "x-tag": "articles",
+            "type": "object",
+            "required": [
+                "metadata_reason"
+            ],
+            "properties": {
+                "metadata_reason": {
+                    "type": "string",
+                    "description": "Reason for defining the article as metadata record",
+                    "example": ""
                 }
             }
         },
