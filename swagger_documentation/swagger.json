@@ -8873,6 +8873,16 @@
                     "example": "Test description of article",
                     "maxLength": 10000
                 },
+                "is_metadata_record": {
+                    "description": "True if article has no files",
+                    "type": "boolean",
+                    "example": true
+                },
+                "metadata_reason": {
+                    "description": "Article metadata reason",
+                    "type": "string",
+                    "example": "hosted somewhere else"
+                },
                 "tags": {
                     "type": "array",
                     "description": "List of tags to be associated with the article. Keywords can be used instead",
@@ -9042,6 +9052,16 @@
                     "default": "",
                     "example": "Test description of article",
                     "maxLength": 10000
+                },
+                "is_metadata_record": {
+                    "description": "True if article has no files",
+                    "type": "boolean",
+                    "example": true
+                },
+                "metadata_reason": {
+                    "description": "Article metadata reason",
+                    "type": "string",
+                    "example": "hosted somewhere else"
                 },
                 "tags": {
                     "type": "array",

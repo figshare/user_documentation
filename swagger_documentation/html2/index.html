@@ -1029,6 +1029,16 @@ margin-bottom: 20px;
       "maxLength" : 10000,
       "default" : ""
     },
+    "is_metadata_record" : {
+      "type" : "boolean",
+      "example" : true,
+      "description" : "True if article has no files"
+    },
+    "metadata_reason" : {
+      "type" : "string",
+      "example" : "hosted somewhere else",
+      "description" : "Article metadata reason"
+    },
     "tags" : {
       "type" : "array",
       "example" : [ "tag1", "tag2" ],
@@ -1421,6 +1431,16 @@ margin-bottom: 20px;
       "description" : "The article description. In a publisher case, usually this is the remote article description",
       "maxLength" : 10000,
       "default" : ""
+    },
+    "is_metadata_record" : {
+      "type" : "boolean",
+      "example" : true,
+      "description" : "True if article has no files"
+    },
+    "metadata_reason" : {
+      "type" : "string",
+      "example" : "hosted somewhere else",
+      "description" : "Article metadata reason"
     },
     "tags" : {
       "type" : "array",
@@ -59005,7 +59025,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-04-21T11:44:26.755+03:00
+              Generated 2022-08-02T11:35:35.425+03:00
             </div>
           </div>
       </div>
