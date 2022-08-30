@@ -12453,6 +12453,11 @@
                     "description": "Token for file upload",
                     "example": "9dfc5fe3-d617-4d93-ac11-8afe7e984a4b"
                 },
+                "is_attached_to_public_version": {
+                    "type": "boolean",
+                    "description": "True if the file is attached to a public item version",
+                    "example": true
+                },
                 "id": {
                     "type": "integer",
                     "description": "File id",
