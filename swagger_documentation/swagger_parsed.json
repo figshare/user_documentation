@@ -4262,6 +4262,47 @@
                     "type": "integer",
                     "format": "int64",
                     "minimum": 1
+                },
+                {
+                    "name": "page",
+                    "in": "query",
+                    "description": "Page number. Used for pagination with page_size",
+                    "required": false,
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1,
+                    "maximum": 5000
+                },
+                {
+                    "name": "page_size",
+                    "in": "query",
+                    "description": "The number of results included on a page. Used for pagination with page",
+                    "required": false,
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 10
+                },
+                {
+                    "name": "limit",
+                    "in": "query",
+                    "description": "Number of results included on a page. Used for pagination with query",
+                    "required": false,
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1,
+                    "maximum": 1000
+                },
+                {
+                    "name": "offset",
+                    "in": "query",
+                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit",
+                    "required": false,
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 0,
+                    "maximum": 5000
                 }
             ],
             "get": {
@@ -4314,6 +4355,47 @@
                         "type": "integer",
                         "format": "int64",
                         "minimum": 1
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number. Used for pagination with page_size",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 5000
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "The number of results included on a page. Used for pagination with page",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 1000,
+                        "default": 10
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of results included on a page. Used for pagination with query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 1000
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Where to start the listing(the offset of the first result). Used for pagination with limit",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 0,
+                        "maximum": 5000
                     }
                 ]
             },
@@ -4350,6 +4432,47 @@
                         "type": "integer",
                         "format": "int64",
                         "minimum": 1
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number. Used for pagination with page_size",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 5000
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "The number of results included on a page. Used for pagination with page",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 1000,
+                        "default": 10
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of results included on a page. Used for pagination with query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 1000
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Where to start the listing(the offset of the first result). Used for pagination with limit",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 0,
+                        "maximum": 5000
                     }
                 ],
                 "responses": {
@@ -4416,6 +4539,47 @@
                         "type": "integer",
                         "format": "int64",
                         "minimum": 1
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number. Used for pagination with page_size",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 5000
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "The number of results included on a page. Used for pagination with page",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 1000,
+                        "default": 10
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of results included on a page. Used for pagination with query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 1000
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Where to start the listing(the offset of the first result). Used for pagination with limit",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 0,
+                        "maximum": 5000
                     }
                 ],
                 "responses": {
