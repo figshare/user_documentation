@@ -25961,7 +25961,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Collections-privateCollectionArticlesAdd-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/collections/{collection_id}/articles?page=&page_size=&limit=&offset="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/collections/{collection_id}/articles"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Collections-privateCollectionArticlesAdd-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -25984,12 +25984,8 @@ public class CollectionsApiExample {
         CollectionsApi apiInstance = new CollectionsApi();
         Long collectionId = 789; // Long | Collection unique identifier
         ArticlesCreator articles = ; // ArticlesCreator | Articles list
-        Long page = 789; // Long | Page number. Used for pagination with page_size
-        Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
-        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
-        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            Location result = apiInstance.privateCollectionArticlesAdd(collectionId, articles, page, pageSize, limit, offset);
+            Location result = apiInstance.privateCollectionArticlesAdd(collectionId, articles);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionArticlesAdd");
@@ -26008,12 +26004,8 @@ public class CollectionsApiExample {
         CollectionsApi apiInstance = new CollectionsApi();
         Long collectionId = 789; // Long | Collection unique identifier
         ArticlesCreator articles = ; // ArticlesCreator | Articles list
-        Long page = 789; // Long | Page number. Used for pagination with page_size
-        Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
-        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
-        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            Location result = apiInstance.privateCollectionArticlesAdd(collectionId, articles, page, pageSize, limit, offset);
+            Location result = apiInstance.privateCollectionArticlesAdd(collectionId, articles);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionArticlesAdd");
@@ -26034,20 +26026,12 @@ public class CollectionsApiExample {
 
 Long *collectionId = 789; // Collection unique identifier
 ArticlesCreator *articles = ; // Articles list
-Long *page = 789; // Page number. Used for pagination with page_size (optional)
-Long *pageSize = 789; // The number of results included on a page. Used for pagination with page (optional) (default to 10)
-Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
-Long *offset = 789; // Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
 
 CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 
 // Add collection articles
 [apiInstance privateCollectionArticlesAddWith:collectionId
     articles:articles
-    page:page
-    pageSize:pageSize
-    limit:limit
-    offset:offset
               completionHandler: ^(Location output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -26073,12 +26057,6 @@ var collectionId = 789; // {Long} Collection unique identifier
 
 var articles = ; // {ArticlesCreator} Articles list
 
-var opts = { 
-  'page': 789, // {Long} Page number. Used for pagination with page_size
-  'pageSize': 789, // {Long} The number of results included on a page. Used for pagination with page
-  'limit': 789, // {Long} Number of results included on a page. Used for pagination with query
-  'offset': 789 // {Long} Where to start the listing(the offset of the first result). Used for pagination with limit
-};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -26087,7 +26065,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.privateCollectionArticlesAdd(collectionId, articles, opts, callback);
+api.privateCollectionArticlesAdd(collectionId, articles, callback);
 </code></pre>
                             </div>
 
@@ -26114,15 +26092,11 @@ namespace Example
             var apiInstance = new CollectionsApi();
             var collectionId = 789;  // Long | Collection unique identifier
             var articles = new ArticlesCreator(); // ArticlesCreator | Articles list
-            var page = 789;  // Long | Page number. Used for pagination with page_size (optional) 
-            var pageSize = 789;  // Long | The number of results included on a page. Used for pagination with page (optional)  (default to 10)
-            var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
-            var offset = 789;  // Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional) 
 
             try
             {
                 // Add collection articles
-                Location result = apiInstance.privateCollectionArticlesAdd(collectionId, articles, page, pageSize, limit, offset);
+                Location result = apiInstance.privateCollectionArticlesAdd(collectionId, articles);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -26145,13 +26119,9 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_AC
 $api_instance = new Swagger\Client\Api\CollectionsApi();
 $collectionId = 789; // Long | Collection unique identifier
 $articles = ; // ArticlesCreator | Articles list
-$page = 789; // Long | Page number. Used for pagination with page_size
-$pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
-$limit = 789; // Long | Number of results included on a page. Used for pagination with query
-$offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
 
 try {
-    $result = $api_instance->privateCollectionArticlesAdd($collectionId, $articles, $page, $pageSize, $limit, $offset);
+    $result = $api_instance->privateCollectionArticlesAdd($collectionId, $articles);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->privateCollectionArticlesAdd: ', $e->getMessage(), PHP_EOL;
@@ -26170,13 +26140,9 @@ $WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 my $api_instance = WWW::SwaggerClient::CollectionsApi->new();
 my $collectionId = 789; # Long | Collection unique identifier
 my $articles = WWW::SwaggerClient::Object::ArticlesCreator->new(); # ArticlesCreator | Articles list
-my $page = 789; # Long | Page number. Used for pagination with page_size
-my $pageSize = 789; # Long | The number of results included on a page. Used for pagination with page
-my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
-my $offset = 789; # Long | Where to start the listing(the offset of the first result). Used for pagination with limit
 
 eval { 
-    my $result = $api_instance->privateCollectionArticlesAdd(collectionId => $collectionId, articles => $articles, page => $page, pageSize => $pageSize, limit => $limit, offset => $offset);
+    my $result = $api_instance->privateCollectionArticlesAdd(collectionId => $collectionId, articles => $articles);
     print Dumper($result);
 };
 if ($@) {
@@ -26198,14 +26164,10 @@ swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = swagger_client.CollectionsApi()
 collectionId = 789 # Long | Collection unique identifier
 articles =  # ArticlesCreator | Articles list
-page = 789 # Long | Page number. Used for pagination with page_size (optional)
-pageSize = 789 # Long | The number of results included on a page. Used for pagination with page (optional) (default to 10)
-limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
-offset = 789 # Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
 
 try: 
     # Add collection articles
-    api_response = api_instance.private_collection_articles_add(collectionId, articles, page=page, pageSize=pageSize, limit=limit, offset=offset)
+    api_response = api_instance.private_collection_articles_add(collectionId, articles)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->privateCollectionArticlesAdd: %s\n" % e)</code></pre>
@@ -26293,105 +26255,6 @@ $(document).ready(function() {
                             </table>
 
 
-                            <div class="methodsubtabletitle">Query parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">page</td>
-<td>
-
-
-    <div id="d2e199_privateCollectionArticlesAdd_page">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        Page number. Used for pagination with page_size
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">page_size</td>
-<td>
-
-
-    <div id="d2e199_privateCollectionArticlesAdd_pageSize">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        The number of results included on a page. Used for pagination with page
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">limit</td>
-<td>
-
-
-    <div id="d2e199_privateCollectionArticlesAdd_limit">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        Number of results included on a page. Used for pagination with query
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">offset</td>
-<td>
-
-
-    <div id="d2e199_privateCollectionArticlesAdd_offset">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        Where to start the listing(the offset of the first result). Used for pagination with limit
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
 
                           <h2>Responses</h2>
                             <h3> Status: 201 - Reset Content </h3>
@@ -26685,7 +26548,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.privateCollectionArticlesList(collectionId, , opts, callback);
+api.privateCollectionArticlesList(collectionId, opts, callback);
 </code></pre>
                             </div>
 
@@ -27094,7 +26957,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Collections-privateCollectionArticlesReplace-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT "https://api.figinternal.dev/v2/account/collections/{collection_id}/articles?page=&page_size=&limit=&offset="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT "https://api.figinternal.dev/v2/account/collections/{collection_id}/articles"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Collections-privateCollectionArticlesReplace-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -27117,12 +26980,8 @@ public class CollectionsApiExample {
         CollectionsApi apiInstance = new CollectionsApi();
         Long collectionId = 789; // Long | Collection unique identifier
         ArticlesCreator articles = ; // ArticlesCreator | Articles List
-        Long page = 789; // Long | Page number. Used for pagination with page_size
-        Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
-        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
-        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            apiInstance.privateCollectionArticlesReplace(collectionId, articles, page, pageSize, limit, offset);
+            apiInstance.privateCollectionArticlesReplace(collectionId, articles);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionArticlesReplace");
             e.printStackTrace();
@@ -27140,12 +26999,8 @@ public class CollectionsApiExample {
         CollectionsApi apiInstance = new CollectionsApi();
         Long collectionId = 789; // Long | Collection unique identifier
         ArticlesCreator articles = ; // ArticlesCreator | Articles List
-        Long page = 789; // Long | Page number. Used for pagination with page_size
-        Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
-        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
-        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            apiInstance.privateCollectionArticlesReplace(collectionId, articles, page, pageSize, limit, offset);
+            apiInstance.privateCollectionArticlesReplace(collectionId, articles);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#privateCollectionArticlesReplace");
             e.printStackTrace();
@@ -27165,20 +27020,12 @@ public class CollectionsApiExample {
 
 Long *collectionId = 789; // Collection unique identifier
 ArticlesCreator *articles = ; // Articles List
-Long *page = 789; // Page number. Used for pagination with page_size (optional)
-Long *pageSize = 789; // The number of results included on a page. Used for pagination with page (optional) (default to 10)
-Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
-Long *offset = 789; // Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
 
 CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 
 // Replace collection articles
 [apiInstance privateCollectionArticlesReplaceWith:collectionId
     articles:articles
-    page:page
-    pageSize:pageSize
-    limit:limit
-    offset:offset
               completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
@@ -27201,12 +27048,6 @@ var collectionId = 789; // {Long} Collection unique identifier
 
 var articles = ; // {ArticlesCreator} Articles List
 
-var opts = { 
-  'page': 789, // {Long} Page number. Used for pagination with page_size
-  'pageSize': 789, // {Long} The number of results included on a page. Used for pagination with page
-  'limit': 789, // {Long} Number of results included on a page. Used for pagination with query
-  'offset': 789 // {Long} Where to start the listing(the offset of the first result). Used for pagination with limit
-};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -27215,7 +27056,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.privateCollectionArticlesReplace(collectionId, articles, opts, callback);
+api.privateCollectionArticlesReplace(collectionId, articles, callback);
 </code></pre>
                             </div>
 
@@ -27242,15 +27083,11 @@ namespace Example
             var apiInstance = new CollectionsApi();
             var collectionId = 789;  // Long | Collection unique identifier
             var articles = new ArticlesCreator(); // ArticlesCreator | Articles List
-            var page = 789;  // Long | Page number. Used for pagination with page_size (optional) 
-            var pageSize = 789;  // Long | The number of results included on a page. Used for pagination with page (optional)  (default to 10)
-            var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
-            var offset = 789;  // Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional) 
 
             try
             {
                 // Replace collection articles
-                apiInstance.privateCollectionArticlesReplace(collectionId, articles, page, pageSize, limit, offset);
+                apiInstance.privateCollectionArticlesReplace(collectionId, articles);
             }
             catch (Exception e)
             {
@@ -27272,13 +27109,9 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_AC
 $api_instance = new Swagger\Client\Api\CollectionsApi();
 $collectionId = 789; // Long | Collection unique identifier
 $articles = ; // ArticlesCreator | Articles List
-$page = 789; // Long | Page number. Used for pagination with page_size
-$pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
-$limit = 789; // Long | Number of results included on a page. Used for pagination with query
-$offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
 
 try {
-    $api_instance->privateCollectionArticlesReplace($collectionId, $articles, $page, $pageSize, $limit, $offset);
+    $api_instance->privateCollectionArticlesReplace($collectionId, $articles);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->privateCollectionArticlesReplace: ', $e->getMessage(), PHP_EOL;
 }
@@ -27296,13 +27129,9 @@ $WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 my $api_instance = WWW::SwaggerClient::CollectionsApi->new();
 my $collectionId = 789; # Long | Collection unique identifier
 my $articles = WWW::SwaggerClient::Object::ArticlesCreator->new(); # ArticlesCreator | Articles List
-my $page = 789; # Long | Page number. Used for pagination with page_size
-my $pageSize = 789; # Long | The number of results included on a page. Used for pagination with page
-my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
-my $offset = 789; # Long | Where to start the listing(the offset of the first result). Used for pagination with limit
 
 eval { 
-    $api_instance->privateCollectionArticlesReplace(collectionId => $collectionId, articles => $articles, page => $page, pageSize => $pageSize, limit => $limit, offset => $offset);
+    $api_instance->privateCollectionArticlesReplace(collectionId => $collectionId, articles => $articles);
 };
 if ($@) {
     warn "Exception when calling CollectionsApi->privateCollectionArticlesReplace: $@\n";
@@ -27323,14 +27152,10 @@ swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = swagger_client.CollectionsApi()
 collectionId = 789 # Long | Collection unique identifier
 articles =  # ArticlesCreator | Articles List
-page = 789 # Long | Page number. Used for pagination with page_size (optional)
-pageSize = 789 # Long | The number of results included on a page. Used for pagination with page (optional) (default to 10)
-limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
-offset = 789 # Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
 
 try: 
     # Replace collection articles
-    api_instance.private_collection_articles_replace(collectionId, articles, page=page, pageSize=pageSize, limit=limit, offset=offset)
+    api_instance.private_collection_articles_replace(collectionId, articles)
 except ApiException as e:
     print("Exception when calling CollectionsApi->privateCollectionArticlesReplace: %s\n" % e)</code></pre>
                             </div>
@@ -27417,105 +27242,6 @@ $(document).ready(function() {
                             </table>
 
 
-                            <div class="methodsubtabletitle">Query parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">page</td>
-<td>
-
-
-    <div id="d2e199_privateCollectionArticlesReplace_page">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        Page number. Used for pagination with page_size
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">page_size</td>
-<td>
-
-
-    <div id="d2e199_privateCollectionArticlesReplace_pageSize">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        The number of results included on a page. Used for pagination with page
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">limit</td>
-<td>
-
-
-    <div id="d2e199_privateCollectionArticlesReplace_limit">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        Number of results included on a page. Used for pagination with query
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">offset</td>
-<td>
-
-
-    <div id="d2e199_privateCollectionArticlesReplace_offset">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        Where to start the listing(the offset of the first result). Used for pagination with limit
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
 
                           <h2>Responses</h2>
                             <h3> Status: 205 - Reset Content </h3>
@@ -59436,7 +59162,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-09-29T14:50:21.053+03:00
+              Generated 2022-10-04T11:30:23.235+03:00
             </div>
           </div>
       </div>
