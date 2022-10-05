@@ -4281,15 +4281,6 @@
                 ],
                 "parameters": [
                     {
-                        "name": "collection_id",
-                        "in": "path",
-                        "description": "Collection unique identifier",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64",
-                        "minimum": 1
-                    },
-                    {
                         "name": "page",
                         "in": "query",
                         "description": "Page number. Used for pagination with page_size",
