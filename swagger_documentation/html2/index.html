@@ -8008,6 +8008,7 @@ public class ArticlesApiExample {
     public static void main(String[] args) {
         
         ArticlesApi apiInstance = new ArticlesApi();
+        UUID xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
         Long page = 789; // Long | Page number. Used for pagination with page_size
         Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
@@ -8023,7 +8024,7 @@ public class ArticlesApiExample {
         String doi = doi_example; // String | only return articles with this doi
         String handle = handle_example; // String | only return articles with this handle
         try {
-            array[Article] result = apiInstance.articlesList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, itemType, doi, handle);
+            array[Article] result = apiInstance.articlesList(xCursor, page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, itemType, doi, handle);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#articlesList");
@@ -8040,6 +8041,7 @@ public class ArticlesApiExample {
 
     public static void main(String[] args) {
         ArticlesApi apiInstance = new ArticlesApi();
+        UUID xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
         Long page = 789; // Long | Page number. Used for pagination with page_size
         Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
@@ -8055,7 +8057,7 @@ public class ArticlesApiExample {
         String doi = doi_example; // String | only return articles with this doi
         String handle = handle_example; // String | only return articles with this handle
         try {
-            array[Article] result = apiInstance.articlesList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, itemType, doi, handle);
+            array[Article] result = apiInstance.articlesList(xCursor, page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, itemType, doi, handle);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#articlesList");
@@ -8069,7 +8071,8 @@ public class ArticlesApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Articles-articlesList-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Long *page = 789; // Page number. Used for pagination with page_size (optional)
+                              <pre class="prettyprint"><code class="language-cpp">UUID *xCursor = xCursor_example; // Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
+Long *page = 789; // Page number. Used for pagination with page_size (optional)
 Long *pageSize = 789; // The number of results included on a page. Used for pagination with page (optional) (default to 10)
 Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
 Long *offset = 789; // Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
@@ -8087,7 +8090,8 @@ String *handle = handle_example; // only return articles with this handle (optio
 ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 
 // Public Articles
-[apiInstance articlesListWith:page
+[apiInstance articlesListWith:xCursor
+    page:page
     pageSize:pageSize
     limit:limit
     offset:offset
@@ -8118,6 +8122,7 @@ ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 var api = new FigshareApi.ArticlesApi()
 
 var opts = { 
+  'xCursor': xCursor_example, // {UUID} Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
   'page': 789, // {Long} Page number. Used for pagination with page_size
   'pageSize': 789, // {Long} The number of results included on a page. Used for pagination with page
   'limit': 789, // {Long} Number of results included on a page. Used for pagination with query
@@ -8163,6 +8168,7 @@ namespace Example
         {
             
             var apiInstance = new ArticlesApi();
+            var xCursor = xCursor_example;  // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional) 
             var page = 789;  // Long | Page number. Used for pagination with page_size (optional) 
             var pageSize = 789;  // Long | The number of results included on a page. Used for pagination with page (optional)  (default to 10)
             var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
@@ -8181,7 +8187,7 @@ namespace Example
             try
             {
                 // Public Articles
-                array[Article] result = apiInstance.articlesList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, itemType, doi, handle);
+                array[Article] result = apiInstance.articlesList(xCursor, page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, itemType, doi, handle);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8199,6 +8205,7 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\ArticlesApi();
+$xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
 $page = 789; // Long | Page number. Used for pagination with page_size
 $pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
 $limit = 789; // Long | Number of results included on a page. Used for pagination with query
@@ -8215,7 +8222,7 @@ $doi = doi_example; // String | only return articles with this doi
 $handle = handle_example; // String | only return articles with this handle
 
 try {
-    $result = $api_instance->articlesList($page, $pageSize, $limit, $offset, $order, $orderDirection, $institution, $publishedSince, $modifiedSince, $group, $resourceDoi, $itemType, $doi, $handle);
+    $result = $api_instance->articlesList($xCursor, $page, $pageSize, $limit, $offset, $order, $orderDirection, $institution, $publishedSince, $modifiedSince, $group, $resourceDoi, $itemType, $doi, $handle);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ArticlesApi->articlesList: ', $e->getMessage(), PHP_EOL;
@@ -8229,6 +8236,7 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::ArticlesApi;
 
 my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
+my $xCursor = xCursor_example; # UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
 my $page = 789; # Long | Page number. Used for pagination with page_size
 my $pageSize = 789; # Long | The number of results included on a page. Used for pagination with page
 my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
@@ -8245,7 +8253,7 @@ my $doi = doi_example; # String | only return articles with this doi
 my $handle = handle_example; # String | only return articles with this handle
 
 eval { 
-    my $result = $api_instance->articlesList(page => $page, pageSize => $pageSize, limit => $limit, offset => $offset, order => $order, orderDirection => $orderDirection, institution => $institution, publishedSince => $publishedSince, modifiedSince => $modifiedSince, group => $group, resourceDoi => $resourceDoi, itemType => $itemType, doi => $doi, handle => $handle);
+    my $result = $api_instance->articlesList(xCursor => $xCursor, page => $page, pageSize => $pageSize, limit => $limit, offset => $offset, order => $order, orderDirection => $orderDirection, institution => $institution, publishedSince => $publishedSince, modifiedSince => $modifiedSince, group => $group, resourceDoi => $resourceDoi, itemType => $itemType, doi => $doi, handle => $handle);
     print Dumper($result);
 };
 if ($@) {
@@ -8262,6 +8270,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ArticlesApi()
+xCursor = xCursor_example # UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
 page = 789 # Long | Page number. Used for pagination with page_size (optional)
 pageSize = 789 # Long | The number of results included on a page. Used for pagination with page (optional) (default to 10)
 limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
@@ -8279,7 +8288,7 @@ handle = handle_example # String | only return articles with this handle (option
 
 try: 
     # Public Articles
-    api_response = api_instance.articles_list(page=page, pageSize=pageSize, limit=limit, offset=offset, order=order, orderDirection=orderDirection, institution=institution, publishedSince=publishedSince, modifiedSince=modifiedSince, group=group, resourceDoi=resourceDoi, itemType=itemType, doi=doi, handle=handle)
+    api_response = api_instance.articles_list(xCursor=xCursor, page=page, pageSize=pageSize, limit=limit, offset=offset, order=order, orderDirection=orderDirection, institution=institution, publishedSince=publishedSince, modifiedSince=modifiedSince, group=group, resourceDoi=resourceDoi, itemType=itemType, doi=doi, handle=handle)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ArticlesApi->articlesList: %s\n" % e)</code></pre>
@@ -8289,6 +8298,36 @@ except ApiException as e:
                           <h2>Parameters</h2>
 
 
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">X-Cursor</td>
+<td>
+
+
+    <div id="d2e199_articlesList_xCursor">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description">
+                        Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
 
 
@@ -8606,6 +8645,9 @@ except ApiException as e:
                                   <a data-toggle="tab" href="#responses-articlesList-200-schema">Schema</a>
                                 </li>
 
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-articlesList-200-headers">Headers</a>
+                                </li>
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
@@ -8619,6 +8661,12 @@ except ApiException as e:
     "type" : "array",
     "items" : {
       "$ref" : "#/definitions/Article"
+    }
+  },
+  "headers" : {
+    "X-Cursor" : {
+      "type" : "string",
+      "description" : "Unique hash used for bypassing the item retrieval limit of 9,000 entities."
     }
   }
 };
@@ -8642,6 +8690,22 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-articlesList-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                                <div class="tab-pane" id="responses-articlesList-200-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>X-Cursor</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td>Unique hash used for bypassing the item retrieval limit of 9,000 entities.</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
 
@@ -8720,9 +8784,10 @@ public class ArticlesApiExample {
     public static void main(String[] args) {
         
         ArticlesApi apiInstance = new ArticlesApi();
+        UUID xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
         ArticleSearch search = ; // ArticleSearch | Search Parameters
         try {
-            array[ArticleWithProject] result = apiInstance.articlesSearch(search);
+            array[ArticleWithProject] result = apiInstance.articlesSearch(xCursor, search);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#articlesSearch");
@@ -8739,9 +8804,10 @@ public class ArticlesApiExample {
 
     public static void main(String[] args) {
         ArticlesApi apiInstance = new ArticlesApi();
+        UUID xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
         ArticleSearch search = ; // ArticleSearch | Search Parameters
         try {
-            array[ArticleWithProject] result = apiInstance.articlesSearch(search);
+            array[ArticleWithProject] result = apiInstance.articlesSearch(xCursor, search);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#articlesSearch");
@@ -8755,12 +8821,14 @@ public class ArticlesApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Articles-articlesSearch-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">ArticleSearch *search = ; // Search Parameters (optional)
+                              <pre class="prettyprint"><code class="language-cpp">UUID *xCursor = xCursor_example; // Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
+ArticleSearch *search = ; // Search Parameters (optional)
 
 ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 
 // Public Articles Search
-[apiInstance articlesSearchWith:search
+[apiInstance articlesSearchWith:xCursor
+    search:search
               completionHandler: ^(array[ArticleWithProject] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -8778,6 +8846,7 @@ ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 var api = new FigshareApi.ArticlesApi()
 
 var opts = { 
+  'xCursor': xCursor_example, // {UUID} Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
   'search':  // {ArticleSearch} Search Parameters
 };
 
@@ -8810,12 +8879,13 @@ namespace Example
         {
             
             var apiInstance = new ArticlesApi();
+            var xCursor = xCursor_example;  // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional) 
             var search = new ArticleSearch(); // ArticleSearch | Search Parameters (optional) 
 
             try
             {
                 // Public Articles Search
-                array[ArticleWithProject] result = apiInstance.articlesSearch(search);
+                array[ArticleWithProject] result = apiInstance.articlesSearch(xCursor, search);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8833,10 +8903,11 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\ArticlesApi();
+$xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
 $search = ; // ArticleSearch | Search Parameters
 
 try {
-    $result = $api_instance->articlesSearch($search);
+    $result = $api_instance->articlesSearch($xCursor, $search);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ArticlesApi->articlesSearch: ', $e->getMessage(), PHP_EOL;
@@ -8850,10 +8921,11 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::ArticlesApi;
 
 my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
+my $xCursor = xCursor_example; # UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
 my $search = WWW::SwaggerClient::Object::ArticleSearch->new(); # ArticleSearch | Search Parameters
 
 eval { 
-    my $result = $api_instance->articlesSearch(search => $search);
+    my $result = $api_instance->articlesSearch(xCursor => $xCursor, search => $search);
     print Dumper($result);
 };
 if ($@) {
@@ -8870,11 +8942,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ArticlesApi()
+xCursor = xCursor_example # UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
 search =  # ArticleSearch | Search Parameters (optional)
 
 try: 
     # Public Articles Search
-    api_response = api_instance.articles_search(search=search)
+    api_response = api_instance.articles_search(xCursor=xCursor, search=search)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ArticlesApi->articlesSearch: %s\n" % e)</code></pre>
@@ -8884,6 +8957,36 @@ except ApiException as e:
                           <h2>Parameters</h2>
 
 
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">X-Cursor</td>
+<td>
+
+
+    <div id="d2e199_articlesSearch_xCursor">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description">
+                        Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
                             <div class="methodsubtabletitle">Body parameters</div>
                             <table id="methodsubtable">
@@ -8938,6 +9041,9 @@ $(document).ready(function() {
                                   <a data-toggle="tab" href="#responses-articlesSearch-200-schema">Schema</a>
                                 </li>
 
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-articlesSearch-200-headers">Headers</a>
+                                </li>
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
@@ -8951,6 +9057,12 @@ $(document).ready(function() {
     "type" : "array",
     "items" : {
       "$ref" : "#/definitions/ArticleWithProject"
+    }
+  },
+  "headers" : {
+    "X-Cursor" : {
+      "type" : "string",
+      "description" : "Unique hash used for bypassing the item retrieval limit of 9,000 entities."
     }
   }
 };
@@ -8974,6 +9086,22 @@ $(document).ready(function() {
                                     </script>
                                   </div>
                                   <input id='responses-articlesSearch-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                                <div class="tab-pane" id="responses-articlesSearch-200-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>X-Cursor</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td>Unique hash used for bypassing the item retrieval limit of 9,000 entities.</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
 
@@ -24592,6 +24720,7 @@ public class CollectionsApiExample {
     public static void main(String[] args) {
         
         CollectionsApi apiInstance = new CollectionsApi();
+        UUID xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
         Long page = 789; // Long | Page number. Used for pagination with page_size
         Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
@@ -24606,7 +24735,7 @@ public class CollectionsApiExample {
         String doi = doi_example; // String | only return collections with this doi
         String handle = handle_example; // String | only return collections with this handle
         try {
-            array[Collection] result = apiInstance.collectionsList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, doi, handle);
+            array[Collection] result = apiInstance.collectionsList(xCursor, page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, doi, handle);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#collectionsList");
@@ -24623,6 +24752,7 @@ public class CollectionsApiExample {
 
     public static void main(String[] args) {
         CollectionsApi apiInstance = new CollectionsApi();
+        UUID xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
         Long page = 789; // Long | Page number. Used for pagination with page_size
         Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
@@ -24637,7 +24767,7 @@ public class CollectionsApiExample {
         String doi = doi_example; // String | only return collections with this doi
         String handle = handle_example; // String | only return collections with this handle
         try {
-            array[Collection] result = apiInstance.collectionsList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, doi, handle);
+            array[Collection] result = apiInstance.collectionsList(xCursor, page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, doi, handle);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#collectionsList");
@@ -24651,7 +24781,8 @@ public class CollectionsApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Collections-collectionsList-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Long *page = 789; // Page number. Used for pagination with page_size (optional)
+                              <pre class="prettyprint"><code class="language-cpp">UUID *xCursor = xCursor_example; // Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
+Long *page = 789; // Page number. Used for pagination with page_size (optional)
 Long *pageSize = 789; // The number of results included on a page. Used for pagination with page (optional) (default to 10)
 Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
 Long *offset = 789; // Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
@@ -24668,7 +24799,8 @@ String *handle = handle_example; // only return collections with this handle (op
 CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 
 // Public Collections
-[apiInstance collectionsListWith:page
+[apiInstance collectionsListWith:xCursor
+    page:page
     pageSize:pageSize
     limit:limit
     offset:offset
@@ -24698,6 +24830,7 @@ CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 var api = new FigshareApi.CollectionsApi()
 
 var opts = { 
+  'xCursor': xCursor_example, // {UUID} Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
   'page': 789, // {Long} Page number. Used for pagination with page_size
   'pageSize': 789, // {Long} The number of results included on a page. Used for pagination with page
   'limit': 789, // {Long} Number of results included on a page. Used for pagination with query
@@ -24742,6 +24875,7 @@ namespace Example
         {
             
             var apiInstance = new CollectionsApi();
+            var xCursor = xCursor_example;  // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional) 
             var page = 789;  // Long | Page number. Used for pagination with page_size (optional) 
             var pageSize = 789;  // Long | The number of results included on a page. Used for pagination with page (optional)  (default to 10)
             var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
@@ -24759,7 +24893,7 @@ namespace Example
             try
             {
                 // Public Collections
-                array[Collection] result = apiInstance.collectionsList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, doi, handle);
+                array[Collection] result = apiInstance.collectionsList(xCursor, page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, modifiedSince, group, resourceDoi, doi, handle);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -24777,6 +24911,7 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\CollectionsApi();
+$xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
 $page = 789; // Long | Page number. Used for pagination with page_size
 $pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
 $limit = 789; // Long | Number of results included on a page. Used for pagination with query
@@ -24792,7 +24927,7 @@ $doi = doi_example; // String | only return collections with this doi
 $handle = handle_example; // String | only return collections with this handle
 
 try {
-    $result = $api_instance->collectionsList($page, $pageSize, $limit, $offset, $order, $orderDirection, $institution, $publishedSince, $modifiedSince, $group, $resourceDoi, $doi, $handle);
+    $result = $api_instance->collectionsList($xCursor, $page, $pageSize, $limit, $offset, $order, $orderDirection, $institution, $publishedSince, $modifiedSince, $group, $resourceDoi, $doi, $handle);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsList: ', $e->getMessage(), PHP_EOL;
@@ -24806,6 +24941,7 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::CollectionsApi;
 
 my $api_instance = WWW::SwaggerClient::CollectionsApi->new();
+my $xCursor = xCursor_example; # UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
 my $page = 789; # Long | Page number. Used for pagination with page_size
 my $pageSize = 789; # Long | The number of results included on a page. Used for pagination with page
 my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
@@ -24821,7 +24957,7 @@ my $doi = doi_example; # String | only return collections with this doi
 my $handle = handle_example; # String | only return collections with this handle
 
 eval { 
-    my $result = $api_instance->collectionsList(page => $page, pageSize => $pageSize, limit => $limit, offset => $offset, order => $order, orderDirection => $orderDirection, institution => $institution, publishedSince => $publishedSince, modifiedSince => $modifiedSince, group => $group, resourceDoi => $resourceDoi, doi => $doi, handle => $handle);
+    my $result = $api_instance->collectionsList(xCursor => $xCursor, page => $page, pageSize => $pageSize, limit => $limit, offset => $offset, order => $order, orderDirection => $orderDirection, institution => $institution, publishedSince => $publishedSince, modifiedSince => $modifiedSince, group => $group, resourceDoi => $resourceDoi, doi => $doi, handle => $handle);
     print Dumper($result);
 };
 if ($@) {
@@ -24838,6 +24974,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.CollectionsApi()
+xCursor = xCursor_example # UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
 page = 789 # Long | Page number. Used for pagination with page_size (optional)
 pageSize = 789 # Long | The number of results included on a page. Used for pagination with page (optional) (default to 10)
 limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
@@ -24854,7 +24991,7 @@ handle = handle_example # String | only return collections with this handle (opt
 
 try: 
     # Public Collections
-    api_response = api_instance.collections_list(page=page, pageSize=pageSize, limit=limit, offset=offset, order=order, orderDirection=orderDirection, institution=institution, publishedSince=publishedSince, modifiedSince=modifiedSince, group=group, resourceDoi=resourceDoi, doi=doi, handle=handle)
+    api_response = api_instance.collections_list(xCursor=xCursor, page=page, pageSize=pageSize, limit=limit, offset=offset, order=order, orderDirection=orderDirection, institution=institution, publishedSince=publishedSince, modifiedSince=modifiedSince, group=group, resourceDoi=resourceDoi, doi=doi, handle=handle)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collectionsList: %s\n" % e)</code></pre>
@@ -24864,6 +25001,36 @@ except ApiException as e:
                           <h2>Parameters</h2>
 
 
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">X-Cursor</td>
+<td>
+
+
+    <div id="d2e199_collectionsList_xCursor">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description">
+                        Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
 
 
@@ -25158,6 +25325,9 @@ except ApiException as e:
                                   <a data-toggle="tab" href="#responses-collectionsList-200-schema">Schema</a>
                                 </li>
 
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-collectionsList-200-headers">Headers</a>
+                                </li>
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
@@ -25171,6 +25341,12 @@ except ApiException as e:
     "type" : "array",
     "items" : {
       "$ref" : "#/definitions/Collection"
+    }
+  },
+  "headers" : {
+    "X-Cursor" : {
+      "type" : "string",
+      "description" : "Unique hash used for bypassing the item retrieval limit of 9,000 entities."
     }
   }
 };
@@ -25194,6 +25370,22 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-collectionsList-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                                <div class="tab-pane" id="responses-collectionsList-200-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>X-Cursor</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td>Unique hash used for bypassing the item retrieval limit of 9,000 entities.</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
 
@@ -25272,9 +25464,10 @@ public class CollectionsApiExample {
     public static void main(String[] args) {
         
         CollectionsApi apiInstance = new CollectionsApi();
+        UUID xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
         CollectionSearch search = ; // CollectionSearch | Search Parameters
         try {
-            array[Collection] result = apiInstance.collectionsSearch(search);
+            array[Collection] result = apiInstance.collectionsSearch(xCursor, search);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#collectionsSearch");
@@ -25291,9 +25484,10 @@ public class CollectionsApiExample {
 
     public static void main(String[] args) {
         CollectionsApi apiInstance = new CollectionsApi();
+        UUID xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
         CollectionSearch search = ; // CollectionSearch | Search Parameters
         try {
-            array[Collection] result = apiInstance.collectionsSearch(search);
+            array[Collection] result = apiInstance.collectionsSearch(xCursor, search);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#collectionsSearch");
@@ -25307,12 +25501,14 @@ public class CollectionsApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Collections-collectionsSearch-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">CollectionSearch *search = ; // Search Parameters (optional)
+                              <pre class="prettyprint"><code class="language-cpp">UUID *xCursor = xCursor_example; // Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
+CollectionSearch *search = ; // Search Parameters (optional)
 
 CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 
 // Public Collections Search
-[apiInstance collectionsSearchWith:search
+[apiInstance collectionsSearchWith:xCursor
+    search:search
               completionHandler: ^(array[Collection] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -25330,6 +25526,7 @@ CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 var api = new FigshareApi.CollectionsApi()
 
 var opts = { 
+  'xCursor': xCursor_example, // {UUID} Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
   'search':  // {CollectionSearch} Search Parameters
 };
 
@@ -25362,12 +25559,13 @@ namespace Example
         {
             
             var apiInstance = new CollectionsApi();
+            var xCursor = xCursor_example;  // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional) 
             var search = new CollectionSearch(); // CollectionSearch | Search Parameters (optional) 
 
             try
             {
                 // Public Collections Search
-                array[Collection] result = apiInstance.collectionsSearch(search);
+                array[Collection] result = apiInstance.collectionsSearch(xCursor, search);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -25385,10 +25583,11 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\CollectionsApi();
+$xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
 $search = ; // CollectionSearch | Search Parameters
 
 try {
-    $result = $api_instance->collectionsSearch($search);
+    $result = $api_instance->collectionsSearch($xCursor, $search);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsSearch: ', $e->getMessage(), PHP_EOL;
@@ -25402,10 +25601,11 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::CollectionsApi;
 
 my $api_instance = WWW::SwaggerClient::CollectionsApi->new();
+my $xCursor = xCursor_example; # UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
 my $search = WWW::SwaggerClient::Object::CollectionSearch->new(); # CollectionSearch | Search Parameters
 
 eval { 
-    my $result = $api_instance->collectionsSearch(search => $search);
+    my $result = $api_instance->collectionsSearch(xCursor => $xCursor, search => $search);
     print Dumper($result);
 };
 if ($@) {
@@ -25422,11 +25622,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.CollectionsApi()
+xCursor = xCursor_example # UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
 search =  # CollectionSearch | Search Parameters (optional)
 
 try: 
     # Public Collections Search
-    api_response = api_instance.collections_search(search=search)
+    api_response = api_instance.collections_search(xCursor=xCursor, search=search)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collectionsSearch: %s\n" % e)</code></pre>
@@ -25436,6 +25637,36 @@ except ApiException as e:
                           <h2>Parameters</h2>
 
 
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">X-Cursor</td>
+<td>
+
+
+    <div id="d2e199_collectionsSearch_xCursor">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description">
+                        Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
                             <div class="methodsubtabletitle">Body parameters</div>
                             <table id="methodsubtable">
@@ -25490,6 +25721,9 @@ $(document).ready(function() {
                                   <a data-toggle="tab" href="#responses-collectionsSearch-200-schema">Schema</a>
                                 </li>
 
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-collectionsSearch-200-headers">Headers</a>
+                                </li>
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
@@ -25503,6 +25737,12 @@ $(document).ready(function() {
     "type" : "array",
     "items" : {
       "$ref" : "#/definitions/Collection"
+    }
+  },
+  "headers" : {
+    "X-Cursor" : {
+      "type" : "string",
+      "description" : "Unique hash used for bypassing the item retrieval limit of 9,000 entities."
     }
   }
 };
@@ -25526,6 +25766,22 @@ $(document).ready(function() {
                                     </script>
                                   </div>
                                   <input id='responses-collectionsSearch-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                                <div class="tab-pane" id="responses-collectionsSearch-200-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>X-Cursor</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td>Unique hash used for bypassing the item retrieval limit of 9,000 entities.</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
 
@@ -58300,6 +58556,7 @@ public class ProjectsApiExample {
     public static void main(String[] args) {
         
         ProjectsApi apiInstance = new ProjectsApi();
+        UUID xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
         Long page = 789; // Long | Page number. Used for pagination with page_size
         Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
@@ -58310,7 +58567,7 @@ public class ProjectsApiExample {
         String publishedSince = publishedSince_example; // String | Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
         Long group = 789; // Long | only return collections from this group
         try {
-            array[Project] result = apiInstance.projectsList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, group);
+            array[Project] result = apiInstance.projectsList(xCursor, page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, group);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProjectsApi#projectsList");
@@ -58327,6 +58584,7 @@ public class ProjectsApiExample {
 
     public static void main(String[] args) {
         ProjectsApi apiInstance = new ProjectsApi();
+        UUID xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
         Long page = 789; // Long | Page number. Used for pagination with page_size
         Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
@@ -58337,7 +58595,7 @@ public class ProjectsApiExample {
         String publishedSince = publishedSince_example; // String | Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD
         Long group = 789; // Long | only return collections from this group
         try {
-            array[Project] result = apiInstance.projectsList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, group);
+            array[Project] result = apiInstance.projectsList(xCursor, page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, group);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProjectsApi#projectsList");
@@ -58351,7 +58609,8 @@ public class ProjectsApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Projects-projectsList-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Long *page = 789; // Page number. Used for pagination with page_size (optional)
+                              <pre class="prettyprint"><code class="language-cpp">UUID *xCursor = xCursor_example; // Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
+Long *page = 789; // Page number. Used for pagination with page_size (optional)
 Long *pageSize = 789; // The number of results included on a page. Used for pagination with page (optional) (default to 10)
 Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
 Long *offset = 789; // Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
@@ -58364,7 +58623,8 @@ Long *group = 789; // only return collections from this group (optional)
 ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
 
 // Public Projects
-[apiInstance projectsListWith:page
+[apiInstance projectsListWith:xCursor
+    page:page
     pageSize:pageSize
     limit:limit
     offset:offset
@@ -58390,6 +58650,7 @@ ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
 var api = new FigshareApi.ProjectsApi()
 
 var opts = { 
+  'xCursor': xCursor_example, // {UUID} Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
   'page': 789, // {Long} Page number. Used for pagination with page_size
   'pageSize': 789, // {Long} The number of results included on a page. Used for pagination with page
   'limit': 789, // {Long} Number of results included on a page. Used for pagination with query
@@ -58430,6 +58691,7 @@ namespace Example
         {
             
             var apiInstance = new ProjectsApi();
+            var xCursor = xCursor_example;  // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional) 
             var page = 789;  // Long | Page number. Used for pagination with page_size (optional) 
             var pageSize = 789;  // Long | The number of results included on a page. Used for pagination with page (optional)  (default to 10)
             var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
@@ -58443,7 +58705,7 @@ namespace Example
             try
             {
                 // Public Projects
-                array[Project] result = apiInstance.projectsList(page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, group);
+                array[Project] result = apiInstance.projectsList(xCursor, page, pageSize, limit, offset, order, orderDirection, institution, publishedSince, group);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -58461,6 +58723,7 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\ProjectsApi();
+$xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
 $page = 789; // Long | Page number. Used for pagination with page_size
 $pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
 $limit = 789; // Long | Number of results included on a page. Used for pagination with query
@@ -58472,7 +58735,7 @@ $publishedSince = publishedSince_example; // String | Filter by article publishi
 $group = 789; // Long | only return collections from this group
 
 try {
-    $result = $api_instance->projectsList($page, $pageSize, $limit, $offset, $order, $orderDirection, $institution, $publishedSince, $group);
+    $result = $api_instance->projectsList($xCursor, $page, $pageSize, $limit, $offset, $order, $orderDirection, $institution, $publishedSince, $group);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectsApi->projectsList: ', $e->getMessage(), PHP_EOL;
@@ -58486,6 +58749,7 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::ProjectsApi;
 
 my $api_instance = WWW::SwaggerClient::ProjectsApi->new();
+my $xCursor = xCursor_example; # UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
 my $page = 789; # Long | Page number. Used for pagination with page_size
 my $pageSize = 789; # Long | The number of results included on a page. Used for pagination with page
 my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
@@ -58497,7 +58761,7 @@ my $publishedSince = publishedSince_example; # String | Filter by article publis
 my $group = 789; # Long | only return collections from this group
 
 eval { 
-    my $result = $api_instance->projectsList(page => $page, pageSize => $pageSize, limit => $limit, offset => $offset, order => $order, orderDirection => $orderDirection, institution => $institution, publishedSince => $publishedSince, group => $group);
+    my $result = $api_instance->projectsList(xCursor => $xCursor, page => $page, pageSize => $pageSize, limit => $limit, offset => $offset, order => $order, orderDirection => $orderDirection, institution => $institution, publishedSince => $publishedSince, group => $group);
     print Dumper($result);
 };
 if ($@) {
@@ -58514,6 +58778,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProjectsApi()
+xCursor = xCursor_example # UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
 page = 789 # Long | Page number. Used for pagination with page_size (optional)
 pageSize = 789 # Long | The number of results included on a page. Used for pagination with page (optional) (default to 10)
 limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
@@ -58526,7 +58791,7 @@ group = 789 # Long | only return collections from this group (optional)
 
 try: 
     # Public Projects
-    api_response = api_instance.projects_list(page=page, pageSize=pageSize, limit=limit, offset=offset, order=order, orderDirection=orderDirection, institution=institution, publishedSince=publishedSince, group=group)
+    api_response = api_instance.projects_list(xCursor=xCursor, page=page, pageSize=pageSize, limit=limit, offset=offset, order=order, orderDirection=orderDirection, institution=institution, publishedSince=publishedSince, group=group)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ProjectsApi->projectsList: %s\n" % e)</code></pre>
@@ -58536,6 +58801,36 @@ except ApiException as e:
                           <h2>Parameters</h2>
 
 
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">X-Cursor</td>
+<td>
+
+
+    <div id="d2e199_projectsList_xCursor">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description">
+                        Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
 
 
@@ -58750,6 +59045,9 @@ except ApiException as e:
                                   <a data-toggle="tab" href="#responses-projectsList-200-schema">Schema</a>
                                 </li>
 
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-projectsList-200-headers">Headers</a>
+                                </li>
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
@@ -58763,6 +59061,12 @@ except ApiException as e:
     "type" : "array",
     "items" : {
       "$ref" : "#/definitions/Project"
+    }
+  },
+  "headers" : {
+    "X-Cursor" : {
+      "type" : "string",
+      "description" : "Unique hash used for bypassing the item retrieval limit of 9,000 entities."
     }
   }
 };
@@ -58786,6 +59090,22 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-projectsList-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                                <div class="tab-pane" id="responses-projectsList-200-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>X-Cursor</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td>Unique hash used for bypassing the item retrieval limit of 9,000 entities.</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
 
@@ -58864,9 +59184,10 @@ public class ProjectsApiExample {
     public static void main(String[] args) {
         
         ProjectsApi apiInstance = new ProjectsApi();
+        UUID xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
         ProjectsSearch search = ; // ProjectsSearch | Search Parameters
         try {
-            array[Project] result = apiInstance.projectsSearch(search);
+            array[Project] result = apiInstance.projectsSearch(xCursor, search);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProjectsApi#projectsSearch");
@@ -58883,9 +59204,10 @@ public class ProjectsApiExample {
 
     public static void main(String[] args) {
         ProjectsApi apiInstance = new ProjectsApi();
+        UUID xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
         ProjectsSearch search = ; // ProjectsSearch | Search Parameters
         try {
-            array[Project] result = apiInstance.projectsSearch(search);
+            array[Project] result = apiInstance.projectsSearch(xCursor, search);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProjectsApi#projectsSearch");
@@ -58899,12 +59221,14 @@ public class ProjectsApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Projects-projectsSearch-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">ProjectsSearch *search = ; // Search Parameters (optional)
+                              <pre class="prettyprint"><code class="language-cpp">UUID *xCursor = xCursor_example; // Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
+ProjectsSearch *search = ; // Search Parameters (optional)
 
 ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
 
 // Public Projects Search
-[apiInstance projectsSearchWith:search
+[apiInstance projectsSearchWith:xCursor
+    search:search
               completionHandler: ^(array[Project] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -58922,6 +59246,7 @@ ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
 var api = new FigshareApi.ProjectsApi()
 
 var opts = { 
+  'xCursor': xCursor_example, // {UUID} Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
   'search':  // {ProjectsSearch} Search Parameters
 };
 
@@ -58954,12 +59279,13 @@ namespace Example
         {
             
             var apiInstance = new ProjectsApi();
+            var xCursor = xCursor_example;  // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional) 
             var search = new ProjectsSearch(); // ProjectsSearch | Search Parameters (optional) 
 
             try
             {
                 // Public Projects Search
-                array[Project] result = apiInstance.projectsSearch(search);
+                array[Project] result = apiInstance.projectsSearch(xCursor, search);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -58977,10 +59303,11 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\ProjectsApi();
+$xCursor = xCursor_example; // UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
 $search = ; // ProjectsSearch | Search Parameters
 
 try {
-    $result = $api_instance->projectsSearch($search);
+    $result = $api_instance->projectsSearch($xCursor, $search);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectsApi->projectsSearch: ', $e->getMessage(), PHP_EOL;
@@ -58994,10 +59321,11 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::ProjectsApi;
 
 my $api_instance = WWW::SwaggerClient::ProjectsApi->new();
+my $xCursor = xCursor_example; # UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
 my $search = WWW::SwaggerClient::Object::ProjectsSearch->new(); # ProjectsSearch | Search Parameters
 
 eval { 
-    my $result = $api_instance->projectsSearch(search => $search);
+    my $result = $api_instance->projectsSearch(xCursor => $xCursor, search => $search);
     print Dumper($result);
 };
 if ($@) {
@@ -59014,11 +59342,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProjectsApi()
+xCursor = xCursor_example # UUID | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
 search =  # ProjectsSearch | Search Parameters (optional)
 
 try: 
     # Public Projects Search
-    api_response = api_instance.projects_search(search=search)
+    api_response = api_instance.projects_search(xCursor=xCursor, search=search)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ProjectsApi->projectsSearch: %s\n" % e)</code></pre>
@@ -59028,6 +59357,36 @@ except ApiException as e:
                           <h2>Parameters</h2>
 
 
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">X-Cursor</td>
+<td>
+
+
+    <div id="d2e199_projectsSearch_xCursor">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description">
+                        Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
                             <div class="methodsubtabletitle">Body parameters</div>
                             <table id="methodsubtable">
@@ -59082,6 +59441,9 @@ $(document).ready(function() {
                                   <a data-toggle="tab" href="#responses-projectsSearch-200-schema">Schema</a>
                                 </li>
 
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-projectsSearch-200-headers">Headers</a>
+                                </li>
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
@@ -59095,6 +59457,12 @@ $(document).ready(function() {
     "type" : "array",
     "items" : {
       "$ref" : "#/definitions/Project"
+    }
+  },
+  "headers" : {
+    "X-Cursor" : {
+      "type" : "string",
+      "description" : "Unique hash used for bypassing the item retrieval limit of 9,000 entities."
     }
   }
 };
@@ -59118,6 +59486,22 @@ $(document).ready(function() {
                                     </script>
                                   </div>
                                   <input id='responses-projectsSearch-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                                <div class="tab-pane" id="responses-projectsSearch-200-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>X-Cursor</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td>Unique hash used for bypassing the item retrieval limit of 9,000 entities.</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
 
@@ -59162,7 +59546,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-10-05T15:11:24.421+03:00
+              Generated 2022-10-17T11:13:46.706+03:00
             </div>
           </div>
       </div>
