@@ -25,6 +25,14 @@
                 "security": [],
                 "parameters": [
                     {
+                        "name": "X-Cursor",
+                        "in": "header",
+                        "type": "string",
+                        "format": "uuid",
+                        "required": false,
+                        "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected."
+                    },
+                    {
                         "name": "page",
                         "in": "query",
                         "description": "Page number. Used for pagination with page_size",
@@ -155,6 +163,12 @@
                 "responses": {
                     "200": {
                         "description": "OK. An array of articles",
+                        "headers": {
+                            "X-Cursor": {
+                                "type": "string",
+                                "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities."
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -185,6 +199,14 @@
                 "security": [],
                 "parameters": [
                     {
+                        "name": "X-Cursor",
+                        "in": "header",
+                        "type": "string",
+                        "format": "uuid",
+                        "required": false,
+                        "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected."
+                    },
+                    {
                         "in": "body",
                         "name": "search",
                         "description": "Search Parameters",
@@ -197,6 +219,12 @@
                 "responses": {
                     "200": {
                         "description": "OK. An array of articles",
+                        "headers": {
+                            "X-Cursor": {
+                                "type": "string",
+                                "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities."
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -2475,6 +2503,14 @@
                 "security": [],
                 "parameters": [
                     {
+                        "name": "X-Cursor",
+                        "in": "header",
+                        "type": "string",
+                        "format": "uuid",
+                        "required": false,
+                        "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected."
+                    },
+                    {
                         "name": "page",
                         "in": "query",
                         "description": "Page number. Used for pagination with page_size",
@@ -2596,6 +2632,12 @@
                 "responses": {
                     "200": {
                         "description": "OK. An array of collections",
+                        "headers": {
+                            "X-Cursor": {
+                                "type": "string",
+                                "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities."
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -2626,6 +2668,14 @@
                 "security": [],
                 "parameters": [
                     {
+                        "name": "X-Cursor",
+                        "in": "header",
+                        "type": "string",
+                        "format": "uuid",
+                        "required": false,
+                        "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected."
+                    },
+                    {
                         "in": "body",
                         "name": "search",
                         "description": "Search Parameters",
@@ -2638,6 +2688,12 @@
                 "responses": {
                     "200": {
                         "description": "OK. An array of collections",
+                        "headers": {
+                            "X-Cursor": {
+                                "type": "string",
+                                "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities."
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -4431,6 +4487,14 @@
                 "security": [],
                 "parameters": [
                     {
+                        "name": "X-Cursor",
+                        "in": "header",
+                        "type": "string",
+                        "format": "uuid",
+                        "required": false,
+                        "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected."
+                    },
+                    {
                         "name": "page",
                         "in": "query",
                         "description": "Page number. Used for pagination with page_size",
@@ -4522,6 +4586,12 @@
                 "responses": {
                     "200": {
                         "description": "OK. An array of projects",
+                        "headers": {
+                            "X-Cursor": {
+                                "type": "string",
+                                "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities."
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -4552,6 +4622,14 @@
                 "security": [],
                 "parameters": [
                     {
+                        "name": "X-Cursor",
+                        "in": "header",
+                        "type": "string",
+                        "format": "uuid",
+                        "required": false,
+                        "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected."
+                    },
+                    {
                         "in": "body",
                         "name": "search",
                         "description": "Search Parameters",
@@ -4564,6 +4642,12 @@
                 "responses": {
                     "200": {
                         "description": "OK. An array of projects",
+                        "headers": {
+                            "X-Cursor": {
+                                "type": "string",
+                                "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities."
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
