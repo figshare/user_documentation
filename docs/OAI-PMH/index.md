@@ -142,7 +142,7 @@ no problem.
 
 
 One particularity on fig**share** OAI-PMH is the expiration datetime (UTC) for
-resumption tokens. Thus, a token expires after 5 minutes.
+resumption tokens. Thus, a token expires after 60 minutes.
 
 
 ## Rate limit
