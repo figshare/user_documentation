@@ -4360,7 +4360,7 @@ except ApiException as e:
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Initiate a new Article Report for this Account</p>
+                        <p class="marked">Initiate a new Article Report for this Account. There is a limit of 1 report per day.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/articles/export</span></code></pre>
@@ -4625,6 +4625,14 @@ except ApiException as e:
                                   </div>
                                   <input id='responses-accountArticleReportGenerate-200-schema-data' type='hidden' value=''></input>
                                 </div>
+                            </div>
+
+                            <h3> Status: 429 - Too Many Requests </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
                             </div>
 
                             <h3> Status: 500 - Internal Server Error </h3>
@@ -59546,7 +59554,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-10-17T11:13:46.706+03:00
+              Generated 2022-10-26T14:36:40.531+03:00
             </div>
           </div>
       </div>
