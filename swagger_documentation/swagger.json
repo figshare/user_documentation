@@ -2471,7 +2471,7 @@
                 ],
                 "operationId": "account_article_report_generate",
                 "summary": "Initiate a new Report",
-                "description": "Initiate a new Article Report for this Account",
+                "description": "Initiate a new Article Report for this Account. There is a limit of 1 report per day.",
                 "security": [
                     {
                         "OAuth2": [
@@ -2485,6 +2485,9 @@
                         "schema": {
                             "$ref": "#/definitions/AccountReport"
                         }
+                    },
+                    "429": {
+                        "description": "Too Many Requests"
                     },
                     "500": {
                         "description": "Internal Server Error"
