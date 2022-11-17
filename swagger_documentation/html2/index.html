@@ -697,6 +697,7 @@ margin-bottom: 20px;
     var defs = {}
             defs.Account = {
   "type" : "object",
+  "required" : [ "active", "created_date", "email", "first_name", "group_id", "id", "institution_id", "institution_user_id", "last_name", "maximum_file_size", "modified_date", "pending_quota_request", "quota", "used_quota", "used_quota_private", "used_quota_public" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -792,7 +793,7 @@ margin-bottom: 20px;
 };
             defs.AccountCreate = {
   "type" : "object",
-  "required" : [ "email", "last_name" ],
+  "required" : [ "email", "first_name", "group_id", "institution_user_id", "is_active", "last_name", "quota", "symplectic_user_id" ],
   "properties" : {
     "email" : {
       "type" : "string",
@@ -868,6 +869,7 @@ margin-bottom: 20px;
 };
             defs.AccountReport = {
   "type" : "object",
+  "required" : [ "account_id", "created_date", "download_url", "group_id", "id", "status" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -904,6 +906,7 @@ margin-bottom: 20px;
 };
             defs.AccountUpdate = {
   "type" : "object",
+  "required" : [ "group_id", "is_active" ],
   "properties" : {
     "group_id" : {
       "type" : "integer",
@@ -919,6 +922,7 @@ margin-bottom: 20px;
 };
             defs.Article = {
   "type" : "object",
+  "required" : [ "defined_type", "defined_type_name", "doi", "handle", "id", "thumb", "timeline", "title", "url", "url_private_api", "url_private_html", "url_public_api", "url_public_html" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -997,6 +1001,7 @@ margin-bottom: 20px;
 };
             defs.ArticleConfidentiality = {
   "type" : "object",
+  "required" : [ "is_confidential", "reason" ],
   "properties" : {
     "is_confidential" : {
       "type" : "boolean",
@@ -1167,6 +1172,7 @@ margin-bottom: 20px;
 };
             defs.ArticleDOI = {
   "type" : "object",
+  "required" : [ "doi" ],
   "properties" : {
     "doi" : {
       "type" : "string",
@@ -1178,6 +1184,7 @@ margin-bottom: 20px;
 };
             defs.ArticleEmbargo = {
   "type" : "object",
+  "required" : [ "embargo_options", "embargo_reason", "embargo_title", "is_embargoed" ],
   "properties" : {
     "is_embargoed" : {
       "type" : "boolean",
@@ -1267,6 +1274,7 @@ margin-bottom: 20px;
 };
             defs.ArticleHandle = {
   "type" : "object",
+  "required" : [ "handle" ],
   "properties" : {
     "handle" : {
       "type" : "string",
@@ -1570,6 +1578,7 @@ margin-bottom: 20px;
 };
             defs.ArticleVersions = {
   "type" : "object",
+  "required" : [ "url", "version" ],
   "properties" : {
     "version" : {
       "type" : "integer",
@@ -1605,6 +1614,7 @@ margin-bottom: 20px;
 };
             defs.Author = {
   "type" : "object",
+  "required" : [ "full_name", "id", "is_active", "orcid_id", "url_name" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -1676,6 +1686,7 @@ margin-bottom: 20px;
 };
             defs.Category = {
   "type" : "object",
+  "required" : [ "id", "parent_id", "path", "source_id", "taxonomy_id", "title" ],
   "properties" : {
     "parent_id" : {
       "type" : "integer",
@@ -1715,6 +1726,7 @@ margin-bottom: 20px;
 };
             defs.Collaborator = {
   "type" : "object",
+  "required" : [ "name", "role_name", "user_id" ],
   "properties" : {
     "role_name" : {
       "type" : "string",
@@ -1736,6 +1748,7 @@ margin-bottom: 20px;
 };
             defs.Collection = {
   "type" : "object",
+  "required" : [ "doi", "handle", "id", "timeline", "title", "url" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -1924,6 +1937,7 @@ margin-bottom: 20px;
 };
             defs.CollectionDOI = {
   "type" : "object",
+  "required" : [ "doi" ],
   "properties" : {
     "doi" : {
       "type" : "string",
@@ -1935,6 +1949,7 @@ margin-bottom: 20px;
 };
             defs.CollectionHandle = {
   "type" : "object",
+  "required" : [ "handle" ],
   "properties" : {
     "handle" : {
       "type" : "string",
@@ -2113,6 +2128,7 @@ margin-bottom: 20px;
 };
             defs.CollectionVersions = {
   "type" : "object",
+  "required" : [ "id", "url" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -2204,6 +2220,7 @@ margin-bottom: 20px;
 };
             defs.ConfidentialityCreator = {
   "type" : "object",
+  "required" : [ "reason" ],
   "properties" : {
     "reason" : {
       "type" : "string",
@@ -2213,6 +2230,7 @@ margin-bottom: 20px;
 };
             defs.CreateProjectResponse = {
   "type" : "object",
+  "required" : [ "entity_id", "location" ],
   "properties" : {
     "entity_id" : {
       "type" : "integer",
@@ -2230,6 +2248,7 @@ margin-bottom: 20px;
 };
             defs.Curation = {
   "type" : "object",
+  "required" : [ "account_id", "article_id", "assigned_to", "comments_count", "created_date", "group_id", "id", "modified_date", "status", "version" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -2284,6 +2303,7 @@ margin-bottom: 20px;
 };
             defs.CurationComment = {
   "type" : "object",
+  "required" : [ "account_id", "id", "text", "type" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -2322,6 +2342,7 @@ margin-bottom: 20px;
 };
             defs.CustomArticleField = {
   "type" : "object",
+  "required" : [ "name", "value" ],
   "properties" : {
     "name" : {
       "type" : "string",
@@ -2338,6 +2359,7 @@ margin-bottom: 20px;
 };
             defs.CustomArticleFieldAdd = {
   "type" : "object",
+  "required" : [ "name" ],
   "properties" : {
     "name" : {
       "type" : "string",
@@ -2403,6 +2425,7 @@ margin-bottom: 20px;
 };
             defs.FundingCreate = {
   "type" : "object",
+  "required" : [ "id", "title" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -2418,6 +2441,7 @@ margin-bottom: 20px;
 };
             defs.FundingInformation = {
   "type" : "object",
+  "required" : [ "funder_name", "grant_code", "id", "is_user_defined", "title", "url" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -2463,6 +2487,7 @@ margin-bottom: 20px;
 };
             defs.Group = {
   "type" : "object",
+  "required" : [ "association_criteria", "id", "name", "parent_id", "resource_id" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -2496,6 +2521,7 @@ margin-bottom: 20px;
 };
             defs.GroupEmbargoOptions = {
   "type" : "object",
+  "required" : [ "id", "ip_name", "type" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -2519,6 +2545,7 @@ margin-bottom: 20px;
 };
             defs.Institution = {
   "type" : "object",
+  "required" : [ "id", "name" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -2597,6 +2624,7 @@ margin-bottom: 20px;
 };
             defs.ItemType = {
   "type" : "object",
+  "required" : [ "icon", "id", "is_selectable", "name", "public_description", "string_id", "url_name" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -2638,6 +2666,7 @@ margin-bottom: 20px;
 };
             defs.License = {
   "type" : "object",
+  "required" : [ "name", "url", "value" ],
   "properties" : {
     "value" : {
       "type" : "integer",
@@ -2661,6 +2690,7 @@ margin-bottom: 20px;
 };
             defs.Location = {
   "type" : "object",
+  "required" : [ "location" ],
   "properties" : {
     "location" : {
       "type" : "string",
@@ -2672,6 +2702,7 @@ margin-bottom: 20px;
 };
             defs.LocationWarnings = {
   "type" : "object",
+  "required" : [ "entity_id", "location", "warnings" ],
   "properties" : {
     "entity_id" : {
       "type" : "integer",
@@ -2696,6 +2727,7 @@ margin-bottom: 20px;
 };
             defs.LocationWarningsUpdate = {
   "type" : "object",
+  "required" : [ "location", "warnings" ],
   "properties" : {
     "location" : {
       "type" : "string",
@@ -2795,6 +2827,7 @@ margin-bottom: 20px;
 };
             defs.PrivateLink = {
   "type" : "object",
+  "required" : [ "expires_date", "html_location", "id", "is_active" ],
   "properties" : {
     "id" : {
       "type" : "string",
@@ -2838,6 +2871,7 @@ margin-bottom: 20px;
 };
             defs.PrivateLinkResponse = {
   "type" : "object",
+  "required" : [ "html_location", "location", "token" ],
   "properties" : {
     "location" : {
       "type" : "string",
@@ -2860,6 +2894,7 @@ margin-bottom: 20px;
 };
             defs.Project = {
   "type" : "object",
+  "required" : [ "id", "title", "url" ],
   "properties" : {
     "url" : {
       "type" : "string",
@@ -2882,6 +2917,7 @@ margin-bottom: 20px;
 };
             defs.ProjectCollaborator = {
   "type" : "object",
+  "required" : [ "name", "role_name", "status", "user_id" ],
   "properties" : {
     "status" : {
       "type" : "string",
@@ -2990,6 +3026,7 @@ margin-bottom: 20px;
 };
             defs.ProjectNote = {
   "type" : "object",
+  "required" : [ "abstract", "created_date", "id", "modified_date", "user_id", "user_name" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -3087,6 +3124,7 @@ margin-bottom: 20px;
 };
             defs.PublicFile = {
   "type" : "object",
+  "required" : [ "computed_md5", "download_url", "id", "is_link_only", "name", "size", "supplied_md5" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -3177,6 +3215,7 @@ margin-bottom: 20px;
 };
             defs.ResponseMessage = {
   "type" : "object",
+  "required" : [ "message" ],
   "properties" : {
     "message" : {
       "type" : "string",
@@ -3188,6 +3227,7 @@ margin-bottom: 20px;
 };
             defs.Role = {
   "type" : "object",
+  "required" : [ "category", "description", "id", "name" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -3214,6 +3254,7 @@ margin-bottom: 20px;
 };
             defs.ShortAccount = {
   "type" : "object",
+  "required" : [ "active", "email", "first_name", "id", "institution_id", "institution_user_id", "last_name", "orcid_id", "quota", "used_quota", "user_id" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -3281,6 +3322,7 @@ margin-bottom: 20px;
 };
             defs.ShortCustomField = {
   "type" : "object",
+  "required" : [ "field_type", "id", "name" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -3397,6 +3439,7 @@ margin-bottom: 20px;
 };
             defs.User = {
   "type" : "object",
+  "required" : [ "first_name", "id", "is_active", "is_public", "job_title", "last_name", "name", "orcid_id", "url_name" ],
   "properties" : {
     "id" : {
       "type" : "integer",
@@ -59554,7 +59597,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2022-10-26T14:36:40.531+03:00
+              Generated 2022-11-17T17:24:18.816+02:00
             </div>
           </div>
       </div>
