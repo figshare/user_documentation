@@ -8533,6 +8533,13 @@
         "Group": {
             "x-tag": "institutions",
             "type": "object",
+            "required": [
+                "id",
+                "name",
+                "resource_id",
+                "parent_id",
+                "association_criteria"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -8566,6 +8573,12 @@
         "Role": {
             "x-tag": "institutions",
             "type": "object",
+            "required": [
+                "id",
+                "name",
+                "category",
+                "description"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -8592,6 +8605,11 @@
         "GroupEmbargoOptions": {
             "x-tag": "institutions",
             "type": "object",
+            "required": [
+                "id",
+                "type",
+                "ip_name"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -8619,6 +8637,11 @@
         "Institution": {
             "x-tag": "institutions",
             "type": "object",
+            "required": [
+                "id",
+                "name",
+                "domain"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -8644,6 +8667,11 @@
         "ShortCustomField": {
             "x-tag": "institutions",
             "type": "object",
+            "required": [
+                "id",
+                "name",
+                "field_type"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -8724,6 +8752,14 @@
         "ProjectNote": {
             "x-tag": "projects",
             "type": "object",
+            "required": [
+                "id",
+                "user_id",
+                "abstract",
+                "user_name",
+                "created_date",
+                "modified_date"
+            ],
             "properties": {
                 "id": {
                     "description": "Project note id",
@@ -8766,6 +8802,15 @@
                 {
                     "$ref": "#/definitions/ProjectNote"
                 }
+            ],
+            "required": [
+                "text",
+                "id",
+                "user_id",
+                "abstract",
+                "user_name",
+                "created_date",
+                "modified_date"
             ],
             "properties": {
                 "text": {
@@ -8810,6 +8855,9 @@
         "ResponseMessage": {
             "x-tag": "common",
             "type": "object",
+            "required": [
+                "message"
+            ],
             "properties": {
                 "message": {
                     "description": "Response message text",
@@ -8935,6 +8983,12 @@
         "Project": {
             "x-tag": "projects",
             "type": "object",
+            "required": [
+                "url",
+                "published_date",
+                "id",
+                "title"
+            ],
             "properties": {
                 "url": {
                     "description": "Api endpoint",
@@ -8969,6 +9023,14 @@
                 {
                     "$ref": "#/definitions/Project"
                 }
+            ],
+            "required": [
+                "role",
+                "storage",
+                "url",
+                "published_date",
+                "id",
+                "title"
             ],
             "properties": {
                 "role": {
@@ -9023,6 +9085,17 @@
                 {
                     "$ref": "#/definitions/Project"
                 }
+            ],
+            "required": [
+                "funding",
+                "funding_list",
+                "description",
+                "figshare_url",
+                "collaborators",
+                "url",
+                "published_date",
+                "id",
+                "title"
             ],
             "properties": {
                 "funding": {
@@ -9091,6 +9164,28 @@
                 {
                     "$ref": "#/definitions/ProjectPrivate"
                 }
+            ],
+            "required": [
+                "funding",
+                "funding_list",
+                "description",
+                "figshare_url",
+                "collaborators",
+                "quota",
+                "used_quota",
+                "created_date",
+                "modified_date",
+                "used_quota_private",
+                "used_quota_public",
+                "group_id",
+                "account_id",
+                "custom_fields",
+                "role",
+                "storage",
+                "url",
+                "published_date",
+                "id",
+                "title"
             ],
             "properties": {
                 "funding": {
@@ -9227,6 +9322,12 @@
         "ProjectCollaborator": {
             "x-tag": "projects",
             "type": "object",
+            "required": [
+                "status",
+                "role_name",
+                "user_id",
+                "name"
+            ],
             "properties": {
                 "status": {
                     "description": "Status of collaborator invitation",
@@ -9253,6 +9354,11 @@
         "Collaborator": {
             "x-tag": "projects",
             "type": "object",
+            "required": [
+                "role_name",
+                "user_id",
+                "name"
+            ],
             "properties": {
                 "role_name": {
                     "description": "Collaborator role",
@@ -10068,7 +10174,13 @@
             "type": "object",
             "required": [
                 "email",
-                "last_name"
+                "first_name",
+                "last_name",
+                "group_id",
+                "institution_user_id",
+                "symplectic_user_id",
+                "quota",
+                "is_active"
             ],
             "properties": {
                 "email": {
@@ -10126,6 +10238,10 @@
         "AccountUpdate": {
             "x-tag": "institutions",
             "type": "object",
+            "required": [
+                "group_id",
+                "is_active"
+            ],
             "properties": {
                 "group_id": {
                     "type": "integer",
@@ -10141,6 +10257,19 @@
         "Curation": {
             "x-tag": "institutions",
             "type": "object",
+            "required": [
+                "id",
+                "group_id",
+                "account_id",
+                "assigned_to",
+                "article_id",
+                "version",
+                "comments_count",
+                "status",
+                "created_date",
+                "modified_date",
+                "review_date"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -10207,6 +10336,20 @@
         "CurationDetail": {
             "x-tag": "institutions",
             "type": "object",
+            "required": [
+                "item",
+                "id",
+                "group_id",
+                "account_id",
+                "assigned_to",
+                "article_id",
+                "version",
+                "comments_count",
+                "status",
+                "created_date",
+                "modified_date",
+                "review_date"
+            ],
             "allOf": [
                 {
                     "$ref": "#/definitions/Curation"
@@ -10283,6 +10426,12 @@
         "CurationComment": {
             "x-tag": "institutions",
             "type": "object",
+            "required": [
+                "id",
+                "account_id",
+                "type",
+                "text"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -10896,6 +11045,23 @@
         "Article": {
             "x-tag": "articles",
             "type": "object",
+            "required": [
+                "id",
+                "title",
+                "doi",
+                "handle",
+                "group_id",
+                "url",
+                "url_public_html",
+                "url_public_api",
+                "url_private_html",
+                "url_private_api",
+                "published_date",
+                "timeline",
+                "thumb",
+                "defined_type",
+                "defined_type_name"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -10995,6 +11161,24 @@
                 {
                     "$ref": "#/definitions/Article"
                 }
+            ],
+            "required": [
+                "project_id",
+                "id",
+                "title",
+                "doi",
+                "handle",
+                "group_id",
+                "url",
+                "url_public_html",
+                "url_public_api",
+                "url_private_html",
+                "url_private_api",
+                "published_date",
+                "timeline",
+                "thumb",
+                "defined_type",
+                "defined_type_name"
             ],
             "properties": {
                 "project_id": {
@@ -11124,6 +11308,14 @@
                     "$ref": "#/definitions/TimelineUpdate"
                 }
             ],
+            "required": [
+                "posted",
+                "submission",
+                "revision",
+                "firstOnline",
+                "publisherPublication",
+                "publisherAcceptance"
+            ],
             "properties": {
                 "posted": {
                     "type": [
@@ -11173,6 +11365,48 @@
                 {
                     "$ref": "#/definitions/Article"
                 }
+            ],
+            "required": [
+                "citation",
+                "confidential_reason",
+                "embargo_type",
+                "is_confidential",
+                "size",
+                "funding",
+                "funding_list",
+                "tags",
+                "version",
+                "is_active",
+                "is_metadata_record",
+                "metadata_reason",
+                "status",
+                "description",
+                "is_embargoed",
+                "embargo_date",
+                "is_public",
+                "modified_date",
+                "created_date",
+                "has_linked_file",
+                "categories",
+                "license",
+                "embargo_title",
+                "embargo_reason",
+                "references",
+                "id",
+                "title",
+                "doi",
+                "handle",
+                "group_id",
+                "url",
+                "url_public_html",
+                "url_public_api",
+                "url_private_html",
+                "url_private_api",
+                "published_date",
+                "timeline",
+                "thumb",
+                "defined_type",
+                "defined_type_name"
             ],
             "properties": {
                 "citation": {
@@ -11425,6 +11659,55 @@
                 {
                     "$ref": "#/definitions/ProjectArticle"
                 }
+            ],
+            "required": [
+                "figshare_url",
+                "resource_title",
+                "resource_doi",
+                "files",
+                "authors",
+                "custom_fields",
+                "embargo_options",
+                "citation",
+                "confidential_reason",
+                "embargo_type",
+                "is_confidential",
+                "size",
+                "funding",
+                "funding_list",
+                "tags",
+                "version",
+                "is_active",
+                "is_metadata_record",
+                "metadata_reason",
+                "status",
+                "description",
+                "is_embargoed",
+                "embargo_date",
+                "is_public",
+                "modified_date",
+                "created_date",
+                "has_linked_file",
+                "categories",
+                "license",
+                "embargo_title",
+                "embargo_reason",
+                "references",
+                "id",
+                "title",
+                "doi",
+                "handle",
+                "group_id",
+                "url",
+                "url_public_html",
+                "url_public_api",
+                "url_private_html",
+                "url_private_api",
+                "published_date",
+                "timeline",
+                "thumb",
+                "defined_type",
+                "defined_type_name"
             ],
             "properties": {
                 "figshare_url": {
@@ -11727,6 +12010,58 @@
                 {
                     "$ref": "#/definitions/ArticleComplete"
                 }
+            ],
+            "required": [
+                "group_resource_id",
+                "account_id",
+                "figshare_url",
+                "resource_title",
+                "resource_doi",
+                "files",
+                "authors",
+                "custom_fields",
+                "embargo_options",
+                "citation",
+                "confidential_reason",
+                "embargo_type",
+                "is_confidential",
+                "size",
+                "funding",
+                "funding_list",
+                "array[integer](optional)",
+                "tags",
+                "version",
+                "is_active",
+                "is_metadata_record",
+                "metadata_reason",
+                "status",
+                "description",
+                "is_embargoed",
+                "embargo_date",
+                "is_public",
+                "modified_date",
+                "created_date",
+                "has_linked_file",
+                "categories",
+                "license",
+                "embargo_title",
+                "embargo_reason",
+                "references",
+                "id",
+                "title",
+                "doi",
+                "handle",
+                "group_id",
+                "url",
+                "url_public_html",
+                "url_public_api",
+                "url_private_html",
+                "url_private_api",
+                "published_date",
+                "timeline",
+                "thumb",
+                "defined_type",
+                "defined_type_name"
             ],
             "properties": {
                 "group_resource_id": {
@@ -12044,6 +12379,37 @@
                     "$ref": "#/definitions/Collection"
                 }
             ],
+            "required": [
+                "account_id",
+                "funding",
+                "resource_id",
+                "resource_doi",
+                "resource_title",
+                "resource_link",
+                "resource_version",
+                "version",
+                "description",
+                "categories",
+                "references",
+                "tags",
+                "authors",
+                "institution_id",
+                "group_id",
+                "articles_count",
+                "public",
+                "citation",
+                "group_resource_id",
+                "custom_fields",
+                "modified_date",
+                "created_date",
+                "timeline",
+                "id",
+                "title",
+                "doi",
+                "handle",
+                "url",
+                "published_date"
+            ],
             "properties": {
                 "account_id": {
                     "type": "integer",
@@ -12226,6 +12592,14 @@
         "Category": {
             "x-tag": "common",
             "type": "object",
+            "required": [
+                "parent_id",
+                "id",
+                "title",
+                "path",
+                "source_id",
+                "taxonomy_id"
+            ],
             "properties": {
                 "parent_id": {
                     "type": "integer",
@@ -12265,6 +12639,11 @@
         "License": {
             "x-tag": "institutions",
             "type": "object",
+            "required": [
+                "value",
+                "name",
+                "url"
+            ],
             "properties": {
                 "value": {
                     "type": "integer",
@@ -12288,6 +12667,10 @@
         "ArticleVersions": {
             "x-tag": "articles",
             "type": "object",
+            "required": [
+                "version",
+                "url"
+            ],
             "properties": {
                 "version": {
                     "type": "integer",
@@ -12306,6 +12689,10 @@
         "CollectionVersions": {
             "x-tag": "collections",
             "type": "object",
+            "required": [
+                "id",
+                "url"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -12324,6 +12711,14 @@
         "ArticleEmbargo": {
             "x-tag": "articles",
             "type": "object",
+            "required": [
+                "is_embargoed",
+                "embargo_date",
+                "embargo_type",
+                "embargo_title",
+                "embargo_reason",
+                "embargo_options"
+            ],
             "properties": {
                 "is_embargoed": {
                     "type": "boolean",
@@ -12448,6 +12843,10 @@
         "ArticleConfidentiality": {
             "x-tag": "articles",
             "type": "object",
+            "required": [
+                "is_confidential",
+                "reason"
+            ],
             "properties": {
                 "is_confidential": {
                     "type": "boolean",
@@ -12464,6 +12863,10 @@
         "CustomArticleFieldAdd": {
             "x-tag": "articles",
             "type": "object",
+            "required": [
+                "name",
+                "value"
+            ],
             "properties": {
                 "name": {
                     "description": "Custom  metadata name",
@@ -12479,6 +12882,11 @@
         "CustomArticleField": {
             "x-tag": "articles",
             "type": "object",
+            "required": [
+                "name",
+                "value",
+                "is_mandatory"
+            ],
             "properties": {
                 "name": {
                     "description": "Custom  metadata name",
@@ -12503,6 +12911,15 @@
         "PublicFile": {
             "x-tag": "common",
             "type": "object",
+            "required": [
+                "id",
+                "name",
+                "size",
+                "is_link_only",
+                "download_url",
+                "supplied_md5",
+                "computed_md5"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -12551,6 +12968,21 @@
                 {
                     "$ref": "#/definitions/PublicFile"
                 }
+            ],
+            "required": [
+                "status",
+                "viewer_type",
+                "preview_state",
+                "upload_url",
+                "upload_token",
+                "is_attached_to_public_version",
+                "id",
+                "name",
+                "size",
+                "is_link_only",
+                "download_url",
+                "supplied_md5",
+                "computed_md5"
             ],
             "properties": {
                 "status": {
@@ -12629,6 +13061,13 @@
         "Author": {
             "x-tag": "authors",
             "type": "object",
+            "required": [
+                "id",
+                "full_name",
+                "is_active",
+                "url_name",
+                "orcid_id"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -12665,6 +13104,18 @@
                 {
                     "$ref": "#/definitions/Author"
                 }
+            ],
+            "required": [
+                "institution_id",
+                "group_id",
+                "first_name",
+                "last_name",
+                "is_public",
+                "job_title",
+                "id",
+                "full_name",
+                "url_name",
+                "orcid_id"
             ],
             "properties": {
                 "institution_id": {
@@ -12725,6 +13176,24 @@
         "Account": {
             "x-tag": "other",
             "type": "object",
+            "required": [
+                "id",
+                "first_name",
+                "last_name",
+                "used_quota_private",
+                "modified_date",
+                "used_quota",
+                "created_date",
+                "quota",
+                "group_id",
+                "institution_user_id",
+                "institution_id",
+                "email",
+                "used_quota_public",
+                "pending_quota_request",
+                "active",
+                "maximum_file_size"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -12820,6 +13289,19 @@
         "ShortAccount": {
             "x-tag": "other",
             "type": "object",
+            "required": [
+                "id",
+                "first_name",
+                "last_name",
+                "institution_id",
+                "email",
+                "active",
+                "institution_user_id",
+                "quota",
+                "used_quota",
+                "user_id",
+                "orcid_id"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -12887,6 +13369,17 @@
         "User": {
             "x-tag": "other",
             "type": "object",
+            "required": [
+                "id",
+                "first_name",
+                "last_name",
+                "name",
+                "is_active",
+                "url_name",
+                "is_public",
+                "job_title",
+                "orcid_id"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -12939,6 +13432,9 @@
         "ArticleDOI": {
             "x-tag": "articles",
             "type": "object",
+            "required": [
+                "doi"
+            ],
             "properties": {
                 "doi": {
                     "type": "string",
@@ -12950,6 +13446,9 @@
         "ArticleHandle": {
             "x-tag": "articles",
             "type": "object",
+            "required": [
+                "handle"
+            ],
             "properties": {
                 "handle": {
                     "type": "string",
@@ -12961,6 +13460,9 @@
         "CollectionDOI": {
             "x-tag": "collections",
             "type": "object",
+            "required": [
+                "doi"
+            ],
             "properties": {
                 "doi": {
                     "type": "string",
@@ -12972,6 +13474,9 @@
         "CollectionHandle": {
             "x-tag": "collections",
             "type": "object",
+            "required": [
+                "handle"
+            ],
             "properties": {
                 "handle": {
                     "type": "string",
@@ -13087,6 +13592,12 @@
         "PrivateLink": {
             "x-tag": "articles",
             "type": "object",
+            "required": [
+                "id",
+                "is_active",
+                "expires_date",
+                "html_location"
+            ],
             "properties": {
                 "id": {
                     "type": "string",
@@ -13232,6 +13743,15 @@
         "Collection": {
             "x-tag": "collections",
             "type": "object",
+            "required": [
+                "id",
+                "title",
+                "doi",
+                "handle",
+                "url",
+                "timeline",
+                "published_date"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -13281,6 +13801,36 @@
                 {
                     "$ref": "#/definitions/Collection"
                 }
+            ],
+            "required": [
+                "funding",
+                "resource_id",
+                "resource_doi",
+                "resource_title",
+                "resource_link",
+                "resource_version",
+                "version",
+                "description",
+                "categories",
+                "references",
+                "tags",
+                "authors",
+                "institution_id",
+                "group_id",
+                "articles_count",
+                "public",
+                "citation",
+                "group_resource_id",
+                "custom_fields",
+                "modified_date",
+                "created_date",
+                "timeline",
+                "id",
+                "title",
+                "doi",
+                "handle",
+                "url",
+                "published_date"
             ],
             "properties": {
                 "funding": {
@@ -13816,6 +14366,9 @@
         },
         "ConfidentialityCreator": {
             "type": "object",
+            "required": [
+                "reason"
+            ],
             "properties": {
                 "reason": {
                     "description": "Reason for confidentiality",
@@ -13826,6 +14379,9 @@
         "Location": {
             "x-tag": "common",
             "type": "object",
+            "required": [
+                "location"
+            ],
             "properties": {
                 "location": {
                     "description": "Url for item",
@@ -13837,6 +14393,11 @@
         "PrivateLinkResponse": {
             "x-tag": "common",
             "type": "object",
+            "required": [
+                "location",
+                "token",
+                "html_location"
+            ],
             "properties": {
                 "location": {
                     "description": "Url for private link",
@@ -13859,6 +14420,11 @@
         "LocationWarnings": {
             "x-tag": "common",
             "type": "object",
+            "required": [
+                "entity_id",
+                "location",
+                "warnings"
+            ],
             "properties": {
                 "entity_id": {
                     "description": "Figshare ID of the entity",
@@ -13883,6 +14449,10 @@
         "CreateProjectResponse": {
             "x-tag": "common",
             "type": "object",
+            "required": [
+                "entity_id",
+                "location"
+            ],
             "properties": {
                 "entity_id": {
                     "description": "Figshare ID of the entity",
@@ -13900,6 +14470,10 @@
         "LocationWarningsUpdate": {
             "x-tag": "common",
             "type": "object",
+            "required": [
+                "location",
+                "warnings"
+            ],
             "properties": {
                 "location": {
                     "description": "Url for entity",
@@ -13918,6 +14492,14 @@
         "FundingInformation": {
             "x-tag": "funding",
             "type": "object",
+            "required": [
+                "id",
+                "title",
+                "grant_code",
+                "funder_name",
+                "is_user_defined",
+                "url"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -13963,6 +14545,10 @@
         "FundingCreate": {
             "x-tag": "funding",
             "type": "object",
+            "required": [
+                "id",
+                "title"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -13977,6 +14563,14 @@
         },
         "AccountReport": {
             "type": "object",
+            "required": [
+                "id",
+                "account_id",
+                "created_date",
+                "status",
+                "download_url",
+                "group_id"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
@@ -14017,6 +14611,15 @@
         },
         "ItemType": {
             "type": "object",
+            "required": [
+                "id",
+                "name",
+                "string_id",
+                "icon",
+                "public_description",
+                "is_selectable",
+                "url_name"
+            ],
             "properties": {
                 "id": {
                     "type": "integer",
