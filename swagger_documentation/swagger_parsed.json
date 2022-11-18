@@ -14545,10 +14545,6 @@
         "FundingCreate": {
             "x-tag": "funding",
             "type": "object",
-            "required": [
-                "id",
-                "title"
-            ],
             "properties": {
                 "id": {
                     "type": "integer",
