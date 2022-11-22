@@ -8848,13 +8848,7 @@
             "type": "object",
             "required": [
                 "email",
-                "first_name",
-                "last_name",
-                "group_id",
-                "institution_user_id",
-                "symplectic_user_id",
-                "quota",
-                "is_active"
+                "first_name"
             ],
             "properties": {
                 "email": {
@@ -10932,7 +10926,8 @@
                 "id",
                 "full_name",
                 "url_name",
-                "orcid_id"
+                "orcid_id",
+                "is_active"
             ],
             "properties": {
                 "institution_id": {
