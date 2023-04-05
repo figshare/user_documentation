@@ -1,5 +1,20 @@
 var sampleCodes = new Array();
 
+// jQuery workaround https://github.com/figshare/user_documentation/security/dependabot/11
+(function jqueryPrefilter() {
+    if(!window) {
+        return;
+    }
+
+    var instance = window.jQuery || window.$;
+
+    if (instance) {
+        instance.htmlPrefilter = function htmlPrefilter( html ) {
+            return html;
+        };
+    }
+}())
+
 
 function getSampleCodes() {
     $.getJSON("sample_code.json", function(data) {
