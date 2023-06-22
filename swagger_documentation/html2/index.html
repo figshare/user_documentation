@@ -1069,6 +1069,21 @@ margin-bottom: 20px;
         "format" : "link"
       }
     },
+    "related_materials" : {
+      "type" : "array",
+      "example" : [ {
+        "id" : 10432,
+        "identifier" : "10.6084/m9.figshare.1407024",
+        "identifier_type" : "DOI",
+        "relation" : "IsSupplementTo",
+        "title" : "Figshare for institutions brochure",
+        "is_linkout" : false
+      } ],
+      "description" : "List of related materials; supersedes references.",
+      "items" : {
+        "$ref" : "#/definitions/RelatedMaterial"
+      }
+    },
     "categories" : {
       "type" : "array",
       "example" : [ 1, 10, 11 ],
@@ -1327,6 +1342,21 @@ margin-bottom: 20px;
         "format" : "link"
       }
     },
+    "related_materials" : {
+      "type" : "array",
+      "example" : [ {
+        "id" : 10432,
+        "identifier" : "10.6084/m9.figshare.1407024",
+        "identifier_type" : "DOI",
+        "relation" : "IsSupplementTo",
+        "title" : "Figshare for institutions brochure",
+        "is_linkout" : false
+      } ],
+      "description" : "List of related materials; supersedes references.",
+      "items" : {
+        "$ref" : "#/definitions/RelatedMaterial"
+      }
+    },
     "categories" : {
       "type" : "array",
       "example" : [ 1, 10, 11 ],
@@ -1473,6 +1503,21 @@ margin-bottom: 20px;
       "items" : {
         "type" : "string",
         "format" : "link"
+      }
+    },
+    "related_materials" : {
+      "type" : "array",
+      "example" : [ {
+        "id" : 10432,
+        "identifier" : "10.6084/m9.figshare.1407024",
+        "identifier_type" : "DOI",
+        "relation" : "IsSupplementTo",
+        "title" : "Figshare for institutions brochure",
+        "is_linkout" : false
+      } ],
+      "description" : "List of related materials; supersedes references.",
+      "items" : {
+        "$ref" : "#/definitions/RelatedMaterial"
       }
     },
     "categories" : {
@@ -3165,6 +3210,52 @@ margin-bottom: 20px;
     }
   },
   "x-tag" : "common"
+};
+            defs.RelatedMaterial = {
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "integer",
+      "format" : "int64",
+      "example" : 10432,
+      "description" : "The ID of the related material; can be used to add existing materials of the same account to items."
+    },
+    "identifier" : {
+      "type" : "string",
+      "example" : "10.6084/m9.figshare.1407024",
+      "description" : "The related material identifier (e.g., DOI, Handle, ISBN)"
+    },
+    "title" : {
+      "type" : "string",
+      "example" : "Rooter: A Methodology for the Typical Unification of Access Points and Redundancy",
+      "description" : "The related material title"
+    },
+    "relation" : {
+      "type" : "string",
+      "example" : "IsSupplementTo",
+      "description" : "The relation between the item and the related material; defaults to 'References'",
+      "default" : "References",
+      "enum" : [ "IsCitedBy", "Cites", "IsSupplementTo", "IsSupplementedBy", "IsContinuedBy", "Continues", "Describes", "IsDescribedBy", "HasMetadata", "IsMetadataFor", "HasVersion", "IsVersionOf", "IsNewVersionOf", "IsPreviousVersionOf", "IsPartOf", "HasPart", "IsPublishedIn", "IsReferencedBy", "References", "IsDocumentedBy", "Documents", "IsCompiledBy", "Compiles", "IsVariantFormOf", "IsOriginalFormOf", "IsIdenticalTo", "IsReviewedBy", "Reviews", "IsDerivedFrom", "IsSourceOf", "IsRequiredBy", "Requires", "IsObsoletedBy", "Obsoletes" ]
+    },
+    "identifier_type" : {
+      "type" : "string",
+      "example" : "DOI",
+      "description" : "The type of the identifier of the related material; defaults to 'URL'",
+      "default" : "URL",
+      "enum" : [ "ARK", "arXiv", "bibcode", "DOI", "EAN13", "EISSN", "Handle", "IGSN", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PURL", "UPC", "URL", "URN", "w3id" ]
+    },
+    "is_linkout" : {
+      "type" : "boolean",
+      "example" : true,
+      "description" : "Flag for highlighting this related material in the call-out box"
+    },
+    "link" : {
+      "type" : "string",
+      "example" : "https://doi.org/10.6084/m9.figshare.1407024",
+      "description" : "The full hyperlink for the identifier",
+      "readOnly" : true
+    }
+  }
 };
             defs.Resource = {
   "type" : "object",
@@ -50198,7 +50289,7 @@ public class ProjectsApiExample {
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
         Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            LocationWarnings result = apiInstance.privateProjectArticlesCreate(projectId, article, page, pageSize, limit, offset);
+            Location result = apiInstance.privateProjectArticlesCreate(projectId, article, page, pageSize, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProjectsApi#privateProjectArticlesCreate");
@@ -50222,7 +50313,7 @@ public class ProjectsApiExample {
         Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
         Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            LocationWarnings result = apiInstance.privateProjectArticlesCreate(projectId, article, page, pageSize, limit, offset);
+            Location result = apiInstance.privateProjectArticlesCreate(projectId, article, page, pageSize, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProjectsApi#privateProjectArticlesCreate");
@@ -50257,7 +50348,7 @@ ProjectsApi *apiInstance = [[ProjectsApi alloc] init];
     pageSize:pageSize
     limit:limit
     offset:offset
-              completionHandler: ^(LocationWarnings output, NSError* error) {
+              completionHandler: ^(Location output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -50331,7 +50422,7 @@ namespace Example
             try
             {
                 // Create project article
-                LocationWarnings result = apiInstance.privateProjectArticlesCreate(projectId, article, page, pageSize, limit, offset);
+                Location result = apiInstance.privateProjectArticlesCreate(projectId, article, page, pageSize, limit, offset);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -50623,7 +50714,7 @@ $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "Created",
   "schema" : {
-    "$ref" : "#/definitions/LocationWarnings"
+    "$ref" : "#/definitions/Location"
   },
   "headers" : {
     "Location" : {
@@ -59596,7 +59687,7 @@ $(document).ready(function() {
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2023-06-16T10:18:24.281+03:00
+              Generated 2023-06-26T16:14:03.479+03:00
             </div>
           </div>
       </div>

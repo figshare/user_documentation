@@ -6473,7 +6473,7 @@
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "$ref": "#/definitions/LocationWarnings"
+                            "$ref": "#/definitions/Location"
                         },
                         "headers": {
                             "Location": {
@@ -10579,6 +10579,24 @@
                         "http://api.figshare.com"
                     ]
                 },
+                "related_materials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RelatedMaterial"
+                    },
+                    "default": [],
+                    "description": "List of related materials; supersedes references.",
+                    "example": [
+                        {
+                            "id": 10432,
+                            "identifier": "10.6084/m9.figshare.1407024",
+                            "identifier_type": "DOI",
+                            "relation": "IsSupplementTo",
+                            "title": "Figshare for institutions brochure",
+                            "is_linkout": false
+                        }
+                    ]
+                },
                 "categories": {
                     "type": "array",
                     "items": {
@@ -10759,6 +10777,24 @@
                         "http://api.figshare.com"
                     ]
                 },
+                "related_materials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RelatedMaterial"
+                    },
+                    "default": [],
+                    "description": "List of related materials; supersedes references.",
+                    "example": [
+                        {
+                            "id": 10432,
+                            "identifier": "10.6084/m9.figshare.1407024",
+                            "identifier_type": "DOI",
+                            "relation": "IsSupplementTo",
+                            "title": "Figshare for institutions brochure",
+                            "is_linkout": false
+                        }
+                    ]
+                },
                 "categories": {
                     "type": "array",
                     "items": {
@@ -10927,6 +10963,24 @@
                     "example": [
                         "http://figshare.com",
                         "http://api.figshare.com"
+                    ]
+                },
+                "related_materials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RelatedMaterial"
+                    },
+                    "default": [],
+                    "description": "List of related materials; supersedes references.",
+                    "example": [
+                        {
+                            "id": 10432,
+                            "identifier": "10.6084/m9.figshare.1407024",
+                            "identifier_type": "DOI",
+                            "relation": "IsSupplementTo",
+                            "title": "Figshare for institutions brochure",
+                            "is_linkout": false
+                        }
                     ]
                 },
                 "categories": {
@@ -11555,6 +11609,24 @@
                         "http://figshare.com/api"
                     ]
                 },
+                "related_materials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RelatedMaterial"
+                    },
+                    "default": [],
+                    "description": "List of related materials; supersedes references.",
+                    "example": [
+                        {
+                            "id": 10432,
+                            "identifier": "10.6084/m9.figshare.1407024",
+                            "identifier_type": "DOI",
+                            "relation": "IsSupplementTo",
+                            "title": "Figshare for institutions brochure",
+                            "is_linkout": false
+                        }
+                    ]
+                },
                 "id": {
                     "type": "integer",
                     "format": "int64",
@@ -11904,6 +11976,24 @@
                     "example": [
                         "http://figshare.com",
                         "http://figshare.com/api"
+                    ]
+                },
+                "related_materials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RelatedMaterial"
+                    },
+                    "default": [],
+                    "description": "List of related materials; supersedes references.",
+                    "example": [
+                        {
+                            "id": 10432,
+                            "identifier": "10.6084/m9.figshare.1407024",
+                            "identifier_type": "DOI",
+                            "relation": "IsSupplementTo",
+                            "title": "Figshare for institutions brochure",
+                            "is_linkout": false
+                        }
                     ]
                 },
                 "id": {
@@ -12272,6 +12362,24 @@
                     "example": [
                         "http://figshare.com",
                         "http://figshare.com/api"
+                    ]
+                },
+                "related_materials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RelatedMaterial"
+                    },
+                    "default": [],
+                    "description": "List of related materials; supersedes references.",
+                    "example": [
+                        {
+                            "id": 10432,
+                            "identifier": "10.6084/m9.figshare.1407024",
+                            "identifier_type": "DOI",
+                            "relation": "IsSupplementTo",
+                            "title": "Figshare for institutions brochure",
+                            "is_linkout": false
+                        }
                     ]
                 },
                 "id": {
@@ -14647,6 +14755,107 @@
                     "type": "string",
                     "example": "journal_contribution",
                     "description": "The URL name of the item type."
+                }
+            }
+        },
+        "RelatedMaterial": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The ID of the related material; can be used to add existing materials of the same account to items.",
+                    "example": 10432
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The related material identifier (e.g., DOI, Handle, ISBN)",
+                    "example": "10.6084/m9.figshare.1407024"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The related material title",
+                    "example": "Rooter: A Methodology for the Typical Unification of Access Points and Redundancy"
+                },
+                "relation": {
+                    "type": "string",
+                    "enum": [
+                        "IsCitedBy",
+                        "Cites",
+                        "IsSupplementTo",
+                        "IsSupplementedBy",
+                        "IsContinuedBy",
+                        "Continues",
+                        "Describes",
+                        "IsDescribedBy",
+                        "HasMetadata",
+                        "IsMetadataFor",
+                        "HasVersion",
+                        "IsVersionOf",
+                        "IsNewVersionOf",
+                        "IsPreviousVersionOf",
+                        "IsPartOf",
+                        "HasPart",
+                        "IsPublishedIn",
+                        "IsReferencedBy",
+                        "References",
+                        "IsDocumentedBy",
+                        "Documents",
+                        "IsCompiledBy",
+                        "Compiles",
+                        "IsVariantFormOf",
+                        "IsOriginalFormOf",
+                        "IsIdenticalTo",
+                        "IsReviewedBy",
+                        "Reviews",
+                        "IsDerivedFrom",
+                        "IsSourceOf",
+                        "IsRequiredBy",
+                        "Requires",
+                        "IsObsoletedBy",
+                        "Obsoletes"
+                    ],
+                    "description": "The relation between the item and the related material; defaults to 'References'",
+                    "example": "IsSupplementTo",
+                    "default": "References"
+                },
+                "identifier_type": {
+                    "type": "string",
+                    "enum": [
+                        "ARK",
+                        "arXiv",
+                        "bibcode",
+                        "DOI",
+                        "EAN13",
+                        "EISSN",
+                        "Handle",
+                        "IGSN",
+                        "ISBN",
+                        "ISSN",
+                        "ISTC",
+                        "LISSN",
+                        "LSID",
+                        "PMID",
+                        "PURL",
+                        "UPC",
+                        "URL",
+                        "URN",
+                        "w3id"
+                    ],
+                    "description": "The type of the identifier of the related material; defaults to 'URL'",
+                    "example": "DOI",
+                    "default": "URL"
+                },
+                "is_linkout": {
+                    "type": "boolean",
+                    "description": "Flag for highlighting this related material in the call-out box",
+                    "example": true
+                },
+                "link": {
+                    "type": "string",
+                    "description": "The full hyperlink for the identifier",
+                    "example": "https://doi.org/10.6084/m9.figshare.1407024",
+                    "readOnly": true
                 }
             }
         }
