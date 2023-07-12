@@ -10582,7 +10582,7 @@
                 "related_materials": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/RelatedMaterial"
+                        "type": "object"
                     },
                     "default": [],
                     "description": "List of related materials; supersedes references.",
@@ -10780,7 +10780,7 @@
                 "related_materials": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/RelatedMaterial"
+                        "type": "object"
                     },
                     "default": [],
                     "description": "List of related materials; supersedes references.",
@@ -10968,7 +10968,7 @@
                 "related_materials": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/RelatedMaterial"
+                        "type": "object"
                     },
                     "default": [],
                     "description": "List of related materials; supersedes references.",
@@ -11612,7 +11612,7 @@
                 "related_materials": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/RelatedMaterial"
+                        "type": "object"
                     },
                     "default": [],
                     "description": "List of related materials; supersedes references.",
@@ -11981,7 +11981,7 @@
                 "related_materials": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/RelatedMaterial"
+                        "type": "object"
                     },
                     "default": [],
                     "description": "List of related materials; supersedes references.",
@@ -12367,7 +12367,7 @@
                 "related_materials": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/RelatedMaterial"
+                        "type": "object"
                     },
                     "default": [],
                     "description": "List of related materials; supersedes references.",
