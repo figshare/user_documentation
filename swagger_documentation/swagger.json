@@ -9195,9 +9195,7 @@
                 },
                 "related_materials": {
                     "type": "array",
-                    "items": {
-                        "type": "object"
-                    },
+                    "items": {},
                     "default": [],
                     "description": "List of related materials; supersedes references.",
                     "example": [
@@ -9393,9 +9391,7 @@
                 },
                 "related_materials": {
                     "type": "array",
-                    "items": {
-                        "type": "object"
-                    },
+                    "items": {},
                     "default": [],
                     "description": "List of related materials; supersedes references.",
                     "example": [
@@ -9581,9 +9577,7 @@
                 },
                 "related_materials": {
                     "type": "array",
-                    "items": {
-                        "type": "object"
-                    },
+                    "items": {},
                     "default": [],
                     "description": "List of related materials; supersedes references.",
                     "example": [
@@ -10121,9 +10115,7 @@
                 },
                 "related_materials": {
                     "type": "array",
-                    "items": {
-                        "type": "object"
-                    },
+                    "items": {},
                     "default": [],
                     "description": "List of related materials; supersedes references.",
                     "example": [
