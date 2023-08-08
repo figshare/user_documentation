@@ -9316,6 +9316,11 @@
                     "description": "Various timeline dates", 
                     "$ref": "#/definitions/TimelineUpdate"
                 }, 
+                "download_disabled": {
+                    "type": "boolean", 
+                    "description": "If true, downloading of files for this article is disabled", 
+                    "example": false
+                }, 
                 "group_id": {
                     "type": "integer", 
                     "format": "int64", 
@@ -10194,7 +10199,8 @@
                 "timeline", 
                 "thumb", 
                 "defined_type", 
-                "defined_type_name"
+                "defined_type_name", 
+                "download_disabled"
             ], 
             "properties": {
                 "figshare_url": {
@@ -10202,6 +10208,11 @@
                     "format": "url", 
                     "description": "Article public url", 
                     "example": "http://figshare.com/articles/media/article_name/2000005"
+                }, 
+                "download_disabled": {
+                    "type": "boolean", 
+                    "description": "If true, downloading of files for this article is disabled", 
+                    "example": false
                 }, 
                 "resource_title": {
                     "type": [
@@ -10307,7 +10318,8 @@
                 "timeline", 
                 "thumb", 
                 "defined_type", 
-                "defined_type_name"
+                "defined_type_name", 
+                "download_disabled"
             ], 
             "properties": {
                 "group_resource_id": {
