@@ -8669,6 +8669,7 @@
                     "description": "The field by which to order",
                     "type": "string",
                     "enum": [
+                        "created_date",
                         "published_date",
                         "modified_date",
                         "views",
@@ -8725,6 +8726,7 @@
                     "description": "The field by which to order.",
                     "type": "string",
                     "enum": [
+                        "created_date",
                         "published_date",
                         "modified_date",
                         "views",
