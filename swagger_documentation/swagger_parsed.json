@@ -79,8 +79,8 @@
                         "description": "The field by which to order. Default varies by endpoint/resource.",
                         "type": "string",
                         "enum": [
-                            "created_date",
                             "published_date",
+                            "created_date",
                             "modified_date",
                             "views",
                             "shares",
@@ -2846,8 +2846,8 @@
                         "description": "The field by which to order. Default varies by endpoint/resource.",
                         "type": "string",
                         "enum": [
-                            "created_date",
                             "published_date",
+                            "created_date",
                             "modified_date",
                             "views",
                             "shares",
@@ -6780,7 +6780,7 @@
                     "institutions"
                 ],
                 "operationId": "institution_articles",
-                "summary": "Public Licenses",
+                "summary": "Public Institution Articles",
                 "description": "Returns a list of articles belonging to the institution",
                 "parameters": [
                     {

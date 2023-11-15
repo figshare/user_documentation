@@ -36505,7 +36505,7 @@ except ApiException as e:
                       <article id="api-Institutions-institutionArticles-0" data-group="User" data-name="institutionArticles" data-version="0">
                         <div class="pull-left">
                           <h1>institutionArticles</h1>
-                          <p>Public Licenses</p>
+                          <p>Public Institution Articles</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
@@ -36594,7 +36594,7 @@ String *filename = filename_example; //
 
 InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
 
-// Public Licenses
+// Public Institution Articles
 [apiInstance institutionArticlesWith:institutionStringId
     resourceId:resourceId
     filename:filename
@@ -36656,7 +36656,7 @@ namespace Example
 
             try
             {
-                // Public Licenses
+                // Public Institution Articles
                 array[Article] result = apiInstance.institutionArticles(institutionStringId, resourceId, filename);
                 Debug.WriteLine(result);
             }
@@ -36721,7 +36721,7 @@ resourceId = resourceId_example # String |
 filename = filename_example # String | 
 
 try: 
-    # Public Licenses
+    # Public Institution Articles
     api_response = api_instance.institution_articles(institutionStringId, resourceId, filename)
     pprint(api_response)
 except ApiException as e:
