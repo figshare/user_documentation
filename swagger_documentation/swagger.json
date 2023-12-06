@@ -11526,6 +11526,11 @@
                     "format": "int64",
                     "description": "File size in bytes; can be omitted only for linked files.",
                     "example": 70
+                },
+                "folder_path": {
+                    "type": "string",
+                    "description": "Unix-style directory path of the file; only available if the file was uploaded within a folder structure",
+                    "example": "/level1/level2/level3"
                 }
             }
         },
