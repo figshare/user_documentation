@@ -7743,7 +7743,7 @@
                 ],
                 "operationId": "private_institution_accounts_create",
                 "summary": "Create new Institution Account",
-                "description": "Create a new Account by sending account information",
+                "description": "Create a new Account by sending account information. When the institution_user_id is provided, no verification email will be sent. The email_verified flag will automatically be set to true. If the institution_user_id is not provided, a verification email will be sent. The email_verified flag will be set to true once the account is created.",
                 "security": [
                     {
                         "OAuth2": [
