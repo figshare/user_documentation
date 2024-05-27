@@ -8699,6 +8699,25 @@
                         "date",
                         "dropdown_large_list"
                     ]
+                },
+                "is_mandatory": {
+                    "description": "True if field completion is mandatory",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "example": false
+                },
+                "settings": {
+                    "description": "Settings for the custom field",
+                    "type": "object",
+                    "example": {
+                        "validations": {
+                            "min_length": 1,
+                            "max_length": 1000
+                        },
+                        "placeholder": "Enter your custom field here"
+                    }
                 }
             }
         },
