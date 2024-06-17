@@ -217,7 +217,10 @@ body and the documentation for each endpoint will present them in detail.
 
 ## Rate limiting
 
-Not implemented at this point.
+We do not have automatic rate limiting in place for API requests - however, we do have monitoring 
+in place to detect and mitigate abuse if the platform resources are being overused. We recommend 
+that clients use the API responsibly and not make more than one request per second. We reserve the 
+right to throttle or block requests if we detect abuse.
 
 
 ## Conditional requests
