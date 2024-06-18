@@ -7753,7 +7753,14 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "example": {
+                                "code": 200,
+                                "message": "OK"
+                            }
+                        }
                     },
                     "400": {
                         "description": "Bad Request"
@@ -7811,7 +7818,14 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "example": {
+                                "code": 200,
+                                "message": "OK"
+                            }
+                        }
                     },
                     "400": {
                         "description": "Bad Request"
@@ -12748,15 +12762,11 @@
                 "first_name": {
                     "type": "string",
                     "description": "First name",
-                    "maxLength": 255,
-                    "minLength": 1,
                     "example": "John"
                 },
                 "last_name": {
                     "type": "string",
                     "description": "Last Name",
-                    "maxLength": 255,
-                    "minLength": 1,
                     "example": "Doe"
                 },
                 "orcid": {
@@ -12767,8 +12777,6 @@
                 "job_title": {
                     "type": "string",
                     "description": "User job title",
-                    "maxLength": 255,
-                    "minLength": 1,
                     "example": "Researcher at institution X"
                 },
                 "fields_of_interest": {
@@ -12787,39 +12795,29 @@
                 "location": {
                     "type": "string",
                     "description": "User location",
-                    "maxLength": 255,
-                    "minLength": 1,
                     "example": "London, UK"
                 },
                 "facebook": {
                     "type": "string",
                     "format": "url",
                     "description": "User facebook URL",
-                    "maxLength": 255,
-                    "minLength": 1,
                     "example": "https://facebook.com/profile/1"
                 },
                 "x": {
                     "type": "string",
                     "format": "url",
                     "description": "User X (twitter) URL",
-                    "maxLength": 255,
-                    "minLength": 1,
                     "example": "https://x.com/profile/1"
                 },
                 "linkedin": {
                     "type": "string",
                     "format": "url",
                     "description": "User linkedin URL",
-                    "maxLength": 255,
-                    "minLength": 1,
                     "example": "https://linkedin.com/profile/2"
                 },
                 "bio": {
                     "type": "string",
                     "description": "User biographical information",
-                    "maxLength": 25000,
-                    "minLength": 1,
                     "example": "Biographical information"
                 }
             }
