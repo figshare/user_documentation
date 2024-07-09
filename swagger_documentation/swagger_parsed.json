@@ -1353,7 +1353,7 @@
                         "name": "Article",
                         "description": "Article description",
                         "schema": {
-                            "$ref": "#/definitions/ArticleUpdate"
+                            "$ref": "#/definitions/ArticleVersionUpdate"
                         },
                         "required": true
                     }
@@ -10864,6 +10864,39 @@
                     "type": "integer",
                     "format": "int64",
                     "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"
+                }
+            }
+        },
+        "ArticleVersionUpdate": {
+            "x-tag": "article_version",
+            "type": "object",
+            "properties": {
+                "supplementary_fields": {
+                    "type": "array",
+                    "description": "List of supplementary fields to be associated with the article version",
+                    "items": {
+                        "type": "object"
+                    },
+                    "default": [],
+                    "example": [
+                        {
+                            "name": "abc",
+                            "value": "def"
+                        },
+                        {
+                            "name": "fname",
+                            "value": "fvalue"
+                        }
+                    ]
+                },
+                "internal_metadata": {
+                    "type": "object",
+                    "description": "List of supplementary fields to be associated with the article version",
+                    "default": {},
+                    "example": {
+                        "curation_review_date": "2021-11-16T13:03:38",
+                        "export_pdf_download_url": null
+                    }
                 }
             }
         },

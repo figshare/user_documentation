@@ -714,6 +714,7 @@ margin-bottom: 20px;
         defs["ArticleProjectCreate"] = {"type":"object","required":["title"],"properties":{"title":{"type":"string","example":"Test article title","description":"Title of article","minLength":3,"maxLength":1000},"description":{"type":"string","example":"Test description of article","description":"The article description. In a publisher case, usually this is the remote article description","maxLength":10000,"default":""},"tags":{"type":"array","example":["tag1","tag2"],"description":"List of tags to be associated with the article. Keywords can be used instead","items":{"type":"string"}},"keywords":{"type":"array","example":["tag1","tag2"],"description":"List of tags to be associated with the article. Tags can be used instead","items":{"type":"string"}},"references":{"type":"array","example":["http://figshare.com","http://api.figshare.com"],"description":"List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])","items":{"type":"string","format":"link"}},"related_materials":{"type":"array","example":[{"id":10432,"identifier":"10.6084/m9.figshare.1407024","identifier_type":"DOI","relation":"IsSupplementTo","title":"Figshare for institutions brochure","is_linkout":false}],"description":"List of related materials; supersedes references and resource DOI/title.","items":{"$ref":"#/definitions/RelatedMaterial"}},"categories":{"type":"array","example":[1,10,11],"description":"List of category ids to be associated with the article(e.g [1, 23, 33, 66])","items":{"type":"integer","format":"int64"}},"categories_by_source_id":{"type":"array","example":["300204","400207"],"description":"List of category source ids to be associated with the article, supersedes the categories property","items":{"type":"string"}},"authors":{"type":"array","example":[{"name":"John Doe"},{"id":1000008}],"description":"List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. For adding more authors use the specific authors endpoint.","items":{"type":"object","properties":{}}},"custom_fields":{"type":"object","example":{"defined_key":"value for it"},"description":"List of key, values pairs to be associated with the article","properties":{}},"custom_fields_list":{"type":"array","description":"List of custom fields values, supersedes custom_fields parameter","items":{"$ref":"#/definitions/CustomArticleFieldAdd"}},"defined_type":{"type":"string","example":"media","description":"<b>One of:</b> <code>figure</code> <code>online resource</code> <code>preprint</code> <code>book</code> <code>conference contribution</code> <code>media</code> <code>dataset</code> <code>poster</code> <code>journal contribution</code> <code>presentation</code> <code>thesis</code> <code>software</code>"},"funding":{"type":"string","description":"Grant number or funding authority","default":""},"funding_list":{"type":"array","description":"Funding creation / update items","items":{"$ref":"#/definitions/FundingCreate"}},"license":{"type":"integer","format":"int64","example":1,"description":"License id for this article.","default":0},"doi":{"type":"string","description":"Not applicable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.","default":""},"handle":{"type":"string","description":"Not applicable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.","default":""},"resource_doi":{"type":"string","description":"Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article DOI.","default":""},"resource_title":{"type":"string","description":"Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article title.","default":""},"timeline":{"description":"Various timeline dates","$ref":"#/definitions/TimelineUpdate"}},"x-tag":"articles"};
         defs["ArticleSearch"] = {"properties":{"resource_doi":{"type":"string","example":"10.6084/m9.figshare.1407024","description":"Only return articles with this resource_doi"},"item_type":{"type":"integer","format":"int64","example":1,"description":"Only return articles with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 5 - Poster, 6 - Journal contribution, 7 - Presentation, 8 - Thesis, 9 - Software, 11 - Online resource, 12 - Preprint, 13 - Book, 14 - Conference contribution, 15 - Chapter, 16 - Peer review, 17 - Educational resource, 18 - Report, 19 - Standard, 20 - Composition, 21 - Funding, 22 - Physical object, 23 - Data management plan, 24 - Workflow, 25 - Monograph, 26 - Performance, 27 - Event, 28 - Service, 29 - Model"},"doi":{"type":"string","example":"10.6084/m9.figshare.1407024","description":"Only return articles with this doi"},"handle":{"type":"string","example":"111084/m9.figshare.14074","description":"Only return articles with this handle"},"project_id":{"type":"integer","format":"int64","example":1,"description":"Only return articles in this project"},"order":{"type":"string","example":"published_date","description":"The field by which to order","default":"created_date","enum":["created_date","published_date","modified_date","views","shares","downloads","cites"]}},"allOf":[{"$ref":"#/definitions/CommonSearch"}],"x-tag":"articles"};
         defs["ArticleUpdate"] = {"type":"object","properties":{"title":{"type":"string","example":"Test article title","description":"Title of article","minLength":3,"maxLength":1000},"description":{"type":"string","example":"Test description of article","description":"The article description. In a publisher case, usually this is the remote article description","maxLength":10000,"default":""},"is_metadata_record":{"type":"boolean","example":true,"description":"True if article has no files"},"metadata_reason":{"type":"string","example":"hosted somewhere else","description":"Article metadata reason"},"tags":{"type":"array","example":["tag1","tag2"],"description":"List of tags to be associated with the article. Keywords can be used instead","items":{"type":"string"}},"keywords":{"type":"array","example":["tag1","tag2"],"description":"List of tags to be associated with the article. Tags can be used instead","items":{"type":"string"}},"references":{"type":"array","example":["http://figshare.com","http://api.figshare.com"],"description":"List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])","items":{"type":"string","format":"link"}},"related_materials":{"type":"array","example":[{"id":10432,"identifier":"10.6084/m9.figshare.1407024","identifier_type":"DOI","relation":"IsSupplementTo","title":"Figshare for institutions brochure","is_linkout":false}],"description":"List of related materials; supersedes references and resource DOI/title.","items":{"$ref":"#/definitions/RelatedMaterial"}},"categories":{"type":"array","example":[1,10,11],"description":"List of category ids to be associated with the article(e.g [1, 23, 33, 66])","items":{"type":"integer","format":"int64"}},"categories_by_source_id":{"type":"array","example":["300204","400207"],"description":"List of category source ids to be associated with the article, supersedes the categories property","items":{"type":"string"}},"authors":{"type":"array","example":[{"name":"John Doe"},{"id":1000008}],"description":"List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. For adding more authors use the specific authors endpoint.","items":{"type":"object","properties":{}}},"custom_fields":{"type":"object","example":{"defined_key":"value for it"},"description":"List of key, values pairs to be associated with the article","properties":{}},"custom_fields_list":{"type":"array","description":"List of custom fields values, supersedes custom_fields parameter","items":{"$ref":"#/definitions/CustomArticleFieldAdd"}},"defined_type":{"type":"string","example":"media","description":"<b>One of:</b> <code>figure</code> <code>online resource</code> <code>preprint</code> <code>book</code> <code>conference contribution</code> <code>media</code> <code>dataset</code> <code>poster</code> <code>journal contribution</code> <code>presentation</code> <code>thesis</code> <code>software</code>"},"funding":{"type":"string","description":"Grant number or funding authority","default":""},"funding_list":{"type":"array","description":"Funding creation / update items","items":{"$ref":"#/definitions/FundingCreate"}},"license":{"type":"integer","format":"int64","example":1,"description":"License id for this article.","default":0},"doi":{"type":"string","description":"Not applicable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.","default":""},"handle":{"type":"string","description":"Not applicable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.","default":""},"resource_doi":{"type":"string","description":"Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article DOI.","default":""},"resource_title":{"type":"string","description":"Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article title.","default":""},"timeline":{"description":"Various timeline dates","$ref":"#/definitions/TimelineUpdate"},"download_disabled":{"type":"boolean","example":false,"description":"If true, downloading of files for this article is disabled"},"group_id":{"type":"integer","format":"int64","description":"Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"}},"x-tag":"articles"};
+        defs["ArticleVersionUpdate"] = {"type":"object","properties":{"supplementary_fields":{"type":"array","example":[{"name":"abc","value":"def"},{"name":"fname","value":"fvalue"}],"description":"List of supplementary fields to be associated with the article version","items":{"type":"object","properties":{}}},"internal_metadata":{"type":"object","example":{"curation_review_date":"2021-11-16T13:03:38","export_pdf_download_url":null},"description":"List of supplementary fields to be associated with the article version","properties":{}}},"x-tag":"article_version"};
         defs["ArticleVersions"] = {"type":"object","required":["url","version"],"properties":{"version":{"type":"integer","format":"int64","example":1,"description":"Version number"},"url":{"type":"string","format":"url","example":"https://api.figshare.com/v2/articles/2000005/versions/1","description":"Api endpoint for the item version"}},"x-tag":"articles"};
         defs["ArticleWithProject"] = {"properties":{"project_id":{"type":"integer","format":"int64","example":1,"description":"Project id for this article.","default":0}},"required":["project_id"],"allOf":[{"$ref":"#/definitions/Article"}],"x-tag":"articles_with_project"};
         defs["ArticlesCreator"] = {"type":"object","required":["articles"],"properties":{"articles":{"type":"array","example":[2000003,2000004],"description":"List of article ids","items":{"type":"integer","format":"int64","description":"Id of article"}}},"x-tag":"articles"};
@@ -3998,7 +3999,7 @@ public class ArticlesApiExample {
         ArticlesApi apiInstance = new ArticlesApi();
         Long articleId = 789; // Long | Article unique identifier
         Long versionId = 789; // Long | Article version identifier
-        ArticleUpdate article = ; // ArticleUpdate | Article description
+        ArticleVersionUpdate article = ; // ArticleVersionUpdate | Article description
         try {
             LocationWarningsUpdate result = apiInstance.articleVersionUpdate(articleId, versionId, article);
             System.out.println(result);
@@ -4019,7 +4020,7 @@ public class ArticlesApiExample {
         ArticlesApi apiInstance = new ArticlesApi();
         Long articleId = 789; // Long | Article unique identifier
         Long versionId = 789; // Long | Article version identifier
-        ArticleUpdate article = ; // ArticleUpdate | Article description
+        ArticleVersionUpdate article = ; // ArticleVersionUpdate | Article description
         try {
             LocationWarningsUpdate result = apiInstance.articleVersionUpdate(articleId, versionId, article);
             System.out.println(result);
@@ -4042,7 +4043,7 @@ public class ArticlesApiExample {
 
 Long *articleId = 789; // Article unique identifier
 Long *versionId = 789; // Article version identifier
-ArticleUpdate *article = ; // Article description
+ArticleVersionUpdate *article = ; // Article description
 
 ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 
@@ -4075,7 +4076,7 @@ var articleId = 789; // {Long} Article unique identifier
 
 var versionId = 789; // {Long} Article version identifier
 
-var article = ; // {ArticleUpdate} Article description
+var article = ; // {ArticleVersionUpdate} Article description
 
 
 var callback = function(error, data, response) {
@@ -4112,7 +4113,7 @@ namespace Example
             var apiInstance = new ArticlesApi();
             var articleId = 789;  // Long | Article unique identifier
             var versionId = 789;  // Long | Article version identifier
-            var article = new ArticleUpdate(); // ArticleUpdate | Article description
+            var article = new ArticleVersionUpdate(); // ArticleVersionUpdate | Article description
 
             try
             {
@@ -4140,7 +4141,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_AC
 $api_instance = new Swagger\Client\Api\ArticlesApi();
 $articleId = 789; // Long | Article unique identifier
 $versionId = 789; // Long | Article version identifier
-$article = ; // ArticleUpdate | Article description
+$article = ; // ArticleVersionUpdate | Article description
 
 try {
     $result = $api_instance->articleVersionUpdate($articleId, $versionId, $article);
@@ -4162,7 +4163,7 @@ $WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
 my $articleId = 789; # Long | Article unique identifier
 my $versionId = 789; # Long | Article version identifier
-my $article = WWW::SwaggerClient::Object::ArticleUpdate->new(); # ArticleUpdate | Article description
+my $article = WWW::SwaggerClient::Object::ArticleVersionUpdate->new(); # ArticleVersionUpdate | Article description
 
 eval { 
     my $result = $api_instance->articleVersionUpdate(articleId => $articleId, versionId => $versionId, article => $article);
@@ -4187,7 +4188,7 @@ swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = swagger_client.ArticlesApi()
 articleId = 789 # Long | Article unique identifier
 versionId = 789 # Long | Article version identifier
-article =  # ArticleUpdate | Article description
+article =  # ArticleVersionUpdate | Article description
 
 try: 
     # Update article version
@@ -4279,7 +4280,7 @@ $(document).ready(function() {
   "description" : "Article description",
   "required" : true,
   "schema" : {
-    "$ref" : "#/definitions/ArticleUpdate"
+    "$ref" : "#/definitions/ArticleVersionUpdate"
   }
 };
   var schema = schemaWrapper.schema;
