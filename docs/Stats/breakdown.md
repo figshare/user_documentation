@@ -54,6 +54,20 @@ The following table describes the optional parameters:
 |`sub_item_id`| Required if `sub_item` is also specified.|
 
 
+### Date intervals
+
+When `start_date` and `end_date` are both specified, a number of limitations are added depending 
+on the granularity:
+
+| Granularity    | Limits |
+|----------------|--------|
+|`day`           | `end_date` cannot be set to more than 1 year from the `start_date`|
+|`month`         | `end_date` cannot be set to more than 2 years from the `start_date`|
+|`year`          | `end_date` cannot be set to more than 5 years from the `start_date`|
+
+In case the specified `end_date` exceeds the allowed interval, it will simply be ignored
+ and the maximum allowed date will be used instead.
+
 
 ## Examples
 

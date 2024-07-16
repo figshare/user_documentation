@@ -412,6 +412,34 @@
         </tr>
         </tbody>
         </table>
+        <h3 id="description_stats_breakdown_params_date_intervals">Date intervals</h3>
+        <p>When <code>start_date</code> and <code>end_date</code> are both specified, a number of limitations are added depending 
+          on the granularity:</p>
+          <table>
+            <thead>
+            <tr>
+            <th>Granularity</th>
+            <th>Limits</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td><code>day</code></td>
+            <td><code>end_date</code> cannot be set to more than 1 year from the <code>start_date</code></td>
+            </tr>
+            <tr>
+            <td><code>month</code></td>
+            <td><code>end_date</code> cannot be set to more than 2 years from the <code>start_date</code></td>
+            </tr>
+            <tr>
+            <td><code>year</code></td>
+            <td><code>end_date</code> cannot be set to more than 5 years from the <code>start_date</code></td>
+            </tr>
+            </tbody>
+          </table>
+          <p>
+            In case the specified <code>end_date</code> exceeds the allowed interval, it will simply be ignored
+             and the maximum allowed date will be used instead.</p>
       </div>
       <div id="description_stats_breakdown_examples">
         <h2 id="examples">Examples</h2>
