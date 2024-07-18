@@ -32,5 +32,6 @@ container_images:
 .PHONY: container_images
 
 container_build:
+	docker run --rm -v $(PWD):/app figshare/user_documentation:build make build
 	docker run --rm -v $(PWD):/app figshare/user_documentation:build make swagger_build
 .PHONY: container_build
