@@ -7717,7 +7717,7 @@
                 }
             }
         },
-        "/account/profile/{user_id}": {
+        "/account/profile": {
             "put": {
                 "tags": [
                     "profiles"
@@ -7735,12 +7735,19 @@
                 "parameters": [
                     {
                         "name": "user_id",
-                        "in": "path",
+                        "in": "query",
                         "description": "User ID",
-                        "required": true,
+                        "required": false,
                         "type": "integer",
                         "format": "int64",
                         "minimum": 1
+                    },
+                    {
+                        "name": "institution_user_id",
+                        "in": "query",
+                        "description": "Institutional user ID",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "in": "body",
@@ -12823,6 +12830,18 @@
                         "type": "integer",
                         "format": "int64",
                         "description": "Id of category"
+                    }
+                },
+                "fields_of_interest_by_source_id": {
+                    "type": "array",
+                    "description": "User fields of interest (category source IDs), supersedes the fields_of_interest property",
+                    "example": [
+                        "3204",
+                        "320401"
+                    ],
+                    "items": {
+                        "type": "string",
+                        "description": "Source ID of category"
                     }
                 },
                 "location": {
