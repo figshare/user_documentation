@@ -9055,7 +9055,7 @@
                     "type": "string",
                     "description": "Project description",
                     "example": "project description",
-                    "maxLength": 10000
+                    "maxLength": 20000
                 },
                 "funding": {
                     "type": "string",
@@ -9106,7 +9106,7 @@
                     "type": "string",
                     "description": "Project description",
                     "example": "project description",
-                    "maxLength": 10000
+                    "maxLength": 20000
                 },
                 "funding": {
                     "type": "string",
@@ -10690,7 +10690,7 @@
                     "description": "The article description. In a publisher case, usually this is the remote article description",
                     "default": "",
                     "example": "Test description of article",
-                    "maxLength": 10000
+                    "maxLength": 20000
                 },
                 "is_metadata_record": {
                     "description": "True if article has no files",
@@ -10926,7 +10926,7 @@
                     "description": "The article description. In a publisher case, usually this is the remote article description",
                     "default": "",
                     "example": "Test description of article",
-                    "maxLength": 10000
+                    "maxLength": 20000
                 },
                 "is_metadata_record": {
                     "description": "True if article has no files",
@@ -11124,7 +11124,7 @@
                     "description": "The article description. In a publisher case, usually this is the remote article description",
                     "default": "",
                     "example": "Test description of article",
-                    "maxLength": 10000
+                    "maxLength": 20000
                 },
                 "tags": {
                     "type": "array",
@@ -14369,7 +14369,7 @@
                     "description": "The collection description. In a publisher case, usually this is the remote collection description",
                     "default": "",
                     "example": "Test description of article",
-                    "maxLength": 10000
+                    "maxLength": 20000
                 },
                 "articles": {
                     "type": "array",
@@ -14547,7 +14547,7 @@
                     "description": "The collection description. In a publisher case, usually this is the remote collection description",
                     "default": "",
                     "example": "Test description of collection",
-                    "maxLength": 10000
+                    "maxLength": 20000
                 },
                 "articles": {
                     "type": "array",
