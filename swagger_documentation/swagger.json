@@ -12871,6 +12871,36 @@
                     "type": "string",
                     "description": "User biographical information",
                     "example": "Biographical information"
+                },
+                "personal_profiles": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "label": {
+                                "type": "string",
+                                "description": "Label for the personal profile link",
+                                "example": "ResearchGate"
+                            },
+                            "url": {
+                                "type": "string",
+                                "format": "url",
+                                "description": "URL for the personal profile link",
+                                "example": "https://researchgate.net/profile/1"
+                            }
+                        }
+                    },
+                    "description": "Add up to 10 additional personal profile links",
+                    "example": [
+                        {
+                            "label": "ResearchGate",
+                            "url": "https://researchgate.net/profile/1"
+                        },
+                        {
+                            "label": "",
+                            "url": "https://academia.edu/profile/1"
+                        }
+                    ]
                 }
             }
         }
