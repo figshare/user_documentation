@@ -9413,7 +9413,7 @@
                 },
                 "custom_fields": {
                     "type": "object",
-                    "description": "List of key, values pairs to be associated with the article",
+                    "description": "Custom fields can be provided in one of two formats: \n\n1. As an object of key-value pairs.\n\n```\n{\n  \"Custom field 1 name\": \"Value for custom field 1\",\n  \"Custom field 2 name\": \"Value for custom field 2\"\n}\n```\n\n2. As an array of objects with 'name' and 'value' pairs.\n\n```\n[\n  {\n    \"name\": \"Custom field 1 name\",\n    \"value\": \"Value for custom field 1\"\n  },\n  {\n    \"name\": \"Custom field 2 name\",\n    \"value\": \"Value for custom field 2\"\n  }\n]\n```",
                     "example": {
                         "defined_key": "value for it"
                     }
@@ -9649,7 +9649,7 @@
                 },
                 "custom_fields": {
                     "type": "object",
-                    "description": "List of key, values pairs to be associated with the article",
+                    "description": "Custom fields can be provided in one of two formats: \n\n1. As an object of key-value pairs.\n\n```\n{\n  \"Custom field 1 name\": \"Value for custom field 1\",\n  \"Custom field 2 name\": \"Value for custom field 2\"\n}\n```\n\n2. As an array of objects with 'name' and 'value' pairs.\n\n```\n[\n  {\n    \"name\": \"Custom field 1 name\",\n    \"value\": \"Value for custom field 1\"\n  },\n  {\n    \"name\": \"Custom field 2 name\",\n    \"value\": \"Value for custom field 2\"\n  }\n]\n```",
                     "example": {
                         "defined_key": "value for it"
                     }
