@@ -10331,6 +10331,9 @@
         },
         "AccountCreate": {
             "x-tag": "institutions",
+            "x-maxCombinedLength": {
+                "description": "The combined length of first_name and last_name must not exceed 255 characters."
+            },
             "type": "object",
             "required": [
                 "email",
@@ -10349,14 +10352,14 @@
                     "description": "First Name",
                     "default": "",
                     "example": "John",
-                    "maxLength": 30
+                    "maxLength": 255
                 },
                 "last_name": {
                     "type": "string",
                     "description": "Last Name",
                     "default": "",
                     "example": "Doe",
-                    "maxLength": 30
+                    "maxLength": 255
                 },
                 "group_id": {
                     "type": "integer",
