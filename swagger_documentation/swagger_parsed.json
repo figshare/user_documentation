@@ -10850,6 +10850,16 @@
                     "description": "Not applicable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
                     "default": ""
                 },
+                "resource_doi": {
+                    "type": "string",
+                    "description": "Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article DOI.",
+                    "default": ""
+                },
+                "resource_title": {
+                    "type": "string",
+                    "description": "Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article title.",
+                    "default": ""
+                },
                 "timeline": {
                     "type": "object",
                     "description": "Various timeline dates",
@@ -11076,6 +11086,16 @@
                     "description": "Not applicable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
                     "default": ""
                 },
+                "resource_doi": {
+                    "type": "string",
+                    "description": "Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article DOI.",
+                    "default": ""
+                },
+                "resource_title": {
+                    "type": "string",
+                    "description": "Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article title.",
+                    "default": ""
+                },
                 "timeline": {
                     "type": "object",
                     "description": "Various timeline dates",
@@ -11252,6 +11272,16 @@
                 "handle": {
                     "type": "string",
                     "description": "Not applicable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
+                    "default": ""
+                },
+                "resource_doi": {
+                    "type": "string",
+                    "description": "Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article DOI.",
+                    "default": ""
+                },
+                "resource_title": {
+                    "type": "string",
+                    "description": "Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article title.",
                     "default": ""
                 },
                 "timeline": {
@@ -11901,6 +11931,8 @@
             ],
             "required": [
                 "figshare_url",
+                "resource_title",
+                "resource_doi",
                 "files",
                 "authors",
                 "custom_fields",
@@ -11958,6 +11990,22 @@
                     "type": "boolean",
                     "description": "If true, downloading of files for this article is disabled",
                     "example": false
+                },
+                "resource_title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Article resource title",
+                    "example": "first article"
+                },
+                "resource_doi": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Article DOI",
+                    "example": "10.5072/FK2.developmentfigshare.2000005"
                 },
                 "files": {
                     "type": "array",
@@ -12262,6 +12310,8 @@
                 "group_resource_id",
                 "account_id",
                 "figshare_url",
+                "resource_title",
+                "resource_doi",
                 "files",
                 "authors",
                 "custom_fields",
@@ -12334,6 +12384,22 @@
                     "type": "boolean",
                     "description": "If true, downloading of files for this article is disabled",
                     "example": false
+                },
+                "resource_title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Article resource title",
+                    "example": "first article"
+                },
+                "resource_doi": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Article DOI",
+                    "example": "10.5072/FK2.developmentfigshare.2000005"
                 },
                 "files": {
                     "type": "array",
