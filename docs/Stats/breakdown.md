@@ -64,6 +64,7 @@ on the granularity:
 |`day`           | `end_date` cannot be set to more than 1 year from the `start_date`|
 |`month`         | `end_date` cannot be set to more than 2 years from the `start_date`|
 |`year`          | `end_date` cannot be set to more than 5 years from the `start_date`|
+|`total`         | `end_date` cannot be set to more than 1 year from the `start_date`|
 
 In case the specified `end_date` exceeds the allowed interval, it will simply be ignored
  and the maximum allowed date will be used instead.
