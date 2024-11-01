@@ -13395,6 +13395,8 @@
             "required": [
                 "id",
                 "full_name",
+                "first_name",
+                "last_name",
                 "is_active",
                 "url_name",
                 "orcid_id"
@@ -13410,6 +13412,16 @@
                     "type": "string",
                     "description": "Author full name",
                     "example": "John Doe"
+                },
+                "first_name": {
+                    "type": "string",
+                    "description": "Author first name",
+                    "example": "John"
+                },
+                "last_name": {
+                    "type": "string",
+                    "description": "Author last name",
+                    "example": "Doe"
                 },
                 "is_active": {
                     "type": "boolean",
@@ -13462,11 +13474,13 @@
                 },
                 "first_name": {
                     "type": "string",
-                    "description": "First Name"
+                    "description": "Author first name",
+                    "example": "John"
                 },
                 "last_name": {
                     "type": "string",
-                    "description": "Last Name"
+                    "description": "Author last name",
+                    "example": "Doe"
                 },
                 "is_public": {
                     "type": "integer",
