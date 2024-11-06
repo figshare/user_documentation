@@ -134,7 +134,7 @@
                     {
                         "name": "resource_doi",
                         "in": "query",
-                        "description": "only return articles with this resource_doi",
+                        "description": "Deprecated by related materials. Only return articles with this resource_doi",
                         "type": "string",
                         "required": false
                     },
@@ -9909,6 +9909,8 @@
             "required": [
                 "id",
                 "title",
+                "resource_doi",
+                "resource_title",
                 "doi",
                 "handle",
                 "group_id",
@@ -10012,6 +10014,16 @@
                     "type": "string",
                     "description": "Name of the article type identifier",
                     "example": "media"
+                },
+                "resource_doi": {
+                    "type": "string",
+                    "description": "Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article DOI.",
+                    "default": ""
+                },
+                "resource_title": {
+                    "type": "string",
+                    "description": "Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article title.",
+                    "default": ""
                 }
             }
         },
@@ -10409,22 +10421,6 @@
                     "type": "boolean",
                     "description": "If true, downloading of files for this article is disabled",
                     "example": false
-                },
-                "resource_title": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "description": "Article resource title",
-                    "example": "first article"
-                },
-                "resource_doi": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "description": "Article DOI",
-                    "example": "10.5072/FK2.developmentfigshare.2000005"
                 },
                 "files": {
                     "type": "array",
