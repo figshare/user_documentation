@@ -2590,7 +2590,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Articles-articleFiles-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/articles/{article_id}/files"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/articles/{article_id}/files?page=&page_size=&limit=&offset="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Articles-articleFiles-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -2607,8 +2607,12 @@ public class ArticlesApiExample {
         
         ArticlesApi apiInstance = new ArticlesApi();
         Long articleId = 789; // Long | Article Unique identifier
+        Long page = 789; // Long | Page number. Used for pagination with page_size
+        Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
+        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
+        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            array[PublicFile] result = apiInstance.articleFiles(articleId);
+            array[PublicFile] result = apiInstance.articleFiles(articleId, page, pageSize, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#articleFiles");
@@ -2626,8 +2630,12 @@ public class ArticlesApiExample {
     public static void main(String[] args) {
         ArticlesApi apiInstance = new ArticlesApi();
         Long articleId = 789; // Long | Article Unique identifier
+        Long page = 789; // Long | Page number. Used for pagination with page_size
+        Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
+        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
+        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            array[PublicFile] result = apiInstance.articleFiles(articleId);
+            array[PublicFile] result = apiInstance.articleFiles(articleId, page, pageSize, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#articleFiles");
@@ -2642,11 +2650,19 @@ public class ArticlesApiExample {
   </div> -->
                             <div class="tab-pane" id="examples-Articles-articleFiles-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Long *articleId = 789; // Article Unique identifier
+Long *page = 789; // Page number. Used for pagination with page_size (optional)
+Long *pageSize = 789; // The number of results included on a page. Used for pagination with page (optional) (default to 10)
+Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
+Long *offset = 789; // Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
 
 ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 
 // List article files
 [apiInstance articleFilesWith:articleId
+    page:page
+    pageSize:pageSize
+    limit:limit
+    offset:offset
               completionHandler: ^(array[PublicFile] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -2665,6 +2681,12 @@ var api = new FigshareApi.ArticlesApi()
 
 var articleId = 789; // {Long} Article Unique identifier
 
+var opts = { 
+  'page': 789, // {Long} Page number. Used for pagination with page_size
+  'pageSize': 789, // {Long} The number of results included on a page. Used for pagination with page
+  'limit': 789, // {Long} Number of results included on a page. Used for pagination with query
+  'offset': 789 // {Long} Where to start the listing(the offset of the first result). Used for pagination with limit
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -2673,7 +2695,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.articleFiles(articleId, callback);
+api.articleFiles(articleId, opts, callback);
 </code></pre>
                             </div>
 
@@ -2696,11 +2718,15 @@ namespace Example
             
             var apiInstance = new ArticlesApi();
             var articleId = 789;  // Long | Article Unique identifier
+            var page = 789;  // Long | Page number. Used for pagination with page_size (optional) 
+            var pageSize = 789;  // Long | The number of results included on a page. Used for pagination with page (optional)  (default to 10)
+            var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
+            var offset = 789;  // Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional) 
 
             try
             {
                 // List article files
-                array[PublicFile] result = apiInstance.articleFiles(articleId);
+                array[PublicFile] result = apiInstance.articleFiles(articleId, page, pageSize, limit, offset);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2719,9 +2745,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\ArticlesApi();
 $articleId = 789; // Long | Article Unique identifier
+$page = 789; // Long | Page number. Used for pagination with page_size
+$pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
+$limit = 789; // Long | Number of results included on a page. Used for pagination with query
+$offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
 
 try {
-    $result = $api_instance->articleFiles($articleId);
+    $result = $api_instance->articleFiles($articleId, $page, $pageSize, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ArticlesApi->articleFiles: ', $e->getMessage(), PHP_EOL;
@@ -2736,9 +2766,13 @@ use WWW::SwaggerClient::ArticlesApi;
 
 my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
 my $articleId = 789; # Long | Article Unique identifier
+my $page = 789; # Long | Page number. Used for pagination with page_size
+my $pageSize = 789; # Long | The number of results included on a page. Used for pagination with page
+my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
+my $offset = 789; # Long | Where to start the listing(the offset of the first result). Used for pagination with limit
 
 eval { 
-    my $result = $api_instance->articleFiles(articleId => $articleId);
+    my $result = $api_instance->articleFiles(articleId => $articleId, page => $page, pageSize => $pageSize, limit => $limit, offset => $offset);
     print Dumper($result);
 };
 if ($@) {
@@ -2756,10 +2790,14 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ArticlesApi()
 articleId = 789 # Long | Article Unique identifier
+page = 789 # Long | Page number. Used for pagination with page_size (optional)
+pageSize = 789 # Long | The number of results included on a page. Used for pagination with page (optional) (default to 10)
+limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
+offset = 789 # Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
 
 try: 
     # List article files
-    api_response = api_instance.article_files(articleId)
+    api_response = api_instance.article_files(articleId, page=page, pageSize=pageSize, limit=limit, offset=offset)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ArticlesApi->articleFiles: %s\n" % e)</code></pre>
@@ -2805,6 +2843,105 @@ except ApiException as e:
 
 
 
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">page</td>
+<td>
+
+
+    <div id="d2e199_articleFiles_page">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Page number. Used for pagination with page_size
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">page_size</td>
+<td>
+
+
+    <div id="d2e199_articleFiles_pageSize">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        The number of results included on a page. Used for pagination with page
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">limit</td>
+<td>
+
+
+    <div id="d2e199_articleFiles_limit">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Number of results included on a page. Used for pagination with query
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">offset</td>
+<td>
+
+
+    <div id="d2e199_articleFiles_offset">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Where to start the listing(the offset of the first result). Used for pagination with limit
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
                           <h2>Responses</h2>
                             <h3> Status: 200 - OK. List of article files </h3>
@@ -13758,7 +13895,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Articles-privateArticleFilesList-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/account/articles/{article_id}/files"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/account/articles/{article_id}/files?page=&page_size=&limit=&offset="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Articles-privateArticleFilesList-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -13780,8 +13917,12 @@ public class ArticlesApiExample {
 
         ArticlesApi apiInstance = new ArticlesApi();
         Long articleId = 789; // Long | Article unique identifier
+        Long page = 789; // Long | Page number. Used for pagination with page_size
+        Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
+        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
+        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            array[PrivateFile] result = apiInstance.privateArticleFilesList(articleId);
+            array[PrivateFile] result = apiInstance.privateArticleFilesList(articleId, page, pageSize, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticleFilesList");
@@ -13799,8 +13940,12 @@ public class ArticlesApiExample {
     public static void main(String[] args) {
         ArticlesApi apiInstance = new ArticlesApi();
         Long articleId = 789; // Long | Article unique identifier
+        Long page = 789; // Long | Page number. Used for pagination with page_size
+        Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
+        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
+        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            array[PrivateFile] result = apiInstance.privateArticleFilesList(articleId);
+            array[PrivateFile] result = apiInstance.privateArticleFilesList(articleId, page, pageSize, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticleFilesList");
@@ -13820,11 +13965,19 @@ public class ArticlesApiExample {
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 Long *articleId = 789; // Article unique identifier
+Long *page = 789; // Page number. Used for pagination with page_size (optional)
+Long *pageSize = 789; // The number of results included on a page. Used for pagination with page (optional) (default to 10)
+Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
+Long *offset = 789; // Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
 
 ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 
 // List article files
 [apiInstance privateArticleFilesListWith:articleId
+    page:page
+    pageSize:pageSize
+    limit:limit
+    offset:offset
               completionHandler: ^(array[PrivateFile] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -13848,6 +14001,12 @@ var api = new FigshareApi.ArticlesApi()
 
 var articleId = 789; // {Long} Article unique identifier
 
+var opts = { 
+  'page': 789, // {Long} Page number. Used for pagination with page_size
+  'pageSize': 789, // {Long} The number of results included on a page. Used for pagination with page
+  'limit': 789, // {Long} Number of results included on a page. Used for pagination with query
+  'offset': 789 // {Long} Where to start the listing(the offset of the first result). Used for pagination with limit
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -13856,7 +14015,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.privateArticleFilesList(articleId, , callback);
+api.privateArticleFilesList(articleId, , opts, callback);
 </code></pre>
                             </div>
 
@@ -13882,11 +14041,15 @@ namespace Example
 
             var apiInstance = new ArticlesApi();
             var articleId = 789;  // Long | Article unique identifier
+            var page = 789;  // Long | Page number. Used for pagination with page_size (optional) 
+            var pageSize = 789;  // Long | The number of results included on a page. Used for pagination with page (optional)  (default to 10)
+            var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
+            var offset = 789;  // Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional) 
 
             try
             {
                 // List article files
-                array[PrivateFile] result = apiInstance.privateArticleFilesList(articleId);
+                array[PrivateFile] result = apiInstance.privateArticleFilesList(articleId, page, pageSize, limit, offset);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -13908,9 +14071,13 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_AC
 
 $api_instance = new Swagger\Client\Api\ArticlesApi();
 $articleId = 789; // Long | Article unique identifier
+$page = 789; // Long | Page number. Used for pagination with page_size
+$pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
+$limit = 789; // Long | Number of results included on a page. Used for pagination with query
+$offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
 
 try {
-    $result = $api_instance->privateArticleFilesList($articleId);
+    $result = $api_instance->privateArticleFilesList($articleId, $page, $pageSize, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ArticlesApi->privateArticleFilesList: ', $e->getMessage(), PHP_EOL;
@@ -13928,9 +14095,13 @@ $WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
 my $articleId = 789; # Long | Article unique identifier
+my $page = 789; # Long | Page number. Used for pagination with page_size
+my $pageSize = 789; # Long | The number of results included on a page. Used for pagination with page
+my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
+my $offset = 789; # Long | Where to start the listing(the offset of the first result). Used for pagination with limit
 
 eval { 
-    my $result = $api_instance->privateArticleFilesList(articleId => $articleId);
+    my $result = $api_instance->privateArticleFilesList(articleId => $articleId, page => $page, pageSize => $pageSize, limit => $limit, offset => $offset);
     print Dumper($result);
 };
 if ($@) {
@@ -13951,10 +14122,14 @@ swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = swagger_client.ArticlesApi()
 articleId = 789 # Long | Article unique identifier
+page = 789 # Long | Page number. Used for pagination with page_size (optional)
+pageSize = 789 # Long | The number of results included on a page. Used for pagination with page (optional) (default to 10)
+limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
+offset = 789 # Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
 
 try: 
     # List article files
-    api_response = api_instance.private_article_files_list(articleId)
+    api_response = api_instance.private_article_files_list(articleId, page=page, pageSize=pageSize, limit=limit, offset=offset)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ArticlesApi->privateArticleFilesList: %s\n" % e)</code></pre>
@@ -14000,6 +14175,105 @@ except ApiException as e:
 
 
 
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">page</td>
+<td>
+
+
+    <div id="d2e199_privateArticleFilesList_page">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Page number. Used for pagination with page_size
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">page_size</td>
+<td>
+
+
+    <div id="d2e199_privateArticleFilesList_pageSize">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        The number of results included on a page. Used for pagination with page
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">limit</td>
+<td>
+
+
+    <div id="d2e199_privateArticleFilesList_limit">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Number of results included on a page. Used for pagination with query
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">offset</td>
+<td>
+
+
+    <div id="d2e199_privateArticleFilesList_offset">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Where to start the listing(the offset of the first result). Used for pagination with limit
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
                           <h2>Responses</h2>
                             <h3> Status: 200 - OK. Article files list </h3>
@@ -18353,7 +18627,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Articles-privateArticleUploadInitiate-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/articles/{article_id}/files"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/articles/{article_id}/files?page=&page_size=&limit=&offset="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Articles-privateArticleUploadInitiate-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -18376,8 +18650,12 @@ public class ArticlesApiExample {
         ArticlesApi apiInstance = new ArticlesApi();
         Long articleId = 789; // Long | Article unique identifier
         FileCreator file = ; // FileCreator | 
+        Long page = 789; // Long | Page number. Used for pagination with page_size
+        Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
+        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
+        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            Location result = apiInstance.privateArticleUploadInitiate(articleId, file);
+            Location result = apiInstance.privateArticleUploadInitiate(articleId, file, page, pageSize, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticleUploadInitiate");
@@ -18396,8 +18674,12 @@ public class ArticlesApiExample {
         ArticlesApi apiInstance = new ArticlesApi();
         Long articleId = 789; // Long | Article unique identifier
         FileCreator file = ; // FileCreator | 
+        Long page = 789; // Long | Page number. Used for pagination with page_size
+        Long pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
+        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
+        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
         try {
-            Location result = apiInstance.privateArticleUploadInitiate(articleId, file);
+            Location result = apiInstance.privateArticleUploadInitiate(articleId, file, page, pageSize, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArticlesApi#privateArticleUploadInitiate");
@@ -18418,12 +18700,20 @@ public class ArticlesApiExample {
 
 Long *articleId = 789; // Article unique identifier
 FileCreator *file = ; // 
+Long *page = 789; // Page number. Used for pagination with page_size (optional)
+Long *pageSize = 789; // The number of results included on a page. Used for pagination with page (optional) (default to 10)
+Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
+Long *offset = 789; // Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
 
 ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
 
 // Initiate Upload
 [apiInstance privateArticleUploadInitiateWith:articleId
     file:file
+    page:page
+    pageSize:pageSize
+    limit:limit
+    offset:offset
               completionHandler: ^(Location output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -18449,6 +18739,12 @@ var articleId = 789; // {Long} Article unique identifier
 
 var file = ; // {FileCreator} 
 
+var opts = { 
+  'page': 789, // {Long} Page number. Used for pagination with page_size
+  'pageSize': 789, // {Long} The number of results included on a page. Used for pagination with page
+  'limit': 789, // {Long} Number of results included on a page. Used for pagination with query
+  'offset': 789 // {Long} Where to start the listing(the offset of the first result). Used for pagination with limit
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -18457,7 +18753,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.privateArticleUploadInitiate(articleId, file, callback);
+api.privateArticleUploadInitiate(articleId, file, opts, callback);
 </code></pre>
                             </div>
 
@@ -18484,11 +18780,15 @@ namespace Example
             var apiInstance = new ArticlesApi();
             var articleId = 789;  // Long | Article unique identifier
             var file = new FileCreator(); // FileCreator | 
+            var page = 789;  // Long | Page number. Used for pagination with page_size (optional) 
+            var pageSize = 789;  // Long | The number of results included on a page. Used for pagination with page (optional)  (default to 10)
+            var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
+            var offset = 789;  // Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional) 
 
             try
             {
                 // Initiate Upload
-                Location result = apiInstance.privateArticleUploadInitiate(articleId, file);
+                Location result = apiInstance.privateArticleUploadInitiate(articleId, file, page, pageSize, limit, offset);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -18511,9 +18811,13 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_AC
 $api_instance = new Swagger\Client\Api\ArticlesApi();
 $articleId = 789; // Long | Article unique identifier
 $file = ; // FileCreator | 
+$page = 789; // Long | Page number. Used for pagination with page_size
+$pageSize = 789; // Long | The number of results included on a page. Used for pagination with page
+$limit = 789; // Long | Number of results included on a page. Used for pagination with query
+$offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
 
 try {
-    $result = $api_instance->privateArticleUploadInitiate($articleId, $file);
+    $result = $api_instance->privateArticleUploadInitiate($articleId, $file, $page, $pageSize, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ArticlesApi->privateArticleUploadInitiate: ', $e->getMessage(), PHP_EOL;
@@ -18532,9 +18836,13 @@ $WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
 my $articleId = 789; # Long | Article unique identifier
 my $file = WWW::SwaggerClient::Object::FileCreator->new(); # FileCreator | 
+my $page = 789; # Long | Page number. Used for pagination with page_size
+my $pageSize = 789; # Long | The number of results included on a page. Used for pagination with page
+my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
+my $offset = 789; # Long | Where to start the listing(the offset of the first result). Used for pagination with limit
 
 eval { 
-    my $result = $api_instance->privateArticleUploadInitiate(articleId => $articleId, file => $file);
+    my $result = $api_instance->privateArticleUploadInitiate(articleId => $articleId, file => $file, page => $page, pageSize => $pageSize, limit => $limit, offset => $offset);
     print Dumper($result);
 };
 if ($@) {
@@ -18556,10 +18864,14 @@ swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = swagger_client.ArticlesApi()
 articleId = 789 # Long | Article unique identifier
 file =  # FileCreator | 
+page = 789 # Long | Page number. Used for pagination with page_size (optional)
+pageSize = 789 # Long | The number of results included on a page. Used for pagination with page (optional) (default to 10)
+limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
+offset = 789 # Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
 
 try: 
     # Initiate Upload
-    api_response = api_instance.private_article_upload_initiate(articleId, file)
+    api_response = api_instance.private_article_upload_initiate(articleId, file, page=page, pageSize=pageSize, limit=limit, offset=offset)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ArticlesApi->privateArticleUploadInitiate: %s\n" % e)</code></pre>
@@ -18646,6 +18958,105 @@ $(document).ready(function() {
                             </table>
 
 
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">page</td>
+<td>
+
+
+    <div id="d2e199_privateArticleUploadInitiate_page">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Page number. Used for pagination with page_size
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">page_size</td>
+<td>
+
+
+    <div id="d2e199_privateArticleUploadInitiate_pageSize">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        The number of results included on a page. Used for pagination with page
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">limit</td>
+<td>
+
+
+    <div id="d2e199_privateArticleUploadInitiate_limit">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Number of results included on a page. Used for pagination with query
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">offset</td>
+<td>
+
+
+    <div id="d2e199_privateArticleUploadInitiate_offset">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Where to start the listing(the offset of the first result). Used for pagination with limit
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
                           <h2>Responses</h2>
                             <h3> Status: 201 - Created </h3>
