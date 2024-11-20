@@ -8463,7 +8463,7 @@
                 "tags": [
                     "institutions"
                 ],
-                "operationId": "account_institution_curation_comments",
+                "operationId": "get_account_institution_curation_comments",
                 "summary": "Institution Curation Review Comments",
                 "description": "Retrieve a certain curation review's comments.",
                 "security": [
@@ -8533,7 +8533,7 @@
                 "tags": [
                     "institutions"
                 ],
-                "operationId": "account_institution_curation_comments",
+                "operationId": "post_account_institution_curation_comments",
                 "summary": "POST Institution Curation Review Comment",
                 "description": "Add a new comment to the review.",
                 "security": [
