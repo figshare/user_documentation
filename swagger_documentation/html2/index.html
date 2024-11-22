@@ -1055,12 +1055,6 @@ margin-bottom: 20px;
                     <li data-group="Institutions" data-name="accountInstitutionCuration" class="">
                       <a href="#api-Institutions-accountInstitutionCuration">accountInstitutionCuration</a>
                     </li>
-                    <li data-group="Institutions" data-name="accountInstitutionCurationComments" class="">
-                      <a href="#api-Institutions-accountInstitutionCurationComments">accountInstitutionCurationComments</a>
-                    </li>
-                    <li data-group="Institutions" data-name="accountInstitutionCurationComments_1" class="">
-                      <a href="#api-Institutions-accountInstitutionCurationComments_1">accountInstitutionCurationComments_1</a>
-                    </li>
                     <li data-group="Institutions" data-name="accountInstitutionCurations" class="">
                       <a href="#api-Institutions-accountInstitutionCurations">accountInstitutionCurations</a>
                     </li>
@@ -1070,11 +1064,17 @@ margin-bottom: 20px;
                     <li data-group="Institutions" data-name="customFieldsUpload" class="">
                       <a href="#api-Institutions-customFieldsUpload">customFieldsUpload</a>
                     </li>
+                    <li data-group="Institutions" data-name="getAccountInstitutionCurationComments" class="">
+                      <a href="#api-Institutions-getAccountInstitutionCurationComments">getAccountInstitutionCurationComments</a>
+                    </li>
                     <li data-group="Institutions" data-name="institutionArticles" class="">
                       <a href="#api-Institutions-institutionArticles">institutionArticles</a>
                     </li>
                     <li data-group="Institutions" data-name="institutionHrfeedUpload" class="">
                       <a href="#api-Institutions-institutionHrfeedUpload">institutionHrfeedUpload</a>
+                    </li>
+                    <li data-group="Institutions" data-name="postAccountInstitutionCurationComments" class="">
+                      <a href="#api-Institutions-postAccountInstitutionCurationComments">postAccountInstitutionCurationComments</a>
                     </li>
                     <li data-group="Institutions" data-name="privateAccountInstitutionUser" class="">
                       <a href="#api-Institutions-privateAccountInstitutionUser">privateAccountInstitutionUser</a>
@@ -34738,865 +34738,6 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
-                    <div id="api-Institutions-accountInstitutionCurationComments">
-                      <article id="api-Institutions-accountInstitutionCurationComments-0" data-group="User" data-name="accountInstitutionCurationComments" data-version="0">
-                        <div class="pull-left">
-                          <h1>accountInstitutionCurationComments</h1>
-                          <p>Institution Curation Review Comments</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">Retrieve a certain curation review&#39;s comments.</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/account/institution/review/{curation_id}/comments</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Institutions-accountInstitutionCurationComments-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Institutions-accountInstitutionCurationComments-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Institutions-accountInstitutionCurationComments-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Institutions-accountInstitutionCurationComments-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/account/institution/review/{curation_id}/comments?limit=&offset="</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.InstitutionsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class InstitutionsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure OAuth2 access token for authorization: OAuth2
-        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
-        InstitutionsApi apiInstance = new InstitutionsApi();
-        Long curationId = 789; // Long | ID of the curation
-        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
-        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
-        try {
-            CurationComment result = apiInstance.accountInstitutionCurationComments(curationId, limit, offset);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling InstitutionsApi#accountInstitutionCurationComments");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.InstitutionsApi;
-
-public class InstitutionsApiExample {
-
-    public static void main(String[] args) {
-        InstitutionsApi apiInstance = new InstitutionsApi();
-        Long curationId = 789; // Long | ID of the curation
-        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
-        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
-        try {
-            CurationComment result = apiInstance.accountInstitutionCurationComments(curationId, limit, offset);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling InstitutionsApi#accountInstitutionCurationComments");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-Long *curationId = 789; // ID of the curation
-Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
-Long *offset = 789; // Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
-
-InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
-
-// Institution Curation Review Comments
-[apiInstance accountInstitutionCurationCommentsWith:curationId
-    limit:limit
-    offset:offset
-              completionHandler: ^(CurationComment output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
-var defaultClient = FigshareApi.ApiClient.instance;
-
-// Configure OAuth2 access token for authorization: OAuth2
-var OAuth2 = defaultClient.authentications['OAuth2'];
-OAuth2.accessToken = "YOUR ACCESS TOKEN"
-
-var api = new FigshareApi.InstitutionsApi()
-
-var curationId = 789; // {Long} ID of the curation
-
-var opts = { 
-  'limit': 789, // {Long} Number of results included on a page. Used for pagination with query
-  'offset': 789 // {Long} Where to start the listing(the offset of the first result). Used for pagination with limit
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.accountInstitutionCurationComments(curationId, , opts, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class accountInstitutionCurationCommentsExample
-    {
-        public void main()
-        {
-            
-            // Configure OAuth2 access token for authorization: OAuth2
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstitutionsApi();
-            var curationId = 789;  // Long | ID of the curation
-            var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
-            var offset = 789;  // Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional) 
-
-            try
-            {
-                // Institution Curation Review Comments
-                CurationComment result = apiInstance.accountInstitutionCurationComments(curationId, limit, offset);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling InstitutionsApi.accountInstitutionCurationComments: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: OAuth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new Swagger\Client\Api\InstitutionsApi();
-$curationId = 789; // Long | ID of the curation
-$limit = 789; // Long | Number of results included on a page. Used for pagination with query
-$offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
-
-try {
-    $result = $api_instance->accountInstitutionCurationComments($curationId, $limit, $offset);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling InstitutionsApi->accountInstitutionCurationComments: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::InstitutionsApi;
-
-# Configure OAuth2 access token for authorization: OAuth2
-$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-my $api_instance = WWW::SwaggerClient::InstitutionsApi->new();
-my $curationId = 789; # Long | ID of the curation
-my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
-my $offset = 789; # Long | Where to start the listing(the offset of the first result). Used for pagination with limit
-
-eval { 
-    my $result = $api_instance->accountInstitutionCurationComments(curationId => $curationId, limit => $limit, offset => $offset);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling InstitutionsApi->accountInstitutionCurationComments: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: OAuth2
-swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# create an instance of the API class
-api_instance = swagger_client.InstitutionsApi()
-curationId = 789 # Long | ID of the curation
-limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
-offset = 789 # Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
-
-try: 
-    # Institution Curation Review Comments
-    api_response = api_instance.account_institution_curation_comments(curationId, limit=limit, offset=offset)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling InstitutionsApi->accountInstitutionCurationComments: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">curation_id*</td>
-<td>
-
-
-    <div id="d2e199_accountInstitutionCurationComments_curationId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        ID of the curation
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-
-                            <div class="methodsubtabletitle">Query parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">limit</td>
-<td>
-
-
-    <div id="d2e199_accountInstitutionCurationComments_limit">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        Number of results included on a page. Used for pagination with query
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">offset</td>
-<td>
-
-
-    <div id="d2e199_accountInstitutionCurationComments_offset">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        Where to start the listing(the offset of the first result). Used for pagination with limit
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - OK. A curation review&#39;s comments. </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-accountInstitutionCurationComments-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-accountInstitutionCurationComments-200-schema">
-                                  <div id='responses-accountInstitutionCurationComments-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "OK. A curation review's comments.",
-  "schema" : {
-    "$ref" : "#/definitions/CurationComment"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = defs;
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-accountInstitutionCurationComments-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-accountInstitutionCurationComments-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-accountInstitutionCurationComments-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 400 - Bad Request </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 403 - Forbidden </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-accountInstitutionCurationComments-403-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-accountInstitutionCurationComments-403-schema">
-                                  <div id='responses-accountInstitutionCurationComments-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Forbidden",
-  "schema" : {
-    "$ref" : "#/definitions/ErrorMessage"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = defs;
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-accountInstitutionCurationComments-403-schema-data').val(stringify(schema));
-                                        var result = $('#responses-accountInstitutionCurationComments-403-schema-403');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-accountInstitutionCurationComments-403-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 404 - Not Found </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 500 - Internal Server Error </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Institutions-accountInstitutionCurationComments_1">
-                      <article id="api-Institutions-accountInstitutionCurationComments_1-0" data-group="User" data-name="accountInstitutionCurationComments_1" data-version="0">
-                        <div class="pull-left">
-                          <h1>accountInstitutionCurationComments_1</h1>
-                          <p>POST Institution Curation Review Comment</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">Add a new comment to the review.</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/institution/review/{curation_id}/comments</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Institutions-accountInstitutionCurationComments_1-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments_1-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments_1-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Institutions-accountInstitutionCurationComments_1-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments_1-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments_1-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Institutions-accountInstitutionCurationComments_1-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments_1-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments_1-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments_1-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Institutions-accountInstitutionCurationComments_1-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Institutions-accountInstitutionCurationComments_1-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/institution/review/{curation_id}/comments"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments_1-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.InstitutionsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class InstitutionsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure OAuth2 access token for authorization: OAuth2
-        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
-        InstitutionsApi apiInstance = new InstitutionsApi();
-        Long curationId = 789; // Long | ID of the curation
-        CurationCommentCreate curationComment = ; // CurationCommentCreate | The content/value of the comment.
-        try {
-            apiInstance.accountInstitutionCurationComments_0(curationId, curationComment);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling InstitutionsApi#accountInstitutionCurationComments_0");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments_1-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.InstitutionsApi;
-
-public class InstitutionsApiExample {
-
-    public static void main(String[] args) {
-        InstitutionsApi apiInstance = new InstitutionsApi();
-        Long curationId = 789; // Long | ID of the curation
-        CurationCommentCreate curationComment = ; // CurationCommentCreate | The content/value of the comment.
-        try {
-            apiInstance.accountInstitutionCurationComments_0(curationId, curationComment);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling InstitutionsApi#accountInstitutionCurationComments_0");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments_1-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments_1-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-Long *curationId = 789; // ID of the curation
-CurationCommentCreate *curationComment = ; // The content/value of the comment.
-
-InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
-
-// POST Institution Curation Review Comment
-[apiInstance accountInstitutionCurationComments_1With:curationId
-    curationComment:curationComment
-              completionHandler: ^(NSError* error) {
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments_1-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
-var defaultClient = FigshareApi.ApiClient.instance;
-
-// Configure OAuth2 access token for authorization: OAuth2
-var OAuth2 = defaultClient.authentications['OAuth2'];
-OAuth2.accessToken = "YOUR ACCESS TOKEN"
-
-var api = new FigshareApi.InstitutionsApi()
-
-var curationId = 789; // {Long} ID of the curation
-
-var curationComment = ; // {CurationCommentCreate} The content/value of the comment.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-api.accountInstitutionCurationComments_0(curationId, curationComment, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments_1-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments_1-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class accountInstitutionCurationComments_0Example
-    {
-        public void main()
-        {
-            
-            // Configure OAuth2 access token for authorization: OAuth2
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstitutionsApi();
-            var curationId = 789;  // Long | ID of the curation
-            var curationComment = new CurationCommentCreate(); // CurationCommentCreate | The content/value of the comment.
-
-            try
-            {
-                // POST Institution Curation Review Comment
-                apiInstance.accountInstitutionCurationComments_0(curationId, curationComment);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling InstitutionsApi.accountInstitutionCurationComments_0: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments_1-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: OAuth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new Swagger\Client\Api\InstitutionsApi();
-$curationId = 789; // Long | ID of the curation
-$curationComment = ; // CurationCommentCreate | The content/value of the comment.
-
-try {
-    $api_instance->accountInstitutionCurationComments_0($curationId, $curationComment);
-} catch (Exception $e) {
-    echo 'Exception when calling InstitutionsApi->accountInstitutionCurationComments_0: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments_1-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::InstitutionsApi;
-
-# Configure OAuth2 access token for authorization: OAuth2
-$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-my $api_instance = WWW::SwaggerClient::InstitutionsApi->new();
-my $curationId = 789; # Long | ID of the curation
-my $curationComment = WWW::SwaggerClient::Object::CurationCommentCreate->new(); # CurationCommentCreate | The content/value of the comment.
-
-eval { 
-    $api_instance->accountInstitutionCurationComments_0(curationId => $curationId, curationComment => $curationComment);
-};
-if ($@) {
-    warn "Exception when calling InstitutionsApi->accountInstitutionCurationComments_0: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Institutions-accountInstitutionCurationComments_1-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: OAuth2
-swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# create an instance of the API class
-api_instance = swagger_client.InstitutionsApi()
-curationId = 789 # Long | ID of the curation
-curationComment =  # CurationCommentCreate | The content/value of the comment.
-
-try: 
-    # POST Institution Curation Review Comment
-    api_instance.account_institution_curation_comments_0(curationId, curationComment)
-except ApiException as e:
-    print("Exception when calling InstitutionsApi->accountInstitutionCurationComments_0: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">curation_id*</td>
-<td>
-
-
-    <div id="d2e199_accountInstitutionCurationComments_1_curationId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        ID of the curation
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-                            <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">curationComment <span style="color:red;">*</span></td>
-<td>
-
-
-<script>
-$(document).ready(function() {
-  var schemaWrapper = {
-  "in" : "body",
-  "name" : "CurationComment",
-  "description" : "The content/value of the comment.",
-  "required" : true,
-  "schema" : {
-    "$ref" : "#/definitions/CurationCommentCreate"
-  }
-};
-  var schema = schemaWrapper.schema;
-  if (schema.$ref != null) {
-    schema = defsParser.$refs.get(schema.$ref);
-  } else {
-    schemaWrapper.definitions = Object.assign({}, defs);
-    $RefParser.dereference(schemaWrapper).catch(function(err) {
-      console.log(err);
-    });
-  }
-
-  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_accountInstitutionCurationComments_1_curationComment');
-  result.empty();
-  result.append(view.render());
-});
-</script>
-<div id="d2e199_accountInstitutionCurationComments_1_curationComment"></div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - OK. </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 400 - Bad Request </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 403 - Forbidden </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-accountInstitutionCurationComments_1-403-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-accountInstitutionCurationComments_1-403-schema">
-                                  <div id='responses-accountInstitutionCurationComments_1-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Forbidden",
-  "schema" : {
-    "$ref" : "#/definitions/ErrorMessage"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = defs;
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-accountInstitutionCurationComments_1-403-schema-data').val(stringify(schema));
-                                        var result = $('#responses-accountInstitutionCurationComments_1-403-schema-403');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-accountInstitutionCurationComments_1-403-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 404 - Not Found </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 500 - Internal Server Error </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
                     <div id="api-Institutions-accountInstitutionCurations">
                       <article id="api-Institutions-accountInstitutionCurations-0" data-group="User" data-name="accountInstitutionCurations" data-version="0">
                         <div class="pull-left">
@@ -36922,6 +36063,468 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
+                    <div id="api-Institutions-getAccountInstitutionCurationComments">
+                      <article id="api-Institutions-getAccountInstitutionCurationComments-0" data-group="User" data-name="getAccountInstitutionCurationComments" data-version="0">
+                        <div class="pull-left">
+                          <h1>getAccountInstitutionCurationComments</h1>
+                          <p>Institution Curation Review Comments</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Retrieve a certain curation review&#39;s comments.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/account/institution/review/{curation_id}/comments</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Institutions-getAccountInstitutionCurationComments-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Institutions-getAccountInstitutionCurationComments-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Institutions-getAccountInstitutionCurationComments-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Institutions-getAccountInstitutionCurationComments-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Institutions-getAccountInstitutionCurationComments-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Institutions-getAccountInstitutionCurationComments-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Institutions-getAccountInstitutionCurationComments-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Institutions-getAccountInstitutionCurationComments-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Institutions-getAccountInstitutionCurationComments-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Institutions-getAccountInstitutionCurationComments-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Institutions-getAccountInstitutionCurationComments-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Institutions-getAccountInstitutionCurationComments-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://api.figinternal.dev/v2/account/institution/review/{curation_id}/comments?limit=&offset="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Institutions-getAccountInstitutionCurationComments-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.InstitutionsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class InstitutionsApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        InstitutionsApi apiInstance = new InstitutionsApi();
+        Long curationId = 789; // Long | ID of the curation
+        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
+        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
+        try {
+            CurationComment result = apiInstance.getAccountInstitutionCurationComments(curationId, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#getAccountInstitutionCurationComments");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Institutions-getAccountInstitutionCurationComments-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.InstitutionsApi;
+
+public class InstitutionsApiExample {
+
+    public static void main(String[] args) {
+        InstitutionsApi apiInstance = new InstitutionsApi();
+        Long curationId = 789; // Long | ID of the curation
+        Long limit = 789; // Long | Number of results included on a page. Used for pagination with query
+        Long offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
+        try {
+            CurationComment result = apiInstance.getAccountInstitutionCurationComments(curationId, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#getAccountInstitutionCurationComments");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Institutions-getAccountInstitutionCurationComments-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Institutions-getAccountInstitutionCurationComments-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *curationId = 789; // ID of the curation
+Long *limit = 789; // Number of results included on a page. Used for pagination with query (optional)
+Long *offset = 789; // Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
+
+InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
+
+// Institution Curation Review Comments
+[apiInstance getAccountInstitutionCurationCommentsWith:curationId
+    limit:limit
+    offset:offset
+              completionHandler: ^(CurationComment output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-getAccountInstitutionCurationComments-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.InstitutionsApi()
+
+var curationId = 789; // {Long} ID of the curation
+
+var opts = { 
+  'limit': 789, // {Long} Number of results included on a page. Used for pagination with query
+  'offset': 789 // {Long} Where to start the listing(the offset of the first result). Used for pagination with limit
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.getAccountInstitutionCurationComments(curationId, , opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Institutions-getAccountInstitutionCurationComments-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Institutions-getAccountInstitutionCurationComments-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class getAccountInstitutionCurationCommentsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new InstitutionsApi();
+            var curationId = 789;  // Long | ID of the curation
+            var limit = 789;  // Long | Number of results included on a page. Used for pagination with query (optional) 
+            var offset = 789;  // Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional) 
+
+            try
+            {
+                // Institution Curation Review Comments
+                CurationComment result = apiInstance.getAccountInstitutionCurationComments(curationId, limit, offset);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling InstitutionsApi.getAccountInstitutionCurationComments: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-getAccountInstitutionCurationComments-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\InstitutionsApi();
+$curationId = 789; // Long | ID of the curation
+$limit = 789; // Long | Number of results included on a page. Used for pagination with query
+$offset = 789; // Long | Where to start the listing(the offset of the first result). Used for pagination with limit
+
+try {
+    $result = $api_instance->getAccountInstitutionCurationComments($curationId, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InstitutionsApi->getAccountInstitutionCurationComments: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-getAccountInstitutionCurationComments-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::InstitutionsApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::InstitutionsApi->new();
+my $curationId = 789; # Long | ID of the curation
+my $limit = 789; # Long | Number of results included on a page. Used for pagination with query
+my $offset = 789; # Long | Where to start the listing(the offset of the first result). Used for pagination with limit
+
+eval { 
+    my $result = $api_instance->getAccountInstitutionCurationComments(curationId => $curationId, limit => $limit, offset => $offset);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling InstitutionsApi->getAccountInstitutionCurationComments: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-getAccountInstitutionCurationComments-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.InstitutionsApi()
+curationId = 789 # Long | ID of the curation
+limit = 789 # Long | Number of results included on a page. Used for pagination with query (optional)
+offset = 789 # Long | Where to start the listing(the offset of the first result). Used for pagination with limit (optional)
+
+try: 
+    # Institution Curation Review Comments
+    api_response = api_instance.get_account_institution_curation_comments(curationId, limit=limit, offset=offset)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling InstitutionsApi->getAccountInstitutionCurationComments: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">curation_id*</td>
+<td>
+
+
+    <div id="d2e199_getAccountInstitutionCurationComments_curationId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        ID of the curation
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">limit</td>
+<td>
+
+
+    <div id="d2e199_getAccountInstitutionCurationComments_limit">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Number of results included on a page. Used for pagination with query
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">offset</td>
+<td>
+
+
+    <div id="d2e199_getAccountInstitutionCurationComments_offset">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Where to start the listing(the offset of the first result). Used for pagination with limit
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK. A curation review&#39;s comments. </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getAccountInstitutionCurationComments-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getAccountInstitutionCurationComments-200-schema">
+                                  <div id='responses-getAccountInstitutionCurationComments-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK. A curation review's comments.",
+  "schema" : {
+    "$ref" : "#/definitions/CurationComment"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getAccountInstitutionCurationComments-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getAccountInstitutionCurationComments-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getAccountInstitutionCurationComments-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getAccountInstitutionCurationComments-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getAccountInstitutionCurationComments-403-schema">
+                                  <div id='responses-getAccountInstitutionCurationComments-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getAccountInstitutionCurationComments-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getAccountInstitutionCurationComments-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getAccountInstitutionCurationComments-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Institutions-institutionArticles">
                       <article id="api-Institutions-institutionArticles-0" data-group="User" data-name="institutionArticles" data-version="0">
                         <div class="pull-left">
@@ -37652,6 +37255,403 @@ except ApiException as e:
                                   </div>
                                   <input id='responses-institutionHrfeedUpload-403-schema-data' type='hidden' value=''></input>
                                 </div>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Institutions-postAccountInstitutionCurationComments">
+                      <article id="api-Institutions-postAccountInstitutionCurationComments-0" data-group="User" data-name="postAccountInstitutionCurationComments" data-version="0">
+                        <div class="pull-left">
+                          <h1>postAccountInstitutionCurationComments</h1>
+                          <p>POST Institution Curation Review Comment</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Add a new comment to the review.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/institution/review/{curation_id}/comments</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Institutions-postAccountInstitutionCurationComments-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Institutions-postAccountInstitutionCurationComments-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Institutions-postAccountInstitutionCurationComments-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Institutions-postAccountInstitutionCurationComments-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Institutions-postAccountInstitutionCurationComments-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Institutions-postAccountInstitutionCurationComments-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Institutions-postAccountInstitutionCurationComments-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Institutions-postAccountInstitutionCurationComments-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Institutions-postAccountInstitutionCurationComments-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Institutions-postAccountInstitutionCurationComments-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Institutions-postAccountInstitutionCurationComments-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Institutions-postAccountInstitutionCurationComments-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/institution/review/{curation_id}/comments"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Institutions-postAccountInstitutionCurationComments-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.InstitutionsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class InstitutionsApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        InstitutionsApi apiInstance = new InstitutionsApi();
+        Long curationId = 789; // Long | ID of the curation
+        CurationCommentCreate curationComment = ; // CurationCommentCreate | The content/value of the comment.
+        try {
+            apiInstance.postAccountInstitutionCurationComments(curationId, curationComment);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#postAccountInstitutionCurationComments");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Institutions-postAccountInstitutionCurationComments-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.InstitutionsApi;
+
+public class InstitutionsApiExample {
+
+    public static void main(String[] args) {
+        InstitutionsApi apiInstance = new InstitutionsApi();
+        Long curationId = 789; // Long | ID of the curation
+        CurationCommentCreate curationComment = ; // CurationCommentCreate | The content/value of the comment.
+        try {
+            apiInstance.postAccountInstitutionCurationComments(curationId, curationComment);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#postAccountInstitutionCurationComments");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Institutions-postAccountInstitutionCurationComments-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Institutions-postAccountInstitutionCurationComments-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *curationId = 789; // ID of the curation
+CurationCommentCreate *curationComment = ; // The content/value of the comment.
+
+InstitutionsApi *apiInstance = [[InstitutionsApi alloc] init];
+
+// POST Institution Curation Review Comment
+[apiInstance postAccountInstitutionCurationCommentsWith:curationId
+    curationComment:curationComment
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-postAccountInstitutionCurationComments-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.InstitutionsApi()
+
+var curationId = 789; // {Long} ID of the curation
+
+var curationComment = ; // {CurationCommentCreate} The content/value of the comment.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.postAccountInstitutionCurationComments(curationId, curationComment, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Institutions-postAccountInstitutionCurationComments-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Institutions-postAccountInstitutionCurationComments-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class postAccountInstitutionCurationCommentsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new InstitutionsApi();
+            var curationId = 789;  // Long | ID of the curation
+            var curationComment = new CurationCommentCreate(); // CurationCommentCreate | The content/value of the comment.
+
+            try
+            {
+                // POST Institution Curation Review Comment
+                apiInstance.postAccountInstitutionCurationComments(curationId, curationComment);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling InstitutionsApi.postAccountInstitutionCurationComments: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-postAccountInstitutionCurationComments-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\InstitutionsApi();
+$curationId = 789; // Long | ID of the curation
+$curationComment = ; // CurationCommentCreate | The content/value of the comment.
+
+try {
+    $api_instance->postAccountInstitutionCurationComments($curationId, $curationComment);
+} catch (Exception $e) {
+    echo 'Exception when calling InstitutionsApi->postAccountInstitutionCurationComments: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-postAccountInstitutionCurationComments-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::InstitutionsApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::InstitutionsApi->new();
+my $curationId = 789; # Long | ID of the curation
+my $curationComment = WWW::SwaggerClient::Object::CurationCommentCreate->new(); # CurationCommentCreate | The content/value of the comment.
+
+eval { 
+    $api_instance->postAccountInstitutionCurationComments(curationId => $curationId, curationComment => $curationComment);
+};
+if ($@) {
+    warn "Exception when calling InstitutionsApi->postAccountInstitutionCurationComments: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Institutions-postAccountInstitutionCurationComments-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.InstitutionsApi()
+curationId = 789 # Long | ID of the curation
+curationComment =  # CurationCommentCreate | The content/value of the comment.
+
+try: 
+    # POST Institution Curation Review Comment
+    api_instance.post_account_institution_curation_comments(curationId, curationComment)
+except ApiException as e:
+    print("Exception when calling InstitutionsApi->postAccountInstitutionCurationComments: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">curation_id*</td>
+<td>
+
+
+    <div id="d2e199_postAccountInstitutionCurationComments_curationId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        ID of the curation
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">curationComment <span style="color:red;">*</span></td>
+<td>
+
+
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "in" : "body",
+  "name" : "CurationComment",
+  "description" : "The content/value of the comment.",
+  "required" : true,
+  "schema" : {
+    "$ref" : "#/definitions/CurationCommentCreate"
+  }
+};
+  var schema = schemaWrapper.schema;
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_postAccountInstitutionCurationComments_curationComment');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_postAccountInstitutionCurationComments_curationComment"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK. </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-postAccountInstitutionCurationComments-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-postAccountInstitutionCurationComments-403-schema">
+                                  <div id='responses-postAccountInstitutionCurationComments-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-postAccountInstitutionCurationComments-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-postAccountInstitutionCurationComments-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-postAccountInstitutionCurationComments-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
                             </div>
 
                             <h3> Status: 500 - Internal Server Error </h3>
