@@ -713,6 +713,7 @@ margin-bottom: 20px;
         defs["ArticleHandle"] = {"type":"object","required":["handle"],"properties":{"handle":{"type":"string","example":"11172/FK2.FIGSHARE.20345","description":"Reserved Handle"}},"x-tag":"articles"};
         defs["ArticleProjectCreate"] = {"type":"object","required":["title"],"properties":{"title":{"type":"string","example":"Test article title","description":"Title of article","minLength":3,"maxLength":1000},"description":{"type":"string","example":"Test description of article","description":"The article description. In a publisher case, usually this is the remote article description","maxLength":20000,"default":""},"tags":{"type":"array","example":["tag1","tag2"],"description":"List of tags to be associated with the article. Keywords can be used instead","items":{"type":"string"}},"keywords":{"type":"array","example":["tag1","tag2"],"description":"List of tags to be associated with the article. Tags can be used instead","items":{"type":"string"}},"references":{"type":"array","example":["http://figshare.com","http://api.figshare.com"],"description":"List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])","items":{"type":"string","format":"link"}},"related_materials":{"type":"array","example":[{"id":10432,"identifier":"10.6084/m9.figshare.1407024","identifier_type":"DOI","relation":"IsSupplementTo","title":"Figshare for institutions brochure","is_linkout":false}],"description":"List of related materials; supersedes references and resource DOI/title.","items":{"$ref":"#/definitions/RelatedMaterial"}},"categories":{"type":"array","example":[1,10,11],"description":"List of category ids to be associated with the article(e.g [1, 23, 33, 66])","items":{"type":"integer","format":"int64"}},"categories_by_source_id":{"type":"array","example":["300204","400207"],"description":"List of category source ids to be associated with the article, supersedes the categories property","items":{"type":"string"}},"authors":{"type":"array","example":[{"name":"John Doe"},{"id":1000008}],"description":"List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. For adding more authors use the specific authors endpoint.","items":{"type":"object","properties":{}}},"custom_fields":{"type":"object","example":{"defined_key":"value for it"},"description":"List of key, values pairs to be associated with the article","properties":{}},"custom_fields_list":{"type":"array","description":"List of custom fields values, supersedes custom_fields parameter","items":{"$ref":"#/definitions/CustomArticleFieldAdd"}},"defined_type":{"type":"string","example":"media","description":"<b>One of:</b> <code>figure</code> <code>online resource</code> <code>preprint</code> <code>book</code> <code>conference contribution</code> <code>media</code> <code>dataset</code> <code>poster</code> <code>journal contribution</code> <code>presentation</code> <code>thesis</code> <code>software</code>"},"funding":{"type":"string","description":"Grant number or funding authority","default":""},"funding_list":{"type":"array","description":"Funding creation / update items","items":{"$ref":"#/definitions/FundingCreate"}},"license":{"type":"integer","format":"int64","example":1,"description":"License id for this article.","default":0},"doi":{"type":"string","description":"Not applicable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.","default":""},"handle":{"type":"string","description":"Not applicable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.","default":""},"resource_doi":{"type":"string","description":"Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article DOI.","default":""},"resource_title":{"type":"string","description":"Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article title.","default":""},"timeline":{"description":"Various timeline dates","$ref":"#/definitions/TimelineUpdate"}},"x-tag":"articles"};
         defs["ArticleSearch"] = {"properties":{"resource_doi":{"type":"string","example":"10.6084/m9.figshare.1407024","description":"Only return articles with this resource_doi"},"item_type":{"type":"integer","format":"int64","example":1,"description":"Only return articles with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 5 - Poster, 6 - Journal contribution, 7 - Presentation, 8 - Thesis, 9 - Software, 11 - Online resource, 12 - Preprint, 13 - Book, 14 - Conference contribution, 15 - Chapter, 16 - Peer review, 17 - Educational resource, 18 - Report, 19 - Standard, 20 - Composition, 21 - Funding, 22 - Physical object, 23 - Data management plan, 24 - Workflow, 25 - Monograph, 26 - Performance, 27 - Event, 28 - Service, 29 - Model"},"doi":{"type":"string","example":"10.6084/m9.figshare.1407024","description":"Only return articles with this doi"},"handle":{"type":"string","example":"111084/m9.figshare.14074","description":"Only return articles with this handle"},"project_id":{"type":"integer","format":"int64","example":1,"description":"Only return articles in this project"},"order":{"type":"string","example":"published_date","description":"The field by which to order","default":"created_date","enum":["created_date","published_date","modified_date","views","shares","downloads","cites"]}},"allOf":[{"$ref":"#/definitions/CommonSearch"}],"x-tag":"articles"};
+        defs["ArticleUnpublishData"] = {"type":"object","properties":{"reason":{"type":"string","example":"Unpublish article reason","description":"Reason of article unpublishing","minLength":5,"maxLength":1000}},"x-tag":"articles"};
         defs["ArticleUpdate"] = {"type":"object","properties":{"title":{"type":"string","example":"Test article title","description":"Title of article","minLength":3,"maxLength":1000},"description":{"type":"string","example":"Test description of article","description":"The article description. In a publisher case, usually this is the remote article description","maxLength":20000,"default":""},"is_metadata_record":{"type":"boolean","example":true,"description":"True if article has no files"},"metadata_reason":{"type":"string","example":"hosted somewhere else","description":"Article metadata reason"},"tags":{"type":"array","example":["tag1","tag2"],"description":"List of tags to be associated with the article. Keywords can be used instead","items":{"type":"string"}},"keywords":{"type":"array","example":["tag1","tag2"],"description":"List of tags to be associated with the article. Tags can be used instead","items":{"type":"string"}},"references":{"type":"array","example":["http://figshare.com","http://api.figshare.com"],"description":"List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])","items":{"type":"string","format":"link"}},"related_materials":{"type":"array","example":[{"id":10432,"identifier":"10.6084/m9.figshare.1407024","identifier_type":"DOI","relation":"IsSupplementTo","title":"Figshare for institutions brochure","is_linkout":false}],"description":"List of related materials; supersedes references and resource DOI/title.","items":{"$ref":"#/definitions/RelatedMaterial"}},"categories":{"type":"array","example":[1,10,11],"description":"List of category ids to be associated with the article(e.g [1, 23, 33, 66])","items":{"type":"integer","format":"int64"}},"categories_by_source_id":{"type":"array","example":["300204","400207"],"description":"List of category source ids to be associated with the article, supersedes the categories property","items":{"type":"string"}},"authors":{"type":"array","example":[{"name":"John Doe"},{"id":1000008}],"description":"List of authors to be associated with the article. The list can contain the following fields: id, name, first_name, last_name, email, orcid_id. If an id is supplied, it will take priority and everything else will be ignored. For adding more authors use the specific authors endpoint.","items":{"type":"object","properties":{}}},"custom_fields":{"type":"object","example":{"defined_key":"value for it"},"description":"List of key, values pairs to be associated with the article","properties":{}},"custom_fields_list":{"type":"array","description":"List of custom fields values, supersedes custom_fields parameter","items":{"$ref":"#/definitions/CustomArticleFieldAdd"}},"defined_type":{"type":"string","example":"media","description":"<b>One of:</b> <code>figure</code> <code>online resource</code> <code>preprint</code> <code>book</code> <code>conference contribution</code> <code>media</code> <code>dataset</code> <code>poster</code> <code>journal contribution</code> <code>presentation</code> <code>thesis</code> <code>software</code>"},"funding":{"type":"string","description":"Grant number or funding authority","default":""},"funding_list":{"type":"array","description":"Funding creation / update items","items":{"$ref":"#/definitions/FundingCreate"}},"license":{"type":"integer","format":"int64","example":1,"description":"License id for this article.","default":0},"doi":{"type":"string","description":"Not applicable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.","default":""},"handle":{"type":"string","description":"Not applicable for regular users. In an institutional case, make sure your group supports setting Handles. This setting is applied by figshare via opening a ticket through our support/helpdesk system.","default":""},"resource_doi":{"type":"string","description":"Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article DOI.","default":""},"resource_title":{"type":"string","description":"Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article title.","default":""},"timeline":{"description":"Various timeline dates","$ref":"#/definitions/TimelineUpdate"},"download_disabled":{"type":"boolean","example":false,"description":"If true, downloading of files for this article is disabled"},"group_id":{"type":"integer","format":"int64","description":"Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups"}},"x-tag":"articles"};
         defs["ArticleVersionUpdate"] = {"type":"object","properties":{"supplementary_fields":{"type":"array","example":[{"name":"abc","value":"def"},{"name":"fname","value":"fvalue"}],"description":"List of supplementary fields to be associated with the article version","items":{"type":"object","properties":{}}},"internal_metadata":{"type":"object","example":{"curation_review_date":"2021-11-16T13:03:38","export_pdf_download_url":null},"description":"List of supplementary fields to be associated with the article version","properties":{}}},"x-tag":"article_version"};
         defs["ArticleVersions"] = {"type":"object","required":["url","version"],"properties":{"version":{"type":"integer","format":"int64","example":1,"description":"Version number"},"url":{"type":"string","format":"url","example":"https://api.figshare.com/v2/articles/2000005/versions/1","description":"Api endpoint for the item version"}},"x-tag":"articles"};
@@ -809,11 +810,17 @@ margin-bottom: 20px;
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                   <li class="nav-header" data-group="Articles"><a href="#api-Articles">API Methods - Articles</a></li>
+                    <li data-group="Articles" data-name="accountArticlePublish" class="">
+                      <a href="#api-Articles-accountArticlePublish">accountArticlePublish</a>
+                    </li>
                     <li data-group="Articles" data-name="accountArticleReport" class="">
                       <a href="#api-Articles-accountArticleReport">accountArticleReport</a>
                     </li>
                     <li data-group="Articles" data-name="accountArticleReportGenerate" class="">
                       <a href="#api-Articles-accountArticleReportGenerate">accountArticleReportGenerate</a>
+                    </li>
+                    <li data-group="Articles" data-name="accountArticleUnpublish" class="">
+                      <a href="#api-Articles-accountArticleUnpublish">accountArticleUnpublish</a>
                     </li>
                     <li data-group="Articles" data-name="articleDetails" class="">
                       <a href="#api-Articles-articleDetails">articleDetails</a>
@@ -919,9 +926,6 @@ margin-bottom: 20px;
                     </li>
                     <li data-group="Articles" data-name="privateArticlePrivateLinkUpdate" class="">
                       <a href="#api-Articles-privateArticlePrivateLinkUpdate">privateArticlePrivateLinkUpdate</a>
-                    </li>
-                    <li data-group="Articles" data-name="privateArticlePublish" class="">
-                      <a href="#api-Articles-privateArticlePublish">privateArticlePublish</a>
                     </li>
                     <li data-group="Articles" data-name="privateArticleReserveDoi" class="">
                       <a href="#api-Articles-privateArticleReserveDoi">privateArticleReserveDoi</a>
@@ -1250,6 +1254,422 @@ margin-bottom: 20px;
         <div id="sections">
                 <section id="api-Articles">
                   <h1>Articles</h1>
+                    <div id="api-Articles-accountArticlePublish">
+                      <article id="api-Articles-accountArticlePublish-0" data-group="User" data-name="accountArticlePublish" data-version="0">
+                        <div class="pull-left">
+                          <h1>accountArticlePublish</h1>
+                          <p>Private Article Publish</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">- If the whole article is under embargo, it will not be published immediately, but when the embargo expires or is lifted.
+- When an article is published, a new public version will be generated. Any further updates to the article will affect the private article data. In order to make these changes publicly visible, an explicit publish operation is needed.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/articles/{article_id}/publish</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Articles-accountArticlePublish-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticlePublish-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticlePublish-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Articles-accountArticlePublish-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Articles-accountArticlePublish-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticlePublish-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Articles-accountArticlePublish-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Articles-accountArticlePublish-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticlePublish-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticlePublish-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticlePublish-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Articles-accountArticlePublish-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/articles/{article_id}/publish"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Articles-accountArticlePublish-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ArticlesApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long articleId = 789; // Long | Article unique identifier
+        try {
+            Location result = apiInstance.accountArticlePublish(articleId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#accountArticlePublish");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Articles-accountArticlePublish-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ArticlesApi;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long articleId = 789; // Long | Article unique identifier
+        try {
+            Location result = apiInstance.accountArticlePublish(articleId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#accountArticlePublish");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Articles-accountArticlePublish-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Articles-accountArticlePublish-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *articleId = 789; // Article unique identifier
+
+ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
+
+// Private Article Publish
+[apiInstance accountArticlePublishWith:articleId
+              completionHandler: ^(Location output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticlePublish-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.ArticlesApi()
+
+var articleId = 789; // {Long} Article unique identifier
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.accountArticlePublish(articleId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Articles-accountArticlePublish-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Articles-accountArticlePublish-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class accountArticlePublishExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ArticlesApi();
+            var articleId = 789;  // Long | Article unique identifier
+
+            try
+            {
+                // Private Article Publish
+                Location result = apiInstance.accountArticlePublish(articleId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ArticlesApi.accountArticlePublish: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticlePublish-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\ArticlesApi();
+$articleId = 789; // Long | Article unique identifier
+
+try {
+    $result = $api_instance->accountArticlePublish($articleId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ArticlesApi->accountArticlePublish: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticlePublish-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ArticlesApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
+my $articleId = 789; # Long | Article unique identifier
+
+eval { 
+    my $result = $api_instance->accountArticlePublish(articleId => $articleId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ArticlesApi->accountArticlePublish: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticlePublish-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.ArticlesApi()
+articleId = 789 # Long | Article unique identifier
+
+try: 
+    # Private Article Publish
+    api_response = api_instance.account_article_publish(articleId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ArticlesApi->accountArticlePublish: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">article_id*</td>
+<td>
+
+
+    <div id="d2e199_accountArticlePublish_articleId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Article unique identifier
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 201 - Created </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-accountArticlePublish-201-schema">Schema</a>
+                                </li>
+
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-accountArticlePublish-201-headers">Headers</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-accountArticlePublish-201-schema">
+                                  <div id='responses-accountArticlePublish-201-schema-201' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Created",
+  "headers" : {
+    "Location" : {
+      "type" : "string",
+      "format" : "link",
+      "description" : "Location of newly published article"
+    }
+  },
+  "schema" : {
+    "$ref" : "#/definitions/Location"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-accountArticlePublish-201-schema-data').val(stringify(schema));
+                                        var result = $('#responses-accountArticlePublish-201-schema-201');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-accountArticlePublish-201-schema-data' type='hidden' value=''></input>
+                                </div>
+                                <div class="tab-pane" id="responses-accountArticlePublish-201-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Location</td>
+                                            <td>String</td>
+                                            <td>link</td>
+                                            <td>Location of newly published article</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-accountArticlePublish-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-accountArticlePublish-403-schema">
+                                  <div id='responses-accountArticlePublish-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-accountArticlePublish-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-accountArticlePublish-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-accountArticlePublish-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Articles-accountArticleReport">
                       <article id="api-Articles-accountArticleReport-0" data-group="User" data-name="accountArticleReport" data-version="0">
                         <div class="pull-left">
@@ -1866,6 +2286,403 @@ except ApiException as e:
                             </div>
 
                             <h3> Status: 429 - Too Many Requests </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Articles-accountArticleUnpublish">
+                      <article id="api-Articles-accountArticleUnpublish-0" data-group="User" data-name="accountArticleUnpublish" data-version="0">
+                        <div class="pull-left">
+                          <h1>accountArticleUnpublish</h1>
+                          <p>Public Article Unpublish</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Allows authorized users to unpublish an article.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/articles/{article_id}/unpublish</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Articles-accountArticleUnpublish-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleUnpublish-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleUnpublish-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Articles-accountArticleUnpublish-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Articles-accountArticleUnpublish-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleUnpublish-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Articles-accountArticleUnpublish-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Articles-accountArticleUnpublish-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleUnpublish-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleUnpublish-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Articles-accountArticleUnpublish-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Articles-accountArticleUnpublish-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/articles/{article_id}/unpublish"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Articles-accountArticleUnpublish-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ArticlesApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: OAuth2
+        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long articleId = 789; // Long | Article unique identifier
+        ArticleUnpublishData reason = ; // ArticleUnpublishData | Article unpublish data
+        try {
+            apiInstance.accountArticleUnpublish(articleId, reason);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#accountArticleUnpublish");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Articles-accountArticleUnpublish-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ArticlesApi;
+
+public class ArticlesApiExample {
+
+    public static void main(String[] args) {
+        ArticlesApi apiInstance = new ArticlesApi();
+        Long articleId = 789; // Long | Article unique identifier
+        ArticleUnpublishData reason = ; // ArticleUnpublishData | Article unpublish data
+        try {
+            apiInstance.accountArticleUnpublish(articleId, reason);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArticlesApi#accountArticleUnpublish");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Articles-accountArticleUnpublish-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Articles-accountArticleUnpublish-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Long *articleId = 789; // Article unique identifier
+ArticleUnpublishData *reason = ; // Article unpublish data
+
+ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
+
+// Public Article Unpublish
+[apiInstance accountArticleUnpublishWith:articleId
+    reason:reason
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticleUnpublish-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
+var defaultClient = FigshareApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: OAuth2
+var OAuth2 = defaultClient.authentications['OAuth2'];
+OAuth2.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new FigshareApi.ArticlesApi()
+
+var articleId = 789; // {Long} Article unique identifier
+
+var reason = ; // {ArticleUnpublishData} Article unpublish data
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.accountArticleUnpublish(articleId, reason, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Articles-accountArticleUnpublish-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Articles-accountArticleUnpublish-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class accountArticleUnpublishExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: OAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ArticlesApi();
+            var articleId = 789;  // Long | Article unique identifier
+            var reason = new ArticleUnpublishData(); // ArticleUnpublishData | Article unpublish data
+
+            try
+            {
+                // Public Article Unpublish
+                apiInstance.accountArticleUnpublish(articleId, reason);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ArticlesApi.accountArticleUnpublish: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticleUnpublish-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth2
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\Api\ArticlesApi();
+$articleId = 789; // Long | Article unique identifier
+$reason = ; // ArticleUnpublishData | Article unpublish data
+
+try {
+    $api_instance->accountArticleUnpublish($articleId, $reason);
+} catch (Exception $e) {
+    echo 'Exception when calling ArticlesApi->accountArticleUnpublish: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticleUnpublish-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ArticlesApi;
+
+# Configure OAuth2 access token for authorization: OAuth2
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
+my $articleId = 789; # Long | Article unique identifier
+my $reason = WWW::SwaggerClient::Object::ArticleUnpublishData->new(); # ArticleUnpublishData | Article unpublish data
+
+eval { 
+    $api_instance->accountArticleUnpublish(articleId => $articleId, reason => $reason);
+};
+if ($@) {
+    warn "Exception when calling ArticlesApi->accountArticleUnpublish: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Articles-accountArticleUnpublish-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.ArticlesApi()
+articleId = 789 # Long | Article unique identifier
+reason =  # ArticleUnpublishData | Article unpublish data
+
+try: 
+    # Public Article Unpublish
+    api_instance.account_article_unpublish(articleId, reason)
+except ApiException as e:
+    print("Exception when calling ArticlesApi->accountArticleUnpublish: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">article_id*</td>
+<td>
+
+
+    <div id="d2e199_accountArticleUnpublish_articleId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        Article unique identifier
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">reason <span style="color:red;">*</span></td>
+<td>
+
+
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "in" : "body",
+  "name" : "reason",
+  "description" : "Article unpublish data",
+  "required" : true,
+  "schema" : {
+    "$ref" : "#/definitions/ArticleUnpublishData"
+  }
+};
+  var schema = schemaWrapper.schema;
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_accountArticleUnpublish_reason');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_accountArticleUnpublish_reason"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 204 - No Content </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-accountArticleUnpublish-403-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-accountArticleUnpublish-403-schema">
+                                  <div id='responses-accountArticleUnpublish-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Forbidden",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorMessage"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-accountArticleUnpublish-403-schema-data').val(stringify(schema));
+                                        var result = $('#responses-accountArticleUnpublish-403-schema-403');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-accountArticleUnpublish-403-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
@@ -16076,422 +16893,6 @@ $(document).ready(function() {
                             </div>
 
                             <h3> Status: 422 - Unprocessable Entity </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 500 - Internal Server Error </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Articles-privateArticlePublish">
-                      <article id="api-Articles-privateArticlePublish-0" data-group="User" data-name="privateArticlePublish" data-version="0">
-                        <div class="pull-left">
-                          <h1>privateArticlePublish</h1>
-                          <p>Private Article Publish</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">- If the whole article is under embargo, it will not be published immediately, but when the embargo expires or is lifted.
-- When an article is published, a new public version will be generated. Any further updates to the article will affect the private article data. In order to make these changes publicly visible, an explicit publish operation is needed.</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/account/articles/{article_id}/publish</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Articles-privateArticlePublish-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Articles-privateArticlePublish-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Articles-privateArticlePublish-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Articles-privateArticlePublish-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Articles-privateArticlePublish-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Articles-privateArticlePublish-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Articles-privateArticlePublish-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Articles-privateArticlePublish-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Articles-privateArticlePublish-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Articles-privateArticlePublish-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Articles-privateArticlePublish-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Articles-privateArticlePublish-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://api.figinternal.dev/v2/account/articles/{article_id}/publish"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Articles-privateArticlePublish-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.ArticlesApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ArticlesApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure OAuth2 access token for authorization: OAuth2
-        OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-        OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
-        ArticlesApi apiInstance = new ArticlesApi();
-        Long articleId = 789; // Long | Article unique identifier
-        try {
-            Location result = apiInstance.privateArticlePublish(articleId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArticlesApi#privateArticlePublish");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Articles-privateArticlePublish-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ArticlesApi;
-
-public class ArticlesApiExample {
-
-    public static void main(String[] args) {
-        ArticlesApi apiInstance = new ArticlesApi();
-        Long articleId = 789; // Long | Article unique identifier
-        try {
-            Location result = apiInstance.privateArticlePublish(articleId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArticlesApi#privateArticlePublish");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Articles-privateArticlePublish-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Articles-privateArticlePublish-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure OAuth2 access token for authorization: (authentication scheme: OAuth2)
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-Long *articleId = 789; // Article unique identifier
-
-ArticlesApi *apiInstance = [[ArticlesApi alloc] init];
-
-// Private Article Publish
-[apiInstance privateArticlePublishWith:articleId
-              completionHandler: ^(Location output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Articles-privateArticlePublish-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var FigshareApi = require('figshare_api');
-var defaultClient = FigshareApi.ApiClient.instance;
-
-// Configure OAuth2 access token for authorization: OAuth2
-var OAuth2 = defaultClient.authentications['OAuth2'];
-OAuth2.accessToken = "YOUR ACCESS TOKEN"
-
-var api = new FigshareApi.ArticlesApi()
-
-var articleId = 789; // {Long} Article unique identifier
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.privateArticlePublish(articleId, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Articles-privateArticlePublish-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Articles-privateArticlePublish-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class privateArticlePublishExample
-    {
-        public void main()
-        {
-            
-            // Configure OAuth2 access token for authorization: OAuth2
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ArticlesApi();
-            var articleId = 789;  // Long | Article unique identifier
-
-            try
-            {
-                // Private Article Publish
-                Location result = apiInstance.privateArticlePublish(articleId);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling ArticlesApi.privateArticlePublish: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Articles-privateArticlePublish-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: OAuth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new Swagger\Client\Api\ArticlesApi();
-$articleId = 789; // Long | Article unique identifier
-
-try {
-    $result = $api_instance->privateArticlePublish($articleId);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ArticlesApi->privateArticlePublish: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Articles-privateArticlePublish-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::ArticlesApi;
-
-# Configure OAuth2 access token for authorization: OAuth2
-$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-my $api_instance = WWW::SwaggerClient::ArticlesApi->new();
-my $articleId = 789; # Long | Article unique identifier
-
-eval { 
-    my $result = $api_instance->privateArticlePublish(articleId => $articleId);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling ArticlesApi->privateArticlePublish: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Articles-privateArticlePublish-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: OAuth2
-swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# create an instance of the API class
-api_instance = swagger_client.ArticlesApi()
-articleId = 789 # Long | Article unique identifier
-
-try: 
-    # Private Article Publish
-    api_response = api_instance.private_article_publish(articleId)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ArticlesApi->privateArticlePublish: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">article_id*</td>
-<td>
-
-
-    <div id="d2e199_privateArticlePublish_articleId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-                    <div class="inner description">
-                        Article unique identifier
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 201 - Created </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-privateArticlePublish-201-schema">Schema</a>
-                                </li>
-
-                                <li class="">
-                                  <a data-toggle="tab" href="#responses-privateArticlePublish-201-headers">Headers</a>
-                                </li>
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-privateArticlePublish-201-schema">
-                                  <div id='responses-privateArticlePublish-201-schema-201' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Created",
-  "headers" : {
-    "Location" : {
-      "type" : "string",
-      "format" : "link",
-      "description" : "Location of newly published article"
-    }
-  },
-  "schema" : {
-    "$ref" : "#/definitions/Location"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = defs;
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-privateArticlePublish-201-schema-data').val(stringify(schema));
-                                        var result = $('#responses-privateArticlePublish-201-schema-201');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-privateArticlePublish-201-schema-data' type='hidden' value=''></input>
-                                </div>
-                                <div class="tab-pane" id="responses-privateArticlePublish-201-headers">
-                                    <table>
-                                        <tr>
-                                            <th width="150px">Name</th>
-                                            <th width="100px">Type</th>
-                                            <th width="100px">Format</th>
-                                            <th>Description</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Location</td>
-                                            <td>String</td>
-                                            <td>link</td>
-                                            <td>Location of newly published article</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <h3> Status: 400 - Bad Request </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 403 - Forbidden </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-privateArticlePublish-403-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-privateArticlePublish-403-schema">
-                                  <div id='responses-privateArticlePublish-403-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Forbidden",
-  "schema" : {
-    "$ref" : "#/definitions/ErrorMessage"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = defs;
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-privateArticlePublish-403-schema-data').val(stringify(schema));
-                                        var result = $('#responses-privateArticlePublish-403-schema-403');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-privateArticlePublish-403-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 404 - Not Found </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
