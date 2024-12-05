@@ -1137,7 +1137,7 @@
                 "tags": [
                     "articles"
                 ],
-                "operationId": "private_article_publish",
+                "operationId": "account_article_publish",
                 "summary": "Private Article Publish",
                 "description": "- If the whole article is under embargo, it will not be published immediately, but when the embargo expires or is lifted.\n- When an article is published, a new public version will be generated. Any further updates to the article will affect the private article data. In order to make these changes publicly visible, an explicit publish operation is needed.",
                 "security": [
@@ -1171,6 +1171,63 @@
                         "schema": {
                             "$ref": "#/definitions/Location"
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorMessage"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/account/articles/{article_id}/unpublish": {
+            "post": {
+                "tags": [
+                    "articles"
+                ],
+                "operationId": "account_article_unpublish",
+                "summary": "Public Article Unpublish",
+                "description": "Allows authorized users to unpublish an article.",
+                "security": [
+                    {
+                        "OAuth2": [
+                            "all"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "article_id",
+                        "in": "path",
+                        "description": "Article unique identifier",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1
+                    },
+                    {
+                        "in": "body",
+                        "name": "reason",
+                        "description": "Article unpublish data",
+                        "schema": {
+                            "$ref": "#/definitions/ArticleUnpublishData"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
                     },
                     "400": {
                         "description": "Bad Request"
@@ -9368,6 +9425,19 @@
                     "description": "Version of resource item",
                     "default": 0,
                     "example": 1
+                }
+            }
+        },
+        "ArticleUnpublishData": {
+            "x-tag": "articles",
+            "type": "object",
+            "properties": {
+                "reason": {
+                    "type": "string",
+                    "description": "Reason of article unpublishing",
+                    "maxLength": 1000,
+                    "minLength": 5,
+                    "example": "Unpublish article reason"
                 }
             }
         },
