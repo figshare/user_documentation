@@ -10901,11 +10901,14 @@
         "ArticleUnpublishData": {
             "x-tag": "articles",
             "type": "object",
+            "required": [
+                "reason"
+            ],
             "properties": {
                 "reason": {
                     "type": "string",
                     "description": "Reason of article unpublishing",
-                    "maxLength": 1000,
+                    "maxLength": 500,
                     "minLength": 5,
                     "example": "Unpublish article reason"
                 }
