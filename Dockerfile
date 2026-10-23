@@ -31,6 +31,7 @@ RUN make install ENV=${ENV_PARAM}
 RUN make swagger_build API_URL=${API_URL} API_SCHEME=${API_SCHEME}
 
 # Stage 2: Serve the static site using Nginx
-FROM 942286566325.dkr.ecr.eu-west-1.amazonaws.com/figshare/nginx:1.18 AS deployment
+FROM 942286566325.dkr.ecr.eu-west-1.amazonaws.com/figshare/ubuntu24.04:nginx AS deployment
 COPY --from=build /app/swagger_documentation /usr/share/nginx/html
-EXPOSE 80
+# The nginx image runs as www-data on 8081 (non-root, so no port 80).
+EXPOSE 8081
